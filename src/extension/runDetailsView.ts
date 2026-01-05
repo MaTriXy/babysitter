@@ -967,7 +967,7 @@ function renderWebviewHtml(webview: vscode.Webview): string {
 	          actions.appendChild(copyContentsBtn);
 
             const saveAsBtn = document.createElement('button');
-            saveAsBtn.textContent = 'Save as…';
+            saveAsBtn.textContent = 'Save as...';
             saveAsBtn.setAttribute('aria-label', 'Save a copy of ' + (primary || 'file'));
             if (!canSaveAs) {
               if (item && item.isDirectory) {
@@ -1600,7 +1600,7 @@ class RunDetailsPanel {
     const defaultUri = vscode.Uri.file(path.join(path.dirname(value), basename));
     const destUri = await vscode.window.showSaveDialog({
       title: `Save a copy of ${basename}`,
-      saveLabel: 'Save As…',
+      saveLabel: 'Save As...',
       defaultUri,
     });
     if (!destUri) return;

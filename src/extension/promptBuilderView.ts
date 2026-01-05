@@ -256,6 +256,54 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
         color: var(--vscode-textLink-foreground);
         padding: 0;
       }
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        z-index: 10;
+      }
+      .overlay.open {
+        display: flex;
+      }
+      .modal {
+        width: min(980px, 100%);
+        max-height: min(82vh, 900px);
+        display: flex;
+        flex-direction: column;
+        background: var(--vscode-editor-background);
+        border: var(--border);
+        border-radius: 10px;
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+      }
+      .modal header {
+        padding: 10px 12px;
+        border-bottom: var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .modal header h3 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .modal pre {
+        margin: 0;
+        padding: 12px;
+        white-space: pre-wrap;
+        overflow: auto;
+        font-family: var(--vscode-editor-font-family);
+        font-size: var(--vscode-editor-font-size);
+        line-height: var(--vscode-editor-line-height);
+        color: var(--vscode-editor-foreground);
+        background: var(--vscode-editor-background);
+      }
     </style>
   </head>
   <body>
@@ -297,6 +345,7 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
           </div>
           <div class="actions">
             <button id="dispatch">Dispatch via o</button>
+            <button id="preview" class="secondary">Preview</button>
             <button id="insert" class="secondary">Insert into editor</button>
             <button id="copy" class="secondary">Copy to clipboard</button>
           </div>
@@ -306,6 +355,16 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
           <textarea id="output" style="flex: 1; min-height: 180px;" spellcheck="false" aria-label="Generated prompt"></textarea>
           <div class="muted" id="status" style="margin-top: 8px;"></div>
         </div>
+      </div>
+    </div>
+
+    <div id="previewOverlay" class="overlay" role="dialog" aria-modal="true" aria-label="Prompt preview">
+      <div class="modal">
+        <header>
+          <h3>Prompt preview</h3>
+          <button id="previewClose" class="secondary" aria-label="Close preview">Close</button>
+        </header>
+        <pre id="previewText"></pre>
       </div>
     </div>
 
@@ -331,8 +390,12 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
         status: document.getElementById('status'),
         attachments: document.getElementById('attachments'),
         dispatch: document.getElementById('dispatch'),
+        preview: document.getElementById('preview'),
         insert: document.getElementById('insert'),
         copy: document.getElementById('copy'),
+        previewOverlay: document.getElementById('previewOverlay'),
+        previewClose: document.getElementById('previewClose'),
+        previewText: document.getElementById('previewText'),
       };
 
       function setStatus(text) {
@@ -342,8 +405,19 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
       function updateActions() {
         const hasPrompt = (els.output.value || '').trim().length > 0;
         els.dispatch.disabled = !hasPrompt;
+        els.preview.disabled = !hasPrompt;
         els.insert.disabled = !hasPrompt;
         els.copy.disabled = !hasPrompt;
+      }
+
+      function openPreview(text) {
+        els.previewText.textContent = text || '';
+        els.previewOverlay.classList.add('open');
+        els.previewClose.focus();
+      }
+
+      function closePreview() {
+        els.previewOverlay.classList.remove('open');
       }
 
       let persistTimer = null;
@@ -564,6 +638,15 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
         vscode.postMessage({ type: 'dispatch', text: els.output.value || '' });
       });
 
+      els.preview.addEventListener('click', () => {
+        vscode.postMessage({ type: 'previewPrompt', text: els.output.value || '' });
+      });
+
+      els.previewClose.addEventListener('click', () => closePreview());
+      els.previewOverlay.addEventListener('click', (e) => {
+        if (e.target === els.previewOverlay) closePreview();
+      });
+
       window.addEventListener('message', (event) => {
         const msg = event.data;
         if (!msg || typeof msg !== 'object') return;
@@ -600,10 +683,21 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
           els.output.value = state.lastPrompt;
           updateActions();
         }
+        if (msg.type === 'promptPreview') {
+          openPreview(msg.text || '');
+        }
+        if (msg.type === 'dispatchPreview') {
+          openPreview(msg.text || '');
+        }
         if (msg.type === 'status') setStatus(msg.text || '');
       });
 
       window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && els.previewOverlay.classList.contains('open')) {
+          e.preventDefault();
+          closePreview();
+          return;
+        }
         if (!(e.ctrlKey || e.metaKey)) return;
 
         if (e.key === 'f' || e.key === 'F') {
@@ -637,136 +731,141 @@ function htmlForWebview(webview: vscode.Webview, title: string): string {
 }
 
 export function registerPromptBuilderCommand(context: vscode.ExtensionContext): vscode.Disposable {
-  let panel: vscode.WebviewPanel | undefined;
+  return vscode.commands.registerCommand('babysitter.openPromptBuilder', () =>
+    openPromptBuilder(context),
+  );
+}
 
-  const open = async (): Promise<void> => {
-    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-    if (!workspaceRoot) {
-      await vscode.window.showErrorMessage(
-        'Babysitter: open a workspace folder to use the prompt builder.',
-      );
-      return;
-    }
+let promptBuilderPanel: vscode.WebviewPanel | undefined;
 
-    const processesRootPath = path.join(workspaceRoot, '.a5c', 'processes');
-    if (!vscode.workspace.fs) {
-      await vscode.window.showErrorMessage('Babysitter: VS Code filesystem APIs unavailable.');
-      return;
-    }
+export async function openPromptBuilder(context: vscode.ExtensionContext): Promise<void> {
+  const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+  if (!workspaceRoot) {
+    await vscode.window.showErrorMessage(
+      'Babysitter: open a workspace folder to use the prompt builder.',
+    );
+    return;
+  }
 
-    if (!panel) {
-      panel = vscode.window.createWebviewPanel(
-        'babysitter.promptBuilder',
-        'Babysitter: Prompt Builder',
-        vscode.ViewColumn.One,
-        { enableScripts: true, retainContextWhenHidden: true },
-      );
-      panel.onDidDispose(
-        () => {
-          panel = undefined;
-        },
-        undefined,
-        context.subscriptions,
-      );
-      panel.webview.html = htmlForWebview(panel.webview, 'Babysitter Prompt Builder');
+  const processesRootPath = path.join(workspaceRoot, '.a5c', 'processes');
+  if (!vscode.workspace.fs) {
+    await vscode.window.showErrorMessage('Babysitter: VS Code filesystem APIs unavailable.');
+    return;
+  }
 
-      const bridge = new PromptBuilderBridge({
-        webview: panel.webview,
-        workspaceRoot,
-        memento: context.workspaceState,
-      });
+  if (!promptBuilderPanel) {
+    promptBuilderPanel = vscode.window.createWebviewPanel(
+      'babysitter.promptBuilder',
+      'Babysitter: Prompt Builder',
+      vscode.ViewColumn.One,
+      { enableScripts: true, retainContextWhenHidden: true },
+    );
+    promptBuilderPanel.onDidDispose(
+      () => {
+        promptBuilderPanel = undefined;
+      },
+      undefined,
+      context.subscriptions,
+    );
+    promptBuilderPanel.webview.html = htmlForWebview(
+      promptBuilderPanel.webview,
+      'Babysitter Prompt Builder',
+    );
 
-      panel.webview.onDidReceiveMessage(
-        async (msg: unknown) => {
-          if (!panel) return;
-          if (!msg || typeof msg !== 'object' || !('type' in msg)) return;
-          const typed = msg as { type: string; [key: string]: unknown };
+    const bridge = new PromptBuilderBridge({
+      webview: promptBuilderPanel.webview,
+      workspaceRoot,
+      memento: context.workspaceState,
+    });
 
-          if (await bridge.handleMessage(msg)) return;
+    promptBuilderPanel.webview.onDidReceiveMessage(
+      async (msg: unknown) => {
+        if (!promptBuilderPanel) return;
+        if (!msg || typeof msg !== 'object' || !('type' in msg)) return;
+        const typed = msg as { type: string; [key: string]: unknown };
 
-          if (typed.type === 'ready') {
-            await bridge.hydrate();
-            await vscode.window.withProgress(
-              {
-                location: vscode.ProgressLocation.Notification,
-                title: 'Babysitter: scanning .a5c/processes...',
-              },
-              async () => {
-                const exists = fsExists(processesRootPath);
-                if (!exists) {
-                  await panel?.webview.postMessage({
-                    type: 'status',
-                    text: `Missing ${processesRootPath}. Run \`o init\` or add processes in .a5c/processes/.`,
-                  });
-                  await panel?.webview.postMessage({
-                    type: 'catalog',
-                    catalog: { version: 1, generatedAt: new Date().toISOString(), exports: [] },
-                  });
-                  return;
-                }
-                const catalog = scanProcessCatalog(processesRootPath);
-                await panel?.webview.postMessage({
-                  type: 'catalog',
-                  catalog: toWireCatalog(catalog),
+        if (await bridge.handleMessage(msg)) return;
+
+        if (typed.type === 'ready') {
+          await bridge.hydrate();
+          await vscode.window.withProgress(
+            {
+              location: vscode.ProgressLocation.Notification,
+              title: 'Babysitter: scanning .a5c/processes...',
+            },
+            async () => {
+              const exists = fsExists(processesRootPath);
+              if (!exists) {
+                await promptBuilderPanel?.webview.postMessage({
+                  type: 'status',
+                  text: `Missing ${processesRootPath}. Run \`o init\` or add processes in .a5c/processes/.`,
                 });
-              },
-            );
-            return;
-          }
-
-          if (typed.type === 'generate') {
-            const processId = typeof typed.processId === 'string' ? typed.processId : '';
-            const args =
-              typeof typed.args === 'object' && typed.args !== null
-                ? (typed.args as Record<string, unknown>)
-                : {};
-            const request = typeof typed.request === 'string' ? typed.request : '';
-            const attachments = Array.isArray(typed.attachments)
-              ? typed.attachments.filter((x): x is string => typeof x === 'string')
-              : [];
-            const text = buildGuidedPrompt({ processId, args, request, attachments });
-            void panel.webview.postMessage({ type: 'prompt', text });
-            return;
-          }
-
-          if (typed.type === 'insert') {
-            const text = typeof typed.text === 'string' ? typed.text : '';
-            const editor = vscode.window.activeTextEditor;
-            if (!editor) {
-              void panel.webview.postMessage({
-                type: 'status',
-                text: 'No active editor to insert into.',
+                await promptBuilderPanel?.webview.postMessage({
+                  type: 'catalog',
+                  catalog: { version: 1, generatedAt: new Date().toISOString(), exports: [] },
+                });
+                return;
+              }
+              const catalog = scanProcessCatalog(processesRootPath);
+              await promptBuilderPanel?.webview.postMessage({
+                type: 'catalog',
+                catalog: toWireCatalog(catalog),
               });
-              return;
-            }
-            await editor.insertSnippet(new vscode.SnippetString(text));
-            void panel.webview.postMessage({
+            },
+          );
+          return;
+        }
+
+        if (typed.type === 'generate') {
+          const processId = typeof typed.processId === 'string' ? typed.processId : '';
+          const args =
+            typeof typed.args === 'object' && typed.args !== null
+              ? (typed.args as Record<string, unknown>)
+              : {};
+          const request = typeof typed.request === 'string' ? typed.request : '';
+          const attachments = Array.isArray(typed.attachments)
+            ? typed.attachments.filter((x): x is string => typeof x === 'string')
+            : [];
+          const text = buildGuidedPrompt({ processId, args, request, attachments });
+          void promptBuilderPanel.webview.postMessage({ type: 'prompt', text });
+          return;
+        }
+
+        if (typed.type === 'insert') {
+          const text = typeof typed.text === 'string' ? typed.text : '';
+          const editor = vscode.window.activeTextEditor;
+          if (!editor) {
+            void promptBuilderPanel.webview.postMessage({
               type: 'status',
-              text: 'Inserted prompt into editor.',
+              text: 'No active editor to insert into.',
             });
             return;
           }
+          await editor.insertSnippet(new vscode.SnippetString(text));
+          void promptBuilderPanel.webview.postMessage({
+            type: 'status',
+            text: 'Inserted prompt into editor.',
+          });
+          return;
+        }
 
-          if (typed.type === 'dispatch') {
-            const text = typeof typed.text === 'string' ? typed.text.trim() : '';
-            if (!text) {
-              void panel.webview.postMessage({ type: 'status', text: 'Prompt is empty.' });
-              return;
-            }
-            await vscode.commands.executeCommand('babysitter.dispatchRun', text);
-            void panel.webview.postMessage({ type: 'status', text: 'Dispatched.' });
+        if (typed.type === 'dispatch') {
+          const text = typeof typed.text === 'string' ? typed.text.trim() : '';
+          if (!text) {
+            void promptBuilderPanel.webview.postMessage({ type: 'status', text: 'Prompt is empty.' });
             return;
           }
-        },
-        undefined,
-        context.subscriptions,
-      );
-    }
+          await vscode.commands.executeCommand('babysitter.dispatchRun', text);
+          void promptBuilderPanel.webview.postMessage({ type: 'status', text: 'Dispatched.' });
+          return;
+        }
+      },
+      undefined,
+      context.subscriptions,
+    );
+  }
 
-    panel.reveal(vscode.ViewColumn.One);
-  };
-
-  return vscode.commands.registerCommand('babysitter.openPromptBuilder', open);
+  promptBuilderPanel.reveal(vscode.ViewColumn.One);
 }
 
 function fsExists(p: string): boolean {

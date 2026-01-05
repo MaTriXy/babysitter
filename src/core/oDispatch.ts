@@ -72,7 +72,11 @@ function createDeferred<T>(): Deferred<T> {
 }
 
 function extractRunIdFromText(text: string): string | undefined {
-  const match = text.match(/\d{8}-\d{6}-\w+/);
+  // Current `o` run ids are typically `run-YYYYMMDD-HHMMSS` (optionally with an extra suffix).
+  // Keep the older `YYYYMMDD-HHMMSS-...` matcher for backwards compatibility.
+  const match =
+    text.match(/\brun-\d{8}-\d{6}(?:-[A-Za-z0-9_]+)?\b/) ??
+    text.match(/\b\d{8}-\d{6}-\w+\b/);
   return match?.[0];
 }
 

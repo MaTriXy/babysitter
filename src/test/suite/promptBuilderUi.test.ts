@@ -123,4 +123,49 @@ suite('Prompt Builder UI bridge', () => {
       paramValues: { ok: 'yes' },
     });
   });
+
+  test('rejects unknown message shapes', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    assert.strictEqual(await bridge.handleMessage(undefined), false);
+    assert.strictEqual(await bridge.handleMessage({}), false);
+    assert.strictEqual(messages.length, 0);
+  });
+
+  test('routes prompt preview requests and trims payload', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    const handled = await bridge.handleMessage({ type: 'previewPrompt', prompt: '  hello  ' });
+    assert.strictEqual(handled, true);
+    assert.strictEqual(messages.length, 1);
+    assert.deepStrictEqual(messages[0], { type: 'promptPreview', text: 'hello' });
+  });
+
+  test('routes dispatch preview requests and returns status on empty', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    const handledEmpty = await bridge.handleMessage({ type: 'previewDispatch', text: '   \n\t' });
+    assert.strictEqual(handledEmpty, true);
+    assert.deepStrictEqual(messages, [{ type: 'status', text: 'Prompt is empty.' }]);
+
+    messages.splice(0, messages.length);
+    const handled = await bridge.handleMessage({ type: 'previewDispatch', text: '\n  go  \n' });
+    assert.strictEqual(handled, true);
+    assert.deepStrictEqual(messages, [{ type: 'dispatchPreview', text: 'go' }]);
+  });
 });

@@ -25,6 +25,15 @@ suite('PromptBuilderBridge prompt preview', () => {
     assert.deepStrictEqual(messages, [{ type: 'promptPreview', text: 'hello' }]);
   });
 
+  test('previewDispatch responds with a trimmed dispatchPreview', async () => {
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot: process.cwd() });
+
+    const handled = await bridge.handleMessage({ type: 'previewDispatch', prompt: '  hello  ' });
+    assert.strictEqual(handled, true);
+    assert.deepStrictEqual(messages, [{ type: 'dispatchPreview', text: 'hello' }]);
+  });
+
   test('previewPrompt posts status when the prompt is empty', async () => {
     const { webview, messages } = makeWebview();
     const bridge = new PromptBuilderBridge({ webview, workspaceRoot: process.cwd() });
@@ -34,4 +43,3 @@ suite('PromptBuilderBridge prompt preview', () => {
     assert.deepStrictEqual(messages, [{ type: 'status', text: 'Prompt is empty.' }]);
   });
 });
-

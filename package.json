@@ -2,7 +2,7 @@
   "name": "babysitter",
   "displayName": "Babysitter",
   "description": "VS Code extension for orchestrating and monitoring `o` runs.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "a5c-ai",
   "license": "UNLICENSED",
   "private": true,
@@ -25,6 +25,7 @@
   "main": "./dist/extension.js",
   "activationEvents": [
     "onStartupFinished",
+    "onView:babysitter.runs",
     "onCommand:babysitter.activate",
     "onCommand:babysitter.dispatchRun",
     "onCommand:babysitter.resumeRun",
@@ -224,10 +225,10 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "mocha": "^10.4.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "prettier": "^3.3.3"
   },
   "dependencies": {
-    "node-pty": "^1.1.0"
+    "node-pty": "^1.1.0",
+    "typescript": "^5.5.4"
   }
 }

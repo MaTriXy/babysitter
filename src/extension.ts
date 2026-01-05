@@ -17,7 +17,6 @@ import {
 } from './extension/runDetailsView';
 import { createRunLogsViewManager } from './extension/runLogsView';
 import { registerRunsTreeView } from './extension/runTreeView';
-import { registerPromptBuilderCommand } from './extension/promptBuilderView';
 
 export const OUTPUT_CHANNEL_NAME = 'Babysitter';
 
@@ -113,7 +112,21 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
     }),
   );
 
-  context.subscriptions.push(registerPromptBuilderCommand(context));
+  const openPromptBuilderDisposable = vscode.commands.registerCommand(
+    'babysitter.openPromptBuilder',
+    async () => {
+      try {
+        const mod = await import('./extension/promptBuilderView');
+        await mod.openPromptBuilder(context);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        output.appendLine(`Babysitter: failed to open prompt builder: ${message}`);
+        await vscode.window.showErrorMessage(
+          'Babysitter: Prompt Builder failed to load. See Output > Babysitter for details.',
+        );
+      }
+    },
+  );
 
   context.subscriptions.push(
     new vscode.Disposable(() => {
@@ -544,6 +557,7 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
     output,
     status,
     disposable,
+    openPromptBuilderDisposable,
     dispatchRunDisposable,
     resumeRunDisposable,
     sendEscDisposable,

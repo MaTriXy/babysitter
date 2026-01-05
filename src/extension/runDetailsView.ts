@@ -556,12 +556,13 @@ function renderWebviewHtml(webview: vscode.Webview): string {
           code/main.js
           <span class="pill" id="mainJsPill"></span>
         </h2>
-        <div class="empty" id="mainJsHint" style="margin-bottom: 10px;"></div>
-        <div class="actions" id="mainJsActions" style="display:none; justify-content: flex-start;">
-          <button id="mainJsOpen">Open</button>
-          <button id="mainJsSaveAs">Save as...</button>
-        </div>
-        <pre id="mainJsPreviewPre" style="max-height: 320px; overflow: auto; margin: 0;"></pre>
+	        <div class="empty" id="mainJsHint" style="margin-bottom: 10px;"></div>
+	        <div class="actions" id="mainJsActions" style="display:none; justify-content: flex-start;">
+	          <button id="mainJsPreview">Preview</button>
+	          <button id="mainJsOpen">Open</button>
+	          <button id="mainJsSaveAs">Save as...</button>
+	        </div>
+	        <pre id="mainJsPreviewPre" style="max-height: 320px; overflow: auto; margin: 0;"></pre>
       </section>
     </div>
 
@@ -615,9 +616,10 @@ function renderWebviewHtml(webview: vscode.Webview): string {
     const processMdPill = el('processMdPill');
     const processMdOpen = el('processMdOpen');
     const processMdPreview = el('processMdPreview');
-    const processMermaidPill = el('processMermaidPill');
-    const processMermaidOpen = el('processMermaidOpen');
-    const processMermaidPreview = el('processMermaidPreview');
+	    const processMermaidPill = el('processMermaidPill');
+	    const processMermaidOpen = el('processMermaidOpen');
+	    const processMermaidPreview = el('processMermaidPreview');
+	    const mainJsPreview = el('mainJsPreview');
     const mainJsPill = el('mainJsPill');
     const mainJsHint = el('mainJsHint');
     const mainJsActions = el('mainJsActions');
@@ -1452,7 +1454,7 @@ function renderWebviewHtml(webview: vscode.Webview): string {
       }
     }
 
-    function renderPinnedPreviews(snapshot) {
+	    function renderPinnedPreviews(snapshot) {
       processMdTarget = findImportantByRel(snapshot, (rel) => {
         const norm = String(rel).replace(/\\\\/g, '/').toLowerCase();
         return norm === 'process.md' || norm === 'run/process.md';
@@ -1492,16 +1494,17 @@ function renderWebviewHtml(webview: vscode.Webview): string {
         processMermaidPreview.textContent = 'No process.mermaid.md found.';
       }
 
-      // main.js
-      if (mainJsTarget) {
-        mainJsPill.textContent = mainJsTarget.size != null ? formatBytes(mainJsTarget.size) : 'Present';
-        mainJsHint.textContent = mainJsTarget.mtimeMs ? 'Updated: ' + new Date(mainJsTarget.mtimeMs).toLocaleString() : '';
-        mainJsActions.style.display = '';
-        mainJsOpen.onclick = () => vscode.postMessage({ type: 'openInEditor', fsPath: mainJsTarget.fsPath });
-        mainJsSaveAs.onclick = () => vscode.postMessage({ type: 'saveFileAs', fsPath: mainJsTarget.fsPath });
-        ensureCached(mainJsTarget.fsPath, mainJsTarget.mtimeMs || 0);
-        const content = getCachedText(mainJsTarget.fsPath);
-        mainJsPreviewPre.textContent = content ? content : 'Loading...';
+	      // main.js
+	      if (mainJsTarget) {
+	        mainJsPill.textContent = mainJsTarget.size != null ? formatBytes(mainJsTarget.size) : 'Present';
+	        mainJsHint.textContent = mainJsTarget.mtimeMs ? 'Updated: ' + new Date(mainJsTarget.mtimeMs).toLocaleString() : '';
+	        mainJsActions.style.display = '';
+	        mainJsPreview.onclick = () => vscode.postMessage({ type: 'loadTextFile', fsPath: mainJsTarget.fsPath, tail: false });
+	        mainJsOpen.onclick = () => vscode.postMessage({ type: 'openInEditor', fsPath: mainJsTarget.fsPath });
+	        mainJsSaveAs.onclick = () => vscode.postMessage({ type: 'saveFileAs', fsPath: mainJsTarget.fsPath });
+	        ensureCached(mainJsTarget.fsPath, mainJsTarget.mtimeMs || 0);
+	        const content = getCachedText(mainJsTarget.fsPath);
+	        mainJsPreviewPre.textContent = content ? content : 'Loading...';
       } else {
         mainJsPill.textContent = 'Missing';
         mainJsHint.textContent = 'No code/main.js found for this run.';
@@ -1579,22 +1582,23 @@ function renderWebviewHtml(webview: vscode.Webview): string {
       }
     }
 
-	    function renderTextFile(msg) {
-	      if (!msg || typeof msg.content !== 'string') return;
-        if (msg.fsPath) {
-          textFileCache.set(msg.fsPath, {
-            ...(textFileCache.get(msg.fsPath) || {}),
-            content: msg.content,
-            truncated: Boolean(msg.truncated),
-            size: msg.size,
-          });
-        }
-        if (msg.fsPath && msg.fsPath === activeWorkPreviewFsPath) {
-          activeWorkPreviewContent = msg.content;
-          activeWorkPreviewTruncated = Boolean(msg.truncated);
-          activeWorkPreviewError = '';
-          renderActiveWorkPreview();
-        }
+		    function renderTextFile(msg) {
+		      if (!msg || typeof msg.content !== 'string') return;
+	        if (msg.fsPath) {
+	          textFileCache.set(msg.fsPath, {
+	            ...(textFileCache.get(msg.fsPath) || {}),
+	            content: msg.content,
+	            truncated: Boolean(msg.truncated),
+	            size: msg.size,
+	          });
+	        }
+	        if (msg.fsPath && msg.fsPath === activeWorkPreviewFsPath) {
+	          activeWorkPreviewFsPath = msg.fsPath;
+	          activeWorkPreviewContent = msg.content;
+	          activeWorkPreviewTruncated = Boolean(msg.truncated);
+	          activeWorkPreviewError = '';
+	          renderActiveWorkPreview();
+	        }
         if (latestSnapshot) renderPinnedPreviews(latestSnapshot);
 	    }
 

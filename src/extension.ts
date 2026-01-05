@@ -310,6 +310,14 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
         const windowsInvocation = workspaceFolder
           ? await resolveWindowsInvocationOptions(workspaceFolder, result.config.oBinary.path)
           : {};
+        if (process.platform === 'win32' && !isLikelyWindowsNativeBinary(result.config.oBinary.path)) {
+          const runtimeLabel = windowsInvocation.windowsRuntime
+            ? 'WSL'
+            : windowsInvocation.windowsBashPath
+              ? `Git Bash (${windowsInvocation.windowsBashPath})`
+              : '(none)';
+          output.appendLine(`Windows runtime: ${runtimeLabel}`);
+        }
         if (
           process.platform === 'win32' &&
           !isLikelyWindowsNativeBinary(result.config.oBinary.path) &&
@@ -458,6 +466,14 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
         const windowsInvocation = workspaceFolder
           ? await resolveWindowsInvocationOptions(workspaceFolder, result.config.oBinary.path)
           : {};
+        if (process.platform === 'win32' && !isLikelyWindowsNativeBinary(result.config.oBinary.path)) {
+          const runtimeLabel = windowsInvocation.windowsRuntime
+            ? 'WSL'
+            : windowsInvocation.windowsBashPath
+              ? `Git Bash (${windowsInvocation.windowsBashPath})`
+              : '(none)';
+          output.appendLine(`Windows runtime: ${runtimeLabel}`);
+        }
         if (
           process.platform === 'win32' &&
           !isLikelyWindowsNativeBinary(result.config.oBinary.path) &&

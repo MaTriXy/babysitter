@@ -1,0 +1,14 @@
+**/.git/**
+**/.vscode/**
+**/.vscode-test/**
+**/.a5c/**
+**/node_modules/**
+**/*.map
+*.vsix
+src/**
+dist/test/**
+.eslintrc.cjs
+.prettierrc.json
+requirements.md
+o
+.gitignore

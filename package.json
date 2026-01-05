@@ -1,0 +1,153 @@
+{
+  "name": "babysitter",
+  "displayName": "Babysitter",
+  "description": "VS Code extension for orchestrating and monitoring `o` runs.",
+  "version": "0.0.1",
+  "publisher": "a5c-ai",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:babysitter.activate",
+    "onCommand:babysitter.dispatchRun",
+    "onCommand:babysitter.resumeRun",
+    "onCommand:babysitter.sendEsc",
+    "onCommand:babysitter.sendEnter",
+    "onCommand:babysitter.locateOBinary",
+    "onCommand:babysitter.showConfigurationErrors",
+    "onCommand:babysitter.openRunDetails",
+    "onCommand:babysitter.revealRunFolder"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "babysitter.activate",
+        "title": "Babysitter: Activate (Log Output)"
+      },
+      {
+        "command": "babysitter.dispatchRun",
+        "title": "Babysitter: Dispatch Run"
+      },
+      {
+        "command": "babysitter.resumeRun",
+        "title": "Babysitter: Resume Run"
+      },
+      {
+        "command": "babysitter.sendEsc",
+        "title": "Babysitter: Send ESC to `o`"
+      },
+      {
+        "command": "babysitter.sendEnter",
+        "title": "Babysitter: Send Enter to `o`"
+      },
+      {
+        "command": "babysitter.locateOBinary",
+        "title": "Babysitter: Locate `o` Binary"
+      },
+      {
+        "command": "babysitter.showConfigurationErrors",
+        "title": "Babysitter: Show Configuration Errors"
+      },
+      {
+        "command": "babysitter.openRunDetails",
+        "title": "Babysitter: Open Run Details"
+      },
+      {
+        "command": "babysitter.revealRunFolder",
+        "title": "Babysitter: Reveal Run Folder in Explorer"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "babysitter.runs",
+          "name": "Babysitter Runs"
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "babysitter.openRunDetails",
+          "when": "view == babysitter.runs && viewItem == babysitterRun",
+          "group": "navigation"
+        },
+        {
+          "command": "babysitter.resumeRun",
+          "when": "view == babysitter.runs && viewItem == babysitterRun",
+          "group": "navigation"
+        },
+        {
+          "command": "babysitter.revealRunFolder",
+          "when": "view == babysitter.runs && viewItem == babysitterRun",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Babysitter",
+      "properties": {
+        "babysitter.o.binaryPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional full path to the `o` executable (or a directory containing it). If empty, Babysitter looks for `o` in the workspace root first, then on PATH."
+        },
+        "babysitter.oPath": {
+          "type": "string",
+          "default": "",
+          "description": "Legacy alias for `babysitter.o.binaryPath`. Optional full path to the `o` executable (or a directory containing it)."
+        },
+        "babysitter.runsRoot": {
+          "type": "string",
+          "default": ".a5c/runs",
+          "description": "Runs root directory. Relative paths are resolved from the workspace root."
+        },
+        "babysitter.globalConfigPath": {
+          "type": "string",
+          "default": "",
+          "description": "Optional path to a JSON global config file. Supported keys: `oBinaryPath`, `runsRoot`."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "package": "vsce package",
+    "test:unit": "npm run build && npm run test:unit:compiled",
+    "test:unit:compiled": "mocha --ui tdd \"dist/unit/**/*.test.js\"",
+    "test:extension": "npm run build && npm run test:extension:compiled",
+    "test:extension:compiled": "node ./dist/test/runTest.js",
+    "test": "npm run build && npm run test:unit:compiled && npm run test:extension:compiled",
+    "test:ci": "npm run build && npm run test:unit:compiled && node ./dist/test/runTest.js --headless"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.30",
+    "@types/vscode": "^1.90.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vscode/test-electron": "^2.4.0",
+    "@vscode/vsce": "^3.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "mocha": "^10.4.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "node-pty": "^1.1.0"
+  }
+}

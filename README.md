@@ -61,6 +61,8 @@ Notes:
    - `Babysitter: Open Run Details`
    - `Babysitter: Open Run Logs`
 
+For a predictable walkthrough using the included fixture workspace, see `DEMO.md`.
+
 ## Core Concepts
 
 ### Runs and run folders
@@ -234,7 +236,15 @@ Security note: this command is gated by a modal consent prompt because it execut
 - VS Code: **View → Output** → select `Babysitter`
 - If extension tests fail in CI, see workflow artifacts: `test-logs` and `vsix`
 
+See also: `CONTRIBUTING.md` (debugging notes + what to include in bug reports/PRs).
+
+## Security & Privacy
+
+See `SECURITY.md`.
+
 ## Development
+
+See `CONTRIBUTING.md` for setup, debugging, packaging, and PR expectations.
 
 ### Prerequisites
 

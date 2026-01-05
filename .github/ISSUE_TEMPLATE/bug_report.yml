@@ -1,0 +1,110 @@
+name: Bug report
+description: Report a bug in Babysitter
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please include as much diagnostic information as you can. Redact secrets.
+
+  - type: input
+    id: version
+    attributes:
+      label: Babysitter version
+      description: Extension version (and VSIX name if installed from VSIX).
+      placeholder: "e.g. 0.0.6 (babysitter-0.0.6.vsix)"
+    validations:
+      required: true
+
+  - type: input
+    id: vscode
+    attributes:
+      label: VS Code version
+      placeholder: "e.g. 1.95.0"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: "e.g. Windows 11 / macOS 14 / Ubuntu 22.04"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: windows_env
+    attributes:
+      label: Windows environment (if applicable)
+      options:
+        - Not on Windows
+        - WSL2
+        - Git Bash
+        - Native (PowerShell/CMD)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: input
+    id: run_folder
+    attributes:
+      label: Run folder path (if this involves a run)
+      description: Paste the path to the run folder under `.a5c/runs/run-*`.
+      placeholder: ".a5c/runs/run-YYYYMMDD-HHMMSS"
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / diagnostics
+      description: |
+        Attach or paste:
+        - VS Code Output → `Babysitter` channel
+        - The run's `state.json` and `journal.jsonl` (if applicable)
+        - Any screenshots/GIFs if it's UI-related
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant settings
+      description: Paste relevant `babysitter.*` settings (redact sensitive values).
+      render: jsonc
+      placeholder: |
+        {
+          "babysitter.runsRoot": ".a5c/runs",
+          "babysitter.o.binaryPath": "./o"
+        }
+    validations:
+      required: false
+

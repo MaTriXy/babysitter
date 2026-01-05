@@ -149,10 +149,22 @@ export async function dispatchNewRunViaO(
   const timeoutMs = options.runInfoTimeoutMs ?? 30_000;
   const deferred = createDeferred<DispatchNewRunResult>();
 
-  const child = spawnPtyProcess(options.oBinaryPath, [options.prompt], {
-    cwd: options.workspaceRoot,
-    ...(options.env ? { env: options.env } : {}),
-  });
+  let child: PtyProcess;
+  try {
+    child = spawnPtyProcess(options.oBinaryPath, [options.prompt], {
+      cwd: options.workspaceRoot,
+      ...(options.env ? { env: options.env } : {}),
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (process.platform === 'win32' && /error code:\s*193\b/i.test(message)) {
+      throw new Error(
+        `Failed to start \`o\` (${message}). The configured path (${options.oBinaryPath}) is not a Windows executable. ` +
+          `If you're pointing at the bash script from the \`o\` repo, install Git Bash and set Babysitter to use it, or point Babysitter at \`o.exe\`/an \`o.cmd\` wrapper.`,
+      );
+    }
+    throw err;
+  }
   options.onProcess?.(child);
 
   let stdout = '';
@@ -250,10 +262,22 @@ export async function resumeExistingRunViaO(
   const timeoutMs = options.runInfoTimeoutMs ?? 30_000;
   const deferred = createDeferred<ResumeExistingRunResult>();
 
-  const child = spawnPtyProcess(options.oBinaryPath, [options.runId, options.prompt], {
-    cwd: options.workspaceRoot,
-    ...(options.env ? { env: options.env } : {}),
-  });
+  let child: PtyProcess;
+  try {
+    child = spawnPtyProcess(options.oBinaryPath, [options.runId, options.prompt], {
+      cwd: options.workspaceRoot,
+      ...(options.env ? { env: options.env } : {}),
+    });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (process.platform === 'win32' && /error code:\s*193\b/i.test(message)) {
+      throw new Error(
+        `Failed to start \`o\` (${message}). The configured path (${options.oBinaryPath}) is not a Windows executable. ` +
+          `If you're pointing at the bash script from the \`o\` repo, install Git Bash and ensure \`bash\` is on PATH, or point Babysitter at \`o.exe\`/an \`o.cmd\` wrapper.`,
+      );
+    }
+    throw err;
+  }
   options.onProcess?.(child);
 
   let stdout = '';

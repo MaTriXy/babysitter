@@ -291,6 +291,13 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         output.appendLine(`Dispatch failed: ${message}`);
+        if (process.platform === 'win32' && /error code:\s*193\b/i.test(message)) {
+          await vscode.window.showErrorMessage(
+            'Babysitter: dispatch failed because the configured `o` path is not runnable on Windows. ' +
+              'Point `babysitter.o.binaryPath` at a Windows `o.exe` or ensure `bash` is on PATH if using the bash script.',
+          );
+          throw err;
+        }
         await vscode.window.showErrorMessage(
           'Babysitter: dispatch failed. See output for details.',
         );
@@ -408,6 +415,13 @@ export function activate(context: vscode.ExtensionContext): BabysitterApi {
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
         output.appendLine(`Resume failed: ${message}`);
+        if (process.platform === 'win32' && /error code:\s*193\b/i.test(message)) {
+          await vscode.window.showErrorMessage(
+            'Babysitter: resume failed because the configured `o` path is not runnable on Windows. ' +
+              'Point `babysitter.o.binaryPath` at a Windows `o.exe` or ensure `bash` is on PATH if using the bash script.',
+          );
+          throw err;
+        }
         await vscode.window.showErrorMessage('Babysitter: resume failed. See output for details.');
         throw err;
       }

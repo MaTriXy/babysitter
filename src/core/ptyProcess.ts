@@ -1,4 +1,5 @@
 import { spawn } from 'child_process';
+import * as fs from 'fs';
 import * as path from 'path';
 
 import * as pty from 'node-pty';
@@ -31,6 +32,48 @@ function isWindowsCmdScript(filePath: string, platform: NodeJS.Platform): boolea
   if (platform !== 'win32') return false;
   const ext = path.extname(filePath).toLowerCase();
   return ext === '.cmd' || ext === '.bat';
+}
+
+function readShebang(filePath: string): string | undefined {
+  try {
+    const fd = fs.openSync(filePath, 'r');
+    try {
+      const buf = Buffer.alloc(256);
+      const bytesRead = fs.readSync(fd, buf, 0, buf.length, 0);
+      if (bytesRead <= 0) return undefined;
+      const text = buf.subarray(0, bytesRead).toString('utf8');
+      const firstLine = text.split(/\r?\n/, 1)[0];
+      if (!firstLine || !firstLine.startsWith('#!')) return undefined;
+      return firstLine.slice(2).trim();
+    } finally {
+      fs.closeSync(fd);
+    }
+  } catch {
+    return undefined;
+  }
+}
+
+export function wrapCommandForPlatform(params: {
+  filePath: string;
+  args: string[];
+  platform: NodeJS.Platform;
+}): { filePath: string; args: string[] } {
+  // On Windows, users may point Babysitter at the `o` bash script (e.g. from the `o` repo),
+  // which cannot be executed directly via CreateProcess. Wrap it with `bash` when detected.
+  if (params.platform === 'win32') {
+    const ext = path.extname(params.filePath).toLowerCase();
+    const isKnownExecutable = ext === '.exe' || ext === '.com';
+    const isKnownCmd = ext === '.cmd' || ext === '.bat';
+
+    if (!isKnownExecutable && !isKnownCmd && fs.existsSync(params.filePath)) {
+      const shebang = readShebang(params.filePath);
+      if (shebang && /\bbash\b/i.test(shebang)) {
+        return { filePath: 'bash', args: [params.filePath, ...params.args] };
+      }
+    }
+  }
+
+  return { filePath: params.filePath, args: params.args };
 }
 
 function spawnStdioProcess(filePath: string, args: string[], options: SpawnPtyOptions): PtyProcess {
@@ -109,6 +152,10 @@ export function spawnPtyProcess(
   args: string[],
   options: SpawnPtyOptions,
 ): PtyProcess {
+  const wrapped = wrapCommandForPlatform({ filePath, args, platform: process.platform });
+  filePath = wrapped.filePath;
+  args = wrapped.args;
+
   if (isWindowsCmdScript(filePath, process.platform)) {
     return spawnStdioProcess(filePath, args, options);
   }

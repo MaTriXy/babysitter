@@ -7,6 +7,7 @@ import * as vscode from 'vscode';
 
 import {
   PromptBuilderBridge,
+  parseDroppedText,
   type PromptBuilderMementoLike,
   type PromptBuilderWebviewLike,
 } from '../../extension/promptBuilderBridge';
@@ -37,6 +38,10 @@ function makeWebview(): { webview: PromptBuilderWebviewLike; messages: unknown[]
 }
 
 suite('Prompt Builder UI bridge', () => {
+  test('parses dropped text lines, trimming and ignoring comments', () => {
+    assert.deepStrictEqual(parseDroppedText('# comment\n  a  \n\n\tb\n#c\n'), ['a', 'b']);
+  });
+
   test('hydrates persisted state on ready', async () => {
     const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
     assert.ok(workspaceRoot, 'test workspace not opened');
@@ -151,6 +156,32 @@ suite('Prompt Builder UI bridge', () => {
     assert.deepStrictEqual(messages[0], { type: 'promptPreview', text: 'hello' });
   });
 
+  test('accepts previewPrompt messages that use the `text` field (webview contract)', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    const handled = await bridge.handleMessage({ type: 'previewPrompt', text: '\n  hi  \n' });
+    assert.strictEqual(handled, true);
+    assert.deepStrictEqual(messages, [{ type: 'promptPreview', text: 'hi' }]);
+  });
+
+  test('returns status for empty previewPrompt requests', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    const handled = await bridge.handleMessage({ type: 'previewPrompt', text: '   \n\t' });
+    assert.strictEqual(handled, true);
+    assert.deepStrictEqual(messages, [{ type: 'status', text: 'Prompt is empty.' }]);
+  });
+
   test('routes dispatch preview requests and returns status on empty', async () => {
     const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
     assert.ok(workspaceRoot, 'test workspace not opened');
@@ -167,5 +198,18 @@ suite('Prompt Builder UI bridge', () => {
     const handled = await bridge.handleMessage({ type: 'previewDispatch', text: '\n  go  \n' });
     assert.strictEqual(handled, true);
     assert.deepStrictEqual(messages, [{ type: 'dispatchPreview', text: 'go' }]);
+  });
+
+  test('accepts previewDispatch messages that use the `prompt` field', async () => {
+    const workspaceRoot = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    assert.ok(workspaceRoot, 'test workspace not opened');
+
+    const memento = new MemoryMemento();
+    const { webview, messages } = makeWebview();
+    const bridge = new PromptBuilderBridge({ webview, workspaceRoot, memento });
+
+    const handled = await bridge.handleMessage({ type: 'previewDispatch', prompt: '  ship it  ' });
+    assert.strictEqual(handled, true);
+    assert.deepStrictEqual(messages, [{ type: 'dispatchPreview', text: 'ship it' }]);
   });
 });

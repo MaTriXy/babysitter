@@ -25,5 +25,35 @@ suite('Run Details webview template', () => {
     );
     assert.ok(source.includes('(truncated)'), 'expected preview to surface truncation hint');
   });
+
+  test('keeps an active work-summary preview open across snapshot refreshes', () => {
+    const source = readWorkspaceFile('src/extension/runDetailsView.ts');
+
+    assert.ok(
+      /activeWorkPreviewFsPath/.test(source),
+      'expected webview to track active work-summary preview fsPath',
+    );
+    assert.ok(
+      /activeWorkPreviewFsPath\s*=\s*msg\.fsPath/.test(source),
+      'expected textFile handler to set activeWorkPreviewFsPath from msg.fsPath',
+    );
+  });
+
+  test('renders empty and completion states for work-summary previews', () => {
+    const source = readWorkspaceFile('src/extension/runDetailsView.ts');
+
+    assert.ok(
+      /latestRunStatus/.test(source),
+      'expected webview to track latest run status for preview suffixes',
+    );
+    assert.ok(
+      source.includes('No work summary output yet') || source.includes('No work summary output'),
+      'expected work-summary preview to show an empty placeholder',
+    );
+    assert.ok(
+      source.includes('Run finished') || source.includes('run finished'),
+      'expected work-summary preview to surface completion status',
+    );
+  });
 });
 

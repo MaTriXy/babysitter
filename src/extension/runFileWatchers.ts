@@ -69,11 +69,15 @@ export function createRunFileWatchers(params: {
   const artifactsWatcher = vscode.workspace.createFileSystemWatcher(
     new vscode.RelativePattern(globs.base, `${globs.prefix}/artifacts/**`),
   );
+  const workSummariesWatcher = vscode.workspace.createFileSystemWatcher(
+    new vscode.RelativePattern(globs.base, `${globs.prefix}/work_summaries/**`),
+  );
 
   const disposables: vscode.Disposable[] = [
     stateWatcher,
     journalWatcher,
     artifactsWatcher,
+    workSummariesWatcher,
     stateWatcher.onDidCreate((u) => handle(u, 'create')),
     stateWatcher.onDidChange((u) => handle(u, 'change')),
     stateWatcher.onDidDelete((u) => handle(u, 'delete')),
@@ -83,6 +87,9 @@ export function createRunFileWatchers(params: {
     artifactsWatcher.onDidCreate((u) => handle(u, 'create')),
     artifactsWatcher.onDidChange((u) => handle(u, 'change')),
     artifactsWatcher.onDidDelete((u) => handle(u, 'delete')),
+    workSummariesWatcher.onDidCreate((u) => handle(u, 'create')),
+    workSummariesWatcher.onDidChange((u) => handle(u, 'change')),
+    workSummariesWatcher.onDidDelete((u) => handle(u, 'delete')),
   ];
 
   return new vscode.Disposable(() => {

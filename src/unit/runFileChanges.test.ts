@@ -75,6 +75,28 @@ suite('runFileChanges', () => {
     }
   });
 
+  test('classifies work summary changes', () => {
+    const tempDir = makeTempDir('babysitter-runFileChanges-');
+    try {
+      const runsRoot = path.join(tempDir, 'runs');
+      const runId = 'run-20260105-010206';
+      const workPath = path.join(runsRoot, runId, 'work_summaries', 'work.md');
+      const change = classifyRunFileChange({
+        runsRootPath: runsRoot,
+        fsPath: workPath,
+        type: 'change',
+      });
+      assert.deepStrictEqual(change, {
+        runId,
+        area: 'workSummaries',
+        type: 'change',
+        fsPath: workPath,
+      });
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
   test('ignores paths outside runs root and unrelated files', () => {
     const tempDir = makeTempDir('babysitter-runFileChanges-');
     try {
@@ -106,6 +128,7 @@ suite('runFileChanges', () => {
       { runId: 'run-20260105-010207', area: 'state', type: 'change', fsPath: '/x/a' },
       { runId: 'run-20260105-010206', area: 'journal', type: 'change', fsPath: '/x/b' },
       { runId: 'run-20260105-010206', area: 'artifacts', type: 'create', fsPath: '/x/c' },
+      { runId: 'run-20260105-010206', area: 'workSummaries', type: 'change', fsPath: '/x/d' },
     ];
 
     const batch = toRunChangeBatch(changes);
@@ -117,6 +140,7 @@ suite('runFileChanges', () => {
     assert.deepStrictEqual(Array.from(batch.areasByRunId.get('run-20260105-010206') ?? []).sort(), [
       'artifacts',
       'journal',
+      'workSummaries',
     ]);
   });
 });

@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import { extractRunIdFromPath } from './runId';
 
-export type RunFileArea = 'state' | 'journal' | 'artifacts';
+export type RunFileArea = 'state' | 'journal' | 'artifacts' | 'workSummaries';
 export type RunFileEventType = 'create' | 'change' | 'delete';
 
 export type RunFileChange = {
@@ -43,6 +43,9 @@ export function classifyRunFileChange(params: {
   }
   if (first === 'artifacts') {
     return { runId, area: 'artifacts', type: params.type, fsPath: params.fsPath };
+  }
+  if (first === 'work_summaries') {
+    return { runId, area: 'workSummaries', type: params.type, fsPath: params.fsPath };
   }
 
   return undefined;

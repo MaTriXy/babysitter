@@ -502,17 +502,18 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
       </section>
     </div>
 
-    <div class="grid2">
-      <section class="card">
-        <h2>
-          Latest Events
-          <span class="pill" id="journalPill"></span>
-        </h2>
-        <div id="journalErrors" class="empty" style="margin-bottom: 8px; display:none;"></div>
-        <table class="evtable" id="journalTable">
-          <thead>
-            <tr>
-              <th style="width: 190px;">Time</th>
+	    <div class="grid2">
+	      <section class="card">
+	        <h2>
+	          Latest Events
+	          <span class="pill" id="journalPill"></span>
+	        </h2>
+	        <div id="journalErrors" class="empty" style="margin-bottom: 8px; display:none;"></div>
+          <div id="journalDebug" class="empty" style="margin-bottom: 8px; display:none;"></div>
+	        <table class="evtable" id="journalTable">
+	          <thead>
+	            <tr>
+	              <th style="width: 190px;">Time</th>
               <th style="width: 170px;">Event</th>
               <th style="width: 70px;">Id</th>
               <th>Summary</th>
@@ -639,10 +640,11 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
     const runMeta = el('runMeta');
     const stateJson = el('stateJson');
     const stateIssues = el('stateIssues');
-    const journalErrors = el('journalErrors');
-    const journalPill = el('journalPill');
-    const journalTable = el('journalTable');
-    const journalBody = el('journalBody');
+	    const journalErrors = el('journalErrors');
+      const journalDebug = el('journalDebug');
+	    const journalPill = el('journalPill');
+	    const journalTable = el('journalTable');
+	    const journalBody = el('journalBody');
     const workList = el('workList');
     const textPreviewCard = el('textPreviewCard');
     const textPreviewTitle = el('textPreviewTitle');
@@ -959,10 +961,24 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
       }
       stateJson.textContent = JSON.stringify(snapshot.state.state || {}, null, 2);
 
-      const journal = snapshot.journal;
-      journalPill.textContent = (journal.entries?.length || 0) + ' entries';
-      renderJournalTable(journal.entries || []);
-      const jErrors = journal.errors || [];
+	      const journal = snapshot.journal;
+	      const journalCount = journal.entries?.length || 0;
+	      const renderedCount = renderJournalTable(journal.entries || []);
+	      journalPill.textContent =
+          journalCount + ' entries' + (renderedCount !== journalCount ? ' (rendered ' + renderedCount + ')' : '');
+        if (journalDebug) {
+          if (journalCount > 0 && renderedCount === 0) {
+            const first = journal.entries && journal.entries.length > 0 ? journal.entries[0] : null;
+            journalDebug.textContent =
+              'Entries exist but rendered 0. First entry keys: ' +
+              (first && typeof first === 'object' ? Object.keys(first).join(', ') : typeof first);
+            journalDebug.style.display = '';
+          } else {
+            journalDebug.textContent = '';
+            journalDebug.style.display = 'none';
+          }
+        }
+	      const jErrors = journal.errors || [];
       if (jErrors.length > 0) {
         journalErrors.style.display = '';
         journalErrors.textContent = jErrors.slice(0, 2).map((e) => 'Line ' + e.line + ': ' + e.message).join('  |  ');
@@ -1338,131 +1354,24 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	      }
 	      workEmpty.style.display = 'none';
 
-      if (tailLatestWorkEnabled && (activeWorkPreviewKind === '' || activeWorkPreviewKind === 'workTail')) {
-        const newest = items[0];
-        if (newest && newest.fsPath && newest.fsPath !== activeWorkPreviewFsPath) {
-          activeWorkPreviewFsPath = newest.fsPath;
-          activeWorkPreviewContent = '';
-          activeWorkPreviewTruncated = false;
-          activeWorkPreviewError = '';
-          activeWorkPreviewAutoScroll = true;
-          activeWorkPreviewMode = 'plain';
-          activeWorkPreviewKind = 'workTail';
-          renderActiveWorkPreview();
-          vscode.postMessage({ type: 'loadTextFile', fsPath: newest.fsPath, tail: true });
-        }
-      }
-
-      function safeString(v) {
-        if (v == null) return '';
-        if (typeof v === 'string') return v;
-        try {
-          return JSON.stringify(v);
-        } catch {
-          return String(v);
-        }
-      }
-
-		      function summarizeEvent(entry) {
-		        if (!entry || typeof entry !== 'object') return safeString(entry);
-
-            const obj = entry;
-		        const ev = obj.event || obj.type || obj.kind || obj.name || obj.action || '';
-		        const data = obj.data ?? obj.payload ?? obj.body ?? obj.value;
-            const msg =
-              obj.message ||
-              obj.text ||
-              obj.detail ||
-              obj.reason ||
-              obj.summary ||
-              obj.description ||
-              '';
-
-		        if (ev === 'function_call' && data && typeof data === 'object') {
-		          const fn = data.function || data.name || '';
-		          if (fn) return 'function_call: ' + fn;
-		          return 'function_call';
-		        }
-		        if (ev === 'breakpoint_approved' && data && typeof data === 'object') {
-		          const bp = data.breakpoint || '';
-		          return bp ? 'breakpoint_approved: ' + bp : 'breakpoint_approved';
-		        }
-		        if (ev === 'run_created' && data && typeof data === 'object') {
-		          const runId = data.runId || '';
-		          return runId ? 'run_created: ' + runId : 'run_created';
-		        }
-            if (typeof msg === 'string' && msg.trim()) return msg.trim();
-		        return data ? safeString(data) : safeString(entry);
-		      }
-
-	      function renderJournalTable(entries) {
-	        journalBody.innerHTML = '';
-	        const list = Array.isArray(entries) ? entries : [];
-        if (list.length === 0) {
-          const tr = document.createElement('tr');
-          const td = document.createElement('td');
-          td.colSpan = 4;
-          td.className = 'empty';
-          td.textContent = 'No events yet.';
-          tr.appendChild(td);
-          journalBody.appendChild(tr);
-          return;
+	      if (tailLatestWorkEnabled && (activeWorkPreviewKind === '' || activeWorkPreviewKind === 'workTail')) {
+	        const newest = items[0];
+	        if (newest && newest.fsPath && newest.fsPath !== activeWorkPreviewFsPath) {
+	          activeWorkPreviewFsPath = newest.fsPath;
+	          activeWorkPreviewContent = '';
+	          activeWorkPreviewTruncated = false;
+	          activeWorkPreviewError = '';
+	          activeWorkPreviewAutoScroll = true;
+	          activeWorkPreviewMode = 'plain';
+	          activeWorkPreviewKind = 'workTail';
+	          renderActiveWorkPreview();
+	          vscode.postMessage({ type: 'loadTextFile', fsPath: newest.fsPath, tail: true });
 	        }
-	
-          // Show newest first.
-	        for (let idx = list.length - 1; idx >= 0; idx--) {
-            const entry = list[idx];
-	          const tr = document.createElement('tr');
-	          const tsRaw =
-	            entry && typeof entry === 'object'
-	              ? entry.timestamp || entry.time || entry.createdAt || entry.updatedAt || ''
-	              : '';
-	          let ts = '';
-            if (tsRaw) {
-              try {
-                const d = new Date(String(tsRaw));
-                ts = isNaN(d.getTime()) ? String(tsRaw) : d.toLocaleString();
-              } catch {
-                ts = String(tsRaw);
-              }
-            }
-	          const ev =
-              entry && typeof entry === 'object'
-                ? String(entry.event || entry.type || entry.kind || entry.name || entry.action || '')
-                : '';
-	          const id =
-              entry && typeof entry === 'object'
-                ? String(entry.id || entry.runId || entry.requestId || entry.pid || '')
-                : '';
-	          const summary = summarizeEvent(entry);
-	
-	          const tdTime = document.createElement('td');
-	          tdTime.textContent = ts;
-	          tr.appendChild(tdTime);
+	      }
 
-	          const tdEv = document.createElement('td');
-	          tdEv.textContent = ev || '(unknown)';
-	          tr.appendChild(tdEv);
-
-          const tdId = document.createElement('td');
-          tdId.textContent = id;
-          tr.appendChild(tdId);
-
-          const tdSummary = document.createElement('td');
-          const code = document.createElement('code');
-          const text = String(summary || '');
-          code.textContent = text.length > 240 ? text.slice(0, 240) + '...' : text;
-          code.title = text;
-          tdSummary.appendChild(code);
-          tr.appendChild(tdSummary);
-
-          journalBody.appendChild(tr);
-        }
-      }
-
-      for (const item of items) {
-        const row = document.createElement('div');
-        row.className = 'item';
+	      for (const item of items) {
+	        const row = document.createElement('div');
+	        row.className = 'item';
 
         const left = document.createElement('div');
         left.className = 'left';
@@ -1502,11 +1411,126 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
         actions.appendChild(previewBtn);
         actions.appendChild(openBtn);
 
-        row.appendChild(left);
-        row.appendChild(actions);
-        workList.appendChild(row);
+	        row.appendChild(left);
+	        row.appendChild(actions);
+	        workList.appendChild(row);
+	      }
+	    }
+
+      function safeString(v) {
+        if (v == null) return '';
+        if (typeof v === 'string') return v;
+        try {
+          return JSON.stringify(v);
+        } catch {
+          return String(v);
+        }
       }
-    }
+
+      function summarizeEvent(entry) {
+        if (!entry || typeof entry !== 'object') return safeString(entry);
+
+        const obj = entry;
+        const ev = obj.event || obj.type || obj.kind || obj.name || obj.action || '';
+        const data = obj.data ?? obj.payload ?? obj.body ?? obj.value;
+        const msg =
+          obj.message ||
+          obj.text ||
+          obj.detail ||
+          obj.reason ||
+          obj.summary ||
+          obj.description ||
+          '';
+
+        if (ev === 'function_call' && data && typeof data === 'object') {
+          const fn = data.function || data.name || '';
+          if (fn) return 'function_call: ' + fn;
+          return 'function_call';
+        }
+        if (ev === 'breakpoint_approved' && data && typeof data === 'object') {
+          const bp = data.breakpoint || '';
+          return bp ? 'breakpoint_approved: ' + bp : 'breakpoint_approved';
+        }
+        if (ev === 'run_created' && data && typeof data === 'object') {
+          const runId = data.runId || '';
+          return runId ? 'run_created: ' + runId : 'run_created';
+        }
+        if (typeof msg === 'string' && msg.trim()) return msg.trim();
+        return data ? safeString(data) : safeString(entry);
+      }
+
+      function renderJournalTable(entries) {
+        if (!journalBody) {
+          showBanner('Journal table failed to render: missing journalBody element.', { error: true });
+          return 0;
+        }
+        journalBody.innerHTML = '';
+        const list = Array.isArray(entries) ? entries : [];
+        if (list.length === 0) {
+          const tr = document.createElement('tr');
+          const td = document.createElement('td');
+          td.colSpan = 4;
+          td.className = 'empty';
+          td.textContent = 'No events yet.';
+          tr.appendChild(td);
+          journalBody.appendChild(tr);
+          return 0;
+        }
+
+        let rendered = 0;
+        for (let idx = list.length - 1; idx >= 0; idx--) {
+          const entry = list[idx];
+          const tr = document.createElement('tr');
+          const tsRaw =
+            entry && typeof entry === 'object'
+              ? entry.timestamp || entry.time || entry.createdAt || entry.updatedAt || ''
+              : '';
+          let ts = '';
+          if (tsRaw) {
+            try {
+              const d = new Date(String(tsRaw));
+              ts = isNaN(d.getTime()) ? String(tsRaw) : d.toLocaleString();
+            } catch {
+              ts = String(tsRaw);
+            }
+          }
+
+          const ev =
+            entry && typeof entry === 'object'
+              ? String(entry.event || entry.type || entry.kind || entry.name || entry.action || '')
+              : '';
+          const id =
+            entry && typeof entry === 'object'
+              ? String(entry.id || entry.runId || entry.requestId || entry.pid || '')
+              : '';
+          const summary = summarizeEvent(entry);
+
+          const tdTime = document.createElement('td');
+          tdTime.textContent = ts;
+          tr.appendChild(tdTime);
+
+          const tdEv = document.createElement('td');
+          tdEv.textContent = ev || '(unknown)';
+          tr.appendChild(tdEv);
+
+          const tdId = document.createElement('td');
+          tdId.textContent = id;
+          tr.appendChild(tdId);
+
+          const tdSummary = document.createElement('td');
+          const code = document.createElement('code');
+          const text = String(summary || '');
+          code.textContent = text.length > 240 ? text.slice(0, 240) + '...' : text;
+          code.title = text;
+          tdSummary.appendChild(code);
+          tr.appendChild(tdSummary);
+
+          journalBody.appendChild(tr);
+          rendered++;
+        }
+
+        return rendered;
+      }
 
     function renderPrompts(items) {
       promptPill.textContent = items.length + ' files';
@@ -1790,10 +1814,10 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
           }
         }
 
-        let mermaidInitialized = false;
-        function renderMermaidIn(root) {
-          const lib = window.mermaid;
-          if (!root || !lib) return;
+	        let mermaidInitialized = false;
+	        function renderMermaidIn(root) {
+	          const lib = window.mermaid;
+	          if (!root || !lib) return;
 
           const nodes = Array.from(root.querySelectorAll('.mermaid[data-mermaid-b64]'));
           if (nodes.length === 0) return;
@@ -1805,23 +1829,28 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
             if (node.dataset) node.dataset.mermaidRendered = 'true';
           }
 
-          try {
-            if (!mermaidInitialized && typeof lib.initialize === 'function') {
-              lib.initialize({ startOnLoad: false });
-              mermaidInitialized = true;
-            }
-          } catch {
-            // ignore
-          }
+	          try {
+	            if (!mermaidInitialized && typeof lib.initialize === 'function') {
+                const isDark =
+                  document && document.body && document.body.classList
+                    ? document.body.classList.contains('vscode-dark')
+                    : false;
+	              lib.initialize({ startOnLoad: false, theme: isDark ? 'dark' : 'default' });
+	              mermaidInitialized = true;
+	            }
+	          } catch {
+	            // ignore
+	          }
 
-          try {
-            if (typeof lib.run === 'function') {
-              lib.run({ nodes, suppressErrors: true });
-            }
-          } catch {
-            // ignore
-          }
-        }
+	          try {
+	            if (typeof lib.run === 'function') {
+	              const res = lib.run({ nodes, suppressErrors: true });
+                if (res && typeof res.then === 'function') res.catch(() => {});
+	            }
+	          } catch {
+	            // ignore
+	          }
+	        }
 
         const JS_KEYWORDS = new Set([
           'break','case','catch','class','const','continue','debugger','default','delete','do','else','export','extends',

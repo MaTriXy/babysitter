@@ -141,14 +141,14 @@ export function listFilesRecursive(params: {
       if (results.length >= params.maxFiles) break;
       const abs = path.join(current, dirent.name);
       const relPath = path.relative(normalizedRoot, abs);
-      const stat = safeStat(abs);
       const isDirectory = dirent.isDirectory();
+      const stat = !isDirectory ? safeStat(abs) : undefined;
 
       results.push({
         relPath,
         fsPath: abs,
         isDirectory,
-        size: stat ? (isDirectory ? null : stat.size) : null,
+        size: stat ? stat.size : null,
         mtimeMs: stat ? stat.mtimeMs : null,
       });
 

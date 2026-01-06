@@ -16,6 +16,9 @@ def sanitize_lines(lines: list[str]) -> list[str]:
     out: list[str] = []
     skip_next_numeric = False
     for line in lines:
+        # Remove standalone comma-grouped numeric lines (often "tokens used" counts that slip in).
+        if re.fullmatch(r"\s*\d{1,3}(,\d{3})+\s*\r?\n?", line):
+            continue
         if skip_next_numeric:
             if re.fullmatch(r"\s*\d[\d,]*\s*", line):
                 skip_next_numeric = False
@@ -46,4 +49,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

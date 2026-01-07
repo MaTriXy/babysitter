@@ -28,6 +28,7 @@ import {
   togglePinnedId,
   setPinnedIdsForRun,
 } from './keyFilesModel';
+import { normalizeMermaidMarkdown } from './mermaidMarkdown';
 
 type WebviewInboundMessage =
   | { type: 'ready' }
@@ -77,7 +78,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
   const mermaidScriptUri = webview.asWebviewUri(
     vscode.Uri.joinPath(extensionUri, 'node_modules', 'mermaid', 'dist', 'mermaid.min.js'),
   );
-  const keyFilesHelpersJs = [
+  const webviewHelpersJs = [
     computeKeyFilesGroupForRelPath,
     groupOrderIndex,
     matchesKeyFilesFilter,
@@ -87,6 +88,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
     setPinnedIdsForRun,
     groupKeyFiles,
     computeKeyFilesModel,
+    normalizeMermaidMarkdown,
   ]
     .map((fn) => fn.toString())
     .join('\n\n');
@@ -635,7 +637,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	  <script nonce="${scriptNonce}">
 	    const vscode = acquireVsCodeApi();
 
-    ${keyFilesHelpersJs}
+    ${webviewHelpersJs}
 
     const el = (id) => document.getElementById(id);
     const runTitle = el('runTitle');
@@ -1653,8 +1655,13 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	        processMermaidOpen.onclick = () =>
 	          vscode.postMessage({ type: 'openInEditor', fsPath: processMermaidTarget.fsPath });
 	        ensureCached(processMermaidTarget.fsPath, processMermaidTarget.mtimeMs || 0);
-	        const content = getCachedText(processMermaidTarget.fsPath);
-	        processMermaidPreview.innerHTML = content ? renderMarkdownToHtml(content) : 'Loading...';
+        const content = getCachedText(processMermaidTarget.fsPath);
+        const preferMermaid =
+          isMermaidMarkdownPath(processMermaidTarget.fsPath) ||
+          isMermaidMarkdownPath(processMermaidTarget.relPath);
+        processMermaidPreview.innerHTML = content
+          ? renderMarkdownToHtml(content, { preferMermaid })
+          : 'Loading...';
           if (content) renderMermaidIn(processMermaidPreview);
 	      } else {
 	        processMermaidPill.textContent = 'process.mermaid.md';
@@ -2025,8 +2032,13 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
           return out;
         }
 
-		      function renderMarkdownToHtml(markdown) {
-		        const lines = String(markdown || '').split(/\\r?\\n/);
+		      function renderMarkdownToHtml(markdown, options) {
+		        const preferMermaid = Boolean(options && options.preferMermaid);
+		        let source = String(markdown || '');
+		        if (preferMermaid) {
+		          source = normalizeMermaidMarkdown(source);
+		        }
+		        const lines = source.split(/\\r?\\n/);
 		        let out = '';
 		        let inCode = false;
 		        let codeLang = '';
@@ -2140,12 +2152,13 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	        latestRunStatus && latestRunStatus !== 'running' && latestRunStatus !== 'paused'
 	          ? '\\n\\n(Run finished)'
 	          : '';
-	        if (activeWorkPreviewMode === 'markdown') {
-	          workPreview.style.display = 'none';
-	          workPreviewHtml.style.display = '';
-	          workPreviewHtml.innerHTML = renderMarkdownToHtml(activeWorkPreviewContent);
+        if (activeWorkPreviewMode === 'markdown') {
+          const preferMermaid = isMermaidMarkdownPath(activeWorkPreviewFsPath);
+          workPreview.style.display = 'none';
+          workPreviewHtml.style.display = '';
+          workPreviewHtml.innerHTML = renderMarkdownToHtml(activeWorkPreviewContent, { preferMermaid });
             renderMermaidIn(workPreviewHtml);
-	          workPreviewHtml.scrollTop = 0;
+          workPreviewHtml.scrollTop = 0;
 	        } else {
           workPreview.style.display = '';
           workPreviewHtml.innerHTML = '';
@@ -2160,6 +2173,11 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
         if (!fsPath) return '';
         const parts = String(fsPath).split(/[/\\\\]+/);
         return parts[parts.length - 1] || fsPath;
+      }
+
+      function isMermaidMarkdownPath(fsPath) {
+        if (!fsPath) return false;
+        return String(fsPath).toLowerCase().endsWith('.mermaid.md');
       }
 
     showBanner('Loading run details...', { spinner: true });

@@ -1,6 +1,9 @@
 import * as assert from 'assert';
 
-import { normalizeMermaidMarkdown } from '../extension/mermaidMarkdown';
+import {
+  extractMermaidCodeBlocks,
+  normalizeMermaidMarkdown,
+} from '../extension/mermaidMarkdown';
 
 suite('normalizeMermaidMarkdown', () => {
   test('returns input unchanged when full ```mermaid fence already exists', () => {
@@ -26,5 +29,26 @@ suite('normalizeMermaidMarkdown', () => {
   test('returns empty mermaid block for whitespace-only content', () => {
     const output = normalizeMermaidMarkdown('   ');
     assert.strictEqual(output, '```mermaid\n```');
+  });
+
+  test('extracts mermaid code blocks preserving order', () => {
+    const input = ['```mermaid', 'A-->B', '```', '```mermaid', 'C-->D', '```'].join('\n');
+    const blocks = extractMermaidCodeBlocks(input);
+    assert.deepStrictEqual(blocks, [
+      { blockIndex: 0, code: 'A-->B' },
+      { blockIndex: 1, code: 'C-->D' },
+    ]);
+  });
+
+  test('normalizes bare content before extracting blocks when preferMermaid is set', () => {
+    const input = ['flowchart TD', 'A --> B'].join('\n');
+    const blocks = extractMermaidCodeBlocks(input, { preferMermaid: true });
+    assert.deepStrictEqual(blocks, [{ blockIndex: 0, code: 'flowchart TD\nA --> B' }]);
+  });
+
+  test('ignores non-mermaid fences', () => {
+    const input = ['```js', 'console.log(1);', '```'].join('\n');
+    const blocks = extractMermaidCodeBlocks(input);
+    assert.strictEqual(blocks.length, 0);
   });
 });

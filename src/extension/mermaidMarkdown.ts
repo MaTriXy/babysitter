@@ -27,3 +27,57 @@ export function normalizeMermaidMarkdown(markdown: string): string {
 
   return '```mermaid\n' + body + '```';
 }
+
+export type MermaidCodeBlock = {
+  blockIndex: number;
+  code: string;
+};
+
+export function extractMermaidCodeBlocks(
+  markdown: string,
+  options?: { preferMermaid?: boolean },
+): MermaidCodeBlock[] {
+  const preferMermaid = Boolean(options?.preferMermaid);
+  let source = typeof markdown === 'string' ? markdown : String(markdown ?? '');
+  if (preferMermaid) {
+    source = normalizeMermaidMarkdown(source);
+  }
+
+  const lines = source.split(/\r?\n/);
+  const blocks: MermaidCodeBlock[] = [];
+  let inCode = false;
+  let codeLang = '';
+  let mermaidLines: string[] = [];
+
+  for (const rawLine of lines) {
+    const line = String(rawLine);
+    const fence = line.match(/^```+\s*([a-zA-Z0-9_-]+)?\s*$/);
+    if (fence) {
+      if (!inCode) {
+        inCode = true;
+        codeLang = fence[1] || '';
+        if (codeLang.toLowerCase() === 'mermaid') {
+          mermaidLines = [];
+        }
+      } else {
+        if (codeLang.toLowerCase() === 'mermaid') {
+          blocks.push({ blockIndex: blocks.length, code: mermaidLines.join('\n') });
+          mermaidLines = [];
+        }
+        inCode = false;
+        codeLang = '';
+      }
+      continue;
+    }
+
+    if (inCode && codeLang.toLowerCase() === 'mermaid') {
+      mermaidLines.push(line);
+    }
+  }
+
+  if (inCode && codeLang.toLowerCase() === 'mermaid') {
+    blocks.push({ blockIndex: blocks.length, code: mermaidLines.join('\n') });
+  }
+
+  return blocks;
+}

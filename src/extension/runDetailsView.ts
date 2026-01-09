@@ -29,6 +29,10 @@ import {
   setPinnedIdsForRun,
 } from './keyFilesModel';
 import { normalizeMermaidMarkdown } from './mermaidMarkdown';
+import {
+  renderMermaidBlocksFromMarkdown,
+  type HostRenderedMermaidBlock,
+} from './serverMermaid';
 
 type WebviewInboundMessage =
   | { type: 'ready' }
@@ -46,7 +50,14 @@ type WebviewInboundMessage =
 
 type WebviewOutboundMessage =
   | { type: 'snapshot'; snapshot: RunDetailsSnapshot }
-  | { type: 'textFile'; fsPath: string; content: string; truncated: boolean; size: number }
+  | {
+      type: 'textFile';
+      fsPath: string;
+      content: string;
+      truncated: boolean;
+      size: number;
+      mermaidBlocks?: HostRenderedMermaidBlock[];
+    }
   | { type: 'textFileError'; fsPath: string; message: string }
   | { type: 'oInfo'; pid: number | null; label: string | null }
   | { type: 'oOutputSet'; text: string }
@@ -75,9 +86,6 @@ function nonce(len = 16): string {
 function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): string {
   const cspSource = webview.cspSource;
   const scriptNonce = nonce();
-  const mermaidScriptUri = webview.asWebviewUri(
-    vscode.Uri.joinPath(extensionUri, 'node_modules', 'mermaid', 'dist', 'mermaid.min.js'),
-  );
   const webviewHelpersJs = [
     computeKeyFilesGroupForRelPath,
     groupOrderIndex,
@@ -346,8 +354,33 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	      font-size: 12px;
 	    }
       .md .mermaid {
-        overflow: auto;
-        padding: 6px 0;
+        padding: 0;
+        margin: 8px 0;
+      }
+      .md .mermaid-figure {
+        margin: 0;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        background: var(--vscode-editor-background);
+        padding: 8px;
+      }
+      .md .mermaid-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 380px;
+        object-fit: contain;
+      }
+      body.vscode-dark .mermaid-img-light {
+        display: none;
+      }
+      body:not(.vscode-dark) .mermaid-img-dark {
+        display: none;
+      }
+      .md .mermaid-error-text {
+        font-size: 12px;
+        color: var(--vscode-errorForeground, #f14c4c);
+        line-height: 1.4;
       }
 	    .md .md-li { margin: 2px 0; }
 	    .md .md-blank { height: 8px; }
@@ -649,7 +682,6 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
     </section>
   </main>
 
-    <script nonce="${scriptNonce}" src="${mermaidScriptUri.toString()}"></script>
 	  <script nonce="${scriptNonce}">
 	    const vscode = acquireVsCodeApi();
 
@@ -737,7 +769,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
       let activeWorkPreviewAutoScroll = false;
       let activeWorkPreviewMode = 'plain'; // 'plain' | 'markdown' | 'code'
       let activeWorkPreviewKind = ''; // '' | 'workTail' | 'filePreview'
-      const textFileCache = new Map(); // fsPath -> { content?: string, truncated?: boolean, size?: number, mtimeMs?: number, error?: string }
+      const textFileCache = new Map(); // fsPath -> { content?: string, truncated?: boolean, size?: number, mtimeMs?: number, error?: string, mermaidBlocks?: unknown[] }
       let processMdTarget = null;
       let processMermaidTarget = null;
       let mainJsTarget = null;
@@ -1625,6 +1657,13 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
       return cached && typeof cached.content === 'string' ? cached.content : '';
     }
 
+    function getCachedMermaidBlocks(fsPath) {
+      if (!fsPath) return [];
+      const cached = textFileCache.get(fsPath);
+      const blocks = cached && Array.isArray(cached.mermaidBlocks) ? cached.mermaidBlocks : [];
+      return blocks;
+    }
+
     function ensureCached(fsPath, mtimeMs) {
       const cached = textFileCache.get(fsPath);
       if (!cached || cached.mtimeMs !== mtimeMs) {
@@ -1656,8 +1695,10 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	        processMdOpen.onclick = () => vscode.postMessage({ type: 'openInEditor', fsPath: processMdTarget.fsPath });
 	        ensureCached(processMdTarget.fsPath, processMdTarget.mtimeMs || 0);
 	        const content = getCachedText(processMdTarget.fsPath);
-	        processMdPreview.innerHTML = content ? renderMarkdownToHtml(content) : 'Loading...';
-          if (content) renderMermaidIn(processMdPreview);
+	        processMdPreview.innerHTML = content
+            ? renderMarkdownToHtml(content, { fsPath: processMdTarget.fsPath })
+            : 'Loading...';
+          if (content) renderMermaidIn(processMdPreview, processMdTarget.fsPath);
 	      } else {
 	        processMdPill.textContent = 'process.md';
 	        processMdOpen.style.display = 'none';
@@ -1676,9 +1717,9 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
           isMermaidMarkdownPath(processMermaidTarget.fsPath) ||
           isMermaidMarkdownPath(processMermaidTarget.relPath);
         processMermaidPreview.innerHTML = content
-          ? renderMarkdownToHtml(content, { preferMermaid })
+          ? renderMarkdownToHtml(content, { preferMermaid, fsPath: processMermaidTarget.fsPath })
           : 'Loading...';
-          if (content) renderMermaidIn(processMermaidPreview);
+          if (content) renderMermaidIn(processMermaidPreview, processMermaidTarget.fsPath);
 	      } else {
 	        processMermaidPill.textContent = 'process.mermaid.md';
 	        processMermaidOpen.style.display = 'none';
@@ -1785,6 +1826,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	            content: msg.content,
 	            truncated: Boolean(msg.truncated),
 	            size: msg.size,
+              mermaidBlocks: Array.isArray(msg.mermaidBlocks) ? msg.mermaidBlocks : undefined,
 	          });
 	        }
 	        if (msg.fsPath && msg.fsPath === activeWorkPreviewFsPath) {
@@ -1820,71 +1862,77 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 	          .replace(/'/g, '&#39;');
 	      }
 
-        function b64EncodeUnicode(text) {
-          try {
-            return btoa(unescape(encodeURIComponent(String(text || ''))));
-          } catch {
-            return btoa(String(text || ''));
-          }
-        }
-
-        function b64DecodeUnicode(b64) {
-          try {
-            return decodeURIComponent(escape(atob(String(b64 || ''))));
-          } catch {
-            try {
-              return atob(String(b64 || ''));
-            } catch {
-              return '';
-            }
-          }
-        }
-
-	        let mermaidInitialized = false;
-	        function renderMermaidIn(root) {
+	        function renderMermaidIn(root, fsPathHint) {
 	          if (!root) return;
-	          const lib = window.mermaid;
-	          if (!lib) {
-	            const attempts = Number(root.dataset?.mermaidRetryCount || '0');
-	            if (attempts < 20) {
-	              if (root.dataset) root.dataset.mermaidRetryCount = String(attempts + 1);
-	              setTimeout(() => renderMermaidIn(root), 150);
-	            }
-	            return;
-	          }
-          if (root.dataset) delete root.dataset.mermaidRetryCount;
-
-          const nodes = Array.from(root.querySelectorAll('.mermaid[data-mermaid-b64]'));
+          const nodes = Array.from(root.querySelectorAll('.mermaid[data-mermaid-block-index]'));
           if (nodes.length === 0) return;
 
           for (const node of nodes) {
-            if (node.dataset && node.dataset.mermaidRendered === 'true') continue;
-            const b64 = node.dataset ? node.dataset.mermaidB64 : '';
-            node.textContent = b64DecodeUnicode(b64);
-            if (node.dataset) node.dataset.mermaidRendered = 'true';
+            const fsPath =
+              (node.dataset && node.dataset.mermaidFspath) || fsPathHint || '';
+            const blockIndex = node.dataset ? Number(node.dataset.mermaidBlockIndex || '-1') : -1;
+            if (!fsPath || Number.isNaN(blockIndex)) {
+              node.textContent = 'Mermaid diagram unavailable.';
+              node.classList.add('mermaid-error');
+              continue;
+            }
+
+            const entries = getCachedMermaidBlocks(fsPath);
+            const block = entries.find
+              ? entries.find((entry) => Number(entry?.blockIndex) === blockIndex)
+              : undefined;
+
+            node.classList.remove('mermaid-error');
+            node.innerHTML = '';
+
+            const figure = document.createElement('figure');
+            figure.className = 'mermaid-figure';
+
+            if (!block) {
+              const pending = document.createElement('div');
+              pending.className = 'mermaid-error-text';
+              pending.textContent = 'Mermaid preview not yet available.';
+              figure.appendChild(pending);
+              node.classList.add('mermaid-error');
+              node.appendChild(figure);
+              continue;
+            }
+
+            const hasImage = Boolean(block.lightSvgDataUrl || block.darkSvgDataUrl);
+
+            const addImg = (src, className) => {
+              if (!src) return;
+              const img = document.createElement('img');
+              img.className = className;
+              img.src = src;
+              img.alt = 'Mermaid diagram preview';
+              figure.appendChild(img);
+            };
+
+            addImg(block.lightSvgDataUrl, 'mermaid-img mermaid-img-light');
+            addImg(block.darkSvgDataUrl, 'mermaid-img mermaid-img-dark');
+
+            if (!hasImage) {
+              const errorEl = document.createElement('div');
+              errorEl.className = 'mermaid-error-text';
+              errorEl.textContent = block.error
+                ? 'Mermaid rendering failed: ' + block.error
+                : 'Mermaid preview unavailable.';
+              figure.appendChild(errorEl);
+              node.classList.add('mermaid-error');
+              node.appendChild(figure);
+              continue;
+            }
+
+            if (block.error) {
+              const hint = document.createElement('div');
+              hint.className = 'mermaid-error-text';
+              hint.textContent = block.error;
+              figure.appendChild(hint);
+            }
+
+            node.appendChild(figure);
           }
-
-	          try {
-	            if (!mermaidInitialized && typeof lib.initialize === 'function') {
-                const isDark =
-                  document && document.body && document.body.classList
-                    ? document.body.classList.contains('vscode-dark')
-                    : false;
-	              lib.initialize({ startOnLoad: false, theme: isDark ? 'dark' : 'default' });
-	              mermaidInitialized = true;
-	            }
-	          } catch {
-	            // ignore
-	          }
-
-	          try {
-	            if (typeof lib.run === 'function') {
-	              const res = lib.run({ nodes, suppressErrors: true });
-                if (res && typeof res.then === 'function') res.catch(() => {});
-	            }
-	          } catch {
-	            // ignore
-	          }
 	        }
 
         const JS_KEYWORDS = new Set([
@@ -2057,8 +2105,9 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
           return out;
         }
 
-		      function renderMarkdownToHtml(markdown, options) {
+function renderMarkdownToHtml(markdown, options) {
 		        const preferMermaid = Boolean(options && options.preferMermaid);
+            const sourceFsPath = options && typeof options.fsPath === 'string' ? options.fsPath : '';
 		        let source = String(markdown || '');
 		        if (preferMermaid) {
 		          source = normalizeMermaidMarkdown(source);
@@ -2068,6 +2117,7 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
 		        let inCode = false;
 		        let codeLang = '';
             let mermaidLines = [];
+            let mermaidBlockIndex = 0;
 		        for (const rawLine of lines) {
 		          const line = String(rawLine);
 		          const fence = line.match(/^\\x60\\x60\\x60\\s*([a-zA-Z0-9_-]+)?\\s*$/);
@@ -2085,9 +2135,12 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
                   if (lower === 'mermaid') {
                     const mermaidRaw = mermaidLines.join('\\n');
                     out +=
-                      '<div class="mermaid" data-mermaid-b64="' +
-                      b64EncodeUnicode(mermaidRaw) +
-                      '"></div>';
+                      '<div class="mermaid" data-mermaid-block-index="' +
+                      mermaidBlockIndex++ +
+                      (sourceFsPath
+                        ? '" data-mermaid-fspath="' + escapeHtmlAttr(sourceFsPath) + '"'
+                        : '"') +
+                      '></div>';
                     out +=
                       '<details class="md-mermaid-source"><summary>Mermaid source</summary>' +
                       '<pre><code class="lang-mermaid">' +
@@ -2133,9 +2186,12 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
             if (inCode) {
               if (String(codeLang).toLowerCase() === 'mermaid') {
                 out +=
-                  '<div class="mermaid" data-mermaid-b64="' +
-                  b64EncodeUnicode(mermaidLines.join('\\n')) +
-                  '"></div>';
+                  '<div class="mermaid" data-mermaid-block-index="' +
+                  mermaidBlockIndex++ +
+                  (sourceFsPath
+                    ? '" data-mermaid-fspath="' + escapeHtmlAttr(sourceFsPath) + '"'
+                    : '"') +
+                  '></div>';
               } else {
                 out += '</code></pre>';
               }
@@ -2187,8 +2243,11 @@ function renderWebviewHtml(webview: vscode.Webview, extensionUri: vscode.Uri): s
           const preferMermaid = isMermaidMarkdownPath(activeWorkPreviewFsPath);
           workPreview.style.display = 'none';
           workPreviewHtml.style.display = '';
-          workPreviewHtml.innerHTML = renderMarkdownToHtml(activeWorkPreviewContent, { preferMermaid });
-            renderMermaidIn(workPreviewHtml);
+          workPreviewHtml.innerHTML = renderMarkdownToHtml(activeWorkPreviewContent, {
+            preferMermaid,
+            fsPath: activeWorkPreviewFsPath,
+          });
+            renderMermaidIn(workPreviewHtml, activeWorkPreviewFsPath);
           workPreviewHtml.scrollTop = 0;
 	        } else {
           workPreview.style.display = '';
@@ -2351,12 +2410,14 @@ class RunDetailsPanel {
       if (this.activeTextTailFsPath) {
         const update = this.workSummaryTailSession.poll();
         if (update?.type === 'set') {
+          const mermaidBlocks = await maybeRenderMermaidBlocksForFile(update.fsPath, update.content);
           await this.post({
             type: 'textFile',
             fsPath: update.fsPath,
             content: update.content,
             truncated: update.truncated,
             size: update.size,
+            ...(mermaidBlocks ? { mermaidBlocks } : {}),
           });
         } else if (update?.type === 'error') {
           await this.post({
@@ -2603,12 +2664,14 @@ class RunDetailsPanel {
       this.activeTextTailFsPath = undefined;
       try {
         const res = readTextFileWithLimit(fsPath, 200_000);
+        const mermaidBlocks = await maybeRenderMermaidBlocksForFile(fsPath, res.content);
         await this.post({
           type: 'textFile',
           fsPath,
           content: res.content,
           truncated: res.truncated,
           size: res.size,
+          ...(mermaidBlocks ? { mermaidBlocks } : {}),
         });
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
@@ -2620,12 +2683,14 @@ class RunDetailsPanel {
     this.activeTextTailFsPath = fsPath;
     const res = this.workSummaryTailSession.start(fsPath);
     if (res.type === 'set') {
+      const mermaidBlocks = await maybeRenderMermaidBlocksForFile(fsPath, res.content);
       await this.post({
         type: 'textFile',
         fsPath,
         content: res.content,
         truncated: res.truncated,
         size: res.size,
+        ...(mermaidBlocks ? { mermaidBlocks } : {}),
       });
       return;
     }
@@ -2664,6 +2729,41 @@ class RunDetailsPanel {
     } catch {
       await this.post({ type: 'error', message: 'Could not copy to clipboard.' });
     }
+  }
+}
+
+const MERMAID_BLOCK_RENDER_LIMIT = 12;
+
+function isMermaidMarkdownFsPath(fsPath: string | undefined): boolean {
+  return typeof fsPath === 'string' && fsPath.toLowerCase().endsWith('.mermaid.md');
+}
+
+function shouldRenderMermaidForContent(fsPath: string, content: string): boolean {
+  if (isMermaidMarkdownFsPath(fsPath)) return true;
+  return /```+\s*mermaid\b/i.test(String(content || ''));
+}
+
+async function maybeRenderMermaidBlocksForFile(
+  fsPath: string,
+  content: string,
+): Promise<HostRenderedMermaidBlock[] | undefined> {
+  if (!shouldRenderMermaidForContent(fsPath, content)) return undefined;
+  try {
+    const blocks = await renderMermaidBlocksFromMarkdown({
+      markdown: content,
+      preferMermaid: isMermaidMarkdownFsPath(fsPath),
+      maxBlocks: MERMAID_BLOCK_RENDER_LIMIT,
+    });
+    return blocks.length ? blocks : undefined;
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return [
+      {
+        blockIndex: 0,
+        raw: '',
+        error: message || 'Mermaid rendering failed.',
+      },
+    ];
   }
 }
 

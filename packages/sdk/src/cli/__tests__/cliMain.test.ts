@@ -5,7 +5,9 @@ import { createBabysitterCli } from "../main";
 import { runNodeTaskFromCli } from "../nodeTaskRunner";
 import type { CliRunNodeTaskResult } from "../nodeTaskRunner";
 import { orchestrateIteration } from "../../runtime/orchestrateIteration";
+import { buildEffectIndex } from "../../runtime/replay/effectIndex";
 import { readRunMetadata } from "../../storage/runFiles";
+import type { EffectRecord } from "../../runtime/types";
 import type { TaskDef } from "../../tasks/types";
 
 vi.mock("../nodeTaskRunner", () => ({
@@ -16,12 +18,17 @@ vi.mock("../../runtime/orchestrateIteration", () => ({
   orchestrateIteration: vi.fn(),
 }));
 
+vi.mock("../../runtime/replay/effectIndex", () => ({
+  buildEffectIndex: vi.fn(),
+}));
+
 vi.mock("../../storage/runFiles", () => ({
   readRunMetadata: vi.fn(),
 }));
 
 const runNodeTaskFromCliMock = runNodeTaskFromCli as unknown as ReturnType<typeof vi.fn>;
 const orchestrateIterationMock = orchestrateIteration as unknown as ReturnType<typeof vi.fn>;
+const buildEffectIndexMock = buildEffectIndex as unknown as ReturnType<typeof vi.fn>;
 const readRunMetadataMock = readRunMetadata as unknown as ReturnType<typeof vi.fn>;
 
 describe("CLI main entry", () => {
@@ -32,6 +39,8 @@ describe("CLI main entry", () => {
     vi.clearAllMocks();
     logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
     errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
+    buildEffectIndexMock.mockReset();
+    buildEffectIndexMock.mockResolvedValue(mockEffectIndex([]));
     readRunMetadataMock.mockResolvedValue(mockRunMetadata());
   });
 
@@ -67,6 +76,7 @@ describe("CLI main entry", () => {
   });
 
   it("executes task:run and prints refs", async () => {
+    buildEffectIndexMock.mockResolvedValue(mockEffectIndex([nodeEffectRecord("ef-123")]));
     runNodeTaskFromCliMock.mockResolvedValue(
       mockRunResult({
         committed: {
@@ -82,12 +92,14 @@ describe("CLI main entry", () => {
     expect(runNodeTaskFromCliMock).toHaveBeenCalledWith({
       runDir: path.resolve("runs/demo"),
       effectId: "ef-123",
+      invocationKey: "ef-123:inv",
       dryRun: false,
     });
     expect(logSpy).toHaveBeenCalledWith("[task:run] status=ok");
   });
 
   it("supports task:run --dry-run JSON output", async () => {
+    buildEffectIndexMock.mockResolvedValue(mockEffectIndex([nodeEffectRecord("ef-123")]));
     runNodeTaskFromCliMock.mockResolvedValue(
       mockRunResult({
         exitCode: null,
@@ -102,6 +114,7 @@ describe("CLI main entry", () => {
     expect(runNodeTaskFromCliMock).toHaveBeenCalledWith({
       runDir: path.resolve("runs/demo"),
       effectId: "ef-123",
+      invocationKey: "ef-123:inv",
       dryRun: true,
     });
     const payload = JSON.parse(String(logSpy.mock.calls.at(-1)?.[0] ?? "{}"));
@@ -110,6 +123,34 @@ describe("CLI main entry", () => {
     expect(payload.stdoutRef).toBe("tasks/mock/stdout.log");
     expect(payload.stderrRef).toBe("tasks/mock/stderr.log");
     expect(payload.resultRef).toBe("tasks/mock/result.json");
+  });
+
+  it("refuses to run non-node effects", async () => {
+    buildEffectIndexMock.mockResolvedValue(
+      mockEffectIndex([nodeEffectRecord("ef-break", { kind: "breakpoint" })])
+    );
+
+    const cli = createBabysitterCli();
+    const exitCode = await cli.run(["task:run", "runs/demo", "ef-break"]);
+
+    expect(exitCode).toBe(1);
+    expect(runNodeTaskFromCliMock).not.toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith(
+      '[task:run] effect ef-break has kind=breakpoint; task:run only supports kind="node"'
+    );
+  });
+
+  it("errors when the effect id is missing from the index", async () => {
+    buildEffectIndexMock.mockResolvedValue(mockEffectIndex([]));
+
+    const cli = createBabysitterCli();
+    const exitCode = await cli.run(["task:run", "runs/demo", "ef-missing"]);
+
+    expect(exitCode).toBe(1);
+    expect(runNodeTaskFromCliMock).not.toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalledWith(
+      `[task:run] effect ef-missing not found at ${path.resolve("runs/demo")}`
+    );
   });
 
   it("reports waiting actions when auto-node is disabled", async () => {
@@ -403,5 +444,34 @@ function mockRunMetadata() {
     entrypoint: { importPath: "./process.js", exportName: "process" },
     layoutVersion: "1",
     createdAt: new Date(0).toISOString(),
+  };
+}
+
+function nodeEffectRecord(effectId: string, overrides: Partial<EffectRecord> = {}): EffectRecord {
+  const effectDir = path.join(path.resolve("runs/demo"), "tasks", effectId);
+  return {
+    effectId,
+    invocationKey: `${effectId}:inv`,
+    stepId: "step-1",
+    taskId: "task/demo",
+    status: "requested",
+    kind: "node",
+    label: "auto",
+    labels: ["auto"],
+    taskDefRef: path.join(effectDir, "task.json"),
+    inputsRef: path.join(effectDir, "inputs.json"),
+    resultRef: path.join(effectDir, "result.json"),
+    stdoutRef: path.join(effectDir, "stdout.log"),
+    stderrRef: path.join(effectDir, "stderr.log"),
+    requestedAt: new Date(0).toISOString(),
+    ...overrides,
+  };
+}
+
+function mockEffectIndex(records: EffectRecord[]) {
+  return {
+    listEffects: () => records,
+    listPendingEffects: () => records.filter((record) => record.status === "requested"),
+    getByEffectId: (effectId: string) => records.find((record) => record.effectId === effectId),
   };
 }

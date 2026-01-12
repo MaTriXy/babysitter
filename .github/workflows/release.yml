@@ -1,0 +1,185 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: release-main
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip release]') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prepare artifacts directory
+        run: mkdir -p artifacts/logs artifacts/release
+
+      - name: Lint
+        run: |
+          set -euo pipefail
+          npm run lint 2>&1 | tee artifacts/logs/lint.log
+
+      - name: Verify metadata
+        run: |
+          set -euo pipefail
+          npm run verify:metadata 2>&1 | tee artifacts/logs/metadata.log
+
+      - name: Build extension
+        run: |
+          set -euo pipefail
+          npm run build 2>&1 | tee artifacts/logs/build.log
+
+      - name: Run unit tests
+        run: |
+          set -euo pipefail
+          npm run test:unit:compiled 2>&1 | tee artifacts/logs/unit-tests.log
+
+      - name: Run extension tests
+        run: |
+          set -euo pipefail
+          xvfb-run -a node ./dist/test/runTest.js 2>&1 | tee artifacts/logs/extension-tests.log
+
+      - name: Package VSIX
+        run: |
+          set -euo pipefail
+          npm run package 2>&1 | tee artifacts/logs/package.log
+
+      - name: Collect VSIX and checksum
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=( *.vsix )
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "VSIX artifact not found" >&2
+            exit 1
+          fi
+          mv "${files[@]}" artifacts/release/
+          (cd artifacts/release && sha256sum *.vsix > vsix.sha256)
+
+      - name: Upload release assets
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: release-assets
+          path: artifacts/release
+          if-no-files-found: error
+
+      - name: Upload build logs
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: build-logs
+          path: artifacts/logs
+          if-no-files-found: warn
+
+  version_and_release:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, '[skip release]') }}
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Download build logs
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: build-logs
+          path: artifacts/logs
+
+      - name: Download release assets
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: release-assets
+          path: release-assets
+
+      - name: Verify VSIX checksum
+        run: |
+          set -euo pipefail
+          cd release-assets
+          sha256sum -c vsix.sha256
+
+      - name: Bump version and changelog
+        id: bump
+        run: |
+          set -euo pipefail
+          VERSION=$(node scripts/bump-version.mjs)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Generate release notes
+        run: node scripts/release-notes.mjs > release-notes.md
+
+      - name: Commit release metadata
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json CHANGELOG.md
+          if git diff --cached --quiet; then
+            echo "No version changes detected."
+          else
+            TARGET_BRANCH=${BRANCH_NAME:-${GITHUB_REF##*/}}
+            git commit -m "chore(release): v${{ steps.bump.outputs.version }} [skip release]"
+            git push origin HEAD:$TARGET_BRANCH
+          fi
+
+      - name: Tag release
+        run: |
+          set -euo pipefail
+          TAG="v${{ steps.bump.outputs.version }}"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            git tag -d "$TAG"
+          fi
+          git tag "$TAG"
+          git push origin "$TAG"
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="v${{ steps.bump.outputs.version }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release delete "$TAG" -y
+          fi
+          VSIX_FILES=(release-assets/*.vsix)
+          if [[ ${#VSIX_FILES[@]} -eq 0 ]]; then
+            echo "Release assets missing VSIX file" >&2
+            exit 1
+          fi
+          gh release create "$TAG" "${VSIX_FILES[@]}" release-assets/vsix.sha256 \
+            --title "Babysitter $TAG" \
+            --notes-file release-notes.md

@@ -69,14 +69,16 @@ interface TaskListEntry {
   kind?: string;
   label?: string;
   labels?: string[];
-  taskDefRef?: string;
-  inputsRef?: string;
-  resultRef?: string;
-  stdoutRef?: string;
-  stderrRef?: string;
+  taskDefRef: string | null;
+  inputsRef: string | null;
+  resultRef: string | null;
+  stdoutRef: string | null;
+  stderrRef: string | null;
   requestedAt?: string;
   resolvedAt?: string;
 }
+
+const LARGE_RESULT_PREVIEW_LIMIT = 1024 * 1024; // 1 MiB
 
 function parseArgs(argv: string[]): ParsedArgs {
   const [initialCommand, ...rest] = argv;
@@ -615,9 +617,24 @@ async function handleTaskRun(parsed: ParsedArgs): Promise<number> {
     dryRun: parsed.dryRun,
     json: parsed.json,
   });
+  const index = await buildEffectIndexSafe(runDir, "task:run");
+  if (!index) return 1;
+  const record = index.getByEffectId(parsed.effectId);
+  if (!record) {
+    console.error(`[task:run] effect ${parsed.effectId} not found at ${runDir}`);
+    return 1;
+  }
+  const kind = (record.kind ?? "").toLowerCase();
+  if (kind !== "node") {
+    console.error(
+      `[task:run] effect ${parsed.effectId} has kind=${record.kind ?? "unknown"}; task:run only supports kind="node"`
+    );
+    return 1;
+  }
   const result = await runNodeTaskFromCli({
     runDir,
     effectId: parsed.effectId,
+    invocationKey: record.invocationKey,
     dryRun: parsed.dryRun,
   });
   const status = determineTaskStatus(result);
@@ -965,17 +982,17 @@ function toTaskListEntry(record: EffectRecord, runDir: string): TaskListEntry {
     taskId: record.taskId,
     stepId: record.stepId,
     status: record.status,
-    kind: record.kind,
-    label: record.label,
-    labels: record.labels,
-    taskDefRef: toRunRelativePosix(runDir, record.taskDefRef),
-    inputsRef: toRunRelativePosix(runDir, record.inputsRef),
-    resultRef: toRunRelativePosix(runDir, record.resultRef),
-    stdoutRef: toRunRelativePosix(runDir, record.stdoutRef),
-    stderrRef: toRunRelativePosix(runDir, record.stderrRef),
-    requestedAt: record.requestedAt,
-    resolvedAt: record.resolvedAt,
-  };
+  kind: record.kind,
+  label: record.label,
+  labels: record.labels,
+  taskDefRef: toRunRelativePosix(runDir, record.taskDefRef) ?? null,
+  inputsRef: toRunRelativePosix(runDir, record.inputsRef) ?? null,
+  resultRef: toRunRelativePosix(runDir, record.resultRef) ?? null,
+  stdoutRef: toRunRelativePosix(runDir, record.stdoutRef) ?? null,
+  stderrRef: toRunRelativePosix(runDir, record.stderrRef) ?? null,
+  requestedAt: record.requestedAt,
+  resolvedAt: record.resolvedAt,
+};
 }
 
 async function buildEffectIndexSafe(runDir: string, command: string, events?: JournalEvent[]) {

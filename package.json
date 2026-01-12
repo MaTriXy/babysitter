@@ -42,6 +42,7 @@
     "onCommand:babysitter.installOInWorkspace",
     "onCommand:babysitter.showConfigurationErrors",
     "onCommand:babysitter.openPromptBuilder",
+    "onCommand:babysitter.dispatchRunFromTaskFile",
     "onCommand:babysitter.openRunDetails",
     "onCommand:babysitter.openRunLogs",
     "onCommand:babysitter.revealRunFolder",
@@ -58,6 +59,10 @@
       {
         "command": "babysitter.dispatchRun",
         "title": "Babysitter: Dispatch Run"
+      },
+      {
+        "command": "babysitter.dispatchRunFromTaskFile",
+        "title": "Babysitter: Dispatch Run from Task File"
       },
       {
         "command": "babysitter.resumeRun",
@@ -121,6 +126,13 @@
       ]
     },
     "menus": {
+      "explorer/context": [
+        {
+          "command": "babysitter.dispatchRunFromTaskFile",
+          "when": "resourceScheme == file && resourceFilename =~ /\\.task\\.md$/",
+          "group": "navigation"
+        }
+      ],
       "view/item/context": [
         {
           "command": "babysitter.openRunDetails",

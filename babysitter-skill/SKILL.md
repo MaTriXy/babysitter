@@ -1,4 +1,5 @@
 ---
+name: babysitter
 allowed-tools: Bash(*) Read
 description: babysitter is a self‑orchestrating skill that runs @a5c/babysitter-sdk CLI commands to manage .a5c runs (create, continue, inspect, task operations) while delegating coding work to agents via A5C_CLI_COMMAND. Use when the user explicitly asks to “orchestrate” or “babysit” a run.
 metadata:

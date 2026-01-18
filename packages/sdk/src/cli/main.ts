@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+import { spawn } from "node:child_process";
 import { promises as fs } from "node:fs";
+import { createRequire } from "node:module";
 import * as path from "node:path";
 import * as os from "node:os";
 import { runNodeTaskFromCli } from "./nodeTaskRunner";
@@ -28,7 +30,7 @@ const USAGE = `Usage:
   babysitter skill:install [--type <claude|codex|cursor>] [--scope <local|global>] [--skills-dir <dir>] [--force] [--json] [--dry-run]
 
 Global flags:
-  --runs-dir <dir>   Override the runs directory (defaults to current working directory).
+  --runs-dir <dir>   Override the runs directory (defaults to .a5c/runs).
   --json             Emit JSON output when supported by the command.
   --dry-run          Describe planned mutations without changing on-disk state.
   --verbose          Log resolved paths and options to stderr for debugging.
@@ -94,12 +96,13 @@ type SkillScope = "local" | "global";
 
 const DEFAULT_SKILL_TARGET: SkillTarget = "codex";
 const DEFAULT_SKILL_SCOPE: SkillScope = "local";
+const breakpointsRequire = createRequire(__filename);
 
 function parseArgs(argv: string[]): ParsedArgs {
   const [initialCommand, ...rest] = argv;
   const parsed: ParsedArgs = {
     command: initialCommand,
-    runsDir: ".",
+    runsDir: ".a5c/runs",
     skillsDir: undefined,
     skillType: DEFAULT_SKILL_TARGET,
     skillScope: DEFAULT_SKILL_SCOPE,
@@ -410,6 +413,14 @@ type SkillInstallResult = {
   message?: string;
 };
 
+type BreakpointsInstallSummary = {
+  status: SkillInstallStatus;
+  exitCode?: number;
+  message?: string;
+  stdout?: string;
+  stderr?: string;
+};
+
 function resolveBundledSkillsRoot(): string {
   return path.resolve(__dirname, "..", "..", "skills");
 }
@@ -435,6 +446,62 @@ async function pathExists(filePath: string): Promise<boolean> {
 
 function toPosixPath(value: string): string {
   return value.replace(/\\/g, "/");
+}
+
+function resolveBreakpointsBin(): string {
+  const pkgPath = breakpointsRequire.resolve("@a5c-ai/babysitter-breakpoints/package.json");
+  const pkgDir = path.dirname(pkgPath);
+  const pkgJson = breakpointsRequire(pkgPath) as { bin?: string | Record<string, string> };
+  let binRelative: string | undefined;
+  if (typeof pkgJson.bin === "string") {
+    binRelative = pkgJson.bin;
+  } else if (pkgJson.bin && typeof pkgJson.bin === "object") {
+    binRelative = pkgJson.bin.breakpoints ?? pkgJson.bin["babysitter-breakpoints"] ?? Object.values(pkgJson.bin)[0];
+  }
+  if (!binRelative) {
+    throw new Error("missing bin entry in @a5c-ai/babysitter-breakpoints package.json");
+  }
+  return path.resolve(pkgDir, binRelative);
+}
+
+async function installBreakpointsSkill(parsed: ParsedArgs, skillsDir: string): Promise<BreakpointsInstallSummary> {
+  if (parsed.dryRun) {
+    return { status: "planned", message: "dry-run: skipped breakpoints install" };
+  }
+  let binPath: string;
+  try {
+    binPath = resolveBreakpointsBin();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    return { status: "error", message };
+  }
+  const args = [binPath, "install-skill", "--target", parsed.skillType, "--scope", parsed.skillScope];
+  if (parsed.skillsDir) {
+    args.push("--skills-dir", skillsDir);
+  }
+  if (parsed.json) {
+    args.push("--json");
+  }
+  const child = spawn(process.execPath, args, {
+    stdio: parsed.json ? ["ignore", "pipe", "pipe"] : "inherit",
+  });
+  const stdoutChunks: Buffer[] = [];
+  const stderrChunks: Buffer[] = [];
+  if (parsed.json) {
+    child.stdout?.on("data", (chunk) => stdoutChunks.push(Buffer.from(chunk)));
+    child.stderr?.on("data", (chunk) => stderrChunks.push(Buffer.from(chunk)));
+  }
+  const exitCode = await new Promise<number>((resolve) => {
+    child.on("close", (code) => resolve(code ?? 1));
+    child.on("error", () => resolve(1));
+  });
+  const stdout = parsed.json ? Buffer.concat(stdoutChunks).toString().trim() : undefined;
+  const stderr = parsed.json ? Buffer.concat(stderrChunks).toString().trim() : undefined;
+  if (exitCode === 0) {
+    return { status: "installed", exitCode, stdout: stdout || undefined, stderr: stderr || undefined };
+  }
+  const message = stderr || stdout || `breakpoints install-skill exited with code ${exitCode}`;
+  return { status: "error", exitCode, message, stdout: stdout || undefined, stderr: stderr || undefined };
 }
 
 async function installBundledSkillDir(
@@ -1329,9 +1396,13 @@ async function handleSkillInstall(parsed: ParsedArgs): Promise<number> {
     else if (result.status === "planned") counts.planned += 1;
     else counts.error += 1;
   }
+  const breakpointsSummary = await installBreakpointsSkill(parsed, skillsDir);
+  const breakpointsFailed = breakpointsSummary.status === "error";
   if (parsed.json) {
-    console.log(JSON.stringify({ skillsDir, type: parsed.skillType, scope: parsed.skillScope, results }));
-    return counts.error > 0 ? 1 : 0;
+    console.log(
+      JSON.stringify({ skillsDir, type: parsed.skillType, scope: parsed.skillScope, results, breakpoints: breakpointsSummary })
+    );
+    return counts.error > 0 || breakpointsFailed ? 1 : 0;
   }
   const parts = [`[skill:install] dir=${skillsDir}`];
   if (!parsed.skillsDir) {
@@ -1340,11 +1411,15 @@ async function handleSkillInstall(parsed: ParsedArgs): Promise<number> {
   }
   if (parsed.dryRun) parts.push("dryRun=true");
   if (parsed.force) parts.push("force=true");
+  parts.push(`breakpoints=${breakpointsSummary.status}`);
   if (counts.installed) parts.push(`installed=${counts.installed}`);
   if (counts.skipped) parts.push(`skipped=${counts.skipped}`);
   if (counts.planned) parts.push(`planned=${counts.planned}`);
   if (counts.error) parts.push(`errors=${counts.error}`);
   console.log(parts.join(" "));
+  if (breakpointsSummary.status === "error") {
+    console.error(`[skill:install] breakpoints install failed: ${breakpointsSummary.message ?? "unknown error"}`);
+  }
   for (const result of results) {
     const relativeDest = toPosixPath(path.relative(skillsDir, result.destinationDir));
     const relativeSource = toPosixPath(path.relative(skillsDir, result.sourceDir));
@@ -1353,7 +1428,7 @@ async function handleSkillInstall(parsed: ParsedArgs): Promise<number> {
     const messageSuffix = result.message ? ` message=${result.message}` : "";
     console.log(`- ${result.name} status=${result.status} dest=${destLabel} src=${sourceLabel}${messageSuffix}`);
   }
-  return counts.error > 0 ? 1 : 0;
+  return counts.error > 0 || breakpointsFailed ? 1 : 0;
 }
 
 function toTaskListEntry(record: EffectRecord, runDir: string): TaskListEntry {

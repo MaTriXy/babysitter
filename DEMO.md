@@ -1,10 +1,10 @@
 # Babysitter Demo (Fixture Workspace)
 
-This repo includes a small, pre-seeded demo workspace at `src/test/fixtures/workspace` so you can exercise the UI without dispatching a real `o` run.
+This repo includes a small, pre-seeded demo workspace at `packages/vscode-extension/src/test/fixtures/workspace` so you can exercise the UI without dispatching a real `o` run.
 
 ## What’s pre-seeded
 
-The fixture workspace contains a minimal runs root at `src/test/fixtures/workspace/.a5c/runs`:
+The fixture workspace contains a minimal runs root at `packages/vscode-extension/src/test/fixtures/workspace/.a5c/runs`:
 
 - `run-20990101-000000/`
   - `state.json` with `"status": "running"`
@@ -28,7 +28,7 @@ npm ci
 In the **Extension Development Host** window:
 
 1. **File → Open Folder…**
-2. Select `src/test/fixtures/workspace`.
+2. Select `packages/vscode-extension/src/test/fixtures/workspace`.
 
 ## Verify key flows
 
@@ -45,7 +45,7 @@ In the **Extension Development Host** window:
 If it doesn’t:
 
 - Run: `Babysitter: Refresh Runs`
-- Confirm the opened folder is `src/test/fixtures/workspace` and contains `.a5c/runs`.
+- Confirm the opened folder is `packages/vscode-extension/src/test/fixtures/workspace` and contains `.a5c/runs`.
 
 ### 3) Run Details checkpoint
 

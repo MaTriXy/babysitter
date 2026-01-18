@@ -7,7 +7,12 @@ const EXPECTED_REPOSITORY_URL = 'https://github.com/a5c-ai/babysitter.git';
 const EXPECTED_USER_GUIDE_LINK = 'https://github.com/a5c-ai/babysitter/blob/main/USER_GUIDE.md';
 
 const repoRoot = path.resolve(__dirname, '..');
-const packageJsonPath = path.join(repoRoot, 'package.json');
+const packageJsonPath = path.join(
+  repoRoot,
+  'packages',
+  'vscode-extension',
+  'package.json'
+);
 const readmePath = path.join(repoRoot, 'README.md');
 
 function fail(message) {

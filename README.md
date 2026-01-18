@@ -343,7 +343,7 @@ npm run package
 - Press `F5` to start an **Extension Development Host**
 - Use the Command Palette commands listed above
 
-Tip: for a predictable demo workspace, you can open `src/test/fixtures/workspace` in the Extension Development Host (it includes a minimal `.a5c/runs` fixture).
+Tip: for a predictable demo workspace, you can open `packages/vscode-extension/src/test/fixtures/workspace` in the Extension Development Host (it includes a minimal `.a5c/runs` fixture).
 
 ## Release notes
 

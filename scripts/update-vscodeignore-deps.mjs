@@ -7,7 +7,8 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, '..');
-const vscodeIgnorePath = path.join(repoRoot, '.vscodeignore');
+const extensionRoot = path.join(repoRoot, 'packages', 'vscode-extension');
+const vscodeIgnorePath = path.join(extensionRoot, '.vscodeignore');
 const startMarker = '# BEGIN auto-generated dependency allowlist';
 const endMarker = '# END auto-generated dependency allowlist';
 const excludedScopes = new Set(['@a5c']);
@@ -43,7 +44,7 @@ function collectDependencies(tree) {
 
 function buildAllowlist() {
   const raw = execSync('npm ls --production --all --json', {
-    cwd: repoRoot,
+    cwd: extensionRoot,
     stdio: ['ignore', 'pipe', 'inherit'],
   }).toString();
   const data = JSON.parse(raw);

@@ -41,7 +41,7 @@ npm run package
    - `Babysitter: Open Run Details`
    - `Babysitter: Open Run Logs`
 
-For a predictable demo workspace, use `src/test/fixtures/workspace` in the Dev Host. See `DEMO.md`.
+For a predictable demo workspace, use `packages/vscode-extension/src/test/fixtures/workspace` in the Dev Host. See `DEMO.md`.
 
 ## Where to find logs / diagnostics
 

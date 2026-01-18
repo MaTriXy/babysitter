@@ -63,7 +63,7 @@ jobs:
           BABYSITTER_HEADLESS: 1
         run: |
           set -euo pipefail
-          dbus-run-session -- xvfb-run -a node ./dist/test/runTest.js 2>&1 | tee artifacts/logs/extension-tests.log
+          dbus-run-session -- xvfb-run -a npm run test:extension:compiled 2>&1 | tee artifacts/logs/extension-tests.log
 
       - name: Package VSIX
         run: |
@@ -74,7 +74,7 @@ jobs:
         run: |
           set -euo pipefail
           shopt -s nullglob
-          files=( *.vsix )
+          files=( packages/vscode-extension/*.vsix )
           if [[ ${#files[@]} -eq 0 ]]; then
             echo "VSIX artifact not found" >&2
             exit 1
@@ -154,7 +154,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json CHANGELOG.md
+          git add package.json packages/vscode-extension/package.json package-lock.json CHANGELOG.md
           if git diff --cached --quiet; then
             echo "No version changes detected."
           else

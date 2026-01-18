@@ -54,7 +54,7 @@ jobs:
       - name: Extension tests
         run: |
           set -o pipefail
-          xvfb-run -a node ./dist/test/runTest.js 2>&1 | tee artifacts/test-logs/extension-tests.log
+          xvfb-run -a npm run test:extension:compiled 2>&1 | tee artifacts/test-logs/extension-tests.log
 
       - name: Package VSIX
         run: |
@@ -74,7 +74,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vsix
-          path: '*.vsix'
+          path: 'packages/vscode-extension/*.vsix'
           if-no-files-found: ignore
 
   packages-sdk:

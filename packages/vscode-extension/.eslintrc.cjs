@@ -10,7 +10,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: "module",
-    project: ["./tsconfig.json", "./packages/sdk/tsconfig.json"]
+    project: ["./tsconfig.json"]
   },
   plugins: ["@typescript-eslint", "prettier"],
   extends: [
@@ -18,7 +18,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:prettier/recommended"
   ],
-  ignorePatterns: ["**/dist/**", "node_modules/**", "packages/**"],
+  ignorePatterns: ["**/dist/**", "node_modules/**"],
   rules: {
     "prettier/prettier": "error",
     "@typescript-eslint/no-unused-vars": [

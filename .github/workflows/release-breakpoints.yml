@@ -27,7 +27,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Bump version
         working-directory: packages/breakpoints
-        run: npm version patch -m "chore(release): %s"
+        run: |
+          npm version patch -m "chore(release): %s"
       - name: Publish
         working-directory: packages/breakpoints
         run: npm publish --access public

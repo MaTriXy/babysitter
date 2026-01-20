@@ -1,6 +1,6 @@
 {
     "name": "babysitter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Implementation of the babysitter technique - continuous orchestration loops for deterministic development. Run Claude in a loop with orchestration steps based on the babysitter-sdk and technique.",
     "author": {
       "name": "Tal Muskal",

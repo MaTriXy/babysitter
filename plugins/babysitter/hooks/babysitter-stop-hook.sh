@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Babysitter Stop Hook
 # Prevents session exit when a babysitter run is active
@@ -9,19 +9,30 @@ set -euo pipefail
 # Read hook input from stdin (advanced stop hook API)
 HOOK_INPUT=$(cat)
 
+# Extract session_id from hook input
+SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id // empty')
+if [[ -z "$SESSION_ID" ]]; then
+  # No session ID available - allow exit
+  exit 0
+fi
+
+# Export session ID for use in this script and any called scripts
+export CLAUDE_SESSION_ID="$SESSION_ID"
+
+# Also try to source environment file if available
+# (SessionEnd hooks may have CLAUDE_ENV_FILE available)
+if [[ -n "${CLAUDE_ENV_FILE:-}" ]] && [[ -f "$CLAUDE_ENV_FILE" ]]; then
+  # Source environment variables set during SessionStart
+  # shellcheck disable=SC1090
+  source "$CLAUDE_ENV_FILE" 2>/dev/null || true
+fi
+
 # Determine state directory (plugin-relative for session isolation)
 if [[ -n "${CLAUDE_PLUGIN_ROOT:-}" ]]; then
   STATE_DIR="$CLAUDE_PLUGIN_ROOT/state"
 else
   # Fallback: derive from script location (hooks/stop-hook.sh -> plugin root)
   STATE_DIR="$(dirname "$(dirname "$0")")/state"
-fi
-
-# Extract session_id from hook input
-SESSION_ID=$(echo "$HOOK_INPUT" | jq -r '.session_id // empty')
-if [[ -z "$SESSION_ID" ]]; then
-  # No session ID available - allow exit
-  exit 0
 fi
 
 # Check if babysitter-run is active for THIS session

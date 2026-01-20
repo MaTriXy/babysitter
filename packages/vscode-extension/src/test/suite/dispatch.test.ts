@@ -47,7 +47,8 @@ function createOBinaryShim(tempDir: string, argsOutputPath: string): string {
 }
 
 suite('Dispatch', () => {
-  test('dispatches via configured `o` binary and parses run info', async () => {
+  test('dispatches via configured `o` binary and parses run info', async function () {
+    this.timeout(10000); // Increase timeout to 10s for integration test
     const ext = vscode.extensions.getExtension(EXTENSION_ID);
     assert.ok(ext, 'extension not found');
     await ext.activate();
@@ -60,7 +61,7 @@ suite('Dispatch', () => {
     const shimPath = createOBinaryShim(tempDir, argsOutputPath);
 
     const cfg = vscode.workspace.getConfiguration('babysitter');
-    await cfg.update('o.binaryPath', shimPath, vscode.ConfigurationTarget.Workspace);
+    await cfg.update('sdk.binaryPath', shimPath, vscode.ConfigurationTarget.Workspace);
     await cfg.update('runsRoot', '.a5c/runs', vscode.ConfigurationTarget.Workspace);
 
     const prompt = 'dispatch integration test prompt';

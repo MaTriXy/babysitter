@@ -4,12 +4,38 @@
  */
 
 import { spawn } from "node:child_process";
+import { existsSync } from "node:fs";
 import * as path from "node:path";
 import type {
   HookDispatcherOptions,
   HookResult,
   HookExecutionResult,
 } from "./types";
+
+/**
+ * Find `plugins/babysitter/hooks/hook-dispatcher.sh` by walking up from cwd.
+ * This allows running from nested projects/fixtures inside a mono-repo.
+ *
+ * @internal
+ */
+export function findHookDispatcherPath(startCwd: string): string | null {
+  const claudePluginRoot = process.env.CLAUDE_PLUGIN_ROOT;
+  if (claudePluginRoot) {
+    const candidate = path.join(path.resolve(claudePluginRoot), "hooks", "hook-dispatcher.sh");
+    if (existsSync(candidate)) return candidate;
+  }
+
+  let current = path.resolve(startCwd);
+  // Guard against infinite loops: stop once we stop making progress.
+  for (let i = 0; i < 50; i++) {
+    const candidate = path.join(current, "plugins", "babysitter", "hooks", "hook-dispatcher.sh");
+    if (existsSync(candidate)) return candidate;
+    const parent = path.dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  return null;
+}
 
 /**
  * Call a hook by dispatching to the shell hook-dispatcher.sh
@@ -25,15 +51,17 @@ export async function callHook(
     throwOnFailure = false,
   } = options;
 
-  // Find the hook-dispatcher.sh script
-  // Assume it's in plugins/babysitter/hooks/hook-dispatcher.sh
-  const dispatcherPath = path.join(
-    cwd,
-    "plugins",
-    "babysitter",
-    "hooks",
-    "hook-dispatcher.sh"
-  );
+  const dispatcherPath = findHookDispatcherPath(cwd);
+  if (!dispatcherPath) {
+    return {
+      hookType,
+      success: false,
+      error:
+        `Hook dispatcher not found. Expected plugins/babysitter/hooks/hook-dispatcher.sh ` +
+        `in ${cwd} or any parent directory.`,
+      executedHooks: [],
+    };
+  }
 
   const payloadJson = JSON.stringify(payload);
   const startTime = Date.now();

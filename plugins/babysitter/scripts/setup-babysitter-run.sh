@@ -8,7 +8,7 @@ set -euo pipefail
 # Parse arguments (check for --help early before requiring session ID)
 PROMPT_PARTS=()
 MAX_ITERATIONS=0
-COMPLETION_PROMISE="<promise>run_completed</promise>"
+COMPLETION_PROMISE="run_completed"
 
 # Parse options and positional arguments
 while [[ $# -gt 0 ]]; do
@@ -184,7 +184,8 @@ Completion promise: $(if [[ "$COMPLETION_PROMISE" != "null" ]]; then echo "${COM
 
 The stop hook is now active. When you try to exit, the SAME PROMPT will be
 fed back to you.
-You must use the babysitter-sdk and cli to iterate (refer to the babysitter/SKILL.md file), execute requrested effects, post them back to the cli, and continue the loop until the run is completed.
+You must use the skill to iterate (use the cli, execute requrested effects, post them back to the cli, and continue the loop until the run is completed).
+do not perform any tasks directly, only use the skill to orchestrate the run.
 To monitor: head -10 "$BABYSITTER_STATE_FILE"
 
 ⚠️  WARNING: This loop cannot be stopped manually! It will run infinitely

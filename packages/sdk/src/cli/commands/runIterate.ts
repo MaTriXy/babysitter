@@ -13,6 +13,8 @@
 import * as path from "path";
 import { readRunMetadata } from "../../storage/runFiles";
 import { callRuntimeHook } from "../../runtime/hooks/runtime";
+import { orchestrateIteration } from "../../runtime/orchestrateIteration";
+import type { EffectAction } from "../../runtime/types";
 
 export interface RunIterateOptions {
   runDir: string;
@@ -28,6 +30,7 @@ export interface RunIterateResult {
   reason?: string;
   count?: number;
   until?: number;
+  nextActions?: EffectAction[];
   metadata?: {
     runId: string;
     processId: string;
@@ -68,6 +71,50 @@ export async function runIterate(options: RunIterateOptions): Promise<RunIterate
       logger: verbose ? ((msg: string) => console.error(msg)) : undefined,
     }
   );
+
+  // If no hooks executed, fall back to running one real orchestration step (runtime iteration).
+  // This ensures `run:iterate` works even without a plugin install / hooks configuration.
+  if (!hookResult.executedHooks?.length) {
+    const iterationResult = await orchestrateIteration({ runDir });
+    const status: RunIterateResult["status"] =
+      iterationResult.status === "waiting"
+        ? "waiting"
+        : iterationResult.status === "completed"
+          ? "completed"
+          : "failed";
+
+    // Still call on-iteration-end (will be a no-op if no hooks are installed).
+    await callRuntimeHook(
+      "on-iteration-end",
+      {
+        runId,
+        iteration,
+        action: status === "waiting" ? "waiting" : "none",
+        status,
+        reason: "no-hooks-fallback",
+        count: iterationResult.status === "waiting" ? iterationResult.nextActions.length : undefined,
+        timestamp: new Date().toISOString(),
+      },
+      {
+        cwd: projectRoot,
+        logger: verbose ? ((msg: string) => console.error(msg)) : undefined,
+      }
+    );
+
+    return {
+      iteration,
+      status,
+      action: status === "waiting" ? "waiting" : "none",
+      reason: "no-hooks-fallback",
+      count: iterationResult.status === "waiting" ? iterationResult.nextActions.length : undefined,
+      nextActions: iterationResult.status === "waiting" ? iterationResult.nextActions : undefined,
+      metadata: {
+        runId,
+        processId: metadata.processId,
+        hookStatus: "none",
+      },
+    };
+  }
 
   // Parse hook output
   let hookDecision: any = {};

@@ -19,11 +19,13 @@ function createOBinaryShim(tempDir: string, argsOutputPath: string): string {
       '',
       `const argsOutputPath = ${JSON.stringify(argsOutputPath)};`,
       'const argv = process.argv.slice(2);',
-      'const runId = argv[0];',
-      "const promptArg = argv.slice(1).join(' ');",
-      'fs.writeFileSync(argsOutputPath, JSON.stringify({ argv, runId, promptArg }, null, 2));',
+      'fs.writeFileSync(argsOutputPath, JSON.stringify({ argv }, null, 2));',
       '',
-      "const runsRoot = path.join(process.cwd(), '.a5c', 'runs');",
+      "// Parse run:continue command arguments",
+      "// argv[0] should be 'run:continue', argv[1] should be the runId",
+      'const runId = argv[1];',
+      "const runsRootIndex = argv.indexOf('--runs-dir');",
+      "const runsRoot = runsRootIndex >= 0 ? argv[runsRootIndex + 1] : path.join(process.cwd(), '.a5c', 'runs');",
       'const runRoot = path.join(runsRoot, runId);',
       'fs.mkdirSync(runRoot, { recursive: true });',
       '',
@@ -32,6 +34,10 @@ function createOBinaryShim(tempDir: string, argsOutputPath: string): string {
       '',
       'console.log(`resumed run ${runId}`);',
       'console.log(`runRoot=${runRoot}`);',
+      "const isJson = argv.includes('--json');",
+      'if (isJson) {',
+      '  console.log(JSON.stringify({ runId }));',
+      '}',
       'process.exit(0);',
       '',
     ].join('\n'),
@@ -83,13 +89,11 @@ suite('Resume', () => {
     assert.ok(result.stdout.includes('resumed run'));
 
     const argsJson = JSON.parse(fs.readFileSync(argsOutputPath, 'utf8')) as {
-      argv?: unknown;
-      runId?: unknown;
-      promptArg?: unknown;
+      argv?: string[];
     };
-    assert.strictEqual(argsJson.runId, runId);
-    assert.strictEqual(argsJson.promptArg, prompt);
-    assert.ok(Array.isArray(argsJson.argv) && argsJson.argv[0] === runId);
+    assert.ok(argsJson.argv?.includes('run:continue'), 'expected run:continue command to be called');
+    assert.strictEqual(argsJson.argv?.[1], runId, 'expected runId to be passed as second argument');
+    assert.ok(argsJson.argv?.includes('--json'), 'expected --json flag to be passed');
 
     const runsRoot = path.join(workspaceRoot, '.a5c', 'runs');
     const runs = discoverRuns(runsRoot);

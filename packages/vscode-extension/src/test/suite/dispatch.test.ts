@@ -19,15 +19,21 @@ function createOBinaryShim(tempDir: string, argsOutputPath: string): string {
       '',
       `const argsOutputPath = ${JSON.stringify(argsOutputPath)};`,
       `const runId = ${JSON.stringify(runId)};`,
-      "const promptArg = process.argv.slice(2).join(' ');",
-      'fs.writeFileSync(argsOutputPath, JSON.stringify({ argv: process.argv.slice(2), promptArg }, null, 2));',
+      'const argv = process.argv.slice(2);',
+      'fs.writeFileSync(argsOutputPath, JSON.stringify({ argv }, null, 2));',
       '',
-      "const runsRoot = path.join(process.cwd(), '.a5c', 'runs');",
+      "// Parse run:create command arguments",
+      "const runsRootIndex = argv.indexOf('--runs-dir');",
+      "const runsRoot = runsRootIndex >= 0 ? argv[runsRootIndex + 1] : path.join(process.cwd(), '.a5c', 'runs');",
       'const runRoot = path.join(runsRoot, runId);',
       'fs.mkdirSync(runRoot, { recursive: true });',
       '',
       'console.log(`created run ${runId}`);',
       'console.log(`runRoot=${runRoot}`);',
+      "const isJson = argv.includes('--json');",
+      'if (isJson) {',
+      '  console.log(JSON.stringify({ runId }));',
+      '}',
       'process.exit(0);',
       '',
     ].join('\n'),
@@ -85,7 +91,8 @@ suite('Dispatch', () => {
     assert.ok(result.stdout.includes('created run'), 'expected output to contain created marker');
     assert.ok(fs.existsSync(result.runRootPath), 'expected run directory to be created by shim');
 
-    const argsJson = JSON.parse(fs.readFileSync(argsOutputPath, 'utf8')) as { promptArg?: unknown };
-    assert.strictEqual(argsJson.promptArg, prompt, 'expected prompt to be passed to o');
+    const argsJson = JSON.parse(fs.readFileSync(argsOutputPath, 'utf8')) as { argv?: string[] };
+    assert.ok(argsJson.argv?.includes('run:create'), 'expected run:create command to be called');
+    assert.ok(argsJson.argv?.includes('--json'), 'expected --json flag to be passed');
   });
 });

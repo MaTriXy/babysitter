@@ -26,8 +26,10 @@ export interface CreateProcessContextResult {
 }
 
 export function createProcessContext(init: ProcessContextInit): CreateProcessContextResult {
+  const safeLogger = typeof (init as any).logger === "function" ? (init as any).logger : undefined;
   const internal: InternalProcessContext = {
     ...init,
+    logger: safeLogger,
     now: init.now ?? (() => new Date()),
   };
 
@@ -50,7 +52,17 @@ export function createProcessContext(init: ProcessContextInit): CreateProcessCon
     orchestratorTask: (payload, options) => runOrchestratorTaskIntrinsic(payload, internal, options),
     hook: (hookType, payload, options) => runHookIntrinsic(hookType, payload, internal, options),
     parallel: parallelHelpers,
-    log: internal.logger,
+    // Always provide a callable logger to processes so `ctx.log(...)` never throws.
+    // If no logger was configured, this becomes a no-op.
+    log: (...args: any[]) => {
+      const logger = internal.logger;
+      if (typeof logger !== "function") return;
+      try {
+        logger(...args);
+      } catch {
+        // Never let logging break an orchestration.
+      }
+    },
   };
 
   return {

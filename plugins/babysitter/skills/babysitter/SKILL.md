@@ -165,6 +165,8 @@ export const agentTask = defineTask('agent-scorer', (args, taskCtx) => ({
 
 ### Skill Task Example
 
+Important: Check which skills are actually available before assigning the name.
+
 ```javascript
 export const skillTask = defineTask('analyzer-skill', (args, taskCtx) => ({
   kind: 'skill',  // ← Use "skill" not "node"

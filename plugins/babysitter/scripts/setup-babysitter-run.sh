@@ -8,7 +8,7 @@ set -euo pipefail
 # Parse arguments (check for --help early before requiring session ID)
 PROMPT_PARTS=()
 MAX_ITERATIONS=0
-COMPLETION_PROMISE="null"
+COMPLETION_PROMISE="<promise>run_completed</promise>"
 
 # Parse options and positional arguments
 while [[ $# -gt 0 ]]; do

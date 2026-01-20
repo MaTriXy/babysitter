@@ -24,3 +24,5 @@ _ci_artifacts/**
 .a5c/processes/**/**
 .a5c/processes/index.js
 .claude/skills/**
+e2e-tests/fixtures/todo-app/**
+**/.a5c/runs/**

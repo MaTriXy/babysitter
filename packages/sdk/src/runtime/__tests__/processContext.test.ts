@@ -155,6 +155,33 @@ describe("ProcessContext ambient helpers", () => {
 });
 
 describe("ProcessContext parallel helpers", () => {
+  test("ctx.log is always callable (no-op when no logger configured)", () => {
+    const { context, internalContext } = createProcessContext({
+      runId: "run-log",
+      runDir: "/tmp/run-log",
+      processId: "proc-log",
+      effectIndex: effectIndexStub(),
+      replayCursor: new ReplayCursor(),
+    });
+    expect(typeof context.log).toBe("function");
+    expect(() => context.log?.("hello")).not.toThrow();
+    expect(internalContext.logger).toBeUndefined();
+  });
+
+  test("non-function logger inputs are ignored to avoid runtime TypeError", () => {
+    const { context, internalContext } = createProcessContext({
+      runId: "run-bad-log",
+      runDir: "/tmp/run-bad-log",
+      processId: "proc-bad-log",
+      effectIndex: effectIndexStub(),
+      replayCursor: new ReplayCursor(),
+      logger: "not-a-function" as any,
+    });
+    expect(typeof context.log).toBe("function");
+    expect(() => context.log?.("hello")).not.toThrow();
+    expect(internalContext.logger).toBeUndefined();
+  });
+
   test("ctx.parallel.all aggregates pending actions into ParallelPendingError", async () => {
     const { context } = createProcessContext({
       runId: "run-parallel",

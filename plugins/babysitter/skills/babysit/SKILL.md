@@ -36,7 +36,7 @@ The babysitter workflow has 4 steps:
 **For new runs:**
 
 1. Setup in-session loop:
-```!
+```bash
 bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run.sh" --claude-session-id "${CLAUDE_SESSION_ID}" $PROMPT
 ```
 
@@ -54,8 +54,8 @@ bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/associate-session-with-run.sh
 
 **For resuming existing runs:**
 
-```!
-bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run-resume.sh" --claude-session-id "${CLAUDE_SESSION_ID}" --run-id "${RUN_ID}"
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run-resume.sh" --claude-session-id "${CLAUDE_SESSION_ID}" --run-id RUN_ID"
 ```
 
 ### 1. Run Iteration

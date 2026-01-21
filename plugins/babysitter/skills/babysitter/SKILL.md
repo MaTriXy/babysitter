@@ -1,6 +1,7 @@
 ---
 name: babysitter
 description: Orchestrate .a5c runs via @a5c-ai/babysitter-sdk CLI. Run iterations, get requested effects, perform effects, post results.
+
 ---
 
 # babysitter
@@ -124,7 +125,8 @@ Effects are executed **externally** to the SDK (by you, your hook, or another wo
 
 ### Agent Task Example
 
-Important: Check which subagents and agents are actually available before assigning the name. if none, pass the generic agent name.
+Important: Check which subagents and agents are actually available before assigning the name. if none, pass the general-purpose subagent.
+when executing the agent task, use the Task tool.
 
 ```javascript
 export const agentTask = defineTask('agent-scorer', (args, taskCtx) => ({

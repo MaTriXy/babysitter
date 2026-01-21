@@ -197,7 +197,7 @@ hide-from-slash-command-tool: "true"
 
 **Execution:**
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run.sh" $ARGUMENTS
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run.sh" $ARGUMENTS
 ```
 
 #### /babysitter:resume
@@ -209,15 +209,14 @@ hide-from-slash-command-tool: "true"
 ---
 description: "Start babysitter run in current session"
 argument-hint: "PROMPT [--max-iterations N] [--completion-promise TEXT]"
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run.sh:*)"]
-allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/state/*:*)"]
+allowed-tools: ["Bash(${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run-resume.sh:*)", "Bash(${CLAUDE_PLUGIN_ROOT}/state/*:*)"]
 hide-from-slash-command-tool: "true"
 ---
 ```
 
 **Execution:**
 ```bash
-"${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run-resume.sh" $ARGUMENTS
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run-resume.sh" $ARGUMENTS
 ```
 
 ### 3.2 Setup Scripts

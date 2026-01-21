@@ -85,7 +85,7 @@ if the effect is a breakpoint, you need to run the command:
 npx @a5c-ai/babysitter-breakpoints breakpoint create --tag <tag> --question "<question>" --title "<title>" --run-id <runId> --file <file,format,language,label> --file <file,format,language,label> --file <file,format,language,label> ...
 ```
 
- to create the breakpoint and get the answer from the user
+ to create the breakpoint and get the answer from the user. breakpoint are meant for human approval through the breakpoint tool. NEVER prompt directly and never release or approve a breakpoint yourself. put you may need to post the result of the breakpoint to the run by calling `task:post`
 
 ### 4. Results Posting
 

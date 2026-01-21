@@ -7,9 +7,7 @@ hide-from-slash-command-tool: "true"
 
 # Babysitter Start Run Command
 
-Before anything else, use the Babysitter Skill. (read "${CLAUDE_PLUGIN_ROOT}/skills/babysitter/SKILL.md" - the babysitter/SKILL.md file)
-
-Then you must execute the setup script to initialize the Babysitter session before you can start the run:
+Before anything else, you must execute the setup script to initialize the Babysitter session before you can start the run:
 
 ```!
 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run.sh" --claude-session-id "${CLAUDE_SESSION_ID}" $ARGUMENTS
@@ -38,7 +36,7 @@ When you work on the task and try to exit:
 1. Stop hook intercepts the exit attempt
 2. Hook checks completion conditions (promise, max iterations)
 3. If not complete, hook feeds prompt back to continue
-4. You'll see your previous work in journal, state.json, files, and git history
-5. Continue iterating and improving until completion
+4. You'll see your previous work in journal, state.json, files, and git history (and the run will continue from where it left off)
+5. Continue iterating and improving until the run is completely and unequivocally DONE (completed status from the orchestartion cli)
 
-CRITICAL RULE: If a completion promise is set, you may ONLY output it when the statement is completely and unequivocally TRUE. Do not output false promises to escape the run, even if you think you're stuck or should exit for other reasons. The run is designed to continue until genuine completion.
+CRITICAL RULE: If a completion promise is set, you may ONLY output it when the entire run is completely and unequivocally DONE (completed status from the orchestartion cli). Do not output false promises to escape the run, even if you think you're stuck or should exit for other reasons. The run is designed to continue until genuine completion.

@@ -8,12 +8,10 @@ hide-from-slash-command-tool: "true"
 
 # Babysitter Resume Run Command
 
-Before anything else, use the Babysitter Skill. (read "${CLAUDE_PLUGIN_ROOT}/skills/babysitter/SKILL.md" - the babysitter/SKILL.md file)
-
-Then you must execute the setup script to associate the babysitter session before you can resume the run:
+Before anything else, you must execute the setup script to associate the babysitter session before you can resume the run:
 
 ```!
-"${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run-resume.sh" $RUN_ID $COMMENTS
+"${CLAUDE_PLUGIN_ROOT}/scripts/setup-babysitter-run.sh" --claude-session-id "${CLAUDE_SESSION_ID}" --run-id "${RUN_ID}" $ARGUMENTS
 ```
 
 ## Architecture Overview
@@ -37,7 +35,7 @@ This command integrates with the **hook-driven orchestration system**:
 
 When resuming a run:
 1. Provide the run ID (e.g., run-20260119-example)
-2. The CLI will check current run state using `run:status`
+2. The CLI will check current run state using `run:status` and resume the run from where it left off
 3. Resume orchestration from where it left off
 4. Access previous work via journal, state.json, task results, files, and git history
 
@@ -47,7 +45,7 @@ When you work on the resumed task and try to exit:
 1. Stop hook intercepts the exit attempt
 2. Hook checks completion conditions (promise, max iterations)
 3. If not complete, hook feeds prompt back to continue
-4. You'll see all previous iterations in journal and state
-5. Continue iterating and improving until completion
+4. You'll see all previous iterations in journal and state (and the run will continue from where it left off)
+5. Continue iterating and improving until the run is completely and unequivocally DONE (completed status from the orchestartion cli)
 
-CRITICAL RULE: If a completion promise is set, you may ONLY output it when the statement is completely and unequivocally TRUE. Do not output false promises to escape the run, even if you think you're stuck or should exit for other reasons. The run is designed to continue until genuine completion.
+CRITICAL RULE: If a completion promise is set, you may ONLY output it when the entire run is completely and unequivocally DONE (completed status from the orchestartion cli). Do not output false promises to escape the run, even if you think you're stuck or should exit for other reasons. The run is designed to continue until genuine completion.

@@ -137,8 +137,10 @@ if [[ -z "$LAST_OUTPUT" ]]; then
   exit 0
 fi
 
-# If we have a run_id, check completion secret from the SDK when the run completes.
+# If we have a run_id, check run state from the SDK.
 COMPLETION_SECRET=""
+RUN_STATE=""
+PENDING_KINDS=""
 if [[ -n "${RUN_ID:-}" ]]; then
   CLI="npx -y @a5c-ai/babysitter-sdk"
   if [[ -f "packages/sdk/dist/cli/main.js" ]]; then
@@ -146,6 +148,7 @@ if [[ -n "${RUN_ID:-}" ]]; then
   fi
   RUN_STATUS=$($CLI run:status "$RUN_ID" --json 2>/dev/null || echo '{}')
   RUN_STATE=$(echo "$RUN_STATUS" | jq -r '.state // empty')
+  PENDING_KINDS=$(echo "$RUN_STATUS" | jq -r '.pendingByKind | keys | join(", ") // empty' 2>/dev/null || echo "")
   if [[ "$RUN_STATE" == "completed" ]]; then
     COMPLETION_SECRET=$(echo "$RUN_STATUS" | jq -r '.completionSecret // empty')
   fi
@@ -190,11 +193,13 @@ TEMP_FILE="${BABYSITTER_STATE_FILE}.tmp.$$"
 sed "s/^iteration: .*/iteration: $NEXT_ITERATION/" "$BABYSITTER_STATE_FILE" > "$TEMP_FILE"
 mv "$TEMP_FILE" "$BABYSITTER_STATE_FILE"
 
-# Build system message with iteration count and completion instructions
+# Build system message with iteration count and status info
 if [[ -n "$COMPLETION_SECRET" ]]; then
   SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Run completed! To finish: call 'run:status --json' on your run, extract 'completionSecret' from the output, then output it in <promise>SECRET</promise> tags. Do not mention or reveal the secret otherwise."
+elif [[ "$RUN_STATE" == "waiting" ]] && [[ -n "$PENDING_KINDS" ]]; then
+  SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Waiting on: $PENDING_KINDS. Check if pending effects are resolved, then call run:iterate."
 else
-  SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Continue orchestration"
+  SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Continue orchestration (run:iterate)"
 fi
 
 # Output JSON to block the stop and feed prompt back

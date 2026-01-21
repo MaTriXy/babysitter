@@ -126,15 +126,52 @@ npx @a5c-ai/babysitter-breakpoints breakpoint create --tag <tag> --question "<qu
 
 ### 4. Results Posting
 
+**IMPORTANT**: Do NOT write `result.json` directly. The SDK owns that file.
 
-```bash
-$CLI task:post .a5c/runs/<runId> <effectId> --status <ok|error> --json
+**Workflow:**
+
+1. Write the result **value** to a separate file (e.g., `output.json` or `value.json`):
+```json
+{
+  "score": 85,
+  "details": { ... }
+}
 ```
 
-Effects are executed **externally** to the SDK (by you, your hook, or another worker). After execution, post the outcome into the run by calling `task:post`, which:
-- Writes the committed result to `tasks/<effectId>/result.json`
-- Appends an `EFFECT_RESOLVED` event to the journal
-- Updates the state cache
+2. Post the result, passing the value file:
+```bash
+$CLI task:post .a5c/runs/<runId> <effectId> \
+  --status ok \
+  --value tasks/<effectId>/output.json \
+  --json
+```
+
+The `task:post` command will:
+- Read the value from your file
+- Write the complete `result.json` (including schema, metadata, and your value)
+- Append an `EFFECT_RESOLVED` event to the journal
+- Update the state cache
+
+**Available flags:**
+- `--status <ok|error>` (required)
+- `--value <file>` - Result value (for status=ok)
+- `--error <file>` - Error payload (for status=error)
+- `--stdout-file <file>` - Capture stdout
+- `--stderr-file <file>` - Capture stderr
+- `--started-at <iso8601>` - Task start time
+- `--finished-at <iso8601>` - Task end time
+- `--metadata <file>` - Additional metadata JSON
+
+**Common mistake to avoid:**
+```bash
+# ❌ WRONG: Writing result.json directly
+echo '{"result": {...}}' > tasks/<effectId>/result.json
+$CLI task:post <runId> <effectId> --status ok
+
+# ✅ CORRECT: Write value to separate file, let SDK create result.json
+echo '{"score": 85}' > tasks/<effectId>/output.json
+$CLI task:post <runId> <effectId> --status ok --value tasks/<effectId>/output.json
+```
 
 ---
 

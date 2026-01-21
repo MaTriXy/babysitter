@@ -27,3 +27,5 @@ top-down.js
 bottom-up.js
 
 - [ ] make it so the completion promise is a secret embedded in the sdk and the agent does not know it until the run is completed. and the scripts should be updated to compare to the secret completion promise. and instructions should be updated to pass the secret from the cli when the run is completed. the sdk should emit the secret completion promise when the run is completed (on iterate and status commands)
+
+- [ ] improve main readme to not include cli usage. just install and user-guide for common use case and practical examples, processes, methodologies, etc. (only through the slash command (skill), not the babysitter sdk+cli)

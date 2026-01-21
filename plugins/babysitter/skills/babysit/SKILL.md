@@ -1,6 +1,7 @@
 ---
 name: babysit
 description: Orchestrate .a5c runs via @a5c-ai/babysitter-sdk CLI. Run iterations, get requested effects, perform effects, post results. use this skill when asked to babysit a run or orchestrate a complex workflow.
+allowed-tools: Read, Grep, Write, Task, Bash, Edit, Grep, Glob
 ---
 
 # babysit
@@ -36,9 +37,9 @@ The babysitter workflow has 4 steps:
 bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run.sh" --claude-session-id "${CLAUDE_SESSION_ID}" $PROMPT
 ```
 
-or if resuming a run:
+or if resuming a run (you have a run id from a previous run):
 
-```!
+```
 bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run-resume.sh" --claude-session-id "${CLAUDE_SESSION_ID}" --run-id "${RUN_ID}"
 ```
 

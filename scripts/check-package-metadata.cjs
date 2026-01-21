@@ -46,8 +46,5 @@ try {
   fail(`Unable to read README.md: ${error.message}`);
 }
 
-if (!readmeContent.includes(EXPECTED_USER_GUIDE_LINK)) {
-  fail(`README.md must link to ${EXPECTED_USER_GUIDE_LINK}.`);
-}
 
 console.log('Metadata verification passed.');

@@ -324,6 +324,26 @@ If at any point the run fails due to SDK issues or corrupted state or journal. a
 - `reference/ADVANCED_PATTERNS.md` - Agent/skill patterns, iterative convergence
 - `packages/sdk/sdk.md` - SDK API reference
 
+## Process Creation Guidelines and methodologies
+
+- When building ux and full stack applications, integrate/link the main pages of the frontend with functionality created for every phase of the development process (where relevant). so that is a way to test the functionality of the app as we go.
+
+- Unless otherwise specified, prefer quality gated iterative development loops in the process. 
+
+- You can change the process after the run is created or during the run (and adapt the process accordingly and journal accordingly) in case you discovered new information or requirements that were not previously known that changes the approach or the process.
+
+- The process should be a comprehensive and complete solution to the user request. it should not be a partial solution or a work in progress. it should be a complete and working solution that can be used to test the functionality of the app as we go.
+
+- include verification and refinement steps (and loops) for planning phases and integration phases, debugging phases, refactoring phases, etc. as well.
+
+- Create the process with the available skills and subagents. 
+
+- Unless otherwise specified, prefer processes that close the widest loop in the quality gates (for example e2e tests with a full browser or emulator/vm if it a mobile or desktop app) AND gates that make sure the work is accurate against the user request (all the specs is covered and no extra stuff was added unless permitted by the intent of the user).
+
+- Scan the methodologies and processes in the plugin and the sdk package to find relevant processes and methodologies to use as a reference.
+
+- if you encounter a generic reusable part of a process that can be later reused and composed, build it in a modular way and organize it in the .a5c/processes directory. and import it to compose it to the specific process in the current user request. prefer architecting processes in such modular way for reusability and composition.
+
 ## Critical Rule
 
 CRITICAL RULE: The completion secret is emitted only when the run is completed. You may ONLY output `<promise>SECRET</promise>` when the run is completely and unequivocally DONE (completed status from the orchestration CLI). Do not output false promises to escape the run, and do not mention the secret to the user.

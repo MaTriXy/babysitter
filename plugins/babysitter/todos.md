@@ -9,13 +9,13 @@
 - [x] write a spec for babysitter plugin ✅ Completed 2026-01-20 - Created comprehensive BABYSITTER_PLUGIN_SPECIFICATION.md covering architecture, components, hooks, CLI, workflows, API reference, and best practices for Version 4.0
 - [x] README.md for the babysitter plugin ✅ Completed 2026-01-20 - Created comprehensive README.md with quick start, core concepts, usage examples, CLI reference, advanced features, documentation links, troubleshooting, and contribution guidelines
 - [ ] research each of these methodologies and techniques and create an example process for each of them:
-✅ ralph.js (simple ralph wiggum loops that iterates until DONE is emmited) - see .a5c/processes/methodologies/ralph.js
-✅ plan-and-execute.js - see .a5c/processes/methodologies/plan-and-execute.js
-✅ devin.js (plan, code, debug, and deploy) - see .a5c/processes/methodologies/devin.js
-✅ tdd.js - see .claude/skills/babysit/process/tdd-quality-convergence.js
+✅ ralph.js (simple ralph wiggum loops that iterates until DONE is emmited) - see plugins/babysitter/skills/babysit/process/methodologies/ralph.js
+✅ plan-and-execute.js - see plugins/babysitter/skills/babysit/process/methodologies/plan-and-execute.js
+✅ devin.js (plan, code, debug, and deploy) - see plugins/babysitter/skills/babysit/process/methodologies/devin.js
+✅ tdd.js - see plugins/babysitter/skills/babysit/process/tdd-quality-convergence.js
 ✅ score-gated-iterative-convergence.js - see tdd-quality-convergence.js (combines TDD + quality convergence)
 self-assessment.js
-state-machine-orchestration.js
+✅ state-machine-orchestration.js
 consensus-and-voting-mechanisms.js
 base44.js
 adversarial-spec-debates.js ( adversarial spec debates between two or more LLMs or even other coding agents )

@@ -41,7 +41,8 @@
       "WebFetch",
       "Bash(babysitter run:status:*)",
       "Bash(babysitter run:iterate:*)",
-      "Bash(babysitter run:events:*)"
+      "Bash(babysitter run:events:*)",
+      "Skill(babysit)"
     ]
   }
 }

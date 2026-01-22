@@ -38,8 +38,7 @@
       "Bash(wc:*)",
       "Bash(plugins/babysitter/hooks/babysitter-session-start-hook.sh)",
       "WebSearch",
-      "WebFetch(domain:*)",
-      "WebFetch(url:*)",
+      "WebFetch",
       "Bash(babysitter run:status:*)",
       "Bash(babysitter run:iterate:*)",
       "Bash(babysitter run:events:*)"

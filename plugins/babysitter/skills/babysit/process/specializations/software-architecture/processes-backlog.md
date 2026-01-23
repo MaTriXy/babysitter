@@ -9,10 +9,7 @@ This document contains researched software architecture processes that can be ad
 processes/
 ├── [process-name]/
 │   ├── README.md              # Overview and usage
-│   ├── [process-name].js      # Main process workflow
-│   ├── tasks/                 # Task definitions
-│   │   ├── [task-name].js
-│   │   └── ...
+│   ├── [process-name].js      # Main process workflow with embedded agentic or skill based tasks, breakpoints, etc.
 │   └── examples/              # Example inputs/outputs
 │       ├── examples.json
 │       └── ...

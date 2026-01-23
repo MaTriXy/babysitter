@@ -350,9 +350,22 @@ If at any point the run fails due to SDK issues or corrupted state or journal. a
 
 - Unless otherwise specified, prefer processes that close the widest loop in the quality gates (for example e2e tests with a full browser or emulator/vm if it a mobile or desktop app) AND gates that make sure the work is accurate against the user request (all the specs is covered and no extra stuff was added unless permitted by the intent of the user).
 
-- Scan the methodologies and processes in the plugin and the sdk package to find relevant processes and methodologies to use as a reference.
+- Scan the methodologies and processes in the plugin and the sdk package to find relevant processes and methodologies to use as a reference. also search for process files bundled in active skills, processes in the repo (.a5c/processes/).
 
 - if you encounter a generic reusable part of a process that can be later reused and composed, build it in a modular way and organize it in the .a5c/processes directory. and import it to compose it to the specific process in the current user request. prefer architecting processes in such modular way for reusability and composition.
+
+- prefer processes that have the following characteristics unless otherwise specified:
+    - in case of a new project, plan the architecture, stack, parts, milestones, etc.
+    - in case of an existing project, analyze the architecture, stack, relevant parts, milestones, etc. and plan the changes to be made in: milestones, existing modules modification/preparation steps, new modules, integration steps, etc.
+    - integrate/link the main pages (or entry points) with functionality created for every phase of the development process (where relevant). so that there is a way to test and experiment with the new functionality of the work or app as we go.
+    - Quality gated iterative and convergent development/refinement/optimization loops for each part of the implementation, definition, ux design and definition, specs, etc.
+    - Test driven - where quality gates agents can use executable tools, scripts and tests to verify the accuracy and completeness of the implementation.
+    - Integration Phases for each new functionality in every milestone with integration tests and quality gates. - where quality gates agents can use executable tools, scripts and tests to verify the accuracy and completeness of the integration.
+    - Where relevant - Ensures beautiful and polished ux design and implementation. pixel perfect verification and refinement loops.
+    - Ensures accurate and complete implementation of the user request.
+    - Ensures closing quality feedback loops in the most complete and comprehensive way possible and practical.
+    - in case the scope includes work in an existing deployed application and the scope of the feedback loop requires validations at the deployed environment (or remote environment), analyze the deployment methods and understand how the existing delivery pipeline works. and how you can deliver changes to the sandbox/staging and verify the accuracy and completeness of the changes you are making on the remote environment. with observability on the ci pipelines, logs of the cluster/app/infra/etc. (for requests like: "fix this bug and make sure that it is fixed locally, then deploy to staging and verify that the bug is fixed there too")
+    - if the user is very explicit about the flow and process, create a process that follows it closely and strictly. (ad hoc requests like: "try this functionality and make sure it works as expected, repeat until it works as expected")  
 
 ## Critical Rule
 

@@ -9,10 +9,7 @@ This document contains data engineering, analytics, and BI processes that can be
 processes/
 ├── [process-name]/
 │   ├── README.md              # Process overview and usage
-│   ├── [process-name].js      # Main process workflow
-│   ├── tasks/                 # Task definitions
-│   │   ├── [task-name].js
-│   │   └── ...
+│   ├── [process-name].js      # Main process workflow with embedded agentic or skill based tasks, breakpoints, etc.
 │   └── examples/              # Example inputs/outputs
 │       ├── examples.json
 │       └── ...

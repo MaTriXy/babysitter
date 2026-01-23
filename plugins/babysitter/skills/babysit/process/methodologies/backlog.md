@@ -9,11 +9,8 @@ This document contains researched methodologies that can be adapted to the Babys
 methodologies/
 ├── [methodology-name]/
 │   ├── README.md              # Overview and usage
-│   ├── [workflow-name].js     # Main process workflow
-│   ├── tasks/                 # Task definitions
-│   │   ├── [task-name].js
-│   │   └── ...
-│   └── examples/              # Example inputs/outputs
+│   ├── [workflow-name].js     # Main process workflow, with embedded agentic or skill based tasks, breakpoints, etc.
+│   └── examples/              # Example inputs
 │       ├── examples.json
 │       └── ...
 ```

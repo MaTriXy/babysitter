@@ -1,6 +1,6 @@
 ---
 name: trotter-simulator
-description: Trotterization skill for implementing Hamiltonian simulation via product formula decomposition
+description: Hamiltonian simulation skill using Trotter-Suzuki decomposition
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-chemistry
-  domain: quantum-computing
-  tools:
-    - Qiskit
-    - Cirq
-    - OpenFermion
-  processes:
-    - hamiltonian-simulation-design
-    - time-evolution-implementation
-    - quantum-dynamics-simulation
+  phase: 6
 ---
 
-# Trotter Simulator Skill
+# Trotter Simulator
 
 ## Purpose
 
-Provides Trotterization capabilities for decomposing Hamiltonian time evolution into implementable quantum gate sequences using Suzuki-Trotter product formulas.
+Provides expert guidance on Hamiltonian simulation using Trotter-Suzuki decomposition for quantum dynamics and chemistry calculations.
 
 ## Capabilities
 
-- **First-Order Trotter**: Basic product formula decomposition
-- **Higher-Order Formulas**: Suzuki-Trotter 2nd, 4th order
-- **Error Analysis**: Trotter error estimation
-- **Step Optimization**: Optimize number of Trotter steps
-- **Term Ordering**: Optimize Hamiltonian term ordering
-- **Circuit Generation**: Generate gate sequences
+- First-order Trotterization
+- Higher-order product formulas
+- Time step optimization
+- Error bound analysis
+- Randomized compilation
+- Resource estimation
+- Symmetry preservation
+- Real-time evolution
 
 ## Usage Guidelines
 
-1. **Hamiltonian Preparation**
-   - Decompose into Pauli terms
-   - Group commuting terms
-   - Analyze term structure
+1. **Hamiltonian Analysis**: Decompose Hamiltonian into simulatable terms
+2. **Order Selection**: Choose Trotter order based on accuracy requirements
+3. **Step Optimization**: Determine time step for error budget
+4. **Circuit Generation**: Build Trotterized evolution circuits
+5. **Error Analysis**: Estimate and bound Trotter errors
 
-2. **Formula Selection**
-   - Choose Trotter order based on accuracy needs
-   - Consider gate count vs. error tradeoff
-   - Configure number of time steps
+## Tools/Libraries
 
-3. **Circuit Construction**
-   - Generate exponential gates
-   - Compose Trotter layers
-   - Add any required ancillas
-
-4. **Best Practices**
-   - Validate against exact evolution
-   - Monitor Trotter error bounds
-   - Optimize term ordering
-   - Document Trotter parameters
+- Qiskit
+- Cirq
+- OpenFermion
+- PennyLane
+- TensorNetwork

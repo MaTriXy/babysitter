@@ -1,6 +1,6 @@
 ---
 name: noise-modeler
-description: Quantum noise modeling skill for constructing and characterizing realistic noise models
+description: Quantum noise modeling skill for simulation and hardware characterization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: error-management
-  domain: quantum-computing
-  tools:
-    - Qiskit Aer
-    - Cirq noise
-    - pyGSTi
-  processes:
-    - noisy-simulation-and-analysis
-    - device-characterization
-    - error-mitigation-strategy-implementation
+  phase: 6
 ---
 
-# Noise Modeler Skill
+# Noise Modeler
 
 ## Purpose
 
-Provides quantum noise modeling capabilities for constructing realistic noise models from device characterization data and simulating their effects on quantum circuits.
+Provides expert guidance on quantum noise modeling for realistic simulation and hardware characterization analysis.
 
 ## Capabilities
 
-- **Depolarizing Noise**: Model generic decoherence
-- **Amplitude Damping**: Model T1 relaxation
-- **Phase Damping**: Model T2 dephasing
-- **Crosstalk Modeling**: Capture inter-qubit errors
-- **Device Calibration Import**: Build models from device data
-- **Process Tomography**: Characterize noise channels
+- Depolarizing channel modeling
+- Amplitude damping models
+- Phase damping models
+- Crosstalk noise models
+- Readout error modeling
+- Custom noise model construction
+- Kraus operator representation
+- Pauli channel conversion
 
 ## Usage Guidelines
 
-1. **Noise Characterization**
-   - Measure T1 and T2 times
-   - Characterize gate errors
-   - Assess readout errors
+1. **Noise Identification**: Determine dominant noise sources from benchmarking data
+2. **Model Construction**: Build appropriate noise channels for each error type
+3. **Parameter Extraction**: Fit model parameters to experimental data
+4. **Simulation Integration**: Apply noise models to circuit simulations
+5. **Validation**: Compare noisy simulations with hardware results
 
-2. **Model Construction**
-   - Build Kraus operators or Pauli channels
-   - Configure noise for each gate type
-   - Add measurement errors
+## Tools/Libraries
 
-3. **Simulation**
-   - Apply noise model to circuits
-   - Compare with hardware results
-   - Validate model accuracy
-
-4. **Best Practices**
-   - Update models from recent calibration
-   - Include all significant error sources
-   - Validate against device results
-   - Document model assumptions
+- Qiskit Aer
+- Cirq
+- PennyLane
+- QuTiP
+- NumPy

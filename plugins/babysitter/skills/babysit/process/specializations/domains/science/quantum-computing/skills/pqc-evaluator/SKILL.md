@@ -1,6 +1,6 @@
 ---
 name: pqc-evaluator
-description: Post-quantum cryptography evaluation skill for assessing quantum resistance of cryptographic schemes
+description: Post-quantum cryptography evaluation skill for quantum-safe migration
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-cryptography
-  domain: quantum-computing
-  tools:
-    - liboqs
-    - PQClean
-    - NIST PQC tools
-  processes:
-    - post-quantum-security-assessment
-    - cryptographic-migration-planning
-    - quantum-threat-analysis
+  specialization: quantum-computing
+  domain: science
+  category: cryptography
+  phase: 6
 ---
 
-# PQC Evaluator Skill
+# PQC Evaluator
 
 ## Purpose
 
-Provides post-quantum cryptography evaluation capabilities for assessing quantum resistance of cryptographic schemes and planning migration to quantum-safe algorithms.
+Provides expert guidance on evaluating post-quantum cryptographic algorithms and planning quantum-safe migration strategies.
 
 ## Capabilities
 
-- **Algorithm Assessment**: Evaluate PQC algorithm candidates
-- **Security Analysis**: Analyze quantum attack resistance
-- **Performance Benchmarking**: Compare PQC implementations
-- **Migration Planning**: Plan transition to PQC
-- **Hybrid Schemes**: Design hybrid classical/PQC systems
-- **Standards Compliance**: Check NIST PQC compliance
+- NIST PQC standard implementation checks
+- Lattice-based algorithm analysis
+- Code-based cryptography evaluation
+- Hash-based signature verification
+- Hybrid classical-PQC schemes
+- Migration impact assessment
+- Performance benchmarking
+- Key size analysis
 
 ## Usage Guidelines
 
-1. **Threat Assessment**
-   - Analyze quantum threat timeline
-   - Identify vulnerable systems
-   - Prioritize migration targets
+1. **Inventory Assessment**: Catalog current cryptographic usage
+2. **Algorithm Selection**: Choose appropriate PQC algorithms for use cases
+3. **Implementation Review**: Verify correct implementation of PQC schemes
+4. **Performance Testing**: Benchmark PQC against classical algorithms
+5. **Migration Planning**: Develop phased migration strategy
 
-2. **Algorithm Selection**
-   - Evaluate lattice, code, hash-based options
-   - Consider security and performance tradeoffs
-   - Check standardization status
+## Tools/Libraries
 
-3. **Implementation**
-   - Use vetted implementations
-   - Benchmark performance
-   - Test interoperability
-
-4. **Best Practices**
-   - Stay current with NIST process
-   - Consider crypto agility
-   - Document migration decisions
-   - Plan for algorithm updates
+- liboqs
+- PQClean
+- OpenSSL (with PQC support)
+- Bouncy Castle
+- SUPERCOP

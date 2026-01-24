@@ -1,6 +1,6 @@
 ---
 name: tensor-network-simulator
-description: Tensor network simulation skill for efficient simulation of structured quantum circuits
+description: Tensor network-based simulation skill for large circuit approximation
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: simulation-tools
-  domain: quantum-computing
-  tools:
-    - quimb
-    - TensorNetwork
-    - ITensor
-  processes:
-    - large-scale-circuit-simulation
-    - approximate-quantum-simulation
-    - circuit-cutting-simulation
+  specialization: quantum-computing
+  domain: science
+  category: simulation
+  phase: 6
 ---
 
-# Tensor Network Simulator Skill
+# Tensor Network Simulator
 
 ## Purpose
 
-Provides tensor network simulation capabilities for efficiently simulating quantum circuits with limited entanglement, enabling simulation of larger circuits than statevector methods.
+Provides expert guidance on tensor network-based quantum circuit simulation for approximate evaluation of circuits beyond state vector limits.
 
 ## Capabilities
 
-- **MPS Simulation**: Matrix product state circuit simulation
-- **PEPS Methods**: 2D tensor network simulation
-- **Contraction Optimization**: Optimize tensor contraction order
-- **Approximate Simulation**: Trade accuracy for scalability
-- **Circuit Cutting**: Simulate via circuit partitioning
-- **Entanglement Tracking**: Monitor bond dimensions
+- MPS (Matrix Product State) simulation
+- PEPS simulation for 2D circuits
+- Contraction path optimization
+- Truncation error control
+- GPU-accelerated contraction
+- Circuit cutting support
+- Entanglement-limited approximation
+- Memory-time tradeoff tuning
 
 ## Usage Guidelines
 
-1. **Circuit Analysis**
-   - Assess circuit structure and entanglement
-   - Determine suitability for tensor methods
-   - Choose tensor network type
+1. **Structure Analysis**: Identify circuit entanglement structure
+2. **Method Selection**: Choose MPS, PEPS, or general tensor network
+3. **Bond Dimension**: Set appropriate truncation threshold
+4. **Contraction Ordering**: Optimize contraction path for efficiency
+5. **Error Monitoring**: Track approximation errors through simulation
 
-2. **Simulation Configuration**
-   - Set bond dimension limits
-   - Configure contraction strategy
-   - Define accuracy targets
+## Tools/Libraries
 
-3. **Execution**
-   - Contract tensor network
-   - Extract observables
-   - Monitor resource usage
-
-4. **Best Practices**
-   - Use for low-entanglement circuits
-   - Validate accuracy on small instances
-   - Profile contraction cost
-   - Document approximation errors
+- TensorNetwork
+- quimb
+- ITensor
+- cuTensorNet (NVIDIA cuQuantum)
+- cotengra

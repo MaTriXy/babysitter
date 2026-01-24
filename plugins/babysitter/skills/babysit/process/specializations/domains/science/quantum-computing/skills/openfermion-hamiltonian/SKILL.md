@@ -1,6 +1,6 @@
 ---
 name: openfermion-hamiltonian
-description: OpenFermion integration skill for constructing and transforming molecular Hamiltonians for quantum simulation
+description: Molecular Hamiltonian construction skill using OpenFermion
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-chemistry
-  domain: quantum-computing
-  tools:
-    - OpenFermion
-    - PySCF
-    - Psi4
-  processes:
-    - molecular-hamiltonian-construction
-    - vqe-molecular-simulation
-    - quantum-chemistry-calculation
+  phase: 6
 ---
 
-# OpenFermion Hamiltonian Skill
+# OpenFermion Hamiltonian
 
 ## Purpose
 
-Provides molecular Hamiltonian construction capabilities using OpenFermion for preparing electronic structure problems for quantum simulation on quantum computers.
+Provides expert guidance on molecular Hamiltonian construction and fermion-to-qubit mappings using OpenFermion for quantum chemistry applications.
 
 ## Capabilities
 
-- **Molecular Integrals**: Compute one- and two-electron integrals
-- **Fermion Operators**: Build second-quantized Hamiltonians
-- **Jordan-Wigner Transform**: Map to qubit operators
-- **Bravyi-Kitaev Transform**: Alternative fermion-to-qubit mapping
-- **Active Space Selection**: Define active space for simulation
-- **Symmetry Reduction**: Reduce qubit count using symmetries
+- Molecular Hamiltonian generation
+- Jordan-Wigner transformation
+- Bravyi-Kitaev transformation
+- Parity transformation
+- Second quantization handling
+- Symmetry reduction
+- Active space selection
+- Hamiltonian term grouping
 
 ## Usage Guidelines
 
-1. **Molecular Setup**
-   - Define molecular geometry
-   - Select basis set
-   - Configure active space
+1. **Molecular Setup**: Define molecular geometry and basis set
+2. **Hamiltonian Generation**: Compute molecular integrals and construct Hamiltonian
+3. **Transformation Selection**: Choose appropriate fermion-to-qubit mapping
+4. **Qubit Reduction**: Apply symmetry and active space reductions
+5. **Term Analysis**: Analyze Hamiltonian structure for circuit design
 
-2. **Hamiltonian Construction**
-   - Compute molecular integrals via PySCF/Psi4
-   - Build fermionic Hamiltonian
-   - Apply symmetry reductions
+## Tools/Libraries
 
-3. **Qubit Mapping**
-   - Choose mapping (JW, BK, parity)
-   - Transform to qubit operators
-   - Count terms and weight distribution
-
-4. **Best Practices**
-   - Start with small active spaces
-   - Validate against classical results
-   - Consider mapping overhead
-   - Document molecular specifications
+- OpenFermion
+- OpenFermion-PySCF
+- OpenFermion-Psi4
+- Qiskit Nature
+- PennyLane

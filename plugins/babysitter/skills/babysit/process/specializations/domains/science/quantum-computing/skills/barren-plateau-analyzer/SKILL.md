@@ -1,6 +1,6 @@
 ---
 name: barren-plateau-analyzer
-description: Barren plateau analysis skill for diagnosing and mitigating trainability issues in variational circuits
+description: Analysis skill for detecting and mitigating barren plateaus in variational circuits
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-ml
-  domain: quantum-computing
-  tools:
-    - PennyLane
-    - Qiskit
-    - NumPy
-  processes:
-    - variational-circuit-analysis
-    - quantum-neural-network-training
-    - ansatz-trainability-assessment
+  phase: 6
 ---
 
-# Barren Plateau Analyzer Skill
+# Barren Plateau Analyzer
 
 ## Purpose
 
-Provides barren plateau analysis capabilities for diagnosing trainability issues in variational quantum circuits and implementing mitigation strategies.
+Provides expert guidance on analyzing and mitigating barren plateaus in variational quantum circuits, ensuring trainability of quantum machine learning models.
 
 ## Capabilities
 
-- **Gradient Variance Analysis**: Measure gradient variance scaling
-- **Expressibility Metrics**: Quantify circuit expressibility
-- **Entanglement Analysis**: Assess entanglement entropy
-- **Cost Function Analysis**: Evaluate cost landscape properties
-- **Local Cost Functions**: Design local cost alternatives
-- **Initialization Strategies**: Implement beneficial initializations
+- Gradient variance estimation
+- Cost function landscape analysis
+- Expressibility vs. trainability tradeoff
+- Initialization strategy evaluation
+- Local cost function design
+- Layer-wise training strategies
+- Entanglement-induced BP detection
+- Noise-induced BP analysis
 
 ## Usage Guidelines
 
-1. **Diagnosis**
-   - Sample gradients at random parameters
-   - Compute variance as function of qubits
-   - Identify exponential decay signature
+1. **Variance Estimation**: Sample gradient variance across parameter space
+2. **Scaling Analysis**: Evaluate gradient scaling with qubit number
+3. **Architecture Modification**: Redesign circuits to avoid BP regions
+4. **Initialization**: Use structured initialization to avoid plateaus
+5. **Training Strategy**: Apply layer-wise or identity-initialized training
 
-2. **Analysis**
-   - Evaluate circuit expressibility
-   - Measure entanglement growth
-   - Analyze cost function locality
+## Tools/Libraries
 
-3. **Mitigation**
-   - Use shallow circuits or local costs
-   - Implement layer-wise training
-   - Apply parameter initialization strategies
-
-4. **Best Practices**
-   - Test trainability before full training
-   - Document variance scaling
-   - Consider hardware noise effects
-   - Track mitigation effectiveness
+- PennyLane
+- Qiskit
+- JAX
+- NumPy
+- Matplotlib

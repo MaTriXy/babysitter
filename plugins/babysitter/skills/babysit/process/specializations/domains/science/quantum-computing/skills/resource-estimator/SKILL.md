@@ -1,6 +1,6 @@
 ---
 name: resource-estimator
-description: Quantum resource estimation skill for analyzing qubit, gate, and time requirements of quantum algorithms
+description: Quantum resource estimation skill for algorithm feasibility analysis
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: simulation-tools
-  domain: quantum-computing
-  tools:
-    - Azure Quantum Resource Estimator
-    - Q# resource counter
-    - Qiskit analysis
-  processes:
-    - quantum-resource-estimation
-    - algorithm-feasibility-analysis
-    - hardware-requirement-planning
+  specialization: quantum-computing
+  domain: science
+  category: simulation
+  phase: 6
 ---
 
-# Resource Estimator Skill
+# Resource Estimator
 
 ## Purpose
 
-Provides quantum resource estimation capabilities for analyzing the qubit count, gate count, circuit depth, and runtime requirements of quantum algorithms at scale.
+Provides expert guidance on estimating quantum resources required for algorithm execution, enabling feasibility analysis and hardware roadmap comparison.
 
 ## Capabilities
 
-- **Qubit Counting**: Estimate logical and physical qubits
-- **Gate Counting**: Count gates by type (T, Clifford, etc.)
-- **Depth Analysis**: Estimate circuit depth
-- **Error Correction Overhead**: Include QEC resource costs
-- **Time Estimation**: Estimate algorithm runtime
-- **Scaling Analysis**: Project requirements vs. problem size
+- Qubit count estimation
+- Circuit depth analysis
+- T-gate counting
+- Error correction overhead
+- Runtime projection
+- Hardware roadmap comparison
+- Logical-to-physical overhead
+- Space-time volume calculation
 
 ## Usage Guidelines
 
-1. **Algorithm Specification**
-   - Define algorithm at high level
-   - Specify problem size parameters
-   - Choose error correction scheme
+1. **Algorithm Analysis**: Decompose algorithm into quantum operations
+2. **Gate Counting**: Count gates by type (Clifford, T, etc.)
+3. **Overhead Calculation**: Apply error correction overhead factors
+4. **Timeline Projection**: Estimate execution time on target hardware
+5. **Feasibility Assessment**: Compare with hardware capability roadmaps
 
-2. **Resource Estimation**
-   - Run resource estimator
-   - Analyze qubit and gate counts
-   - Consider QEC overhead
+## Tools/Libraries
 
-3. **Feasibility Assessment**
-   - Compare to hardware roadmaps
-   - Identify bottlenecks
-   - Project timelines
-
-4. **Best Practices**
-   - Use conservative estimates
-   - Consider multiple QEC schemes
-   - Document assumptions
-   - Update with improved algorithms
+- Azure Quantum Resource Estimator
+- Qiskit
+- Q#
+- Custom estimation tools
+- Spreadsheet models

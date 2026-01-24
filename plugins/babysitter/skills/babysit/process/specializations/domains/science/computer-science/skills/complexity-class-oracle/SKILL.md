@@ -1,6 +1,6 @@
 ---
 name: complexity-class-oracle
-description: Classify computational problems into complexity classes with supporting evidence and proof strategies
+description: Classify computational problems into complexity classes with supporting evidence and proofs
 allowed-tools:
   - Bash
   - Read
@@ -8,54 +8,43 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
+  - WebSearch
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: complexity-theory
-  domain: computer-science
-  tools:
-    - Complexity Zoo database
-    - Diagram generation
-    - Knowledge base
-  processes:
-    - computational-problem-classification
-    - np-completeness-proof
-    - decidability-analysis
+  phase: 6
 ---
 
-# Complexity Class Oracle Skill
+# Complexity Class Oracle
 
 ## Purpose
 
-Provides complexity classification capabilities for determining membership of problems in complexity classes and identifying proof strategies.
+Provides expert guidance on classifying problems into complexity classes and understanding their relationships.
 
 ## Capabilities
 
-- **Class Membership**: Determine P, NP, co-NP, PSPACE, EXPTIME membership
-- **Complete Problems**: Identify complete problems for each class
-- **Database Query**: Query known complexity results
-- **Proof Strategies**: Suggest strategies for classification proofs
-- **Landscape Diagrams**: Generate complexity landscape visualizations
+- Determine membership in P, NP, co-NP, PSPACE, EXPTIME
+- Identify complete problems for each class
+- Query known complexity results database
+- Suggest proof strategies for classification
+- Generate complexity landscape diagrams
+- Track open problems and conjectures
 
 ## Usage Guidelines
 
-1. **Problem Analysis**
-   - Formalize problem precisely
-   - Identify decision vs. search versions
-   - Note special cases and parameters
+1. **Problem Specification**: Define computational problem
+2. **Class Analysis**: Identify candidate classes
+3. **Evidence Gathering**: Find known results
+4. **Classification**: Determine membership
+5. **Documentation**: Generate classification proof
 
-2. **Classification**
-   - Check known results first
-   - Identify similar classified problems
-   - Determine upper and lower bounds
+## Dependencies
 
-3. **Proof Strategy**
-   - Select reduction source for hardness
-   - Design polynomial algorithm for membership
-   - Consider parameterized complexity
+- Complexity Zoo database
+- Diagram generation tools
 
-4. **Best Practices**
-   - Document problem formalization
-   - Reference known complexity results
-   - Consider multiple complexity measures
-   - Update with new research findings
+## Process Integration
+
+- Computational Problem Classification
+- NP-Completeness Proof workflows

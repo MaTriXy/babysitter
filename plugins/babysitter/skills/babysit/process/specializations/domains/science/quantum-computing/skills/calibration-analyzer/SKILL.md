@@ -1,6 +1,6 @@
 ---
 name: calibration-analyzer
-description: Quantum device calibration analysis skill for interpreting and utilizing hardware calibration data
+description: Hardware calibration data analysis skill for optimal qubit selection
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: hardware-integration
-  domain: quantum-computing
-  tools:
-    - Qiskit
-    - IBM Quantum
-    - Device APIs
-  processes:
-    - device-characterization
-    - gate-calibration-optimization
-    - qubit-selection-strategy
+  phase: 6
 ---
 
-# Calibration Analyzer Skill
+# Calibration Analyzer
 
 ## Purpose
 
-Provides quantum device calibration analysis capabilities for interpreting hardware calibration data and making informed decisions about qubit selection and circuit optimization.
+Provides expert guidance on analyzing quantum hardware calibration data to select optimal qubits and gate configurations for circuit execution.
 
 ## Capabilities
 
-- **Calibration Data Retrieval**: Access device calibration info
-- **Qubit Quality Assessment**: Rank qubits by error rates
-- **Gate Error Analysis**: Analyze single and two-qubit errors
-- **T1/T2 Tracking**: Monitor coherence times
-- **Readout Error Analysis**: Assess measurement fidelities
-- **Temporal Trends**: Track calibration drift
+- T1/T2 coherence analysis
+- Gate error rate parsing
+- Readout error analysis
+- Crosstalk characterization
+- Qubit quality ranking
+- Temporal calibration tracking
+- Error budget calculation
+- Calibration drift detection
 
 ## Usage Guidelines
 
-1. **Data Retrieval**
-   - Fetch latest calibration data
-   - Parse qubit and gate properties
-   - Organize for analysis
+1. **Data Retrieval**: Fetch latest calibration data from backend
+2. **Metric Extraction**: Parse T1, T2, gate fidelities, and readout errors
+3. **Quality Ranking**: Score qubits based on weighted metrics
+4. **Selection**: Choose optimal qubits for circuit execution
+5. **Monitoring**: Track calibration changes over time
 
-2. **Quality Assessment**
-   - Compute qubit quality scores
-   - Identify best qubit subsets
-   - Rank two-qubit gates
+## Tools/Libraries
 
-3. **Selection**
-   - Choose qubits for circuit
-   - Consider connectivity needs
-   - Balance quality vs. connectivity
-
-4. **Best Practices**
-   - Always check recent calibration
-   - Account for calibration age
-   - Document selection rationale
-   - Track performance over time
+- Qiskit IBMQ Provider
+- Cirq-Google
+- Amazon Braket SDK
+- Pandas
+- Matplotlib

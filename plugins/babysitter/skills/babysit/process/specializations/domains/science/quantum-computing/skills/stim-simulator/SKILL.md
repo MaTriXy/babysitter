@@ -1,6 +1,6 @@
 ---
 name: stim-simulator
-description: Stim integration skill for high-performance stabilizer circuit simulation and QEC analysis
+description: Clifford circuit simulation skill using Stim for error correction studies
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: error-management
-  domain: quantum-computing
-  tools:
-    - Stim
-    - Stabilizer simulation
-    - Detector error models
-  processes:
-    - quantum-error-correction-design
-    - noisy-simulation-and-analysis
-    - fault-tolerant-circuit-design
+  phase: 6
 ---
 
-# Stim Simulator Skill
+# Stim Simulator
 
 ## Purpose
 
-Provides high-performance stabilizer circuit simulation capabilities using Stim for simulating quantum error correction circuits with billions of shots and analyzing decoder performance.
+Provides expert guidance on fast stabilizer circuit simulation using Stim, enabling large-scale quantum error correction studies and noise analysis.
 
 ## Capabilities
 
-- **Fast Stabilizer Simulation**: Simulate Clifford circuits efficiently
-- **Noise Injection**: Add Pauli and depolarizing noise
-- **Detector Sampling**: Sample detector outcomes for decoding
-- **Error Model Generation**: Create detector error models
-- **Circuit Compilation**: Build QEC circuits programmatically
-- **Matching Graph Export**: Export for decoder analysis
+- Fast stabilizer circuit simulation
+- Error injection and propagation
+- Detector sampling
+- Circuit tableau tracking
+- Memory-efficient large-scale simulation
+- Monte Carlo error rate estimation
+- Detector error model generation
+- Pauli frame simulation
 
 ## Usage Guidelines
 
-1. **Circuit Construction**
-   - Build circuits using Stim's circuit format
-   - Add detectors and observables
-   - Configure noise operations
+1. **Circuit Construction**: Build Stim circuits with appropriate gates and noise
+2. **Detector Definition**: Specify detectors for syndrome measurement
+3. **Sampling**: Generate detector samples for decoding analysis
+4. **Error Model**: Extract detector error models for decoder training
+5. **Statistics**: Collect sufficient samples for statistical significance
 
-2. **Simulation**
-   - Use TableauSimulator for state tracking
-   - Use compiled simulation for speed
-   - Sample millions of shots efficiently
+## Tools/Libraries
 
-3. **Decoder Integration**
-   - Export detector error models
-   - Generate matching graphs
-   - Interface with PyMatching
-
-4. **Best Practices**
-   - Use Stim's native circuit format for speed
-   - Leverage detector error models
-   - Profile sampling rates
-   - Document circuit structure
+- Stim
+- Stimcirq
+- PyMatching
+- NumPy

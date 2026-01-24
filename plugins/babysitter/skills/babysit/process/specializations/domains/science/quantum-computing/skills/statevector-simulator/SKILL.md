@@ -1,6 +1,6 @@
 ---
 name: statevector-simulator
-description: Statevector simulation skill for exact quantum circuit simulation and debugging
+description: Full state vector simulation skill for exact quantum circuit evaluation
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: simulation-tools
-  domain: quantum-computing
-  tools:
-    - Qiskit Aer
-    - Cirq Simulator
-    - QuTiP
-  processes:
-    - circuit-validation-testing
-    - algorithm-development
-    - quantum-state-analysis
+  specialization: quantum-computing
+  domain: science
+  category: simulation
+  phase: 6
 ---
 
-# Statevector Simulator Skill
+# Statevector Simulator
 
 ## Purpose
 
-Provides exact statevector simulation capabilities for simulating quantum circuits and analyzing quantum states during algorithm development and debugging.
+Provides expert guidance on exact quantum circuit simulation using full state vector methods for algorithm validation and analysis.
 
 ## Capabilities
 
-- **Full State Simulation**: Track complete quantum state
-- **State Inspection**: View amplitudes and phases
-- **Intermediate States**: Capture state at circuit points
-- **Expectation Values**: Compute exact expectation values
-- **Entanglement Analysis**: Analyze state entanglement
-- **Visualization**: Plot state vectors and Bloch spheres
+- Dense state vector simulation
+- GPU-accelerated simulation (cuQuantum)
+- State visualization
+- Entanglement entropy calculation
+- Fidelity computation
+- Memory-efficient techniques
+- Intermediate state inspection
+- Measurement probability analysis
 
 ## Usage Guidelines
 
-1. **Circuit Setup**
-   - Build circuit for simulation
-   - Configure initial state if needed
-   - Select simulation backend
+1. **Qubit Scaling**: Understand memory limits (2^n amplitudes)
+2. **Simulation Setup**: Configure simulator backend and precision
+3. **Execution**: Run circuits with full state tracking
+4. **Analysis**: Extract amplitudes, probabilities, and entanglement
+5. **Validation**: Compare with expected theoretical results
 
-2. **Simulation**
-   - Run statevector simulation
-   - Extract final state
-   - Capture intermediate states if needed
+## Tools/Libraries
 
-3. **Analysis**
-   - Inspect amplitudes and probabilities
-   - Compute observables
-   - Analyze entanglement structure
-
-4. **Best Practices**
-   - Use for small circuits (< 30 qubits)
-   - Validate against analytical solutions
-   - Document expected vs. observed states
-   - Use for debugging before hardware
+- Qiskit Aer
+- Cirq
+- cuStateVec (NVIDIA cuQuantum)
+- QuTiP
+- NumPy

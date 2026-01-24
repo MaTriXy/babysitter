@@ -8,54 +8,43 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: algorithm-analysis
-  domain: computer-science
-  tools:
-    - Static analysis
-    - SMT solvers
-    - Dafny
-    - Why3
-  processes:
-    - algorithm-correctness-proof
-    - abstract-interpretation-analysis
+  specialization: computer-science
+  domain: science
+  category: verification
+  phase: 6
 ---
 
-# Loop Invariant Generator Skill
+# Loop Invariant Generator
 
 ## Purpose
 
-Provides automated loop invariant inference and verification capabilities for constructing rigorous algorithm correctness proofs.
+Provides expert guidance on generating and verifying loop invariants for proving algorithm correctness.
 
 ## Capabilities
 
-- **Invariant Inference**: Infer candidate loop invariants from code structure
-- **Condition Verification**: Verify initialization, maintenance, and termination
-- **Proof Templates**: Generate formal proof templates for invariants
-- **Complex Structures**: Handle nested loops and complex data structures
-- **Prover Export**: Export to theorem provers (Dafny, Why3, Coq)
+- Infer candidate loop invariants from code structure
+- Verify initialization, maintenance, and termination conditions
+- Generate formal proof templates
+- Handle nested loops and complex data structures
+- Export to theorem provers (Dafny, Why3)
+- Document invariant derivation
 
 ## Usage Guidelines
 
-1. **Code Analysis**
-   - Parse loop structure and variables
-   - Identify loop bounds and modifications
-   - Extract postcondition requirements
+1. **Code Analysis**: Parse loop structure
+2. **Invariant Inference**: Generate candidate invariants
+3. **Verification**: Check three conditions
+4. **Export**: Generate theorem prover input
+5. **Documentation**: Explain invariant meaning
 
-2. **Invariant Generation**
-   - Generate candidate invariants automatically
-   - Strengthen candidates as needed
-   - Handle quantified invariants
+## Dependencies
 
-3. **Verification**
-   - Check initialization before loop entry
-   - Verify maintenance across iterations
-   - Confirm postcondition on termination
+- Static analysis tools
+- SMT solvers (Z3)
+- Theorem provers
 
-4. **Best Practices**
-   - Start with simple invariants
-   - Strengthen incrementally
-   - Verify with SMT solvers
-   - Document proof structure
+## Process Integration
+
+- Algorithm Correctness Proof
+- Abstract Interpretation Analysis workflows

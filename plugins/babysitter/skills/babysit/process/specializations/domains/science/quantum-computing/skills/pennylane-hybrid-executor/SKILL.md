@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-frameworks
-  domain: quantum-computing
-  tools:
-    - PennyLane
-    - PennyLane-Lightning
-    - PennyLane plugins
-  processes:
-    - variational-algorithm-implementation
-    - quantum-classifier-implementation
-    - quantum-neural-network-training
+  specialization: quantum-computing
+  domain: science
+  category: quantum-framework
+  phase: 6
 ---
 
-# PennyLane Hybrid Executor Skill
+# PennyLane Hybrid Executor
 
 ## Purpose
 
-Provides PennyLane capabilities for hybrid quantum-classical machine learning, enabling automatic differentiation through quantum circuits and integration with ML frameworks.
+Provides expert guidance on hybrid quantum-classical workflows using PennyLane, enabling seamless integration of quantum circuits with classical machine learning frameworks.
 
 ## Capabilities
 
-- **QNode Definition**: Define and execute quantum nodes seamlessly
-- **Automatic Differentiation**: Compute gradients through quantum circuits
-- **Device Agnostic**: Execute on multiple backends without code changes
-- **ML Integration**: Interface with PyTorch, TensorFlow, and JAX
-- **Variational Optimization**: Optimize variational circuit parameters
-- **Parameter Shift**: Compute exact gradients using parameter shift rule
+- Quantum node (QNode) definition and execution
+- Automatic differentiation for quantum circuits
+- Device-agnostic circuit execution
+- Integration with ML frameworks (PyTorch, TensorFlow, JAX)
+- Variational algorithm optimization
+- Parameter shift rule gradients
+- Shot-based and analytic differentiation
+- Multi-device workflow orchestration
 
 ## Usage Guidelines
 
-1. **QNode Creation**
-   - Define quantum function with qml decorators
-   - Select appropriate device
-   - Configure interface for ML framework
+1. **QNode Definition**: Create differentiable quantum functions with device specification
+2. **Gradient Computation**: Select appropriate differentiation method for the use case
+3. **Framework Integration**: Seamlessly combine with PyTorch, TensorFlow, or JAX models
+4. **Optimization**: Use classical optimizers to train variational circuits
+5. **Device Switching**: Test on simulators before deploying to hardware
 
-2. **Circuit Design**
-   - Use PennyLane gates and templates
-   - Apply variational layers
-   - Return expectation values or samples
+## Tools/Libraries
 
-3. **Optimization**
-   - Choose classical optimizer
-   - Configure learning rate and iterations
-   - Monitor convergence
-
-4. **Best Practices**
-   - Use lightning simulator for speed
-   - Leverage gradient-free methods for noisy hardware
-   - Batch parameter updates
-   - Profile quantum vs. classical overhead
+- PennyLane
+- PennyLane-Lightning
+- PennyLane-Qiskit
+- PennyLane-Cirq
+- PennyLane-SF (Strawberry Fields)

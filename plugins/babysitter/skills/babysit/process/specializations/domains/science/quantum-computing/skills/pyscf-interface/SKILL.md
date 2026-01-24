@@ -1,6 +1,6 @@
 ---
 name: pyscf-interface
-description: PySCF quantum chemistry interface skill for generating molecular data for quantum algorithms
+description: PySCF quantum chemistry interface for classical electronic structure calculations
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-chemistry
-  domain: quantum-computing
-  tools:
-    - PySCF
-    - OpenFermion-PySCF
-    - Qiskit Nature
-  processes:
-    - molecular-hamiltonian-construction
-    - classical-reference-calculation
-    - active-space-selection
+  phase: 6
 ---
 
-# PySCF Interface Skill
+# PySCF Interface
 
 ## Purpose
 
-Provides PySCF quantum chemistry interface capabilities for computing molecular integrals, performing classical reference calculations, and preparing molecular data for quantum simulation.
+Provides expert guidance on PySCF quantum chemistry calculations for generating molecular data needed in quantum computing applications.
 
 ## Capabilities
 
-- **Hartree-Fock Calculations**: Compute HF reference states
-- **Integral Generation**: Generate one- and two-electron integrals
-- **Active Space Selection**: Define CASSCF active spaces
-- **Geometry Optimization**: Optimize molecular structures
-- **Basis Set Support**: Wide range of basis sets
-- **OpenFermion Integration**: Export to OpenFermion format
+- Hartree-Fock calculations
+- Coupled cluster (CCSD) calculations
+- Active space selection
+- Molecular orbital visualization
+- Integral computation
+- Basis set management
+- Geometry optimization
+- Property calculations
 
 ## Usage Guidelines
 
-1. **Molecular Setup**
-   - Define atom positions and charges
-   - Select appropriate basis set
-   - Configure spin and symmetry
+1. **Molecule Definition**: Specify molecular geometry and charge/multiplicity
+2. **Basis Selection**: Choose appropriate basis set for accuracy requirements
+3. **Method Execution**: Run HF, CCSD, or other methods for reference energies
+4. **Integral Export**: Extract one and two-electron integrals for quantum algorithms
+5. **Active Space**: Identify chemically relevant orbitals for reduced calculations
 
-2. **Reference Calculations**
-   - Run Hartree-Fock or DFT
-   - Analyze molecular orbitals
-   - Select active space orbitals
+## Tools/Libraries
 
-3. **Integral Export**
-   - Generate AO or MO integrals
-   - Export to OpenFermion
-   - Prepare for quantum simulation
-
-4. **Best Practices**
-   - Validate basis set convergence
-   - Check SCF convergence
-   - Document computational settings
-   - Compare with literature values
+- PySCF
+- OpenFermion-PySCF
+- Qiskit Nature
+- ASE
+- RDKit

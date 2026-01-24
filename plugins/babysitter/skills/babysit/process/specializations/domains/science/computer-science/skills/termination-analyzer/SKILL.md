@@ -1,6 +1,6 @@
 ---
 name: termination-analyzer
-description: Prove termination of algorithms and programs using ranking functions and well-founded orderings
+description: Prove termination of algorithms and programs through ranking functions and well-founded orderings
 allowed-tools:
   - Bash
   - Read
@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: algorithm-analysis
-  domain: computer-science
-  tools:
-    - AProVE
-    - T2
-    - Termination provers
-  processes:
-    - algorithm-correctness-proof
-    - decidability-analysis
+  specialization: computer-science
+  domain: science
+  category: verification
+  phase: 6
 ---
 
-# Termination Analyzer Skill
+# Termination Analyzer
 
 ## Purpose
 
-Provides termination analysis capabilities for proving that algorithms and programs always terminate using ranking functions and well-founded orderings.
+Provides expert guidance on proving algorithm and program termination through various techniques.
 
 ## Capabilities
 
-- **Ranking Functions**: Identify ranking/variant functions automatically
-- **Well-Founded Orderings**: Prove well-foundedness of orderings
-- **Mutual Recursion**: Handle mutually recursive function termination
-- **Non-Termination Detection**: Detect potential non-termination
-- **Certificates**: Generate machine-checkable termination certificates
+- Identify ranking/variant functions automatically
+- Prove well-founded orderings
+- Handle mutual recursion
+- Detect potential non-termination
+- Generate termination certificates
+- Interface with termination provers
 
 ## Usage Guidelines
 
-1. **Analysis Setup**
-   - Parse program or algorithm structure
-   - Identify recursive calls and loops
-   - Extract transition relations
+1. **Program Analysis**: Parse control flow
+2. **Ranking Function**: Identify or synthesize
+3. **Well-Foundedness**: Prove ordering
+4. **Certificate**: Generate termination proof
+5. **Documentation**: Explain termination argument
 
-2. **Ranking Function Search**
-   - Try linear ranking functions first
-   - Consider lexicographic orderings
-   - Use template-based synthesis
+## Dependencies
 
-3. **Proof Construction**
-   - Verify ranking function decreases
-   - Confirm well-foundedness
-   - Handle conditional transitions
+- AProVE, T2
+- SMT solvers
 
-4. **Best Practices**
-   - Start with simple ranking functions
-   - Document well-foundedness arguments
-   - Consider non-termination explicitly
-   - Verify proofs with automated tools
+## Process Integration
+
+- Algorithm Correctness Proof
+- Decidability Analysis workflows

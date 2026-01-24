@@ -1,6 +1,6 @@
 ---
 name: ansatz-designer
-description: Variational ansatz design skill for creating and optimizing parameterized quantum circuits
+description: Parameterized quantum circuit (ansatz) design skill for variational algorithms
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: circuit-design
-  domain: quantum-computing
-  tools:
-    - Qiskit Circuit Library
-    - PennyLane templates
-    - Cirq ansatzes
-  processes:
-    - variational-algorithm-implementation
-    - quantum-circuit-design-and-optimization
-    - quantum-neural-network-training
+  phase: 6
 ---
 
-# Ansatz Designer Skill
+# Ansatz Designer
 
 ## Purpose
 
-Provides variational ansatz design capabilities for creating problem-specific parameterized quantum circuits suitable for VQE, QAOA, quantum machine learning, and other variational algorithms.
+Provides expert guidance on designing parameterized quantum circuits (ansatze) for variational quantum algorithms, balancing expressibility with trainability.
 
 ## Capabilities
 
-- **Hardware-Efficient Ansatzes**: Design circuits respecting device constraints
-- **Chemistry-Inspired Ansatzes**: Create UCCSD and related structures
-- **Problem-Specific Design**: Build QAOA mixers and cost unitaries
-- **Expressibility Analysis**: Evaluate ansatz expressibility
-- **Entanglement Structure**: Design entanglement patterns
-- **Parameter Initialization**: Configure initial parameter strategies
+- Hardware-efficient ansatz generation
+- UCCSD ansatz construction
+- ADAPT-VQE ansatz building
+- Expressibility analysis
+- Barren plateau detection
+- Custom ansatz templates
+- Entanglement structure design
+- Layer depth optimization
 
 ## Usage Guidelines
 
-1. **Ansatz Selection**
-   - Analyze problem structure and requirements
-   - Consider hardware constraints
-   - Balance depth with expressibility
+1. **Problem Analysis**: Determine ansatz requirements based on target Hamiltonian
+2. **Architecture Selection**: Choose between hardware-efficient and problem-inspired ansatze
+3. **Expressibility Testing**: Evaluate ansatz capacity to represent target states
+4. **Trainability Assessment**: Check for barren plateau indicators
+5. **Hardware Adaptation**: Modify ansatz for target hardware connectivity
 
-2. **Circuit Construction**
-   - Build rotation and entanglement layers
-   - Configure parameter sharing
-   - Define layer repetition depth
+## Tools/Libraries
 
-3. **Analysis**
-   - Evaluate circuit expressibility
-   - Check entangling capability
-   - Profile parameter count and depth
-
-4. **Best Practices**
-   - Start with shallow circuits
-   - Use problem symmetries
-   - Consider barren plateau risks
-   - Document ansatz design rationale
+- Qiskit Nature
+- PennyLane
+- Cirq
+- TensorFlow Quantum

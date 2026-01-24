@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-frameworks
-  domain: quantum-computing
-  tools:
-    - Cirq
-    - Cirq-Google
-    - TensorFlow Quantum
-  processes:
-    - quantum-circuit-design-and-optimization
-    - hardware-backend-configuration
-    - multi-platform-deployment
+  specialization: quantum-computing
+  domain: science
+  category: quantum-framework
+  phase: 6
 ---
 
-# Cirq Circuit Builder Skill
+# Cirq Circuit Builder
 
 ## Purpose
 
-Provides Google Cirq quantum circuit construction capabilities for designing and executing circuits on Google quantum processors and simulators.
+Provides expert guidance on quantum circuit design and execution using Google Cirq framework, enabling development and deployment to Google quantum processors.
 
 ## Capabilities
 
-- **Circuit Construction**: Build circuits using Cirq's qubit and gate abstractions
-- **Device-Aware Compilation**: Compile circuits respecting device topology
-- **Noise Simulation**: Characterize and simulate device noise
-- **Calibration**: Virtual and XEB calibration support
-- **Floquet Calibration**: Advanced calibration techniques
-- **Serialization**: Import/export circuits in various formats
+- Quantum circuit construction using Cirq
+- Device-aware circuit compilation
+- Noise simulation and characterization
+- Virtual and XEB calibration
+- Floquet calibration support
+- Circuit serialization and import/export
+- Sycamore processor targeting
+- Custom gate definitions
 
 ## Usage Guidelines
 
-1. **Qubit Definition**
-   - Use LineQubit or GridQubit as appropriate
-   - Match qubit layout to device topology
-   - Consider connectivity constraints
+1. **Circuit Design**: Build circuits using Cirq operations and moments
+2. **Device Compilation**: Use device specifications for topology-aware compilation
+3. **Noise Simulation**: Configure noise models for realistic simulation
+4. **Calibration**: Integrate calibration data for accurate hardware mapping
+5. **Serialization**: Export circuits for sharing and version control
 
-2. **Gate Application**
-   - Apply native gates for efficiency
-   - Use cirq.Circuit for composition
-   - Add measurements with measure()
+## Tools/Libraries
 
-3. **Simulation**
-   - Use cirq.Simulator for exact simulation
-   - Add noise models for realistic results
-   - Analyze final state or measurement outcomes
-
-4. **Best Practices**
-   - Respect device connectivity
-   - Use moment structure for parallelism
-   - Validate circuits before hardware execution
-   - Document device calibration data used
+- Cirq
+- Cirq-Google
+- TensorFlow Quantum
+- Cirq-IonQ
+- Cirq-AQT

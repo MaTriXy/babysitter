@@ -1,6 +1,6 @@
 ---
 name: qrng-generator
-description: Quantum random number generation skill for producing certified random numbers using quantum processes
+description: Quantum random number generation skill for cryptographic applications
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-cryptography
-  domain: quantum-computing
-  tools:
-    - Qiskit
-    - QRNG APIs
-    - Randomness extractors
-  processes:
-    - quantum-randomness-generation
-    - certified-randomness-protocol
-    - cryptographic-key-generation
+  specialization: quantum-computing
+  domain: science
+  category: cryptography
+  phase: 6
 ---
 
-# QRNG Generator Skill
+# QRNG Generator
 
 ## Purpose
 
-Provides quantum random number generation capabilities for producing high-quality random numbers certified by quantum mechanical principles for cryptographic and simulation applications.
+Provides expert guidance on generating true random numbers using quantum processes for cryptographic and security applications.
 
 ## Capabilities
 
-- **Measurement-Based QRNG**: Generate randomness from qubit measurements
-- **Vacuum Fluctuation QRNG**: Use quantum vacuum noise
-- **Device-Independent QRNG**: Bell-test certified randomness
-- **Randomness Extraction**: Post-process raw quantum randomness
-- **Entropy Estimation**: Quantify randomness quality
-- **Statistical Testing**: Validate randomness quality
+- Hadamard-based randomness generation
+- Randomness extraction and post-processing
+- NIST SP 800-90B compliance testing
+- Entropy rate estimation
+- Min-entropy analysis
+- Integration with cryptographic APIs
+- Bias correction
+- Real-time QRNG streaming
 
 ## Usage Guidelines
 
-1. **Source Selection**
-   - Choose QRNG method based on requirements
-   - Consider certification level needed
-   - Evaluate throughput requirements
+1. **Circuit Design**: Build quantum circuits for randomness generation
+2. **Execution**: Run on quantum hardware for true randomness
+3. **Testing**: Verify randomness quality with statistical tests
+4. **Post-Processing**: Apply extractors to remove bias
+5. **Integration**: Connect QRNG output to cryptographic systems
 
-2. **Generation**
-   - Configure quantum source
-   - Collect raw random bits
-   - Apply randomness extraction
+## Tools/Libraries
 
-3. **Validation**
-   - Run statistical test suites
-   - Verify entropy bounds
-   - Document certification chain
-
-4. **Best Practices**
-   - Use appropriate post-processing
-   - Maintain entropy accounting
-   - Document randomness source
-   - Archive certification data
+- Qiskit
+- NIST Statistical Test Suite
+- dieharder
+- TestU01
+- PractRand

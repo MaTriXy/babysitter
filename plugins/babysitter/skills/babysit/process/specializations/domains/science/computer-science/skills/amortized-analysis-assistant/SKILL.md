@@ -1,6 +1,6 @@
 ---
 name: amortized-analysis-assistant
-description: Apply amortized analysis techniques to analyze operation sequences on data structures
+description: Apply amortized analysis techniques including aggregate, accounting, and potential methods
 allowed-tools:
   - Bash
   - Read
@@ -8,52 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: algorithm-analysis
-  domain: computer-science
-  tools:
-    - Symbolic computation
-    - Mathematical analysis
-  processes:
-    - algorithm-complexity-analysis
-    - concurrent-data-structure-design
+  phase: 6
 ---
 
-# Amortized Analysis Assistant Skill
+# Amortized Analysis Assistant
 
 ## Purpose
 
-Provides amortized analysis capabilities for determining average-case complexity of operation sequences, particularly for data structures with occasional expensive operations.
+Provides expert guidance on amortized analysis of data structure operations and algorithm sequences.
 
 ## Capabilities
 
-- **Aggregate Method**: Calculate total cost over operation sequences
-- **Accounting Method**: Assign credits to operations and track balance
-- **Potential Function**: Design and verify potential functions
-- **Banker's Method**: Handle persistent data structures
-- **Bound Documentation**: Generate amortized bound documentation
+- Aggregate method calculations
+- Accounting method with credit tracking
+- Potential function design and verification
+- Banker's method for persistent data structures
+- Generate amortized bounds documentation
+- Compare amortized vs worst-case complexity
 
 ## Usage Guidelines
 
-1. **Method Selection**
-   - Use aggregate for simple sequences
-   - Use accounting for intuitive analysis
-   - Use potential for formal proofs
+1. **Operation Sequence**: Define operation types
+2. **Method Selection**: Choose analysis technique
+3. **Analysis**: Apply selected method
+4. **Bound Derivation**: Calculate amortized cost
+5. **Documentation**: Explain analysis
 
-2. **Potential Design**
-   - Define potential function on data structure state
-   - Ensure non-negativity
-   - Verify telescoping property
+## Dependencies
 
-3. **Cost Calculation**
-   - Compute actual costs per operation
-   - Add amortized overhead
-   - Derive amortized bounds
+- Symbolic computation
+- Documentation tools
 
-4. **Best Practices**
-   - Verify potential is always non-negative
-   - Document credit invariants clearly
-   - Compare with worst-case bounds
-   - Validate with concrete examples
+## Process Integration
+
+- Algorithm Complexity Analysis
+- Concurrent Data Structure Design workflows

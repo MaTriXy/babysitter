@@ -1,6 +1,6 @@
 ---
 name: vqc-trainer
-description: Variational quantum classifier training skill for quantum machine learning classification tasks
+description: Variational quantum classifier training skill with gradient optimization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-ml
-  domain: quantum-computing
-  tools:
-    - Qiskit Machine Learning
-    - PennyLane
-    - TensorFlow Quantum
-  processes:
-    - quantum-classifier-implementation
-    - quantum-neural-network-training
-    - variational-algorithm-implementation
+  phase: 6
 ---
 
-# VQC Trainer Skill
+# VQC Trainer
 
 ## Purpose
 
-Provides variational quantum classifier training capabilities for building and optimizing quantum neural networks for classification tasks.
+Provides expert guidance on training variational quantum classifiers, including data encoding, circuit design, and gradient-based optimization.
 
 ## Capabilities
 
-- **Data Encoding**: Encode classical data into quantum states
-- **Variational Layers**: Design trainable quantum layers
-- **Gradient Computation**: Calculate gradients via parameter shift
-- **Optimizer Integration**: Interface with classical optimizers
-- **Batch Training**: Process data in mini-batches
-- **Hybrid Networks**: Combine quantum and classical layers
+- Data encoding circuit design
+- Variational layer construction
+- Gradient-based optimization (SPSA, Adam)
+- Cross-validation for QML
+- Hyperparameter tuning
+- Overfitting detection
+- Learning curve analysis
+- Ensemble methods
 
 ## Usage Guidelines
 
-1. **Circuit Design**
-   - Define data encoding circuit
-   - Design variational ansatz
-   - Configure measurement strategy
+1. **Data Preparation**: Preprocess classical data for quantum encoding
+2. **Encoding Design**: Select appropriate data encoding strategy
+3. **Ansatz Design**: Build variational circuit with trainable parameters
+4. **Training Setup**: Configure optimizer, learning rate, and batch size
+5. **Evaluation**: Assess model on test set with proper metrics
 
-2. **Training Setup**
-   - Prepare training and validation data
-   - Select optimizer and learning rate
-   - Configure loss function
+## Tools/Libraries
 
-3. **Training Execution**
-   - Run optimization loop
-   - Monitor loss convergence
-   - Track validation accuracy
-
-4. **Best Practices**
-   - Use gradient-free optimizers for noisy hardware
-   - Monitor barren plateau effects
-   - Regularize to prevent overfitting
-   - Document hyperparameter choices
+- Qiskit Machine Learning
+- PennyLane
+- TensorFlow Quantum
+- PyTorch
+- scikit-learn

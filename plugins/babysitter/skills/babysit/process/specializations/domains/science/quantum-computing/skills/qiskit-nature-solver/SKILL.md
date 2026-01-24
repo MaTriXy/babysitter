@@ -1,6 +1,6 @@
 ---
 name: qiskit-nature-solver
-description: Qiskit Nature integration skill for quantum chemistry and materials science simulations
+description: Qiskit Nature skill for quantum chemistry and materials science applications
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-chemistry
-  domain: quantum-computing
-  tools:
-    - Qiskit Nature
-    - Qiskit Algorithms
-    - PySCF driver
-  processes:
-    - vqe-molecular-simulation
-    - ground-state-energy-calculation
-    - molecular-property-computation
+  phase: 6
 ---
 
-# Qiskit Nature Solver Skill
+# Qiskit Nature Solver
 
 ## Purpose
 
-Provides Qiskit Nature capabilities for solving quantum chemistry and materials science problems using variational and other quantum algorithms.
+Provides expert guidance on quantum chemistry and materials science calculations using Qiskit Nature, enabling ground state and excited state solutions.
 
 ## Capabilities
 
-- **VQE Solver**: Variational quantum eigensolver for ground states
-- **ADAPT-VQE**: Adaptive ansatz construction
-- **Excited States**: Compute excited state energies
-- **Property Calculation**: Dipole moments and other properties
-- **Driver Integration**: PySCF, PSI4, Gaussian drivers
-- **Qubit Mapping**: Multiple fermion-to-qubit transforms
+- VQE ground state solver
+- QEOM excited state solver
+- Fermionic operator handling
+- Molecular driver integration
+- Active space reduction
+- Lattice model construction
+- Property calculation
+- Qubit converter management
 
 ## Usage Guidelines
 
-1. **Problem Setup**
-   - Load molecular geometry
-   - Run classical driver for integrals
-   - Configure qubit mapping
+1. **Problem Setup**: Define molecular system using supported drivers
+2. **Mapping Selection**: Choose qubit mapping strategy (Jordan-Wigner, Parity, etc.)
+3. **Solver Configuration**: Set up VQE with ansatz and optimizer
+4. **Execution**: Run ground state calculation with convergence monitoring
+5. **Analysis**: Extract energies, wavefunctions, and molecular properties
 
-2. **Algorithm Configuration**
-   - Select solver (VQE, ADAPT-VQE, etc.)
-   - Choose ansatz and optimizer
-   - Configure convergence criteria
+## Tools/Libraries
 
-3. **Execution**
-   - Run on simulator or hardware
-   - Monitor optimization progress
-   - Extract final energies
-
-4. **Best Practices**
-   - Start with small molecules
-   - Compare with classical results
-   - Use symmetry reduction
-   - Document solver configuration
+- Qiskit Nature
+- Qiskit Algorithms
+- PySCF driver
+- Gaussian driver
+- Qiskit Aer

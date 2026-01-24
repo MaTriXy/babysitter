@@ -1,6 +1,6 @@
 ---
 name: rb-benchmarker
-description: Randomized benchmarking skill for characterizing quantum gate fidelities and device performance
+description: Randomized benchmarking skill for gate fidelity characterization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: error-management
-  domain: quantum-computing
-  tools:
-    - Qiskit Experiments
-    - Cirq benchmarks
-    - pyGSTi
-  processes:
-    - quantum-hardware-benchmarking
-    - gate-calibration-optimization
-    - device-characterization
+  phase: 6
 ---
 
-# RB Benchmarker Skill
+# RB Benchmarker
 
 ## Purpose
 
-Provides randomized benchmarking capabilities for characterizing quantum gate fidelities, including standard RB, interleaved RB, and cross-entropy benchmarking for comprehensive device characterization.
+Provides expert guidance on randomized benchmarking protocols for characterizing quantum gate fidelities and hardware performance.
 
 ## Capabilities
 
-- **Standard RB**: Measure average Clifford gate fidelity
-- **Interleaved RB**: Characterize specific gate fidelity
-- **Simultaneous RB**: Assess crosstalk effects
-- **Cross-Entropy Benchmarking**: Evaluate random circuit fidelity
-- **Character RB**: Detect coherent errors
-- **Cycle Benchmarking**: Characterize gate cycles
+- Standard randomized benchmarking
+- Interleaved randomized benchmarking
+- Simultaneous RB for crosstalk
+- Character benchmarking
+- Cycle benchmarking
+- Fidelity decay fitting
+- SPAM error separation
+- Confidence interval estimation
 
 ## Usage Guidelines
 
-1. **Experiment Design**
-   - Select RB variant for measurement goal
-   - Configure sequence lengths
-   - Determine shot count for statistics
+1. **Protocol Selection**: Choose RB variant based on characterization goals
+2. **Sequence Generation**: Create random Clifford sequences of varying lengths
+3. **Execution**: Run benchmarking experiments with sufficient statistics
+4. **Fitting**: Analyze decay curves to extract fidelity parameters
+5. **Reporting**: Generate comprehensive benchmarking reports
 
-2. **Circuit Generation**
-   - Generate random Clifford sequences
-   - Add interleaved gates if applicable
-   - Include recovery gates
+## Tools/Libraries
 
-3. **Analysis**
-   - Fit survival probability decay
-   - Extract error per Clifford
-   - Calculate gate fidelity
-
-4. **Best Practices**
-   - Use sufficient sequence lengths
-   - Account for SPAM errors
-   - Report confidence intervals
-   - Document benchmarking conditions
+- Qiskit Experiments
+- Cirq
+- True-Q
+- PyGSTi
+- SciPy

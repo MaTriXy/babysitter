@@ -1,6 +1,6 @@
 ---
 name: pyzx-simplifier
-description: PyZX integration skill for ZX-calculus based quantum circuit simplification and verification
+description: ZX-calculus based circuit simplification skill for advanced quantum circuit optimization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: circuit-design
-  domain: quantum-computing
-  tools:
-    - PyZX
-    - ZX-calculus
-    - Graph rewriting
-  processes:
-    - quantum-circuit-design-and-optimization
-    - circuit-equivalence-verification
-    - quantum-compiler-development
+  phase: 6
 ---
 
-# PyZX Simplifier Skill
+# PyZX Simplifier
 
 ## Purpose
 
-Provides ZX-calculus based quantum circuit simplification capabilities for reducing circuit complexity, verifying circuit equivalence, and extracting optimized circuits from ZX-diagrams.
+Provides expert guidance on ZX-calculus based circuit simplification, enabling powerful optimization through graphical quantum circuit representation.
 
 ## Capabilities
 
-- **ZX-Diagram Construction**: Build ZX-diagrams from quantum circuits
-- **Graph Simplification**: Apply ZX-calculus rewrite rules
-- **Circuit Extraction**: Extract optimized circuits from simplified diagrams
-- **Equivalence Checking**: Verify circuit equivalence via ZX-calculus
-- **T-Count Optimization**: Minimize T-gate count for fault tolerance
-- **Visualization**: Display ZX-diagrams and transformations
+- ZX-diagram representation of circuits
+- Full simplification via ZX-calculus rules
+- T-count minimization
+- Clifford circuit extraction
+- Ancilla-free circuit optimization
+- Visualization of ZX-diagrams
+- Circuit-to-graph conversion
+- Equality verification
 
 ## Usage Guidelines
 
-1. **Diagram Creation**
-   - Convert circuits to ZX-diagrams
-   - Import from various formats
-   - Configure spider representation
+1. **Conversion**: Transform quantum circuits to ZX-diagrams for analysis
+2. **Simplification**: Apply ZX-calculus rewrite rules for optimization
+3. **T-Minimization**: Focus on T-gate reduction for fault-tolerant computing
+4. **Extraction**: Convert optimized ZX-diagrams back to circuits
+5. **Visualization**: Generate visual representations for understanding and debugging
 
-2. **Simplification**
-   - Apply full_reduce for maximum simplification
-   - Use targeted rewrite rules
-   - Monitor diagram size during simplification
+## Tools/Libraries
 
-3. **Circuit Extraction**
-   - Extract circuits from graph-like diagrams
-   - Verify extraction success
-   - Compare with original circuit
-
-4. **Best Practices**
-   - Use for T-count optimization
-   - Verify equivalence post-simplification
-   - Document transformation sequences
-   - Profile simplification time for large circuits
+- PyZX
+- ZX-calculus
+- NetworkX
+- Matplotlib

@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: algorithm-analysis
-  domain: computer-science
-  tools:
-    - Symbolic computation
-    - Mathematical notation rendering
-    - LaTeX
-  processes:
-    - algorithm-complexity-analysis
-    - algorithm-correctness-proof
-    - complexity-lower-bound-proof
+  phase: 6
 ---
 
-# Asymptotic Notation Calculator Skill
+# Asymptotic Notation Calculator
 
 ## Purpose
 
-Provides automated derivation and simplification of asymptotic complexity expressions, enabling rigorous algorithm analysis with proper mathematical notation.
+Provides expert guidance on deriving, simplifying, and comparing asymptotic complexity expressions for algorithm analysis.
 
 ## Capabilities
 
-- **Expression Parsing**: Parse and interpret asymptotic expressions
-- **Simplification**: Simplify complex expressions to standard forms
-- **Comparison**: Compare complexity classes formally
-- **Dominant Terms**: Identify dominant terms in multi-term expressions
-- **Factor Handling**: Handle logarithmic, polynomial, and exponential factors
-- **LaTeX Generation**: Generate publication-quality LaTeX notation
+- Parse and simplify asymptotic expressions
+- Compare complexity classes
+- Identify dominant terms
+- Handle logarithmic, polynomial, and exponential factors
+- Generate LaTeX-formatted notation
+- Verify asymptotic relationships
 
 ## Usage Guidelines
 
-1. **Expression Input**
-   - Accept complexity expressions in various formats
-   - Handle nested expressions and compositions
-   - Support symbolic and numeric coefficients
+1. **Expression Input**: Parse complexity expressions
+2. **Simplification**: Apply asymptotic rules
+3. **Comparison**: Determine relative complexity
+4. **Formatting**: Generate publication-quality notation
+5. **Documentation**: Explain simplification steps
 
-2. **Analysis**
-   - Apply asymptotic rules correctly
-   - Identify tight bounds when possible
-   - Distinguish O, Omega, and Theta
+## Dependencies
 
-3. **Output**
-   - Generate simplified standard forms
-   - Provide step-by-step derivations
-   - Export to LaTeX for publications
+- Symbolic computation libraries
+- LaTeX rendering
 
-4. **Best Practices**
-   - Verify simplifications are valid
-   - Document assumptions about inputs
-   - Consider special cases explicitly
-   - Maintain mathematical rigor
+## Process Integration
+
+- Algorithm Complexity Analysis
+- Algorithm Correctness Proof workflows

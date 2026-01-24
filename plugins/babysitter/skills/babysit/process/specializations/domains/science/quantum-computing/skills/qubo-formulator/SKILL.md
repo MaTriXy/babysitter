@@ -1,6 +1,6 @@
 ---
 name: qubo-formulator
-description: QUBO formulation skill for converting optimization problems to quadratic unconstrained binary format
+description: QUBO (Quadratic Unconstrained Binary Optimization) formulation skill for optimization problems
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-optimization
-  domain: quantum-computing
-  tools:
-    - D-Wave Ocean
-    - PyQUBO
-    - Qiskit Optimization
-  processes:
-    - quantum-optimization-application
-    - qaoa-implementation
-    - quantum-annealing-problem-formulation
+  specialization: quantum-computing
+  domain: science
+  category: simulation
+  phase: 6
 ---
 
-# QUBO Formulator Skill
+# QUBO Formulator
 
 ## Purpose
 
-Provides QUBO (Quadratic Unconstrained Binary Optimization) formulation capabilities for converting combinatorial optimization problems into formats suitable for quantum annealers and QAOA.
+Provides expert guidance on formulating optimization problems as QUBO/Ising models for execution on quantum annealers and variational algorithms.
 
 ## Capabilities
 
-- **Problem Encoding**: Convert problems to QUBO/Ising form
-- **Constraint Handling**: Add penalty terms for constraints
-- **Coefficient Tuning**: Optimize penalty coefficients
-- **Variable Reduction**: Reduce problem size
-- **Embedding**: Embed on hardware topology
-- **Solution Decoding**: Interpret quantum solutions
+- Problem encoding to QUBO/Ising
+- Constraint handling (penalty methods)
+- Variable reduction techniques
+- D-Wave integration
+- QAOA cost Hamiltonian construction
+- Solution decoding
+- Embedding optimization
+- Penalty weight tuning
 
 ## Usage Guidelines
 
-1. **Problem Analysis**
-   - Define objective function
-   - Identify constraints
-   - Determine variable types
+1. **Problem Definition**: Formalize optimization problem mathematically
+2. **Binary Encoding**: Convert variables to binary representation
+3. **Constraint Handling**: Add penalty terms for constraints
+4. **QUBO Construction**: Build quadratic matrix form
+5. **Solution Interpretation**: Decode binary solutions to original problem
 
-2. **QUBO Formulation**
-   - Convert to binary variables
-   - Add constraint penalties
-   - Construct Q matrix
+## Tools/Libraries
 
-3. **Optimization**
-   - Tune penalty strengths
-   - Reduce variable count
-   - Prepare for solver
-
-4. **Best Practices**
-   - Validate formulation correctness
-   - Test penalty strength sensitivity
-   - Document encoding choices
-   - Compare with classical solvers
+- D-Wave Ocean
+- PyQUBO
+- Qiskit Optimization
+- dimod
+- dwavebinarycsp

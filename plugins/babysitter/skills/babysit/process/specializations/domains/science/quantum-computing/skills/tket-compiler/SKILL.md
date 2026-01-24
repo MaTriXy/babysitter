@@ -1,6 +1,6 @@
 ---
 name: tket-compiler
-description: Quantinuum t|ket> integration skill for advanced quantum circuit compilation and optimization
+description: Cambridge Quantum (Quantinuum) t|ket> compiler skill for platform-independent circuit optimization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: circuit-design
-  domain: quantum-computing
-  tools:
-    - pytket
-    - t|ket> compiler
-    - pytket-extensions
-  processes:
-    - quantum-circuit-design-and-optimization
-    - hardware-backend-configuration
-    - multi-platform-deployment
+  phase: 6
 ---
 
-# t|ket> Compiler Skill
+# TKET Compiler
 
 ## Purpose
 
-Provides Quantinuum t|ket> quantum compiler capabilities for advanced circuit optimization, hardware-specific compilation, and cross-platform circuit deployment.
+Provides expert guidance on platform-independent quantum circuit compilation using t|ket>, enabling optimized deployment across multiple hardware backends.
 
 ## Capabilities
 
-- **Multi-Stage Compilation**: Apply optimization passes in sequence
-- **Hardware Routing**: Route circuits for specific device topologies
-- **Gate Set Conversion**: Convert to target native gate sets
-- **Peephole Optimization**: Apply local circuit optimizations
-- **Backend Integration**: Compile for multiple hardware platforms
-- **Circuit Transformation**: Transform circuits between representations
+- Multi-platform compilation
+- Phase gadget optimization
+- Clifford simplification
+- Routing and placement algorithms
+- Noise-aware compilation
+- Circuit rewriting strategies
+- Predicate-based pass selection
+- Backend targeting
 
 ## Usage Guidelines
 
-1. **Circuit Import**
-   - Import from Qiskit, Cirq, or other frameworks
-   - Define circuits using pytket primitives
-   - Configure symbolic parameters
+1. **Pass Selection**: Choose compilation passes based on circuit characteristics
+2. **Backend Targeting**: Configure compilation for specific hardware architectures
+3. **Optimization Strategy**: Balance compilation time with output quality
+4. **Noise Awareness**: Incorporate calibration data for noise-aware routing
+5. **Verification**: Validate compiled circuits meet backend constraints
 
-2. **Optimization Passes**
-   - Apply FullPeepholeOptimise for general optimization
-   - Use RemoveRedundancies for gate cancellation
-   - Configure pass sequences for specific goals
+## Tools/Libraries
 
-3. **Backend Compilation**
-   - Select target backend
-   - Apply device-specific compilation
-   - Verify compiled circuit validity
-
-4. **Best Practices**
-   - Benchmark different optimization strategies
-   - Use platform-specific extensions
-   - Document compilation choices
-   - Test on simulators before hardware
+- pytket
+- pytket-qiskit
+- pytket-cirq
+- pytket-braket
+- pytket-quantinuum

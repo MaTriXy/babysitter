@@ -1,6 +1,6 @@
 ---
 name: mitiq-error-mitigator
-description: Mitiq integration skill for quantum error mitigation techniques on noisy quantum devices
+description: Error mitigation skill using Mitiq for NISQ device noise reduction
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: error-management
-  domain: quantum-computing
-  tools:
-    - Mitiq
-    - Zero-noise extrapolation
-    - Probabilistic error cancellation
-  processes:
-    - error-mitigation-strategy-implementation
-    - noisy-simulation-and-analysis
-    - quantum-hardware-benchmarking
+  phase: 6
 ---
 
-# Mitiq Error Mitigator Skill
+# Mitiq Error Mitigator
 
 ## Purpose
 
-Provides quantum error mitigation capabilities using the Mitiq library for improving computational results on noisy intermediate-scale quantum (NISQ) devices without requiring full quantum error correction.
+Provides expert guidance on error mitigation techniques for NISQ devices using Mitiq, reducing the impact of noise without full quantum error correction.
 
 ## Capabilities
 
-- **Zero-Noise Extrapolation**: Extrapolate to zero-noise limit
-- **Probabilistic Error Cancellation**: Cancel noise with quasi-probabilities
-- **Clifford Data Regression**: Learn and mitigate noise effects
-- **Digital Dynamical Decoupling**: Suppress coherent errors
-- **Readout Error Mitigation**: Correct measurement errors
-- **Framework Agnostic**: Works with Qiskit, Cirq, PennyLane
+- Zero-noise extrapolation (ZNE)
+- Probabilistic error cancellation (PEC)
+- Clifford data regression (CDR)
+- Digital dynamical decoupling
+- Pauli twirling
+- Learning-based error mitigation
+- Noise scaling methods
+- Extrapolation fitting
 
 ## Usage Guidelines
 
-1. **Technique Selection**
-   - Choose based on noise type and circuit structure
-   - Consider overhead requirements
-   - Evaluate expected improvement
+1. **Technique Selection**: Choose mitigation method based on noise characteristics
+2. **Noise Scaling**: Configure appropriate noise amplification factors
+3. **Extrapolation**: Select fitting model for zero-noise extrapolation
+4. **Overhead Analysis**: Evaluate sampling overhead vs. accuracy improvement
+5. **Validation**: Compare mitigated results with theoretical expectations
 
-2. **ZNE Implementation**
-   - Select noise scaling method
-   - Choose extrapolation model
-   - Configure scale factors
+## Tools/Libraries
 
-3. **PEC Implementation**
-   - Characterize noise operations
-   - Build quasi-probability representations
-   - Sample mitigation circuits
-
-4. **Best Practices**
-   - Benchmark on known circuits
-   - Combine techniques when beneficial
-   - Monitor shot overhead
-   - Document mitigation choices
+- Mitiq
+- Qiskit
+- Cirq
+- PennyLane
+- NumPy

@@ -1,6 +1,6 @@
 ---
 name: data-encoder
-description: Quantum data encoding skill for mapping classical data to quantum states
+description: Classical data encoding skill for quantum machine learning applications
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-ml
-  domain: quantum-computing
-  tools:
-    - Qiskit
-    - PennyLane
-    - Cirq
-  processes:
-    - quantum-feature-map-design
-    - data-loading-circuit-design
-    - quantum-state-preparation
+  phase: 6
 ---
 
-# Data Encoder Skill
+# Data Encoder
 
 ## Purpose
 
-Provides quantum data encoding capabilities for mapping classical data into quantum states using various encoding strategies optimized for different quantum machine learning applications.
+Provides expert guidance on encoding classical data into quantum states for machine learning applications, balancing expressiveness with circuit complexity.
 
 ## Capabilities
 
-- **Amplitude Encoding**: Encode data in state amplitudes
-- **Angle Encoding**: Map data to rotation angles
-- **Basis Encoding**: Encode in computational basis
-- **IQP Encoding**: Instantaneous quantum polynomial circuits
-- **QAOA-Style Encoding**: Problem-specific encodings
-- **Re-Uploading**: Data re-uploading strategies
+- Angle encoding
+- Amplitude encoding
+- IQP encoding
+- Hardware-efficient encoding
+- Encoding expressibility analysis
+- Data re-uploading strategies
+- Feature scaling for encoding
+- Encoding depth optimization
 
 ## Usage Guidelines
 
-1. **Strategy Selection**
-   - Analyze data dimensionality
-   - Consider qubit requirements
-   - Balance encoding depth vs. expressivity
+1. **Feature Analysis**: Understand data dimensionality and structure
+2. **Encoding Selection**: Choose encoding based on data type and qubit budget
+3. **Scaling**: Apply appropriate normalization for encoding method
+4. **Depth Analysis**: Balance encoding expressivity with circuit depth
+5. **Verification**: Validate encoded states capture relevant features
 
-2. **Circuit Construction**
-   - Implement encoding circuit
-   - Configure repetitions if using re-uploading
-   - Add entanglement layers if needed
+## Tools/Libraries
 
-3. **Validation**
-   - Verify encoding correctness
-   - Check state preparation fidelity
-   - Profile circuit depth and gates
-
-4. **Best Practices**
-   - Normalize input data appropriately
-   - Consider hardware connectivity
-   - Document encoding scheme
-   - Analyze encoding capacity
+- PennyLane
+- Qiskit Machine Learning
+- Cirq
+- TensorFlow Quantum
+- NumPy

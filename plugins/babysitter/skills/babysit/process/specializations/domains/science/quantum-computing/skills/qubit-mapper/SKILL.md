@@ -1,6 +1,6 @@
 ---
 name: qubit-mapper
-description: Qubit mapping and routing skill for adapting quantum circuits to hardware connectivity constraints
+description: Qubit mapping and routing skill for hardware topology optimization
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: hardware-integration
-  domain: quantum-computing
-  tools:
-    - Qiskit transpiler
-    - t|ket> routing
-    - Cirq device mapping
-  processes:
-    - hardware-backend-configuration
-    - circuit-compilation-optimization
-    - qubit-assignment-strategy
+  phase: 6
 ---
 
-# Qubit Mapper Skill
+# Qubit Mapper
 
 ## Purpose
 
-Provides qubit mapping and routing capabilities for adapting logical quantum circuits to physical device connectivity constraints while minimizing added SWAP gates.
+Provides expert guidance on mapping logical qubits to physical hardware while respecting connectivity constraints and minimizing SWAP overhead.
 
 ## Capabilities
 
-- **Initial Mapping**: Find good initial qubit assignments
-- **SWAP Routing**: Insert SWAPs for non-adjacent interactions
-- **Lookahead Routing**: Anticipate future routing needs
-- **Noise-Aware Mapping**: Consider qubit quality in mapping
-- **Dynamic Remapping**: Adjust mapping during circuit
-- **SWAP Network Optimization**: Minimize SWAP depth
+- Initial qubit placement
+- SWAP gate insertion
+- Routing optimization algorithms
+- Topology-aware compilation
+- Noise-aware placement
+- Heavy-hex and grid topology support
+- Dynamic circuit routing
+- Parallel SWAP optimization
 
 ## Usage Guidelines
 
-1. **Device Analysis**
-   - Load device coupling map
-   - Analyze qubit connectivity
-   - Identify high-quality qubits
+1. **Topology Analysis**: Understand target hardware connectivity graph
+2. **Initial Placement**: Use heuristics for initial logical-physical mapping
+3. **Routing**: Insert SWAPs to enable non-native interactions
+4. **Optimization**: Minimize SWAP count and circuit depth
+5. **Noise Consideration**: Prefer high-fidelity qubits and links
 
-2. **Initial Mapping**
-   - Use trivial, dense, or noise-aware mapping
-   - Consider circuit structure
-   - Optimize for first layers
+## Tools/Libraries
 
-3. **Routing**
-   - Apply SWAP insertion algorithm
-   - Optimize SWAP network
-   - Verify routing correctness
-
-4. **Best Practices**
-   - Profile different routing strategies
-   - Consider noise in mapping decisions
-   - Document mapping choices
-   - Compare before/after depth
+- Qiskit
+- pytket (t|ket>)
+- Cirq
+- BQSKit
+- NetworkX

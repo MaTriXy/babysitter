@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: quantum-frameworks
-  domain: quantum-computing
-  tools:
-    - Amazon Braket SDK
-    - AWS Lambda
-    - S3
-  processes:
-    - multi-platform-deployment
-    - quantum-optimization-application
-    - quantum-classical-hybrid-system-integration
+  specialization: quantum-computing
+  domain: science
+  category: quantum-framework
+  phase: 6
 ---
 
-# Braket Executor Skill
+# Braket Executor
 
 ## Purpose
 
-Provides Amazon Braket capabilities for executing quantum circuits on multiple hardware vendors including IonQ, Rigetti, and D-Wave through a unified interface.
+Provides expert guidance on executing quantum circuits across multiple hardware vendors using Amazon Braket, enabling hybrid quantum-classical workflows in the AWS ecosystem.
 
 ## Capabilities
 
-- **Multi-Vendor Execution**: Run on IonQ, Rigetti, OQC hardware
-- **Hybrid Jobs**: Execute hybrid quantum-classical workflows
-- **Quantum Annealing**: Access D-Wave quantum annealers
-- **Local Simulation**: Test circuits locally before hardware
-- **Cost Estimation**: Estimate and track execution costs
-- **S3 Integration**: Store results in S3 buckets
+- Circuit execution on IonQ, Rigetti, OQC hardware
+- Hybrid job execution with classical processing
+- Quantum annealing on D-Wave
+- Local simulator execution
+- Cost estimation and job management
+- Result storage in S3
+- Batch job submission
+- Noise simulation
 
 ## Usage Guidelines
 
-1. **Circuit Definition**
-   - Use Braket SDK for circuit construction
-   - Apply gates supported by target device
-   - Configure measurements
+1. **Device Selection**: Choose appropriate hardware based on circuit requirements and availability
+2. **Circuit Translation**: Use Braket SDK to build or import circuits from other frameworks
+3. **Hybrid Jobs**: Configure containerized hybrid workflows with classical compute
+4. **Cost Management**: Monitor and estimate costs before job submission
+5. **Result Retrieval**: Access results from S3 with proper error handling
 
-2. **Backend Selection**
-   - Compare device capabilities
-   - Check availability and queue times
-   - Consider cost per shot
+## Tools/Libraries
 
-3. **Job Execution**
-   - Submit circuits as tasks
-   - Monitor job status
-   - Retrieve results from S3
-
-4. **Best Practices**
-   - Test on local simulator first
-   - Use hybrid jobs for iterative algorithms
-   - Track costs carefully
-   - Document device selection rationale
+- Amazon Braket SDK
+- AWS Lambda
+- Amazon S3
+- Braket Hybrid Jobs
+- Braket Local Simulator

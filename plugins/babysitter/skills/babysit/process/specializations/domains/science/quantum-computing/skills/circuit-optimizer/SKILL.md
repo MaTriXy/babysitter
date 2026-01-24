@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: circuit-design
-  domain: quantum-computing
-  tools:
-    - Qiskit transpiler
-    - t|ket>
-    - PyZX
-  processes:
-    - quantum-circuit-design-and-optimization
-    - hardware-backend-configuration
-    - error-mitigation-strategy-implementation
+  phase: 6
 ---
 
-# Circuit Optimizer Skill
+# Circuit Optimizer
 
 ## Purpose
 
-Provides quantum circuit optimization capabilities for reducing gate counts, minimizing circuit depth, and adapting circuits to hardware constraints.
+Provides expert guidance on quantum circuit optimization techniques for reducing gate count, minimizing depth, and adapting circuits to hardware constraints.
 
 ## Capabilities
 
-- **Depth Reduction**: Minimize circuit depth through gate reordering
-- **Gate Cancellation**: Identify and remove redundant gates
-- **Peephole Optimization**: Apply local optimization patterns
-- **Template Matching**: Find and apply optimization templates
-- **Commutation Analysis**: Exploit gate commutativity
-- **Topology Routing**: Route circuits for hardware connectivity
+- Circuit depth reduction algorithms
+- Gate cancellation and merging
+- Peephole optimization
+- Template matching optimization
+- Commutation analysis
+- Hardware topology-aware routing
+- Two-qubit gate minimization
+- Compilation pass orchestration
 
 ## Usage Guidelines
 
-1. **Analysis**
-   - Profile original circuit metrics
-   - Identify optimization opportunities
-   - Set optimization targets
+1. **Analysis**: Profile circuit for optimization opportunities (gate counts, depth, connectivity)
+2. **Gate Reduction**: Apply cancellation and merging rules for equivalent gates
+3. **Depth Optimization**: Parallelize independent operations where topology allows
+4. **Hardware Mapping**: Route circuits to respect hardware connectivity constraints
+5. **Verification**: Validate circuit equivalence after optimization
 
-2. **Optimization Passes**
-   - Apply gate cancellation
-   - Perform commutation-based reordering
-   - Use template matching for patterns
+## Tools/Libraries
 
-3. **Hardware Adaptation**
-   - Route for device topology
-   - Decompose to native gates
-   - Insert SWAP gates as needed
-
-4. **Best Practices**
-   - Compare before/after metrics
-   - Verify circuit equivalence
-   - Balance depth vs. gate count
-   - Document optimization choices
+- Qiskit transpiler
+- pytket (t|ket>)
+- PyZX
+- Cirq optimizers
+- BQSKit

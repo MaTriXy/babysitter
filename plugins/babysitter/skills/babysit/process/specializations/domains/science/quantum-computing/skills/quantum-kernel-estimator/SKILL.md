@@ -1,6 +1,6 @@
 ---
 name: quantum-kernel-estimator
-description: Quantum kernel estimation skill for computing kernel matrices using quantum feature maps
+description: Quantum kernel computation skill for quantum machine learning
 allowed-tools:
   - Bash
   - Read
@@ -8,55 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: quantum-computing
+  domain: science
   category: quantum-ml
-  domain: quantum-computing
-  tools:
-    - Qiskit Machine Learning
-    - PennyLane
-    - scikit-learn
-  processes:
-    - quantum-classifier-implementation
-    - quantum-feature-map-design
-    - kernel-based-learning
+  phase: 6
 ---
 
-# Quantum Kernel Estimator Skill
+# Quantum Kernel Estimator
 
 ## Purpose
 
-Provides quantum kernel estimation capabilities for computing kernel matrices using quantum feature maps, enabling kernel-based machine learning with potential quantum advantage.
+Provides expert guidance on quantum kernel methods for machine learning, enabling kernel-based classifiers and regressors with quantum feature maps.
 
 ## Capabilities
 
-- **Feature Map Design**: Create quantum feature encoding circuits
-- **Kernel Matrix Computation**: Estimate inner products via measurements
-- **Fidelity Estimation**: Compute state fidelities efficiently
-- **SVM Integration**: Interface with classical SVM implementations
-- **Projected Kernels**: Use projected quantum kernel methods
-- **Bandwidth Optimization**: Tune kernel hyperparameters
+- Fidelity quantum kernel
+- Projected quantum kernel
+- Kernel alignment optimization
+- Feature map design
+- SVM integration with quantum kernels
+- Kernel matrix visualization
+- Bandwidth tuning
+- Trainable kernel circuits
 
 ## Usage Guidelines
 
-1. **Feature Map Design**
-   - Choose encoding strategy (amplitude, angle, IQP)
-   - Configure circuit depth and entanglement
-   - Balance expressivity with trainability
+1. **Feature Map Selection**: Design quantum feature map for data encoding
+2. **Kernel Computation**: Calculate kernel matrix entries via circuit execution
+3. **Alignment Optimization**: Tune kernel for target classification task
+4. **SVM Training**: Use quantum kernel with classical SVM solvers
+5. **Performance Evaluation**: Assess classification accuracy and quantum advantage
 
-2. **Kernel Computation**
-   - Estimate pairwise inner products
-   - Configure shot count for precision
-   - Handle large datasets efficiently
+## Tools/Libraries
 
-3. **Classifier Training**
-   - Feed kernel matrix to SVM
-   - Perform cross-validation
-   - Evaluate classification accuracy
-
-4. **Best Practices**
-   - Start with simple feature maps
-   - Compare with classical kernels
-   - Monitor kernel concentration
-   - Document feature map design
+- Qiskit Machine Learning
+- PennyLane
+- scikit-learn
+- CVXPY
+- NumPy

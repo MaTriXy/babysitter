@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: formal-verification
-  domain: computer-science
-  tools:
-    - Coq
-    - Isabelle
-    - Lean
-  processes:
-    - theorem-prover-verification
-    - algorithm-correctness-proof
+  phase: 6
 ---
 
-# Theorem Prover Interface Skill
+# Theorem Prover Interface
 
 ## Purpose
 
-Provides interface to interactive theorem provers for formal verification and mechanized proof construction.
+Provides expert guidance on using interactive theorem provers for formal verification.
 
 ## Capabilities
 
-- **Coq Interface**: Generate and execute Coq proof scripts
-- **Isabelle Interface**: Interface with Isabelle/HOL
-- **Lean Integration**: Support Lean 4 proofs
-- **Proof Automation**: Use hammers and tactics
-- **Library Search**: Search proof libraries
+- Coq proof script generation
+- Isabelle/HOL interface
+- Lean 4 integration
+- Proof automation (hammers, tactics)
+- Proof library search
+- Program extraction
 
 ## Usage Guidelines
 
-1. **Prover Selection**
-   - Use Coq for program extraction
-   - Choose Isabelle for automation
-   - Apply Lean for modern features
+1. **Prover Selection**: Choose appropriate prover
+2. **Formalization**: Encode problem in prover
+3. **Proof Development**: Construct proof
+4. **Automation**: Apply proof tactics
+5. **Extraction**: Generate verified code
 
-2. **Formalization**
-   - Encode definitions precisely
-   - State theorems clearly
-   - Plan proof structure
+## Dependencies
 
-3. **Proof Construction**
-   - Apply appropriate tactics
-   - Use automation when possible
-   - Structure proofs for readability
+- Coq, Isabelle, Lean
+- Proof automation tools
 
-4. **Best Practices**
-   - Follow library conventions
-   - Document proof strategies
-   - Maintain proof modularity
-   - Consider proof extraction
+## Process Integration
+
+- Theorem Prover Verification
+- Algorithm Correctness Proof workflows

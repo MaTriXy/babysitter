@@ -1,6 +1,6 @@
 ---
 name: complexity-class-oracle
-description: Classify computational problems into complexity classes with supporting evidence and proofs
+description: Classify problems into complexity classes with supporting evidence and proof strategies
 allowed-tools:
   - Bash
   - Read
@@ -8,7 +8,6 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - WebSearch
 metadata:
   specialization: computer-science
   domain: science
@@ -20,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on classifying problems into complexity classes and understanding their relationships.
+Provides expert guidance on classifying computational problems into complexity classes and understanding class relationships.
 
 ## Capabilities
 
@@ -29,22 +28,18 @@ Provides expert guidance on classifying problems into complexity classes and und
 - Query known complexity results database
 - Suggest proof strategies for classification
 - Generate complexity landscape diagrams
-- Track open problems and conjectures
+- Explain class inclusions and separations
 
 ## Usage Guidelines
 
-1. **Problem Specification**: Define computational problem
-2. **Class Analysis**: Identify candidate classes
-3. **Evidence Gathering**: Find known results
-4. **Classification**: Determine membership
-5. **Documentation**: Generate classification proof
+1. **Problem Characterization**: Formalize the computational problem
+2. **Class Investigation**: Check membership in relevant classes
+3. **Evidence Collection**: Gather evidence for classification
+4. **Strategy Selection**: Choose proof strategy for membership
+5. **Documentation**: Generate classification report
 
-## Dependencies
+## Tools/Libraries
 
 - Complexity Zoo database
-- Diagram generation tools
-
-## Process Integration
-
-- Computational Problem Classification
-- NP-Completeness Proof workflows
+- Diagram generation
+- LaTeX documentation

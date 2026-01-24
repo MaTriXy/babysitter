@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on amortized analysis of data structure operations and algorithm sequences.
+Provides expert guidance on amortized analysis of data structures and algorithms using multiple analysis techniques.
 
 ## Capabilities
 
@@ -28,22 +28,18 @@ Provides expert guidance on amortized analysis of data structure operations and 
 - Potential function design and verification
 - Banker's method for persistent data structures
 - Generate amortized bounds documentation
-- Compare amortized vs worst-case complexity
+- Handle complex operation sequences
 
 ## Usage Guidelines
 
-1. **Operation Sequence**: Define operation types
-2. **Method Selection**: Choose analysis technique
-3. **Analysis**: Apply selected method
-4. **Bound Derivation**: Calculate amortized cost
-5. **Documentation**: Explain analysis
+1. **Method Selection**: Choose appropriate amortized analysis method
+2. **Potential Design**: Design potential function for potential method
+3. **Credit Tracking**: Track credits for accounting method
+4. **Bound Derivation**: Derive amortized cost bounds
+5. **Documentation**: Generate clear analysis documentation
 
-## Dependencies
+## Tools/Libraries
 
 - Symbolic computation
-- Documentation tools
-
-## Process Integration
-
-- Algorithm Complexity Analysis
-- Concurrent Data Structure Design workflows
+- LaTeX documentation
+- Proof assistants

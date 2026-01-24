@@ -1,6 +1,6 @@
 ---
 name: turing-machine-simulator
-description: Simulate Turing machines for computability analysis and decidability proofs
+description: Simulate Turing machines for computability analysis and algorithm demonstration
 allowed-tools:
   - Bash
   - Read
@@ -11,7 +11,7 @@ allowed-tools:
 metadata:
   specialization: computer-science
   domain: science
-  category: computability
+  category: complexity-theory
   phase: 6
 ---
 
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on simulating Turing machines and analyzing computability properties.
+Provides expert guidance on simulating Turing machines for computability analysis, decidability proofs, and algorithm demonstration.
 
 ## Capabilities
 
@@ -32,18 +32,14 @@ Provides expert guidance on simulating Turing machines and analyzing computabili
 
 ## Usage Guidelines
 
-1. **TM Specification**: Define machine formally
-2. **Input Setup**: Configure initial tape
-3. **Execution**: Run simulation
-4. **Trace Analysis**: Examine computation steps
-5. **Documentation**: Record machine behavior
+1. **TM Specification**: Define Turing machine formally
+2. **Simulation Setup**: Configure simulation parameters
+3. **Execution**: Run simulation with visualization
+4. **Analysis**: Analyze computation trace
+5. **Documentation**: Generate execution report
 
-## Dependencies
+## Tools/Libraries
 
 - TM specification languages
 - Visualization tools
-
-## Process Integration
-
-- Decidability Analysis
-- Computational Problem Classification workflows
+- Computation trace analyzers

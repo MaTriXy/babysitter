@@ -1,6 +1,6 @@
 ---
 name: optimization-correctness-verifier
-description: Verify correctness of compiler optimizations using semantic preservation checking
+description: Verify correctness of compiler optimizations through semantic preservation checking
 allowed-tools:
   - Bash
   - Read
@@ -8,52 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: compiler-optimization
-  domain: computer-science
-  tools:
-    - Alive2
-    - CompCert
-    - SMT solvers
-  processes:
-    - compiler-optimization-design
+  specialization: computer-science
+  domain: science
+  category: compilers
+  phase: 6
 ---
 
-# Optimization Correctness Verifier Skill
+# Optimization Correctness Verifier
 
 ## Purpose
 
-Provides compiler optimization verification capabilities for proving that transformations preserve program semantics.
+Provides expert guidance on verifying compiler optimization correctness.
 
 ## Capabilities
 
-- **Semantic Preservation**: Check optimization preserves semantics
-- **Alive2 Verification**: Use Alive2-style verification
-- **Bisimulation Proofs**: Construct bisimulation arguments
-- **Counterexamples**: Generate counterexamples for bugs
-- **Refinement Suggestions**: Suggest optimization refinements
+- Semantic preservation checking
+- Alive2-style verification
+- Bisimulation proof construction
+- Counterexample generation
+- Optimization refinement suggestions
+- CompCert-style verification
 
 ## Usage Guidelines
 
-1. **Verification Setup**
-   - Specify source and target patterns
-   - Define preconditions
-   - Identify undefined behavior
+1. **Optimization Specification**: Define transformation
+2. **Semantic Model**: Specify program semantics
+3. **Verification**: Check semantic preservation
+4. **Counterexample Analysis**: Examine violations
+5. **Refinement**: Fix incorrect optimizations
 
-2. **Verification Execution**
-   - Check refinement relation
-   - Find counterexamples if any
-   - Report verification result
+## Dependencies
 
-3. **Bug Analysis**
-   - Analyze counterexamples
-   - Identify missing preconditions
-   - Suggest corrections
+- Alive2
+- CompCert, SMT solvers
 
-4. **Best Practices**
-   - Verify all optimization patterns
-   - Handle undefined behavior carefully
-   - Document verification status
-   - Maintain verified optimization database
+## Process Integration
+
+- Compiler Optimization Design workflows

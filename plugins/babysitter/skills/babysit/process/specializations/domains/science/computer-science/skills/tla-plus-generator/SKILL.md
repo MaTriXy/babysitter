@@ -8,54 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: distributed-systems
-  domain: computer-science
-  tools:
-    - TLA+ Toolbox
-    - TLC model checker
-    - PlusCal
-  processes:
-    - distributed-consensus-protocol-design
-    - model-checking-verification
-    - formal-specification-development
+  phase: 6
 ---
 
-# TLA+ Generator Skill
+# TLA+ Generator
 
 ## Purpose
 
-Provides TLA+ specification generation capabilities for formal verification of distributed systems and protocols.
+Provides expert guidance on creating TLA+ specifications for distributed system verification.
 
 ## Capabilities
 
-- **Module Generation**: Generate TLA+ modules from protocol descriptions
-- **Property Specification**: Specify invariants and temporal properties
-- **State Space Configuration**: Configure model checking parameters
-- **PlusCal Translation**: Translate PlusCal to TLA+
-- **Model Checking**: Execute TLC model checker
+- TLA+ module generation from protocol description
+- Invariant and temporal property specification
+- State space exploration configuration
+- PlusCal to TLA+ translation
+- Model checking execution
+- Counterexample analysis
 
 ## Usage Guidelines
 
-1. **Specification Design**
-   - Define state variables
-   - Specify initial states
-   - Define next-state relation
+1. **Protocol Description**: Describe system informally
+2. **State Definition**: Define state variables
+3. **Action Specification**: Write state transitions
+4. **Property Specification**: Define safety/liveness
+5. **Model Checking**: Configure and run TLC
 
-2. **Property Specification**
-   - Define safety invariants
-   - Specify liveness properties
-   - Encode fairness conditions
+## Dependencies
 
-3. **Model Checking**
-   - Configure state space bounds
-   - Execute TLC checker
-   - Analyze counterexamples
+- TLA+ Toolbox
+- TLC model checker
 
-4. **Best Practices**
-   - Start with small models
-   - Use symmetry reduction
-   - Document specification assumptions
-   - Iterate on counterexamples
+## Process Integration
+
+- Distributed Consensus Protocol Design
+- Model Checking Verification workflows

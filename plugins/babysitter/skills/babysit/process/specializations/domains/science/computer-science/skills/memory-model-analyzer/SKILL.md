@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: distributed-systems
-  domain: computer-science
-  tools:
-    - CDSChecker
-    - GenMC
-    - Memory model tools
-  processes:
-    - concurrent-data-structure-design
-    - cache-optimization-analysis
+  specialization: computer-science
+  domain: science
+  category: concurrency
+  phase: 6
 ---
 
-# Memory Model Analyzer Skill
+# Memory Model Analyzer
 
 ## Purpose
 
-Provides memory model analysis capabilities for verifying concurrent programs under relaxed memory models.
+Provides expert guidance on analyzing concurrent programs under different memory models.
 
 ## Capabilities
 
-- **Sequential Consistency**: Check SC compliance
-- **TSO Analysis**: Analyze under Total Store Order
-- **C/C++ Memory Model**: Check C11/C++11 compliance
-- **Barrier Guidance**: Recommend memory barrier placement
-- **Race Detection**: Detect data races
+- Sequential consistency checking
+- Total Store Order (TSO) analysis
+- C/C++ memory model compliance
+- Memory barrier insertion guidance
+- Race condition detection
+- Happens-before reasoning
 
 ## Usage Guidelines
 
-1. **Model Selection**
-   - Identify target architecture
-   - Choose appropriate memory model
-   - Understand model semantics
+1. **Program Analysis**: Parse concurrent program
+2. **Model Selection**: Choose memory model
+3. **Execution Analysis**: Explore possible executions
+4. **Issue Detection**: Find memory model violations
+5. **Fence Insertion**: Guide barrier placement
 
-2. **Analysis Execution**
-   - Configure model checker
-   - Explore execution space
-   - Identify problematic behaviors
+## Dependencies
 
-3. **Barrier Placement**
-   - Identify missing synchronization
-   - Add appropriate barriers
-   - Verify correctness
+- CDSChecker, GenMC
+- Memory model tools
 
-4. **Best Practices**
-   - Understand memory model thoroughly
-   - Test under multiple models
-   - Document synchronization requirements
-   - Verify with model checkers
+## Process Integration
+
+- Concurrent Data Structure Design
+- Cache Optimization Analysis workflows

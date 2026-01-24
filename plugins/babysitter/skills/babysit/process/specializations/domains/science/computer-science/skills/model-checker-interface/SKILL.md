@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: formal-verification
-  domain: computer-science
-  tools:
-    - SPIN
-    - NuSMV
-    - UPPAAL
-  processes:
-    - model-checking-verification
-    - distributed-consensus-protocol-design
+  phase: 6
 ---
 
-# Model Checker Interface Skill
+# Model Checker Interface
 
 ## Purpose
 
-Provides unified interface to multiple model checking tools for formal verification of systems.
+Provides expert guidance on using model checking tools for system verification.
 
 ## Capabilities
 
-- **SPIN Interface**: Generate and check Promela specifications
-- **NuSMV Interface**: Interface with NuSMV/NuXMV
-- **UPPAAL Interface**: Model check timed systems
-- **Result Parsing**: Parse and visualize results
-- **Trace Analysis**: Analyze counterexample traces
+- SPIN/Promela specification generation
+- NuSMV/NuXMV interface
+- UPPAAL for timed systems
+- Result parsing and visualization
+- Counterexample trace analysis
+- State space reduction techniques
 
 ## Usage Guidelines
 
-1. **Tool Selection**
-   - Choose SPIN for protocol verification
-   - Use NuSMV for hardware verification
-   - Apply UPPAAL for timed systems
+1. **Model Selection**: Choose appropriate tool
+2. **Specification Writing**: Create model
+3. **Property Specification**: Define temporal properties
+4. **Model Checking**: Execute verification
+5. **Analysis**: Interpret results
 
-2. **Specification Translation**
-   - Translate system model
-   - Specify properties to check
-   - Configure state space bounds
+## Dependencies
 
-3. **Verification Execution**
-   - Run model checker
-   - Analyze results
-   - Interpret counterexamples
+- SPIN, NuSMV, UPPAAL
+- Visualization tools
 
-4. **Best Practices**
-   - Start with bounded checking
-   - Use abstraction for large systems
-   - Document verification assumptions
-   - Archive verification results
+## Process Integration
+
+- Model Checking Verification
+- Distributed Consensus Protocol Design workflows

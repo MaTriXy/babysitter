@@ -1,6 +1,6 @@
 ---
 name: consensus-protocol-library
-description: Reference implementations and specifications of consensus protocols including Paxos, Raft, and PBFT
+description: Reference implementations and specifications of consensus protocols for distributed systems
 allowed-tools:
   - Bash
   - Read
@@ -8,52 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
+  specialization: computer-science
+  domain: science
   category: distributed-systems
-  domain: computer-science
-  tools:
-    - TLA+ specifications
-    - Reference implementations
-    - Protocol analyzers
-  processes:
-    - distributed-consensus-protocol-design
+  phase: 6
 ---
 
-# Consensus Protocol Library Skill
+# Consensus Protocol Library
 
 ## Purpose
 
-Provides reference implementations and formal specifications of consensus protocols for distributed system design and analysis.
+Provides reference implementations and formal specifications of distributed consensus protocols.
 
 ## Capabilities
 
-- **Protocol Specifications**: Paxos, Raft, PBFT specifications
-- **Comparison Matrix**: Compare protocol properties
-- **Property Templates**: Safety and liveness property templates
-- **Complexity Analysis**: Message complexity analysis
-- **Variant Catalog**: Catalog of protocol variants
+- Paxos, Raft, PBFT specifications
+- Protocol comparison matrix
+- Safety/liveness property templates
+- Message complexity analysis
+- Protocol variant catalog
+- Implementation guidance
 
 ## Usage Guidelines
 
-1. **Protocol Selection**
-   - Analyze system requirements
-   - Compare protocol properties
-   - Consider fault model
+1. **Requirements Analysis**: Identify consensus needs
+2. **Protocol Selection**: Compare protocol options
+3. **Specification Review**: Examine formal specs
+4. **Implementation**: Follow reference designs
+5. **Verification**: Prove protocol properties
 
-2. **Specification Study**
-   - Review formal specification
-   - Understand safety properties
-   - Analyze liveness conditions
+## Dependencies
 
-3. **Implementation**
-   - Follow reference implementation
-   - Verify against specification
-   - Test with fault injection
+- TLA+ specifications
+- Reference implementations
 
-4. **Best Practices**
-   - Understand theoretical foundations
-   - Verify safety properties formally
-   - Test liveness under realistic conditions
-   - Document protocol choices
+## Process Integration
+
+- Distributed Consensus Protocol Design workflows

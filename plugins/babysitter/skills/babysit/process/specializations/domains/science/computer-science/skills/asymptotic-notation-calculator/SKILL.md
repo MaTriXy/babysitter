@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on deriving, simplifying, and comparing asymptotic complexity expressions for algorithm analysis.
+Provides expert guidance on analyzing, simplifying, and comparing asymptotic complexity expressions for algorithm analysis.
 
 ## Capabilities
 
@@ -28,22 +28,18 @@ Provides expert guidance on deriving, simplifying, and comparing asymptotic comp
 - Identify dominant terms
 - Handle logarithmic, polynomial, and exponential factors
 - Generate LaTeX-formatted notation
-- Verify asymptotic relationships
+- Prove asymptotic relationships
 
 ## Usage Guidelines
 
-1. **Expression Input**: Parse complexity expressions
-2. **Simplification**: Apply asymptotic rules
-3. **Comparison**: Determine relative complexity
-4. **Formatting**: Generate publication-quality notation
-5. **Documentation**: Explain simplification steps
+1. **Expression Analysis**: Parse complexity expressions into canonical forms
+2. **Simplification**: Apply dominance rules to simplify nested expressions
+3. **Comparison**: Determine ordering between complexity classes
+4. **Documentation**: Generate properly formatted asymptotic notation
+5. **Verification**: Prove Big-O, Big-Omega, and Big-Theta relationships
 
-## Dependencies
+## Tools/Libraries
 
-- Symbolic computation libraries
+- SymPy
+- Symbolic computation
 - LaTeX rendering
-
-## Process Integration
-
-- Algorithm Complexity Analysis
-- Algorithm Correctness Proof workflows

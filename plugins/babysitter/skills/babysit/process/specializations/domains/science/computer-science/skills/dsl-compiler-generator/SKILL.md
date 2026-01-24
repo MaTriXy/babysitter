@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: programming-language-theory
-  domain: computer-science
-  tools:
-    - ANTLR
-    - Xtext
-    - Racket
-  processes:
-    - dsl-design-implementation
-    - compiler-optimization-design
+  specialization: computer-science
+  domain: science
+  category: programming-languages
+  phase: 6
 ---
 
-# DSL Compiler Generator Skill
+# DSL Compiler Generator
 
 ## Purpose
 
-Provides domain-specific language implementation capabilities for generating parsers, type checkers, and interpreters from language specifications.
+Provides expert guidance on generating compilers and interpreters for domain-specific languages.
 
 ## Capabilities
 
-- **Parser Generation**: Generate parsers from grammar specifications
-- **Type Checker Generation**: Generate type checkers from typing rules
-- **Interpreter Generation**: Generate interpreters from semantics
-- **Code Generation**: Generate code generators for compilation
-- **Workbench Integration**: Integrate with language workbenches
+- Parser generation from grammar
+- Type checker generation from rules
+- Interpreter generation from semantics
+- Code generation templates
+- Language workbench integration
+- IDE support generation
 
 ## Usage Guidelines
 
-1. **Grammar Specification**
-   - Define concrete syntax
-   - Specify precedence and associativity
-   - Handle lexical details
+1. **Language Design**: Specify DSL requirements
+2. **Grammar Definition**: Write formal grammar
+3. **Semantics Definition**: Specify meaning
+4. **Generator Configuration**: Set up generation
+5. **Testing**: Validate generated tools
 
-2. **Semantic Specification**
-   - Define abstract syntax
-   - Specify type rules
-   - Define evaluation semantics
+## Dependencies
 
-3. **Implementation Generation**
-   - Generate parser from grammar
-   - Generate type checker
-   - Generate interpreter or compiler
+- ANTLR, Xtext, Racket
+- Language workbenches
 
-4. **Best Practices**
-   - Start with complete examples
-   - Test parser coverage
-   - Provide good error messages
-   - Document DSL thoroughly
+## Process Integration
+
+- DSL Design Implementation
+- Compiler Optimization Design workflows

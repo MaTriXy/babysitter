@@ -1,6 +1,6 @@
 ---
 name: data-flow-analysis-framework
-description: Design and implement data-flow analyses for compiler optimizations
+description: Design and implement data-flow analyses for compiler optimization and program analysis
 allowed-tools:
   - Bash
   - Read
@@ -8,53 +8,42 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: compiler-optimization
-  domain: computer-science
-  tools:
-    - LLVM
-    - GCC internals
-    - Static analysis frameworks
-  processes:
-    - compiler-optimization-design
-    - abstract-interpretation-analysis
+  specialization: computer-science
+  domain: science
+  category: compilers
+  phase: 6
 ---
 
-# Data Flow Analysis Framework Skill
+# Data-Flow Analysis Framework
 
 ## Purpose
 
-Provides data-flow analysis design capabilities for implementing compiler optimizations through forward and backward analyses.
+Provides expert guidance on designing and implementing data-flow analyses for compilers.
 
 ## Capabilities
 
-- **Forward Analysis**: Specify forward data-flow analyses
-- **Backward Analysis**: Specify backward data-flow analyses
-- **Lattice Definition**: Define and verify analysis lattices
-- **Transfer Functions**: Generate transfer functions
-- **Fixpoint Computation**: Implement worklist algorithms
+- Forward/backward analysis specification
+- Lattice definition and verification
+- Transfer function generation
+- Fixpoint computation (worklist algorithm)
+- Analysis soundness verification
+- Common analyses (reaching defs, live vars)
 
 ## Usage Guidelines
 
-1. **Analysis Design**
-   - Define lattice of abstract values
-   - Specify direction (forward/backward)
-   - Define transfer functions
+1. **Analysis Design**: Specify analysis goal
+2. **Lattice Definition**: Define abstract domain
+3. **Transfer Functions**: Implement statement effects
+4. **Fixpoint Algorithm**: Configure worklist
+5. **Integration**: Connect to compiler
 
-2. **Implementation**
-   - Build control flow graph
-   - Implement worklist algorithm
-   - Compute fixpoint solution
+## Dependencies
 
-3. **Verification**
-   - Verify lattice properties
-   - Check monotonicity of transfers
-   - Validate soundness
+- LLVM, GCC internals
+- Analysis frameworks
 
-4. **Best Practices**
-   - Prove analysis soundness
-   - Document lattice structure
-   - Test on diverse programs
-   - Consider efficiency
+## Process Integration
+
+- Compiler Optimization Design
+- Abstract Interpretation Analysis workflows

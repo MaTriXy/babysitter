@@ -8,52 +8,41 @@ allowed-tools:
   - Edit
   - Glob
   - Grep
-  - Task
 metadata:
-  version: "1.0"
-  category: compiler-optimization
-  domain: computer-science
-  tools:
-    - LLVM IR
-    - SSA libraries
-    - Compiler frameworks
-  processes:
-    - compiler-optimization-design
+  specialization: computer-science
+  domain: science
+  category: compilers
+  phase: 6
 ---
 
-# SSA Transformation Library Skill
+# SSA Transformation Library
 
 ## Purpose
 
-Provides SSA (Static Single Assignment) form transformation capabilities for implementing efficient compiler optimizations.
+Provides expert guidance on SSA form construction and SSA-based compiler optimizations.
 
 ## Capabilities
 
-- **SSA Construction**: Build SSA form using dominance
-- **Phi Node Management**: Insert and eliminate phi nodes
-- **SSA Optimizations**: Apply SSA-based optimization templates
-- **Dominance Trees**: Compute dominance and dominator trees
-- **Use-Def Chains**: Analyze use-definition relationships
+- SSA construction (dominance-based)
+- Phi node insertion and elimination
+- SSA-based optimization templates
+- Dominance tree computation
+- Use-def chain analysis
+- SSA deconstruction
 
 ## Usage Guidelines
 
-1. **SSA Construction**
-   - Compute dominance frontier
-   - Place phi nodes at join points
-   - Rename variables with subscripts
+1. **CFG Analysis**: Build control flow graph
+2. **Dominance Computation**: Calculate dominators
+3. **SSA Construction**: Insert phi nodes
+4. **Optimization**: Apply SSA-based transforms
+5. **Deconstruction**: Convert back from SSA
 
-2. **Optimization Application**
-   - Apply constant propagation
-   - Perform dead code elimination
-   - Execute copy propagation
+## Dependencies
 
-3. **SSA Destruction**
-   - Eliminate phi nodes
-   - Insert copies on edges
-   - Return to conventional form
+- LLVM IR
+- SSA libraries
 
-4. **Best Practices**
-   - Maintain SSA properties
-   - Verify dominance relationships
-   - Handle critical edges
-   - Document transformation effects
+## Process Integration
+
+- Compiler Optimization Design workflows

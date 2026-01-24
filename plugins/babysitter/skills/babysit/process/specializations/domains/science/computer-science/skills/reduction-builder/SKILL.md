@@ -28,22 +28,18 @@ Provides expert guidance on constructing polynomial-time reductions for NP-compl
 - Polynomial-time verification
 - Visualization of gadget constructions
 - Generate reduction documentation
-- Chain reductions for new problems
+- Chain multiple reductions
 
 ## Usage Guidelines
 
-1. **Problem Definition**: Specify source and target problems
-2. **Gadget Selection**: Choose or design gadgets
-3. **Construction**: Build the reduction
-4. **Verification**: Prove both directions
-5. **Documentation**: Generate formal proof
+1. **Problem Analysis**: Understand source and target problem structures
+2. **Gadget Selection**: Choose or design appropriate gadgets
+3. **Reduction Construction**: Build the polynomial-time mapping
+4. **Correctness Proof**: Prove both directions of the reduction
+5. **Time Analysis**: Verify polynomial running time
 
-## Dependencies
+## Tools/Libraries
 
 - Graph visualization
+- LaTeX documentation
 - Formal verification tools
-
-## Process Integration
-
-- NP-Completeness Proof
-- Computational Problem Classification workflows

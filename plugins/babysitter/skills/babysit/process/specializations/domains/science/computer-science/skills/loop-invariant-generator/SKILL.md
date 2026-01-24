@@ -11,7 +11,7 @@ allowed-tools:
 metadata:
   specialization: computer-science
   domain: science
-  category: verification
+  category: algorithm-analysis
   phase: 6
 ---
 
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on generating and verifying loop invariants for proving algorithm correctness.
+Provides expert guidance on generating and verifying loop invariants for algorithm correctness proofs using formal methods.
 
 ## Capabilities
 
@@ -28,23 +28,19 @@ Provides expert guidance on generating and verifying loop invariants for proving
 - Generate formal proof templates
 - Handle nested loops and complex data structures
 - Export to theorem provers (Dafny, Why3)
-- Document invariant derivation
+- Suggest invariant strengthening
 
 ## Usage Guidelines
 
-1. **Code Analysis**: Parse loop structure
-2. **Invariant Inference**: Generate candidate invariants
-3. **Verification**: Check three conditions
-4. **Export**: Generate theorem prover input
-5. **Documentation**: Explain invariant meaning
+1. **Code Analysis**: Analyze loop structure and identify key properties
+2. **Candidate Generation**: Generate candidate invariants from code patterns
+3. **Verification**: Check initialization, maintenance, termination
+4. **Strengthening**: Refine invariants to prove desired properties
+5. **Export**: Generate proof obligations for theorem provers
 
-## Dependencies
+## Tools/Libraries
 
-- Static analysis tools
-- SMT solvers (Z3)
-- Theorem provers
-
-## Process Integration
-
-- Algorithm Correctness Proof
-- Abstract Interpretation Analysis workflows
+- Dafny
+- Why3
+- SMT solvers (Z3, CVC5)
+- Static analysis frameworks

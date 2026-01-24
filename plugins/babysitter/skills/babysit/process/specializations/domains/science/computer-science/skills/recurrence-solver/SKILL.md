@@ -1,6 +1,6 @@
 ---
 name: recurrence-solver
-description: Solve recurrence relations using Master Theorem, substitution, recursion trees, and generating functions
+description: Solve recurrence relations using multiple methods including Master Theorem and generating functions
 allowed-tools:
   - Bash
   - Read
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on solving recurrence relations arising from divide-and-conquer and recursive algorithms.
+Provides expert guidance on solving recurrence relations arising from divide-and-conquer and recursive algorithm analysis.
 
 ## Capabilities
 
@@ -28,22 +28,18 @@ Provides expert guidance on solving recurrence relations arising from divide-and
 - Recursion tree analysis with visualization
 - Generating functions for complex recurrences
 - Akra-Bazzi method for generalized recurrences
-- Step-by-step solution documentation
+- Handle non-standard recurrence forms
 
 ## Usage Guidelines
 
-1. **Recurrence Input**: Parse recurrence relation
-2. **Method Selection**: Choose appropriate solving technique
-3. **Solution**: Apply selected method
-4. **Verification**: Confirm solution correctness
-5. **Documentation**: Generate proof of solution
+1. **Recognition**: Identify recurrence structure and applicable methods
+2. **Master Theorem**: Check and apply Master Theorem cases
+3. **Substitution**: Formulate and verify guess for complex cases
+4. **Tree Analysis**: Build recursion tree for intuition
+5. **Verification**: Validate solutions with base cases
 
-## Dependencies
+## Tools/Libraries
 
-- Symbolic algebra system
-- Visualization tools
-
-## Process Integration
-
-- Algorithm Complexity Analysis
-- Randomized Algorithm Analysis workflows
+- SymPy
+- Visualization libraries
+- Symbolic algebra systems

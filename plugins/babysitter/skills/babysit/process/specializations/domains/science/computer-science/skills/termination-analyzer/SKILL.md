@@ -1,6 +1,6 @@
 ---
 name: termination-analyzer
-description: Prove termination of algorithms and programs through ranking functions and well-founded orderings
+description: Prove termination of algorithms and programs using ranking functions and well-founded orderings
 allowed-tools:
   - Bash
   - Read
@@ -11,7 +11,7 @@ allowed-tools:
 metadata:
   specialization: computer-science
   domain: science
-  category: verification
+  category: algorithm-analysis
   phase: 6
 ---
 
@@ -19,7 +19,7 @@ metadata:
 
 ## Purpose
 
-Provides expert guidance on proving algorithm and program termination through various techniques.
+Provides expert guidance on proving termination of algorithms through ranking functions, well-founded orderings, and automated analysis.
 
 ## Capabilities
 
@@ -28,22 +28,19 @@ Provides expert guidance on proving algorithm and program termination through va
 - Handle mutual recursion
 - Detect potential non-termination
 - Generate termination certificates
-- Interface with termination provers
+- Analyze complex control flow
 
 ## Usage Guidelines
 
-1. **Program Analysis**: Parse control flow
-2. **Ranking Function**: Identify or synthesize
-3. **Well-Foundedness**: Prove ordering
-4. **Certificate**: Generate termination proof
-5. **Documentation**: Explain termination argument
+1. **Structure Analysis**: Identify recursive calls and loop structures
+2. **Ranking Function**: Find or construct appropriate ranking function
+3. **Ordering Proof**: Prove well-foundedness of the ordering
+4. **Certificate Generation**: Generate formal termination proof
+5. **Non-termination Detection**: Flag potential infinite loops
 
-## Dependencies
+## Tools/Libraries
 
-- AProVE, T2
+- AProVE
+- T2
+- Ultimate Automizer
 - SMT solvers
-
-## Process Integration
-
-- Algorithm Correctness Proof
-- Decidability Analysis workflows

@@ -1,5 +1,31 @@
 {
   "enabledPlugins": {
-    "babysitter@a5c.ai": true
+    "babysitter@a5c.ai": true,
+    "plugin-dev@claude-plugins-official": true,
+    "context7@claude-plugins-official": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if [[ \"$TOOL_INPUT\" =~ \\.ts$ ]]; then cd \"$(git rev-parse --show-toplevel)\" && npm run lint --workspace=@a5c-ai/babysitter-sdk -- --fix 2>/dev/null || true; fi'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if [[ \"$TOOL_INPUT\" =~ (package-lock\\.json|pnpm-lock\\.yaml)$ ]]; then echo \"BLOCK: Lock files should not be edited directly. Use npm/pnpm commands instead.\" && exit 1; fi'"
+          }
+        ]
+      }
+    ]
   }
 }

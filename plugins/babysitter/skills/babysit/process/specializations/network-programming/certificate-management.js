@@ -96,8 +96,9 @@ export async function process(inputs, ctx) {
 export const architectureTask = defineTask('architecture', (args, taskCtx) => ({
   kind: 'agent',
   title: `Architecture Design - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'systems-architect',
+    name: 'network-security-expert',
     prompt: { role: 'Systems Architect', task: 'Design certificate management architecture', context: args,
       instructions: ['1. Design system components', '2. Define data flows', '3. Plan integrations', '4. Document architecture'] },
     outputSchema: { type: 'object', required: ['design', 'artifacts'], properties: { design: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -109,8 +110,9 @@ export const architectureTask = defineTask('architecture', (args, taskCtx) => ({
 export const acmeClientTask = defineTask('acme-client', (args, taskCtx) => ({
   kind: 'agent',
   title: `ACME Client - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'acme-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'ACME Protocol Engineer', task: 'Implement ACME client', context: args,
       instructions: ['1. Implement ACME account registration', '2. Implement challenges (HTTP-01, DNS-01)', '3. Handle certificate issuance', '4. Implement error handling'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -122,8 +124,9 @@ export const acmeClientTask = defineTask('acme-client', (args, taskCtx) => ({
 export const certStorageTask = defineTask('cert-storage', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Storage - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'storage-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Storage Engineer', task: 'Implement secure certificate storage', context: args,
       instructions: ['1. Implement storage backend', '2. Encrypt private keys', '3. Implement access control', '4. Add audit logging'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -135,8 +138,9 @@ export const certStorageTask = defineTask('cert-storage', (args, taskCtx) => ({
 export const certGenerationTask = defineTask('cert-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Generation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'cert-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Certificate Engineer', task: 'Implement certificate generation', context: args,
       instructions: ['1. Generate CSR', '2. Request certificate', '3. Validate issuance', '4. Store certificate'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -148,8 +152,9 @@ export const certGenerationTask = defineTask('cert-generation', (args, taskCtx) 
 export const autoRenewalTask = defineTask('auto-renewal', (args, taskCtx) => ({
   kind: 'agent',
   title: `Auto-Renewal - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'renewal-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Certificate Renewal Engineer', task: 'Implement automatic renewal', context: args,
       instructions: ['1. Monitor expiration dates', '2. Trigger renewal before expiry', '3. Handle renewal failures', '4. Notify on renewal events'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -161,8 +166,9 @@ export const autoRenewalTask = defineTask('auto-renewal', (args, taskCtx) => ({
 export const revocationMgmtTask = defineTask('revocation-mgmt', (args, taskCtx) => ({
   kind: 'agent',
   title: `Revocation Management - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'revocation-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Revocation Engineer', task: 'Implement certificate revocation', context: args,
       instructions: ['1. Implement revocation API', '2. Notify ACME provider', '3. Update internal state', '4. Handle revocation events'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -174,8 +180,9 @@ export const revocationMgmtTask = defineTask('revocation-mgmt', (args, taskCtx) 
 export const monitoringTask = defineTask('monitoring', (args, taskCtx) => ({
   kind: 'agent',
   title: `Monitoring - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'monitoring-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Monitoring Engineer', task: 'Implement certificate monitoring', context: args,
       instructions: ['1. Monitor certificate expiry', '2. Track renewal status', '3. Set up alerting', '4. Create dashboard'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -187,8 +194,9 @@ export const monitoringTask = defineTask('monitoring', (args, taskCtx) => ({
 export const apiCliTask = defineTask('api-cli', (args, taskCtx) => ({
   kind: 'agent',
   title: `API and CLI - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'api-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'API Engineer', task: 'Build management API and CLI', context: args,
       instructions: ['1. Design REST API', '2. Implement CLI commands', '3. Add authentication', '4. Document API'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -200,8 +208,9 @@ export const apiCliTask = defineTask('api-cli', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Suite - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'Test Engineer', task: 'Create comprehensive tests', context: args,
       instructions: ['1. Test ACME workflow', '2. Test renewal', '3. Test revocation', '4. Test storage'] },
     outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } }
@@ -213,8 +222,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'qa-engineer',
+    name: 'network-security-expert',
     prompt: { role: 'QA Engineer', task: 'Validate implementation', context: args,
       instructions: ['1. Verify features', '2. Check security', '3. Validate tests', '4. Calculate score'] },
     outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } }

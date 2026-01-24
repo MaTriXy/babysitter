@@ -333,6 +333,7 @@ export async function process(inputs, ctx) {
 export const requirementsAnalysisTask = defineTask('requirements-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
     name: 'network-architect',
     prompt: {
@@ -382,8 +383,9 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
 export const architectureDesignTask = defineTask('architecture-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Architecture Design - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'systems-architect',
+    name: 'network-architect',
     prompt: {
       role: 'Systems Architect specializing in high-performance networking',
       task: 'Design TCP server architecture',
@@ -421,8 +423,9 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
 export const socketImplementationTask = defineTask('socket-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Socket Implementation - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'network-developer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Network Systems Developer',
       task: 'Implement core socket operations',
@@ -460,8 +463,9 @@ export const socketImplementationTask = defineTask('socket-implementation', (arg
 export const connectionManagementTask = defineTask('connection-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Connection Management - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'connection-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Connection Management Engineer',
       task: 'Implement connection lifecycle management',
@@ -499,8 +503,9 @@ export const connectionManagementTask = defineTask('connection-management', (arg
 export const eventLoopTask = defineTask('event-loop', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Event Loop Implementation - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'event-loop-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Event-Driven Systems Engineer',
       task: 'Implement event loop and I/O multiplexing',
@@ -538,8 +543,9 @@ export const eventLoopTask = defineTask('event-loop', (args, taskCtx) => ({
 export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Error Handling - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'reliability-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Reliability Engineer',
       task: 'Implement comprehensive error handling',
@@ -577,8 +583,9 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
 export const gracefulShutdownTask = defineTask('graceful-shutdown', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Graceful Shutdown - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'shutdown-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Implement graceful shutdown mechanism',
@@ -616,8 +623,9 @@ export const gracefulShutdownTask = defineTask('graceful-shutdown', (args, taskC
 export const monitoringTask = defineTask('monitoring', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Monitoring - ${args.projectName}`,
+  skill: { name: 'network-simulation' },
   agent: {
-    name: 'monitoring-engineer',
+    name: 'network-architect',
     prompt: {
       role: 'Monitoring and Observability Engineer',
       task: 'Implement logging and monitoring',
@@ -655,8 +663,9 @@ export const monitoringTask = defineTask('monitoring', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Test Suite - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Network Testing Engineer',
       task: 'Create comprehensive test suite',
@@ -696,8 +705,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const documentationTask = defineTask('documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'technical-writer',
+    name: 'network-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate comprehensive documentation',
@@ -736,8 +746,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Validation - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'validation-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Quality Assurance Engineer',
       task: 'Validate TCP server implementation',

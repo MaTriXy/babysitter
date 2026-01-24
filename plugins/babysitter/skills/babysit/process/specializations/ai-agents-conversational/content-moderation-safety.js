@@ -196,7 +196,7 @@ export const moderationPolicyTask = defineTask('moderation-policy', (args, taskC
   kind: 'agent',
   title: `Define Moderation Policy - ${args.systemName}`,
   agent: {
-    name: 'policy-designer',
+    name: 'safety-auditor',  // AG-SAF-001: Reviews agents for safety and alignment issues
     prompt: {
       role: 'Moderation Policy Designer',
       task: 'Define content moderation policy',

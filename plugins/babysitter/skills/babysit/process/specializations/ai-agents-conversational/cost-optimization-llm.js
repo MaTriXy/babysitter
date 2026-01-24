@@ -184,7 +184,7 @@ export const costAnalysisTask = defineTask('cost-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Analyze Current Costs - ${args.systemName}`,
   agent: {
-    name: 'cost-analyst',
+    name: 'cost-optimizer',  // AG-OPS-002: Analyzes and reduces LLM token costs
     prompt: {
       role: 'Cost Analyst',
       task: 'Analyze current LLM costs and usage patterns',

@@ -130,7 +130,7 @@ export const trajectoryObstacleHandlingTask = defineTask('trajectory-obstacle-ha
   kind: 'agent',
   title: `Obstacle Handling - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Handle obstacles and collision avoidance', context: args, instructions: ['1. Add collision cost', '2. Configure signed distance fields', '3. Set safety margins', '4. Handle self-collision', '5. Test collision avoidance'] },
     outputSchema: { type: 'object', required: ['collisionConfig', 'safetyMargins', 'artifacts'], properties: { collisionConfig: { type: 'object' }, safetyMargins: { type: 'object' }, sdfConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -154,7 +154,7 @@ export const trajectoryTestingTask = defineTask('trajectory-testing', (args, tas
   kind: 'agent',
   title: `Trajectory Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test on complex motion scenarios', context: args, instructions: ['1. Test point-to-point motions', '2. Test via-point trajectories', '3. Test in cluttered environments', '4. Measure optimization time', '5. Evaluate trajectory quality'] },
     outputSchema: { type: 'object', required: ['testResults', 'optimizationTime', 'artifacts'], properties: { testResults: { type: 'array' }, optimizationTime: { type: 'number' }, successRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -166,7 +166,7 @@ export const feasibilityValidationTask = defineTask('feasibility-validation', (a
   kind: 'agent',
   title: `Feasibility Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate feasibility on physical robot', context: args, instructions: ['1. Check kinematic feasibility', '2. Verify dynamics limits', '3. Test on simulator', '4. Validate on hardware', '5. Document feasibility'] },
     outputSchema: { type: 'object', required: ['feasible', 'validationResults', 'artifacts'], properties: { feasible: { type: 'boolean' }, validationResults: { type: 'object' }, constraintViolations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -178,7 +178,7 @@ export const trajectoryQualityMetricsTask = defineTask('trajectory-quality-metri
   kind: 'agent',
   title: `Quality Metrics - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Measure trajectory quality metrics', context: args, instructions: ['1. Compute smoothness metric', '2. Measure path length', '3. Compute energy consumption', '4. Measure execution time', '5. Generate quality report'] },
     outputSchema: { type: 'object', required: ['smoothness', 'executionTime', 'meetsRequirements', 'artifacts'], properties: { smoothness: { type: 'number' }, executionTime: { type: 'number' }, pathLength: { type: 'number' }, energy: { type: 'number' }, meetsRequirements: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },

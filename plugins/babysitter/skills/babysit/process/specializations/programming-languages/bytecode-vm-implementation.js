@@ -253,7 +253,7 @@ export const vmInstructionSetTask = defineTask('vm-instruction-set', (args, task
   kind: 'agent',
   title: `Phase 1: VM Instruction Set - ${args.languageName}`,
   agent: {
-    name: 'vm-architect',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Architect',
       task: 'Design bytecode instruction set',
@@ -295,7 +295,7 @@ export const bytecodeCompilerTask = defineTask('bytecode-compiler', (args, taskC
   kind: 'agent',
   title: `Phase 2: Bytecode Compiler - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement bytecode compiler',
@@ -335,7 +335,7 @@ export const vmExecutionLoopTask = defineTask('vm-execution-loop', (args, taskCt
   kind: 'agent',
   title: `Phase 3: VM Execution Loop - ${args.languageName}`,
   agent: {
-    name: 'vm-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Engineer',
       task: 'Implement VM execution loop',
@@ -376,7 +376,7 @@ export const vmMemoryManagementTask = defineTask('vm-memory-management', (args, 
   kind: 'agent',
   title: `Phase 4: VM Memory Management - ${args.languageName}`,
   agent: {
-    name: 'vm-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Engineer',
       task: 'Implement stack/register management',
@@ -417,7 +417,7 @@ export const vmRuntimeSupportTask = defineTask('vm-runtime-support', (args, task
   kind: 'agent',
   title: `Phase 5: VM Runtime Support - ${args.languageName}`,
   agent: {
-    name: 'vm-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Engineer',
       task: 'Implement runtime support',
@@ -458,7 +458,7 @@ export const dispatchOptimizationTask = defineTask('dispatch-optimization', (arg
   kind: 'agent',
   title: `Phase 6: Dispatch Optimization - ${args.languageName}`,
   agent: {
-    name: 'vm-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Engineer',
       task: 'Implement dispatch optimization',
@@ -499,7 +499,7 @@ export const vmIntegrationTask = defineTask('vm-integration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 7: VM Integration - ${args.languageName}`,
   agent: {
-    name: 'vm-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'VM Engineer',
       task: 'Integrate VM components',
@@ -539,7 +539,7 @@ export const vmTestingTask = defineTask('vm-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: VM Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive VM tests',
@@ -581,7 +581,7 @@ export const vmDocumentationTask = defineTask('vm-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: VM Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate VM documentation',

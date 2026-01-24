@@ -117,7 +117,7 @@ export const setupProfilingEnvironmentTask = defineTask('setup-profiling-environ
   kind: 'agent',
   title: `Setup Profiling Environment - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Setup CPU profiling environment',
@@ -151,7 +151,7 @@ export const selectProfilingToolsTask = defineTask('select-profiling-tools', (ar
   kind: 'agent',
   title: `Select Profiling Tools - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Select appropriate CPU profiling tools',
@@ -185,7 +185,7 @@ export const executeProfilingTask = defineTask('execute-profiling', (args, taskC
   kind: 'agent',
   title: `Execute Profiling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Execute CPU profiling under workload',
@@ -220,7 +220,7 @@ export const generateFlameGraphsTask = defineTask('generate-flame-graphs', (args
   kind: 'agent',
   title: `Generate Flame Graphs - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Generate flame graphs from profiling data',
@@ -255,7 +255,7 @@ export const identifyHotCodePathsTask = defineTask('identify-hot-code-paths', (a
   kind: 'agent',
   title: `Identify Hot Code Paths - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Identify hot code paths from profiling data',
@@ -289,7 +289,7 @@ export const analyzeCPUPatternsTask = defineTask('analyze-cpu-patterns', (args, 
   kind: 'agent',
   title: `Analyze CPU Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Analyze CPU utilization patterns',
@@ -324,7 +324,7 @@ export const documentFindingsTask = defineTask('document-findings', (args, taskC
   kind: 'agent',
   title: `Document Findings - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Document profiling findings and recommendations',
@@ -359,7 +359,7 @@ export const prioritizeOptimizationsTask = defineTask('prioritize-optimizations'
   kind: 'agent',
   title: `Prioritize Optimizations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: {
       role: 'Performance Engineer',
       task: 'Prioritize optimization opportunities',

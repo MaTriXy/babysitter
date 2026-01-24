@@ -206,7 +206,7 @@ export const measurementSetupTask = defineTask('measurement-setup', (args, taskC
   kind: 'agent',
   title: `Phase 1: Measurement Setup - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Set up timing measurement infrastructure',
@@ -247,7 +247,7 @@ export const wcetAnalysisTask = defineTask('wcet-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: WCET Analysis - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Perform worst-case execution time analysis',
@@ -288,7 +288,7 @@ export const interruptLatencyTask = defineTask('interrupt-latency', (args, taskC
   kind: 'agent',
   title: `Phase 3: Interrupt Latency - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Measure interrupt latency',
@@ -330,7 +330,7 @@ export const contextSwitchOverheadTask = defineTask('context-switch-overhead', (
   kind: 'agent',
   title: `Phase 4: Context Switch Overhead - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Measure context switch overhead',
@@ -372,7 +372,7 @@ export const jitterAnalysisTask = defineTask('jitter-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Jitter Analysis - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Analyze timing jitter',
@@ -414,7 +414,7 @@ export const deadlineComplianceTask = defineTask('deadline-compliance', (args, t
   kind: 'agent',
   title: `Phase 6: Deadline Compliance - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Performance Engineer',
       task: 'Check deadline compliance',
@@ -456,7 +456,7 @@ export const performanceReportTask = defineTask('performance-report', (args, tas
   kind: 'agent',
   title: `Phase 7: Performance Report - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate performance validation report',

@@ -277,7 +277,7 @@ export const objectModelTask = defineTask('object-model', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Object Model - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Design object model for GC',
@@ -318,7 +318,7 @@ export const memoryAllocatorTask = defineTask('memory-allocator', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Memory Allocator - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Implement memory allocator',
@@ -359,7 +359,7 @@ export const rootSetScanningTask = defineTask('root-set-scanning', (args, taskCt
   kind: 'agent',
   title: `Phase 3: Root Set Scanning - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Implement root set scanning',
@@ -400,7 +400,7 @@ export const markingPhaseTask = defineTask('marking-phase', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Marking Phase - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Implement marking phase',
@@ -441,7 +441,7 @@ export const sweepPhaseTask = defineTask('sweep-phase', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Sweep/Compact Phase - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Implement sweep/compact phase',
@@ -482,7 +482,7 @@ export const writeBarriersTask = defineTask('write-barriers', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Write Barriers - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Implement write barriers',
@@ -523,7 +523,7 @@ export const gcIntegrationTask = defineTask('gc-integration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 7: GC Integration - ${args.languageName}`,
   agent: {
-    name: 'gc-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'GC Engineer',
       task: 'Integrate GC components',
@@ -563,7 +563,7 @@ export const gcTestingTask = defineTask('gc-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: GC Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive GC tests',
@@ -604,7 +604,7 @@ export const gcBenchmarkingTask = defineTask('gc-benchmarking', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: GC Benchmarking - ${args.languageName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark GC performance',
@@ -646,7 +646,7 @@ export const gcDocumentationTask = defineTask('gc-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 10: GC Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate GC documentation',

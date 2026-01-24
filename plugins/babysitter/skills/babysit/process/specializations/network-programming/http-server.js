@@ -100,8 +100,9 @@ export async function process(inputs, ctx) {
 export const protocolAnalysisTask = defineTask('protocol-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Protocol Analysis - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'protocol-analyst',
+    name: 'network-architect',
     prompt: { role: 'HTTP Protocol Analyst', task: 'Analyze HTTP/1.1 requirements', context: args,
       instructions: ['1. Analyze RFC requirements', '2. Document message formats', '3. List required headers', '4. Define compliance criteria'] },
     outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -113,8 +114,9 @@ export const protocolAnalysisTask = defineTask('protocol-analysis', (args, taskC
 export const requestParserTask = defineTask('request-parser', (args, taskCtx) => ({
   kind: 'agent',
   title: `Request Parser - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'parser-engineer',
+    name: 'network-architect',
     prompt: { role: 'HTTP Parser Engineer', task: 'Implement HTTP request parser', context: args,
       instructions: ['1. Parse request line', '2. Parse headers', '3. Handle body', '4. Validate requests'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -126,8 +128,9 @@ export const requestParserTask = defineTask('request-parser', (args, taskCtx) =>
 export const responseGeneratorTask = defineTask('response-generator', (args, taskCtx) => ({
   kind: 'agent',
   title: `Response Generator - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'response-engineer',
+    name: 'network-architect',
     prompt: { role: 'HTTP Response Engineer', task: 'Implement response generation', context: args,
       instructions: ['1. Generate status line', '2. Set headers', '3. Handle body', '4. Support all status codes'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -139,8 +142,9 @@ export const responseGeneratorTask = defineTask('response-generator', (args, tas
 export const connectionHandlerTask = defineTask('connection-handler', (args, taskCtx) => ({
   kind: 'agent',
   title: `Connection Handler - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'connection-engineer',
+    name: 'network-architect',
     prompt: { role: 'Connection Handler Engineer', task: 'Implement HTTP connection handling', context: args,
       instructions: ['1. Accept connections', '2. Handle request/response cycle', '3. Manage timeouts', '4. Handle errors'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -152,8 +156,9 @@ export const connectionHandlerTask = defineTask('connection-handler', (args, tas
 export const keepAliveTask = defineTask('keep-alive', (args, taskCtx) => ({
   kind: 'agent',
   title: `Keep-Alive - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'keepalive-engineer',
+    name: 'network-architect',
     prompt: { role: 'Keep-Alive Engineer', task: 'Implement keep-alive connections', context: args,
       instructions: ['1. Handle Connection header', '2. Implement keep-alive timeout', '3. Support pipelining', '4. Manage connection pool'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -165,8 +170,9 @@ export const keepAliveTask = defineTask('keep-alive', (args, taskCtx) => ({
 export const chunkedEncodingTask = defineTask('chunked-encoding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Chunked Encoding - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'chunked-engineer',
+    name: 'network-architect',
     prompt: { role: 'Transfer Encoding Engineer', task: 'Implement chunked transfer encoding', context: args,
       instructions: ['1. Implement chunk encoder', '2. Implement chunk decoder', '3. Handle trailers', '4. Support streaming'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -178,8 +184,9 @@ export const chunkedEncodingTask = defineTask('chunked-encoding', (args, taskCtx
 export const compressionTask = defineTask('compression', (args, taskCtx) => ({
   kind: 'agent',
   title: `Compression - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'compression-engineer',
+    name: 'network-architect',
     prompt: { role: 'Compression Engineer', task: 'Implement content compression', context: args,
       instructions: ['1. Implement gzip compression', '2. Handle Accept-Encoding', '3. Set Content-Encoding', '4. Optimize compression'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -191,8 +198,9 @@ export const compressionTask = defineTask('compression', (args, taskCtx) => ({
 export const virtualHostingTask = defineTask('virtual-hosting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Virtual Hosting - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'vhost-engineer',
+    name: 'network-architect',
     prompt: { role: 'Virtual Hosting Engineer', task: 'Implement virtual hosting', context: args,
       instructions: ['1. Handle Host header', '2. Route to virtual hosts', '3. Configure per-host settings', '4. Handle default host'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -204,8 +212,9 @@ export const virtualHostingTask = defineTask('virtual-hosting', (args, taskCtx) 
 export const staticFilesTask = defineTask('static-files', (args, taskCtx) => ({
   kind: 'agent',
   title: `Static Files - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'static-engineer',
+    name: 'network-architect',
     prompt: { role: 'Static File Engineer', task: 'Implement static file serving', context: args,
       instructions: ['1. Map URLs to files', '2. Set content types', '3. Handle caching headers', '4. Implement range requests'] },
     outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } }
@@ -217,8 +226,9 @@ export const staticFilesTask = defineTask('static-files', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Suite - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-architect',
     prompt: { role: 'Test Engineer', task: 'Create HTTP server tests', context: args,
       instructions: ['1. Test request parsing', '2. Test response generation', '3. Test keep-alive', '4. Test compliance'] },
     outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } }
@@ -230,8 +240,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validation - ${args.projectName}`,
+  skill: { name: 'http-protocol' },
   agent: {
-    name: 'qa-engineer',
+    name: 'network-architect',
     prompt: { role: 'QA Engineer', task: 'Validate HTTP server', context: args,
       instructions: ['1. Check RFC compliance', '2. Verify features', '3. Validate tests', '4. Calculate score'] },
     outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } }

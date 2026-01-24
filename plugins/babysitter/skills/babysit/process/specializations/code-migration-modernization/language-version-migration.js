@@ -221,7 +221,7 @@ export const versionGapAnalysisTask = defineTask('version-gap-analysis', (args, 
   kind: 'agent',
   title: `Phase 1: Version Gap Analysis - ${args.projectName}`,
   agent: {
-    name: 'language-analyst',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Language Migration Specialist',
       task: 'Analyze gap between language versions',
@@ -264,7 +264,7 @@ export const codebaseCompatibilityScanTask = defineTask('codebase-compatibility-
   kind: 'agent',
   title: `Phase 2: Codebase Compatibility Scan - ${args.projectName}`,
   agent: {
-    name: 'compatibility-scanner',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Code Analyst',
       task: 'Scan codebase for compatibility issues',
@@ -306,7 +306,7 @@ export const migrationToolSetupTask = defineTask('migration-tool-setup', (args, 
   kind: 'agent',
   title: `Phase 3: Migration Tool Setup - ${args.projectName}`,
   agent: {
-    name: 'tool-engineer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Set up language migration tools',
@@ -347,7 +347,7 @@ export const automatedMigrationTask = defineTask('automated-migration', (args, t
   kind: 'agent',
   title: `Phase 4: Automated Migration - ${args.projectName}`,
   agent: {
-    name: 'migration-automator',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Migration Engineer',
       task: 'Run automated migration tools',
@@ -389,7 +389,7 @@ export const manualFixesTask = defineTask('manual-fixes', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Manual Fixes - ${args.projectName}`,
   agent: {
-    name: 'manual-fixer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Senior Developer',
       task: 'Apply manual fixes for migration issues',
@@ -430,7 +430,7 @@ export const languageTestingValidationTask = defineTask('language-testing-valida
   kind: 'agent',
   title: `Phase 6: Testing and Validation - ${args.projectName}`,
   agent: {
-    name: 'test-validator',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Test migrated code with new language version',
@@ -473,7 +473,7 @@ export const runtimeEnvironmentUpdateTask = defineTask('runtime-environment-upda
   kind: 'agent',
   title: `Phase 7: Runtime Environment Update - ${args.projectName}`,
   agent: {
-    name: 'environment-engineer',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Platform Engineer',
       task: 'Update runtime environments for new language version',

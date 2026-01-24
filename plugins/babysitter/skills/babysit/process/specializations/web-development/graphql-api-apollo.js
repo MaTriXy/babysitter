@@ -75,10 +75,10 @@ export async function process(inputs, ctx) {
 }
 
 export const projectSetupTask = defineTask('graphql-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `GraphQL Setup - ${args.projectName}`,
-  agent: {
-    name: 'graphql-developer',
+  skill: {
+    name: 'graphql-skill',
     prompt: {
       role: 'GraphQL Developer',
       task: 'Set up Apollo Server project',
@@ -96,7 +96,7 @@ export const schemaDesignTask = defineTask('graphql-schema', (args, taskCtx) => 
   kind: 'agent',
   title: `GraphQL Schema Design - ${args.projectName}`,
   agent: {
-    name: 'graphql-schema-architect',
+    name: 'api-developer-agent',
     prompt: {
       role: 'GraphQL Schema Architect',
       task: 'Design GraphQL schema',
@@ -186,7 +186,7 @@ export const authSetupTask = defineTask('graphql-auth', (args, taskCtx) => ({
   kind: 'agent',
   title: `GraphQL Authentication - ${args.projectName}`,
   agent: {
-    name: 'graphql-auth-specialist',
+    name: 'auth-specialist-agent',
     prompt: {
       role: 'GraphQL Auth Specialist',
       task: 'Implement authentication and authorization',
@@ -222,7 +222,7 @@ export const documentationTask = defineTask('graphql-documentation', (args, task
   kind: 'agent',
   title: `GraphQL Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate GraphQL documentation',

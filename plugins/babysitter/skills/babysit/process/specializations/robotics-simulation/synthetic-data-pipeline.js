@@ -257,7 +257,7 @@ export const scenarioDesignTask = defineTask('scenario-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Scenario Design - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Design data generation scenarios',
@@ -300,7 +300,7 @@ export const domainRandomizationConfigTask = defineTask('domain-randomization-co
   kind: 'agent',
   title: `Phase 2: Domain Randomization - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Engineer',
       task: 'Configure domain randomization',
@@ -342,7 +342,7 @@ export const objectPlacementConfigTask = defineTask('object-placement-config', (
   kind: 'agent',
   title: `Phase 3: Object Placement - ${args.datasetName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Configure randomized object placement',
@@ -385,7 +385,7 @@ export const sensorDataConfigTask = defineTask('sensor-data-config', (args, task
   kind: 'agent',
   title: `Phase 4: Sensor Data Config - ${args.datasetName}`,
   agent: {
-    name: 'sensor-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: {
       role: 'Sensor Engineer',
       task: 'Configure diverse sensor data generation',
@@ -428,7 +428,7 @@ export const groundTruthAnnotationTask = defineTask('ground-truth-annotation', (
   kind: 'agent',
   title: `Phase 5: Ground Truth Annotation - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Configure ground truth annotation generation',
@@ -470,7 +470,7 @@ export const dataGenerationExecutionTask = defineTask('data-generation-execution
   kind: 'agent',
   title: `Phase 6: Data Generation - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Execute data generation pipeline',
@@ -513,7 +513,7 @@ export const datasetBalancingTask = defineTask('dataset-balancing', (args, taskC
   kind: 'agent',
   title: `Phase 7: Dataset Balancing - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Balance dataset across scenarios and conditions',
@@ -556,7 +556,7 @@ export const dataQualityValidationTask = defineTask('data-quality-validation', (
   kind: 'agent',
   title: `Phase 8: Quality Validation - ${args.datasetName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Data Quality Engineer',
       task: 'Validate data quality and diversity',
@@ -599,7 +599,7 @@ export const datasetExportTask = defineTask('dataset-export', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Dataset Export - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Export datasets in standard formats',
@@ -642,7 +642,7 @@ export const domainGapMetricsTask = defineTask('domain-gap-metrics', (args, task
   kind: 'agent',
   title: `Phase 10: Domain Gap Metrics - ${args.datasetName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'synthetic-data-expert',  // AG-014: Synthetic Data Generation Expert Agent
     prompt: {
       role: 'ML Engineer',
       task: 'Measure domain gap metrics',

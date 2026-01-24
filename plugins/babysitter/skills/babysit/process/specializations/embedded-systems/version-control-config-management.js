@@ -227,7 +227,7 @@ export const vcsStrategyTask = defineTask('vcs-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: VCS Strategy - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Define version control strategy',
@@ -269,7 +269,7 @@ export const versioningSchemeTask = defineTask('versioning-scheme', (args, taskC
   kind: 'agent',
   title: `Phase 2: Versioning Scheme - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Design versioning scheme',
@@ -311,7 +311,7 @@ export const branchingModelTask = defineTask('branching-model', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Branching Model - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Define branching model',
@@ -353,7 +353,7 @@ export const releaseProcessTask = defineTask('release-process', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Release Process - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Design release process',
@@ -395,7 +395,7 @@ export const buildReproducibilityTask = defineTask('build-reproducibility', (arg
   kind: 'agent',
   title: `Phase 5: Build Reproducibility - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Ensure build reproducibility',
@@ -437,7 +437,7 @@ export const hwSwVersionTrackingTask = defineTask('hw-sw-version-tracking', (arg
   kind: 'agent',
   title: `Phase 6: HW-SW Tracking - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design HW-SW version tracking',
@@ -479,7 +479,7 @@ export const configurationManagementTask = defineTask('configuration-management'
   kind: 'agent',
   title: `Phase 7: Config Management - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design configuration management',
@@ -521,7 +521,7 @@ export const vcsConfigDocumentationTask = defineTask('vcs-config-documentation',
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate version control documentation',

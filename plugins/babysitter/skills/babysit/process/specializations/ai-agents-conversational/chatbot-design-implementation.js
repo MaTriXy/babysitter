@@ -197,7 +197,7 @@ export const chatbotRequirementsTask = defineTask('chatbot-requirements', (args,
   kind: 'agent',
   title: `Define Chatbot Requirements - ${args.chatbotName}`,
   agent: {
-    name: 'conversation-designer',
+    name: 'chatbot-designer',  // AG-CI-001: Designs conversational flows with intent/entity modeling
     prompt: {
       role: 'Conversation Designer',
       task: 'Define chatbot requirements and persona',
@@ -233,10 +233,10 @@ export const chatbotRequirementsTask = defineTask('chatbot-requirements', (args,
 }));
 
 export const conversationFlowDesignTask = defineTask('conversation-flow-design', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Design Conversation Flows - ${args.chatbotName}`,
-  agent: {
-    name: 'flow-designer',
+  skill: {
+    name: 'dialogue-flow-templates',  // SK-CI-001: Dialogue flow templates for common interaction patterns
     prompt: {
       role: 'Conversation Flow Designer',
       task: 'Design conversation flows and dialogue paths',
@@ -272,10 +272,10 @@ export const conversationFlowDesignTask = defineTask('conversation-flow-design',
 }));
 
 export const intentEntityDesignTask = defineTask('intent-entity-design', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Design Intents and Entities - ${args.chatbotName}`,
-  agent: {
-    name: 'nlu-designer',
+  skill: {
+    name: 'entity-extraction-templates',  // SK-CI-003: Entity extraction templates for common entity types
     prompt: {
       role: 'NLU Designer',
       task: 'Design intents and entities for the chatbot',

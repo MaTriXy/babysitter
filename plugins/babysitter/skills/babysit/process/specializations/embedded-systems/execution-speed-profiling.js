@@ -200,7 +200,7 @@ export const profilingSetupTask = defineTask('profiling-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Profiling Setup - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Set up profiling infrastructure',
@@ -241,7 +241,7 @@ export const codeInstrumentationTask = defineTask('code-instrumentation', (args,
   kind: 'agent',
   title: `Phase 2: Instrumentation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Instrument code for profiling',
@@ -282,7 +282,7 @@ export const profilingExecutionTask = defineTask('profiling-execution', (args, t
   kind: 'agent',
   title: `Phase 3: Profiling Execution - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Execute profiling session',
@@ -324,7 +324,7 @@ export const hotspotAnalysisTask = defineTask('hotspot-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Hotspot Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze performance hotspots',
@@ -366,7 +366,7 @@ export const callGraphAnalysisTask = defineTask('call-graph-analysis', (args, ta
   kind: 'agent',
   title: `Phase 5: Call Graph Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze call graph',
@@ -407,7 +407,7 @@ export const speedOptimizationTask = defineTask('speed-optimization', (args, tas
   kind: 'agent',
   title: `Phase 6: Optimization Recommendations - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Generate speed optimization recommendations',
@@ -448,7 +448,7 @@ export const profilingReportTask = defineTask('profiling-report', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: Profiling Report - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate profiling report',

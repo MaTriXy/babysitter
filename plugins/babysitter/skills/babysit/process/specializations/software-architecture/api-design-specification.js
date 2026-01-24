@@ -710,8 +710,9 @@ export async function process(inputs, ctx) {
 export const requirementsAnalysisTask = defineTask('requirements-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Requirements Analysis and Domain Modeling - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Requirements Analyst and Domain Modeling Expert',
       task: 'Analyze API requirements and create comprehensive domain model',
@@ -836,8 +837,9 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
 export const apiArchitectureDesignTask = defineTask('api-architecture-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: API Architecture Design - ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Architect specializing in modern API architecture patterns',
       task: 'Design comprehensive API architecture with appropriate patterns and structure',
@@ -952,8 +954,9 @@ export const apiArchitectureDesignTask = defineTask('api-architecture-design', (
 export const resourceModelingTask = defineTask('resource-modeling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Resource Modeling and Data Design - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Resource Modeling Expert',
       task: 'Model API resources based on domain model and requirements',
@@ -1059,8 +1062,9 @@ export const resourceModelingTask = defineTask('resource-modeling', (args, taskC
 export const endpointDesignTask = defineTask('endpoint-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Endpoint Design - ${args.category} - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Endpoint Design Specialist',
       task: `Design detailed API endpoints for ${args.category} resources`,
@@ -1139,8 +1143,9 @@ export const endpointDesignTask = defineTask('endpoint-design', (args, taskCtx) 
 export const schemaDesignTask = defineTask('schema-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Request/Response Schema Design - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Schema Design Expert',
       task: 'Design comprehensive request and response schemas',
@@ -1226,8 +1231,9 @@ export const schemaDesignTask = defineTask('schema-design', (args, taskCtx) => (
 export const errorHandlingDesignTask = defineTask('error-handling-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Error Handling Design - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Error Handling Specialist',
       task: 'Design comprehensive error handling and status code strategy',
@@ -1314,8 +1320,9 @@ export const errorHandlingDesignTask = defineTask('error-handling-design', (args
 export const authenticationAuthorizationDesignTask = defineTask('authentication-authorization-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Authentication and Authorization Design - ${args.projectName}`,
+  skill: { name: 'threat-modeler' },
   agent: {
-    name: 'general-purpose',
+    name: 'security-architect',
     prompt: {
       role: 'API Security Architect specializing in authentication and authorization',
       task: 'Design comprehensive authentication and authorization mechanisms',
@@ -1444,8 +1451,9 @@ export const authenticationAuthorizationDesignTask = defineTask('authentication-
 export const rateLimitingDesignTask = defineTask('rate-limiting-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Rate Limiting and Throttling Design - ${args.projectName}`,
+  skill: { name: 'api-gateway-config' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Rate Limiting Expert',
       task: 'Design rate limiting and throttling strategies',
@@ -1547,8 +1555,9 @@ export const rateLimitingDesignTask = defineTask('rate-limiting-design', (args, 
 export const versioningStrategyTask = defineTask('versioning-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: API Versioning Strategy - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Versioning Strategist',
       task: 'Design API versioning and evolution strategy',
@@ -1644,8 +1653,9 @@ export const versioningStrategyTask = defineTask('versioning-strategy', (args, t
 export const formalSpecificationTask = defineTask('formal-specification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Formal API Specification Generation - ${args.projectName}`,
+  skill: { name: 'openapi-validator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Specification Expert (OpenAPI/GraphQL Schema)',
       task: 'Generate formal API specification in OpenAPI 3.0 or GraphQL Schema format',
@@ -1723,8 +1733,9 @@ export const formalSpecificationTask = defineTask('formal-specification', (args,
 export const apiDocumentationTask = defineTask('api-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: API Documentation Generation - ${args.projectName}`,
+  skill: { name: 'swagger-ui-deployer' },
   agent: {
-    name: 'general-purpose',
+    name: 'technical-writer',
     prompt: {
       role: 'API Technical Writer and Documentation Expert',
       task: 'Generate comprehensive API documentation for developers',
@@ -1800,8 +1811,9 @@ export const apiDocumentationTask = defineTask('api-documentation', (args, taskC
 export const contractTestingDesignTask = defineTask('contract-testing-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: API Contract Testing Design - ${args.projectName}`,
+  skill: { name: 'api-mock-server' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Contract Testing Specialist',
       task: 'Design contract testing strategy for API',
@@ -1878,8 +1890,9 @@ export const contractTestingDesignTask = defineTask('contract-testing-design', (
 export const sdkDesignTask = defineTask('sdk-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: SDK and Client Library Design - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'SDK Design Expert',
       task: 'Design SDK and client library strategy',
@@ -1968,7 +1981,7 @@ export const developerExperienceTask = defineTask('developer-experience', (args,
   kind: 'agent',
   title: `Phase 14: Developer Experience Optimization - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'Developer Experience (DX) Specialist',
       task: 'Optimize developer experience for API consumers',
@@ -2072,7 +2085,7 @@ export const performanceDesignTask = defineTask('performance-design', (args, tas
   kind: 'agent',
   title: `Phase 15: Performance and Caching Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Performance Architect',
       task: 'Design performance optimization and caching strategy',
@@ -2174,7 +2187,7 @@ export const monitoringObservabilityTask = defineTask('monitoring-observability'
   kind: 'agent',
   title: `Phase 16: Monitoring and Observability Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Observability Specialist',
       task: 'Design comprehensive monitoring and observability strategy',
@@ -2312,7 +2325,7 @@ export const migrationStrategyTask = defineTask('migration-strategy', (args, tas
   kind: 'agent',
   title: `Phase 17: Migration and Backward Compatibility Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Migration Specialist',
       task: 'Design migration strategy from existing APIs',
@@ -2425,7 +2438,7 @@ export const implementationRoadmapTask = defineTask('implementation-roadmap', (a
   kind: 'agent',
   title: `Phase 18: Implementation Roadmap - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'API Implementation Project Manager',
       task: 'Create detailed implementation roadmap',
@@ -2538,7 +2551,7 @@ export const designReviewTask = defineTask('design-review', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 19: Comprehensive Design Review - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-design-architect',
     prompt: {
       role: 'Senior API Architect and Design Reviewer',
       task: 'Conduct comprehensive review of API design',

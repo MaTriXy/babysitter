@@ -108,7 +108,7 @@ export const milestoneRequirementsTask = defineTask('milestone-requirements', (a
   kind: 'agent',
   title: `Milestone Requirements - ${args.milestoneType}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: { role: 'Producer', task: 'Review milestone requirements', context: args, instructions: ['1. Review acceptance criteria', '2. Verify feature completeness', '3. Check content status', '4. Validate quality targets'] },
     outputSchema: { type: 'object', required: ['criteriaVerified', 'readinessScore', 'artifacts'], properties: { criteriaVerified: { type: 'array' }, readinessScore: { type: 'number' }, gaps: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -120,7 +120,7 @@ export const bugTriageTask = defineTask('bug-triage', (args, taskCtx) => ({
   kind: 'agent',
   title: `Bug Triage - ${args.milestoneType}`,
   agent: {
-    name: 'qa-lead',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Lead', task: 'Triage bugs for milestone', context: args, instructions: ['1. Review all open bugs', '2. Prioritize by severity', '3. Identify must-fix bugs', '4. Create fix plan'] },
     outputSchema: { type: 'object', required: ['criticalBugs', 'highBugs', 'criticalBugList', 'artifacts'], properties: { criticalBugs: { type: 'number' }, highBugs: { type: 'number' }, criticalBugList: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -132,7 +132,7 @@ export const releaseBuildTask = defineTask('release-build', (args, taskCtx) => (
   kind: 'agent',
   title: `Release Build - ${args.milestoneType}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Create release candidate build', context: args, instructions: ['1. Create release branch', '2. Build milestone candidate', '3. Run automated tests', '4. Package build'] },
     outputSchema: { type: 'object', required: ['buildPath', 'buildVersion', 'testsPass', 'artifacts'], properties: { buildPath: { type: 'string' }, buildVersion: { type: 'string' }, testsPass: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -144,7 +144,7 @@ export const acceptanceTestingTask = defineTask('acceptance-testing', (args, tas
   kind: 'agent',
   title: `Acceptance Testing - ${args.milestoneType}`,
   agent: {
-    name: 'qa-lead',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Lead', task: 'Perform acceptance testing', context: args, instructions: ['1. Test all acceptance criteria', '2. Document pass/fail status', '3. Regression testing', '4. Performance validation'] },
     outputSchema: { type: 'object', required: ['passRate', 'criteriaMet', 'criteriaFailed', 'artifacts'], properties: { passRate: { type: 'number' }, criteriaMet: { type: 'array' }, criteriaFailed: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -156,7 +156,7 @@ export const milestoneDocumentationTask = defineTask('milestone-documentation', 
   kind: 'agent',
   title: `Milestone Documentation - ${args.milestoneType}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: { role: 'Technical Writer', task: 'Create milestone documentation', context: args, instructions: ['1. Document build contents', '2. Create release notes', '3. Document known issues', '4. Create handoff documentation'] },
     outputSchema: { type: 'object', required: ['releaseNotesPath', 'artifacts'], properties: { releaseNotesPath: { type: 'string' }, knownIssues: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -168,7 +168,7 @@ export const milestoneApprovalTask = defineTask('milestone-approval', (args, tas
   kind: 'agent',
   title: `Milestone Approval - ${args.milestoneType}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: { role: 'Executive Producer', task: 'Review and approve milestone', context: args, instructions: ['1. Review acceptance results', '2. Assess milestone quality', '3. Make approval decision', '4. Document feedback'] },
     outputSchema: { type: 'object', required: ['approved', 'feedback', 'artifacts'], properties: { approved: { type: 'boolean' }, feedback: { type: 'array' }, conditions: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -180,7 +180,7 @@ export const milestoneRetrospectiveTask = defineTask('milestone-retrospective', 
   kind: 'agent',
   title: `Milestone Retrospective - ${args.milestoneType}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: { role: 'Scrum Master', task: 'Conduct milestone retrospective', context: args, instructions: ['1. Gather team feedback', '2. Identify what went well', '3. Identify improvements', '4. Create action items'] },
     outputSchema: { type: 'object', required: ['findings', 'actionItems', 'artifacts'], properties: { findings: { type: 'array' }, wentWell: { type: 'array' }, improvements: { type: 'array' }, actionItems: { type: 'array' }, artifacts: { type: 'array' } } }
   },

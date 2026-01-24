@@ -350,7 +350,7 @@ export const bootloaderRequirementsTask = defineTask('bootloader-requirements', 
   kind: 'agent',
   title: `Phase 1: Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Define bootloader requirements',
@@ -392,7 +392,7 @@ export const memoryLayoutDesignTask = defineTask('memory-layout-design', (args, 
   kind: 'agent',
   title: `Phase 2: Memory Layout - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design bootloader memory layout',
@@ -435,7 +435,7 @@ export const bootloaderStartupTask = defineTask('bootloader-startup', (args, tas
   kind: 'agent',
   title: `Phase 3: Startup Code - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement bootloader startup code',
@@ -476,7 +476,7 @@ export const flashProgrammingTask = defineTask('flash-programming', (args, taskC
   kind: 'agent',
   title: `Phase 4: Flash Programming - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement flash programming routines',
@@ -518,7 +518,7 @@ export const updateProtocolTask = defineTask('update-protocol', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Update Protocol - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement firmware update protocol',
@@ -560,7 +560,7 @@ export const imageVerificationTask = defineTask('image-verification', (args, tas
   kind: 'agent',
   title: `Phase 6: Image Verification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement firmware image verification',
@@ -602,7 +602,7 @@ export const secureBootImplementationTask = defineTask('secure-boot-implementati
   kind: 'agent',
   title: `Phase 7: Secure Boot - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Implement secure boot chain of trust',
@@ -644,7 +644,7 @@ export const applicationLaunchTask = defineTask('application-launch', (args, tas
   kind: 'agent',
   title: `Phase 8: Application Launch - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement application launch sequence',
@@ -685,7 +685,7 @@ export const rollbackProtectionTask = defineTask('rollback-protection', (args, t
   kind: 'agent',
   title: `Phase 9: Rollback Protection - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement rollback and recovery protection',
@@ -727,7 +727,7 @@ export const bootloaderErrorHandlingTask = defineTask('bootloader-error-handling
   kind: 'agent',
   title: `Phase 10: Error Handling - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement bootloader error handling',
@@ -768,7 +768,7 @@ export const bootloaderBuildSystemTask = defineTask('bootloader-build-system', (
   kind: 'agent',
   title: `Phase 11: Build System - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'bootloader-expert',
     prompt: {
       role: 'Build Engineer',
       task: 'Set up bootloader build system',
@@ -810,7 +810,7 @@ export const bootloaderTestingTask = defineTask('bootloader-testing', (args, tas
   kind: 'agent',
   title: `Phase 12: Testing - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create bootloader test suite',
@@ -851,7 +851,7 @@ export const bootloaderDocumentationTask = defineTask('bootloader-documentation'
   kind: 'agent',
   title: `Phase 13: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Create bootloader documentation',

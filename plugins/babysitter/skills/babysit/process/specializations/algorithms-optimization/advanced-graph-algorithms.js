@@ -48,8 +48,9 @@ export async function process(inputs, ctx) {
 export const advancedAlgorithmDesignTask = defineTask('advanced-algorithm-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design ${args.algorithmType}`,
+  skills: ['graph-algorithm-selector', 'flow-network-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Advanced Algorithm Expert',
       task: 'Design advanced graph algorithm implementation',
@@ -70,8 +71,9 @@ export const advancedAlgorithmDesignTask = defineTask('advanced-algorithm-design
 export const advancedAlgorithmImplementationTask = defineTask('advanced-algorithm-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implement ${args.algorithmType}`,
+  skills: ['flow-network-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement advanced graph algorithm',
@@ -92,8 +94,9 @@ export const advancedAlgorithmImplementationTask = defineTask('advanced-algorith
 export const advancedAlgorithmVerificationTask = defineTask('advanced-algorithm-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Verify ${args.algorithmType}`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'Algorithm Tester',
       task: 'Verify advanced graph algorithm correctness',

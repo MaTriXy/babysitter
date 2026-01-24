@@ -182,7 +182,7 @@ export const performanceAnalysisTask = defineTask('performance-analysis', (args,
   kind: 'agent',
   title: `Analyze Performance - ${args.agentName}`,
   agent: {
-    name: 'performance-analyst',
+    name: 'latency-optimizer',  // AG-OPS-003: Optimizes agent response latency
     prompt: {
       role: 'Performance Analyst',
       task: 'Analyze current agent performance',

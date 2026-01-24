@@ -172,7 +172,7 @@ export const reflectionFrameworkTask = defineTask('reflection-framework', (args,
   kind: 'agent',
   title: `Setup Reflection Framework - ${args.agentName}`,
   agent: {
-    name: 'framework-developer',
+    name: 'self-reflection-architect',  // AG-AA-004: Implements Reflexion and self-critique patterns
     prompt: {
       role: 'Reflection Framework Developer',
       task: 'Setup self-reflection framework',

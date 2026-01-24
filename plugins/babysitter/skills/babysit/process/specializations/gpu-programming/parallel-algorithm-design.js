@@ -115,7 +115,8 @@ export const problemAnalysisTask = defineTask('problem-analysis', (args, taskCtx
   kind: 'agent',
   title: `Problem Analysis - ${args.algorithmName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Analyze problem for parallelization',
@@ -156,7 +157,8 @@ export const parallelismAnalysisTask = defineTask('parallelism-analysis', (args,
   kind: 'agent',
   title: `Parallelism Analysis - ${args.algorithmName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Analyze parallelism opportunities',
@@ -197,7 +199,8 @@ export const workDecompositionTask = defineTask('work-decomposition', (args, tas
   kind: 'agent',
   title: `Work Decomposition - ${args.algorithmName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Design work decomposition strategy',
@@ -239,7 +242,8 @@ export const synchronizationDesignTask = defineTask('synchronization-design', (a
   kind: 'agent',
   title: `Synchronization Design - ${args.algorithmName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Design synchronization strategy',
@@ -280,7 +284,8 @@ export const patternImplementationTask = defineTask('pattern-implementation', (a
   kind: 'agent',
   title: `Pattern Implementation - ${args.algorithmName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement parallel patterns',
@@ -321,7 +326,8 @@ export const complexityAnalysisTask = defineTask('complexity-analysis', (args, t
   kind: 'agent',
   title: `Complexity Analysis - ${args.algorithmName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Analyze algorithm complexity',

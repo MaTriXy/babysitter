@@ -197,7 +197,7 @@ export const taskAnalysisTask = defineTask('task-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Analyze Task - ${args.projectName}`,
   agent: {
-    name: 'prompt-analyst',
+    name: 'prompt-engineer',  // AG-PE-001: Optimizes prompts through systematic testing and iteration
     prompt: {
       role: 'Prompt Engineering Analyst',
       task: 'Analyze task requirements for prompt design',
@@ -232,10 +232,10 @@ export const taskAnalysisTask = defineTask('task-analysis', (args, taskCtx) => (
 }));
 
 export const baselinePromptDesignTask = defineTask('baseline-prompt-design', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Design Baseline Prompts - ${args.projectName}`,
-  agent: {
-    name: 'prompt-designer',
+  skill: {
+    name: 'system-prompt-templates',  // SK-PE-001: Reusable system prompt templates for agent personas
     prompt: {
       role: 'Prompt Designer',
       task: 'Design baseline prompts for task',
@@ -271,10 +271,10 @@ export const baselinePromptDesignTask = defineTask('baseline-prompt-design', (ar
 }));
 
 export const fewShotExamplesTask = defineTask('few-shot-examples', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Create Few-Shot Examples - ${args.projectName}`,
-  agent: {
-    name: 'example-creator',
+  skill: {
+    name: 'few-shot-examples',  // SK-PE-002: Few-shot example generation and management
     prompt: {
       role: 'Few-Shot Example Creator',
       task: 'Create diverse few-shot examples',
@@ -310,10 +310,10 @@ export const fewShotExamplesTask = defineTask('few-shot-examples', (args, taskCt
 }));
 
 export const chainOfThoughtTask = defineTask('chain-of-thought', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Chain-of-Thought - ${args.projectName}`,
-  agent: {
-    name: 'cot-developer',
+  skill: {
+    name: 'chain-of-thought-prompts',  // SK-PE-003: Chain-of-thought and step-by-step reasoning prompts
     prompt: {
       role: 'Chain-of-Thought Developer',
       task: 'Implement chain-of-thought prompting',
@@ -352,7 +352,7 @@ export const promptTestingTask = defineTask('prompt-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Test Prompts - ${args.projectName}`,
   agent: {
-    name: 'prompt-tester',
+    name: 'prompt-tester',  // AG-PE-002: Creates prompt evaluation datasets and metrics
     prompt: {
       role: 'Prompt Tester',
       task: 'Test prompt variants systematically',

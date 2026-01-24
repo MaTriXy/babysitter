@@ -560,8 +560,11 @@ export const phiInventoryTask = defineTask('phi-inventory', (args, taskCtx) => (
 
 // Task 3: Administrative Safeguards Assessment
 export const administrativeSafeguardsTask = defineTask('administrative-safeguards', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Assess HIPAA Administrative Safeguards',
+  skill: {
+    name: 'hipaa-compliance-automator',
+  },
   agent: {
     name: 'administrative-safeguards-auditor',
     prompt: {

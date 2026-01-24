@@ -89,60 +89,70 @@ export async function process(inputs, ctx) {
 
 export const protocolAnalysisTask = defineTask('protocol-analysis', (args, taskCtx) => ({
   kind: 'agent', title: `Protocol Analysis - ${args.projectName}`,
-  agent: { name: 'protocol-analyst', prompt: { role: 'HTTP/2 Protocol Analyst', task: 'Analyze HTTP/2 requirements', context: args, instructions: ['1. Analyze RFC 7540', '2. Document frame types', '3. List stream states', '4. Define compliance criteria'] }, outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'network-architect', prompt: { role: 'HTTP/2 Protocol Analyst', task: 'Analyze HTTP/2 requirements', context: args, instructions: ['1. Analyze RFC 7540', '2. Document frame types', '3. List stream states', '4. Define compliance criteria'] }, outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'protocol']
 }));
 
 export const framingLayerTask = defineTask('framing-layer', (args, taskCtx) => ({
   kind: 'agent', title: `Framing Layer - ${args.projectName}`,
-  agent: { name: 'framing-engineer', prompt: { role: 'HTTP/2 Framing Engineer', task: 'Implement binary framing', context: args, instructions: ['1. Implement frame parser', '2. Implement frame serializer', '3. Handle all frame types', '4. Validate frame format'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'HTTP/2 Framing Engineer', task: 'Implement binary framing', context: args, instructions: ['1. Implement frame parser', '2. Implement frame serializer', '3. Handle all frame types', '4. Validate frame format'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'framing']
 }));
 
 export const streamMultiplexingTask = defineTask('stream-multiplexing', (args, taskCtx) => ({
   kind: 'agent', title: `Stream Multiplexing - ${args.projectName}`,
-  agent: { name: 'stream-engineer', prompt: { role: 'Stream Multiplexing Engineer', task: 'Implement stream multiplexing', context: args, instructions: ['1. Manage stream lifecycle', '2. Handle concurrent streams', '3. Implement stream state machine', '4. Handle stream errors'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Stream Multiplexing Engineer', task: 'Implement stream multiplexing', context: args, instructions: ['1. Manage stream lifecycle', '2. Handle concurrent streams', '3. Implement stream state machine', '4. Handle stream errors'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'streams']
 }));
 
 export const hpackCompressionTask = defineTask('hpack-compression', (args, taskCtx) => ({
   kind: 'agent', title: `HPACK Compression - ${args.projectName}`,
-  agent: { name: 'hpack-engineer', prompt: { role: 'HPACK Engineer', task: 'Implement HPACK header compression', context: args, instructions: ['1. Implement static table', '2. Implement dynamic table', '3. Implement Huffman coding', '4. Handle header encoding/decoding'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'HPACK Engineer', task: 'Implement HPACK header compression', context: args, instructions: ['1. Implement static table', '2. Implement dynamic table', '3. Implement Huffman coding', '4. Handle header encoding/decoding'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'hpack']
 }));
 
 export const flowControlTask = defineTask('flow-control', (args, taskCtx) => ({
   kind: 'agent', title: `Flow Control - ${args.projectName}`,
-  agent: { name: 'flow-control-engineer', prompt: { role: 'Flow Control Engineer', task: 'Implement HTTP/2 flow control', context: args, instructions: ['1. Track window sizes', '2. Handle WINDOW_UPDATE', '3. Implement backpressure', '4. Handle blocked streams'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Flow Control Engineer', task: 'Implement HTTP/2 flow control', context: args, instructions: ['1. Track window sizes', '2. Handle WINDOW_UPDATE', '3. Implement backpressure', '4. Handle blocked streams'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'flow-control']
 }));
 
 export const serverPushTask = defineTask('server-push', (args, taskCtx) => ({
   kind: 'agent', title: `Server Push - ${args.projectName}`,
-  agent: { name: 'push-engineer', prompt: { role: 'Server Push Engineer', task: 'Implement server push', context: args, instructions: ['1. Implement PUSH_PROMISE', '2. Handle push responses', '3. Implement push cancellation', '4. Optimize push strategy'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Server Push Engineer', task: 'Implement server push', context: args, instructions: ['1. Implement PUSH_PROMISE', '2. Handle push responses', '3. Implement push cancellation', '4. Optimize push strategy'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'server-push']
 }));
 
 export const prioritizationTask = defineTask('prioritization', (args, taskCtx) => ({
   kind: 'agent', title: `Prioritization - ${args.projectName}`,
-  agent: { name: 'priority-engineer', prompt: { role: 'Stream Priority Engineer', task: 'Implement stream prioritization', context: args, instructions: ['1. Implement dependency tree', '2. Handle weight allocation', '3. Implement priority scheduling', '4. Handle reprioritization'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Stream Priority Engineer', task: 'Implement stream prioritization', context: args, instructions: ['1. Implement dependency tree', '2. Handle weight allocation', '3. Implement priority scheduling', '4. Handle reprioritization'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'priority']
 }));
 
 export const connectionMgmtTask = defineTask('connection-mgmt', (args, taskCtx) => ({
   kind: 'agent', title: `Connection Management - ${args.projectName}`,
-  agent: { name: 'connection-engineer', prompt: { role: 'Connection Engineer', task: 'Implement connection management', context: args, instructions: ['1. Handle connection preface', '2. Implement SETTINGS exchange', '3. Handle GOAWAY', '4. Implement ping/pong'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Connection Engineer', task: 'Implement connection management', context: args, instructions: ['1. Handle connection preface', '2. Implement SETTINGS exchange', '3. Handle GOAWAY', '4. Implement ping/pong'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'connection']
 }));
 
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent', title: `Test Suite - ${args.projectName}`,
-  agent: { name: 'test-engineer', prompt: { role: 'Test Engineer', task: 'Create HTTP/2 tests', context: args, instructions: ['1. Test framing', '2. Test streams', '3. Test HPACK', '4. Test flow control'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'Test Engineer', task: 'Create HTTP/2 tests', context: args, instructions: ['1. Test framing', '2. Test streams', '3. Test HPACK', '4. Test flow control'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'testing']
 }));
 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent', title: `Validation - ${args.projectName}`,
-  agent: { name: 'qa-engineer', prompt: { role: 'QA Engineer', task: 'Validate HTTP/2 server', context: args, instructions: ['1. Check RFC compliance', '2. Run h2spec', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'http-protocol' },
+  agent: { name: 'hpc-network-expert', prompt: { role: 'QA Engineer', task: 'Validate HTTP/2 server', context: args, instructions: ['1. Check RFC compliance', '2. Run h2spec', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'http2', 'validation']
 }));

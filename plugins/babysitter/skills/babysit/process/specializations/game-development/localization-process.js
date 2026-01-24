@@ -85,7 +85,7 @@ export const localizationPlanningTask = defineTask('localization-planning', (arg
   kind: 'agent',
   title: `Localization Planning - ${args.projectName}`,
   agent: {
-    name: 'localization-manager',
+    name: 'localization-coordinator-agent',
     prompt: { role: 'Localization Manager', task: 'Plan localization project', context: args, instructions: ['1. Define scope per language', '2. Create localization schedule', '3. Assign vendors', '4. Define quality standards'] },
     outputSchema: { type: 'object', required: ['plan', 'schedule', 'artifacts'], properties: { plan: { type: 'object' }, schedule: { type: 'object' }, vendors: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -97,7 +97,7 @@ export const stringExtractionTask = defineTask('string-extraction', (args, taskC
   kind: 'agent',
   title: `String Extraction - ${args.projectName}`,
   agent: {
-    name: 'localization-engineer',
+    name: 'localization-tester-agent',
     prompt: { role: 'Localization Engineer', task: 'Extract localizable strings', context: args, instructions: ['1. Extract all text strings', '2. Add context notes', '3. Mark character limits', '4. Create string database'] },
     outputSchema: { type: 'object', required: ['stringCount', 'stringDatabase', 'artifacts'], properties: { stringCount: { type: 'number' }, stringDatabase: { type: 'string' }, categories: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -109,7 +109,7 @@ export const translationTask = defineTask('translation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Translation - ${args.projectName}`,
   agent: {
-    name: 'translator',
+    name: 'localization-coordinator-agent',
     prompt: { role: 'Translation Lead', task: 'Translate all strings', context: args, instructions: ['1. Translate strings', '2. Apply style guide', '3. Handle placeholders', '4. Review translations'] },
     outputSchema: { type: 'object', required: ['translatedLanguages', 'completionRate', 'artifacts'], properties: { translatedLanguages: { type: 'array' }, completionRate: { type: 'object' }, glossaryPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -121,7 +121,7 @@ export const culturalAdaptationTask = defineTask('cultural-adaptation', (args, t
   kind: 'agent',
   title: `Cultural Adaptation - ${args.projectName}`,
   agent: {
-    name: 'culturalization-specialist',
+    name: 'localization-coordinator-agent',
     prompt: { role: 'Culturalization Specialist', task: 'Adapt content for cultures', context: args, instructions: ['1. Review cultural sensitivities', '2. Adapt imagery and symbols', '3. Modify content for ratings', '4. Document adaptations'] },
     outputSchema: { type: 'object', required: ['adaptations', 'artifacts'], properties: { adaptations: { type: 'array' }, ratingsImpact: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -133,7 +133,7 @@ export const voiceLocalizationTask = defineTask('voice-localization', (args, tas
   kind: 'agent',
   title: `Voice Localization - ${args.projectName}`,
   agent: {
-    name: 'vo-director',
+    name: 'audio-designer-agent',
     prompt: { role: 'VO Director', task: 'Localize voice acting', context: args, instructions: ['1. Cast local voice actors', '2. Direct recording sessions', '3. Edit and sync audio', '4. QA voice overs'] },
     outputSchema: { type: 'object', required: ['voLanguages', 'lineCount', 'artifacts'], properties: { voLanguages: { type: 'array' }, lineCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -145,7 +145,7 @@ export const locIntegrationTask = defineTask('loc-integration', (args, taskCtx) 
   kind: 'agent',
   title: `Localization Integration - ${args.projectName}`,
   agent: {
-    name: 'localization-engineer',
+    name: 'localization-tester-agent',
     prompt: { role: 'Localization Engineer', task: 'Integrate translations', context: args, instructions: ['1. Import translated strings', '2. Test text display', '3. Fix overflow issues', '4. Verify font support'] },
     outputSchema: { type: 'object', required: ['integrated', 'issues', 'artifacts'], properties: { integrated: { type: 'boolean' }, issues: { type: 'array' }, fontSupport: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -157,7 +157,7 @@ export const localizationQATask = defineTask('localization-qa', (args, taskCtx) 
   kind: 'agent',
   title: `Localization QA - ${args.projectName}`,
   agent: {
-    name: 'loc-qa',
+    name: 'localization-tester-agent',
     prompt: { role: 'Localization QA', task: 'QA all localizations', context: args, instructions: ['1. Test all languages in-game', '2. Check for truncation', '3. Verify translations', '4. Report issues'] },
     outputSchema: { type: 'object', required: ['passRate', 'issues', 'artifacts'], properties: { passRate: { type: 'number' }, issues: { type: 'array' }, languageStatus: { type: 'object' }, artifacts: { type: 'array' } } }
   },

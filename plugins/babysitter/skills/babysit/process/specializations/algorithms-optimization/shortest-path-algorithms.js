@@ -47,8 +47,9 @@ export async function process(inputs, ctx) {
 export const algorithmSelectionTask = defineTask('algorithm-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Select Shortest Path Algorithm',
+  skills: ['graph-modeler', 'graph-algorithm-selector'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Algorithm Expert',
       task: 'Select optimal shortest path algorithm',
@@ -75,8 +76,9 @@ export const algorithmSelectionTask = defineTask('algorithm-selection', (args, t
 export const shortestPathImplementationTask = defineTask('shortest-path-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implement ${args.selection?.algorithm || 'Shortest Path'}`,
+  skills: ['graph-modeler'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement shortest path algorithm',
@@ -97,8 +99,9 @@ export const shortestPathImplementationTask = defineTask('shortest-path-implemen
 export const shortestPathVerificationTask = defineTask('shortest-path-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Verify Shortest Path Implementation',
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'Algorithm Tester',
       task: 'Verify shortest path implementation correctness',

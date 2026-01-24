@@ -81,7 +81,7 @@ export const avoidanceAlgorithmSelectionTask = defineTask('avoidance-algorithm-s
   kind: 'agent',
   title: `Algorithm Selection - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Select avoidance algorithm', context: args, instructions: ['1. Evaluate DWA, TEB, MPC options', '2. Consider environment type', '3. Configure algorithm parameters', '4. Set up ROS integration', '5. Document selection'] },
     outputSchema: { type: 'object', required: ['algorithm', 'parameters', 'artifacts'], properties: { algorithm: { type: 'string' }, parameters: { type: 'object' }, rationale: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const avoidancePerceptionIntegrationTask = defineTask('avoidance-percepti
   kind: 'agent',
   title: `Perception Integration - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Integrate with perception system', context: args, instructions: ['1. Subscribe to laser scan', '2. Integrate point cloud', '3. Add object detection', '4. Configure obstacle tracking', '5. Test perception pipeline'] },
     outputSchema: { type: 'object', required: ['perceptionConfig', 'sensorTopics', 'artifacts'], properties: { perceptionConfig: { type: 'object' }, sensorTopics: { type: 'array' }, trackingConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const velocityConstraintsConfigTask = defineTask('velocity-constraints-co
   kind: 'agent',
   title: `Velocity Constraints - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Configure velocity constraints and dynamics', context: args, instructions: ['1. Set max linear velocity', '2. Set max angular velocity', '3. Configure acceleration limits', '4. Add deceleration constraints', '5. Test dynamics compliance'] },
     outputSchema: { type: 'object', required: ['velocityLimits', 'accelerationLimits', 'artifacts'], properties: { velocityLimits: { type: 'object' }, accelerationLimits: { type: 'object' }, dynamicsConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const obstaclePredictionTask = defineTask('obstacle-prediction', (args, t
   kind: 'agent',
   title: `Obstacle Prediction - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement prediction for moving obstacles', context: args, instructions: ['1. Estimate obstacle velocities', '2. Predict future positions', '3. Configure prediction horizon', '4. Handle uncertainty', '5. Test prediction accuracy'] },
     outputSchema: { type: 'object', required: ['predictionConfig', 'horizon', 'artifacts'], properties: { predictionConfig: { type: 'object' }, horizon: { type: 'number' }, predictionMethod: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const socialNavigationTask = defineTask('social-navigation', (args, taskC
   kind: 'agent',
   title: `Social Navigation - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Add social navigation behaviors', context: args, instructions: ['1. Implement personal space', '2. Add passing behaviors', '3. Configure social forces', '4. Add human-aware planning', '5. Test with humans'] },
     outputSchema: { type: 'object', required: ['socialConfig', 'personalSpace', 'artifacts'], properties: { socialConfig: { type: 'object' }, personalSpace: { type: 'number' }, socialForces: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const dynamicObstacleTestingTask = defineTask('dynamic-obstacle-testing',
   kind: 'agent',
   title: `Dynamic Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test with dynamic obstacles at various speeds', context: args, instructions: ['1. Test with slow-moving obstacles', '2. Test with fast-moving obstacles', '3. Test with multiple obstacles', '4. Test crossing scenarios', '5. Measure avoidance performance'] },
     outputSchema: { type: 'object', required: ['testResults', 'avoidanceRate', 'artifacts'], properties: { testResults: { type: 'array' }, avoidanceRate: { type: 'number' }, scenarioResults: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const replanningOptimizationTask = defineTask('replanning-optimization', 
   kind: 'agent',
   title: `Replanning Optimization - ${args.robotName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Optimize replanning frequency', context: args, instructions: ['1. Profile replanning time', '2. Optimize computation', '3. Configure adaptive replanning', '4. Balance frequency vs quality', '5. Test real-time performance'] },
     outputSchema: { type: 'object', required: ['replanTime', 'replanFrequency', 'artifacts'], properties: { replanTime: { type: 'number' }, replanFrequency: { type: 'number' }, optimizations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const avoidanceSuccessRateTask = defineTask('avoidance-success-rate', (ar
   kind: 'agent',
   title: `Success Rate Measurement - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Measure navigation success rate', context: args, instructions: ['1. Run navigation trials', '2. Count successful navigations', '3. Analyze failure cases', '4. Calculate success rate', '5. Generate report'] },
     outputSchema: { type: 'object', required: ['successRate', 'totalTrials', 'artifacts'], properties: { successRate: { type: 'number' }, totalTrials: { type: 'number' }, failureCases: { type: 'array' }, artifacts: { type: 'array' } } }
   },

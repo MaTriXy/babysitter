@@ -170,7 +170,7 @@ export const toolSpecificationTask = defineTask('tool-specification', (args, tas
   kind: 'agent',
   title: `Specify Tools - ${args.agentName}`,
   agent: {
-    name: 'tool-architect',
+    name: 'function-calling-architect',  // AG-TU-001: Creates function calling schemas with JSON schema validation
     prompt: {
       role: 'Tool Architect',
       task: 'Specify tools for function calling agent',
@@ -206,10 +206,10 @@ export const toolSpecificationTask = defineTask('tool-specification', (args, tas
 }));
 
 export const inputValidationTask = defineTask('input-validation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Input Validation - ${args.agentName}`,
-  agent: {
-    name: 'validation-developer',
+  skill: {
+    name: 'function-calling-schemas',  // SK-TU-001: Function calling schema templates for various APIs
     prompt: {
       role: 'Input Validation Developer',
       task: 'Implement input validation for function calls',
@@ -244,10 +244,10 @@ export const inputValidationTask = defineTask('input-validation', (args, taskCtx
 }));
 
 export const functionExecutionTask = defineTask('function-execution', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Function Execution - ${args.agentName}`,
-  agent: {
-    name: 'execution-developer',
+  skill: {
+    name: 'langchain-tools',  // SK-LC-004: LangChain tool creation and integration utilities
     prompt: {
       role: 'Function Execution Developer',
       task: 'Implement function calling execution logic',

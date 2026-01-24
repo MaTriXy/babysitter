@@ -170,7 +170,7 @@ export const tracingInfrastructureTask = defineTask('tracing-infrastructure', (a
   kind: 'agent',
   title: `Setup Tracing Infrastructure - ${args.systemName}`,
   agent: {
-    name: 'tracing-developer',
+    name: 'observability-engineer',  // AG-OPS-004: Sets up tracing, logging, and monitoring
     prompt: {
       role: 'Tracing Developer',
       task: 'Setup distributed tracing for LLM applications',

@@ -350,7 +350,7 @@ export const rtosRequirementsTask = defineTask('rtos-requirements', (args, taskC
   kind: 'agent',
   title: `Phase 1: RTOS Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Define RTOS integration requirements',
@@ -392,7 +392,7 @@ export const rtosPortConfigTask = defineTask('rtos-port-config', (args, taskCtx)
   kind: 'agent',
   title: `Phase 2: RTOS Port Configuration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure RTOS port for target MCU',
@@ -434,7 +434,7 @@ export const rtosMemoryConfigTask = defineTask('rtos-memory-config', (args, task
   kind: 'agent',
   title: `Phase 3: Memory Configuration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure RTOS memory management',
@@ -476,7 +476,7 @@ export const taskArchitectureTask = defineTask('task-architecture', (args, taskC
   kind: 'agent',
   title: `Phase 4: Task Architecture - ${args.projectName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Architect',
       task: 'Design task architecture',
@@ -518,7 +518,7 @@ export const taskImplementationTask = defineTask('task-implementation', (args, t
   kind: 'agent',
   title: `Phase 5: Task Implementation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement RTOS tasks',
@@ -559,7 +559,7 @@ export const ipcSetupTask = defineTask('ipc-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: IPC Setup - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Set up inter-task communication',
@@ -602,7 +602,7 @@ export const syncPrimitivesTask = defineTask('sync-primitives', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Synchronization - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement synchronization primitives',
@@ -645,7 +645,7 @@ export const softwareTimersTask = defineTask('software-timers', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Software Timers - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Set up software timers',
@@ -686,7 +686,7 @@ export const ticklessModeTask = defineTask('tickless-mode', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 9: Tickless Mode - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure tickless idle mode',
@@ -729,7 +729,7 @@ export const rtosInterruptIntegrationTask = defineTask('rtos-interrupt-integrati
   kind: 'agent',
   title: `Phase 10: Interrupt Integration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Integrate interrupts with RTOS',
@@ -771,7 +771,7 @@ export const rtosDebugSupportTask = defineTask('rtos-debug-support', (args, task
   kind: 'agent',
   title: `Phase 11: Debug Support - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Add RTOS debug and trace support',
@@ -814,7 +814,7 @@ export const rtosConfigHeaderTask = defineTask('rtos-config-header', (args, task
   kind: 'agent',
   title: `Phase 12: Config Header - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create RTOS configuration header',
@@ -854,7 +854,7 @@ export const rtosDocumentationTask = defineTask('rtos-documentation', (args, tas
   kind: 'agent',
   title: `Phase 13: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Create RTOS integration documentation',

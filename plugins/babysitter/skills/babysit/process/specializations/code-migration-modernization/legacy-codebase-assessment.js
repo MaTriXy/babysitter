@@ -308,7 +308,7 @@ export const inventoryCollectionTask = defineTask('inventory-collection', (args,
   kind: 'agent',
   title: `Phase 1: Inventory Collection - ${args.projectName}`,
   agent: {
-    name: 'legacy-analyst',
+    name: 'legacy-system-archaeologist',
     prompt: {
       role: 'Legacy System Analyst',
       task: 'Collect comprehensive inventory of legacy system components',
@@ -353,7 +353,7 @@ export const staticCodeAnalysisTask = defineTask('static-code-analysis', (args, 
   kind: 'agent',
   title: `Phase 2: Static Code Analysis - ${args.projectName}`,
   agent: {
-    name: 'code-quality-analyst',
+    name: 'legacy-system-archaeologist',
     prompt: {
       role: 'Code Quality Analyst',
       task: 'Perform comprehensive static code analysis',
@@ -399,7 +399,7 @@ export const architectureAnalysisTask = defineTask('architecture-analysis', (arg
   kind: 'agent',
   title: `Phase 3: Architecture Analysis - ${args.projectName}`,
   agent: {
-    name: 'architecture-analyst',
+    name: 'legacy-system-archaeologist',
     prompt: {
       role: 'Software Architect',
       task: 'Analyze system architecture patterns and structure',
@@ -444,7 +444,7 @@ export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, t
   kind: 'agent',
   title: `Phase 4: Dependency Analysis - ${args.projectName}`,
   agent: {
-    name: 'dependency-analyst',
+    name: 'legacy-system-archaeologist',
     prompt: {
       role: 'Dependency Analyst',
       task: 'Analyze external and internal dependencies',
@@ -488,7 +488,7 @@ export const knowledgeAssessmentTask = defineTask('knowledge-assessment', (args,
   kind: 'agent',
   title: `Phase 5: Knowledge Assessment - ${args.projectName}`,
   agent: {
-    name: 'knowledge-analyst',
+    name: 'legacy-system-archaeologist',
     prompt: {
       role: 'Knowledge Management Analyst',
       task: 'Assess organizational knowledge about the legacy system',
@@ -531,7 +531,7 @@ export const technicalDebtQuantificationTask = defineTask('technical-debt-quanti
   kind: 'agent',
   title: `Phase 6: Technical Debt Quantification - ${args.projectName}`,
   agent: {
-    name: 'debt-analyst',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Technical Debt Analyst',
       task: 'Quantify and categorize technical debt',
@@ -574,7 +574,7 @@ export const migrationRiskAssessmentTask = defineTask('migration-risk-assessment
   kind: 'agent',
   title: `Phase 7: Migration Risk Assessment - ${args.projectName}`,
   agent: {
-    name: 'risk-analyst',
+    name: 'migration-readiness-assessor',
     prompt: {
       role: 'Migration Risk Analyst',
       task: 'Assess risks specific to migrating this legacy system',
@@ -617,7 +617,7 @@ export const readinessScoringTask = defineTask('readiness-scoring', (args, taskC
   kind: 'agent',
   title: `Phase 8: Modernization Readiness Scoring - ${args.projectName}`,
   agent: {
-    name: 'readiness-analyst',
+    name: 'migration-readiness-assessor',
     prompt: {
       role: 'Modernization Readiness Analyst',
       task: 'Calculate comprehensive modernization readiness score',
@@ -660,7 +660,7 @@ export const recommendationsReportTask = defineTask('recommendations-report', (a
   kind: 'agent',
   title: `Phase 9: Recommendations Report - ${args.projectName}`,
   agent: {
-    name: 'assessment-report-writer',
+    name: 'migration-readiness-assessor',
     prompt: {
       role: 'Senior Technical Writer and Architect',
       task: 'Generate comprehensive assessment recommendations report',

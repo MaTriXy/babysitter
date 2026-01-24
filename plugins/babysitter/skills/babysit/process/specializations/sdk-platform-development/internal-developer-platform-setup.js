@@ -257,7 +257,7 @@ export const serviceCatalogSetupTask = defineTask('service-catalog-setup', (args
   kind: 'agent',
   title: `Phase 2: Service Catalog - ${args.projectName}`,
   agent: {
-    name: 'catalog-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Catalog Engineer',
       task: 'Implement service catalog with Backstage or similar',
@@ -303,7 +303,7 @@ export const provisioningWorkflowsTask = defineTask('provisioning-workflows', (a
   kind: 'agent',
   title: `Phase 3: Provisioning Workflows - ${args.projectName}`,
   agent: {
-    name: 'automation-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Automation Engineer',
       task: 'Create project provisioning workflows',
@@ -349,7 +349,7 @@ export const goldenPathTemplateTask = defineTask('golden-path-template', (args, 
   kind: 'agent',
   title: `Phase 4: Golden Path - ${args.pathType}`,
   agent: {
-    name: 'template-engineer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'Template Engineer',
       task: `Create golden path template for ${args.pathType}`,
@@ -396,7 +396,7 @@ export const environmentManagementTask = defineTask('environment-management', (a
   kind: 'agent',
   title: `Phase 5: Environment Management - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Build environment management capabilities',
@@ -442,7 +442,7 @@ export const techDocsSetupTask = defineTask('techdocs-setup', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: TechDocs Setup - ${args.projectName}`,
   agent: {
-    name: 'docs-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Documentation Engineer',
       task: 'Set up TechDocs integration',
@@ -488,7 +488,7 @@ export const pluginConfigTask = defineTask('plugin-config', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Plugin Configuration - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Configure platform plugins',
@@ -535,7 +535,7 @@ export const idpDocumentationTask = defineTask('idp-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 8: IDP Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate IDP documentation',

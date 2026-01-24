@@ -506,7 +506,7 @@ export const redTeamReportTask = defineTask('red-team-report', (args, taskCtx) =
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Red Team Report Specialist',
       task: 'Generate red team report',

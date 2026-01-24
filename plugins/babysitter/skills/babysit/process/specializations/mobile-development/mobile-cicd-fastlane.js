@@ -86,8 +86,9 @@ function createCICDTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'fastlane-cicd' },
     agent: {
-      name: 'mobile-devops-engineer',
+      name: 'mobile-devops',
       prompt: {
         role: 'Mobile DevOps Engineer',
         task: `Configure ${title.toLowerCase()} for Fastlane CI/CD`,

@@ -257,7 +257,7 @@ export const lspProtocolSetupTask = defineTask('lsp-protocol-setup', (args, task
   kind: 'agent',
   title: `Phase 1: LSP Protocol Setup - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Set up LSP protocol handling',
@@ -298,7 +298,7 @@ export const documentManagementTask = defineTask('document-management', (args, t
   kind: 'agent',
   title: `Phase 2: Document Management - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement document management',
@@ -339,7 +339,7 @@ export const lspDiagnosticsTask = defineTask('lsp-diagnostics', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: LSP Diagnostics - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement diagnostics',
@@ -380,7 +380,7 @@ export const lspCompletionTask = defineTask('lsp-completion', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: LSP Completion - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement code completion',
@@ -421,7 +421,7 @@ export const lspHoverTask = defineTask('lsp-hover', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: LSP Hover - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement hover information',
@@ -462,7 +462,7 @@ export const lspGotoDefinitionTask = defineTask('lsp-goto-definition', (args, ta
   kind: 'agent',
   title: `Phase 6: Go To Definition - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement go to definition',
@@ -503,7 +503,7 @@ export const lspAdditionalFeaturesTask = defineTask('lsp-additional-features', (
   kind: 'agent',
   title: `Phase 7: Additional Features - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement additional LSP features',
@@ -543,7 +543,7 @@ export const lspIntegrationTask = defineTask('lsp-integration', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: LSP Integration - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Integrate LSP server',
@@ -584,7 +584,7 @@ export const lspTestingTask = defineTask('lsp-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: LSP Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive LSP tests',
@@ -625,7 +625,7 @@ export const lspDocumentationTask = defineTask('lsp-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 10: LSP Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate LSP documentation',

@@ -251,7 +251,7 @@ export const baselineProfilingTask = defineTask('baseline-profiling', (args, tas
   kind: 'agent',
   title: `Phase 1: Baseline Profiling - ${args.projectName}`,
   agent: {
-    name: 'gas-analyst',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization, SK-008: evm-analysis)
     prompt: {
       role: 'Smart Contract Gas Analyst',
       task: 'Establish baseline gas consumption profile',
@@ -293,7 +293,7 @@ export const storageOptimizationTask = defineTask('storage-optimization', (args,
   kind: 'agent',
   title: `Phase 2: Storage Optimization - ${args.projectName}`,
   agent: {
-    name: 'storage-optimizer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-008: evm-analysis)
     prompt: {
       role: 'Storage Optimization Specialist',
       task: 'Analyze and optimize storage usage',
@@ -335,7 +335,7 @@ export const calldataOptimizationTask = defineTask('calldata-optimization', (arg
   kind: 'agent',
   title: `Phase 3: Calldata Optimization - ${args.projectName}`,
   agent: {
-    name: 'calldata-optimizer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization)
     prompt: {
       role: 'Calldata Optimization Specialist',
       task: 'Optimize calldata and memory usage',
@@ -376,7 +376,7 @@ export const loopOptimizationTask = defineTask('loop-optimization', (args, taskC
   kind: 'agent',
   title: `Phase 4: Loop Optimization - ${args.projectName}`,
   agent: {
-    name: 'loop-optimizer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization)
     prompt: {
       role: 'Loop Optimization Specialist',
       task: 'Optimize loops and batch operations',
@@ -418,7 +418,7 @@ export const arithmeticOptimizationTask = defineTask('arithmetic-optimization', 
   kind: 'agent',
   title: `Phase 5: Arithmetic Optimization - ${args.projectName}`,
   agent: {
-    name: 'arithmetic-optimizer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization)
     prompt: {
       role: 'Arithmetic Optimization Specialist',
       task: 'Optimize arithmetic operations safely',
@@ -460,7 +460,7 @@ export const errorOptimizationTask = defineTask('error-optimization', (args, tas
   kind: 'agent',
   title: `Phase 6: Error Handling Optimization - ${args.projectName}`,
   agent: {
-    name: 'error-optimizer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization)
     prompt: {
       role: 'Error Handling Optimizer',
       task: 'Optimize error handling for gas efficiency',
@@ -502,7 +502,7 @@ export const implementOptimizationsTask = defineTask('implement-optimizations', 
   kind: 'agent',
   title: `Phase 7: Implement Optimizations - ${args.projectName}`,
   agent: {
-    name: 'optimization-implementer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-001: solidity-dev, SK-018: gas-optimization)
     prompt: {
       role: 'Optimization Implementation Engineer',
       task: 'Implement gas optimizations',
@@ -544,7 +544,7 @@ export const postOptimizationTestingTask = defineTask('post-optimization-testing
   kind: 'agent',
   title: `Phase 8: Post-Optimization Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-004: foundry-framework)
     prompt: {
       role: 'QA Engineer',
       task: 'Verify optimizations maintain functionality',
@@ -587,7 +587,7 @@ export const finalGasReportTask = defineTask('final-gas-report', (args, taskCtx)
   kind: 'agent',
   title: `Phase 9: Final Gas Report - ${args.projectName}`,
   agent: {
-    name: 'gas-reporter',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer
     prompt: {
       role: 'Gas Optimization Reporter',
       task: 'Generate comprehensive gas comparison report',

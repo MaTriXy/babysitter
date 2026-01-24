@@ -113,7 +113,8 @@ export const shaderDesignTask = defineTask('shader-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Shader Design - ${args.shaderName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'Graphics Engineer',
       task: 'Design compute shader architecture',
@@ -154,7 +155,8 @@ export const computeShaderImplementationTask = defineTask('compute-shader-implem
   kind: 'agent',
   title: `Shader Implementation - ${args.shaderName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'Graphics Engineer',
       task: 'Implement compute shader',
@@ -195,7 +197,8 @@ export const resourceBindingTask = defineTask('resource-binding', (args, taskCtx
   kind: 'agent',
   title: `Resource Binding - ${args.shaderName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'Graphics Engineer',
       task: 'Configure resource bindings',
@@ -236,7 +239,8 @@ export const computePipelineTask = defineTask('compute-pipeline', (args, taskCtx
   kind: 'agent',
   title: `Pipeline Creation - ${args.shaderName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'Graphics Engineer',
       task: 'Create compute pipeline',
@@ -277,7 +281,8 @@ export const dispatchLogicTask = defineTask('dispatch-logic', (args, taskCtx) =>
   kind: 'agent',
   title: `Dispatch Logic - ${args.shaderName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'Graphics Engineer',
       task: 'Implement dispatch logic',
@@ -318,7 +323,8 @@ export const computeShaderValidationTask = defineTask('compute-shader-validation
   kind: 'agent',
   title: `Validation - ${args.shaderName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['vulkan-compute'],
     prompt: {
       role: 'GPU Test Engineer',
       task: 'Validate compute shader',

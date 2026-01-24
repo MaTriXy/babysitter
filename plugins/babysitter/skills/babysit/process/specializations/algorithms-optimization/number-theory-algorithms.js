@@ -47,8 +47,9 @@ export async function process(inputs, ctx) {
 export const numberTheoryImplementationTask = defineTask('number-theory-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implement ${args.algorithm}`,
+  skills: ['mod-arithmetic-helper', 'prime-sieve'],
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Number Theory Expert',
       task: 'Implement number theory algorithm',
@@ -70,7 +71,7 @@ export const numberTheoryLibraryTask = defineTask('number-theory-library', (args
   kind: 'agent',
   title: 'Create Number Theory Library',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Library Designer',
       task: 'Create number theory library file',

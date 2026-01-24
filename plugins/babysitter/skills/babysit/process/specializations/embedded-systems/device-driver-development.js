@@ -343,7 +343,7 @@ export const driverRequirementsTask = defineTask('driver-requirements', (args, t
   kind: 'agent',
   title: `Phase 1: Requirements - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Define device driver requirements',
@@ -386,7 +386,7 @@ export const registerMappingTask = defineTask('register-mapping', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Register Mapping - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create hardware register mapping',
@@ -428,7 +428,7 @@ export const driverArchitectureTask = defineTask('driver-architecture', (args, t
   kind: 'agent',
   title: `Phase 3: Architecture - ${args.driverName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Software Architect',
       task: 'Design driver architecture',
@@ -471,7 +471,7 @@ export const driverApiDesignTask = defineTask('driver-api-design', (args, taskCt
   kind: 'agent',
   title: `Phase 4: API Design - ${args.driverName}`,
   agent: {
-    name: 'api-designer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'API Designer',
       task: 'Design driver public API',
@@ -513,7 +513,7 @@ export const coreDriverImplementationTask = defineTask('core-implementation', (a
   kind: 'agent',
   title: `Phase 5: Core Implementation - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement core driver functionality',
@@ -555,7 +555,7 @@ export const interruptHandlingTask = defineTask('interrupt-handling', (args, tas
   kind: 'agent',
   title: `Phase 6: Interrupt Handling - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement interrupt handling',
@@ -597,7 +597,7 @@ export const dmaConfigurationTask = defineTask('dma-configuration', (args, taskC
   kind: 'agent',
   title: `Phase 7: DMA Configuration - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure DMA for driver',
@@ -639,7 +639,7 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 8: Error Handling - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement comprehensive error handling',
@@ -680,7 +680,7 @@ export const threadSafetyTask = defineTask('thread-safety', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 9: Thread Safety - ${args.driverName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement thread safety',
@@ -721,7 +721,7 @@ export const driverUnitTestsTask = defineTask('driver-unit-tests', (args, taskCt
   kind: 'agent',
   title: `Phase 10: Unit Tests - ${args.driverName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Develop unit tests for driver',
@@ -763,7 +763,7 @@ export const driverDocumentationTask = defineTask('driver-documentation', (args,
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.driverName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Create driver documentation',
@@ -804,7 +804,7 @@ export const driverCodeReviewTask = defineTask('driver-code-review', (args, task
   kind: 'agent',
   title: `Phase 12: Code Review - ${args.driverName}`,
   agent: {
-    name: 'code-reviewer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Senior Embedded Engineer',
       task: 'Review driver code quality',

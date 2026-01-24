@@ -48,7 +48,7 @@ export const memoryAnalysisTask = defineTask('memory-analysis', (args, taskCtx) 
   kind: 'agent',
   title: 'Analyze Memory Usage',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Memory Optimization Expert',
       task: 'Analyze algorithm memory usage',
@@ -70,7 +70,7 @@ export const spaceReductionTask = defineTask('space-reduction', (args, taskCtx) 
   kind: 'agent',
   title: 'Apply Space Reduction',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Memory Optimization Expert',
       task: 'Apply space reduction techniques',
@@ -92,7 +92,7 @@ export const memoryOptimizedImplementationTask = defineTask('memory-optimized-im
   kind: 'agent',
   title: 'Implement Optimized Version',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement memory-optimized algorithm',

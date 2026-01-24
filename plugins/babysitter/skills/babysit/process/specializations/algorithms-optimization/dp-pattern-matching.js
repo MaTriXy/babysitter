@@ -89,8 +89,9 @@ export async function process(inputs, ctx) {
 export const dpRecognitionTask = defineTask('dp-recognition', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP Problem Recognition',
+  skills: ['dp-state-designer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Determine if problem requires dynamic programming',
@@ -123,8 +124,9 @@ export const dpRecognitionTask = defineTask('dp-recognition', (args, taskCtx) =>
 export const subproblemIdentificationTask = defineTask('subproblem-identification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Subproblem Identification',
+  skills: ['dp-state-designer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Identify subproblems and their structure',
@@ -156,8 +158,9 @@ export const subproblemIdentificationTask = defineTask('subproblem-identificatio
 export const patternClassificationTask = defineTask('pattern-classification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP Pattern Classification',
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Classify DP pattern type',
@@ -191,8 +194,9 @@ export const patternClassificationTask = defineTask('pattern-classification', (a
 export const stateDesignTask = defineTask('state-design', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP State Design',
+  skills: ['dp-state-designer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Design DP state representation',
@@ -225,8 +229,9 @@ export const stateDesignTask = defineTask('state-design', (args, taskCtx) => ({
 export const transitionFormulaTask = defineTask('transition-formula', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP Transition Formula',
+  skills: ['dp-state-designer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Derive DP transition formula',

@@ -96,7 +96,7 @@ export const interestRateModelTask = defineTask('interest-rate-model', (args, ta
   kind: 'agent',
   title: `Interest Rate Model - ${args.projectName}`,
   agent: {
-    name: 'defi-economist',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Interest Rate Designer',
       task: 'Design interest rate model',
@@ -114,7 +114,7 @@ export const coreProtocolTask = defineTask('core-protocol', (args, taskCtx) => (
   kind: 'agent',
   title: `Core Protocol - ${args.projectName}`,
   agent: {
-    name: 'lending-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'Lending Protocol Developer',
       task: 'Implement core lending protocol',
@@ -132,7 +132,7 @@ export const collateralManagementTask = defineTask('collateral-management', (arg
   kind: 'agent',
   title: `Collateral Management - ${args.projectName}`,
   agent: {
-    name: 'collateral-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Collateral Management Engineer',
       task: 'Implement collateral management',
@@ -150,7 +150,7 @@ export const supplyBorrowTask = defineTask('supply-borrow', (args, taskCtx) => (
   kind: 'agent',
   title: `Supply and Borrow - ${args.projectName}`,
   agent: {
-    name: 'supply-borrow-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Supply/Borrow Developer',
       task: 'Implement supply and borrow functions',
@@ -168,7 +168,7 @@ export const interestAccrualTask = defineTask('interest-accrual', (args, taskCtx
   kind: 'agent',
   title: `Interest Accrual - ${args.projectName}`,
   agent: {
-    name: 'interest-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Interest Accrual Engineer',
       task: 'Implement interest accrual mechanism',
@@ -186,7 +186,7 @@ export const liquidationTask = defineTask('liquidation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Liquidation Mechanism - ${args.projectName}`,
   agent: {
-    name: 'liquidation-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Liquidation Mechanism Developer',
       task: 'Implement liquidation mechanism',
@@ -204,7 +204,7 @@ export const oracleIntegrationTask = defineTask('oracle-integration', (args, tas
   kind: 'agent',
   title: `Oracle Integration - ${args.projectName}`,
   agent: {
-    name: 'oracle-integrator',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-016: oracle-integration)
     prompt: {
       role: 'Oracle Integration Engineer',
       task: 'Integrate price oracles',
@@ -222,7 +222,7 @@ export const flashLoanTask = defineTask('flash-loan', (args, taskCtx) => ({
   kind: 'agent',
   title: `Flash Loans - ${args.projectName}`,
   agent: {
-    name: 'flash-loan-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Flash Loan Developer',
       task: 'Implement flash loan functionality',
@@ -240,7 +240,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'lending-tester',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Lending Protocol Tester',
       task: 'Create comprehensive tests',
@@ -258,7 +258,7 @@ export const securityAnalysisTask = defineTask('security-analysis', (args, taskC
   kind: 'agent',
   title: `Security Analysis - ${args.projectName}`,
   agent: {
-    name: 'lending-security',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Lending Security Analyst',
       task: 'Analyze lending protocol security',

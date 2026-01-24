@@ -189,7 +189,7 @@ export const imageScanningTask = defineTask('image-scanning', (args, taskCtx) =>
   kind: 'agent',
   title: `Scan Images - ${args.projectName}`,
   agent: {
-    name: 'image-scanner',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Container Image Security Analyst',
       task: 'Scan container images',
@@ -228,7 +228,7 @@ export const k8sConfigAnalysisTask = defineTask('k8s-config-analysis', (args, ta
   kind: 'agent',
   title: `K8s Config Analysis - ${args.projectName}`,
   agent: {
-    name: 'k8s-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Kubernetes Security Analyst',
       task: 'Analyze Kubernetes configurations',
@@ -267,7 +267,7 @@ export const runtimeSecurityTask = defineTask('runtime-security', (args, taskCtx
   kind: 'agent',
   title: `Runtime Security - ${args.projectName}`,
   agent: {
-    name: 'runtime-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Container Runtime Security Analyst',
       task: 'Analyze runtime security',
@@ -305,7 +305,7 @@ export const networkPoliciesTask = defineTask('network-policies', (args, taskCtx
   kind: 'agent',
   title: `Network Policies - ${args.projectName}`,
   agent: {
-    name: 'network-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Container Network Security Analyst',
       task: 'Analyze network policies',
@@ -343,7 +343,7 @@ export const secretsManagementTask = defineTask('secrets-management', (args, tas
   kind: 'agent',
   title: `Secrets Management - ${args.projectName}`,
   agent: {
-    name: 'secrets-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Container Secrets Analyst',
       task: 'Analyze secrets management',
@@ -381,7 +381,7 @@ export const rbacAnalysisTask = defineTask('rbac-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `RBAC Analysis - ${args.projectName}`,
   agent: {
-    name: 'rbac-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Kubernetes RBAC Analyst',
       task: 'Analyze RBAC configurations',
@@ -419,7 +419,7 @@ export const containerSecurityReportTask = defineTask('container-security-report
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Container Security Report Specialist',
       task: 'Generate container security report',

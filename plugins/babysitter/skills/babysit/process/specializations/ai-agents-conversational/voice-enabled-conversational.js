@@ -176,7 +176,7 @@ export const speechToTextTask = defineTask('speech-to-text', (args, taskCtx) => 
   kind: 'agent',
   title: `Setup Speech-to-Text - ${args.systemName}`,
   agent: {
-    name: 'stt-developer',
+    name: 'voice-ai-specialist',  // AG-DOM-001: Integrates ASR/TTS for voice-enabled agents
     prompt: {
       role: 'Speech-to-Text Developer',
       task: 'Setup speech-to-text processing',

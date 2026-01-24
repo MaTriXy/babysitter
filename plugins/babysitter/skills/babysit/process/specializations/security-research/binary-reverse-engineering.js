@@ -180,7 +180,7 @@ export const binaryIdentificationTask = defineTask('binary-identification', (arg
   kind: 'agent',
   title: `Identify Binary - ${args.projectName}`,
   agent: {
-    name: 're-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Binary Analysis Specialist',
       task: 'Identify binary format and architecture',
@@ -221,7 +221,7 @@ export const staticAnalysisTask = defineTask('static-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Static Binary Analysis - ${args.projectName}`,
   agent: {
-    name: 're-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Static Analysis Specialist',
       task: 'Perform initial static analysis of binary',
@@ -261,7 +261,7 @@ export const functionIdentificationTask = defineTask('function-identification', 
   kind: 'agent',
   title: `Identify Functions - ${args.projectName}`,
   agent: {
-    name: 're-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Function Analysis Specialist',
       task: 'Identify key functions and data structures',
@@ -301,7 +301,7 @@ export const dynamicAnalysisTask = defineTask('dynamic-analysis', (args, taskCtx
   kind: 'agent',
   title: `Dynamic Binary Analysis - ${args.projectName}`,
   agent: {
-    name: 're-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Dynamic Analysis Specialist',
       task: 'Apply dynamic analysis and debugging',
@@ -380,7 +380,7 @@ export const reDocumentationTask = defineTask('re-documentation', (args, taskCtx
   kind: 'agent',
   title: `Document RE Findings - ${args.projectName}`,
   agent: {
-    name: 'documentation-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'RE Documentation Specialist',
       task: 'Document reverse engineering findings',

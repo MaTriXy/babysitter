@@ -51,7 +51,7 @@ export const complexityAnalysisTask = defineTask('complexity-analysis', (args, t
   kind: 'agent',
   title: `Analyze Complexity - ${args.algorithm}`,
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Complexity Analyst',
       task: 'Analyze algorithm time and space complexity',
@@ -73,7 +73,7 @@ export const bottleneckIdentificationTask = defineTask('bottleneck-identificatio
   kind: 'agent',
   title: 'Identify Bottlenecks',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Analyst',
       task: 'Identify algorithmic bottlenecks',
@@ -95,7 +95,7 @@ export const algorithmicOptimizationTask = defineTask('algorithmic-optimization'
   kind: 'agent',
   title: 'Apply Algorithmic Optimizations',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Algorithm Optimizer',
       task: 'Apply algorithmic optimizations',
@@ -117,7 +117,7 @@ export const complexityVerificationTask = defineTask('complexity-verification', 
   kind: 'agent',
   title: 'Verify New Complexity',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Complexity Analyst',
       task: 'Verify optimized complexity',

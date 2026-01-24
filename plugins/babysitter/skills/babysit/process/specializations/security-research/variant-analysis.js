@@ -180,7 +180,7 @@ export const patternDefinitionTask = defineTask('pattern-definition', (args, tas
   kind: 'agent',
   title: `Define Vulnerability Pattern - ${args.projectName}`,
   agent: {
-    name: 'pattern-specialist',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Vulnerability Pattern Specialist',
       task: 'Define the vulnerability pattern for variant detection',
@@ -221,7 +221,7 @@ export const queryCreationTask = defineTask('query-creation', (args, taskCtx) =>
   kind: 'agent',
   title: `Create Detection Queries - ${args.projectName}`,
   agent: {
-    name: 'query-engineer',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Query Engineer',
       task: 'Create CodeQL and Semgrep detection queries',
@@ -261,7 +261,7 @@ export const codebaseScanningTask = defineTask('codebase-scanning', (args, taskC
   kind: 'agent',
   title: `Scan Codebase for Variants - ${args.projectName}`,
   agent: {
-    name: 'scanner-operator',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Scanner Operator',
       task: 'Scan codebase for vulnerability variants',
@@ -300,7 +300,7 @@ export const variantValidationTask = defineTask('variant-validation', (args, tas
   kind: 'agent',
   title: `Validate Variants - ${args.projectName}`,
   agent: {
-    name: 'validation-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Variant Validation Analyst',
       task: 'Validate potential variants as true vulnerabilities',
@@ -340,7 +340,7 @@ export const incompleteFixCheckTask = defineTask('incomplete-fix-check', (args, 
   kind: 'agent',
   title: `Check for Incomplete Fixes - ${args.projectName}`,
   agent: {
-    name: 'fix-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Fix Analyst',
       task: 'Check for incomplete or bypassed fixes',
@@ -380,7 +380,7 @@ export const variantDocumentationTask = defineTask('variant-documentation', (arg
   kind: 'agent',
   title: `Document Variants - ${args.projectName}`,
   agent: {
-    name: 'documentation-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Documentation Specialist',
       task: 'Document all discovered variants',

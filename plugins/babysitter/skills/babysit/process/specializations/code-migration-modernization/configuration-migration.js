@@ -180,7 +180,7 @@ export const configInventoryTask = defineTask('config-inventory', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Config Inventory - ${args.projectName}`,
   agent: {
-    name: 'config-analyst',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Configuration Analyst',
       task: 'Create configuration inventory',
@@ -222,7 +222,7 @@ export const secretIdentificationTask = defineTask('secret-identification', (arg
   kind: 'agent',
   title: `Phase 2: Secret Identification - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Analyst',
       task: 'Identify secrets in configuration',
@@ -264,7 +264,7 @@ export const targetConfigDesignTask = defineTask('target-config-design', (args, 
   kind: 'agent',
   title: `Phase 3: Target Config Design - ${args.projectName}`,
   agent: {
-    name: 'config-architect',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Configuration Architect',
       task: 'Design target configuration approach',
@@ -306,7 +306,7 @@ export const configMigrationTask = defineTask('config-migration', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Config Migration - ${args.projectName}`,
   agent: {
-    name: 'config-migrator',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Configuration Engineer',
       task: 'Migrate configurations',
@@ -347,7 +347,7 @@ export const secretMigrationTask = defineTask('secret-migration', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Secret Migration - ${args.projectName}`,
   agent: {
-    name: 'secret-migrator',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Engineer',
       task: 'Migrate secrets securely',
@@ -388,7 +388,7 @@ export const configValidationTask = defineTask('config-validation', (args, taskC
   kind: 'agent',
   title: `Phase 6: Config Validation - ${args.projectName}`,
   agent: {
-    name: 'config-validator',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate migrated configuration',

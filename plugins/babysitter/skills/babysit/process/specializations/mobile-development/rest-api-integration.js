@@ -86,8 +86,9 @@ function createAPITask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'react-native-dev' },
     agent: {
-      name: 'mobile-api-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Mobile API Integration Engineer',
         task: `Implement ${title.toLowerCase()} for REST API integration`,

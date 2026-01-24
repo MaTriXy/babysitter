@@ -215,7 +215,7 @@ export const onboardingStrategyTask = defineTask('onboarding-strategy', (args, t
   kind: 'agent',
   title: `Phase 1: Onboarding Strategy - ${args.projectName}`,
   agent: {
-    name: 'developer-advocate',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Developer Advocate',
       task: 'Define comprehensive onboarding strategy',
@@ -263,7 +263,7 @@ export const gettingStartedTutorialTask = defineTask('getting-started-tutorial',
   kind: 'agent',
   title: `Phase 2: Getting Started Tutorial - ${args.language}`,
   agent: {
-    name: 'technical-writer',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Technical Writer',
       task: `Create getting started tutorial for ${args.language}`,
@@ -311,7 +311,7 @@ export const sandboxSetupTask = defineTask('sandbox-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 3: Sandbox Setup - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Set up sandbox/playground environment',
@@ -357,7 +357,7 @@ export const codeExamplesRepoTask = defineTask('code-examples-repo', (args, task
   kind: 'agent',
   title: `Phase 4: Code Examples Repository - ${args.projectName}`,
   agent: {
-    name: 'developer-advocate',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Developer Advocate',
       task: 'Build comprehensive code examples repository',
@@ -404,7 +404,7 @@ export const interactiveLearningTask = defineTask('interactive-learning', (args,
   kind: 'agent',
   title: `Phase 5: Interactive Learning - ${args.projectName}`,
   agent: {
-    name: 'learning-designer',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Learning Experience Designer',
       task: 'Design interactive learning experiences',
@@ -459,7 +459,7 @@ export const learningPathsTask = defineTask('learning-paths', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Learning Paths - ${args.projectName}`,
   agent: {
-    name: 'curriculum-designer',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Curriculum Designer',
       task: 'Create learning paths for different skill levels',
@@ -515,7 +515,7 @@ export const videoScriptsTask = defineTask('video-scripts', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Video Tutorial Scripts - ${args.projectName}`,
   agent: {
-    name: 'content-creator',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Technical Content Creator',
       task: 'Create video tutorial scripts',
@@ -570,7 +570,7 @@ export const onboardingDocumentationTask = defineTask('onboarding-documentation'
   kind: 'agent',
   title: `Phase 8: Onboarding Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate onboarding documentation',

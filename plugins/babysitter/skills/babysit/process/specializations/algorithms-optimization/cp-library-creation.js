@@ -77,8 +77,9 @@ export async function process(inputs, ctx) {
 export const libraryDesignTask = defineTask('library-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Library Design - ${args.category}`,
+  skills: ['code-template-manager', 'segment-tree-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Competitive Programming Expert',
       task: 'Design competitive programming library structure',
@@ -110,8 +111,9 @@ export const libraryDesignTask = defineTask('library-design', (args, taskCtx) =>
 export const templateImplementationTask = defineTask('template-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Template Implementation',
+  skills: ['code-template-manager', 'segment-tree-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement algorithm templates',
@@ -143,8 +145,9 @@ export const templateImplementationTask = defineTask('template-implementation', 
 export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Library Testing Suite',
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Create and run tests for library',
@@ -177,7 +180,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: 'Library Documentation',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-teacher',
     prompt: {
       role: 'Technical Writer',
       task: 'Create library documentation',

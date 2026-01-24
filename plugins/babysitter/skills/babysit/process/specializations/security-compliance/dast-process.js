@@ -627,8 +627,11 @@ export const assessEnvironmentTask = defineTask('assess-environment', (args, tas
 
 // Task 2: Setup DAST Tools
 export const setupDASTToolsTask = defineTask('setup-dast-tools', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Configure DAST scanning tools',
+  skill: {
+    name: 'dast-scanner',
+  },
   agent: {
     name: 'dast-tool-engineer',
     prompt: {
@@ -939,8 +942,11 @@ export const passiveScanAndSpiderTask = defineTask('passive-scan-spider', (args,
 
 // Task 6: Active Scan
 export const activeScanTask = defineTask('active-scan', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Execute active security scanning with attack payloads',
+  skill: {
+    name: 'owasp-security-scanner',
+  },
   agent: {
     name: 'active-scanner',
     prompt: {
@@ -1116,7 +1122,7 @@ export const validateVulnerabilitiesTask = defineTask('validate-vulnerabilities'
   kind: 'agent',
   title: 'Validate vulnerabilities and filter false positives',
   agent: {
-    name: 'vulnerability-analyst',
+    name: 'vulnerability-triage-agent',
     prompt: {
       role: 'senior security analyst specializing in vulnerability validation and triage',
       task: 'Validate scan findings, identify false positives, and prioritize confirmed vulnerabilities',

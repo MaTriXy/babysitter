@@ -81,7 +81,7 @@ export const fleetArchitectureDesignTask = defineTask('fleet-architecture-design
   kind: 'agent',
   title: `Fleet Architecture - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Design fleet management architecture', context: args, instructions: ['1. Design system architecture', '2. Define communication protocols', '3. Plan data flow', '4. Design scalability', '5. Document architecture'] },
     outputSchema: { type: 'object', required: ['configPath', 'architecture', 'artifacts'], properties: { configPath: { type: 'string' }, architecture: { type: 'object' }, scalability: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const taskSchedulerSystemTask = defineTask('task-scheduler-system', (args
   kind: 'agent',
   title: `Task Scheduler - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Build task scheduling system', context: args, instructions: ['1. Design scheduling algorithm', '2. Implement task queue', '3. Add priority handling', '4. Configure load balancing', '5. Test scheduling'] },
     outputSchema: { type: 'object', required: ['schedulerConfig', 'avgTaskTime', 'artifacts'], properties: { schedulerConfig: { type: 'object' }, avgTaskTime: { type: 'number' }, throughput: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const robotRegistryTask = defineTask('robot-registry', (args, taskCtx) =>
   kind: 'agent',
   title: `Robot Registry - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Build robot registry system', context: args, instructions: ['1. Design data model', '2. Implement registration', '3. Add status tracking', '4. Implement discovery', '5. Test registry'] },
     outputSchema: { type: 'object', required: ['registryConfig', 'robotCount', 'artifacts'], properties: { registryConfig: { type: 'object' }, robotCount: { type: 'number' }, dataModel: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const maintenanceTrackingTask = defineTask('maintenance-tracking', (args,
   kind: 'agent',
   title: `Maintenance Tracking - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Build maintenance tracking system', context: args, instructions: ['1. Track runtime hours', '2. Monitor wear indicators', '3. Schedule maintenance', '4. Track spare parts', '5. Generate reports'] },
     outputSchema: { type: 'object', required: ['maintenanceConfig', 'schedules', 'artifacts'], properties: { maintenanceConfig: { type: 'object' }, schedules: { type: 'array' }, predictions: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const remoteOperationsTask = defineTask('remote-operations', (args, taskC
   kind: 'agent',
   title: `Remote Operations - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Build remote operations capability', context: args, instructions: ['1. Implement teleoperation', '2. Add video streaming', '3. Configure remote commands', '4. Add safety interlocks', '5. Test remote ops'] },
     outputSchema: { type: 'object', required: ['remoteOpsConfig', 'latency', 'artifacts'], properties: { remoteOpsConfig: { type: 'object' }, latency: { type: 'number' }, capabilities: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const alertingSystemTask = defineTask('alerting-system', (args, taskCtx) 
   kind: 'agent',
   title: `Alerting System - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Build alerting system', context: args, instructions: ['1. Define alert rules', '2. Configure thresholds', '3. Set up notifications', '4. Add escalation', '5. Test alerting'] },
     outputSchema: { type: 'object', required: ['alertConfig', 'rules', 'artifacts'], properties: { alertConfig: { type: 'object' }, rules: { type: 'array' }, channels: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const fleetSystemTestingTask = defineTask('fleet-system-testing', (args, 
   kind: 'agent',
   title: `System Testing - ${args.fleetName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test fleet management system', context: args, instructions: ['1. Test all components', '2. Run load tests', '3. Measure uptime', '4. Test failover', '5. Generate test report'] },
     outputSchema: { type: 'object', required: ['uptime', 'testResults', 'artifacts'], properties: { uptime: { type: 'number' }, testResults: { type: 'array' }, loadTestResults: { type: 'object' }, artifacts: { type: 'array' } } }
   },

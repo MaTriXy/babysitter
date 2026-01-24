@@ -47,7 +47,7 @@ export const structureDesignTask = defineTask('structure-design', (args, taskCtx
   kind: 'agent',
   title: `Design ${args.structure}`,
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Data Structure Expert',
       task: 'Design suffix/trie structure',
@@ -69,7 +69,7 @@ export const structureImplementationTask = defineTask('structure-implementation'
   kind: 'agent',
   title: `Implement ${args.structure}`,
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement suffix/trie structure',
@@ -91,7 +91,7 @@ export const applicationsTask = defineTask('applications', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Demonstrate Applications',
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Demonstrate string structure applications',

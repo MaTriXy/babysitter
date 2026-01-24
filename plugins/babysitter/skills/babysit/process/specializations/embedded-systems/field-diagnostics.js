@@ -231,7 +231,7 @@ export const diagnosticRequirementsTask = defineTask('diagnostic-requirements', 
   kind: 'agent',
   title: `Phase 1: Diagnostic Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze diagnostic requirements',
@@ -273,7 +273,7 @@ export const loggingInfrastructureTask = defineTask('logging-infrastructure', (a
   kind: 'agent',
   title: `Phase 2: Logging Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design logging infrastructure',
@@ -315,7 +315,7 @@ export const crashDumpSystemTask = defineTask('crash-dump-system', (args, taskCt
   kind: 'agent',
   title: `Phase 3: Crash Dump System - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design crash dump system',
@@ -357,7 +357,7 @@ export const healthMonitoringTask = defineTask('health-monitoring', (args, taskC
   kind: 'agent',
   title: `Phase 4: Health Monitoring - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design health monitoring',
@@ -399,7 +399,7 @@ export const diagnosticProtocolImplementationTask = defineTask('diagnostic-proto
   kind: 'agent',
   title: `Phase 5: Protocol Implementation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement diagnostic protocols',
@@ -441,7 +441,7 @@ export const diagnosticCommandsTask = defineTask('diagnostic-commands', (args, t
   kind: 'agent',
   title: `Phase 6: Diagnostic Commands - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design diagnostic commands',
@@ -482,7 +482,7 @@ export const dataExportAnalysisTask = defineTask('data-export-analysis', (args, 
   kind: 'agent',
   title: `Phase 7: Data Export - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design data export and analysis',
@@ -524,7 +524,7 @@ export const diagnosticsDocumentationTask = defineTask('diagnostics-documentatio
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate diagnostics documentation',

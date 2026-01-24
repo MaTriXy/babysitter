@@ -449,8 +449,9 @@ export async function process(inputs, ctx) {
 export const systemContextAnalysisTask = defineTask('system-context-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze system context and boundaries',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'system-context-analyst',
+    name: 'c4-model-architect',
     prompt: {
       role: 'software architect specializing in C4 modeling',
       task: 'Analyze system boundaries, identify users, external systems, and define high-level system purpose and scope',
@@ -524,8 +525,9 @@ export const systemContextAnalysisTask = defineTask('system-context-analysis', (
 export const contextDiagramGenerationTask = defineTask('context-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Context Diagram (Level 1)',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'context-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'software architect and diagram specialist',
       task: 'Generate C4 Context Diagram showing system boundaries, users, and external systems using specified diagram format',
@@ -568,8 +570,9 @@ export const contextDiagramGenerationTask = defineTask('context-diagram-generati
 export const containerIdentificationTask = defineTask('container-identification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Identify containers and technology choices',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'container-identifier',
+    name: 'c4-model-architect',
     prompt: {
       role: 'software architect specializing in application architecture',
       task: 'Identify all deployable units (containers) within the system including applications, databases, and data stores with their technology choices',
@@ -625,8 +628,9 @@ export const containerIdentificationTask = defineTask('container-identification'
 export const containerDiagramGenerationTask = defineTask('container-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Container Diagram (Level 2)',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'container-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'software architect and diagram specialist',
       task: 'Generate C4 Container Diagram showing all deployable units, technology choices, and inter-container communication',
@@ -670,8 +674,9 @@ export const containerDiagramGenerationTask = defineTask('container-diagram-gene
 export const componentBreakdownTask = defineTask('component-breakdown', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Break down container into components',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'component-breakdown-analyst',
+    name: 'c4-model-architect',
     prompt: {
       role: 'software architect specializing in component design',
       task: 'Decompose a container into its constituent components, define responsibilities, interfaces, and dependencies',
@@ -726,8 +731,9 @@ export const componentBreakdownTask = defineTask('component-breakdown', (args, t
 export const componentDiagramGenerationTask = defineTask('component-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Component Diagram (Level 3)',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'component-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'software architect and diagram specialist',
       task: 'Generate C4 Component Diagram for a specific container showing internal components and their relationships',
@@ -770,8 +776,9 @@ export const componentDiagramGenerationTask = defineTask('component-diagram-gene
 export const codeDiagramGenerationTask = defineTask('code-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Code Diagram (Level 4)',
+  skill: { name: 'plantuml-renderer' },
   agent: {
-    name: 'code-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'software architect and UML specialist',
       task: 'Generate code-level UML class diagram for a complex component showing classes, interfaces, and design patterns',
@@ -814,8 +821,9 @@ export const codeDiagramGenerationTask = defineTask('code-diagram-generation', (
 export const deploymentDiagramGenerationTask = defineTask('deployment-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Deployment Diagram',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'deployment-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'DevOps architect and infrastructure specialist',
       task: 'Generate C4 Deployment Diagram showing how containers are deployed to infrastructure',
@@ -857,8 +865,9 @@ export const deploymentDiagramGenerationTask = defineTask('deployment-diagram-ge
 export const dynamicDiagramGenerationTask = defineTask('dynamic-diagram-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 Dynamic Diagram',
+  skill: { name: 'mermaid-renderer' },
   agent: {
-    name: 'dynamic-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'software architect and sequence diagram specialist',
       task: 'Generate C4 Dynamic Diagram showing runtime behavior for key user journeys or scenarios',
@@ -900,8 +909,9 @@ export const dynamicDiagramGenerationTask = defineTask('dynamic-diagram-generati
 export const systemLandscapeDiagramTask = defineTask('system-landscape-diagram', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate C4 System Landscape Diagram',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'landscape-diagram-generator',
+    name: 'diagram-specialist',
     prompt: {
       role: 'enterprise architect',
       task: 'Generate C4 System Landscape Diagram showing multiple systems and their relationships in the enterprise',
@@ -942,8 +952,9 @@ export const systemLandscapeDiagramTask = defineTask('system-landscape-diagram',
 export const architectureNarrativeTask = defineTask('architecture-narrative-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate comprehensive architecture narrative document',
+  skill: { name: 'markdown-processor' },
   agent: {
-    name: 'architecture-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'technical writer and software architect',
       task: 'Create comprehensive architecture documentation narrative explaining all C4 diagrams with context, rationale, and technical details',
@@ -992,8 +1003,9 @@ export const architectureNarrativeTask = defineTask('architecture-narrative-gene
 export const c4QualityValidationTask = defineTask('c4-quality-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate C4 documentation quality and completeness',
+  skill: { name: 'tech-writing-linter' },
   agent: {
-    name: 'c4-quality-validator',
+    name: 'c4-model-architect',
     prompt: {
       role: 'principal software architect and C4 modeling expert',
       task: 'Assess C4 documentation quality, completeness, and adherence to C4 modeling best practices',

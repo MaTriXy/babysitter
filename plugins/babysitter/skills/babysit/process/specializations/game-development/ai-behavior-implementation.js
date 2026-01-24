@@ -77,7 +77,7 @@ export const aiArchitectureTask = defineTask('ai-architecture', (args, taskCtx) 
   kind: 'agent',
   title: `AI Architecture - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Design AI architecture', context: args, instructions: ['1. Design AI system architecture', '2. Define behavior interfaces', '3. Plan state management', '4. Create AI documentation'] },
     outputSchema: { type: 'object', required: ['docPath', 'architecture', 'artifacts'], properties: { docPath: { type: 'string' }, architecture: { type: 'object' }, interfaces: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -89,7 +89,7 @@ export const behaviorTreeTask = defineTask('behavior-tree', (args, taskCtx) => (
   kind: 'agent',
   title: `Behavior Trees - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Implement behavior trees', context: args, instructions: ['1. Create behavior tree system', '2. Implement standard nodes', '3. Create reusable behaviors', '4. Build editor tools'] },
     outputSchema: { type: 'object', required: ['treeCount', 'behaviors', 'artifacts'], properties: { treeCount: { type: 'number' }, behaviors: { type: 'array' }, nodes: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -101,7 +101,7 @@ export const pathfindingTask = defineTask('pathfinding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Pathfinding - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Implement pathfinding system', context: args, instructions: ['1. Set up navmesh generation', '2. Implement A* or similar', '3. Add dynamic obstacles', '4. Optimize pathfinding'] },
     outputSchema: { type: 'object', required: ['navmeshReady', 'algorithm', 'artifacts'], properties: { navmeshReady: { type: 'boolean' }, algorithm: { type: 'string' }, dynamicObstacles: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -113,7 +113,7 @@ export const combatAITask = defineTask('combat-ai', (args, taskCtx) => ({
   kind: 'agent',
   title: `Combat AI - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Implement combat AI', context: args, instructions: ['1. Implement threat assessment', '2. Create attack patterns', '3. Add defensive behaviors', '4. Tune combat difficulty'] },
     outputSchema: { type: 'object', required: ['combatBehaviors', 'difficultyLevels', 'artifacts'], properties: { combatBehaviors: { type: 'array' }, difficultyLevels: { type: 'array' }, attackPatterns: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -125,7 +125,7 @@ export const npcBehaviorsTask = defineTask('npc-behaviors', (args, taskCtx) => (
   kind: 'agent',
   title: `NPC Behaviors - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Implement NPC behaviors', context: args, instructions: ['1. Create daily routines', '2. Implement interactions', '3. Add ambient behaviors', '4. Create dialogue triggers'] },
     outputSchema: { type: 'object', required: ['npcTypes', 'routines', 'artifacts'], properties: { npcTypes: { type: 'array' }, routines: { type: 'array' }, interactions: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -137,7 +137,7 @@ export const difficultyAdaptationTask = defineTask('difficulty-adaptation', (arg
   kind: 'agent',
   title: `Difficulty Adaptation - ${args.projectName}`,
   agent: {
-    name: 'ai-programmer',
+    name: 'ai-programmer-agent',
     prompt: { role: 'AI Programmer', task: 'Implement dynamic difficulty', context: args, instructions: ['1. Track player performance', '2. Design adaptation algorithm', '3. Adjust AI parameters', '4. Test adaptation'] },
     outputSchema: { type: 'object', required: ['adaptationSystem', 'parameters', 'artifacts'], properties: { adaptationSystem: { type: 'object' }, parameters: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -149,7 +149,7 @@ export const aiTestingTask = defineTask('ai-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `AI Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Test AI systems', context: args, instructions: ['1. Test all behaviors', '2. Verify pathfinding', '3. Test edge cases', '4. Check performance'] },
     outputSchema: { type: 'object', required: ['passRate', 'issues', 'artifacts'], properties: { passRate: { type: 'number' }, issues: { type: 'array' }, performance: { type: 'object' }, artifacts: { type: 'array' } } }
   },

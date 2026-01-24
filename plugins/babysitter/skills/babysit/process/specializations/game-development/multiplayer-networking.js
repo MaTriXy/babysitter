@@ -108,7 +108,7 @@ export const networkArchitectureTask = defineTask('network-architecture', (args,
   kind: 'agent',
   title: `Network Architecture - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Design network architecture', context: args, instructions: ['1. Design client-server topology', '2. Define message protocols', '3. Design replication model', '4. Plan server authority'] },
     outputSchema: { type: 'object', required: ['systemPath', 'protocols', 'artifacts'], properties: { systemPath: { type: 'string' }, protocols: { type: 'array' }, replicationModel: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -120,7 +120,7 @@ export const connectionMatchmakingTask = defineTask('connection-matchmaking', (a
   kind: 'agent',
   title: `Connection & Matchmaking - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Implement connection and matchmaking', context: args, instructions: ['1. Implement connection handling', '2. Build matchmaking system', '3. Add lobby management', '4. Handle reconnection'] },
     outputSchema: { type: 'object', required: ['implemented', 'features', 'artifacts'], properties: { implemented: { type: 'boolean' }, features: { type: 'array' }, lobbySupport: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -132,7 +132,7 @@ export const stateSyncTask = defineTask('state-sync', (args, taskCtx) => ({
   kind: 'agent',
   title: `State Synchronization - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Implement state synchronization', context: args, instructions: ['1. Implement delta compression', '2. Build snapshot system', '3. Add interpolation', '4. Optimize bandwidth'] },
     outputSchema: { type: 'object', required: ['syncMethods', 'bandwidth', 'artifacts'], properties: { syncMethods: { type: 'array' }, bandwidth: { type: 'object' }, updateRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -144,7 +144,7 @@ export const lagCompensationTask = defineTask('lag-compensation', (args, taskCtx
   kind: 'agent',
   title: `Lag Compensation - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Implement lag compensation', context: args, instructions: ['1. Add client-side prediction', '2. Implement server reconciliation', '3. Add entity interpolation', '4. Build rollback system'] },
     outputSchema: { type: 'object', required: ['techniques', 'latencyHandled', 'artifacts'], properties: { techniques: { type: 'array' }, latencyHandled: { type: 'number' }, rollbackFrames: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -156,7 +156,7 @@ export const networkEdgeCasesTask = defineTask('network-edge-cases', (args, task
   kind: 'agent',
   title: `Edge Case Handling - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Handle network edge cases', context: args, instructions: ['1. Handle disconnections', '2. Manage timeouts', '3. Handle packet loss', '4. Prevent cheating'] },
     outputSchema: { type: 'object', required: ['edgeCasesHandled', 'artifacts'], properties: { edgeCasesHandled: { type: 'array' }, antiCheatMeasures: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -168,7 +168,7 @@ export const networkTestingTask = defineTask('network-testing', (args, taskCtx) 
   kind: 'agent',
   title: `Network Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Test network systems', context: args, instructions: ['1. Test with simulated latency', '2. Test packet loss scenarios', '3. Load test player count', '4. Measure performance'] },
     outputSchema: { type: 'object', required: ['passRate', 'latencyTestPassed', 'artifacts'], properties: { passRate: { type: 'number' }, latencyTestPassed: { type: 'boolean' }, maxLatency: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -180,7 +180,7 @@ export const networkOptimizationTask = defineTask('network-optimization', (args,
   kind: 'agent',
   title: `Network Optimization - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'network-programmer-agent',
     prompt: { role: 'Network Engineer', task: 'Optimize network performance', context: args, instructions: ['1. Reduce bandwidth usage', '2. Optimize update rates', '3. Improve compression', '4. Fine-tune prediction'] },
     outputSchema: { type: 'object', required: ['optimizations', 'improvements', 'artifacts'], properties: { optimizations: { type: 'array' }, improvements: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -192,7 +192,7 @@ export const networkDocumentationTask = defineTask('network-documentation', (arg
   kind: 'agent',
   title: `Network Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: { role: 'Technical Writer', task: 'Document networking architecture', context: args, instructions: ['1. Document architecture', '2. Create protocol specifications', '3. Document APIs', '4. Create troubleshooting guide'] },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, sections: { type: 'array' }, artifacts: { type: 'array' } } }
   },

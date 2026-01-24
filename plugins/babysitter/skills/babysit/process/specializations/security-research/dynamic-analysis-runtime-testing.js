@@ -197,7 +197,7 @@ export const environmentSetupTask = defineTask('environment-setup', (args, taskC
   kind: 'agent',
   title: `Setup Test Environment - ${args.projectName}`,
   agent: {
-    name: 'environment-engineer',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Test Environment Engineer',
       task: 'Set up instrumented test environment for dynamic analysis',
@@ -236,7 +236,7 @@ export const sanitizerAnalysisTask = defineTask('sanitizer-analysis', (args, tas
   kind: 'agent',
   title: `Run Sanitizer Analysis - ${args.projectName}`,
   agent: {
-    name: 'sanitizer-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Memory Safety Analyst',
       task: 'Execute application with sanitizers and analyze findings',
@@ -275,7 +275,7 @@ export const debuggingAnalysisTask = defineTask('debugging-analysis', (args, tas
   kind: 'agent',
   title: `Debug and Trace - ${args.projectName}`,
   agent: {
-    name: 'debug-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Debugging and Tracing Specialist',
       task: 'Debug and trace execution paths for security analysis',
@@ -314,7 +314,7 @@ export const memoryAnalysisTask = defineTask('memory-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Analyze Memory Operations - ${args.projectName}`,
   agent: {
-    name: 'memory-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Memory Security Analyst',
       task: 'Monitor and analyze memory operations for vulnerabilities',
@@ -353,7 +353,7 @@ export const raceConditionAnalysisTask = defineTask('race-condition-analysis', (
   kind: 'agent',
   title: `Detect Race Conditions - ${args.projectName}`,
   agent: {
-    name: 'concurrency-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Concurrency Security Analyst',
       task: 'Identify race conditions and concurrency vulnerabilities',
@@ -392,7 +392,7 @@ export const boundaryTestingTask = defineTask('boundary-testing', (args, taskCtx
   kind: 'agent',
   title: `Test Input Boundaries - ${args.projectName}`,
   agent: {
-    name: 'boundary-tester',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Input Boundary Testing Specialist',
       task: 'Test input validation at boundary conditions',
@@ -431,7 +431,7 @@ export const dynamicReportTask = defineTask('dynamic-report', (args, taskCtx) =>
   kind: 'agent',
   title: `Generate Dynamic Analysis Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Report Specialist',
       task: 'Generate comprehensive dynamic analysis report',

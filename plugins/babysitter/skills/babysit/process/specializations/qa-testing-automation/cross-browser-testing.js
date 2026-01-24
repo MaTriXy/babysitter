@@ -721,7 +721,7 @@ export const matrixDefinitionTask = defineTask('matrix-definition', (args, taskC
   kind: 'agent',
   title: `Phase 1: Browser/Device Matrix Definition - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Cross-Browser Testing Strategist and QA Architect',
       task: 'Define comprehensive browser, device, and OS combination matrix for testing',
@@ -817,7 +817,7 @@ export const cloudPlatformSetupTask = defineTask('cloud-platform-setup', (args, 
   kind: 'agent',
   title: `Phase 2: Cloud Testing Platform Setup - ${args.cloudPlatform}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Cloud Testing Infrastructure Engineer',
       task: 'Configure cloud testing platform for cross-browser test execution',
@@ -892,7 +892,7 @@ export const frameworkIntegrationTask = defineTask('framework-integration', (arg
   kind: 'agent',
   title: `Phase 3: Test Framework Integration - ${args.testFramework}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Framework Engineer',
       task: 'Integrate cross-browser capabilities with existing test framework',
@@ -962,7 +962,7 @@ export const testSuiteCreationTask = defineTask('test-suite-creation', (args, ta
   kind: 'agent',
   title: `Phase 4: Cross-Browser Test Suite - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Test Automation Engineer',
       task: 'Create or adapt test suite for cross-browser execution',
@@ -1034,7 +1034,7 @@ export const responsiveTestingTask = defineTask('responsive-testing', (args, tas
   kind: 'agent',
   title: `Phase 5: Responsive Design Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Responsive Design Testing Specialist',
       task: 'Implement responsive design testing across multiple viewport sizes',
@@ -1107,7 +1107,7 @@ export const browserSpecificTestsTask = defineTask('browser-specific-tests', (ar
   kind: 'agent',
   title: `Phase 6: Browser-Specific Compatibility Tests - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Browser Compatibility Testing Expert',
       task: 'Create browser-specific compatibility tests',
@@ -1177,7 +1177,7 @@ export const parallelExecutionConfigTask = defineTask('parallel-execution-config
   kind: 'agent',
   title: `Phase 7: Parallel Execution Configuration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Execution Performance Engineer',
       task: 'Configure parallel execution for cross-browser tests',
@@ -1250,7 +1250,7 @@ export const testExecutionTask = defineTask('test-execution', (args, taskCtx) =>
   kind: 'agent',
   title: `Test Execution (${args.executionType}) - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Cross-Browser Test Execution Engineer',
       task: `Execute cross-browser test suite (${args.executionType} run)`,
@@ -1342,7 +1342,7 @@ export const compatibilityAnalysisTask = defineTask('compatibility-analysis', (a
   kind: 'agent',
   title: `Phase 9: Compatibility Issue Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Browser Compatibility Analysis Expert',
       task: 'Analyze browser-specific compatibility issues from test results',
@@ -1426,7 +1426,7 @@ export const compatibilityFixesTask = defineTask('compatibility-fixes', (args, t
   kind: 'agent',
   title: `Phase 10: Compatibility Fix Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Cross-Browser Compatibility Engineer',
       task: 'Implement fixes for identified browser compatibility issues',
@@ -1503,7 +1503,7 @@ export const workaroundImplementationTask = defineTask('workaround-implementatio
   kind: 'agent',
   title: `Phase 11: Browser-Specific Workarounds - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Browser Workaround Specialist',
       task: 'Implement browser-specific workarounds and conditional logic',
@@ -1575,7 +1575,7 @@ export const coverageValidationTask = defineTask('coverage-validation', (args, t
   kind: 'agent',
   title: `Phase 13: Coverage Matrix Validation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Coverage Analyst',
       task: 'Validate browser/device coverage matrix against execution results',
@@ -1667,7 +1667,7 @@ export const issueDocumentationTask = defineTask('issue-documentation', (args, t
   kind: 'agent',
   title: `Phase 14: Issue Tracking and Documentation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Document known compatibility issues and workarounds',
@@ -1748,7 +1748,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 15: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'DevOps CI/CD Engineer',
       task: 'Integrate cross-browser tests into CI/CD pipeline',
@@ -1825,7 +1825,7 @@ export const reportingSetupTask = defineTask('reporting-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 16: Reporting and Dashboard - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Reporting Engineer',
       task: 'Set up comprehensive cross-browser test reporting and dashboards',
@@ -1893,7 +1893,7 @@ export const finalAssessmentTask = defineTask('final-assessment', (args, taskCtx
   kind: 'agent',
   title: `Phase 17: Final Assessment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Lead and Cross-Browser Testing Expert',
       task: 'Conduct final assessment of cross-browser testing implementation',

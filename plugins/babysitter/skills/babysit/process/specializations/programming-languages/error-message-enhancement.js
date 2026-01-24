@@ -230,7 +230,7 @@ export const errorTaxonomyTask = defineTask('error-taxonomy', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Error Taxonomy - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Diagnostics Designer',
       task: 'Design error taxonomy',
@@ -271,7 +271,7 @@ export const messageFormatTask = defineTask('message-format', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Message Format - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Diagnostics Designer',
       task: 'Design message format',
@@ -312,7 +312,7 @@ export const sourceContextTask = defineTask('source-context', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Source Context - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Implement source context rendering',
@@ -352,7 +352,7 @@ export const suggestionSystemTask = defineTask('suggestion-system', (args, taskC
   kind: 'agent',
   title: `Phase 4: Suggestion System - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Implement suggestion system',
@@ -393,7 +393,7 @@ export const messageTemplatesTask = defineTask('message-templates', (args, taskC
   kind: 'agent',
   title: `Phase 5: Message Templates - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Create message templates',
@@ -434,7 +434,7 @@ export const errorSystemIntegrationTask = defineTask('error-system-integration',
   kind: 'agent',
   title: `Phase 6: Error System Integration - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Integrate error system',
@@ -474,7 +474,7 @@ export const errorMessageTestingTask = defineTask('error-message-testing', (args
   kind: 'agent',
   title: `Phase 7: Error Message Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive error message tests',
@@ -515,7 +515,7 @@ export const errorMessageDocumentationTask = defineTask('error-message-documenta
   kind: 'agent',
   title: `Phase 8: Error Message Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate error documentation',

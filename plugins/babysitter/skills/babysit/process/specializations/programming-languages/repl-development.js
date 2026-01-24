@@ -229,7 +229,7 @@ export const inputHandlingTask = defineTask('input-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Input Handling - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement input handling',
@@ -270,7 +270,7 @@ export const incrementalParsingTask = defineTask('incremental-parsing', (args, t
   kind: 'agent',
   title: `Phase 2: Incremental Parsing - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement incremental parsing',
@@ -311,7 +311,7 @@ export const replEvaluationTask = defineTask('repl-evaluation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: REPL Evaluation - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement REPL evaluation',
@@ -352,7 +352,7 @@ export const outputFormattingTask = defineTask('output-formatting', (args, taskC
   kind: 'agent',
   title: `Phase 4: Output Formatting - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement output formatting',
@@ -393,7 +393,7 @@ export const replCommandsTask = defineTask('repl-commands', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: REPL Commands - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement REPL commands',
@@ -434,7 +434,7 @@ export const tabCompletionTask = defineTask('tab-completion', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Tab Completion - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Implement tab completion',
@@ -475,7 +475,7 @@ export const replIntegrationTask = defineTask('repl-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: REPL Integration - ${args.languageName}`,
   agent: {
-    name: 'repl-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'REPL Engineer',
       task: 'Integrate REPL components',
@@ -515,7 +515,7 @@ export const replTestingTask = defineTask('repl-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: REPL Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive REPL tests',
@@ -556,7 +556,7 @@ export const replDocumentationTask = defineTask('repl-documentation', (args, tas
   kind: 'agent',
   title: `Phase 9: REPL Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate REPL documentation',

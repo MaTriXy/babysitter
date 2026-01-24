@@ -293,7 +293,7 @@ export const projectInitTask = defineTask('project-init', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Project Initialization - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Server Developer with expertise in Model Context Protocol',
       task: 'Initialize project with MCP SDK dependency',
@@ -337,7 +337,7 @@ export const serverMetadataTask = defineTask('server-metadata', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Server Metadata - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Server Configuration Specialist',
       task: 'Configure server metadata',
@@ -386,7 +386,7 @@ export const transportSetupTask = defineTask('transport-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Transport Setup - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Transport Specialist',
       task: 'Set up transport layer',
@@ -427,7 +427,7 @@ export const serverInitTask = defineTask('server-init', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Server Initialization - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Server Initialization Specialist',
       task: 'Implement server initialization',
@@ -469,7 +469,7 @@ export const capabilityDeclarationsTask = defineTask('capability-declarations', 
   kind: 'agent',
   title: `Phase 5: Capability Declarations - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Capability Designer',
       task: 'Add capability declarations',
@@ -515,7 +515,7 @@ export const handlerStructureTask = defineTask('handler-structure', (args, taskC
   kind: 'agent',
   title: `Phase 6: Handler Structure - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Handler Architect',
       task: 'Create request handler structure',
@@ -565,7 +565,7 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 7: Error Handling - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Error Handling Specialist',
       task: 'Implement error handling',
@@ -605,7 +605,7 @@ export const loggingConfigTask = defineTask('logging-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 8: Logging Configuration - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Logging Specialist',
       task: 'Add logging configuration',
@@ -644,7 +644,7 @@ export const devWorkflowTask = defineTask('dev-workflow', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Development Workflow - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Development Workflow Specialist',
       task: 'Set up development workflow',
@@ -686,7 +686,7 @@ export const testInfraTask = defineTask('test-infra', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Test Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: {
       role: 'MCP Testing Specialist',
       task: 'Create basic test infrastructure',
@@ -728,7 +728,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: {
       role: 'MCP Documentation Specialist',
       task: 'Document server setup',

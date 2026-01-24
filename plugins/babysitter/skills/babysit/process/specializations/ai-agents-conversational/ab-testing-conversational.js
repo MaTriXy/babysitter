@@ -175,7 +175,7 @@ export const experimentDesignTask = defineTask('experiment-design', (args, taskC
   kind: 'agent',
   title: `Design Experiment - ${args.experimentName}`,
   agent: {
-    name: 'experiment-designer',
+    name: 'prompt-optimizer',  // AG-PE-003: A/B tests and optimizes prompts for performance
     prompt: {
       role: 'Experiment Designer',
       task: 'Design A/B test experiment',

@@ -254,7 +254,7 @@ export const irInstructionSetTask = defineTask('ir-instruction-set', (args, task
   kind: 'agent',
   title: `Phase 1: IR Instruction Set - ${args.languageName}`,
   agent: {
-    name: 'ir-designer',
+    name: 'ir-design-specialist',
     prompt: {
       role: 'IR Designer',
       task: 'Design IR instruction set',
@@ -295,7 +295,7 @@ export const irBuilderTask = defineTask('ir-builder', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: IR Builder - ${args.languageName}`,
   agent: {
-    name: 'ir-designer',
+    name: 'ir-design-specialist',
     prompt: {
       role: 'IR Designer',
       task: 'Implement IR builder',
@@ -336,7 +336,7 @@ export const ssaConstructionTask = defineTask('ssa-construction', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: SSA Construction - ${args.languageName}`,
   agent: {
-    name: 'ir-designer',
+    name: 'ir-design-specialist',
     prompt: {
       role: 'IR Designer',
       task: 'Implement SSA construction',
@@ -377,7 +377,7 @@ export const basicOptimizationsTask = defineTask('basic-optimizations', (args, t
   kind: 'agent',
   title: `Phase 4: Basic Optimizations - ${args.languageName}`,
   agent: {
-    name: 'optimization-engineer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Compiler Optimization Engineer',
       task: 'Implement basic optimization passes',
@@ -418,7 +418,7 @@ export const cfgOptimizationsTask = defineTask('cfg-optimizations', (args, taskC
   kind: 'agent',
   title: `Phase 5: CFG Optimizations - ${args.languageName}`,
   agent: {
-    name: 'optimization-engineer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Compiler Optimization Engineer',
       task: 'Implement control flow optimizations',
@@ -459,7 +459,7 @@ export const optimizationPipelineTask = defineTask('optimization-pipeline', (arg
   kind: 'agent',
   title: `Phase 6: Optimization Pipeline - ${args.languageName}`,
   agent: {
-    name: 'optimization-engineer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Compiler Optimization Engineer',
       task: 'Build optimization pipeline',
@@ -501,7 +501,7 @@ export const irTestingTask = defineTask('ir-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: IR Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'ir-design-specialist',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive IR tests',
@@ -543,7 +543,7 @@ export const irDocumentationTask = defineTask('ir-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: IR Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'ir-design-specialist',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate IR documentation',

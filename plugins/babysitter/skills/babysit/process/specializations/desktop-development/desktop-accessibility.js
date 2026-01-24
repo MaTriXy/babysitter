@@ -89,8 +89,11 @@ export async function process(inputs, ctx) {
 export const accessibilityAuditTask = defineTask('accessibility-audit', (args, taskCtx) => ({
   kind: 'agent',
   title: `Accessibility Audit - ${args.projectName}`,
+  skill: {
+    name: 'axe-core-runner',
+  },
   agent: {
-    name: 'a11y-auditor',
+    name: 'desktop-a11y-specialist',
     prompt: { role: 'Accessibility Auditor', task: 'Conduct accessibility audit', context: args, instructions: ['1. Run automated a11y tests', '2. Check ARIA usage', '3. Verify keyboard access', '4. Test color contrast', '5. Check focus indicators', '6. Verify heading structure', '7. Calculate a11y score', '8. Generate audit report'] },
     outputSchema: { type: 'object', required: ['score', 'issues', 'artifacts'], properties: { score: { type: 'number' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -101,8 +104,11 @@ export const accessibilityAuditTask = defineTask('accessibility-audit', (args, t
 export const implementScreenReaderSupportTask = defineTask('implement-screen-reader', (args, taskCtx) => ({
   kind: 'agent',
   title: `Screen Reader Support - ${args.projectName}`,
+  skill: {
+    name: 'screen-reader-test-helper',
+  },
   agent: {
-    name: 'screen-reader-developer',
+    name: 'desktop-a11y-specialist',
     prompt: { role: 'Screen Reader Developer', task: 'Implement screen reader support', context: args, instructions: ['1. Add ARIA labels', '2. Configure live regions', '3. Handle focus announcements', '4. Add alt text', '5. Configure role attributes', '6. Test with NVDA/VoiceOver', '7. Handle dynamic content', '8. Generate screen reader configuration'] },
     outputSchema: { type: 'object', required: ['enabled', 'artifacts'], properties: { enabled: { type: 'boolean' }, testedWith: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -173,8 +179,11 @@ export const implementAriaTask = defineTask('implement-aria', (args, taskCtx) =>
 export const validateAccessibilityTask = defineTask('validate-accessibility', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validate Accessibility - ${args.projectName}`,
+  skill: {
+    name: 'wcag-compliance-checker',
+  },
   agent: {
-    name: 'a11y-validator',
+    name: 'desktop-a11y-specialist',
     prompt: { role: 'Accessibility Validator', task: 'Validate accessibility implementation', context: args, instructions: ['1. Re-run accessibility audit', '2. Test screen reader', '3. Test keyboard navigation', '4. Test high contrast', '5. Calculate final score', '6. Check WCAG compliance', '7. Count remaining issues', '8. Generate validation report'] },
     outputSchema: { type: 'object', required: ['score', 'remainingIssues', 'configPath', 'artifacts'], properties: { score: { type: 'number' }, remainingIssues: { type: 'number' }, configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

@@ -47,8 +47,9 @@ export async function process(inputs, ctx) {
 export const backtrackingDesignTask = defineTask('backtracking-design', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Design Backtracking',
+  skills: ['code-template-manager'],
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Designer',
       task: 'Design backtracking solution',
@@ -70,7 +71,7 @@ export const pruningStrategyTask = defineTask('pruning-strategy', (args, taskCtx
   kind: 'agent',
   title: 'Design Pruning Strategies',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Optimization Expert',
       task: 'Design pruning strategies',
@@ -92,7 +93,7 @@ export const backtrackingImplementationTask = defineTask('backtracking-implement
   kind: 'agent',
   title: 'Implement Backtracking',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement backtracking with pruning',

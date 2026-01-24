@@ -181,7 +181,7 @@ export const memoryArchitectureTask = defineTask('memory-architecture', (args, t
   kind: 'agent',
   title: `Design Memory Architecture - ${args.systemName}`,
   agent: {
-    name: 'memory-architect',
+    name: 'memory-architect',  // AG-MEM-001: Designs conversation memory hierarchies (short/long-term)
     prompt: {
       role: 'Memory System Architect',
       task: 'Design conversational memory architecture',
@@ -216,10 +216,10 @@ export const memoryArchitectureTask = defineTask('memory-architecture', (args, t
 }));
 
 export const shortTermMemoryTask = defineTask('short-term-memory', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Short-Term Memory - ${args.systemName}`,
-  agent: {
-    name: 'memory-developer',
+  skill: {
+    name: 'conversation-buffer',  // SK-MEM-001: Conversation buffer memory implementations
     prompt: {
       role: 'Memory Developer',
       task: 'Implement short-term conversation memory',
@@ -294,10 +294,10 @@ export const longTermMemoryTask = defineTask('long-term-memory', (args, taskCtx)
 }));
 
 export const semanticMemoryTask = defineTask('semantic-memory', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Semantic Memory - ${args.systemName}`,
-  agent: {
-    name: 'semantic-memory-developer',
+  skill: {
+    name: 'semantic-memory-index',  // SK-MEM-003: Semantic memory with vector retrieval
     prompt: {
       role: 'Semantic Memory Developer',
       task: 'Implement vector-based semantic memory',

@@ -86,7 +86,7 @@ export const registryArchitectureTask = defineTask('registry-architecture', (arg
   kind: 'agent',
   title: `Registry Architecture - ${args.projectName}`,
   agent: {
-    name: 'mcp-architect',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Registry Architecture Specialist', task: 'Design registry architecture', context: args, instructions: ['1. Define registry structure', '2. Plan storage strategy', '3. Design discovery protocol', '4. Plan scaling approach', '5. Generate architecture doc'], outputFormat: 'JSON with registry architecture' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -98,7 +98,7 @@ export const serverRegistrationTask = defineTask('server-registration', (args, t
   kind: 'agent',
   title: `Server Registration - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Registration Specialist', task: 'Implement server registration', context: args, instructions: ['1. Define registration schema', '2. Implement registration API', '3. Handle deregistration', '4. Add validation', '5. Generate registration code'], outputFormat: 'JSON with server registration' },
     outputSchema: { type: 'object', required: ['registrationPath', 'artifacts'], properties: { registrationPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -110,7 +110,7 @@ export const discoveryMechanismTask = defineTask('discovery-mechanism', (args, t
   kind: 'agent',
   title: `Discovery Mechanism - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Discovery Specialist', task: 'Implement discovery mechanism', context: args, instructions: ['1. Implement local discovery', '2. Add network discovery', '3. Support filtering', '4. Cache results', '5. Generate discovery code'], outputFormat: 'JSON with discovery mechanism' },
     outputSchema: { type: 'object', required: ['discoveryPath', 'artifacts'], properties: { discoveryPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -122,7 +122,7 @@ export const configurationStorageTask = defineTask('configuration-storage', (arg
   kind: 'agent',
   title: `Configuration Storage - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Configuration Storage Specialist', task: 'Implement configuration storage', context: args, instructions: ['1. Design config schema', '2. Implement file storage', '3. Add database backend', '4. Handle migrations', '5. Generate storage code'], outputFormat: 'JSON with configuration storage' },
     outputSchema: { type: 'object', required: ['storagePath', 'artifacts'], properties: { storagePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -134,7 +134,7 @@ export const healthCheckingTask = defineTask('health-checking', (args, taskCtx) 
   kind: 'agent',
   title: `Health Checking - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Health Check Specialist', task: 'Implement health checking', context: args, instructions: ['1. Define health endpoints', '2. Implement health checks', '3. Track server status', '4. Handle failures', '5. Generate health check code'], outputFormat: 'JSON with health checking' },
     outputSchema: { type: 'object', required: ['healthPath', 'artifacts'], properties: { healthPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -146,7 +146,7 @@ export const registryVersionManagementTask = defineTask('registry-version-manage
   kind: 'agent',
   title: `Version Management - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Version Management Specialist', task: 'Implement version management', context: args, instructions: ['1. Track server versions', '2. Support version constraints', '3. Handle version conflicts', '4. Implement version history', '5. Generate versioning code'], outputFormat: 'JSON with version management' },
     outputSchema: { type: 'object', required: ['versionPath', 'artifacts'], properties: { versionPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -158,7 +158,7 @@ export const taggingCategorizationTask = defineTask('tagging-categorization', (a
   kind: 'agent',
   title: `Tagging and Categorization - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Tagging Specialist', task: 'Implement tagging system', context: args, instructions: ['1. Define tag schema', '2. Implement tag assignment', '3. Support categories', '4. Enable tag search', '5. Generate tagging code'], outputFormat: 'JSON with tagging system' },
     outputSchema: { type: 'object', required: ['taggingPath', 'artifacts'], properties: { taggingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -170,7 +170,7 @@ export const registryApiTask = defineTask('registry-api', (args, taskCtx) => ({
   kind: 'agent',
   title: `Registry API - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Registry API Specialist', task: 'Implement registry API', context: args, instructions: ['1. Design RESTful API', '2. Implement CRUD operations', '3. Add search endpoints', '4. Add authentication', '5. Generate API code'], outputFormat: 'JSON with registry API' },
     outputSchema: { type: 'object', required: ['apiPath', 'artifacts'], properties: { apiPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -182,7 +182,7 @@ export const registryTestingTask = defineTask('registry-testing', (args, taskCtx
   kind: 'agent',
   title: `Registry Testing - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'Registry Testing Specialist', task: 'Create registry test suite', context: args, instructions: ['1. Test registration', '2. Test discovery', '3. Test health checks', '4. Test versioning', '5. Generate test suite'], outputFormat: 'JSON with registry tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -194,7 +194,7 @@ export const registryDocumentationTask = defineTask('registry-documentation', (a
   kind: 'agent',
   title: `Registry Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'Registry Documentation Specialist', task: 'Document registry system', context: args, instructions: ['1. Document architecture', '2. Document API reference', '3. Add registration guide', '4. Add discovery examples', '5. Generate documentation'], outputFormat: 'JSON with registry documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

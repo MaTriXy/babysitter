@@ -86,7 +86,7 @@ export const toolInventoryTask = defineTask('tool-inventory', (args, taskCtx) =>
   kind: 'agent',
   title: `Tool Inventory - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Tool Documentation Specialist', task: 'Create tool inventory', context: args, instructions: ['1. List all tools', '2. Categorize by function', '3. Document capabilities', '4. Identify dependencies', '5. Generate inventory'], outputFormat: 'JSON with tool inventory' },
     outputSchema: { type: 'object', required: ['tools', 'artifacts'], properties: { tools: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -98,7 +98,7 @@ export const schemaDocumentationTask = defineTask('schema-documentation', (args,
   kind: 'agent',
   title: `Schema Documentation - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Schema Documentation Specialist', task: 'Document tool schemas', context: args, instructions: ['1. Document input schemas', '2. Document output schemas', '3. Add validation rules', '4. Create schema examples', '5. Generate schema docs'], outputFormat: 'JSON with schema documentation' },
     outputSchema: { type: 'object', required: ['schemas', 'artifacts'], properties: { schemas: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -110,7 +110,7 @@ export const exampleGenerationTask = defineTask('example-generation', (args, tas
   kind: 'agent',
   title: `Example Generation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Example Generator', task: 'Create tool usage examples', context: args, instructions: ['1. Create basic examples', '2. Create advanced examples', '3. Show error handling', '4. Document edge cases', '5. Generate example suite'], outputFormat: 'JSON with examples' },
     outputSchema: { type: 'object', required: ['examples', 'artifacts'], properties: { examples: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -122,7 +122,7 @@ export const errorDocumentationTask = defineTask('error-documentation', (args, t
   kind: 'agent',
   title: `Error Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Error Documentation Specialist', task: 'Document error scenarios', context: args, instructions: ['1. Document error codes', '2. Document error messages', '3. Add troubleshooting', '4. Document recovery steps', '5. Generate error docs'], outputFormat: 'JSON with error documentation' },
     outputSchema: { type: 'object', required: ['errorDocs', 'artifacts'], properties: { errorDocs: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -134,7 +134,7 @@ export const integrationGuideTask = defineTask('integration-guide', (args, taskC
   kind: 'agent',
   title: `Integration Guide - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Integration Guide Author', task: 'Create integration guide', context: args, instructions: ['1. Document setup steps', '2. Document configuration', '3. Add client examples', '4. Document authentication', '5. Generate integration guide'], outputFormat: 'JSON with integration guide' },
     outputSchema: { type: 'object', required: ['guidePath', 'artifacts'], properties: { guidePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -146,7 +146,7 @@ export const llmPromptGuideTask = defineTask('llm-prompt-guide', (args, taskCtx)
   kind: 'agent',
   title: `LLM Prompt Guide - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'LLM Integration Specialist', task: 'Create LLM prompt guide', context: args, instructions: ['1. Document tool descriptions', '2. Create prompt examples', '3. Document best practices', '4. Add context patterns', '5. Generate LLM guide'], outputFormat: 'JSON with LLM guide' },
     outputSchema: { type: 'object', required: ['llmGuidePath', 'artifacts'], properties: { llmGuidePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -158,7 +158,7 @@ export const versioningStrategyTask = defineTask('versioning-strategy', (args, t
   kind: 'agent',
   title: `Versioning Strategy - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'API Versioning Specialist', task: 'Define versioning strategy', context: args, instructions: ['1. Define version scheme', '2. Document deprecation', '3. Plan migrations', '4. Document compatibility', '5. Generate versioning docs'], outputFormat: 'JSON with versioning strategy' },
     outputSchema: { type: 'object', required: ['versioningConfig', 'artifacts'], properties: { versioningConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -170,7 +170,7 @@ export const apiReferenceTask = defineTask('api-reference', (args, taskCtx) => (
   kind: 'agent',
   title: `API Reference - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'API Reference Author', task: 'Create API reference', context: args, instructions: ['1. Document all endpoints', '2. Document parameters', '3. Document responses', '4. Add code samples', '5. Generate API reference'], outputFormat: 'JSON with API reference' },
     outputSchema: { type: 'object', required: ['apiRefPath', 'artifacts'], properties: { apiRefPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -182,7 +182,7 @@ export const changelogDocsTask = defineTask('changelog-docs', (args, taskCtx) =>
   kind: 'agent',
   title: `Changelog Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'Changelog Documentation Specialist', task: 'Set up changelog documentation', context: args, instructions: ['1. Create changelog template', '2. Document change types', '3. Set up automation', '4. Add release notes template', '5. Generate changelog docs'], outputFormat: 'JSON with changelog setup' },
     outputSchema: { type: 'object', required: ['changelogPath', 'artifacts'], properties: { changelogPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -194,7 +194,7 @@ export const publishingSetupTask = defineTask('publishing-setup', (args, taskCtx
   kind: 'agent',
   title: `Publishing Setup - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Documentation Publishing Specialist', task: 'Set up documentation publishing', context: args, instructions: ['1. Configure doc site', '2. Set up CI/CD', '3. Configure search', '4. Add versioning', '5. Generate publishing config'], outputFormat: 'JSON with publishing setup' },
     outputSchema: { type: 'object', required: ['publishingConfig', 'artifacts'], properties: { publishingConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },

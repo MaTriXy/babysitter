@@ -257,6 +257,7 @@ export async function process(inputs, ctx) {
 export const requirementsAnalysisTask = defineTask('requirements-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
     name: 'network-architect',
     prompt: {
@@ -296,8 +297,9 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
 export const socketImplementationTask = defineTask('socket-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Socket Implementation - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'network-developer',
+    name: 'network-architect',
     prompt: {
       role: 'Network Developer',
       task: 'Implement UDP socket operations',
@@ -334,8 +336,9 @@ export const socketImplementationTask = defineTask('socket-implementation', (arg
 export const packetHandlingTask = defineTask('packet-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Packet Handling - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'packet-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Packet Processing Engineer',
       task: 'Implement datagram handling',
@@ -373,8 +376,9 @@ export const packetHandlingTask = defineTask('packet-handling', (args, taskCtx) 
 export const reliabilityTask = defineTask('reliability', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Reliability Mechanisms - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'reliability-engineer',
+    name: 'network-architect',
     prompt: {
       role: 'Network Reliability Engineer',
       task: 'Implement optional reliability features',
@@ -412,8 +416,9 @@ export const reliabilityTask = defineTask('reliability', (args, taskCtx) => ({
 export const rateLimitingTask = defineTask('rate-limiting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Rate Limiting - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'security-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Network Security Engineer',
       task: 'Implement rate limiting and flood protection',
@@ -451,8 +456,9 @@ export const rateLimitingTask = defineTask('rate-limiting', (args, taskCtx) => (
 export const multicastTask = defineTask('multicast', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Multicast/Broadcast - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'multicast-engineer',
+    name: 'network-architect',
     prompt: {
       role: 'Multicast Systems Engineer',
       task: 'Implement multicast and broadcast support',
@@ -489,8 +495,9 @@ export const multicastTask = defineTask('multicast', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Test Suite - ${args.projectName}`,
+  skill: { name: 'network-simulation' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Network Testing Engineer',
       task: 'Create UDP server test suite',
@@ -530,7 +537,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'network-architect',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate UDP server documentation',
@@ -567,8 +574,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Validation - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'validation-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate UDP server implementation',

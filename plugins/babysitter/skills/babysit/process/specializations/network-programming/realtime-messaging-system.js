@@ -60,60 +60,70 @@ export async function process(inputs, ctx) {
 
 export const architectureTask = defineTask('architecture', (args, taskCtx) => ({
   kind: 'agent', title: `Architecture - ${args.projectName}`,
-  agent: { name: 'architect', prompt: { role: 'Systems Architect', task: 'Design messaging architecture', context: args, instructions: ['1. Design components', '2. Define data flows', '3. Plan scaling', '4. Document architecture'] }, outputSchema: { type: 'object', required: ['design', 'artifacts'], properties: { design: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Systems Architect', task: 'Design messaging architecture', context: args, instructions: ['1. Design components', '2. Define data flows', '3. Plan scaling', '4. Document architecture'] }, outputSchema: { type: 'object', required: ['design', 'artifacts'], properties: { design: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'architecture']
 }));
 
 export const connectionLayerTask = defineTask('connection-layer', (args, taskCtx) => ({
   kind: 'agent', title: `Connection Layer - ${args.projectName}`,
-  agent: { name: 'connection-engineer', prompt: { role: 'Connection Engineer', task: 'Build connection layer', context: args, instructions: ['1. WebSocket support', '2. Long-polling fallback', '3. Connection tracking', '4. Authentication'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'grpc-protocol' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Connection Engineer', task: 'Build connection layer', context: args, instructions: ['1. WebSocket support', '2. Long-polling fallback', '3. Connection tracking', '4. Authentication'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'connection']
 }));
 
 export const pubSubTask = defineTask('pub-sub', (args, taskCtx) => ({
   kind: 'agent', title: `Pub/Sub - ${args.projectName}`,
-  agent: { name: 'pubsub-engineer', prompt: { role: 'Pub/Sub Engineer', task: 'Implement pub/sub system', context: args, instructions: ['1. Topic management', '2. Subscription handling', '3. Message routing', '4. Pattern matching'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'dns-protocol' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Pub/Sub Engineer', task: 'Implement pub/sub system', context: args, instructions: ['1. Topic management', '2. Subscription handling', '3. Message routing', '4. Pattern matching'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'pubsub']
 }));
 
 export const channelsTask = defineTask('channels', (args, taskCtx) => ({
   kind: 'agent', title: `Channels - ${args.projectName}`,
-  agent: { name: 'channel-engineer', prompt: { role: 'Channel Engineer', task: 'Implement channel system', context: args, instructions: ['1. Channel creation', '2. Join/leave handling', '3. Channel authorization', '4. Private channels'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Channel Engineer', task: 'Implement channel system', context: args, instructions: ['1. Channel creation', '2. Join/leave handling', '3. Channel authorization', '4. Private channels'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'channels']
 }));
 
 export const presenceTask = defineTask('presence', (args, taskCtx) => ({
   kind: 'agent', title: `Presence - ${args.projectName}`,
-  agent: { name: 'presence-engineer', prompt: { role: 'Presence Engineer', task: 'Implement presence tracking', context: args, instructions: ['1. Track online users', '2. Join/leave events', '3. User metadata', '4. Presence sync'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Presence Engineer', task: 'Implement presence tracking', context: args, instructions: ['1. Track online users', '2. Join/leave events', '3. User metadata', '4. Presence sync'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'presence']
 }));
 
 export const historyTask = defineTask('history', (args, taskCtx) => ({
   kind: 'agent', title: `Message History - ${args.projectName}`,
-  agent: { name: 'history-engineer', prompt: { role: 'History Engineer', task: 'Implement message history', context: args, instructions: ['1. Store messages', '2. Retrieve history', '3. Pagination', '4. Retention policies'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'History Engineer', task: 'Implement message history', context: args, instructions: ['1. Store messages', '2. Retrieve history', '3. Pagination', '4. Retention policies'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'history']
 }));
 
 export const deliveryTask = defineTask('delivery', (args, taskCtx) => ({
   kind: 'agent', title: `Delivery Guarantees - ${args.projectName}`,
-  agent: { name: 'delivery-engineer', prompt: { role: 'Delivery Engineer', task: 'Implement delivery guarantees', context: args, instructions: ['1. At-least-once delivery', '2. Message acknowledgments', '3. Retry mechanism', '4. Ordering guarantees'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Delivery Engineer', task: 'Implement delivery guarantees', context: args, instructions: ['1. At-least-once delivery', '2. Message acknowledgments', '3. Retry mechanism', '4. Ordering guarantees'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'delivery']
 }));
 
 export const scalingTask = defineTask('scaling', (args, taskCtx) => ({
   kind: 'agent', title: `Horizontal Scaling - ${args.projectName}`,
-  agent: { name: 'scaling-engineer', prompt: { role: 'Scaling Engineer', task: 'Implement horizontal scaling', context: args, instructions: ['1. Redis pub/sub', '2. Node coordination', '3. State sharing', '4. Load balancing'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Scaling Engineer', task: 'Implement horizontal scaling', context: args, instructions: ['1. Redis pub/sub', '2. Node coordination', '3. State sharing', '4. Load balancing'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'scaling']
 }));
 
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent', title: `Test Suite - ${args.projectName}`,
-  agent: { name: 'test-engineer', prompt: { role: 'Test Engineer', task: 'Create messaging tests', context: args, instructions: ['1. Unit tests', '2. Integration tests', '3. Load tests', '4. Chaos tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Test Engineer', task: 'Create messaging tests', context: args, instructions: ['1. Unit tests', '2. Integration tests', '3. Load tests', '4. Chaos tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'testing']
 }));
 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent', title: `Validation - ${args.projectName}`,
-  agent: { name: 'qa-engineer', prompt: { role: 'QA Engineer', task: 'Validate system', context: args, instructions: ['1. Verify features', '2. Check scaling', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'QA Engineer', task: 'Validate system', context: args, instructions: ['1. Verify features', '2. Check scaling', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'messaging', 'validation']
 }));

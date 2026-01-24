@@ -186,7 +186,7 @@ export const deviceReconTask = defineTask('device-recon', (args, taskCtx) => ({
   kind: 'agent',
   title: `Device Reconnaissance - ${args.projectName}`,
   agent: {
-    name: 'hardware-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Hardware Security Analyst',
       task: 'Analyze device and identify interfaces',
@@ -225,7 +225,7 @@ export const debugInterfaceTask = defineTask('debug-interface', (args, taskCtx) 
   kind: 'agent',
   title: `Debug Interface Analysis - ${args.projectName}`,
   agent: {
-    name: 'debug-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Hardware Debug Interface Analyst',
       task: 'Analyze debug interfaces',
@@ -264,7 +264,7 @@ export const sideChannelTask = defineTask('side-channel', (args, taskCtx) => ({
   kind: 'agent',
   title: `Side-Channel Analysis - ${args.projectName}`,
   agent: {
-    name: 'side-channel-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Side-Channel Attack Specialist',
       task: 'Conduct side-channel analysis',
@@ -303,7 +303,7 @@ export const faultInjectionTask = defineTask('fault-injection', (args, taskCtx) 
   kind: 'agent',
   title: `Fault Injection - ${args.projectName}`,
   agent: {
-    name: 'fault-injection-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Fault Injection Specialist',
       task: 'Test fault injection attacks',
@@ -342,7 +342,7 @@ export const hardwareFirmwareExtractionTask = defineTask('hardware-firmware-extr
   kind: 'agent',
   title: `Firmware Extraction - ${args.projectName}`,
   agent: {
-    name: 'firmware-extractor',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Hardware Firmware Extraction Specialist',
       task: 'Attempt firmware extraction',
@@ -381,7 +381,7 @@ export const physicalSecurityTask = defineTask('physical-security', (args, taskC
   kind: 'agent',
   title: `Physical Security - ${args.projectName}`,
   agent: {
-    name: 'physical-security-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Physical Security Analyst',
       task: 'Assess physical security',
@@ -420,7 +420,7 @@ export const hardwareSecurityReportTask = defineTask('hardware-security-report',
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Hardware Security Report Specialist',
       task: 'Generate hardware security report',

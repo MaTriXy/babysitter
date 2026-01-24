@@ -95,7 +95,7 @@ export const selectLoadTestingToolsTask = defineTask('select-load-testing-tools'
   kind: 'agent',
   title: `Select Load Testing Tools - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Select load testing tools', context: args,
       instructions: ['1. Evaluate k6, Gatling, Locust', '2. Consider team skills', '3. Evaluate features', '4. Select primary tool', '5. Document selection'],
       outputFormat: 'JSON with tool selection' },
@@ -109,7 +109,7 @@ export const designTestScenariosTask = defineTask('design-test-scenarios', (args
   kind: 'agent',
   title: `Design Test Scenarios - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Design load test scenarios', context: args,
       instructions: ['1. Define user journeys', '2. Create scenario flows', '3. Define think times', '4. Add data variation', '5. Document scenarios'],
       outputFormat: 'JSON with test scenarios' },
@@ -123,7 +123,7 @@ export const createLoadProfilesTask = defineTask('create-load-profiles', (args, 
   kind: 'agent',
   title: `Create Load Profiles - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Create load profiles', context: args,
       instructions: ['1. Define ramp-up patterns', '2. Create steady state', '3. Add spike tests', '4. Create stress tests', '5. Document profiles'],
       outputFormat: 'JSON with load profiles' },
@@ -137,7 +137,7 @@ export const configurePerformanceThresholdsTask = defineTask('configure-performa
   kind: 'agent',
   title: `Configure Performance Thresholds - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Configure performance thresholds', context: args,
       instructions: ['1. Set response time thresholds', '2. Set error rate thresholds', '3. Set throughput requirements', '4. Configure pass/fail criteria', '5. Document thresholds'],
       outputFormat: 'JSON with thresholds' },
@@ -151,7 +151,7 @@ export const implementTestScriptsTask = defineTask('implement-test-scripts', (ar
   kind: 'agent',
   title: `Implement Test Scripts - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Implement load test scripts', context: args,
       instructions: ['1. Write test scripts', '2. Add scenario logic', '3. Include thresholds', '4. Add reporting', '5. Document scripts'],
       outputFormat: 'JSON with test scripts' },
@@ -165,7 +165,7 @@ export const setupTestDataGenerationTask = defineTask('setup-test-data-generatio
   kind: 'agent',
   title: `Setup Test Data Generation - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Setup test data generation', context: args,
       instructions: ['1. Identify data needs', '2. Create data generators', '3. Add data files', '4. Configure parameterization', '5. Document setup'],
       outputFormat: 'JSON with test data setup' },
@@ -179,7 +179,7 @@ export const integrateWithCICDTask = defineTask('integrate-with-cicd', (args, ta
   kind: 'agent',
   title: `Integrate with CI/CD - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Integrate load tests with CI/CD', context: args,
       instructions: ['1. Create pipeline stage', '2. Configure test execution', '3. Add result reporting', '4. Configure gates', '5. Document integration'],
       outputFormat: 'JSON with CI/CD integration' },
@@ -193,7 +193,7 @@ export const documentLoadTestingFrameworkTask = defineTask('document-load-testin
   kind: 'agent',
   title: `Document Framework - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Document load testing framework', context: args,
       instructions: ['1. Document architecture', '2. Document scenarios', '3. Add usage guide', '4. Include examples', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

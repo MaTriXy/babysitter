@@ -266,7 +266,7 @@ export const missionProfileAnalysisTask = defineTask('mission-profile-analysis',
   kind: 'agent',
   title: `Phase 1: Mission Profile Analysis - ${args.projectName}`,
   agent: {
-    name: 'robotics-systems-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Robotics Systems Engineer',
       task: 'Analyze mission profile and operational requirements',
@@ -310,7 +310,7 @@ export const performanceMetricsTask = defineTask('performance-metrics', (args, t
   kind: 'agent',
   title: `Phase 2: Performance Metrics - ${args.projectName}`,
   agent: {
-    name: 'robotics-systems-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Robotics Systems Engineer',
       task: 'Define performance metrics and success criteria',
@@ -354,7 +354,7 @@ export const environmentalConstraintsTask = defineTask('environmental-constraint
   kind: 'agent',
   title: `Phase 3: Environmental Constraints - ${args.projectName}`,
   agent: {
-    name: 'robotics-systems-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Robotics Systems Engineer',
       task: 'Analyze environmental constraints and operating conditions',
@@ -399,7 +399,7 @@ export const sensorActuatorRequirementsTask = defineTask('sensor-actuator-requir
   kind: 'agent',
   title: `Phase 4: Sensor/Actuator Requirements - ${args.projectName}`,
   agent: {
-    name: 'robotics-systems-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Robotics Systems Engineer',
       task: 'Specify sensor and actuator requirements',
@@ -443,7 +443,7 @@ export const mechanicalArchitectureTask = defineTask('mechanical-architecture', 
   kind: 'agent',
   title: `Phase 5: Mechanical Architecture - ${args.projectName}`,
   agent: {
-    name: 'mechanical-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'Mechanical Engineer',
       task: 'Design mechanical architecture and kinematics',
@@ -488,7 +488,7 @@ export const softwareArchitectureTask = defineTask('software-architecture', (arg
   kind: 'agent',
   title: `Phase 6: Software Architecture - ${args.projectName}`,
   agent: {
-    name: 'robotics-software-architect',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: {
       role: 'Robotics Software Architect',
       task: 'Design software architecture for perception, planning, and control',
@@ -533,7 +533,7 @@ export const safetyRequirementsTask = defineTask('safety-requirements', (args, t
   kind: 'agent',
   title: `Phase 7: Safety Requirements - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-engineer',  // AG-010: Safety Engineer Agent
     prompt: {
       role: 'Robot Safety Engineer',
       task: 'Define safety requirements and certification plan',
@@ -578,7 +578,7 @@ export const systemIntegrationPlanTask = defineTask('system-integration-plan', (
   kind: 'agent',
   title: `Phase 8: System Integration Plan - ${args.projectName}`,
   agent: {
-    name: 'systems-integration-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Systems Integration Engineer',
       task: 'Create system integration plan',
@@ -622,7 +622,7 @@ export const designDocumentationTask = defineTask('design-documentation', (args,
   kind: 'agent',
   title: `Phase 9: Design Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'robotics-documentation-specialist',  // AG-020: Robotics Documentation Specialist Agent
     prompt: {
       role: 'Technical Documentation Engineer',
       task: 'Create comprehensive design documentation',

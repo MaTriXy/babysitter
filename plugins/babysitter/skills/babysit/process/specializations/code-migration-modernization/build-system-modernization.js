@@ -217,7 +217,7 @@ export const buildSystemAnalysisTask = defineTask('build-system-analysis', (args
   kind: 'agent',
   title: `Phase 1: Build System Analysis - ${args.projectName}`,
   agent: {
-    name: 'build-analyst',
+    name: 'build-pipeline-modernizer',
     prompt: {
       role: 'Build Engineer',
       task: 'Analyze current build system',
@@ -261,7 +261,7 @@ export const targetBuildDesignTask = defineTask('target-build-design', (args, ta
   kind: 'agent',
   title: `Phase 2: Target Build Design - ${args.projectName}`,
   agent: {
-    name: 'build-architect',
+    name: 'build-pipeline-modernizer',
     prompt: {
       role: 'Build Architect',
       task: 'Design target build system',
@@ -303,7 +303,7 @@ export const buildScriptMigrationTask = defineTask('build-script-migration', (ar
   kind: 'agent',
   title: `Phase 3: Build Script Migration - ${args.projectName}`,
   agent: {
-    name: 'build-developer',
+    name: 'build-pipeline-modernizer',
     prompt: {
       role: 'Build Developer',
       task: 'Migrate build scripts',
@@ -345,7 +345,7 @@ export const dependencyManagementTask = defineTask('dependency-management', (arg
   kind: 'agent',
   title: `Phase 4: Dependency Management - ${args.projectName}`,
   agent: {
-    name: 'dependency-engineer',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'Dependency Engineer',
       task: 'Update dependency management',
@@ -386,7 +386,7 @@ export const buildValidationTask = defineTask('build-validation', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Build Validation - ${args.projectName}`,
   agent: {
-    name: 'build-validator',
+    name: 'regression-detector',
     prompt: {
       role: 'Build Engineer',
       task: 'Validate modernized build',
@@ -428,7 +428,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'cicd-engineer',
+    name: 'build-pipeline-modernizer',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Set up CI/CD integration',
@@ -471,7 +471,7 @@ export const buildPerformanceOptimizationTask = defineTask('build-performance-op
   kind: 'agent',
   title: `Phase 7: Build Performance Optimization - ${args.projectName}`,
   agent: {
-    name: 'performance-optimizer',
+    name: 'build-pipeline-modernizer',
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize build performance',

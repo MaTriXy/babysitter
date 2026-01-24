@@ -60,60 +60,70 @@ export async function process(inputs, ctx) {
 
 export const protocolSpecTask = defineTask('protocol-spec', (args, taskCtx) => ({
   kind: 'agent', title: `Protocol Spec - ${args.projectName}`,
-  agent: { name: 'protocol-analyst', prompt: { role: 'Protocol Analyst', task: 'Analyze SOCKS5 protocol', context: args, instructions: ['1. RFC 1928 analysis', '2. Message formats', '3. State machine', '4. Error handling'] }, outputSchema: { type: 'object', required: ['specification', 'artifacts'], properties: { specification: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'proxy-server' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Protocol Analyst', task: 'Analyze SOCKS5 protocol', context: args, instructions: ['1. RFC 1928 analysis', '2. Message formats', '3. State machine', '4. Error handling'] }, outputSchema: { type: 'object', required: ['specification', 'artifacts'], properties: { specification: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'spec']
 }));
 
 export const handshakeTask = defineTask('handshake', (args, taskCtx) => ({
   kind: 'agent', title: `Handshake - ${args.projectName}`,
-  agent: { name: 'handshake-engineer', prompt: { role: 'Handshake Engineer', task: 'Implement SOCKS5 handshake', context: args, instructions: ['1. Method negotiation', '2. Version validation', '3. Auth method selection', '4. Error responses'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'socket-programming' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Handshake Engineer', task: 'Implement SOCKS5 handshake', context: args, instructions: ['1. Method negotiation', '2. Version validation', '3. Auth method selection', '4. Error responses'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'handshake']
 }));
 
 export const authenticationTask = defineTask('authentication', (args, taskCtx) => ({
   kind: 'agent', title: `Authentication - ${args.projectName}`,
-  agent: { name: 'auth-engineer', prompt: { role: 'Authentication Engineer', task: 'Implement authentication', context: args, instructions: ['1. Username/password auth', '2. GSSAPI support', '3. No auth option', '4. Auth failure handling'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'proxy-server' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Authentication Engineer', task: 'Implement authentication', context: args, instructions: ['1. Username/password auth', '2. GSSAPI support', '3. No auth option', '4. Auth failure handling'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'auth']
 }));
 
 export const connectCommandTask = defineTask('connect-command', (args, taskCtx) => ({
   kind: 'agent', title: `CONNECT Command - ${args.projectName}`,
-  agent: { name: 'connect-engineer', prompt: { role: 'Connect Engineer', task: 'Implement CONNECT command', context: args, instructions: ['1. Address parsing', '2. DNS resolution', '3. Connection establishment', '4. Data relay'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'socket-programming' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Connect Engineer', task: 'Implement CONNECT command', context: args, instructions: ['1. Address parsing', '2. DNS resolution', '3. Connection establishment', '4. Data relay'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'connect']
 }));
 
 export const bindCommandTask = defineTask('bind-command', (args, taskCtx) => ({
   kind: 'agent', title: `BIND Command - ${args.projectName}`,
-  agent: { name: 'bind-engineer', prompt: { role: 'Bind Engineer', task: 'Implement BIND command', context: args, instructions: ['1. Bind request handling', '2. Port allocation', '3. Accept connection', '4. Data forwarding'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'socket-programming' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Bind Engineer', task: 'Implement BIND command', context: args, instructions: ['1. Bind request handling', '2. Port allocation', '3. Accept connection', '4. Data forwarding'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'bind']
 }));
 
 export const udpRelayTask = defineTask('udp-relay', (args, taskCtx) => ({
   kind: 'agent', title: `UDP Relay - ${args.projectName}`,
-  agent: { name: 'udp-engineer', prompt: { role: 'UDP Relay Engineer', task: 'Implement UDP ASSOCIATE', context: args, instructions: ['1. UDP socket setup', '2. Datagram encapsulation', '3. Fragmentation handling', '4. Association timeout'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'socket-programming' },
+  agent: { name: 'proxy-expert', prompt: { role: 'UDP Relay Engineer', task: 'Implement UDP ASSOCIATE', context: args, instructions: ['1. UDP socket setup', '2. Datagram encapsulation', '3. Fragmentation handling', '4. Association timeout'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'udp']
 }));
 
 export const ipv6SupportTask = defineTask('ipv6-support', (args, taskCtx) => ({
   kind: 'agent', title: `IPv6 Support - ${args.projectName}`,
-  agent: { name: 'ipv6-engineer', prompt: { role: 'IPv6 Engineer', task: 'Implement IPv6 support', context: args, instructions: ['1. IPv6 address handling', '2. Dual-stack support', '3. Address type detection', '4. Happy Eyeballs'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'socket-programming' },
+  agent: { name: 'proxy-expert', prompt: { role: 'IPv6 Engineer', task: 'Implement IPv6 support', context: args, instructions: ['1. IPv6 address handling', '2. Dual-stack support', '3. Address type detection', '4. Happy Eyeballs'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'ipv6']
 }));
 
 export const connectionTrackingTask = defineTask('connection-tracking', (args, taskCtx) => ({
   kind: 'agent', title: `Connection Tracking - ${args.projectName}`,
-  agent: { name: 'tracking-engineer', prompt: { role: 'Tracking Engineer', task: 'Implement connection tracking', context: args, instructions: ['1. Connection registry', '2. Statistics collection', '3. Bandwidth tracking', '4. Connection limits'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'proxy-server' },
+  agent: { name: 'proxy-expert', prompt: { role: 'Tracking Engineer', task: 'Implement connection tracking', context: args, instructions: ['1. Connection registry', '2. Statistics collection', '3. Bandwidth tracking', '4. Connection limits'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'tracking']
 }));
 
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent', title: `Test Suite - ${args.projectName}`,
-  agent: { name: 'test-engineer', prompt: { role: 'Test Engineer', task: 'Create SOCKS5 tests', context: args, instructions: ['1. Protocol tests', '2. Auth tests', '3. UDP tests', '4. IPv6 tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Test Engineer', task: 'Create SOCKS5 tests', context: args, instructions: ['1. Protocol tests', '2. Auth tests', '3. UDP tests', '4. IPv6 tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'testing']
 }));
 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent', title: `Validation - ${args.projectName}`,
-  agent: { name: 'qa-engineer', prompt: { role: 'QA Engineer', task: 'Validate SOCKS5 proxy', context: args, instructions: ['1. RFC compliance', '2. Check auth', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'QA Engineer', task: 'Validate SOCKS5 proxy', context: args, instructions: ['1. RFC compliance', '2. Check auth', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'socks5', 'validation']
 }));

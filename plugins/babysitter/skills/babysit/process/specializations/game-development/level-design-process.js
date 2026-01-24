@@ -318,7 +318,7 @@ export const levelRequirementsTask = defineTask('level-requirements', (args, tas
   kind: 'agent',
   title: `Phase 1: Level Requirements - ${args.levelName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: {
       role: 'Senior Level Designer',
       task: 'Define level requirements and objectives',
@@ -362,7 +362,7 @@ export const layoutDesignTask = defineTask('layout-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Layout Design - ${args.levelName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: {
       role: 'Level Designer',
       task: 'Design level layout and player flow',
@@ -408,7 +408,7 @@ export const greyboxTask = defineTask('greybox', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Greybox - ${args.levelName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: {
       role: 'Level Designer',
       task: 'Create greybox level blockout',
@@ -452,7 +452,7 @@ export const gameplayPlacementTask = defineTask('gameplay-placement', (args, tas
   kind: 'agent',
   title: `Phase 4: Gameplay Placement - ${args.levelName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: {
       role: 'Level Designer',
       task: 'Place gameplay elements and encounters',
@@ -496,7 +496,7 @@ export const pacingAnalysisTask = defineTask('pacing-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Pacing Analysis - ${args.levelName}`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Game Designer',
       task: 'Analyze and design level pacing',
@@ -540,7 +540,7 @@ export const environmentalStorytellingTask = defineTask('environmental-storytell
   kind: 'agent',
   title: `Phase 6: Environmental Storytelling - ${args.levelName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Narrative Designer',
       task: 'Implement environmental storytelling',
@@ -583,7 +583,7 @@ export const levelPlaytestingTask = defineTask('level-playtesting', (args, taskC
   kind: 'agent',
   title: `Phase 7: Level Playtesting - ${args.levelName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: {
       role: 'UX Researcher',
       task: 'Conduct level playtesting and gather feedback',
@@ -629,7 +629,7 @@ export const levelIterationTask = defineTask('level-iteration', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Level Iteration - ${args.levelName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: {
       role: 'Level Designer',
       task: 'Iterate on level based on playtest feedback',
@@ -671,7 +671,7 @@ export const levelOptimizationTask = defineTask('level-optimization', (args, tas
   kind: 'agent',
   title: `Phase 9: Level Optimization - ${args.levelName}`,
   agent: {
-    name: 'technical-artist',
+    name: 'tech-artist-agent',
     prompt: {
       role: 'Technical Artist',
       task: 'Optimize level performance',
@@ -715,7 +715,7 @@ export const levelDocumentationTask = defineTask('level-documentation', (args, t
   kind: 'agent',
   title: `Phase 10: Level Documentation - ${args.levelName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive level documentation',

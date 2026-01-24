@@ -94,7 +94,7 @@ export const detectionModelSelectionTask = defineTask('detection-model-selection
   kind: 'agent',
   title: `Detection Model Selection - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Select detection model', context: args, instructions: ['1. Evaluate YOLO, Detectron2, EfficientDet', '2. Consider deployment constraints', '3. Select model architecture', '4. Document selection rationale'] },
     outputSchema: { type: 'object', required: ['selectedModel', 'architecture', 'artifacts'], properties: { selectedModel: { type: 'string' }, architecture: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -106,7 +106,7 @@ export const detectionDatasetTask = defineTask('detection-dataset', (args, taskC
   kind: 'agent',
   title: `Detection Dataset - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Data Engineer', task: 'Collect or generate training dataset', context: args, instructions: ['1. Collect real-world images', '2. Generate synthetic data', '3. Annotate bounding boxes', '4. Create train/val/test splits', '5. Verify data quality'] },
     outputSchema: { type: 'object', required: ['datasetPath', 'statistics', 'artifacts'], properties: { datasetPath: { type: 'string' }, statistics: { type: 'object' }, classes: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -118,7 +118,7 @@ export const detectionModelTrainingTask = defineTask('detection-model-training',
   kind: 'agent',
   title: `Detection Model Training - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Train/fine-tune detection model', context: args, instructions: ['1. Configure training hyperparameters', '2. Set up data augmentation', '3. Train model', '4. Monitor training metrics', '5. Select best checkpoint'] },
     outputSchema: { type: 'object', required: ['modelPath', 'trainingMetrics', 'artifacts'], properties: { modelPath: { type: 'string' }, trainingMetrics: { type: 'object' }, bestEpoch: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -130,7 +130,7 @@ export const edgeDeploymentOptimizationTask = defineTask('edge-deployment-optimi
   kind: 'agent',
   title: `Edge Optimization - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Optimize model for edge deployment', context: args, instructions: ['1. Quantize model (INT8, FP16)', '2. Convert to TensorRT/ONNX', '3. Benchmark on target hardware', '4. Validate accuracy after optimization', '5. Document optimizations'] },
     outputSchema: { type: 'object', required: ['optimizedModelPath', 'speedup', 'artifacts'], properties: { optimizedModelPath: { type: 'string' }, speedup: { type: 'number' }, accuracyLoss: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -142,7 +142,7 @@ export const detectionRosIntegrationTask = defineTask('detection-ros-integration
   kind: 'agent',
   title: `ROS Integration - ${args.projectName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Integrate with ROS perception pipeline', context: args, instructions: ['1. Create ROS node for detection', '2. Configure image subscription', '3. Publish detection messages', '4. Add visualization', '5. Document ROS interface'] },
     outputSchema: { type: 'object', required: ['nodeConfig', 'topics', 'artifacts'], properties: { nodeConfig: { type: 'object' }, topics: { type: 'array' }, launchFile: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -154,7 +154,7 @@ export const boundingBox3DEstimationTask = defineTask('bounding-box-3d-estimatio
   kind: 'agent',
   title: `3D Bounding Box - ${args.projectName}`,
   agent: {
-    name: 'computer-vision-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: { role: 'Computer Vision Engineer', task: 'Implement 3D bounding box estimation', context: args, instructions: ['1. Fuse 2D detection with depth', '2. Estimate object dimensions', '3. Calculate 3D pose', '4. Project to world frame', '5. Validate 3D accuracy'] },
     outputSchema: { type: 'object', required: ['bbox3DConfig', 'accuracy3D', 'artifacts'], properties: { bbox3DConfig: { type: 'object' }, accuracy3D: { type: 'object' }, method: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -166,7 +166,7 @@ export const objectTrackingTask = defineTask('object-tracking', (args, taskCtx) 
   kind: 'agent',
   title: `Object Tracking - ${args.projectName}`,
   agent: {
-    name: 'computer-vision-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: { role: 'Computer Vision Engineer', task: 'Add object tracking over time', context: args, instructions: ['1. Select tracking algorithm (SORT, DeepSORT)', '2. Configure track management', '3. Handle occlusions', '4. Add track ID persistence', '5. Evaluate tracking metrics'] },
     outputSchema: { type: 'object', required: ['trackingConfig', 'mota', 'artifacts'], properties: { trackingConfig: { type: 'object' }, mota: { type: 'number' }, motp: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -178,7 +178,7 @@ export const detectionTestingTask = defineTask('detection-testing', (args, taskC
   kind: 'agent',
   title: `Detection Testing - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test in varied conditions', context: args, instructions: ['1. Test with varying lighting', '2. Test with occlusions', '3. Test at different distances', '4. Measure mAP', '5. Generate test report'] },
     outputSchema: { type: 'object', required: ['mAP', 'testResults', 'artifacts'], properties: { mAP: { type: 'number' }, testResults: { type: 'array' }, perClassAP: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -190,7 +190,7 @@ export const detectionPerformanceTask = defineTask('detection-performance', (arg
   kind: 'agent',
   title: `Detection Performance - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Measure detection accuracy and latency', context: args, instructions: ['1. Measure inference latency', '2. Measure throughput (FPS)', '3. Profile memory usage', '4. Test on target hardware', '5. Document performance'] },
     outputSchema: { type: 'object', required: ['latency', 'fps', 'artifacts'], properties: { latency: { type: 'number' }, fps: { type: 'number' }, memoryUsage: { type: 'object' }, gpuUtilization: { type: 'number' }, artifacts: { type: 'array' } } }
   },

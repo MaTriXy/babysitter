@@ -87,7 +87,7 @@ export const buildSystemSetupTask = defineTask('build-system-setup', (args, task
   kind: 'agent',
   title: `Build System Setup - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Build System Specialist', task: 'Set up build system', context: args, instructions: ['1. Choose build tool', '2. Configure build targets', '3. Set up build scripts', '4. Configure versioning', '5. Generate build config'], outputFormat: 'JSON with build system setup' },
     outputSchema: { type: 'object', required: ['buildSystem', 'configPath', 'artifacts'], properties: { buildSystem: { type: 'string' }, configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const crossCompilationTask = defineTask('cross-compilation', (args, taskC
   kind: 'agent',
   title: `Cross-Compilation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Cross-Compilation Specialist', task: 'Configure cross-compilation', context: args, instructions: ['1. Set up cross-compile toolchain', '2. Configure target platforms', '3. Handle CGO dependencies', '4. Test cross-compiled binaries', '5. Generate cross-compile config'], outputFormat: 'JSON with cross-compilation setup' },
     outputSchema: { type: 'object', required: ['platformConfigs', 'artifacts'], properties: { platformConfigs: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const binaryOptimizationTask = defineTask('binary-optimization', (args, t
   kind: 'agent',
   title: `Binary Optimization - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Binary Optimization Specialist', task: 'Optimize binary size and performance', context: args, instructions: ['1. Strip debug symbols', '2. Enable UPX compression', '3. Optimize for size', '4. Remove unused code', '5. Generate optimization config'], outputFormat: 'JSON with optimization config' },
     outputSchema: { type: 'object', required: ['optimizationConfig', 'artifacts'], properties: { optimizationConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const codeSigningSetupTask = defineTask('code-signing-setup', (args, task
   kind: 'agent',
   title: `Code Signing Setup - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Code Signing Specialist', task: 'Set up code signing', context: args, instructions: ['1. Configure macOS signing', '2. Configure Windows signing', '3. Set up notarization', '4. Configure CI secrets', '5. Generate signing config'], outputFormat: 'JSON with code signing setup' },
     outputSchema: { type: 'object', required: ['signingConfig', 'artifacts'], properties: { signingConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const checksumGenerationTask = defineTask('checksum-generation', (args, t
   kind: 'agent',
   title: `Checksum Generation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Release Security Specialist', task: 'Set up checksum generation', context: args, instructions: ['1. Configure SHA256 checksums', '2. Generate checksum files', '3. Add GPG signing', '4. Automate verification', '5. Generate checksum config'], outputFormat: 'JSON with checksum setup' },
     outputSchema: { type: 'object', required: ['checksumConfig', 'artifacts'], properties: { checksumConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -147,7 +147,7 @@ export const githubReleasesSetupTask = defineTask('github-releases-setup', (args
   kind: 'agent',
   title: `GitHub Releases Setup - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Release Automation Specialist', task: 'Set up GitHub releases', context: args, instructions: ['1. Configure release workflow', '2. Set up asset uploads', '3. Configure release notes', '4. Add changelog generation', '5. Generate release config'], outputFormat: 'JSON with GitHub releases setup' },
     outputSchema: { type: 'object', required: ['releaseConfig', 'artifacts'], properties: { releaseConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -159,7 +159,7 @@ export const homebrewFormulaTask = defineTask('homebrew-formula', (args, taskCtx
   kind: 'agent',
   title: `Homebrew Formula - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Homebrew Formula Specialist', task: 'Create Homebrew formula', context: args, instructions: ['1. Create formula template', '2. Configure dependencies', '3. Set up tap repository', '4. Automate formula updates', '5. Generate Homebrew config'], outputFormat: 'JSON with Homebrew formula' },
     outputSchema: { type: 'object', required: ['formulaPath', 'artifacts'], properties: { formulaPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -171,7 +171,7 @@ export const scoopManifestTask = defineTask('scoop-manifest', (args, taskCtx) =>
   kind: 'agent',
   title: `Scoop Manifest - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Scoop Manifest Specialist', task: 'Create Scoop manifest', context: args, instructions: ['1. Create manifest template', '2. Configure autoupdate', '3. Set up bucket', '4. Add installer scripts', '5. Generate Scoop manifest'], outputFormat: 'JSON with Scoop manifest' },
     outputSchema: { type: 'object', required: ['manifestPath', 'artifacts'], properties: { manifestPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -183,7 +183,7 @@ export const aptDebPackagingTask = defineTask('apt-deb-packaging', (args, taskCt
   kind: 'agent',
   title: `APT/DEB Packaging - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Debian Packaging Specialist', task: 'Create Debian package', context: args, instructions: ['1. Create control file', '2. Configure maintainer scripts', '3. Set up PPA', '4. Automate package builds', '5. Generate Debian package config'], outputFormat: 'JSON with Debian package setup' },
     outputSchema: { type: 'object', required: ['debConfig', 'artifacts'], properties: { debConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -195,7 +195,7 @@ export const releaseAutomationTask = defineTask('release-automation', (args, tas
   kind: 'agent',
   title: `Release Automation - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Release Automation Specialist', task: 'Automate release process', context: args, instructions: ['1. Create release workflow', '2. Configure semantic versioning', '3. Automate changelog', '4. Set up multi-channel releases', '5. Generate release automation'], outputFormat: 'JSON with release automation' },
     outputSchema: { type: 'object', required: ['releaseWorkflow', 'artifacts'], properties: { releaseWorkflow: { type: 'object' }, artifacts: { type: 'array' } } }
   },

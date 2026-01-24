@@ -109,7 +109,7 @@ export const openTelemetryIntegrationTask = defineTask('opentelemetry-integratio
   kind: 'agent',
   title: 'Integrate OpenTelemetry',
   agent: {
-    name: 'opentelemetry-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'OpenTelemetry integration specialist',
       task: `Integrate OpenTelemetry into ${args.sdkName}`,
@@ -152,7 +152,7 @@ export const distributedTracingSetupTask = defineTask('distributed-tracing-setup
   kind: 'agent',
   title: 'Setup distributed tracing',
   agent: {
-    name: 'distributed-tracing-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Distributed tracing engineer',
       task: `Setup distributed tracing for ${args.sdkName}`,
@@ -195,7 +195,7 @@ export const metricsInstrumentationTask = defineTask('metrics-instrumentation', 
   kind: 'agent',
   title: 'Instrument SDK metrics',
   agent: {
-    name: 'metrics-instrumentation-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Metrics engineering specialist',
       task: `Instrument metrics for ${args.sdkName}`,
@@ -239,7 +239,7 @@ export const logCorrelationSetupTask = defineTask('log-correlation-setup', (args
   kind: 'agent',
   title: 'Setup log correlation',
   agent: {
-    name: 'log-correlation-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Observability correlation engineer',
       task: `Setup log correlation for ${args.sdkName}`,
@@ -281,7 +281,7 @@ export const observabilityDashboardsTask = defineTask('observability-dashboards'
   kind: 'agent',
   title: 'Create observability dashboards',
   agent: {
-    name: 'observability-dashboard-creator',
+    name: 'platform-architect',
     prompt: {
       role: 'Observability dashboard specialist',
       task: `Create observability dashboards for ${args.sdkName}`,

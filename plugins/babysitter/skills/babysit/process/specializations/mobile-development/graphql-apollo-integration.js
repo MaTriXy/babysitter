@@ -87,8 +87,9 @@ function createGraphQLTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'react-native-dev' },
     agent: {
-      name: 'graphql-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'GraphQL Mobile Engineer',
         task: `Implement ${title.toLowerCase()} for Apollo integration`,

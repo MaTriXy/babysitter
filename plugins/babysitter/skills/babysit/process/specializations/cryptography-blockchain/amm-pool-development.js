@@ -104,7 +104,7 @@ export const bondingCurveDesignTask = defineTask('bonding-curve-design', (args, 
   kind: 'agent',
   title: `Bonding Curve Design - ${args.projectName}`,
   agent: {
-    name: 'defi-mathematician',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Curve Designer',
       task: 'Design bonding curve formula',
@@ -122,7 +122,7 @@ export const factoryImplementationTask = defineTask('factory-implementation', (a
   kind: 'agent',
   title: `Factory Implementation - ${args.projectName}`,
   agent: {
-    name: 'amm-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'AMM Factory Developer',
       task: 'Implement pool factory contract',
@@ -140,7 +140,7 @@ export const poolImplementationTask = defineTask('pool-implementation', (args, t
   kind: 'agent',
   title: `Pool Implementation - ${args.projectName}`,
   agent: {
-    name: 'pool-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'AMM Pool Developer',
       task: 'Implement liquidity pool contract',
@@ -158,7 +158,7 @@ export const lpTokenImplementationTask = defineTask('lp-token-implementation', (
   kind: 'agent',
   title: `LP Token Implementation - ${args.projectName}`,
   agent: {
-    name: 'token-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-011: erc20-implementation)
     prompt: {
       role: 'LP Token Developer',
       task: 'Implement liquidity provider tokens',
@@ -176,7 +176,7 @@ export const feeMechanismTask = defineTask('fee-mechanism', (args, taskCtx) => (
   kind: 'agent',
   title: `Fee Mechanism - ${args.projectName}`,
   agent: {
-    name: 'fee-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'AMM Fee Engineer',
       task: 'Implement fee collection and distribution',
@@ -194,7 +194,7 @@ export const twapOracleTask = defineTask('twap-oracle', (args, taskCtx) => ({
   kind: 'agent',
   title: `TWAP Oracle - ${args.projectName}`,
   agent: {
-    name: 'oracle-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-016: oracle-integration)
     prompt: {
       role: 'Price Oracle Developer',
       task: 'Implement TWAP price oracle',
@@ -212,7 +212,7 @@ export const flashSwapTask = defineTask('flash-swap', (args, taskCtx) => ({
   kind: 'agent',
   title: `Flash Swap - ${args.projectName}`,
   agent: {
-    name: 'flash-swap-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Flash Swap Developer',
       task: 'Implement flash swap functionality',
@@ -230,7 +230,7 @@ export const routerImplementationTask = defineTask('router-implementation', (arg
   kind: 'agent',
   title: `Router Implementation - ${args.projectName}`,
   agent: {
-    name: 'router-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'AMM Router Developer',
       task: 'Implement swap router',
@@ -248,7 +248,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'amm-tester',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'AMM Test Engineer',
       task: 'Create comprehensive AMM tests',
@@ -266,7 +266,7 @@ export const securityAnalysisTask = defineTask('security-analysis', (args, taskC
   kind: 'agent',
   title: `Security Analysis - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-002: slither-analysis)
     prompt: {
       role: 'AMM Security Analyst',
       task: 'Analyze AMM security',

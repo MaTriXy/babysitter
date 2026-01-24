@@ -436,7 +436,7 @@ export const establishBaselineTask = defineTask('establish-baseline', (args, tas
   kind: 'agent',
   title: `Phase 1: Establish Performance Baseline - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Engineering Specialist',
       task: 'Establish comprehensive performance baseline for the system',
@@ -531,7 +531,7 @@ export const profilingTask = defineTask('profiling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Profiling and Bottleneck Analysis - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Analysis Expert',
       task: 'Profile system and identify performance bottlenecks',
@@ -603,7 +603,7 @@ export const prioritizationTask = defineTask('prioritization', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 3: Prioritize Optimizations - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Optimization Strategist',
       task: 'Prioritize optimization opportunities by impact and effort',
@@ -669,7 +669,7 @@ export const optimizationDesignTask = defineTask('optimization-design', (args, t
   kind: 'agent',
   title: `Phase 4.${args.iteration}: Design Optimization Strategies - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Optimization Architect',
       task: 'Design specific optimization strategies for identified bottlenecks',
@@ -749,7 +749,7 @@ export const implementationTask = defineTask('implementation', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 4.${args.iteration}: Implement Optimizations - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Optimization Engineer',
       task: 'Implement designed optimization strategies',
@@ -817,7 +817,7 @@ export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4.${args.iteration}: Validate Optimization Improvements - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Testing Specialist',
       task: 'Validate performance improvements after optimizations',
@@ -909,7 +909,7 @@ export const loadTestTask = defineTask('load-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Load Testing - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Load Testing Engineer',
       task: 'Execute load tests to validate optimizations under realistic load',
@@ -981,7 +981,7 @@ export const reportGenerationTask = defineTask('report-generation', (args, taskC
   kind: 'agent',
   title: `Phase 6: Generate Performance Report - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Report Specialist',
       task: 'Generate comprehensive performance optimization report',
@@ -1040,7 +1040,7 @@ export const performanceAssessmentTask = defineTask('performance-assessment', (a
   kind: 'agent',
   title: `Phase 7: Final Performance Assessment - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Engineering Lead',
       task: 'Conduct final performance assessment and scoring',
@@ -1118,7 +1118,7 @@ export const monitoringSetupTask = defineTask('monitoring-setup', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: Setup Performance Monitoring - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-engineer',
     prompt: {
       role: 'Performance Monitoring Specialist',
       task: 'Set up continuous performance monitoring and alerting',

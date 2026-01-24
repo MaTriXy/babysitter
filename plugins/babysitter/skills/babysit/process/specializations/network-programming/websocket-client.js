@@ -58,54 +58,63 @@ export async function process(inputs, ctx) {
 
 export const connectionTask = defineTask('connection', (args, taskCtx) => ({
   kind: 'agent', title: `Connection - ${args.projectName}`,
-  agent: { name: 'connection-engineer', prompt: { role: 'Connection Engineer', task: 'Implement connection handling', context: args, instructions: ['1. TCP connection', '2. TLS support', '3. Proxy support', '4. Connection options'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Connection Engineer', task: 'Implement connection handling', context: args, instructions: ['1. TCP connection', '2. TLS support', '3. Proxy support', '4. Connection options'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'connection']
 }));
 
 export const handshakeTask = defineTask('handshake', (args, taskCtx) => ({
   kind: 'agent', title: `Handshake - ${args.projectName}`,
-  agent: { name: 'handshake-engineer', prompt: { role: 'Handshake Engineer', task: 'Implement client handshake', context: args, instructions: ['1. Generate Sec-WebSocket-Key', '2. Send upgrade request', '3. Validate response', '4. Handle headers'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Handshake Engineer', task: 'Implement client handshake', context: args, instructions: ['1. Generate Sec-WebSocket-Key', '2. Send upgrade request', '3. Validate response', '4. Handle headers'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'handshake']
 }));
 
 export const messagingTask = defineTask('messaging', (args, taskCtx) => ({
   kind: 'agent', title: `Messaging - ${args.projectName}`,
-  agent: { name: 'messaging-engineer', prompt: { role: 'Messaging Engineer', task: 'Implement message handling', context: args, instructions: ['1. Send text messages', '2. Send binary messages', '3. Receive messages', '4. Handle fragmentation'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Messaging Engineer', task: 'Implement message handling', context: args, instructions: ['1. Send text messages', '2. Send binary messages', '3. Receive messages', '4. Handle fragmentation'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'messaging']
 }));
 
 export const reconnectionTask = defineTask('reconnection', (args, taskCtx) => ({
   kind: 'agent', title: `Reconnection - ${args.projectName}`,
-  agent: { name: 'reconnection-engineer', prompt: { role: 'Reconnection Engineer', task: 'Implement auto-reconnection', context: args, instructions: ['1. Detect disconnection', '2. Exponential backoff', '3. Max retry attempts', '4. Reconnection events'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Reconnection Engineer', task: 'Implement auto-reconnection', context: args, instructions: ['1. Detect disconnection', '2. Exponential backoff', '3. Max retry attempts', '4. Reconnection events'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'reconnection']
 }));
 
 export const heartbeatTask = defineTask('heartbeat', (args, taskCtx) => ({
   kind: 'agent', title: `Heartbeat - ${args.projectName}`,
-  agent: { name: 'heartbeat-engineer', prompt: { role: 'Heartbeat Engineer', task: 'Implement heartbeat mechanism', context: args, instructions: ['1. Send pings', '2. Handle pongs', '3. Detect timeout', '4. Configure intervals'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Heartbeat Engineer', task: 'Implement heartbeat mechanism', context: args, instructions: ['1. Send pings', '2. Handle pongs', '3. Detect timeout', '4. Configure intervals'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'heartbeat']
 }));
 
 export const messageQueueTask = defineTask('message-queue', (args, taskCtx) => ({
   kind: 'agent', title: `Message Queue - ${args.projectName}`,
-  agent: { name: 'queue-engineer', prompt: { role: 'Queue Engineer', task: 'Implement message queuing', context: args, instructions: ['1. Queue during disconnect', '2. Flush on reconnect', '3. Queue limits', '4. Priority messages'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Queue Engineer', task: 'Implement message queuing', context: args, instructions: ['1. Queue during disconnect', '2. Flush on reconnect', '3. Queue limits', '4. Priority messages'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'queue']
 }));
 
 export const eventHandlingTask = defineTask('event-handling', (args, taskCtx) => ({
   kind: 'agent', title: `Event Handling - ${args.projectName}`,
-  agent: { name: 'event-engineer', prompt: { role: 'Event Engineer', task: 'Implement event system', context: args, instructions: ['1. Event emitter', '2. Standard events', '3. Custom events', '4. Event ordering'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Event Engineer', task: 'Implement event system', context: args, instructions: ['1. Event emitter', '2. Standard events', '3. Custom events', '4. Event ordering'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'events']
 }));
 
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent', title: `Test Suite - ${args.projectName}`,
-  agent: { name: 'test-engineer', prompt: { role: 'Test Engineer', task: 'Create client tests', context: args, instructions: ['1. Connection tests', '2. Message tests', '3. Reconnection tests', '4. Integration tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'Test Engineer', task: 'Create client tests', context: args, instructions: ['1. Connection tests', '2. Message tests', '3. Reconnection tests', '4. Integration tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'testing']
 }));
 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent', title: `Validation - ${args.projectName}`,
-  agent: { name: 'qa-engineer', prompt: { role: 'QA Engineer', task: 'Validate client', context: args, instructions: ['1. Verify features', '2. Check tests', '3. Validate API', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'websocket' },
+  agent: { name: 'realtime-expert', prompt: { role: 'QA Engineer', task: 'Validate client', context: args, instructions: ['1. Verify features', '2. Check tests', '3. Validate API', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'websocket-client', 'validation']
 }));

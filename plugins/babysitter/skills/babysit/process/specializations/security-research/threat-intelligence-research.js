@@ -182,7 +182,7 @@ export const sourceCollectionTask = defineTask('source-collection', (args, taskC
   kind: 'agent',
   title: `Collect Sources - ${args.projectName}`,
   agent: {
-    name: 'intel-collector',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'Threat Intelligence Collector',
       task: 'Collect intelligence from sources',
@@ -221,7 +221,7 @@ export const malwareIntelTask = defineTask('malware-intel', (args, taskCtx) => (
   kind: 'agent',
   title: `Malware Intelligence - ${args.projectName}`,
   agent: {
-    name: 'malware-intel-analyst',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'Malware Intelligence Analyst',
       task: 'Analyze malware for intelligence',
@@ -260,7 +260,7 @@ export const ttpExtractionTask = defineTask('ttp-extraction', (args, taskCtx) =>
   kind: 'agent',
   title: `Extract TTPs - ${args.projectName}`,
   agent: {
-    name: 'ttp-analyst',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'TTP Extraction Analyst',
       task: 'Extract TTPs and map to ATT&CK',
@@ -299,7 +299,7 @@ export const iocGenerationTask = defineTask('ioc-generation', (args, taskCtx) =>
   kind: 'agent',
   title: `Generate IOCs - ${args.projectName}`,
   agent: {
-    name: 'ioc-generator',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'IOC Generation Specialist',
       task: 'Generate indicators of compromise',
@@ -338,7 +338,7 @@ export const attributionAnalysisTask = defineTask('attribution-analysis', (args,
   kind: 'agent',
   title: `Attribution Analysis - ${args.projectName}`,
   agent: {
-    name: 'attribution-analyst',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'Attribution Analysis Specialist',
       task: 'Perform attribution analysis',
@@ -378,7 +378,7 @@ export const intelProductTask = defineTask('intel-product', (args, taskCtx) => (
   kind: 'agent',
   title: `Create Intel Product - ${args.projectName}`,
   agent: {
-    name: 'intel-producer',
+    name: 'threat-intel-analyst',
     prompt: {
       role: 'Threat Intelligence Producer',
       task: 'Create threat intelligence product',

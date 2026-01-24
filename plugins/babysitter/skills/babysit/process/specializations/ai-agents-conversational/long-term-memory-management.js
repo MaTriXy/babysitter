@@ -175,7 +175,7 @@ export const userProfileSchemaTask = defineTask('user-profile-schema', (args, ta
   kind: 'agent',
   title: `Design User Profile Schema - ${args.systemName}`,
   agent: {
-    name: 'schema-designer',
+    name: 'user-profile-manager',  // AG-MEM-002: Implements user profile and preference persistence
     prompt: {
       role: 'Schema Designer',
       task: 'Design user profile data schema',
@@ -213,7 +213,7 @@ export const factExtractionTask = defineTask('fact-extraction', (args, taskCtx) 
   kind: 'agent',
   title: `Implement Fact Extraction - ${args.systemName}`,
   agent: {
-    name: 'fact-extractor-developer',
+    name: 'fact-extractor',  // AG-MEM-003: Extracts and stores facts from conversations
     prompt: {
       role: 'Fact Extraction Developer',
       task: 'Implement fact extraction from conversations',
@@ -287,10 +287,10 @@ export const preferenceLearningTask = defineTask('preference-learning', (args, t
 }));
 
 export const crossSessionPersistenceTask = defineTask('cross-session-persistence', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Cross-Session Persistence - ${args.systemName}`,
-  agent: {
-    name: 'persistence-developer',
+  skill: {
+    name: 'entity-memory-store',  // SK-MEM-002: Entity memory for tracking key information
     prompt: {
       role: 'Persistence Developer',
       task: 'Implement cross-session data persistence',

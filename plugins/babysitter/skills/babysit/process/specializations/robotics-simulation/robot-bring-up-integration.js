@@ -81,7 +81,7 @@ export const powerSystemBringUpTask = defineTask('power-system-bringup', (args, 
   kind: 'agent',
   title: `Power System Bring-Up - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Bring up power systems', context: args, instructions: ['1. Check battery/power supply', '2. Verify power distribution', '3. Test emergency stop', '4. Validate power monitoring', '5. Document power status'] },
     outputSchema: { type: 'object', required: ['powerStatus', 'voltages', 'artifacts'], properties: { powerStatus: { type: 'object' }, voltages: { type: 'object' }, emergencyStopWorking: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const sensorBringUpTask = defineTask('sensor-bringup', (args, taskCtx) =>
   kind: 'agent',
   title: `Sensor Bring-Up - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Bring up sensor systems', context: args, instructions: ['1. Connect each sensor', '2. Verify data streams', '3. Check frame rates', '4. Validate data quality', '5. Document sensor status'] },
     outputSchema: { type: 'object', required: ['sensorStatus', 'dataRates', 'artifacts'], properties: { sensorStatus: { type: 'object' }, dataRates: { type: 'object' }, qualityMetrics: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const actuatorBringUpTask = defineTask('actuator-bringup', (args, taskCtx
   kind: 'agent',
   title: `Actuator Bring-Up - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Bring up actuator systems', context: args, instructions: ['1. Initialize motor controllers', '2. Test each joint/motor', '3. Verify encoder feedback', '4. Check range of motion', '5. Document actuator status'] },
     outputSchema: { type: 'object', required: ['actuatorStatus', 'motorTests', 'artifacts'], properties: { actuatorStatus: { type: 'object' }, motorTests: { type: 'array' }, encoderStatus: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const computeSystemBringUpTask = defineTask('compute-system-bringup', (ar
   kind: 'agent',
   title: `Compute System Bring-Up - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Bring up compute systems', context: args, instructions: ['1. Boot onboard computers', '2. Verify GPU/accelerators', '3. Check memory/storage', '4. Configure real-time kernel', '5. Document compute status'] },
     outputSchema: { type: 'object', required: ['computeStatus', 'systemResources', 'artifacts'], properties: { computeStatus: { type: 'object' }, systemResources: { type: 'object' }, gpuStatus: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const networkConfigurationTask = defineTask('network-configuration', (arg
   kind: 'agent',
   title: `Network Configuration - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Configure robot networking', context: args, instructions: ['1. Configure network interfaces', '2. Set up ROS networking', '3. Configure DDS/middleware', '4. Test communication', '5. Document network config'] },
     outputSchema: { type: 'object', required: ['networkConfig', 'interfaces', 'artifacts'], properties: { networkConfig: { type: 'object' }, interfaces: { type: 'array' }, ddsConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const rosBringUpTask = defineTask('ros-bringup', (args, taskCtx) => ({
   kind: 'agent',
   title: `ROS Bring-Up - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Bring up ROS nodes and drivers', context: args, instructions: ['1. Launch driver nodes', '2. Verify topic publishing', '3. Check TF tree', '4. Validate services/actions', '5. Document ROS status'] },
     outputSchema: { type: 'object', required: ['rosStatus', 'activeNodes', 'artifacts'], properties: { rosStatus: { type: 'object' }, activeNodes: { type: 'array' }, tfTree: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const subsystemIntegrationTask = defineTask('subsystem-integration', (arg
   kind: 'agent',
   title: `Subsystem Integration - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Integrate and test subsystems', context: args, instructions: ['1. Test perception pipeline', '2. Test control pipeline', '3. Test navigation stack', '4. Test manipulation stack', '5. Document integration results'] },
     outputSchema: { type: 'object', required: ['integrationResults', 'subsystems', 'artifacts'], properties: { integrationResults: { type: 'object' }, subsystems: { type: 'array' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const fullSystemTestTask = defineTask('full-system-test', (args, taskCtx)
   kind: 'agent',
   title: `Full System Test - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Run full system tests', context: args, instructions: ['1. Run end-to-end tests', '2. Test autonomous behaviors', '3. Test safety systems', '4. Run stress tests', '5. Document system status'] },
     outputSchema: { type: 'object', required: ['allSubsystemsPassed', 'subsystemStatus', 'artifacts'], properties: { allSubsystemsPassed: { type: 'boolean' }, subsystemStatus: { type: 'object' }, failedTests: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const performanceValidationTask = defineTask('performance-validation', (a
   kind: 'agent',
   title: `Performance Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate system performance', context: args, instructions: ['1. Measure latencies', '2. Check throughput', '3. Validate accuracy', '4. Measure resource usage', '5. Generate performance report'] },
     outputSchema: { type: 'object', required: ['performanceScore', 'metrics', 'artifacts'], properties: { performanceScore: { type: 'number' }, metrics: { type: 'object' }, bottlenecks: { type: 'array' }, artifacts: { type: 'array' } } }
   },

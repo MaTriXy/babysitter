@@ -215,7 +215,7 @@ export const interfaceInventoryTask = defineTask('interface-inventory', (args, t
   kind: 'agent',
   title: `Phase 1: Interface Inventory - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Inventory hardware interfaces',
@@ -257,7 +257,7 @@ export const registerMapSpecificationTask = defineTask('register-map-specificati
   kind: 'agent',
   title: `Phase 2: Register Maps - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Specify register maps',
@@ -299,7 +299,7 @@ export const memoryMapSpecificationTask = defineTask('memory-map-specification',
   kind: 'agent',
   title: `Phase 3: Memory Map - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Specify memory map',
@@ -341,7 +341,7 @@ export const pinAssignmentSpecificationTask = defineTask('pin-assignment-specifi
   kind: 'agent',
   title: `Phase 4: Pin Assignments - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Specify pin assignments',
@@ -383,7 +383,7 @@ export const timingSpecificationTask = defineTask('timing-specification', (args,
   kind: 'agent',
   title: `Phase 5: Timing Specification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Specify timing requirements',
@@ -425,7 +425,7 @@ export const electricalSpecificationTask = defineTask('electrical-specification'
   kind: 'agent',
   title: `Phase 6: Electrical Specification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Specify electrical characteristics',
@@ -467,7 +467,7 @@ export const hwSwInterfaceDocumentationTask = defineTask('hw-sw-interface-docume
   kind: 'agent',
   title: `Phase 7: Interface Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate interface documentation',
@@ -508,7 +508,7 @@ export const headerFileGenerationTask = defineTask('header-file-generation', (ar
   kind: 'agent',
   title: `Phase 8: Header Generation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Generate header files',

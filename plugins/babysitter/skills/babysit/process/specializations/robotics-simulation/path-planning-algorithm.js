@@ -91,7 +91,7 @@ export const planningAlgorithmSelectionTask = defineTask('planning-algorithm-sel
   kind: 'agent',
   title: `Planning Algorithm Selection - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Select path planning algorithm', context: args, instructions: ['1. Evaluate A*, RRT, RRT*, Hybrid A*', '2. Consider environment complexity', '3. Consider real-time requirements', '4. Document selection rationale'] },
     outputSchema: { type: 'object', required: ['selectedAlgorithm', 'rationale', 'artifacts'], properties: { selectedAlgorithm: { type: 'string' }, rationale: { type: 'string' }, alternatives: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -103,7 +103,7 @@ export const costMapConfigurationTask = defineTask('cost-map-configuration', (ar
   kind: 'agent',
   title: `Cost Map Configuration - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement cost map representation', context: args, instructions: ['1. Configure static layer', '2. Add obstacle layer', '3. Configure inflation layer', '4. Set resolution', '5. Test cost map updates'] },
     outputSchema: { type: 'object', required: ['costMapConfig', 'layers', 'artifacts'], properties: { costMapConfig: { type: 'object' }, layers: { type: 'array' }, resolution: { type: 'number' }, inflationRadius: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -115,7 +115,7 @@ export const plannerParametersTask = defineTask('planner-parameters', (args, tas
   kind: 'agent',
   title: `Planner Parameters - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Configure planner parameters', context: args, instructions: ['1. Set search resolution', '2. Configure goal tolerance', '3. Set planning timeout', '4. Configure heuristics', '5. Tune for environment'] },
     outputSchema: { type: 'object', required: ['parameters', 'configPath', 'artifacts'], properties: { parameters: { type: 'object' }, configPath: { type: 'string' }, goalTolerance: { type: 'object' }, timeout: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -127,7 +127,7 @@ export const dynamicObstacleAvoidanceTask = defineTask('dynamic-obstacle-avoidan
   kind: 'agent',
   title: `Dynamic Obstacle Avoidance - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Add dynamic obstacle avoidance', context: args, instructions: ['1. Configure obstacle tracking', '2. Add velocity obstacles', '3. Set replanning triggers', '4. Configure safety margins', '5. Test dynamic avoidance'] },
     outputSchema: { type: 'object', required: ['avoidanceConfig', 'replanFrequency', 'artifacts'], properties: { avoidanceConfig: { type: 'object' }, replanFrequency: { type: 'number' }, safetyMargins: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -139,7 +139,7 @@ export const pathSmoothingTask = defineTask('path-smoothing', (args, taskCtx) =>
   kind: 'agent',
   title: `Path Smoothing - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement path smoothing and optimization', context: args, instructions: ['1. Configure smoothing algorithm', '2. Add curvature constraints', '3. Optimize path length', '4. Ensure kinematic feasibility', '5. Validate smoothed paths'] },
     outputSchema: { type: 'object', required: ['smoothingConfig', 'curvatureLimit', 'artifacts'], properties: { smoothingConfig: { type: 'object' }, curvatureLimit: { type: 'number' }, smoothingMethod: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -151,7 +151,7 @@ export const planningFailureHandlingTask = defineTask('planning-failure-handling
   kind: 'agent',
   title: `Failure Handling - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'motion-planning-expert',  // AG-016: Motion Planning Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Handle planning failures gracefully', context: args, instructions: ['1. Detect planning failures', '2. Implement recovery behaviors', '3. Add fallback planners', '4. Configure timeouts', '5. Test failure recovery'] },
     outputSchema: { type: 'object', required: ['failureHandlingConfig', 'recoveryBehaviors', 'artifacts'], properties: { failureHandlingConfig: { type: 'object' }, recoveryBehaviors: { type: 'array' }, fallbackPlanner: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -163,7 +163,7 @@ export const pathPlanningTestingTask = defineTask('path-planning-testing', (args
   kind: 'agent',
   title: `Path Planning Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test in complex environments', context: args, instructions: ['1. Test in narrow passages', '2. Test with dynamic obstacles', '3. Test long-range planning', '4. Measure success rate', '5. Generate test report'] },
     outputSchema: { type: 'object', required: ['testResults', 'successRate', 'artifacts'], properties: { testResults: { type: 'array' }, successRate: { type: 'number' }, failureCases: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -175,7 +175,7 @@ export const pathPlanningPerformanceTask = defineTask('path-planning-performance
   kind: 'agent',
   title: `Planning Performance - ${args.robotName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Measure planning time and path quality', context: args, instructions: ['1. Measure planning time', '2. Evaluate path length', '3. Measure smoothness', '4. Profile memory usage', '5. Document metrics'] },
     outputSchema: { type: 'object', required: ['avgPlanningTime', 'pathQuality', 'artifacts'], properties: { avgPlanningTime: { type: 'number' }, pathQuality: { type: 'object' }, memoryUsage: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -187,7 +187,7 @@ export const pathPlanningOptimizationTask = defineTask('path-planning-optimizati
   kind: 'agent',
   title: `Planning Optimization - ${args.robotName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Optimize computational performance', context: args, instructions: ['1. Optimize search algorithm', '2. Add caching', '3. Configure multi-threading', '4. Reduce memory allocations', '5. Benchmark improvements'] },
     outputSchema: { type: 'object', required: ['optimizations', 'speedup', 'artifacts'], properties: { optimizations: { type: 'array' }, speedup: { type: 'number' }, newPlanningTime: { type: 'number' }, artifacts: { type: 'array' } } }
   },

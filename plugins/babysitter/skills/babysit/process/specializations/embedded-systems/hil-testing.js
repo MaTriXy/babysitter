@@ -237,7 +237,7 @@ export const hilEnvironmentSetupTask = defineTask('hil-environment-setup', (args
   kind: 'agent',
   title: `Phase 1: HIL Environment Setup - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Set up HIL test environment',
@@ -278,7 +278,7 @@ export const plantModelDevelopmentTask = defineTask('plant-model-development', (
   kind: 'agent',
   title: `Phase 2: Plant Model Development - ${args.projectName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Engineer',
       task: 'Develop plant/environment simulation models',
@@ -319,7 +319,7 @@ export const hilIoConfigurationTask = defineTask('hil-io-configuration', (args, 
   kind: 'agent',
   title: `Phase 3: I/O Configuration - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Configure I/O interfaces',
@@ -360,7 +360,7 @@ export const testScenarioDevelopmentTask = defineTask('test-scenario-development
   kind: 'agent',
   title: `Phase 4: Test Scenarios - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Develop test scenarios',
@@ -401,7 +401,7 @@ export const hilTestExecutionTask = defineTask('hil-test-execution', (args, task
   kind: 'agent',
   title: `Phase 5: Test Execution - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Execute HIL tests',
@@ -442,7 +442,7 @@ export const faultInjectionTestingTask = defineTask('fault-injection-testing', (
   kind: 'agent',
   title: `Phase 6: Fault Injection - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Execute fault injection tests',
@@ -483,7 +483,7 @@ export const hilTimingAnalysisTask = defineTask('hil-timing-analysis', (args, ta
   kind: 'agent',
   title: `Phase 7: Timing Analysis - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Analyze timing behavior',
@@ -524,7 +524,7 @@ export const hilResultsAnalysisTask = defineTask('hil-results-analysis', (args, 
   kind: 'agent',
   title: `Phase 8: Results Analysis - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Analyze test results and generate report',

@@ -185,7 +185,7 @@ export const emotionDetectionTask = defineTask('emotion-detection', (args, taskC
   kind: 'agent',
   title: `Setup Emotion Detection - ${args.systemName}`,
   agent: {
-    name: 'emotion-developer',
+    name: 'persona-designer',  // AG-CAI-005: Creates chatbot personas and brand voice guidelines
     prompt: {
       role: 'Emotion Detection Developer',
       task: 'Setup emotion detection system',

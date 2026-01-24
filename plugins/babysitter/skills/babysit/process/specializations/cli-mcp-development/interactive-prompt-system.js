@@ -258,7 +258,7 @@ export const librarySetupTask = defineTask('library-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Library Setup - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Interactive Prompt Specialist',
       task: 'Set up prompt library',
@@ -299,7 +299,7 @@ export const textPromptsTask = defineTask('text-prompts', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Text Prompts - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Prompt Designer',
       task: 'Implement text input prompts with validation',
@@ -341,7 +341,7 @@ export const selectionPromptsTask = defineTask('selection-prompts', (args, taskC
   kind: 'agent',
   title: `Phase 3: Selection Prompts - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Selection Designer',
       task: 'Add selection prompts (single and multi-select)',
@@ -382,7 +382,7 @@ export const confirmationPromptsTask = defineTask('confirmation-prompts', (args,
   kind: 'agent',
   title: `Phase 4: Confirmation Prompts - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Confirmation Designer',
       task: 'Create confirmation prompts for destructive actions',
@@ -421,7 +421,7 @@ export const passwordPromptsTask = defineTask('password-prompts', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Password Prompts - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Security Prompt Designer',
       task: 'Implement password and secret input prompts',
@@ -461,7 +461,7 @@ export const progressIndicatorsTask = defineTask('progress-indicators', (args, t
   kind: 'agent',
   title: `Phase 6: Progress Indicators - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Progress Indicator Designer',
       task: 'Add progress indicators during operations',
@@ -500,7 +500,7 @@ export const nonInteractiveModeTask = defineTask('non-interactive-mode', (args, 
   kind: 'agent',
   title: `Phase 7: Non-Interactive Mode - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'CLI Mode Designer',
       task: 'Handle non-interactive mode fallback',
@@ -541,7 +541,7 @@ export const accessibilityTestingTask = defineTask('accessibility-testing', (arg
   kind: 'agent',
   title: `Phase 8: Accessibility Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'terminal-accessibility-expert',
     prompt: {
       role: 'CLI Accessibility Tester',
       task: 'Test prompt accessibility',
@@ -583,7 +583,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Documentation Specialist',
       task: 'Document interactive mode behavior',

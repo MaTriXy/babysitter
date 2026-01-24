@@ -47,7 +47,7 @@ export const binarySearchAnalysisTask = defineTask('binary-search-analysis', (ar
   kind: 'agent',
   title: `Analyze ${args.problemType} for Binary Search`,
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Analyze problem for binary search applicability',
@@ -69,7 +69,7 @@ export const binarySearchImplementationTask = defineTask('binary-search-implemen
   kind: 'agent',
   title: 'Implement Binary Search',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement binary search solution',
@@ -91,7 +91,7 @@ export const binarySearchVerificationTask = defineTask('binary-search-verificati
   kind: 'agent',
   title: 'Verify Binary Search',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Tester',
       task: 'Verify binary search correctness',

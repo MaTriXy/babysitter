@@ -96,8 +96,11 @@ export const uiTestingRequirementsTask = defineTask('ui-testing-requirements', (
 export const setupUiTestFrameworkTask = defineTask('setup-ui-test-framework', (args, taskCtx) => ({
   kind: 'agent',
   title: `UI Test Framework - ${args.projectName}`,
+  skill: {
+    name: 'playwright-electron-setup',
+  },
   agent: {
-    name: 'ui-test-framework-developer',
+    name: 'desktop-e2e-test-architect',
     prompt: { role: 'UI Test Framework Developer', task: 'Set up UI testing framework', context: args, instructions: ['1. Install UI testing dependencies', '2. Configure Playwright/framework', '3. Set up Electron app testing', '4. Configure test scripts', '5. Set up fixtures', '6. Configure timeouts', '7. Set up reporters', '8. Generate framework configuration'] },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -120,8 +123,11 @@ export const setupComponentTestingTask = defineTask('setup-component-testing', (
 export const setupVisualRegressionTask = defineTask('setup-visual-regression', (args, taskCtx) => ({
   kind: 'agent',
   title: `Visual Regression - ${args.projectName}`,
+  skill: {
+    name: 'visual-snapshot-comparator',
+  },
   agent: {
-    name: 'visual-test-developer',
+    name: 'desktop-e2e-test-architect',
     prompt: { role: 'Visual Regression Developer', task: 'Set up visual regression testing', context: args, instructions: ['1. Configure visual testing tool', '2. Set up baseline images', '3. Configure threshold', '4. Handle dynamic content', '5. Configure viewport sizes', '6. Set up CI integration', '7. Create comparison reports', '8. Generate visual testing configuration'] },
     outputSchema: { type: 'object', required: ['baselinePath', 'artifacts'], properties: { baselinePath: { type: 'string' }, threshold: { type: 'number' }, artifacts: { type: 'array' } } }
   },

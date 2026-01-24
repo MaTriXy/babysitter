@@ -274,7 +274,7 @@ export const technicalDebtIdentificationTask = defineTask('technical-debt-identi
   kind: 'agent',
   title: 'Identify technical debt across codebase',
   agent: {
-    name: 'debt-analyzer',
+    name: 'refactoring-coach',
     prompt: {
       role: 'senior software architect and technical debt specialist',
       task: 'Comprehensively identify technical debt using static analysis, code metrics, and team feedback',
@@ -388,7 +388,7 @@ export const debtPrioritizationTask = defineTask('debt-prioritization', (args, t
   kind: 'agent',
   title: 'Categorize and prioritize technical debt',
   agent: {
-    name: 'prioritization-specialist',
+    name: 'refactoring-coach',
     prompt: {
       role: 'senior engineering manager and ROI analyst',
       task: 'Prioritize technical debt items by severity, business impact, and ROI',
@@ -473,7 +473,7 @@ export const refactoringGoalsTask = defineTask('refactoring-goals', (args, taskC
   kind: 'agent',
   title: 'Define measurable refactoring goals',
   agent: {
-    name: 'goals-specialist',
+    name: 'refactoring-coach',
     prompt: {
       role: 'software quality engineer',
       task: 'Define specific, measurable, achievable refactoring goals aligned with technical debt reduction',
@@ -568,7 +568,7 @@ export const testSafetyNetTask = defineTask('test-safety-net', (args, taskCtx) =
   kind: 'agent',
   title: 'Create test safety net for refactoring',
   agent: {
-    name: 'testing-specialist',
+    name: 'refactoring-coach',
     prompt: {
       role: 'senior QA engineer and test architect',
       task: 'Establish comprehensive test coverage before refactoring to ensure safety',
@@ -652,7 +652,7 @@ export const refactoringApproachTask = defineTask('refactoring-approach', (args,
   kind: 'agent',
   title: 'Design refactoring approach and patterns',
   agent: {
-    name: 'refactoring-architect',
+    name: 'refactoring-coach',
     prompt: {
       role: 'senior software architect and refactoring expert',
       task: 'Design comprehensive refactoring strategy with patterns, incremental steps, and risk mitigation',
@@ -753,7 +753,7 @@ export const refactoringScheduleTask = defineTask('refactoring-schedule', (args,
   kind: 'agent',
   title: 'Estimate effort and create refactoring schedule',
   agent: {
-    name: 'schedule-planner',
+    name: 'legacy-modernization-expert',
     prompt: {
       role: 'engineering manager and project planner',
       task: 'Create realistic refactoring schedule balancing debt reduction with feature delivery',
@@ -861,7 +861,7 @@ export const refactoringPlanGenerationTask = defineTask('refactoring-plan-genera
   kind: 'agent',
   title: 'Generate comprehensive refactoring plan document',
   agent: {
-    name: 'plan-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'senior technical writer and software architect',
       task: 'Create comprehensive, actionable refactoring plan consolidating all analysis and planning',
@@ -912,7 +912,7 @@ export const planQualityScoringTask = defineTask('plan-quality-scoring', (args, 
   kind: 'agent',
   title: 'Score refactoring plan quality and feasibility',
   agent: {
-    name: 'plan-validator',
+    name: 'refactoring-coach',
     prompt: {
       role: 'principal software architect and quality auditor',
       task: 'Assess refactoring plan quality, completeness, and feasibility for successful execution',
@@ -981,7 +981,7 @@ export const implementationRoadmapTask = defineTask('implementation-roadmap', (a
   kind: 'agent',
   title: 'Generate detailed implementation roadmap',
   agent: {
-    name: 'roadmap-generator',
+    name: 'refactoring-coach',
     prompt: {
       role: 'engineering manager and program planner',
       task: 'Create detailed sprint-by-sprint implementation roadmap with tasks, dependencies, and checkpoints',

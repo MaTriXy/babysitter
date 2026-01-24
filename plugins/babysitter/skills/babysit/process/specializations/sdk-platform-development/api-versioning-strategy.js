@@ -208,7 +208,7 @@ export const versioningMethodTask = defineTask('versioning-method', (args, taskC
   kind: 'agent',
   title: `Phase 1: Versioning Method - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Select and define API versioning method',
@@ -263,7 +263,7 @@ export const versionFormatTask = defineTask('version-format', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Version Format - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Designer',
       task: 'Design version format and naming conventions',
@@ -318,7 +318,7 @@ export const deprecationPolicyTask = defineTask('deprecation-policy', (args, tas
   kind: 'agent',
   title: `Phase 3: Deprecation Policy - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Define deprecation policies and timelines',
@@ -371,7 +371,7 @@ export const migrationTemplatesTask = defineTask('migration-templates', (args, t
   kind: 'agent',
   title: `Phase 4: Migration Templates - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create migration guide templates',
@@ -425,7 +425,7 @@ export const versionNegotiationTask = defineTask('version-negotiation', (args, t
   kind: 'agent',
   title: `Phase 5: Version Negotiation - ${args.projectName}`,
   agent: {
-    name: 'api-engineer',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Engineer',
       task: 'Implement version negotiation mechanism',
@@ -477,7 +477,7 @@ export const gatewayVersioningTask = defineTask('gateway-versioning', (args, tas
   kind: 'agent',
   title: `Phase 6: Gateway Configuration - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Configure API gateway for versioning',
@@ -528,7 +528,7 @@ export const breakingChangePolicyTask = defineTask('breaking-change-policy', (ar
   kind: 'agent',
   title: `Phase 7: Breaking Change Policy - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Define breaking change policy',
@@ -589,7 +589,7 @@ export const versioningDocumentationTask = defineTask('versioning-documentation'
   kind: 'agent',
   title: `Phase 8: Versioning Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate versioning documentation',

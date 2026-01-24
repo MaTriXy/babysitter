@@ -86,8 +86,9 @@ function createFirebaseTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'firebase-integration' },
     agent: {
-      name: 'firebase-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Firebase Integration Engineer',
         task: `Implement ${title.toLowerCase()} for Firebase integration`,

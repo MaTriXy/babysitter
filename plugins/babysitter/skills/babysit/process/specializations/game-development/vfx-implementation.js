@@ -73,7 +73,7 @@ export const vfxDirectionTask = defineTask('vfx-direction', (args, taskCtx) => (
   kind: 'agent',
   title: `VFX Direction - ${args.projectName}`,
   agent: {
-    name: 'vfx-artist',
+    name: 'vfx-artist-agent',
     prompt: { role: 'VFX Lead', task: 'Define VFX direction', context: args, instructions: ['1. Define VFX style guide', '2. Create reference boards', '3. Define color language', '4. Plan effect library'] },
     outputSchema: { type: 'object', required: ['docPath', 'styleGuide', 'artifacts'], properties: { docPath: { type: 'string' }, styleGuide: { type: 'object' }, references: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -85,7 +85,7 @@ export const particleSystemsTask = defineTask('particle-systems', (args, taskCtx
   kind: 'agent',
   title: `Particle Systems - ${args.projectName}`,
   agent: {
-    name: 'vfx-artist',
+    name: 'vfx-artist-agent',
     prompt: { role: 'VFX Artist', task: 'Set up particle systems', context: args, instructions: ['1. Create base particle templates', '2. Build modular components', '3. Create spawning systems', '4. Optimize particle counts'] },
     outputSchema: { type: 'object', required: ['templates', 'modules', 'artifacts'], properties: { templates: { type: 'array' }, modules: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -97,7 +97,7 @@ export const shaderDevelopmentTask = defineTask('shader-development', (args, tas
   kind: 'agent',
   title: `Shader Development - ${args.projectName}`,
   agent: {
-    name: 'shader-programmer',
+    name: 'shader-developer-agent',
     prompt: { role: 'Shader Programmer', task: 'Develop VFX shaders', context: args, instructions: ['1. Create dissolve shaders', '2. Build distortion effects', '3. Create glow shaders', '4. Optimize for performance'] },
     outputSchema: { type: 'object', required: ['shaders', 'artifacts'], properties: { shaders: { type: 'array' }, shaderCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -109,7 +109,7 @@ export const combatEffectsTask = defineTask('combat-effects', (args, taskCtx) =>
   kind: 'agent',
   title: `Combat Effects - ${args.projectName}`,
   agent: {
-    name: 'vfx-artist',
+    name: 'vfx-artist-agent',
     prompt: { role: 'VFX Artist', task: 'Create combat VFX', context: args, instructions: ['1. Create weapon effects', '2. Build impact effects', '3. Create spell/ability VFX', '4. Add hit reactions'] },
     outputSchema: { type: 'object', required: ['effects', 'effectCount', 'artifacts'], properties: { effects: { type: 'array' }, effectCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -121,7 +121,7 @@ export const environmentalEffectsTask = defineTask('environmental-effects', (arg
   kind: 'agent',
   title: `Environmental Effects - ${args.projectName}`,
   agent: {
-    name: 'vfx-artist',
+    name: 'vfx-artist-agent',
     prompt: { role: 'VFX Artist', task: 'Create environmental VFX', context: args, instructions: ['1. Create weather effects', '2. Build ambient particles', '3. Create water effects', '4. Add atmospheric effects'] },
     outputSchema: { type: 'object', required: ['effects', 'effectCount', 'artifacts'], properties: { effects: { type: 'array' }, effectCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -133,7 +133,7 @@ export const postProcessingTask = defineTask('post-processing', (args, taskCtx) 
   kind: 'agent',
   title: `Post-Processing - ${args.projectName}`,
   agent: {
-    name: 'vfx-artist',
+    name: 'vfx-artist-agent',
     prompt: { role: 'VFX Artist', task: 'Set up post-processing', context: args, instructions: ['1. Configure bloom and glow', '2. Set up color grading', '3. Add screen effects', '4. Create camera effects'] },
     outputSchema: { type: 'object', required: ['effects', 'profiles', 'artifacts'], properties: { effects: { type: 'array' }, profiles: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -145,7 +145,7 @@ export const vfxOptimizationTask = defineTask('vfx-optimization', (args, taskCtx
   kind: 'agent',
   title: `VFX Optimization - ${args.projectName}`,
   agent: {
-    name: 'tech-artist',
+    name: 'tech-artist-agent',
     prompt: { role: 'Tech Artist', task: 'Optimize VFX performance', context: args, instructions: ['1. Profile particle systems', '2. Optimize shaders', '3. Implement LOD for effects', '4. Reduce overdraw'] },
     outputSchema: { type: 'object', required: ['withinBudget', 'performanceReport', 'artifacts'], properties: { withinBudget: { type: 'boolean' }, performanceReport: { type: 'object' }, optimizations: { type: 'array' }, artifacts: { type: 'array' } } }
   },

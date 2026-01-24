@@ -75,8 +75,9 @@ export async function process(inputs, ctx) {
 export const topicPlanningTask = defineTask('topic-planning', (args, taskCtx) => ({
   kind: 'agent',
   title: `CSES Topic Planning - ${args.currentTopic}`,
+  skills: ['cses-tracker', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-teacher',
     prompt: {
       role: 'Algorithm Curriculum Designer',
       task: 'Plan CSES problem set learning session',
@@ -108,8 +109,9 @@ export const topicPlanningTask = defineTask('topic-planning', (args, taskCtx) =>
 export const problemSolvingSessionTask = defineTask('problem-solving-session', (args, taskCtx) => ({
   kind: 'agent',
   title: 'CSES Problem Solving Session',
+  skills: ['cses-tracker'],
   agent: {
-    name: 'general-purpose',
+    name: 'upsolving-coach',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Solve CSES problems systematically',
@@ -141,8 +143,9 @@ export const problemSolvingSessionTask = defineTask('problem-solving-session', (
 export const masteryVerificationTask = defineTask('mastery-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: `CSES Mastery Verification - ${args.currentTopic}`,
+  skills: ['cses-tracker'],
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Algorithm Assessor',
       task: 'Verify topic mastery',
@@ -174,8 +177,9 @@ export const masteryVerificationTask = defineTask('mastery-verification', (args,
 export const progressUpdateTask = defineTask('progress-update', (args, taskCtx) => ({
   kind: 'agent',
   title: 'CSES Progress Update',
+  skills: ['cses-tracker'],
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Progress Tracker',
       task: 'Update CSES learning progress',

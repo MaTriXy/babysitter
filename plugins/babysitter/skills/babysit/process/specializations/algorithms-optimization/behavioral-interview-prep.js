@@ -48,7 +48,7 @@ export const storyGenerationTask = defineTask('story-generation', (args, taskCtx
   kind: 'agent',
   title: 'Generate Stories',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Generate behavioral interview stories',
@@ -70,7 +70,7 @@ export const starFormattingTask = defineTask('star-formatting', (args, taskCtx) 
   kind: 'agent',
   title: 'Format STAR Responses',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Format stories in STAR format',
@@ -92,7 +92,7 @@ export const behavioralPracticeTask = defineTask('behavioral-practice', (args, t
   kind: 'agent',
   title: 'Practice Behavioral Questions',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interviewer',
       task: 'Practice behavioral interview questions',

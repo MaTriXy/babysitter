@@ -217,7 +217,7 @@ export const codeSizeAnalysisTask = defineTask('code-size-analysis', (args, task
   kind: 'agent',
   title: `Phase 1: Size Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze current code size',
@@ -259,7 +259,7 @@ export const symbolAnalysisTask = defineTask('symbol-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Symbol Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze symbol contributions',
@@ -301,7 +301,7 @@ export const compilerFlagOptimizationTask = defineTask('compiler-flag-optimizati
   kind: 'agent',
   title: `Phase 3: Compiler Flags - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Optimize compiler flags for size',
@@ -343,7 +343,7 @@ export const deadCodeEliminationTask = defineTask('dead-code-elimination', (args
   kind: 'agent',
   title: `Phase 4: Dead Code Elimination - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Identify and eliminate dead code',
@@ -385,7 +385,7 @@ export const libraryOptimizationTask = defineTask('library-optimization', (args,
   kind: 'agent',
   title: `Phase 5: Library Optimization - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Optimize library usage',
@@ -426,7 +426,7 @@ export const dataOptimizationTask = defineTask('data-optimization', (args, taskC
   kind: 'agent',
   title: `Phase 6: Data Optimization - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Optimize data structures',
@@ -467,7 +467,7 @@ export const optimizedBuildConfigTask = defineTask('optimized-build-config', (ar
   kind: 'agent',
   title: `Phase 7: Build Configuration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Generate optimized build configuration',
@@ -508,7 +508,7 @@ export const sizeReductionVerificationTask = defineTask('size-reduction-verifica
   kind: 'agent',
   title: `Phase 8: Verification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Verify size reduction',

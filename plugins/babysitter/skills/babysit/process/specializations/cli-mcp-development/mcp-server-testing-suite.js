@@ -88,7 +88,7 @@ export const testUtilitiesTask = defineTask('test-utilities', (args, taskCtx) =>
   kind: 'agent',
   title: `Test Utilities - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Testing Specialist', task: 'Set up MCP testing utilities', context: args, instructions: ['1. Configure test framework', '2. Create MCP test helpers', '3. Set up test fixtures', '4. Configure coverage', '5. Generate test utilities'], outputFormat: 'JSON with test utilities' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -100,7 +100,7 @@ export const mockMcpClientTask = defineTask('mock-mcp-client', (args, taskCtx) =
   kind: 'agent',
   title: `Mock MCP Client - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Mock Client Developer', task: 'Create mock MCP client', context: args, instructions: ['1. Create MockClient class', '2. Implement tool invocation', '3. Implement resource fetching', '4. Add response capture', '5. Generate mock client'], outputFormat: 'JSON with mock client' },
     outputSchema: { type: 'object', required: ['clientPath', 'artifacts'], properties: { clientPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -112,7 +112,7 @@ export const toolExecutionTestsTask = defineTask('tool-execution-tests', (args, 
   kind: 'agent',
   title: `Tool Execution Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Tool Testing Specialist', task: 'Implement tool execution tests', context: args, instructions: ['1. Test tool listing', '2. Test tool invocation', '3. Test parameter validation', '4. Test tool responses', '5. Generate tool tests'], outputFormat: 'JSON with tool tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -124,7 +124,7 @@ export const resourceAccessTestsTask = defineTask('resource-access-tests', (args
   kind: 'agent',
   title: `Resource Access Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Resource Testing Specialist', task: 'Add resource access tests', context: args, instructions: ['1. Test resource listing', '2. Test resource reading', '3. Test URI parsing', '4. Test MIME types', '5. Generate resource tests'], outputFormat: 'JSON with resource tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -136,7 +136,7 @@ export const transportLayerTestsTask = defineTask('transport-layer-tests', (args
   kind: 'agent',
   title: `Transport Layer Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Transport Testing Specialist', task: 'Create transport layer tests', context: args, instructions: ['1. Test stdio transport', '2. Test message serialization', '3. Test connection lifecycle', '4. Test error propagation', '5. Generate transport tests'], outputFormat: 'JSON with transport tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -148,7 +148,7 @@ export const errorScenarioTestsTask = defineTask('error-scenario-tests', (args, 
   kind: 'agent',
   title: `Error Scenario Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Error Testing Specialist', task: 'Implement error scenario tests', context: args, instructions: ['1. Test invalid requests', '2. Test unknown tools', '3. Test missing resources', '4. Test error codes', '5. Generate error tests'], outputFormat: 'JSON with error tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -160,7 +160,7 @@ export const schemaValidationTestsTask = defineTask('schema-validation-tests', (
   kind: 'agent',
   title: `Schema Validation Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Schema Testing Specialist', task: 'Add schema validation tests', context: args, instructions: ['1. Test tool schemas', '2. Test resource schemas', '3. Test request validation', '4. Test response schemas', '5. Generate schema tests'], outputFormat: 'JSON with schema tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -172,7 +172,7 @@ export const mcpPerformanceTestsTask = defineTask('mcp-performance-tests', (args
   kind: 'agent',
   title: `Performance Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Performance Testing Specialist', task: 'Create performance tests', context: args, instructions: ['1. Benchmark tool execution', '2. Benchmark resource access', '3. Test concurrent requests', '4. Measure memory usage', '5. Generate performance tests'], outputFormat: 'JSON with performance tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, benchmarks: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -184,7 +184,7 @@ export const mcpSecurityTestsTask = defineTask('mcp-security-tests', (args, task
   kind: 'agent',
   title: `Security Tests - ${args.projectName}`,
   agent: {
-    name: 'security-qa-engineer',
+    name: 'mcp-security-auditor',
     prompt: { role: 'MCP Security Testing Specialist', task: 'Implement security tests', context: args, instructions: ['1. Test path traversal prevention', '2. Test injection prevention', '3. Test rate limiting', '4. Test permission enforcement', '5. Generate security tests'], outputFormat: 'JSON with security tests' },
     outputSchema: { type: 'object', required: ['testFilePath', 'artifacts'], properties: { testFilePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -196,7 +196,7 @@ export const integrationTestEnvTask = defineTask('integration-test-env', (args, 
   kind: 'agent',
   title: `Integration Test Environment - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'Integration Test Environment Specialist', task: 'Set up integration test environment', context: args, instructions: ['1. Create test server setup', '2. Configure test data', '3. Set up cleanup procedures', '4. Create helper scripts', '5. Generate integration environment'], outputFormat: 'JSON with integration environment' },
     outputSchema: { type: 'object', required: ['envPath', 'artifacts'], properties: { envPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -208,7 +208,7 @@ export const mcpTestDocumentationTask = defineTask('mcp-test-documentation', (ar
   kind: 'agent',
   title: `Test Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Testing Documentation Specialist', task: 'Document testing approach', context: args, instructions: ['1. Document test organization', '2. Document mock client usage', '3. Document test patterns', '4. Add testing best practices', '5. Generate documentation'], outputFormat: 'JSON with documentation' },
     outputSchema: { type: 'object', required: ['testDocPath', 'artifacts'], properties: { testDocPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

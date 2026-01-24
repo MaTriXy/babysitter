@@ -253,7 +253,7 @@ export const allocatorRequirementsTask = defineTask('allocator-requirements', (a
   kind: 'agent',
   title: `Phase 1: Allocator Requirements - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Analyze allocator requirements',
@@ -294,7 +294,7 @@ export const allocatorArchitectureTask = defineTask('allocator-architecture', (a
   kind: 'agent',
   title: `Phase 2: Allocator Architecture - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Design allocator architecture',
@@ -335,7 +335,7 @@ export const coreAllocatorTask = defineTask('core-allocator', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Core Allocator - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Implement core allocator',
@@ -375,7 +375,7 @@ export const sizeClassesTask = defineTask('size-classes', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Size Classes - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Implement size class handling',
@@ -416,7 +416,7 @@ export const allocatorThreadSafetyTask = defineTask('allocator-thread-safety', (
   kind: 'agent',
   title: `Phase 5: Thread Safety - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Implement thread safety',
@@ -457,7 +457,7 @@ export const allocatorIntegrationTask = defineTask('allocator-integration', (arg
   kind: 'agent',
   title: `Phase 6: Allocator Integration - ${args.languageName}`,
   agent: {
-    name: 'systems-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Integrate allocator',
@@ -497,7 +497,7 @@ export const allocatorTestingTask = defineTask('allocator-testing', (args, taskC
   kind: 'agent',
   title: `Phase 7: Allocator Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive allocator tests',
@@ -538,7 +538,7 @@ export const allocatorBenchmarkingTask = defineTask('allocator-benchmarking', (a
   kind: 'agent',
   title: `Phase 8: Allocator Benchmarking - ${args.languageName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark allocator performance',
@@ -580,7 +580,7 @@ export const allocatorDocumentationTask = defineTask('allocator-documentation', 
   kind: 'agent',
   title: `Phase 9: Allocator Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'memory-management-expert',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate allocator documentation',

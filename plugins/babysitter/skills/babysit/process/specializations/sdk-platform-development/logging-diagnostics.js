@@ -116,7 +116,7 @@ export const loggingFrameworkDesignTask = defineTask('logging-framework-design',
   kind: 'agent',
   title: 'Design logging framework',
   agent: {
-    name: 'logging-framework-architect',
+    name: 'platform-architect',
     prompt: {
       role: 'SDK logging architect',
       task: `Design comprehensive logging framework for ${args.sdkName}`,
@@ -158,7 +158,7 @@ export const logSinkImplementationTask = defineTask('log-sink-implementation', (
   kind: 'agent',
   title: 'Implement log sinks',
   agent: {
-    name: 'log-sink-implementer',
+    name: 'platform-architect',
     prompt: {
       role: 'Logging infrastructure engineer',
       task: `Implement log sinks for ${args.sdkName}`,
@@ -201,7 +201,7 @@ export const structuredLoggingSetupTask = defineTask('structured-logging-setup',
   kind: 'agent',
   title: 'Setup structured logging',
   agent: {
-    name: 'structured-logging-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Observability engineer',
       task: `Setup structured logging for ${args.sdkName}`,
@@ -243,7 +243,7 @@ export const diagnosticToolsCreationTask = defineTask('diagnostic-tools-creation
   kind: 'agent',
   title: 'Create diagnostic tools',
   agent: {
-    name: 'diagnostics-tools-creator',
+    name: 'platform-architect',
     prompt: {
       role: 'SDK diagnostics specialist',
       task: `Create diagnostic tools for ${args.sdkName}`,
@@ -285,7 +285,7 @@ export const loggingConfigurationTask = defineTask('logging-configuration', (arg
   kind: 'agent',
   title: 'Implement logging configuration',
   agent: {
-    name: 'logging-config-specialist',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK configuration engineer',
       task: `Implement logging configuration system for ${args.sdkName}`,

@@ -258,7 +258,7 @@ export const librarySelectionTask = defineTask('library-selection', (args, taskC
   kind: 'agent',
   title: `Phase 1: Library Selection - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Progress Library Specialist',
       task: 'Select progress indicator libraries',
@@ -298,7 +298,7 @@ export const spinnerImplementationTask = defineTask('spinner-implementation', (a
   kind: 'agent',
   title: `Phase 2: Spinner Implementation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Spinner Specialist',
       task: 'Implement spinner for indeterminate progress',
@@ -338,7 +338,7 @@ export const progressBarImplementationTask = defineTask('progressbar-implementat
   kind: 'agent',
   title: `Phase 3: Progress Bar Implementation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Progress Bar Specialist',
       task: 'Create progress bar for known duration tasks',
@@ -378,7 +378,7 @@ export const multiStepProgressTask = defineTask('multi-step-progress', (args, ta
   kind: 'agent',
   title: `Phase 4: Multi-Step Progress - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Multi-Step Progress Designer',
       task: 'Add multi-step progress tracking',
@@ -417,7 +417,7 @@ export const taskListImplementationTask = defineTask('tasklist-implementation', 
   kind: 'agent',
   title: `Phase 5: Task List Implementation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Task List Specialist',
       task: 'Implement task list with status',
@@ -457,7 +457,7 @@ export const nonTtyHandlingTask = defineTask('non-tty-handling', (args, taskCtx)
   kind: 'agent',
   title: `Phase 6: Non-TTY Handling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI TTY Handling Specialist',
       task: 'Handle non-TTY environments gracefully',
@@ -496,7 +496,7 @@ export const etaCalculationsTask = defineTask('eta-calculations', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: ETA Calculations - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI ETA Calculation Specialist',
       task: 'Add ETA calculations',
@@ -535,7 +535,7 @@ export const downloadUploadProgressTask = defineTask('download-upload-progress',
   kind: 'agent',
   title: `Phase 8: Download/Upload Progress - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Transfer Progress Specialist',
       task: 'Create download/upload progress',
@@ -574,7 +574,7 @@ export const concurrentIndicatorsTask = defineTask('concurrent-indicators', (arg
   kind: 'agent',
   title: `Phase 9: Concurrent Indicators - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Concurrent Progress Specialist',
       task: 'Implement concurrent progress indicators',
@@ -612,7 +612,7 @@ export const performanceTestingTask = defineTask('performance-testing', (args, t
   kind: 'agent',
   title: `Phase 10: Performance Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: {
       role: 'CLI Performance Tester',
       task: 'Test performance impact',
@@ -652,7 +652,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Progress Documentation Specialist',
       task: 'Document progress patterns',

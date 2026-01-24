@@ -224,7 +224,7 @@ export const happyPathDesignTask = defineTask('happy-path-design', (args, taskCt
   kind: 'agent',
   title: `Design Happy Paths - ${args.projectName}`,
   agent: {
-    name: 'conversation-designer',
+    name: 'dialogue-architect',  // AG-CI-002: Creates multi-turn dialogue systems with context handling
     prompt: {
       role: 'Conversation Designer',
       task: 'Design happy path conversation flows',
@@ -260,10 +260,10 @@ export const happyPathDesignTask = defineTask('happy-path-design', (args, taskCt
 }));
 
 export const errorHandlingDesignTask = defineTask('error-handling-design', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Design Error Handling - ${args.projectName}`,
-  agent: {
-    name: 'error-designer',
+  skill: {
+    name: 'dialogue-flow-templates',  // SK-CI-001: Dialogue flow templates for common interaction patterns
     prompt: {
       role: 'Error Handling Designer',
       task: 'Design error handling strategies',

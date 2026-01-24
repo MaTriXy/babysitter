@@ -50,8 +50,9 @@ export async function process(inputs, ctx) {
 export const entityExtractionTask = defineTask('entity-extraction', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Extract Entities and Relationships',
+  skills: ['graph-modeler'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Modeling Expert',
       task: 'Extract entities and relationships from problem',
@@ -72,8 +73,9 @@ export const entityExtractionTask = defineTask('entity-extraction', (args, taskC
 export const graphModelingTask = defineTask('graph-modeling', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create Graph Model',
+  skills: ['graph-modeler', 'graph-algorithm-selector'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Modeling Expert',
       task: 'Create formal graph model',
@@ -94,8 +96,9 @@ export const graphModelingTask = defineTask('graph-modeling', (args, taskCtx) =>
 export const representationSelectionTask = defineTask('representation-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Select Graph Representation',
+  skills: ['graph-algorithm-selector'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Algorithm Expert',
       task: 'Select optimal graph representation',
@@ -116,8 +119,9 @@ export const representationSelectionTask = defineTask('representation-selection'
 export const graphImplementationTask = defineTask('graph-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement Graph',
+  skills: ['graph-modeler'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement graph data structure',

@@ -204,7 +204,7 @@ export const firmwareExtractionTask = defineTask('firmware-extraction', (args, t
   kind: 'agent',
   title: `Extract Firmware - ${args.projectName}`,
   agent: {
-    name: 'firmware-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Firmware Extraction Specialist',
       task: 'Extract firmware from device or downloaded file',
@@ -243,7 +243,7 @@ export const structureAnalysisTask = defineTask('structure-analysis', (args, tas
   kind: 'agent',
   title: `Analyze Firmware Structure - ${args.projectName}`,
   agent: {
-    name: 'firmware-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Firmware Structure Analyst',
       task: 'Analyze firmware structure with binwalk',
@@ -282,7 +282,7 @@ export const fileSystemExtractionTask = defineTask('filesystem-extraction', (arg
   kind: 'agent',
   title: `Extract File Systems - ${args.projectName}`,
   agent: {
-    name: 'filesystem-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'File System Extraction Specialist',
       task: 'Extract and analyze file systems',
@@ -322,7 +322,7 @@ export const firmwareBinaryAnalysisTask = defineTask('firmware-binary-analysis',
   kind: 'agent',
   title: `Analyze Firmware Binaries - ${args.projectName}`,
   agent: {
-    name: 'binary-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Firmware Binary Analyst',
       task: 'Identify and analyze binaries in firmware',
@@ -361,7 +361,7 @@ export const configurationReviewTask = defineTask('configuration-review', (args,
   kind: 'agent',
   title: `Review Configurations - ${args.projectName}`,
   agent: {
-    name: 'config-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Configuration Security Analyst',
       task: 'Review configuration files for security issues',
@@ -400,7 +400,7 @@ export const credentialSearchTask = defineTask('credential-search', (args, taskC
   kind: 'agent',
   title: `Search for Credentials - ${args.projectName}`,
   agent: {
-    name: 'credential-hunter',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Credential Discovery Specialist',
       task: 'Check for hardcoded credentials',
@@ -439,7 +439,7 @@ export const networkServiceAnalysisTask = defineTask('network-service-analysis',
   kind: 'agent',
   title: `Analyze Network Services - ${args.projectName}`,
   agent: {
-    name: 'network-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Network Service Analyst',
       task: 'Analyze network services in firmware',
@@ -478,7 +478,7 @@ export const firmwareReportTask = defineTask('firmware-report', (args, taskCtx) 
   kind: 'agent',
   title: `Generate Firmware Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Firmware Report Specialist',
       task: 'Generate comprehensive firmware analysis report',

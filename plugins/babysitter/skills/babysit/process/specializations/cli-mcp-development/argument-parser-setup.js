@@ -271,7 +271,7 @@ export const parserConfigTask = defineTask('parser-config', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Parser Configuration - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Argument Parsing Specialist',
       task: 'Configure argument parser library',
@@ -314,7 +314,7 @@ export const positionalArgsTask = defineTask('positional-args', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Positional Arguments - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Argument Designer',
       task: 'Define positional arguments with types',
@@ -368,7 +368,7 @@ export const optionalFlagsTask = defineTask('optional-flags', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Optional Flags - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Flag Designer',
       task: 'Implement optional flags with defaults',
@@ -424,7 +424,7 @@ export const customTypesTask = defineTask('custom-types', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Custom Types - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Type System Designer',
       task: 'Create custom argument types and validators',
@@ -477,7 +477,7 @@ export const envVarFallbacksTask = defineTask('env-var-fallbacks', (args, taskCt
   kind: 'agent',
   title: `Phase 5: Environment Variable Fallbacks - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Configuration Specialist',
       task: 'Implement environment variable fallbacks',
@@ -530,7 +530,7 @@ export const helpTextTask = defineTask('help-text', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Help Text Generation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Help Text Designer',
       task: 'Generate help text with examples',
@@ -575,7 +575,7 @@ export const completionScriptsTask = defineTask('completion-scripts', (args, tas
   kind: 'agent',
   title: `Phase 7: Completion Scripts - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'Shell Completion Specialist',
       task: 'Add shell completion scripts',
@@ -625,7 +625,7 @@ export const validationTestingTask = defineTask('validation-testing', (args, tas
   kind: 'agent',
   title: `Phase 8: Validation Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: {
       role: 'CLI Testing Specialist',
       task: 'Test argument edge cases',
@@ -670,7 +670,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Documentation Specialist',
       task: 'Document all options',

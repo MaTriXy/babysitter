@@ -230,7 +230,7 @@ export const ecosystemAnalysisTask = defineTask('ecosystem-analysis', (args, tas
   kind: 'agent',
   title: `Phase 1: Language Ecosystem Analysis - ${args.projectName}`,
   agent: {
-    name: 'sdk-strategist',
+    name: 'cross-language-consistency-agent',
     prompt: {
       role: 'Multi-Language SDK Strategist',
       task: 'Analyze target language ecosystems and community standards',
@@ -286,7 +286,7 @@ export const strategyEvaluationTask = defineTask('strategy-evaluation', (args, t
   kind: 'agent',
   title: `Phase 2: Generation Strategy Evaluation - ${args.projectName}`,
   agent: {
-    name: 'sdk-strategist',
+    name: 'cross-language-consistency-agent',
     prompt: {
       role: 'SDK Generation Strategist',
       task: 'Evaluate handwritten vs generated SDK tradeoffs',
@@ -346,7 +346,7 @@ export const codeGenPipelineTask = defineTask('codegen-pipeline', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Code Generation Pipeline - ${args.projectName}`,
   agent: {
-    name: 'sdk-engineer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'SDK Code Generation Engineer',
       task: 'Design code generation pipeline from API specifications',
@@ -410,7 +410,7 @@ export const languageIdiomTask = defineTask('language-idiom', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: Language Idiom Guidelines - ${args.language}`,
   agent: {
-    name: 'language-specialist',
+    name: 'cross-language-consistency-agent',
     prompt: {
       role: `${args.language} SDK Specialist`,
       task: `Establish ${args.language}-specific idiom guidelines`,
@@ -473,7 +473,7 @@ export const featureParityTask = defineTask('feature-parity', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Feature Parity Planning - ${args.projectName}`,
   agent: {
-    name: 'sdk-strategist',
+    name: 'cross-language-consistency-agent',
     prompt: {
       role: 'SDK Feature Parity Planner',
       task: 'Plan feature parity across all target languages',
@@ -530,7 +530,7 @@ export const testingStrategyTask = defineTask('testing-strategy', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Testing Strategy Per Language - ${args.projectName}`,
   agent: {
-    name: 'test-architect',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'SDK Testing Architect',
       task: 'Define testing strategy per target language',
@@ -587,7 +587,7 @@ export const releaseCoordinationTask = defineTask('release-coordination', (args,
   kind: 'agent',
   title: `Phase 7: Release Coordination Planning - ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'platform-architect',
     prompt: {
       role: 'SDK Release Manager',
       task: 'Plan release coordination across all target languages',
@@ -649,7 +649,7 @@ export const strategyDocumentationTask = defineTask('strategy-documentation', (a
   kind: 'agent',
   title: `Phase 8: Strategy Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'SDK Technical Writer',
       task: 'Generate comprehensive multi-language strategy documentation',

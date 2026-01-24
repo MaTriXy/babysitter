@@ -303,7 +303,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'desktop-architect',
+    name: 'electron-architect',
     prompt: {
       role: 'Senior Desktop Application Architect',
       task: 'Analyze requirements and validate framework selection for cross-platform desktop application',
@@ -476,6 +476,9 @@ export const setupBuildSystemTask = defineTask('setup-build-system', (args, task
 export const generateScaffoldTask = defineTask('generate-scaffold', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Generate Application Scaffold - ${args.projectName}`,
+  skill: {
+    name: 'electron-main-preload-generator',
+  },
   agent: {
     name: 'app-scaffolder',
     prompt: {
@@ -518,7 +521,7 @@ export const configurePlatformTask = defineTask('configure-platform', (args, tas
   kind: 'agent',
   title: `Phase 6: Configure Platform - ${args.platform} - ${args.projectName}`,
   agent: {
-    name: 'platform-configurator',
+    name: 'cross-platform-abstraction-architect',
     prompt: {
       role: 'Platform Configuration Specialist',
       task: `Configure platform-specific settings for ${args.platform}`,

@@ -218,7 +218,7 @@ export const architectureTask = defineTask('angular-architecture', (args, taskCt
   kind: 'agent',
   title: `Phase 1: Angular Architecture - ${args.projectName}`,
   agent: {
-    name: 'angular-architect',
+    name: 'frontend-architect-agent',
     prompt: {
       role: 'Senior Angular Enterprise Architect',
       task: 'Design enterprise Angular architecture',
@@ -259,7 +259,7 @@ export const scaffoldingTask = defineTask('angular-scaffolding', (args, taskCtx)
   kind: 'agent',
   title: `Phase 2: Angular Scaffolding - ${args.projectName}`,
   agent: {
-    name: 'angular-developer',
+    name: 'angular-developer-agent',
     prompt: {
       role: 'Angular Developer',
       task: 'Scaffold Angular project',
@@ -336,10 +336,10 @@ export const moduleArchitectureTask = defineTask('angular-modules', (args, taskC
 }));
 
 export const ngrxSetupTask = defineTask('ngrx-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 4: NgRx Setup - ${args.projectName}`,
-  agent: {
-    name: 'ngrx-specialist',
+  skill: {
+    name: 'ngrx-skill',
     prompt: {
       role: 'NgRx State Management Specialist',
       task: 'Configure NgRx state management',
@@ -543,7 +543,7 @@ export const documentationTask = defineTask('angular-documentation', (args, task
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Angular documentation',

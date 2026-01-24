@@ -155,7 +155,7 @@ export const documentAnalysisTask = defineTask('document-analysis', (args, taskC
   kind: 'agent',
   title: `Analyze Documents - ${args.projectName}`,
   agent: {
-    name: 'document-analyst',
+    name: 'chunking-specialist',  // AG-RAG-005: Designs chunking strategies for different document types
     prompt: {
       role: 'Document Analyst',
       task: 'Analyze document characteristics for chunking',
@@ -228,10 +228,10 @@ export const strategySelectionTask = defineTask('strategy-selection', (args, tas
 }));
 
 export const chunkingImplementationTask = defineTask('chunking-implementation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Chunking - ${args.projectName}`,
-  agent: {
-    name: 'chunking-developer',
+  skill: {
+    name: 'text-splitters',  // SK-RAG-002: Text splitter configurations for semantic chunking
     prompt: {
       role: 'Chunking Developer',
       task: 'Implement chunking strategies',

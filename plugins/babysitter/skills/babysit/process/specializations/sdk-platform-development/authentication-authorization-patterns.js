@@ -209,7 +209,7 @@ export const authStrategyTask = defineTask('auth-strategy', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Authentication Strategy - ${args.projectName}`,
   agent: {
-    name: 'security-architect',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Architect',
       task: 'Define comprehensive authentication strategy',
@@ -255,7 +255,7 @@ export const apiKeyManagementTask = defineTask('api-key-management', (args, task
   kind: 'agent',
   title: `Phase 2: API Key Management - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Design API key management system',
@@ -307,7 +307,7 @@ export const oauthImplementationTask = defineTask('oauth-implementation', (args,
   kind: 'agent',
   title: `Phase 3: OAuth 2.0 Implementation - ${args.projectName}`,
   agent: {
-    name: 'identity-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Identity Engineer',
       task: 'Implement OAuth 2.0 / OpenID Connect flows',
@@ -353,7 +353,7 @@ export const jwtAuthenticationTask = defineTask('jwt-authentication', (args, tas
   kind: 'agent',
   title: `Phase 4: JWT Authentication - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Create service account / JWT authentication',
@@ -405,7 +405,7 @@ export const permissionModelTask = defineTask('permission-model', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Permission Model - ${args.projectName}`,
   agent: {
-    name: 'security-architect',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Architect',
       task: 'Build scoped permission model',
@@ -461,7 +461,7 @@ export const tokenManagementTask = defineTask('token-management', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Token Management - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Design token management and refresh',
@@ -514,7 +514,7 @@ export const sdkAuthIntegrationTask = defineTask('sdk-auth-integration', (args, 
   kind: 'agent',
   title: `Phase 7: SDK Auth Integration - ${args.projectName}`,
   agent: {
-    name: 'sdk-engineer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Engineer',
       task: 'Design SDK authentication integration patterns',
@@ -560,7 +560,7 @@ export const authDocumentationTask = defineTask('auth-documentation', (args, tas
   kind: 'agent',
   title: `Phase 8: Auth Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate authentication documentation',

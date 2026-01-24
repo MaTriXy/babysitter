@@ -192,7 +192,7 @@ export const entityTypeDefinitionTask = defineTask('entity-type-definition', (ar
   kind: 'agent',
   title: `Define Entity Types - ${args.projectName}`,
   agent: {
-    name: 'entity-designer',
+    name: 'nlu-specialist',  // AG-CI-003: Implements NLU pipelines with intent classification and slot filling
     prompt: {
       role: 'Entity Designer',
       task: 'Define entity types and their properties',
@@ -306,10 +306,10 @@ export const nerModelTrainingTask = defineTask('ner-model-training', (args, task
 }));
 
 export const slotFillingImplementationTask = defineTask('slot-filling-implementation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Slot Filling - ${args.projectName}`,
-  agent: {
-    name: 'slot-developer',
+  skill: {
+    name: 'entity-extraction-templates',  // SK-CI-003: Entity extraction templates for common entity types
     prompt: {
       role: 'Slot Filling Developer',
       task: 'Implement slot filling logic for dialogue state',

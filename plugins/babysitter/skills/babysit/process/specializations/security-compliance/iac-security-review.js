@@ -670,8 +670,11 @@ export const codeInventoryTask = defineTask('code-inventory', (args, taskCtx) =>
 }));
 
 export const misconfigurationScanTask = defineTask('misconfiguration-scan', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Security Misconfiguration Scan: ${args.projectName}`,
+  skill: {
+    name: 'iac-security-scanner',
+  },
   agent: {
     name: 'iac-misconfig-scanner',
     prompt: {
@@ -851,8 +854,11 @@ export const iamSecurityScanTask = defineTask('iam-security-scan', (args, taskCt
 }));
 
 export const secretsDetectionTask = defineTask('secrets-detection', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Secrets Detection: ${args.projectName}`,
+  skill: {
+    name: 'secret-detection-scanner',
+  },
   agent: {
     name: 'secrets-detector',
     prompt: {

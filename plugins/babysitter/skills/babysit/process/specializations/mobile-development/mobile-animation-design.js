@@ -261,8 +261,9 @@ export async function process(inputs, ctx) {
 export const librarySetupTask = defineTask('library-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Animation Library Setup - ${args.appName}`,
+  skill: { name: 'gesture-animation' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Animation Specialist',
       task: 'Set up animation library (Reanimated, Flutter animations, etc.)',
@@ -306,7 +307,7 @@ export const animationPrimitivesTask = defineTask('animation-primitives', (args,
   kind: 'agent',
   title: `Phase 2: Animation Primitives - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Animation Developer',
       task: 'Create animation primitives and hooks',
@@ -350,7 +351,7 @@ export const transitionsTask = defineTask('transitions', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Transitions - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Transition Specialist',
       task: 'Implement view and screen transitions',
@@ -395,7 +396,7 @@ export const gestureHandlersTask = defineTask('gesture-handlers', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Gesture Handlers - ${args.appName}`,
   agent: {
-    name: 'mobile-gesture-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Gesture Specialist',
       task: 'Implement gesture handlers',
@@ -483,7 +484,7 @@ export const loadingAnimationsTask = defineTask('loading-animations', (args, tas
   kind: 'agent',
   title: `Phase 6: Loading Animations - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Loading Animation Developer',
       task: 'Implement loading and progress animations',
@@ -527,7 +528,7 @@ export const navigationAnimationsTask = defineTask('navigation-animations', (arg
   kind: 'agent',
   title: `Phase 7: Navigation Animations - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Navigation Animation Specialist',
       task: 'Create navigation and screen transition animations',
@@ -571,7 +572,7 @@ export const listAnimationsTask = defineTask('list-animations', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: List Animations - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile List Animation Developer',
       task: 'Implement list and collection animations',
@@ -614,8 +615,9 @@ export const listAnimationsTask = defineTask('list-animations', (args, taskCtx) 
 export const hapticSetupTask = defineTask('haptic-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Haptic Feedback - ${args.appName}`,
+  skill: { name: 'gesture-animation' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Haptics Specialist',
       task: 'Add haptic feedback for interactions',
@@ -659,7 +661,7 @@ export const springPhysicsTask = defineTask('spring-physics', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 10: Spring Physics - ${args.appName}`,
   agent: {
-    name: 'mobile-animation-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Physics Animation Specialist',
       task: 'Implement spring physics for natural animations',
@@ -703,7 +705,7 @@ export const accessibilityMotionTask = defineTask('accessibility-motion', (args,
   kind: 'agent',
   title: `Phase 11: Accessibility Motion - ${args.appName}`,
   agent: {
-    name: 'accessibility-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Accessibility Animation Specialist',
       task: 'Handle reduced motion preferences',
@@ -747,7 +749,7 @@ export const performanceOptimizationTask = defineTask('performance-optimization'
   kind: 'agent',
   title: `Phase 12: Performance Optimization - ${args.appName}`,
   agent: {
-    name: 'mobile-performance-engineer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Animation Performance Engineer',
       task: 'Optimize animation performance for 60fps',

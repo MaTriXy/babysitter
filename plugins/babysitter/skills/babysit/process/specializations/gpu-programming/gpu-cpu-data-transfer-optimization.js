@@ -118,7 +118,8 @@ export const transferAnalysisTask = defineTask('transfer-analysis', (args, taskC
   kind: 'agent',
   title: `Transfer Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze data transfer patterns',
@@ -159,7 +160,8 @@ export const pinnedMemoryTask = defineTask('pinned-memory', (args, taskCtx) => (
   kind: 'agent',
   title: `Pinned Memory - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement pinned memory',
@@ -200,7 +202,8 @@ export const asyncTransferTask = defineTask('async-transfer', (args, taskCtx) =>
   kind: 'agent',
   title: `Async Transfers - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement asynchronous transfers',
@@ -241,7 +244,8 @@ export const computeTransferOverlapTask = defineTask('compute-transfer-overlap',
   kind: 'agent',
   title: `Compute-Transfer Overlap - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement compute-transfer overlap',
@@ -282,7 +286,8 @@ export const unifiedMemoryTask = defineTask('unified-memory', (args, taskCtx) =>
   kind: 'agent',
   title: `Unified Memory - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Evaluate unified memory',
@@ -323,7 +328,8 @@ export const transferBenchmarkingTask = defineTask('transfer-benchmarking', (arg
   kind: 'agent',
   title: `Transfer Benchmarking - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'unified-memory'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark transfer optimizations',

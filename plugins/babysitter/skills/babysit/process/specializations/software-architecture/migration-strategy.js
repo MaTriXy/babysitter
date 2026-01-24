@@ -465,8 +465,9 @@ export async function process(inputs, ctx) {
 export const currentStateAssessmentTask = defineTask('current-state-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Current State Assessment - ${args.projectName}`,
+  skill: { name: 'code-complexity-analyzer' },
   agent: {
-    name: 'architecture-analyst',
+    name: 'legacy-modernization-expert',
     prompt: {
       role: 'senior software architect and systems analyst',
       task: 'Conduct comprehensive assessment of current system architecture, technology stack, and operational characteristics',
@@ -600,8 +601,9 @@ export const currentStateAssessmentTask = defineTask('current-state-assessment',
 export const targetStateDefinitionTask = defineTask('target-state-definition', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Target State Definition - ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'architecture-designer',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'principal software architect specializing in modern architecture patterns',
       task: 'Define comprehensive target architecture aligned with migration goals and constraints',
@@ -738,8 +740,9 @@ export const targetStateDefinitionTask = defineTask('target-state-definition', (
 export const gapAnalysisTask = defineTask('gap-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Gap Analysis - ${args.projectName}`,
+  skill: { name: 'code-complexity-analyzer' },
   agent: {
-    name: 'gap-analyst',
+    name: 'migration-strategist',
     prompt: {
       role: 'enterprise architect specializing in gap analysis and transformation planning',
       task: 'Conduct comprehensive gap analysis between current and target states',
@@ -824,6 +827,7 @@ export const gapAnalysisTask = defineTask('gap-analysis', (args, taskCtx) => ({
 export const migrationStrategySelectionTask = defineTask('migration-strategy-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Migration Strategy Selection - ${args.projectName}`,
+  skill: { name: 'mermaid-renderer' },
   agent: {
     name: 'migration-strategist',
     prompt: {
@@ -913,8 +917,9 @@ export const migrationStrategySelectionTask = defineTask('migration-strategy-sel
 export const migrationRiskAssessmentTask = defineTask('migration-risk-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Migration Risk Assessment - ${args.projectName}`,
+  skill: { name: 'threat-modeler' },
   agent: {
-    name: 'risk-analyst',
+    name: 'migration-strategist',
     prompt: {
       role: 'enterprise risk analyst specializing in migration and transformation risks',
       task: 'Conduct comprehensive risk assessment for migration strategy',
@@ -1002,8 +1007,9 @@ export const migrationRiskAssessmentTask = defineTask('migration-risk-assessment
 export const migrationRoadmapTask = defineTask('migration-roadmap', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Migration Roadmap Development - ${args.projectName}`,
+  skill: { name: 'mermaid-renderer' },
   agent: {
-    name: 'roadmap-planner',
+    name: 'migration-strategist',
     prompt: {
       role: 'migration program manager specializing in phased transformation roadmaps',
       task: 'Develop detailed phased migration roadmap with milestones, dependencies, and success criteria',
@@ -1115,7 +1121,7 @@ export const dataMigrationStrategyTask = defineTask('data-migration-strategy', (
   kind: 'agent',
   title: `Phase 7: Data Migration Strategy - ${args.projectName}`,
   agent: {
-    name: 'data-migration-specialist',
+    name: 'data-architect',
     prompt: {
       role: 'data migration architect specializing in large-scale data transitions',
       task: 'Design comprehensive data migration strategy including extraction, transformation, loading, and validation',
@@ -1240,7 +1246,7 @@ export const migrationTestingStrategyTask = defineTask('migration-testing-strate
   kind: 'agent',
   title: `Phase 8: Testing and Validation Strategy - ${args.projectName}`,
   agent: {
-    name: 'test-strategist',
+    name: 'migration-strategist',
     prompt: {
       role: 'QA architect specializing in migration testing and validation',
       task: 'Design comprehensive testing strategy for migration including functional, performance, and acceptance testing',
@@ -1351,7 +1357,7 @@ export const rollbackContingencyTask = defineTask('rollback-contingency', (args,
   kind: 'agent',
   title: `Phase 9: Rollback and Contingency Planning - ${args.projectName}`,
   agent: {
-    name: 'contingency-planner',
+    name: 'migration-strategist',
     prompt: {
       role: 'migration risk specialist focusing on rollback and contingency planning',
       task: 'Design comprehensive rollback and contingency plans for migration failure scenarios',
@@ -1468,7 +1474,7 @@ export const changeManagementTask = defineTask('change-management', (args, taskC
   kind: 'agent',
   title: `Phase 10: Organizational Change Management - ${args.projectName}`,
   agent: {
-    name: 'change-manager',
+    name: 'migration-strategist',
     prompt: {
       role: 'organizational change management specialist',
       task: 'Develop comprehensive change management plan for migration including stakeholder management, training, and communication',
@@ -1588,7 +1594,7 @@ export const costBenefitAnalysisTask = defineTask('cost-benefit-analysis', (args
   kind: 'agent',
   title: `Phase 11: Cost-Benefit Analysis - ${args.projectName}`,
   agent: {
-    name: 'financial-analyst',
+    name: 'migration-strategist',
     prompt: {
       role: 'IT financial analyst specializing in migration business cases',
       task: 'Conduct comprehensive cost-benefit analysis for migration strategy',
@@ -1703,7 +1709,7 @@ export const strategyDocumentGenerationTask = defineTask('strategy-document-gene
   kind: 'agent',
   title: `Phase 12: Strategy Document Generation - ${args.projectName}`,
   agent: {
-    name: 'strategy-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'senior technical writer and migration architect',
       task: 'Generate comprehensive, executive-ready migration strategy document consolidating all planning artifacts',
@@ -1774,7 +1780,7 @@ export const strategyValidationTask = defineTask('strategy-validation', (args, t
   kind: 'agent',
   title: `Phase 13: Strategy Validation - ${args.projectName}`,
   agent: {
-    name: 'strategy-validator',
+    name: 'migration-strategist',
     prompt: {
       role: 'principal architect and migration auditor',
       task: 'Validate migration strategy quality, completeness, and readiness for execution',

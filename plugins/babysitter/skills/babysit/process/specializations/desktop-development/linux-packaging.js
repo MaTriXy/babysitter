@@ -114,7 +114,7 @@ export const linuxPackagingRequirementsTask = defineTask('linux-packaging-requir
   kind: 'agent',
   title: `Linux Packaging Requirements - ${args.projectName}`,
   agent: {
-    name: 'linux-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'Linux Packaging Analyst', task: 'Analyze Linux packaging requirements', context: args, instructions: ['1. Analyze package format needs', '2. Document dependencies', '3. Check distribution requirements', '4. Plan package metadata', '5. Document icon requirements', '6. Plan desktop integration', '7. Assess signing needs', '8. Generate requirements document'] },
     outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -125,8 +125,11 @@ export const linuxPackagingRequirementsTask = defineTask('linux-packaging-requir
 export const createDebPackageTask = defineTask('create-deb-package', (args, taskCtx) => ({
   kind: 'agent',
   title: `DEB Package - ${args.projectName}`,
+  skill: {
+    name: 'deb-package-builder',
+  },
   agent: {
-    name: 'deb-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'DEB Package Developer', task: 'Create Debian/Ubuntu package', context: args, instructions: ['1. Create debian control file', '2. Configure dependencies', '3. Set up post-install scripts', '4. Configure package metadata', '5. Set up file locations', '6. Configure maintainer scripts', '7. Build DEB package', '8. Generate package configuration'] },
     outputSchema: { type: 'object', required: ['packagePath', 'artifacts'], properties: { packagePath: { type: 'string' }, size: { type: 'string' }, dependencies: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -137,8 +140,11 @@ export const createDebPackageTask = defineTask('create-deb-package', (args, task
 export const createRpmPackageTask = defineTask('create-rpm-package', (args, taskCtx) => ({
   kind: 'agent',
   title: `RPM Package - ${args.projectName}`,
+  skill: {
+    name: 'rpm-spec-generator',
+  },
   agent: {
-    name: 'rpm-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'RPM Package Developer', task: 'Create Fedora/RHEL package', context: args, instructions: ['1. Create spec file', '2. Configure requires', '3. Set up scriptlets', '4. Configure package info', '5. Set up file sections', '6. Configure changelog', '7. Build RPM package', '8. Generate package configuration'] },
     outputSchema: { type: 'object', required: ['packagePath', 'artifacts'], properties: { packagePath: { type: 'string' }, size: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -149,8 +155,11 @@ export const createRpmPackageTask = defineTask('create-rpm-package', (args, task
 export const createAppImageTask = defineTask('create-appimage', (args, taskCtx) => ({
   kind: 'agent',
   title: `AppImage - ${args.projectName}`,
+  skill: {
+    name: 'appimage-builder',
+  },
   agent: {
-    name: 'appimage-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'AppImage Developer', task: 'Create AppImage package', context: args, instructions: ['1. Create AppDir structure', '2. Configure AppRun script', '3. Set up desktop file', '4. Configure icon', '5. Bundle dependencies', '6. Create AppImage', '7. Sign AppImage', '8. Generate configuration'] },
     outputSchema: { type: 'object', required: ['packagePath', 'artifacts'], properties: { packagePath: { type: 'string' }, size: { type: 'string' }, portable: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -161,8 +170,11 @@ export const createAppImageTask = defineTask('create-appimage', (args, taskCtx) 
 export const createFlatpakTask = defineTask('create-flatpak', (args, taskCtx) => ({
   kind: 'agent',
   title: `Flatpak - ${args.projectName}`,
+  skill: {
+    name: 'flatpak-manifest-generator',
+  },
   agent: {
-    name: 'flatpak-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'Flatpak Developer', task: 'Create Flatpak package', context: args, instructions: ['1. Create manifest file', '2. Configure SDK and runtime', '3. Set up permissions', '4. Configure finish args', '5. Set up build options', '6. Configure Flathub metadata', '7. Build Flatpak', '8. Generate configuration'] },
     outputSchema: { type: 'object', required: ['packagePath', 'artifacts'], properties: { packagePath: { type: 'string' }, appId: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -173,8 +185,11 @@ export const createFlatpakTask = defineTask('create-flatpak', (args, taskCtx) =>
 export const createSnapTask = defineTask('create-snap', (args, taskCtx) => ({
   kind: 'agent',
   title: `Snap Package - ${args.projectName}`,
+  skill: {
+    name: 'snap-yaml-generator',
+  },
   agent: {
-    name: 'snap-packager',
+    name: 'linux-packaging-expert',
     prompt: { role: 'Snap Developer', task: 'Create Snap package', context: args, instructions: ['1. Create snapcraft.yaml', '2. Configure confinement', '3. Set up plugs', '4. Configure parts', '5. Set up apps', '6. Configure grade', '7. Build Snap', '8. Generate configuration'] },
     outputSchema: { type: 'object', required: ['packagePath', 'artifacts'], properties: { packagePath: { type: 'string' }, confinement: { type: 'string' }, artifacts: { type: 'array' } } }
   },

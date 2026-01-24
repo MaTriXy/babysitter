@@ -86,8 +86,9 @@ function createReleaseTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'fastlane-cicd' },
     agent: {
-      name: 'release-manager',
+      name: 'mobile-devops',
       prompt: {
         role: 'Mobile Release Manager',
         task: `Configure ${title.toLowerCase()} for release automation`,

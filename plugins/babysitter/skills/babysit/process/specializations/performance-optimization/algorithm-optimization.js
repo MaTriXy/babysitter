@@ -111,7 +111,7 @@ export const analyzeCurrentComplexityTask = defineTask('analyze-current-complexi
   kind: 'agent',
   title: `Analyze Current Complexity - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Analyze current algorithm complexity',
@@ -139,7 +139,7 @@ export const identifyInefficientDataStructuresTask = defineTask('identify-ineffi
   kind: 'agent',
   title: `Identify Inefficient Data Structures - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Identify inefficient data structures',
@@ -167,7 +167,7 @@ export const researchAlternativeAlgorithmsTask = defineTask('research-alternativ
   kind: 'agent',
   title: `Research Alternative Algorithms - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Research alternative algorithms',
@@ -195,7 +195,7 @@ export const designOptimizedSolutionTask = defineTask('design-optimized-solution
   kind: 'agent',
   title: `Design Optimized Solution - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Design optimized algorithm solution',
@@ -223,7 +223,7 @@ export const implementImprovedAlgorithmTask = defineTask('implement-improved-alg
   kind: 'agent',
   title: `Implement Improved Algorithm - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Implement improved algorithm',
@@ -251,7 +251,7 @@ export const addComprehensiveTestsTask = defineTask('add-comprehensive-tests', (
   kind: 'agent',
   title: `Add Comprehensive Tests - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Add comprehensive algorithm tests',
@@ -279,7 +279,7 @@ export const benchmarkAlgorithmImprovementsTask = defineTask('benchmark-algorith
   kind: 'agent',
   title: `Benchmark Algorithm Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark algorithm improvements',
@@ -307,7 +307,7 @@ export const documentComplexityAnalysisTask = defineTask('document-complexity-an
   kind: 'agent',
   title: `Document Complexity Analysis - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Document complexity analysis and improvements',

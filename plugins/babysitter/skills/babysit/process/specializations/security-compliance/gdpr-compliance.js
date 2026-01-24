@@ -753,8 +753,11 @@ export const scopeApplicabilityTask = defineTask('scope-applicability', (args, t
 
 // Phase 2: Data Mapping and Inventory (Article 30)
 export const dataMappingTask = defineTask('data-mapping', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: Data Mapping and Inventory - ${args.organization}`,
+  skill: {
+    name: 'gdpr-compliance-automator',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {

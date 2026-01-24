@@ -81,7 +81,7 @@ export const realityGapAnalysisTask = defineTask('reality-gap-analysis', (args, 
   kind: 'agent',
   title: `Reality Gap Analysis - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Analyze reality gap factors', context: args, instructions: ['1. Identify physics mismatches', '2. Analyze visual differences', '3. Identify dynamics gaps', '4. Assess sensor noise', '5. Document gap factors'] },
     outputSchema: { type: 'object', required: ['gapFactors', 'priorities', 'artifacts'], properties: { gapFactors: { type: 'array' }, priorities: { type: 'array' }, estimatedImpact: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const domainRandomizationConfigTask = defineTask('domain-randomization-co
   kind: 'agent',
   title: `Domain Randomization - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Configure domain randomization', context: args, instructions: ['1. Randomize dynamics', '2. Randomize visuals', '3. Add sensor noise', '4. Configure ranges', '5. Test randomization'] },
     outputSchema: { type: 'object', required: ['params', 'ranges', 'artifacts'], properties: { params: { type: 'object' }, ranges: { type: 'object' }, categories: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const systemIdentificationTask = defineTask('system-identification', (arg
   kind: 'agent',
   title: `System Identification - ${args.projectName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Identify real system parameters', context: args, instructions: ['1. Measure mass properties', '2. Identify friction', '3. Measure motor dynamics', '4. Identify delays', '5. Document parameters'] },
     outputSchema: { type: 'object', required: ['parameters', 'accuracy', 'artifacts'], properties: { parameters: { type: 'object' }, accuracy: { type: 'number' }, methodology: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const simulationCalibrationTask = defineTask('simulation-calibration', (a
   kind: 'agent',
   title: `Simulation Calibration - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: { role: 'Simulation Engineer', task: 'Calibrate simulation to real system', context: args, instructions: ['1. Update physics parameters', '2. Tune contact models', '3. Calibrate sensors', '4. Validate against real data', '5. Document calibration'] },
     outputSchema: { type: 'object', required: ['calibratedParams', 'matchAccuracy', 'artifacts'], properties: { calibratedParams: { type: 'object' }, matchAccuracy: { type: 'number' }, validationResults: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const transferTrainingTask = defineTask('transfer-training', (args, taskC
   kind: 'agent',
   title: `Transfer Training - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Train with transfer techniques', context: args, instructions: ['1. Train with randomization', '2. Add adaptation layers', '3. Use progressive training', '4. Save robust policy', '5. Document training'] },
     outputSchema: { type: 'object', required: ['policyPath', 'trainingMetrics', 'artifacts'], properties: { policyPath: { type: 'string' }, trainingMetrics: { type: 'object' }, robustness: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const simTransferValidationTask = defineTask('sim-transfer-validation', (
   kind: 'agent',
   title: `Sim Validation - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate in simulation', context: args, instructions: ['1. Test without randomization', '2. Test with extreme params', '3. Calculate success rate', '4. Identify failure modes', '5. Document sim results'] },
     outputSchema: { type: 'object', required: ['successRate', 'scenarios', 'artifacts'], properties: { successRate: { type: 'number' }, scenarios: { type: 'array' }, failureModes: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const realWorldTransferTestingTask = defineTask('real-world-transfer-test
   kind: 'agent',
   title: `Real World Testing - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test on real hardware', context: args, instructions: ['1. Deploy to robot', '2. Run test scenarios', '3. Measure success rate', '4. Compare to simulation', '5. Document real results'] },
     outputSchema: { type: 'object', required: ['successRate', 'testResults', 'artifacts'], properties: { successRate: { type: 'number' }, testResults: { type: 'array' }, observations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const transferGapMeasurementTask = defineTask('transfer-gap-measurement',
   kind: 'agent',
   title: `Gap Measurement - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Measure sim-to-real gap', context: args, instructions: ['1. Compare success rates', '2. Measure trajectory deviation', '3. Analyze timing differences', '4. Calculate transfer gap', '5. Document gap analysis'] },
     outputSchema: { type: 'object', required: ['gap', 'metrics', 'artifacts'], properties: { gap: { type: 'number' }, metrics: { type: 'object' }, gapBreakdown: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const adaptationRefinementTask = defineTask('adaptation-refinement', (arg
   kind: 'agent',
   title: `Adaptation Refinement - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Refine transfer adaptation', context: args, instructions: ['1. Analyze gap sources', '2. Tune randomization', '3. Add online adaptation', '4. Fine-tune on real data', '5. Validate improvements'] },
     outputSchema: { type: 'object', required: ['refinements', 'improvement', 'artifacts'], properties: { refinements: { type: 'array' }, improvement: { type: 'number' }, recommendations: { type: 'array' }, artifacts: { type: 'array' } } }
   },

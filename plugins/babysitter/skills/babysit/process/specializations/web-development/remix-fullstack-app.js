@@ -208,10 +208,10 @@ export async function process(inputs, ctx) {
 // ============================================================================
 
 export const projectSetupTask = defineTask('remix-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 1: Remix Setup - ${args.projectName}`,
-  agent: {
-    name: 'remix-developer',
+  skill: {
+    name: 'remix-skill',
     prompt: {
       role: 'Senior Remix Developer',
       task: 'Set up Remix project',
@@ -408,10 +408,10 @@ export const formsSetupTask = defineTask('remix-forms', (args, taskCtx) => ({
 }));
 
 export const databaseSetupTask = defineTask('remix-database', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 6: Database Setup - ${args.projectName}`,
-  agent: {
-    name: 'database-specialist',
+  skill: {
+    name: 'prisma-skill',
     prompt: {
       role: 'Database Specialist',
       task: 'Integrate database',
@@ -531,7 +531,7 @@ export const documentationTask = defineTask('remix-documentation', (args, taskCt
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Remix documentation',

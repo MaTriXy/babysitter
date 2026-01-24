@@ -180,7 +180,7 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
   kind: 'agent',
   title: `Design Plan-and-Execute Architecture - ${args.agentName}`,
   agent: {
-    name: 'ai-architect',
+    name: 'plan-execute-planner',  // AG-AA-002: Creates hierarchical task decomposition and replanning logic
     prompt: {
       role: 'AI Agent Architect',
       task: 'Design hierarchical plan-and-execute agent architecture',
@@ -217,10 +217,10 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
 }));
 
 export const plannerModuleTask = defineTask('planner-module', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Develop Planner Module - ${args.agentName}`,
-  agent: {
-    name: 'planner-developer',
+  skill: {
+    name: 'langgraph-routing',  // SK-LG-004: Conditional edge routing and state-based transitions
     prompt: {
       role: 'AI Planner Developer',
       task: 'Develop high-level planning module',
@@ -300,7 +300,7 @@ export const replanningLogicTask = defineTask('replanning-logic', (args, taskCtx
   kind: 'agent',
   title: `Implement Replanning Logic - ${args.agentName}`,
   agent: {
-    name: 'replanning-developer',
+    name: 'state-machine-designer',  // AG-MEM-004: Creates dialogue state tracking and management
     prompt: {
       role: 'Replanning Logic Developer',
       task: 'Implement adaptive replanning based on execution results',

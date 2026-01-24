@@ -81,7 +81,7 @@ export const nav2StackSetupTask = defineTask('nav2-stack-setup', (args, taskCtx)
   kind: 'agent',
   title: `Nav2 Stack Setup - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Set up Nav2 navigation stack', context: args, instructions: ['1. Install Nav2 packages', '2. Configure robot transforms', '3. Set up map server', '4. Configure AMCL localization', '5. Create launch files'] },
     outputSchema: { type: 'object', required: ['configPath', 'launchFile', 'artifacts'], properties: { configPath: { type: 'string' }, launchFile: { type: 'string' }, transforms: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const behaviorTreeConfigTask = defineTask('behavior-tree-config', (args, 
   kind: 'agent',
   title: `Behavior Tree Config - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Configure behavior trees for navigation logic', context: args, instructions: ['1. Design navigation behavior tree', '2. Add planning subtrees', '3. Add recovery subtrees', '4. Configure BT plugins', '5. Test behavior tree'] },
     outputSchema: { type: 'object', required: ['btPath', 'btPlugins', 'artifacts'], properties: { btPath: { type: 'string' }, btPlugins: { type: 'array' }, subtrees: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const nav2CostmapConfigTask = defineTask('nav2-costmap-config', (args, ta
   kind: 'agent',
   title: `Costmap Config - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement costmap layers', context: args, instructions: ['1. Configure static layer', '2. Add obstacle layer', '3. Configure inflation layer', '4. Set up voxel layer for 3D', '5. Tune costmap parameters'] },
     outputSchema: { type: 'object', required: ['globalCostmap', 'localCostmap', 'artifacts'], properties: { globalCostmap: { type: 'object' }, localCostmap: { type: 'object' }, layers: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const nav2PlannerConfigTask = defineTask('nav2-planner-config', (args, ta
   kind: 'agent',
   title: `Planner Config - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Configure local and global planners', context: args, instructions: ['1. Configure NavFn global planner', '2. Set up DWB local planner', '3. Configure controller parameters', '4. Set velocity constraints', '5. Test planning pipeline'] },
     outputSchema: { type: 'object', required: ['globalPlanner', 'localPlanner', 'artifacts'], properties: { globalPlanner: { type: 'object' }, localPlanner: { type: 'object' }, controllerParams: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const recoveryBehaviorsTask = defineTask('recovery-behaviors', (args, tas
   kind: 'agent',
   title: `Recovery Behaviors - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Set up recovery behaviors', context: args, instructions: ['1. Configure spin recovery', '2. Add backup recovery', '3. Configure clear costmap', '4. Add wait behavior', '5. Test recovery sequence'] },
     outputSchema: { type: 'object', required: ['recoveryPlugins', 'recoverySequence', 'artifacts'], properties: { recoveryPlugins: { type: 'array' }, recoverySequence: { type: 'array' }, recoveryParams: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const waypointFollowingTask = defineTask('waypoint-following', (args, tas
   kind: 'agent',
   title: `Waypoint Following - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement waypoint following', context: args, instructions: ['1. Configure waypoint follower', '2. Set waypoint tolerance', '3. Add waypoint task executor', '4. Configure goal checker', '5. Test multi-waypoint navigation'] },
     outputSchema: { type: 'object', required: ['waypointConfig', 'goalChecker', 'artifacts'], properties: { waypointConfig: { type: 'object' }, goalChecker: { type: 'object' }, waypointTolerance: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const nav2DynamicAvoidanceTask = defineTask('nav2-dynamic-avoidance', (ar
   kind: 'agent',
   title: `Dynamic Avoidance - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Add dynamic obstacle avoidance', context: args, instructions: ['1. Configure obstacle tracking', '2. Set up dynamic layer', '3. Configure velocity obstacles', '4. Tune avoidance parameters', '5. Test with moving obstacles'] },
     outputSchema: { type: 'object', required: ['dynamicConfig', 'trackingConfig', 'artifacts'], properties: { dynamicConfig: { type: 'object' }, trackingConfig: { type: 'object' }, velocityObstacles: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const nav2TestingTask = defineTask('nav2-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Nav2 Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test in simulation and real environments', context: args, instructions: ['1. Test point-to-point navigation', '2. Test waypoint sequences', '3. Test recovery behaviors', '4. Test in cluttered environment', '5. Measure success rate'] },
     outputSchema: { type: 'object', required: ['successRate', 'testResults', 'artifacts'], properties: { successRate: { type: 'number' }, testResults: { type: 'array' }, failureCases: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const nav2ParameterTuningTask = defineTask('nav2-parameter-tuning', (args
   kind: 'agent',
   title: `Parameter Tuning - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Tune parameters for optimal navigation', context: args, instructions: ['1. Tune planner parameters', '2. Tune controller gains', '3. Optimize costmap settings', '4. Balance speed vs safety', '5. Document final parameters'] },
     outputSchema: { type: 'object', required: ['tunedParams', 'avgNavTime', 'artifacts'], properties: { tunedParams: { type: 'object' }, avgNavTime: { type: 'number' }, improvements: { type: 'object' }, artifacts: { type: 'array' } } }
   },

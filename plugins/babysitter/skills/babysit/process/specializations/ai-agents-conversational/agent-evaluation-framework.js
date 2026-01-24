@@ -170,7 +170,7 @@ export const evaluationDesignTask = defineTask('evaluation-design', (args, taskC
   kind: 'agent',
   title: `Design Evaluation Framework - ${args.agentName}`,
   agent: {
-    name: 'evaluation-architect',
+    name: 'agent-evaluator',  // AG-SAF-004: Designs evaluation frameworks and benchmarks
     prompt: {
       role: 'Evaluation Architect',
       task: 'Design comprehensive agent evaluation framework',

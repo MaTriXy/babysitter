@@ -309,7 +309,7 @@ export const analyzeQualityStandardsTask = defineTask('analyze-quality-standards
   kind: 'agent',
   title: 'Analyze quality standards and requirements',
   agent: {
-    name: 'quality-standards-analyst',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior quality engineer and standards specialist',
       task: 'Analyze project quality requirements, industry benchmarks, and regulatory requirements to establish comprehensive quality standards baseline',
@@ -399,7 +399,7 @@ export const defineQualityGatesTask = defineTask('define-quality-gates', (args, 
   kind: 'agent',
   title: 'Define quality gate criteria and thresholds',
   agent: {
-    name: 'gate-architect',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'quality gate architect and process engineer',
       task: 'Design comprehensive quality gate framework with specific criteria, thresholds, and enforcement rules for each gate type',
@@ -501,7 +501,7 @@ export const implementGateAutomationTask = defineTask('implement-gate-automation
   kind: 'agent',
   title: 'Implement automated quality gate checks',
   agent: {
-    name: 'automation-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps automation engineer and quality tooling specialist',
       task: 'Implement automated checks, scripts, and tooling for each quality gate',
@@ -592,7 +592,7 @@ export const integrateCicdTask = defineTask('integrate-cicd', (args, taskCtx) =>
   kind: 'agent',
   title: 'Integrate quality gates with CI/CD pipeline',
   agent: {
-    name: 'cicd-integration-specialist',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'CI/CD architect and pipeline engineer',
       task: 'Integrate quality gates into CI/CD pipeline with proper staging, parallelization, and failure handling',
@@ -682,7 +682,7 @@ export const setupMonitoringTask = defineTask('setup-monitoring', (args, taskCtx
   kind: 'agent',
   title: 'Setup quality gate monitoring and reporting',
   agent: {
-    name: 'monitoring-specialist',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'observability engineer and metrics specialist',
       task: 'Set up comprehensive monitoring, dashboards, alerts, and reporting for quality gate metrics',
@@ -775,7 +775,7 @@ export const defineExceptionProcessTask = defineTask('define-exception-process',
   kind: 'agent',
   title: 'Define exception handling and override process',
   agent: {
-    name: 'process-governance-specialist',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'quality governance and compliance specialist',
       task: 'Design exception handling process for quality gate bypasses with approval workflow and audit logging',
@@ -868,7 +868,7 @@ export const createDocumentationTask = defineTask('create-documentation', (args,
   kind: 'agent',
   title: 'Create documentation and training materials',
   agent: {
-    name: 'technical-writer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior technical writer and training specialist',
       task: 'Create comprehensive documentation and training materials for quality gate implementation',
@@ -938,7 +938,7 @@ export const validateImplementationTask = defineTask('validate-implementation', 
   kind: 'agent',
   title: 'Validate quality gate implementation',
   agent: {
-    name: 'qa-validation-engineer',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'senior QA validation engineer',
       task: 'Validate quality gate implementation through comprehensive testing and verification',
@@ -1030,7 +1030,7 @@ export const createRolloutPlanTask = defineTask('create-rollout-plan', (args, ta
   kind: 'agent',
   title: 'Create phased rollout plan',
   agent: {
-    name: 'rollout-strategist',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'change management and rollout specialist',
       task: 'Design phased rollout plan for quality gates with progressive enforcement',
@@ -1137,7 +1137,7 @@ export const setupContinuousImprovementTask = defineTask('setup-continuous-impro
   kind: 'agent',
   title: 'Setup continuous improvement process',
   agent: {
-    name: 'continuous-improvement-lead',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'continuous improvement and process optimization specialist',
       task: 'Design continuous improvement framework for quality gates with regular reviews, optimizations, and feedback loops',

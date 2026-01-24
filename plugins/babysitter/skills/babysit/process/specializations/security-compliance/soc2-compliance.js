@@ -824,8 +824,11 @@ export const defineScopeAndBoundariesTask = defineTask('define-scope-boundaries'
 
 // Phase 2: Assess Security Criteria (Common Criteria)
 export const assessSecurityCriteriaTask = defineTask('assess-security-criteria', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: Assess Security TSC - ${args.organization}`,
+  skill: {
+    name: 'soc2-compliance-automator',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {
@@ -1533,8 +1536,11 @@ export const implementControlsTask = defineTask('implement-controls', (args, tas
 
 // Phase 10: Setup Evidence Collection
 export const setupEvidenceCollectionTask = defineTask('setup-evidence-collection', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 10: Setup Evidence Collection - ${args.organization}`,
+  skill: {
+    name: 'compliance-evidence-collector',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {

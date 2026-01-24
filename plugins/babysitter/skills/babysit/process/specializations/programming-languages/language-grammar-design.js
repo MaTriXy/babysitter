@@ -306,7 +306,7 @@ export const languageGoalsTask = defineTask('language-goals', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Language Goals - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Define language design goals and principles',
@@ -350,7 +350,7 @@ export const coreSyntaxDesignTask = defineTask('core-syntax-design', (args, task
   kind: 'agent',
   title: `Phase 2: Core Syntax Design - ${args.languageName}`,
   agent: {
-    name: 'syntax-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Programming Language Syntax Designer',
       task: 'Design core language syntax',
@@ -395,7 +395,7 @@ export const lexicalGrammarTask = defineTask('lexical-grammar', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Lexical Grammar - ${args.languageName}`,
   agent: {
-    name: 'lexical-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Lexical Grammar Designer',
       task: 'Design lexical grammar (token definitions)',
@@ -439,7 +439,7 @@ export const syntacticGrammarTask = defineTask('syntactic-grammar', (args, taskC
   kind: 'agent',
   title: `Phase 4: Syntactic Grammar - ${args.languageName}`,
   agent: {
-    name: 'grammar-formalizer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Formal Grammar Specialist',
       task: 'Formalize syntactic grammar in EBNF notation',
@@ -483,7 +483,7 @@ export const operatorPrecedenceTask = defineTask('operator-precedence', (args, t
   kind: 'agent',
   title: `Phase 5: Operator Precedence - ${args.languageName}`,
   agent: {
-    name: 'operator-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Operator Precedence Designer',
       task: 'Design operator precedence and associativity',
@@ -525,7 +525,7 @@ export const ambiguityAnalysisTask = defineTask('ambiguity-analysis', (args, tas
   kind: 'agent',
   title: `Phase 6: Ambiguity Analysis - ${args.languageName}`,
   agent: {
-    name: 'grammar-analyzer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Grammar Ambiguity Analyst',
       task: 'Analyze and resolve grammar ambiguities',
@@ -567,7 +567,7 @@ export const grammarValidationTask = defineTask('grammar-validation', (args, tas
   kind: 'agent',
   title: `Phase 7: Grammar Validation - ${args.languageName}`,
   agent: {
-    name: 'grammar-validator',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Grammar Validation Engineer',
       task: 'Validate grammar specification',
@@ -610,7 +610,7 @@ export const exampleProgramsTask = defineTask('example-programs', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: Example Programs - ${args.languageName}`,
   agent: {
-    name: 'example-writer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Language Example Writer',
       task: 'Create example programs demonstrating syntax',
@@ -651,7 +651,7 @@ export const grammarDocumentationTask = defineTask('grammar-documentation', (arg
   kind: 'agent',
   title: `Phase 9: Grammar Documentation - ${args.languageName}`,
   agent: {
-    name: 'grammar-documentor',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate comprehensive grammar documentation',
@@ -693,7 +693,7 @@ export const grammarFinalReviewTask = defineTask('grammar-final-review', (args, 
   kind: 'agent',
   title: `Phase 10: Final Review - ${args.languageName}`,
   agent: {
-    name: 'language-lead',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Language Design Lead',
       task: 'Conduct final grammar review',

@@ -96,8 +96,11 @@ export const testingRequirementsTask = defineTask('testing-requirements', (args,
 export const setupTestFrameworkTask = defineTask('setup-test-framework', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Framework Setup - ${args.projectName}`,
+  skill: {
+    name: 'jest-electron-setup',
+  },
   agent: {
-    name: 'test-framework-developer',
+    name: 'desktop-test-engineer',
     prompt: { role: 'Test Framework Developer', task: 'Set up testing framework', context: args, instructions: ['1. Install testing dependencies', '2. Create configuration file', '3. Configure test environment', '4. Set up test scripts', '5. Configure module resolution', '6. Set up TypeScript support', '7. Configure watch mode', '8. Generate framework configuration'] },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, scripts: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -108,8 +111,11 @@ export const setupTestFrameworkTask = defineTask('setup-test-framework', (args, 
 export const createNativeApiMocksTask = defineTask('create-native-api-mocks', (args, taskCtx) => ({
   kind: 'agent',
   title: `Native API Mocks - ${args.projectName}`,
+  skill: {
+    name: 'electron-mock-generator',
+  },
   agent: {
-    name: 'mock-developer',
+    name: 'desktop-test-engineer',
     prompt: { role: 'Mock Developer', task: 'Create mocks for native APIs', context: args, instructions: ['1. Mock Electron APIs', '2. Mock dialog module', '3. Mock clipboard', '4. Mock shell module', '5. Mock app module', '6. Mock BrowserWindow', '7. Create mock factory', '8. Generate mock modules'] },
     outputSchema: { type: 'object', required: ['mocks', 'mockCount', 'artifacts'], properties: { mocks: { type: 'array' }, mockCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -120,8 +126,11 @@ export const createNativeApiMocksTask = defineTask('create-native-api-mocks', (a
 export const createIpcMocksTask = defineTask('create-ipc-mocks', (args, taskCtx) => ({
   kind: 'agent',
   title: `IPC Mocks - ${args.projectName}`,
+  skill: {
+    name: 'ipc-mock-factory',
+  },
   agent: {
-    name: 'ipc-mock-developer',
+    name: 'desktop-test-engineer',
     prompt: { role: 'IPC Mock Developer', task: 'Create mocks for IPC communication', context: args, instructions: ['1. Mock ipcMain', '2. Mock ipcRenderer', '3. Create IPC test utilities', '4. Mock contextBridge', '5. Create channel matchers', '6. Mock invoke/handle', '7. Create event simulators', '8. Generate IPC mocks'] },
     outputSchema: { type: 'object', required: ['mocks', 'artifacts'], properties: { mocks: { type: 'array' }, utilities: { type: 'array' }, artifacts: { type: 'array' } } }
   },

@@ -195,7 +195,7 @@ export const threatAnalysisTask = defineTask('threat-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Analyze Injection Threats - ${args.systemName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'prompt-injection-defender',  // AG-SAF-002: Implements prompt injection defenses
     prompt: {
       role: 'Security Analyst',
       task: 'Analyze prompt injection threats',

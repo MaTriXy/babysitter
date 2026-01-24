@@ -176,7 +176,7 @@ export const ctfDesignTask = defineTask('ctf-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design CTF - ${args.projectName}`,
   agent: {
-    name: 'ctf-designer',
+    name: 'ctf-creator',
     prompt: {
       role: 'CTF Design Specialist',
       task: 'Design CTF structure',
@@ -215,7 +215,7 @@ export const challengeCreationTask = defineTask('challenge-creation', (args, tas
   kind: 'agent',
   title: `Create Challenges - ${args.projectName}`,
   agent: {
-    name: 'challenge-creator',
+    name: 'ctf-creator',
     prompt: {
       role: 'CTF Challenge Creator',
       task: 'Create CTF challenges',
@@ -254,7 +254,7 @@ export const solutionDocumentationTask = defineTask('solution-documentation', (a
   kind: 'agent',
   title: `Document Solutions - ${args.projectName}`,
   agent: {
-    name: 'solution-writer',
+    name: 'ctf-creator',
     prompt: {
       role: 'Solution Documentation Specialist',
       task: 'Document challenge solutions',
@@ -293,7 +293,7 @@ export const ctfInfrastructureTask = defineTask('ctf-infrastructure', (args, tas
   kind: 'agent',
   title: `Setup Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'infra-engineer',
+    name: 'ctf-creator',
     prompt: {
       role: 'CTF Infrastructure Engineer',
       task: 'Set up CTF infrastructure',
@@ -332,7 +332,7 @@ export const challengeTestingTask = defineTask('challenge-testing', (args, taskC
   kind: 'agent',
   title: `Test Challenges - ${args.projectName}`,
   agent: {
-    name: 'challenge-tester',
+    name: 'ctf-creator',
     prompt: {
       role: 'CTF Challenge Tester',
       task: 'Test challenges',
@@ -371,7 +371,7 @@ export const ctfDeploymentTask = defineTask('ctf-deployment', (args, taskCtx) =>
   kind: 'agent',
   title: `Deploy CTF - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'ctf-creator',
     prompt: {
       role: 'CTF Deployment Engineer',
       task: 'Deploy CTF',

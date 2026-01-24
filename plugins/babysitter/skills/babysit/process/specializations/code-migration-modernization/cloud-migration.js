@@ -275,7 +275,7 @@ export const discoveryAssessmentTask = defineTask('discovery-assessment', (args,
   kind: 'agent',
   title: `Phase 1: Discovery and Assessment - ${args.projectName}`,
   agent: {
-    name: 'cloud-analyst',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Cloud Migration Analyst',
       task: 'Discover and assess workloads for cloud migration',
@@ -318,7 +318,7 @@ export const cloudArchitectureDesignTask = defineTask('cloud-architecture-design
   kind: 'agent',
   title: `Phase 2: Cloud Architecture Design - ${args.projectName}`,
   agent: {
-    name: 'cloud-architect',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Cloud Solutions Architect',
       task: 'Design target cloud architecture',
@@ -362,7 +362,7 @@ export const infrastructureAsCodeTask = defineTask('infrastructure-as-code', (ar
   kind: 'agent',
   title: `Phase 3: Infrastructure as Code - ${args.projectName}`,
   agent: {
-    name: 'iac-developer',
+    name: 'iac-generator',
     prompt: {
       role: 'Infrastructure Engineer',
       task: 'Create infrastructure as code',
@@ -404,7 +404,7 @@ export const networkSecuritySetupTask = defineTask('network-security-setup', (ar
   kind: 'agent',
   title: `Phase 4: Network and Security Setup - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Cloud Security Engineer',
       task: 'Set up network and security controls',
@@ -447,7 +447,7 @@ export const cloudDataMigrationPlanningTask = defineTask('cloud-data-migration-p
   kind: 'agent',
   title: `Phase 5: Data Migration Planning - ${args.projectName}`,
   agent: {
-    name: 'data-migration-planner',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Data Migration Specialist',
       task: 'Plan data migration to cloud',
@@ -490,7 +490,7 @@ export const applicationMigrationTask = defineTask('application-migration', (arg
   kind: 'agent',
   title: `Phase 6: Application Migration - ${args.projectName}`,
   agent: {
-    name: 'app-migrator',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Application Migration Engineer',
       task: 'Migrate applications to cloud',
@@ -532,7 +532,7 @@ export const dataMigrationExecutionTask = defineTask('data-migration-execution',
   kind: 'agent',
   title: `Phase 7: Data Migration Execution - ${args.projectName}`,
   agent: {
-    name: 'data-executor',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Data Migration Engineer',
       task: 'Execute data migration to cloud',
@@ -574,7 +574,7 @@ export const cloudValidationTestingTask = defineTask('cloud-validation-testing',
   kind: 'agent',
   title: `Phase 8: Validation and Testing - ${args.projectName}`,
   agent: {
-    name: 'cloud-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'Cloud QA Engineer',
       task: 'Validate migrated applications',
@@ -616,7 +616,7 @@ export const cutoverPlanningTask = defineTask('cutover-planning', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: Cutover Planning - ${args.projectName}`,
   agent: {
-    name: 'cutover-planner',
+    name: 'cutover-coordinator',
     prompt: {
       role: 'Release Manager',
       task: 'Plan production cutover',
@@ -659,7 +659,7 @@ export const operationalReadinessTask = defineTask('operational-readiness', (arg
   kind: 'agent',
   title: `Phase 10: Operational Readiness - ${args.projectName}`,
   agent: {
-    name: 'ops-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Site Reliability Engineer',
       task: 'Ensure operational readiness in cloud',

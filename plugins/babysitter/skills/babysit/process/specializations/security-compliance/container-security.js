@@ -372,8 +372,11 @@ export const imageDiscoveryTask = defineTask('image-discovery', (args, taskCtx) 
 
 // Task 2: Trivy Vulnerability Scanning
 export const trivyVulnerabilityScanTask = defineTask('trivy-vulnerability-scan', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Scan vulnerabilities with Trivy',
+  skill: {
+    name: 'container-security-scanner',
+  },
   agent: {
     name: 'trivy-scanner',
     prompt: {
@@ -508,8 +511,11 @@ export const grypeVulnerabilityScanTask = defineTask('grype-vulnerability-scan',
 
 // Task 4: Malware and Secret Detection
 export const malwareSecretDetectionTask = defineTask('malware-secret-detection', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Detect malware and exposed secrets',
+  skill: {
+    name: 'secret-detection-scanner',
+  },
   agent: {
     name: 'secret-malware-detector',
     prompt: {

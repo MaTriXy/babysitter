@@ -113,8 +113,11 @@ export const updateRequirementsTask = defineTask('update-requirements', (args, t
 export const implementCoreUpdateTask = defineTask('implement-core-update', (args, taskCtx) => ({
   kind: 'agent',
   title: `Core Update Module - ${args.projectName}`,
+  skill: {
+    name: 'electron-auto-updater-setup',
+  },
   agent: {
-    name: 'update-developer',
+    name: 'release-manager',
     prompt: { role: 'Auto-Update Developer', task: 'Implement core update module', context: args, instructions: ['1. Configure autoUpdater', '2. Implement update checking', '3. Handle update events', '4. Implement download progress', '5. Handle update ready', '6. Implement quit and install', '7. Configure logging', '8. Generate update module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'events', 'artifacts'], properties: { modulePath: { type: 'string' }, events: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -126,7 +129,7 @@ export const configureUpdateServerTask = defineTask('configure-update-server', (
   kind: 'agent',
   title: `Update Server Configuration - ${args.projectName}`,
   agent: {
-    name: 'server-configurator',
+    name: 'artifact-distribution-specialist',
     prompt: { role: 'Update Server Configurator', task: 'Configure update server', context: args, instructions: ['1. Configure GitHub Releases', '2. Set up release channels', '3. Configure update manifest', '4. Set up CDN if needed', '5. Configure authentication', '6. Set up proxy support', '7. Configure caching', '8. Generate server configuration'] },
     outputSchema: { type: 'object', required: ['updateUrl', 'artifacts'], properties: { updateUrl: { type: 'string' }, channels: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -186,7 +189,7 @@ export const validateUpdateSystemTask = defineTask('validate-update-system', (ar
   kind: 'agent',
   title: `Validate Update System - ${args.projectName}`,
   agent: {
-    name: 'update-validator',
+    name: 'update-security-analyst',
     prompt: { role: 'Update System Validator', task: 'Validate auto-update implementation', context: args, instructions: ['1. Test update checking', '2. Verify download flow', '3. Test installation', '4. Verify rollback', '5. Test platform handlers', '6. Calculate validation score', '7. Identify issues', '8. Generate recommendations'] },
     outputSchema: { type: 'object', required: ['validationScore', 'artifacts'], properties: { validationScore: { type: 'number' }, artifacts: { type: 'array' } } }
   },

@@ -206,7 +206,7 @@ export const powerMeasurementSetupTask = defineTask('power-measurement-setup', (
   kind: 'agent',
   title: `Phase 1: Measurement Setup - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Set up power measurement infrastructure',
@@ -247,7 +247,7 @@ export const baselinePowerMeasurementTask = defineTask('baseline-power-measureme
   kind: 'agent',
   title: `Phase 2: Baseline Measurement - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Measure baseline power consumption',
@@ -290,7 +290,7 @@ export const peripheralPowerAnalysisTask = defineTask('peripheral-power-analysis
   kind: 'agent',
   title: `Phase 3: Peripheral Analysis - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Analyze peripheral power consumption',
@@ -331,7 +331,7 @@ export const powerModeCharacterizationTask = defineTask('power-mode-characteriza
   kind: 'agent',
   title: `Phase 4: Mode Characterization - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Characterize power modes',
@@ -372,7 +372,7 @@ export const powerOptimizationAnalysisTask = defineTask('power-optimization-anal
   kind: 'agent',
   title: `Phase 5: Optimization Analysis - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Analyze power optimization opportunities',
@@ -413,7 +413,7 @@ export const batteryLifeEstimationTask = defineTask('battery-life-estimation', (
   kind: 'agent',
   title: `Phase 6: Battery Life Estimation - ${args.projectName}`,
   agent: {
-    name: 'power-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Power Systems Engineer',
       task: 'Estimate battery life',
@@ -455,7 +455,7 @@ export const powerProfileReportTask = defineTask('power-profile-report', (args, 
   kind: 'agent',
   title: `Phase 7: Power Profile Report - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate power profile report',

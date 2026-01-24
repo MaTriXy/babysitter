@@ -286,7 +286,7 @@ export const workshopPreparationTask = defineTask('workshop-preparation', (args,
   kind: 'agent',
   title: 'Prepare for quality attributes workshop',
   agent: {
-    name: 'workshop-facilitator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'senior software architect and workshop facilitator',
       task: 'Prepare comprehensive quality attributes workshop including stakeholder identification, agenda creation, and quality framework reference materials',
@@ -391,7 +391,7 @@ export const systemContextPresentationTask = defineTask('system-context-presenta
   kind: 'agent',
   title: 'Establish system context and scope',
   agent: {
-    name: 'context-presenter',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'senior software architect and technical communicator',
       task: 'Create comprehensive system context presentation covering purpose, scope, business drivers, use cases, and constraints',
@@ -480,7 +480,7 @@ export const qualityAttributesBrainstormTask = defineTask('quality-attributes-br
   kind: 'agent',
   title: 'Brainstorm quality attributes with stakeholders',
   agent: {
-    name: 'brainstorm-facilitator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'workshop facilitator and quality attributes expert',
       task: 'Facilitate quality attributes brainstorming session, collecting stakeholder concerns and categorizing them into quality attribute categories',
@@ -557,7 +557,7 @@ export const scenarioDefinitionTask = defineTask('scenario-definition', (args, t
   kind: 'agent',
   title: 'Define quality attribute scenarios with measurable criteria',
   agent: {
-    name: 'scenario-architect',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'software architect and quality scenarios specialist',
       task: 'Create concrete, measurable quality attribute scenarios using the scenario template: Stimulus, Source, Environment, Artifact, Response, Response Measure',
@@ -628,7 +628,7 @@ export const scenarioPrioritizationTask = defineTask('scenario-prioritization', 
   kind: 'agent',
   title: 'Prioritize scenarios and identify trade-offs',
   agent: {
-    name: 'prioritization-facilitator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'workshop facilitator and prioritization expert',
       task: 'Facilitate scenario prioritization using MoSCoW method, identify conflicting quality attributes, and document trade-offs',
@@ -718,7 +718,7 @@ export const scenarioRefinementTask = defineTask('scenario-refinement', (args, t
   kind: 'agent',
   title: 'Refine and detail high-priority scenarios',
   agent: {
-    name: 'scenario-refiner',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'software architect and requirements specialist',
       task: 'Refine high-priority scenarios with detailed acceptance criteria, measurement approach, dependencies, and implementation considerations',
@@ -816,7 +816,7 @@ export const architectureMappingTask = defineTask('architecture-mapping', (args,
   kind: 'agent',
   title: 'Map quality attributes to architecture implications',
   agent: {
-    name: 'architecture-strategist',
+    name: 'atam-analyst',
     prompt: {
       role: 'principal software architect',
       task: 'Map quality attributes to architectural patterns, tactics, and design decisions that support or enable each quality attribute',
@@ -922,7 +922,7 @@ export const requirementsDocumentGenerationTask = defineTask('requirements-docum
   kind: 'agent',
   title: 'Generate comprehensive quality requirements document',
   agent: {
-    name: 'requirements-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'senior technical writer and software architect',
       task: 'Generate comprehensive, stakeholder-ready quality requirements document consolidating workshop outcomes',
@@ -989,7 +989,7 @@ export const validationApproachDefinitionTask = defineTask('validation-approach-
   kind: 'agent',
   title: 'Define validation and measurement approach',
   agent: {
-    name: 'validation-architect',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'quality assurance architect and testing strategist',
       task: 'Define comprehensive validation approach for quality attribute scenarios including testing strategies, tools, metrics, and acceptance criteria',
@@ -1102,7 +1102,7 @@ export const workshopQualityAssessmentTask = defineTask('workshop-quality-assess
   kind: 'agent',
   title: 'Assess workshop quality and completeness',
   agent: {
-    name: 'workshop-evaluator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'principal architect and workshop quality auditor',
       task: 'Assess overall workshop quality, completeness, and readiness for architecture design phase',

@@ -313,8 +313,9 @@ export async function process(inputs, ctx) {
 export const reviewPreparationTask = defineTask('review-preparation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Prepare for architecture review',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'review-coordinator',
+    name: 'atam-analyst',
     prompt: {
       role: 'senior architecture review facilitator and coordinator',
       task: 'Prepare comprehensive architecture review agenda, materials checklist, and stakeholder coordination plan',
@@ -374,8 +375,9 @@ export const reviewPreparationTask = defineTask('review-preparation', (args, tas
 export const architecturePresentationAnalysisTask = defineTask('architecture-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze architecture presentation',
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'architecture-analyst',
+    name: 'atam-analyst',
     prompt: {
       role: 'principal software architect and technical reviewer',
       task: 'Comprehensively analyze architecture documentation, identify business drivers, key decisions, technology choices, and architectural patterns',
@@ -452,8 +454,9 @@ export const architecturePresentationAnalysisTask = defineTask('architecture-ana
 export const qualityAttributeScenarioDefinitionTask = defineTask('scenario-definition', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Define quality attribute scenarios',
+  skill: { name: 'markdown-processor' },
   agent: {
-    name: 'scenario-designer',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'quality attribute specialist and scenario architect',
       task: 'Create comprehensive, testable quality attribute scenarios following the Stimulus-Response-Measure pattern',
@@ -517,8 +520,9 @@ export const qualityAttributeScenarioDefinitionTask = defineTask('scenario-defin
 export const scenarioEvaluationTask = defineTask('scenario-evaluation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Evaluate scenario ${args.scenarioIndex}`,
+  skill: { name: 'code-complexity-analyzer' },
   agent: {
-    name: 'scenario-evaluator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'architecture evaluator and quality assurance specialist',
       task: 'Evaluate how well the architecture supports the given quality attribute scenario',
@@ -595,8 +599,9 @@ export const scenarioEvaluationTask = defineTask('scenario-evaluation', (args, t
 export const riskIdentificationTask = defineTask('risk-identification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Identify and analyze architectural risks',
+  skill: { name: 'threat-modeler' },
   agent: {
-    name: 'risk-analyst',
+    name: 'security-architect',
     prompt: {
       role: 'architecture risk assessment specialist',
       task: 'Identify, categorize, and prioritize architectural risks, sensitivity points, and trade-offs',
@@ -679,8 +684,9 @@ export const riskIdentificationTask = defineTask('risk-identification', (args, t
 export const recommendationGenerationTask = defineTask('recommendation-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate improvement recommendations',
+  skill: { name: 'markdown-processor' },
   agent: {
-    name: 'architecture-advisor',
+    name: 'atam-analyst',
     prompt: {
       role: 'senior architecture consultant and improvement strategist',
       task: 'Generate prioritized, actionable recommendations for architectural improvements',
@@ -754,8 +760,9 @@ export const recommendationGenerationTask = defineTask('recommendation-generatio
 export const actionPlanCreationTask = defineTask('action-plan-creation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create prioritized action plan',
+  skill: { name: 'markdown-processor' },
   agent: {
-    name: 'action-planner',
+    name: 'atam-analyst',
     prompt: {
       role: 'project manager and execution strategist',
       task: 'Create detailed, prioritized action plan with owners, timelines, and success metrics',
@@ -830,8 +837,9 @@ export const actionPlanCreationTask = defineTask('action-plan-creation', (args, 
 export const reviewReportGenerationTask = defineTask('review-report-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate comprehensive review report',
+  skill: { name: 'markdown-processor' },
   agent: {
-    name: 'report-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'senior technical writer and architecture communicator',
       task: 'Generate comprehensive, executive-ready system design review report',
@@ -888,8 +896,9 @@ export const reviewReportGenerationTask = defineTask('review-report-generation',
 export const reviewQualityScoringTask = defineTask('review-quality-scoring', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Score review quality and completeness',
+  skill: { name: 'tech-writing-linter' },
   agent: {
-    name: 'review-validator',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'architecture review auditor and quality assessor',
       task: 'Assess overall design review quality, completeness, and effectiveness',

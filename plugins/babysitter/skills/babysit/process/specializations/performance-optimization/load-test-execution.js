@@ -94,7 +94,7 @@ export const prepareTestEnvironmentTask = defineTask('prepare-test-environment',
   kind: 'agent',
   title: `Prepare Test Environment - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Prepare load test environment', context: args,
       instructions: ['1. Validate test scripts', '2. Check test data', '3. Verify connectivity', '4. Configure monitoring', '5. Document setup'],
       outputFormat: 'JSON with environment preparation' },
@@ -108,7 +108,7 @@ export const runBaselineTestsTask = defineTask('run-baseline-tests', (args, task
   kind: 'agent',
   title: `Run Baseline Tests - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Run baseline performance tests', context: args,
       instructions: ['1. Run single user tests', '2. Capture baseline metrics', '3. Verify functionality', '4. Document baseline', '5. Save results'],
       outputFormat: 'JSON with baseline results' },
@@ -122,7 +122,7 @@ export const executeLoadScenariosTask = defineTask('execute-load-scenarios', (ar
   kind: 'agent',
   title: `Execute Load Scenarios - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Execute load test scenarios', context: args,
       instructions: ['1. Start load generators', '2. Ramp up load', '3. Execute scenarios', '4. Monitor execution', '5. Collect results'],
       outputFormat: 'JSON with load test results' },
@@ -136,7 +136,7 @@ export const collectPerformanceMetricsTask = defineTask('collect-performance-met
   kind: 'agent',
   title: `Collect Performance Metrics - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Collect performance metrics', context: args,
       instructions: ['1. Gather response times', '2. Calculate percentiles', '3. Collect throughput', '4. Gather error data', '5. Export metrics'],
       outputFormat: 'JSON with performance metrics' },
@@ -150,7 +150,7 @@ export const analyzeResponseTimeDistributionTask = defineTask('analyze-response-
   kind: 'agent',
   title: `Analyze Response Time Distribution - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Analyze response time distribution', context: args,
       instructions: ['1. Build histogram', '2. Identify outliers', '3. Analyze patterns', '4. Find anomalies', '5. Document distribution'],
       outputFormat: 'JSON with response time analysis' },
@@ -164,7 +164,7 @@ export const identifyLoadTestBottlenecksTask = defineTask('identify-load-test-bo
   kind: 'agent',
   title: `Identify Bottlenecks - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Identify performance bottlenecks', context: args,
       instructions: ['1. Analyze slow endpoints', '2. Correlate with resources', '3. Find saturation points', '4. Identify root causes', '5. Document bottlenecks'],
       outputFormat: 'JSON with bottleneck analysis' },
@@ -178,7 +178,7 @@ export const compareWithBaselineTask = defineTask('compare-with-baseline', (args
   kind: 'agent',
   title: `Compare with Baseline - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Compare results with baseline', context: args,
       instructions: ['1. Compare response times', '2. Compare throughput', '3. Compare errors', '4. Calculate degradation', '5. Document comparison'],
       outputFormat: 'JSON with comparison' },
@@ -192,7 +192,7 @@ export const generateLoadTestReportTask = defineTask('generate-load-test-report'
   kind: 'agent',
   title: `Generate Load Test Report - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Generate load test report', context: args,
       instructions: ['1. Compile results', '2. Add visualizations', '3. Include analysis', '4. Add recommendations', '5. Generate report'],
       outputFormat: 'JSON with report details' },

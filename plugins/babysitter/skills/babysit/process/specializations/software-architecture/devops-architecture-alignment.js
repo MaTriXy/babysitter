@@ -446,7 +446,7 @@ export const currentStateAssessmentTask = defineTask('current-state-assessment',
   kind: 'agent',
   title: `Assess current CI/CD and deployment state: ${args.projectName}`,
   agent: {
-    name: 'devops-assessor',
+    name: 'devops-architect',
     prompt: {
       role: 'DevOps Architect and Site Reliability Engineer',
       task: 'Assess current CI/CD pipelines, deployment practices, infrastructure, and identify gaps and pain points',
@@ -526,7 +526,7 @@ export const cicdPipelineDesignTask = defineTask('cicd-pipeline-design', (args, 
   kind: 'agent',
   title: `Design CI/CD pipeline architecture: ${args.projectName}`,
   agent: {
-    name: 'pipeline-architect',
+    name: 'cicd-specialist',
     prompt: {
       role: 'CI/CD Pipeline Architect and DevOps Engineer',
       task: 'Design comprehensive CI/CD pipeline architecture with stages, automation, tooling, and quality gates',
@@ -629,7 +629,7 @@ export const deploymentStrategyDesignTask = defineTask('deployment-strategy-desi
   kind: 'agent',
   title: `Design deployment strategy: ${args.projectName}`,
   agent: {
-    name: 'deployment-strategist',
+    name: 'devops-architect',
     prompt: {
       role: 'Deployment Architect and Release Engineer',
       task: 'Design comprehensive deployment strategy including deployment patterns, release management, and zero-downtime approaches',
@@ -714,7 +714,7 @@ export const featureFlagsDesignTask = defineTask('feature-flags-design', (args, 
   kind: 'agent',
   title: `Design feature flags system: ${args.projectName}`,
   agent: {
-    name: 'feature-flag-architect',
+    name: 'devops-architect',
     prompt: {
       role: 'Feature Management Architect',
       task: 'Design feature flag system for progressive rollouts, A/B testing, and deployment decoupling',
@@ -797,7 +797,7 @@ export const infrastructureAsCodeDesignTask = defineTask('infrastructure-as-code
   kind: 'agent',
   title: `Design Infrastructure as Code: ${args.projectName}`,
   agent: {
-    name: 'iac-architect',
+    name: 'iac-specialist',
     prompt: {
       role: 'Infrastructure as Code Architect',
       task: 'Design Infrastructure as Code (IaC) architecture using tools like Terraform, CloudFormation, Pulumi, or Ansible',
@@ -884,7 +884,7 @@ export const rollbackProceduresDesignTask = defineTask('rollback-procedures-desi
   kind: 'agent',
   title: `Design rollback procedures: ${args.projectName}`,
   agent: {
-    name: 'rollback-engineer',
+    name: 'sre-reliability-engineer',
     prompt: {
       role: 'Site Reliability Engineer and Rollback Specialist',
       task: 'Design comprehensive rollback procedures and disaster recovery mechanisms',
@@ -1093,7 +1093,7 @@ export const releaseChecklistCreationTask = defineTask('release-checklist-creati
   kind: 'agent',
   title: `Create release checklist: ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'devops-architect',
     prompt: {
       role: 'Release Manager and Quality Assurance Lead',
       task: 'Create comprehensive release checklist covering pre-deployment, deployment, and post-deployment activities',
@@ -1185,7 +1185,7 @@ export const implementationRoadmapTask = defineTask('implementation-roadmap', (a
   kind: 'agent',
   title: `Create implementation roadmap: ${args.projectName}`,
   agent: {
-    name: 'implementation-planner',
+    name: 'devops-architect',
     prompt: {
       role: 'DevOps Implementation Lead and Project Manager',
       task: 'Create comprehensive implementation roadmap with phases, tasks, dependencies, timeline, and resource allocation',

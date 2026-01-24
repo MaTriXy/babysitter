@@ -221,7 +221,7 @@ export const powerRequirementsTask = defineTask('power-requirements', (args, tas
   kind: 'agent',
   title: `Phase 1: Power Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Analyze power requirements',
@@ -263,7 +263,7 @@ export const currentProfilingTask = defineTask('current-profiling', (args, taskC
   kind: 'agent',
   title: `Phase 2: Current Profiling - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Profile current consumption',
@@ -306,7 +306,7 @@ export const sleepModeDesignTask = defineTask('sleep-mode-design', (args, taskCt
   kind: 'agent',
   title: `Phase 3: Sleep Mode Design - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Design sleep mode strategy',
@@ -348,7 +348,7 @@ export const clockManagementTask = defineTask('clock-management', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Clock Management - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Design clock management',
@@ -390,7 +390,7 @@ export const peripheralPowerManagementTask = defineTask('peripheral-power-manage
   kind: 'agent',
   title: `Phase 5: Peripheral Power - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Design peripheral power management',
@@ -432,7 +432,7 @@ export const dutyCycleOptimizationTask = defineTask('duty-cycle-optimization', (
   kind: 'agent',
   title: `Phase 6: Duty Cycle - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Optimize duty cycle',
@@ -475,7 +475,7 @@ export const batteryLifeEstimationTask = defineTask('battery-life-estimation', (
   kind: 'agent',
   title: `Phase 7: Battery Life - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Low-Power Systems Engineer',
       task: 'Estimate battery life',
@@ -518,7 +518,7 @@ export const lowPowerImplementationTask = defineTask('low-power-implementation',
   kind: 'agent',
   title: `Phase 8: Implementation Guide - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate low-power implementation guide',

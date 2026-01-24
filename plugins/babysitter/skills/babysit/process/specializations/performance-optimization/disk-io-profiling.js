@@ -93,7 +93,7 @@ export const setupIOMonitoringTask = defineTask('setup-io-monitoring', (args, ta
   kind: 'agent',
   title: `Setup I/O Monitoring - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Setup I/O monitoring tools', context: args,
       instructions: ['1. Install iostat/iotop', '2. Configure I/O tracing', '3. Set up metrics collection', '4. Configure dashboards', '5. Document setup'],
       outputFormat: 'JSON with setup details' },
@@ -107,7 +107,7 @@ export const captureIOMetricsTask = defineTask('capture-io-metrics', (args, task
   kind: 'agent',
   title: `Capture I/O Metrics - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Capture disk I/O metrics', context: args,
       instructions: ['1. Capture IOPS', '2. Capture throughput', '3. Capture latency', '4. Capture queue depth', '5. Export metrics'],
       outputFormat: 'JSON with I/O metrics' },
@@ -121,7 +121,7 @@ export const analyzeReadWritePatternsTask = defineTask('analyze-read-write-patte
   kind: 'agent',
   title: `Analyze Read/Write Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze read/write patterns', context: args,
       instructions: ['1. Analyze read vs write ratio', '2. Identify access patterns', '3. Analyze block sizes', '4. Document patterns', '5. Identify issues'],
       outputFormat: 'JSON with pattern analysis' },
@@ -135,7 +135,7 @@ export const identifyIOBottlenecksTask = defineTask('identify-io-bottlenecks', (
   kind: 'agent',
   title: `Identify I/O Bottlenecks - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Identify I/O bottlenecks', context: args,
       instructions: ['1. Identify slow operations', '2. Find queue saturation', '3. Identify seek-heavy patterns', '4. Find blocking I/O', '5. Document bottlenecks'],
       outputFormat: 'JSON with bottleneck analysis' },
@@ -149,7 +149,7 @@ export const evaluateAccessPatternsTask = defineTask('evaluate-access-patterns',
   kind: 'agent',
   title: `Evaluate Access Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Evaluate sequential vs random access', context: args,
       instructions: ['1. Analyze sequential ratio', '2. Identify random access', '3. Evaluate impact', '4. Recommend changes', '5. Document evaluation'],
       outputFormat: 'JSON with access evaluation' },
@@ -163,7 +163,7 @@ export const optimizeBufferSizesTask = defineTask('optimize-buffer-sizes', (args
   kind: 'agent',
   title: `Optimize Buffer Sizes - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Optimize buffer sizes', context: args,
       instructions: ['1. Analyze current buffers', '2. Test different sizes', '3. Optimize read buffers', '4. Optimize write buffers', '5. Document changes'],
       outputFormat: 'JSON with buffer optimizations' },
@@ -177,7 +177,7 @@ export const implementAsyncIOTask = defineTask('implement-async-io', (args, task
   kind: 'agent',
   title: `Implement Async I/O - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement async I/O where appropriate', context: args,
       instructions: ['1. Identify blocking I/O', '2. Implement async operations', '3. Add I/O scheduling', '4. Handle completion', '5. Document changes'],
       outputFormat: 'JSON with async I/O implementation' },
@@ -191,7 +191,7 @@ export const benchmarkIOImprovementsTask = defineTask('benchmark-io-improvements
   kind: 'agent',
   title: `Benchmark I/O Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Benchmark I/O improvements', context: args,
       instructions: ['1. Run baseline benchmarks', '2. Run optimized benchmarks', '3. Compare IOPS', '4. Compare latency', '5. Document results'],
       outputFormat: 'JSON with benchmark results' },

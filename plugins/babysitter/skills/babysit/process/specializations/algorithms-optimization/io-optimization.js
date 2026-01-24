@@ -47,7 +47,7 @@ export const ioAnalysisTask = defineTask('io-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Analyze I/O - ${args.language}`,
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Competitive Programming Expert',
       task: 'Analyze I/O optimization opportunities for language',
@@ -69,7 +69,7 @@ export const fastIOImplementationTask = defineTask('fast-io-implementation', (ar
   kind: 'agent',
   title: `Implement Fast I/O - ${args.language}`,
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Competitive Programming Expert',
       task: 'Implement fast I/O template',
@@ -91,7 +91,7 @@ export const ioBenchmarkingTask = defineTask('io-benchmarking', (args, taskCtx) 
   kind: 'agent',
   title: 'Benchmark I/O',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Tester',
       task: 'Benchmark I/O optimizations',

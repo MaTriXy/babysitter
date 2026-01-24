@@ -197,7 +197,7 @@ export const researchDocumentationTask = defineTask('research-documentation', (a
   kind: 'agent',
   title: `Document Research - ${args.projectName}`,
   agent: {
-    name: 'research-documenter',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Research Documenter',
       task: 'Document research methodology and findings',
@@ -236,7 +236,7 @@ export const technicalWritingTask = defineTask('technical-writing', (args, taskC
   kind: 'agent',
   title: `Technical Writing - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Technical Writer',
       task: 'Write technical publication',
@@ -275,7 +275,7 @@ export const peerReviewTask = defineTask('peer-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Peer Review - ${args.projectName}`,
   agent: {
-    name: 'peer-reviewer',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Research Peer Reviewer',
       task: 'Conduct internal peer review',
@@ -314,7 +314,7 @@ export const disclosureCoordinationTask = defineTask('disclosure-coordination', 
   kind: 'agent',
   title: `Disclosure Coordination - ${args.projectName}`,
   agent: {
-    name: 'disclosure-coordinator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Responsible Disclosure Coordinator',
       task: 'Coordinate responsible disclosure',
@@ -354,7 +354,7 @@ export const submissionPreparationTask = defineTask('submission-preparation', (a
   kind: 'agent',
   title: `Prepare Submission - ${args.projectName}`,
   agent: {
-    name: 'submission-preparer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Publication Submission Specialist',
       task: 'Prepare publication submission',
@@ -393,7 +393,7 @@ export const presentationMaterialsTask = defineTask('presentation-materials', (a
   kind: 'agent',
   title: `Create Presentation - ${args.projectName}`,
   agent: {
-    name: 'presentation-creator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Presentation Specialist',
       task: 'Create presentation materials',
@@ -432,7 +432,7 @@ export const publicationTask = defineTask('publication', (args, taskCtx) => ({
   kind: 'agent',
   title: `Publish Research - ${args.projectName}`,
   agent: {
-    name: 'publication-manager',
+    name: 'security-report-writer',
     prompt: {
       role: 'Research Publication Manager',
       task: 'Manage publication process',

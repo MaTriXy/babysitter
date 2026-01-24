@@ -263,8 +263,9 @@ export async function process(inputs, ctx) {
 export const poolDesignTask = defineTask('pool-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Pool Design - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'pool-architect',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Connection Pool Architect',
       task: 'Design connection pool architecture',
@@ -302,8 +303,9 @@ export const poolDesignTask = defineTask('pool-design', (args, taskCtx) => ({
 export const connectionLifecycleTask = defineTask('connection-lifecycle', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Connection Lifecycle - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'lifecycle-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Connection Lifecycle Engineer',
       task: 'Implement connection creation and initialization',
@@ -341,8 +343,9 @@ export const connectionLifecycleTask = defineTask('connection-lifecycle', (args,
 export const checkoutCheckinTask = defineTask('checkout-checkin', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Checkout/Checkin - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'pool-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Pool Operations Engineer',
       task: 'Implement checkout/checkin mechanism',
@@ -380,8 +383,9 @@ export const checkoutCheckinTask = defineTask('checkout-checkin', (args, taskCtx
 export const healthCheckingTask = defineTask('health-checking', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Health Checking - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'health-check-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Health Check Engineer',
       task: 'Implement connection health checking',
@@ -419,8 +423,9 @@ export const healthCheckingTask = defineTask('health-checking', (args, taskCtx) 
 export const automaticRecoveryTask = defineTask('automatic-recovery', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Automatic Recovery - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'recovery-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Connection Recovery Engineer',
       task: 'Implement automatic reconnection and recovery',
@@ -458,8 +463,9 @@ export const automaticRecoveryTask = defineTask('automatic-recovery', (args, tas
 export const metricsTask = defineTask('metrics', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Metrics - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'metrics-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Observability Engineer',
       task: 'Implement pool metrics and monitoring',
@@ -497,8 +503,9 @@ export const metricsTask = defineTask('metrics', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Test Suite - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive pool tests',
@@ -538,7 +545,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'network-architect',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate pool documentation',
@@ -576,8 +583,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Validation - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'validation-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate pool implementation',

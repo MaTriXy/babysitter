@@ -272,7 +272,7 @@ export const profilingSystemTask = defineTask('profiling-system', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Profiling System - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Design profiling system',
@@ -313,7 +313,7 @@ export const compilationTriggersTask = defineTask('compilation-triggers', (args,
   kind: 'agent',
   title: `Phase 2: Compilation Triggers - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement compilation triggers',
@@ -354,7 +354,7 @@ export const jitIRTask = defineTask('jit-ir', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: JIT IR - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement JIT intermediate representation',
@@ -395,7 +395,7 @@ export const jitCodeGenerationTask = defineTask('jit-code-generation', (args, ta
   kind: 'agent',
   title: `Phase 4: JIT Code Generation - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement native code generation',
@@ -436,7 +436,7 @@ export const optimizationTiersTask = defineTask('optimization-tiers', (args, tas
   kind: 'agent',
   title: `Phase 5: Optimization Tiers - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement optimization tiers',
@@ -477,7 +477,7 @@ export const deoptimizationTask = defineTask('deoptimization', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 6: Deoptimization - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement deoptimization',
@@ -518,7 +518,7 @@ export const codeCacheTask = defineTask('code-cache', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Code Cache - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Implement code cache',
@@ -559,7 +559,7 @@ export const jitIntegrationTask = defineTask('jit-integration', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: JIT Integration - ${args.languageName}`,
   agent: {
-    name: 'jit-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'JIT Compiler Engineer',
       task: 'Integrate JIT compiler',
@@ -599,7 +599,7 @@ export const jitTestingTask = defineTask('jit-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: JIT Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'jit-specialist',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive JIT tests',
@@ -641,7 +641,7 @@ export const jitDocumentationTask = defineTask('jit-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 10: JIT Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'jit-specialist',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate JIT documentation',

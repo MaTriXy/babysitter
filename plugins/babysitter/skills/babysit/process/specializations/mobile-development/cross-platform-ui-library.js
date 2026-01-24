@@ -288,8 +288,9 @@ export async function process(inputs, ctx) {
 export const designAnalysisTask = defineTask('design-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Design Analysis - ${args.libraryName}`,
+  skill: { name: 'design-tokens' },
   agent: {
-    name: 'ui-designer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'UI/UX Designer',
       task: 'Analyze design system and create component inventory',
@@ -335,8 +336,9 @@ export const designAnalysisTask = defineTask('design-analysis', (args, taskCtx) 
 export const themeConfigTask = defineTask('theme-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Theme Configuration - ${args.libraryName}`,
+  skill: { name: 'design-tokens' },
   agent: {
-    name: 'ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'UI Theme Developer',
       task: 'Create base theme configuration',
@@ -382,8 +384,9 @@ export const themeConfigTask = defineTask('theme-config', (args, taskCtx) => ({
 export const platformUtilsTask = defineTask('platform-utils', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Platform Utilities - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'mobile-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Cross-Platform Mobile Developer',
       task: 'Implement platform detection utilities',
@@ -427,8 +430,9 @@ export const platformUtilsTask = defineTask('platform-utils', (args, taskCtx) =>
 export const atomicComponentsTask = defineTask('atomic-components', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Atomic Components - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'UI Component Developer',
       task: 'Build atomic components (buttons, inputs, cards)',
@@ -474,8 +478,9 @@ export const atomicComponentsTask = defineTask('atomic-components', (args, taskC
 export const compositeComponentsTask = defineTask('composite-components', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Composite Components - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'UI Component Developer',
       task: 'Create composite components (forms, lists, navigation)',
@@ -519,8 +524,9 @@ export const compositeComponentsTask = defineTask('composite-components', (args,
 export const platformVariantsTask = defineTask('platform-variants', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Platform Variants - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'mobile-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Cross-Platform UI Developer',
       task: 'Implement platform-specific variants (iOS/Android styles)',
@@ -565,8 +571,9 @@ export const platformVariantsTask = defineTask('platform-variants', (args, taskC
 export const accessibilityFeaturesTask = defineTask('accessibility-features', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Accessibility Features - ${args.libraryName}`,
+  skill: { name: 'accessibility-testing' },
   agent: {
-    name: 'accessibility-specialist',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Accessibility Specialist',
       task: 'Add accessibility features to all components',
@@ -612,8 +619,9 @@ export const accessibilityFeaturesTask = defineTask('accessibility-features', (a
 export const componentDocsTask = defineTask('component-docs', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Component Documentation - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'technical-writer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Create comprehensive component documentation',
@@ -658,8 +666,9 @@ export const componentDocsTask = defineTask('component-docs', (args, taskCtx) =>
 export const demoAppTask = defineTask('demo-app', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Demo App - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'mobile-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Mobile Developer',
       task: 'Build Storybook or interactive demo app',
@@ -704,8 +713,9 @@ export const demoAppTask = defineTask('demo-app', (args, taskCtx) => ({
 export const unitTestsTask = defineTask('unit-tests', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Unit Tests - ${args.libraryName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Test Engineer',
       task: 'Write unit tests for all components',
@@ -751,8 +761,9 @@ export const unitTestsTask = defineTask('unit-tests', (args, taskCtx) => ({
 export const usageGuidelinesTask = defineTask('usage-guidelines', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Usage Guidelines - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'technical-writer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Technical Writer',
       task: 'Create usage guidelines and best practices',
@@ -798,8 +809,9 @@ export const usageGuidelinesTask = defineTask('usage-guidelines', (args, taskCtx
 export const packageSetupTask = defineTask('package-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Package Setup - ${args.libraryName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'mobile-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Mobile Package Developer',
       task: 'Prepare component library as publishable package',

@@ -177,7 +177,7 @@ export const toolDesignTask = defineTask('tool-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design Tool - ${args.toolName}`,
   agent: {
-    name: 'tool-designer',
+    name: 'tool-use-planner',  // AG-TU-002: Plans tool selection strategies and chains for complex tasks
     prompt: {
       role: 'Tool Designer',
       task: 'Design custom tool for AI agent',
@@ -213,10 +213,10 @@ export const toolDesignTask = defineTask('tool-design', (args, taskCtx) => ({
 }));
 
 export const apiWrapperTask = defineTask('api-wrapper', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement API Wrapper - ${args.toolName}`,
-  agent: {
-    name: 'api-developer',
+  skill: {
+    name: 'langchain-tools',  // SK-LC-004: LangChain tool creation and integration utilities
     prompt: {
       role: 'API Developer',
       task: 'Implement API wrapper for tool',
@@ -251,10 +251,10 @@ export const apiWrapperTask = defineTask('api-wrapper', (args, taskCtx) => ({
 }));
 
 export const securityControlsTask = defineTask('security-controls', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Security Controls - ${args.toolName}`,
-  agent: {
-    name: 'security-developer',
+  skill: {
+    name: 'tool-safety-validation',  // SK-TU-002: Tool safety validation and permission checking
     prompt: {
       role: 'Security Developer',
       task: 'Implement security controls for tool',

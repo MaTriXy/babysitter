@@ -713,7 +713,7 @@ export const serviceMappingTask = defineTask('service-mapping', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Service Dependency Mapping - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Microservices Architect and Integration Specialist',
       task: 'Analyze service dependencies and identify consumer-provider contract pairs',
@@ -787,7 +787,7 @@ export const contractToolSetupTask = defineTask('contract-tool-setup', (args, ta
   kind: 'agent',
   title: `Phase 2: Contract Tool Setup - ${args.contractTool}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Automation Engineer with Contract Testing expertise',
       task: 'Set up and configure contract testing tool for the project',
@@ -856,7 +856,7 @@ export const consumerContractDefinitionTask = defineTask('consumer-contract-defi
   kind: 'agent',
   title: `Phase 3: Consumer Contract Definitions - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Contract Testing Specialist',
       task: 'Create consumer contract definitions based on service expectations',
@@ -939,7 +939,7 @@ export const consumerContractTestsTask = defineTask('consumer-contract-tests', (
   kind: 'agent',
   title: `Phase 4: Consumer Contract Tests Execution`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Execution Engineer',
       task: 'Execute consumer contract tests and generate contract files',
@@ -1013,7 +1013,7 @@ export const contractBrokerSetupTask = defineTask('contract-broker-setup', (args
   kind: 'agent',
   title: `Phase 5: Contract Broker Setup`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer with Contract Testing experience',
       task: 'Set up contract broker for contract sharing and verification',
@@ -1088,7 +1088,7 @@ export const contractPublishingTask = defineTask('contract-publishing', (args, t
   kind: 'agent',
   title: `Phase 6: Contract Publishing to Broker`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Contract Testing Engineer',
       task: 'Publish consumer contracts to broker with appropriate versioning',
@@ -1163,7 +1163,7 @@ export const providerVerificationTask = defineTask('provider-verification', (arg
   kind: 'agent',
   title: `Phase 7: Provider Verification Tests Implementation`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Provider Verification Specialist',
       task: 'Implement provider verification tests to validate against consumer contracts',
@@ -1238,7 +1238,7 @@ export const providerVerificationTestsTask = defineTask('provider-verification-t
   kind: 'agent',
   title: `Phase 8: Provider Verification Tests Execution`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Execution Engineer',
       task: 'Execute provider verification tests against published contracts',
@@ -1328,7 +1328,7 @@ export const verificationResultsPublishingTask = defineTask('verification-result
   kind: 'agent',
   title: `Phase 9: Verification Results Publishing`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Contract Testing Engineer',
       task: 'Publish provider verification results to broker',
@@ -1400,7 +1400,7 @@ export const breakingChangeDetectionTask = defineTask('breaking-change-detection
   kind: 'agent',
   title: `Phase 10: Breaking Change Detection Setup`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Versioning Specialist',
       task: 'Configure breaking change detection for contract evolution',
@@ -1478,7 +1478,7 @@ export const canDeploySetupTask = defineTask('can-deploy-setup', (args, taskCtx)
   kind: 'agent',
   title: `Phase 11: Can-I-Deploy Verification Setup`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer with Contract Testing experience',
       task: 'Set up can-i-deploy checks for safe deployment verification',
@@ -1558,7 +1558,7 @@ export const consumerCICDIntegrationTask = defineTask('consumer-cicd-integration
   kind: 'agent',
   title: `Phase 12: Consumer CI/CD Pipeline Integration`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate consumer contract testing into CI/CD pipelines',
@@ -1640,7 +1640,7 @@ export const providerCICDIntegrationTask = defineTask('provider-cicd-integration
   kind: 'agent',
   title: `Phase 12: Provider CI/CD Pipeline Integration`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate provider verification into CI/CD pipelines',
@@ -1722,7 +1722,7 @@ export const versioningDocumentationTask = defineTask('versioning-documentation'
   kind: 'agent',
   title: `Phase 13: Contract Versioning Documentation`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Document contract versioning strategy and guidelines',
@@ -1784,7 +1784,7 @@ export const independentDeploymentVerificationTask = defineTask('independent-dep
   kind: 'agent',
   title: `Phase 14: Independent Deployment Verification`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'QA Lead and Deployment Specialist',
       task: 'Verify independent deployment capability using contract testing',
@@ -1868,7 +1868,7 @@ export const contractTestingDocumentationTask = defineTask('contract-testing-doc
   kind: 'agent',
   title: `Phase 15: Contract Testing Documentation`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Generate comprehensive contract testing documentation',
@@ -1932,7 +1932,7 @@ export const finalAssessmentTask = defineTask('final-assessment', (args, taskCtx
   kind: 'agent',
   title: `Phase 16: Final Assessment and Metrics`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'QA Lead and Contract Testing Expert',
       task: 'Conduct final assessment of contract testing implementation',

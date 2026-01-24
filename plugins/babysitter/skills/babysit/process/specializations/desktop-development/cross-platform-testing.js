@@ -96,8 +96,11 @@ export const crossPlatformRequirementsTask = defineTask('cross-platform-requirem
 export const configureTestMatrixTask = defineTask('configure-test-matrix', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Matrix Configuration - ${args.projectName}`,
+  skill: {
+    name: 'ci-matrix-generator',
+  },
   agent: {
-    name: 'matrix-developer',
+    name: 'cross-platform-test-orchestrator',
     prompt: { role: 'Test Matrix Developer', task: 'Configure test matrix', context: args, instructions: ['1. Define OS versions', '2. Define architectures', '3. Define Node versions', '4. Configure include/exclude', '5. Set up fail-fast', '6. Configure retry logic', '7. Optimize for speed', '8. Generate matrix configuration'] },
     outputSchema: { type: 'object', required: ['configurations', 'artifacts'], properties: { configurations: { type: 'array' }, totalJobs: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -120,8 +123,11 @@ export const createPlatformTestSuiteTask = defineTask('create-platform-test-suit
 export const configureCiMatrixTask = defineTask('configure-ci-matrix', (args, taskCtx) => ({
   kind: 'agent',
   title: `CI Matrix Configuration - ${args.projectName}`,
+  skill: {
+    name: 'github-actions-workflow-generator',
+  },
   agent: {
-    name: 'ci-matrix-developer',
+    name: 'desktop-ci-architect',
     prompt: { role: 'CI Matrix Developer', task: 'Configure CI matrix builds', context: args, instructions: ['1. Create workflow file', '2. Configure matrix strategy', '3. Set up platform-specific steps', '4. Configure caching', '5. Set up artifacts', '6. Configure test sharding', '7. Set up notifications', '8. Generate CI configuration'] },
     outputSchema: { type: 'object', required: ['workflowPath', 'artifacts'], properties: { workflowPath: { type: 'string' }, jobs: { type: 'array' }, artifacts: { type: 'array' } } }
   },

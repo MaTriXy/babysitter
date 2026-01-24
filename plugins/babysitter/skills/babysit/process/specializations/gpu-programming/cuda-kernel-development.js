@@ -255,7 +255,8 @@ export const kernelRequirementsTask = defineTask('kernel-requirements', (args, t
   kind: 'agent',
   title: `Phase 1: Requirements - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Define CUDA kernel requirements',
@@ -297,7 +298,8 @@ export const threadIndexingTask = defineTask('thread-indexing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Thread Indexing - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design thread indexing strategy',
@@ -339,7 +341,8 @@ export const executionConfigTask = defineTask('execution-config', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Execution Config - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Configure kernel execution parameters',
@@ -382,7 +385,8 @@ export const kernelImplementationTask = defineTask('kernel-implementation', (arg
   kind: 'agent',
   title: `Phase 4: Implementation - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement CUDA kernel',
@@ -424,7 +428,8 @@ export const hostIntegrationTask = defineTask('host-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Host Integration - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Create host-device integration code',
@@ -466,7 +471,8 @@ export const cudaErrorHandlingTask = defineTask('cuda-error-handling', (args, ta
   kind: 'agent',
   title: `Phase 6: Error Handling - ${args.kernelName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement CUDA error handling',
@@ -507,7 +513,8 @@ export const kernelValidationTask = defineTask('kernel-validation', (args, taskC
   kind: 'agent',
   title: `Phase 7: Validation - ${args.kernelName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Test Engineer',
       task: 'Validate CUDA kernel correctness',
@@ -550,6 +557,7 @@ export const kernelDocumentationTask = defineTask('kernel-documentation', (args,
   title: `Phase 8: Documentation - ${args.kernelName}`,
   agent: {
     name: 'technical-writer',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'Technical Writer',
       task: 'Create kernel documentation',

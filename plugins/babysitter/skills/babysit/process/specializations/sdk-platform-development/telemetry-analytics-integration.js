@@ -110,7 +110,7 @@ export const telemetryArchitectureDesignTask = defineTask('telemetry-architectur
   kind: 'agent',
   title: 'Design telemetry architecture',
   agent: {
-    name: 'telemetry-architect',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'SDK telemetry architect',
       task: `Design telemetry architecture for ${args.sdkName}`,
@@ -153,7 +153,7 @@ export const privacyControlsImplementationTask = defineTask('privacy-controls-im
   kind: 'agent',
   title: 'Implement privacy controls',
   agent: {
-    name: 'privacy-controls-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Privacy engineering specialist',
       task: `Implement privacy controls for ${args.sdkName} telemetry`,
@@ -196,7 +196,7 @@ export const analyticsProviderIntegrationTask = defineTask('analytics-provider-i
   kind: 'agent',
   title: 'Integrate analytics providers',
   agent: {
-    name: 'analytics-integration-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Analytics integration engineer',
       task: `Integrate analytics providers for ${args.sdkName}`,
@@ -238,7 +238,7 @@ export const metricsCollectionSetupTask = defineTask('metrics-collection-setup',
   kind: 'agent',
   title: 'Setup metrics collection',
   agent: {
-    name: 'metrics-collection-specialist',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Observability engineer',
       task: `Setup metrics collection for ${args.sdkName}`,
@@ -281,7 +281,7 @@ export const dashboardCreationTask = defineTask('dashboard-creation', (args, tas
   kind: 'agent',
   title: 'Create analytics dashboards',
   agent: {
-    name: 'dashboard-creator',
+    name: 'platform-architect',
     prompt: {
       role: 'Analytics dashboard designer',
       task: `Create analytics dashboards for ${args.sdkName}`,

@@ -175,7 +175,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Analyze Requirements - ${args.projectName}`,
   agent: {
-    name: 'lab-architect',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Security Lab Architect',
       task: 'Analyze lab requirements',
@@ -214,7 +214,7 @@ export const infraSetupTask = defineTask('infra-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Setup Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'infra-engineer',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Lab Infrastructure Engineer',
       task: 'Set up lab infrastructure',
@@ -253,7 +253,7 @@ export const networkIsolationTask = defineTask('network-isolation', (args, taskC
   kind: 'agent',
   title: `Configure Network Isolation - ${args.projectName}`,
   agent: {
-    name: 'network-engineer',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Lab Network Engineer',
       task: 'Configure network isolation',
@@ -292,7 +292,7 @@ export const toolInstallationTask = defineTask('tool-installation', (args, taskC
   kind: 'agent',
   title: `Install Tools - ${args.projectName}`,
   agent: {
-    name: 'tool-installer',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Security Tool Installer',
       task: 'Install analysis tools',
@@ -331,7 +331,7 @@ export const sandboxConfigTask = defineTask('sandbox-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Configure Sandboxes - ${args.projectName}`,
   agent: {
-    name: 'sandbox-engineer',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Sandbox Configuration Engineer',
       task: 'Configure analysis sandboxes',
@@ -370,7 +370,7 @@ export const labVerificationTask = defineTask('lab-verification', (args, taskCtx
   kind: 'agent',
   title: `Verify Lab - ${args.projectName}`,
   agent: {
-    name: 'lab-verifier',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Lab Verification Specialist',
       task: 'Verify lab configuration',

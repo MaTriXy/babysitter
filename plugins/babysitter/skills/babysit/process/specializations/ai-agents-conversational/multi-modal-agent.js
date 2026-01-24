@@ -189,7 +189,7 @@ export const modalityHandlersTask = defineTask('modality-handlers', (args, taskC
   kind: 'agent',
   title: `Implement Modality Handlers - ${args.agentName}`,
   agent: {
-    name: 'modality-developer',
+    name: 'multimodal-agent-expert',  // AG-DOM-002: Builds vision-language agent capabilities
     prompt: {
       role: 'Modality Handler Developer',
       task: 'Implement handlers for each modality',

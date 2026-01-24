@@ -81,7 +81,7 @@ export const gestureRecognitionTask = defineTask('gesture-recognition', (args, t
   kind: 'agent',
   title: `Gesture Recognition - ${args.robotName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement gesture recognition', context: args, instructions: ['1. Set up pose estimation', '2. Train gesture classifier', '3. Define gesture vocabulary', '4. Implement real-time inference', '5. Test gesture recognition'] },
     outputSchema: { type: 'object', required: ['configPath', 'gestures', 'artifacts'], properties: { configPath: { type: 'string' }, gestures: { type: 'array' }, accuracy: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const speechInterfaceTask = defineTask('speech-interface', (args, taskCtx
   kind: 'agent',
   title: `Speech Interface - ${args.robotName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement speech interface', context: args, instructions: ['1. Set up speech recognition', '2. Implement NLU pipeline', '3. Add text-to-speech', '4. Define command vocabulary', '5. Test speech interface'] },
     outputSchema: { type: 'object', required: ['speechConfig', 'commands', 'artifacts'], properties: { speechConfig: { type: 'object' }, commands: { type: 'array' }, wordErrorRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const intentRecognitionTask = defineTask('intent-recognition', (args, tas
   kind: 'agent',
   title: `Intent Recognition - ${args.robotName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement human intent recognition', context: args, instructions: ['1. Fuse multimodal inputs', '2. Train intent classifier', '3. Handle ambiguity', '4. Add context awareness', '5. Test intent recognition'] },
     outputSchema: { type: 'object', required: ['intentConfig', 'intents', 'artifacts'], properties: { intentConfig: { type: 'object' }, intents: { type: 'array' }, accuracy: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const collaborativeBehaviorsTask = defineTask('collaborative-behaviors', 
   kind: 'agent',
   title: `Collaborative Behaviors - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement collaborative behaviors', context: args, instructions: ['1. Implement handover', '2. Add lead-through teaching', '3. Configure shared workspace', '4. Add adaptive behaviors', '5. Test collaboration'] },
     outputSchema: { type: 'object', required: ['behaviors', 'taskTypes', 'artifacts'], properties: { behaviors: { type: 'array' }, taskTypes: { type: 'array' }, successRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const feedbackSystemsTask = defineTask('feedback-systems', (args, taskCtx
   kind: 'agent',
   title: `Feedback Systems - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement feedback systems', context: args, instructions: ['1. Add visual feedback', '2. Configure audio feedback', '3. Add haptic feedback', '4. Implement status displays', '5. Test feedback clarity'] },
     outputSchema: { type: 'object', required: ['feedbackConfig', 'modalities', 'artifacts'], properties: { feedbackConfig: { type: 'object' }, modalities: { type: 'array' }, clarity: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const userStudyTestingTask = defineTask('user-study-testing', (args, task
   kind: 'agent',
   title: `User Study Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Conduct user studies', context: args, instructions: ['1. Design user study', '2. Recruit participants', '3. Run interaction tests', '4. Collect feedback', '5. Analyze satisfaction'] },
     outputSchema: { type: 'object', required: ['satisfaction', 'usability', 'artifacts'], properties: { satisfaction: { type: 'number' }, usability: { type: 'number' }, feedback: { type: 'array' }, artifacts: { type: 'array' } } }
   },

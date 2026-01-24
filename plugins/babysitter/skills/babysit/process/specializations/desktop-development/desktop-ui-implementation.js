@@ -383,7 +383,7 @@ export const setupDesignSystemTask = defineTask('setup-design-system', (args, ta
   kind: 'agent',
   title: `Phase 2: Design System Setup - ${args.projectName}`,
   agent: {
-    name: 'design-system-engineer',
+    name: 'fluent-ui-component-designer',
     prompt: {
       role: 'Design System Engineer',
       task: 'Set up design system and theming infrastructure',
@@ -462,8 +462,11 @@ export const implementLayoutSystemTask = defineTask('implement-layout-system', (
 export const implementCoreComponentsTask = defineTask('implement-core-components', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Core Components - ${args.projectName}`,
+  skill: {
+    name: 'qt-qml-component-generator',
+  },
   agent: {
-    name: 'component-developer',
+    name: 'desktop-ux-analyst',
     prompt: {
       role: 'UI Component Developer',
       task: 'Implement core UI component library',
@@ -583,7 +586,7 @@ export const implementPlatformAdaptationsTask = defineTask('implement-platform-a
   kind: 'agent',
   title: `Phase 7: ${args.platform} Adaptations - ${args.projectName}`,
   agent: {
-    name: 'platform-ui-developer',
+    name: 'platform-convention-advisor',
     prompt: {
       role: 'Platform UI Developer',
       task: `Implement ${args.platform}-specific UI adaptations`,

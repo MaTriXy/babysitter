@@ -115,7 +115,7 @@ export const selectMemoryProfilingToolsTask = defineTask('select-memory-profilin
   kind: 'agent',
   title: `Select Memory Profiling Tools - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Select appropriate memory profiling tools',
@@ -143,7 +143,7 @@ export const configureMemoryProfilingTask = defineTask('configure-memory-profili
   kind: 'agent',
   title: `Configure Memory Profiling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Configure memory profiling environment',
@@ -171,7 +171,7 @@ export const captureMemoryAllocationDataTask = defineTask('capture-memory-alloca
   kind: 'agent',
   title: `Capture Memory Allocation Data - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Capture memory allocation data',
@@ -199,7 +199,7 @@ export const analyzeHeapAllocationPatternsTask = defineTask('analyze-heap-alloca
   kind: 'agent',
   title: `Analyze Heap Allocation Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Analyze heap allocation patterns',
@@ -227,7 +227,7 @@ export const identifyMemoryIntensiveOperationsTask = defineTask('identify-memory
   kind: 'agent',
   title: `Identify Memory-Intensive Operations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Identify memory-intensive operations',
@@ -255,7 +255,7 @@ export const reviewObjectRetentionGraphsTask = defineTask('review-object-retenti
   kind: 'agent',
   title: `Review Object Retention Graphs - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Review object retention graphs',
@@ -283,7 +283,7 @@ export const documentMemoryUsagePatternsTask = defineTask('document-memory-usage
   kind: 'agent',
   title: `Document Memory Usage Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Document memory usage patterns',
@@ -311,7 +311,7 @@ export const provideMemoryOptimizationRecommendationsTask = defineTask('provide-
   kind: 'agent',
   title: `Provide Memory Optimization Recommendations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Provide memory optimization recommendations',

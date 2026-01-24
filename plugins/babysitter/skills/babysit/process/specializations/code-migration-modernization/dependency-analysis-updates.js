@@ -261,7 +261,7 @@ export const dependencyInventoryTask = defineTask('dependency-inventory', (args,
   kind: 'agent',
   title: `Phase 1: Dependency Inventory - ${args.projectName}`,
   agent: {
-    name: 'dependency-analyst',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'Dependency Analyst',
       task: 'Build comprehensive dependency inventory',
@@ -304,7 +304,7 @@ export const vulnerabilityAssessmentTask = defineTask('vulnerability-assessment'
   kind: 'agent',
   title: `Phase 2: Vulnerability Assessment - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Analyst',
       task: 'Scan dependencies for security vulnerabilities',
@@ -348,7 +348,7 @@ export const outdatedDependencyAnalysisTask = defineTask('outdated-dependency-an
   kind: 'agent',
   title: `Phase 3: Outdated Dependency Analysis - ${args.projectName}`,
   agent: {
-    name: 'update-analyst',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'Dependency Update Analyst',
       task: 'Identify outdated dependencies and available updates',
@@ -390,7 +390,7 @@ export const licenseComplianceTask = defineTask('license-compliance', (args, tas
   kind: 'agent',
   title: `Phase 4: License Compliance - ${args.projectName}`,
   agent: {
-    name: 'license-analyst',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'License Compliance Analyst',
       task: 'Check license compliance for all dependencies',
@@ -433,7 +433,7 @@ export const updatePlanningTask = defineTask('update-planning', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Update Planning - ${args.projectName}`,
   agent: {
-    name: 'update-planner',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'Dependency Update Planner',
       task: 'Plan dependency update execution',
@@ -476,7 +476,7 @@ export const executeUpdatesTask = defineTask('execute-updates', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Execute Updates - ${args.projectName}`,
   agent: {
-    name: 'update-executor',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Execute planned dependency updates',
@@ -518,7 +518,7 @@ export const validateUpdatesTask = defineTask('validate-updates', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: Validate Updates - ${args.projectName}`,
   agent: {
-    name: 'validation-engineer',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate dependency updates',
@@ -561,7 +561,7 @@ export const documentChangesTask = defineTask('document-changes', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: Document Changes - ${args.projectName}`,
   agent: {
-    name: 'documentation-writer',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Document dependency updates and changes',

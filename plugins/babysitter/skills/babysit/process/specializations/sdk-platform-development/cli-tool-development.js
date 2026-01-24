@@ -109,7 +109,7 @@ export const cliArchitectureDesignTask = defineTask('cli-architecture-design', (
   kind: 'agent',
   title: 'Design CLI architecture',
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-reviewer',
     prompt: {
       role: 'CLI tool architect',
       task: `Design CLI architecture for ${args.cliName}`,
@@ -154,7 +154,7 @@ export const commandStructureDefinitionTask = defineTask('command-structure-defi
   kind: 'agent',
   title: 'Define command structure',
   agent: {
-    name: 'command-structure-specialist',
+    name: 'cli-ux-reviewer',
     prompt: {
       role: 'CLI command designer',
       task: `Define command structure for ${args.cliName}`,
@@ -198,7 +198,7 @@ export const scaffoldingImplementationTask = defineTask('scaffolding-implementat
   kind: 'agent',
   title: 'Implement scaffolding system',
   agent: {
-    name: 'scaffolding-implementer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'Code scaffolding engineer',
       task: `Implement scaffolding system for ${args.cliName}`,
@@ -242,7 +242,7 @@ export const interactiveFeaturesTask = defineTask('interactive-features', (args,
   kind: 'agent',
   title: 'Add interactive features',
   agent: {
-    name: 'interactive-features-specialist',
+    name: 'cli-ux-reviewer',
     prompt: {
       role: 'CLI UX engineer',
       task: `Add interactive features to ${args.cliName}`,
@@ -285,7 +285,7 @@ export const cliDistributionSetupTask = defineTask('cli-distribution-setup', (ar
   kind: 'agent',
   title: 'Setup CLI distribution',
   agent: {
-    name: 'cli-distribution-specialist',
+    name: 'platform-architect',
     prompt: {
       role: 'CLI distribution engineer',
       task: `Setup distribution for ${args.cliName}`,

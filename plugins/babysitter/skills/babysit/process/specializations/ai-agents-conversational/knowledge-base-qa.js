@@ -185,7 +185,7 @@ export const documentIngestionTask = defineTask('document-ingestion', (args, tas
   kind: 'agent',
   title: `Ingest Documents - ${args.agentName}`,
   agent: {
-    name: 'ingestion-developer',
+    name: 'rag-architect',  // AG-RAG-001: Designs end-to-end RAG pipelines with optimal retrieval strategies
     prompt: {
       role: 'Document Ingestion Developer',
       task: 'Ingest documents into knowledge base',

@@ -254,8 +254,9 @@ export async function process(inputs, ctx) {
 export const defineCloudStrategyTask = defineTask('define-cloud-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Define Cloud Strategy: ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'cloud-strategist',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'cloud architect strategist',
       task: 'Define comprehensive cloud strategy including approach, migration patterns, and architectural principles',
@@ -299,8 +300,9 @@ export const defineCloudStrategyTask = defineTask('define-cloud-strategy', (args
 export const selectCloudProviderTask = defineTask('select-cloud-provider', (args, taskCtx) => ({
   kind: 'agent',
   title: `Select Cloud Provider: ${args.projectName}`,
+  skill: { name: 'cloud-cost-estimator' },
   agent: {
-    name: 'cloud-provider-evaluator',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'cloud provider evaluation specialist',
       task: 'Evaluate and select optimal cloud provider based on requirements',
@@ -347,8 +349,9 @@ export const selectCloudProviderTask = defineTask('select-cloud-provider', (args
 export const designComputeArchitectureTask = defineTask('design-compute-architecture', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design Compute Architecture: ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'compute-architect',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'compute and container architecture specialist',
       task: 'Design compute architecture using provider-specific services',
@@ -393,6 +396,7 @@ export const designComputeArchitectureTask = defineTask('design-compute-architec
 export const designDataArchitectureTask = defineTask('design-data-architecture', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design Data Architecture: ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
     name: 'data-architect',
     prompt: {
@@ -440,8 +444,9 @@ export const designDataArchitectureTask = defineTask('design-data-architecture',
 export const designNetworkArchitectureTask = defineTask('design-network-architecture', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design Network Architecture: ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'network-architect',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'cloud network architecture specialist',
       task: 'Design network architecture including VPC, subnets, routing, and connectivity',
@@ -489,6 +494,7 @@ export const designNetworkArchitectureTask = defineTask('design-network-architec
 export const planSecurityComplianceTask = defineTask('plan-security-compliance', (args, taskCtx) => ({
   kind: 'agent',
   title: `Plan Security & Compliance: ${args.projectName}`,
+  skill: { name: 'threat-modeler' },
   agent: {
     name: 'security-architect',
     prompt: {
@@ -538,8 +544,9 @@ export const planSecurityComplianceTask = defineTask('plan-security-compliance',
 export const designHighAvailabilityTask = defineTask('design-high-availability', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design High Availability: ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'ha-architect',
+    name: 'sre-reliability-engineer',
     prompt: {
       role: 'high availability and reliability specialist',
       task: 'Design high availability architecture with fault tolerance and disaster recovery',
@@ -590,7 +597,7 @@ export const optimizeCostsTask = defineTask('optimize-costs', (args, taskCtx) =>
   kind: 'agent',
   title: `Optimize Costs: ${args.projectName}`,
   agent: {
-    name: 'cost-optimizer',
+    name: 'finops-specialist',
     prompt: {
       role: 'cloud cost optimization specialist',
       task: 'Analyze architecture and optimize for cost-effectiveness',
@@ -639,7 +646,7 @@ export const createInfrastructureAsCodeTask = defineTask('create-infrastructure-
   kind: 'agent',
   title: `Create Infrastructure as Code: ${args.projectName}`,
   agent: {
-    name: 'iac-engineer',
+    name: 'iac-specialist',
     prompt: {
       role: 'infrastructure as code specialist',
       task: 'Generate Infrastructure as Code for the complete architecture',
@@ -687,7 +694,7 @@ export const validateArchitectureQualityTask = defineTask('validate-architecture
   kind: 'agent',
   title: `Validate Architecture Quality: ${args.projectName}`,
   agent: {
-    name: 'architecture-quality-validator',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'senior cloud architect and quality assessor',
       task: 'Validate cloud architecture quality against best practices and requirements',

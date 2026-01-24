@@ -87,8 +87,9 @@ function createAnalyticsTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'firebase-integration' },
     agent: {
-      name: 'analytics-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Mobile Analytics Engineer',
         task: `Implement ${title.toLowerCase()} for mobile analytics`,

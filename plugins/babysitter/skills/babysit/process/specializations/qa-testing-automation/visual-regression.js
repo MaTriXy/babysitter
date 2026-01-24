@@ -744,7 +744,7 @@ export const visualRegressionStrategyTask = defineTask('visual-regression-strate
   kind: 'agent',
   title: `Phase 1: Visual Regression Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Architect',
       task: 'Plan comprehensive visual regression testing strategy',
@@ -834,7 +834,7 @@ export const visualRegressionToolSetupTask = defineTask('visual-regression-tool-
   kind: 'agent',
   title: `Phase 2: Tool Setup - ${args.tool} - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Engineer',
       task: 'Set up and configure visual regression testing tools',
@@ -924,7 +924,7 @@ export const viewportConfigurationTask = defineTask('viewport-configuration', (a
   kind: 'agent',
   title: `Phase 3: Viewport Configuration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Responsive Testing Specialist',
       task: 'Configure viewports and responsive breakpoints for visual testing',
@@ -995,7 +995,7 @@ export const dynamicContentMaskingTask = defineTask('dynamic-content-masking', (
   kind: 'agent',
   title: `Phase 4: Dynamic Content Masking - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Engineer',
       task: 'Implement masking strategy for dynamic and time-sensitive content',
@@ -1076,7 +1076,7 @@ export const capturePageBaselinesTask = defineTask('capture-page-baselines', (ar
   kind: 'agent',
   title: `Phase 5: Capture Baselines - ${args.page}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Engineer',
       task: 'Capture visual baseline screenshots for specified page',
@@ -1144,7 +1144,7 @@ export const captureComponentBaselinesTask = defineTask('capture-component-basel
   kind: 'agent',
   title: `Phase 5: Capture Component Baselines - ${args.component}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Component Testing Engineer',
       task: 'Capture visual baseline screenshots for UI component in isolation',
@@ -1204,7 +1204,7 @@ export const visualTestImplementationTask = defineTask('visual-test-implementati
   kind: 'agent',
   title: `Phase 6: Visual Test Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement automated visual regression tests',
@@ -1282,7 +1282,7 @@ export const thresholdConfigurationTask = defineTask('threshold-configuration', 
   kind: 'agent',
   title: `Phase 7: Threshold Configuration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Configuration Specialist',
       task: 'Configure thresholds and tolerance levels for visual differences',
@@ -1366,7 +1366,7 @@ export const visualComparisonTask = defineTask('visual-comparison', (args, taskC
   kind: 'agent',
   title: `Phase 8: Visual Comparison - ${args.runType} - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Engineer',
       task: 'Run visual comparison tests against baselines',
@@ -1444,7 +1444,7 @@ export const visualDifferenceAnalysisTask = defineTask('visual-difference-analys
   kind: 'agent',
   title: `Phase 9: Difference Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Regression Analyst',
       task: 'Analyze and categorize visual differences',
@@ -1542,7 +1542,7 @@ export const baselineUpdateStrategyTask = defineTask('baseline-update-strategy',
   kind: 'agent',
   title: `Phase 10: Baseline Update Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Lead',
       task: 'Create baseline update and management strategy',
@@ -1614,7 +1614,7 @@ export const visualRegressionValidationTask = defineTask('visual-regression-vali
   kind: 'agent',
   title: `Phase 18: Final Validation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Visual Testing Architect',
       task: 'Validate visual regression testing setup and provide deployment recommendation',
@@ -1683,7 +1683,7 @@ export const visualRegressionValidationTask = defineTask('visual-regression-vali
 export const visualRegressionRemediationTask = defineTask('visual-regression-remediation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Regression Remediation - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'Visual QA Engineer', task: 'Create remediation plan for visual regressions', context: args, instructions: ['Create remediation tasks', 'Prioritize by severity', 'Estimate effort', 'Document fixes'], outputFormat: 'JSON with remediation plan' }, outputSchema: { type: 'object', required: ['remediationTasks', 'estimatedEffort', 'reportPath', 'artifacts'], properties: { remediationTasks: { type: 'array' }, estimatedEffort: { type: 'string' }, reportPath: { type: 'string' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'Visual QA Engineer', task: 'Create remediation plan for visual regressions', context: args, instructions: ['Create remediation tasks', 'Prioritize by severity', 'Estimate effort', 'Document fixes'], outputFormat: 'JSON with remediation plan' }, outputSchema: { type: 'object', required: ['remediationTasks', 'estimatedEffort', 'reportPath', 'artifacts'], properties: { remediationTasks: { type: 'array' }, estimatedEffort: { type: 'string' }, reportPath: { type: 'string' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'remediation']
 }));
@@ -1691,7 +1691,7 @@ export const visualRegressionRemediationTask = defineTask('visual-regression-rem
 export const falsePositiveEliminationTask = defineTask('false-positive-elimination', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: False Positive Elimination - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'Visual Testing Engineer', task: 'Eliminate false positives through improved masking and thresholds', context: args, instructions: ['Analyze false positives', 'Adjust masking', 'Tune thresholds', 'Re-run tests'], outputFormat: 'JSON with elimination results' }, outputSchema: { type: 'object', required: ['eliminatedCount', 'artifacts'], properties: { eliminatedCount: { type: 'number' }, adjustedMasks: { type: 'array' }, adjustedThresholds: { type: 'array' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'Visual Testing Engineer', task: 'Eliminate false positives through improved masking and thresholds', context: args, instructions: ['Analyze false positives', 'Adjust masking', 'Tune thresholds', 'Re-run tests'], outputFormat: 'JSON with elimination results' }, outputSchema: { type: 'object', required: ['eliminatedCount', 'artifacts'], properties: { eliminatedCount: { type: 'number' }, adjustedMasks: { type: 'array' }, adjustedThresholds: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'false-positives']
 }));
@@ -1699,7 +1699,7 @@ export const falsePositiveEliminationTask = defineTask('false-positive-eliminati
 export const crossBrowserVisualTestTask = defineTask('cross-browser-visual-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Cross-Browser Visual Testing - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'Cross-Browser Testing Engineer', task: 'Run visual tests across multiple browsers', context: args, instructions: ['Run tests on each browser', 'Compare cross-browser differences', 'Document rendering variations'], outputFormat: 'JSON with cross-browser results' }, outputSchema: { type: 'object', required: ['browserTestsRun', 'crossBrowserDifferences', 'artifacts'], properties: { browserTestsRun: { type: 'number' }, crossBrowserDifferences: { type: 'number' }, browsers: { type: 'array' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'Cross-Browser Testing Engineer', task: 'Run visual tests across multiple browsers', context: args, instructions: ['Run tests on each browser', 'Compare cross-browser differences', 'Document rendering variations'], outputFormat: 'JSON with cross-browser results' }, outputSchema: { type: 'object', required: ['browserTestsRun', 'crossBrowserDifferences', 'artifacts'], properties: { browserTestsRun: { type: 'number' }, crossBrowserDifferences: { type: 'number' }, browsers: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'cross-browser']
 }));
@@ -1707,7 +1707,7 @@ export const crossBrowserVisualTestTask = defineTask('cross-browser-visual-test'
 export const visualTestOptimizationTask = defineTask('visual-test-optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Test Optimization - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'Performance Engineer', task: 'Optimize visual test execution performance', context: args, instructions: ['Enable parallel execution', 'Optimize screenshot capture', 'Reduce test duration'], outputFormat: 'JSON with optimization results' }, outputSchema: { type: 'object', required: ['speedupFactor', 'optimizedExecutionTime', 'artifacts'], properties: { speedupFactor: { type: 'number' }, optimizedExecutionTime: { type: 'string' }, optimizations: { type: 'array' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'Performance Engineer', task: 'Optimize visual test execution performance', context: args, instructions: ['Enable parallel execution', 'Optimize screenshot capture', 'Reduce test duration'], outputFormat: 'JSON with optimization results' }, outputSchema: { type: 'object', required: ['speedupFactor', 'optimizedExecutionTime', 'artifacts'], properties: { speedupFactor: { type: 'number' }, optimizedExecutionTime: { type: 'string' }, optimizations: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'optimization']
 }));
@@ -1715,7 +1715,7 @@ export const visualTestOptimizationTask = defineTask('visual-test-optimization',
 export const visualRegressionReportingTask = defineTask('visual-regression-reporting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 15: Reporting Setup - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'QA Reporting Specialist', task: 'Set up visual regression reporting and review workflow', context: args, instructions: ['Generate HTML reports', 'Create review dashboard', 'Set up approval workflow'], outputFormat: 'JSON with reporting setup' }, outputSchema: { type: 'object', required: ['mainReportPath', 'artifacts'], properties: { mainReportPath: { type: 'string' }, dashboardUrl: { type: 'string' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'QA Reporting Specialist', task: 'Set up visual regression reporting and review workflow', context: args, instructions: ['Generate HTML reports', 'Create review dashboard', 'Set up approval workflow'], outputFormat: 'JSON with reporting setup' }, outputSchema: { type: 'object', required: ['mainReportPath', 'artifacts'], properties: { mainReportPath: { type: 'string' }, dashboardUrl: { type: 'string' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'reporting']
 }));
@@ -1723,7 +1723,7 @@ export const visualRegressionReportingTask = defineTask('visual-regression-repor
 export const visualRegressionCICDTask = defineTask('visual-regression-cicd', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 16: CI/CD Integration - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'DevOps Engineer', task: 'Integrate visual regression testing into CI/CD pipeline', context: args, instructions: ['Create pipeline config', 'Set up quality gates', 'Configure baseline management'], outputFormat: 'JSON with CI/CD integration' }, outputSchema: { type: 'object', required: ['configured', 'pipelineConfigPath', 'qualityGatesEnabled', 'artifacts'], properties: { configured: { type: 'boolean' }, pipelineConfigPath: { type: 'string' }, qualityGatesEnabled: { type: 'boolean' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'DevOps Engineer', task: 'Integrate visual regression testing into CI/CD pipeline', context: args, instructions: ['Create pipeline config', 'Set up quality gates', 'Configure baseline management'], outputFormat: 'JSON with CI/CD integration' }, outputSchema: { type: 'object', required: ['configured', 'pipelineConfigPath', 'qualityGatesEnabled', 'artifacts'], properties: { configured: { type: 'boolean' }, pipelineConfigPath: { type: 'string' }, qualityGatesEnabled: { type: 'boolean' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'cicd']
 }));
@@ -1731,7 +1731,7 @@ export const visualRegressionCICDTask = defineTask('visual-regression-cicd', (ar
 export const visualRegressionDocumentationTask = defineTask('visual-regression-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 17: Documentation - ${args.projectName}`,
-  agent: { name: 'general-purpose', prompt: { role: 'Technical Writer', task: 'Generate comprehensive visual regression testing documentation', context: args, instructions: ['Create setup guide', 'Write usage documentation', 'Document troubleshooting'], outputFormat: 'JSON with documentation paths' }, outputSchema: { type: 'object', required: ['setupGuidePath', 'usageGuidePath', 'troubleshootingPath', 'artifacts'], properties: { setupGuidePath: { type: 'string' }, usageGuidePath: { type: 'string' }, troubleshootingPath: { type: 'string' }, artifacts: { type: 'array' } } } },
+  agent: { name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent prompt: { role: 'Technical Writer', task: 'Generate comprehensive visual regression testing documentation', context: args, instructions: ['Create setup guide', 'Write usage documentation', 'Document troubleshooting'], outputFormat: 'JSON with documentation paths' }, outputSchema: { type: 'object', required: ['setupGuidePath', 'usageGuidePath', 'troubleshootingPath', 'artifacts'], properties: { setupGuidePath: { type: 'string' }, usageGuidePath: { type: 'string' }, troubleshootingPath: { type: 'string' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` },
   labels: ['agent', 'visual-regression', 'documentation']
 }));

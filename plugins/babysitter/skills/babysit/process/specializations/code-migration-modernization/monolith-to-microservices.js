@@ -263,7 +263,7 @@ export const domainAnalysisTask = defineTask('domain-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Domain Analysis - ${args.projectName}`,
   agent: {
-    name: 'domain-analyst',
+    name: 'ddd-analyst',
     prompt: {
       role: 'Domain-Driven Design Expert',
       task: 'Analyze business domain and identify bounded contexts',
@@ -306,7 +306,7 @@ export const serviceIdentificationTask = defineTask('service-identification', (a
   kind: 'agent',
   title: `Phase 2: Service Identification - ${args.projectName}`,
   agent: {
-    name: 'service-architect',
+    name: 'microservices-decomposition-planner',
     prompt: {
       role: 'Microservices Architect',
       task: 'Identify candidate microservices from bounded contexts',
@@ -348,7 +348,7 @@ export const dataDecompositionPlanningTask = defineTask('data-decomposition-plan
   kind: 'agent',
   title: `Phase 3: Data Decomposition Planning - ${args.projectName}`,
   agent: {
-    name: 'data-architect',
+    name: 'microservices-decomposition-planner',
     prompt: {
       role: 'Data Architect',
       task: 'Plan data decomposition for microservices',
@@ -390,7 +390,7 @@ export const apiContractDefinitionTask = defineTask('api-contract-definition', (
   kind: 'agent',
   title: `Phase 4: API Contract Definition - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Architect',
       task: 'Define API contracts between services',
@@ -432,7 +432,7 @@ export const infrastructureSetupTask = defineTask('infrastructure-setup', (args,
   kind: 'agent',
   title: `Phase 5: Infrastructure Setup - ${args.projectName}`,
   agent: {
-    name: 'infrastructure-engineer',
+    name: 'microservices-decomposition-planner',
     prompt: {
       role: 'Platform Engineer',
       task: 'Set up microservices infrastructure',
@@ -475,7 +475,7 @@ export const serviceExtractionTask = defineTask('service-extraction', (args, tas
   kind: 'agent',
   title: `Phase 6: Service Extraction - ${args.projectName}`,
   agent: {
-    name: 'extraction-developer',
+    name: 'strangler-pattern-implementer',
     prompt: {
       role: 'Senior Developer',
       task: 'Extract services from monolith using strangler fig',
@@ -517,7 +517,7 @@ export const serviceDataMigrationTask = defineTask('service-data-migration', (ar
   kind: 'agent',
   title: `Phase 7: Service Data Migration - ${args.projectName}`,
   agent: {
-    name: 'data-migrator',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Data Migration Engineer',
       task: 'Migrate data to service-specific databases',
@@ -558,7 +558,7 @@ export const microservicesIntegrationTestingTask = defineTask('microservices-int
   kind: 'agent',
   title: `Phase 8: Integration Testing - ${args.projectName}`,
   agent: {
-    name: 'integration-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Test service interactions and end-to-end flows',
@@ -601,7 +601,7 @@ export const monolithCleanupTask = defineTask('monolith-cleanup', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: Monolith Cleanup - ${args.projectName}`,
   agent: {
-    name: 'cleanup-engineer',
+    name: 'strangler-pattern-implementer',
     prompt: {
       role: 'Senior Developer',
       task: 'Clean up monolith after service extraction',

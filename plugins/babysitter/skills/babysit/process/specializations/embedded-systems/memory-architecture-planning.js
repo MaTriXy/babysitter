@@ -206,7 +206,7 @@ export const memoryRequirementsTask = defineTask('memory-requirements', (args, t
   kind: 'agent',
   title: `Phase 1: Memory Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Architect',
       task: 'Analyze memory requirements',
@@ -249,7 +249,7 @@ export const memoryMapDesignTask = defineTask('memory-map-design', (args, taskCt
   kind: 'agent',
   title: `Phase 2: Memory Map Design - ${args.projectName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Architect',
       task: 'Design memory map',
@@ -291,7 +291,7 @@ export const sectionAllocationTask = defineTask('section-allocation', (args, tas
   kind: 'agent',
   title: `Phase 3: Section Allocation - ${args.projectName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Architect',
       task: 'Allocate memory sections',
@@ -332,7 +332,7 @@ export const linkerScriptGenerationTask = defineTask('linker-script-generation',
   kind: 'agent',
   title: `Phase 4: Linker Script - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Generate linker script',
@@ -374,7 +374,7 @@ export const mpuConfigurationTask = defineTask('mpu-configuration', (args, taskC
   kind: 'agent',
   title: `Phase 5: MPU Configuration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure Memory Protection Unit',
@@ -416,7 +416,7 @@ export const memoryOptimizationTask = defineTask('memory-optimization', (args, t
   kind: 'agent',
   title: `Phase 6: Memory Optimization - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze memory optimizations',
@@ -457,7 +457,7 @@ export const memoryDocumentationTask = defineTask('memory-documentation', (args,
   kind: 'agent',
   title: `Phase 7: Memory Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate memory documentation',

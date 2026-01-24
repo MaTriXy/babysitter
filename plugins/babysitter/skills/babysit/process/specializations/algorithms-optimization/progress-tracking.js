@@ -48,7 +48,7 @@ export const dataCollectionTask = defineTask('data-collection', (args, taskCtx) 
   kind: 'agent',
   title: 'Collect Progress Data',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Data Analyst',
       task: 'Collect learning progress data',
@@ -70,7 +70,7 @@ export const progressAnalysisTask = defineTask('progress-analysis', (args, taskC
   kind: 'agent',
   title: 'Analyze Progress',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Learning Analyst',
       task: 'Analyze learning progress',
@@ -92,7 +92,7 @@ export const recommendationsTask = defineTask('recommendations', (args, taskCtx)
   kind: 'agent',
   title: 'Generate Recommendations',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Learning Coach',
       task: 'Generate learning recommendations',

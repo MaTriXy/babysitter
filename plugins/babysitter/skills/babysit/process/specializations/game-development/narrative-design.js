@@ -306,7 +306,7 @@ export const narrativeFoundationTask = defineTask('narrative-foundation', (args,
   kind: 'agent',
   title: `Phase 1: Narrative Foundation - ${args.gameName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Lead Narrative Designer',
       task: 'Create narrative foundation and story bible',
@@ -351,7 +351,7 @@ export const characterDevelopmentTask = defineTask('character-development', (arg
   kind: 'agent',
   title: `Phase 2: Character Development - ${args.gameName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Character Writer',
       task: 'Create detailed character profiles and arcs',
@@ -394,7 +394,7 @@ export const storyBeatsTask = defineTask('story-beats', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Story Beats - ${args.gameName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Story Architect',
       task: 'Create story structure and beat sheet',
@@ -438,7 +438,7 @@ export const branchingDesignTask = defineTask('branching-design', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Branching Design - ${args.gameName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Systems Narrative Designer',
       task: 'Design branching narrative paths',
@@ -483,7 +483,7 @@ export const dialogueDesignTask = defineTask('dialogue-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Dialogue Design - ${args.gameName}`,
   agent: {
-    name: 'dialogue-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Dialogue Systems Designer',
       task: 'Design dialogue system and conversation structure',
@@ -527,7 +527,7 @@ export const dialogueWritingTask = defineTask('dialogue-writing', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Dialogue Writing - ${args.gameName}`,
   agent: {
-    name: 'writer',
+    name: 'gdd-writer-agent',
     prompt: {
       role: 'Game Writer',
       task: 'Write dialogue scripts for all conversations',
@@ -571,7 +571,7 @@ export const cutsceneDesignTask = defineTask('cutscene-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Cutscene Design - ${args.gameName}`,
   agent: {
-    name: 'cinematic-designer',
+    name: 'animator-agent',
     prompt: {
       role: 'Cinematic Designer',
       task: 'Design cutscenes and cinematics',
@@ -615,7 +615,7 @@ export const narrativeIntegrationTask = defineTask('narrative-integration', (arg
   kind: 'agent',
   title: `Phase 8: Narrative Integration - ${args.gameName}`,
   agent: {
-    name: 'narrative-designer',
+    name: 'narrative-designer-agent',
     prompt: {
       role: 'Narrative Systems Designer',
       task: 'Integrate narrative with gameplay systems',
@@ -658,7 +658,7 @@ export const narrativePlaytestTask = defineTask('narrative-playtest', (args, tas
   kind: 'agent',
   title: `Phase 9: Narrative Playtest - ${args.gameName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: {
       role: 'Narrative UX Researcher',
       task: 'Playtest narrative elements and gather feedback',
@@ -703,7 +703,7 @@ export const narrativeDocumentationTask = defineTask('narrative-documentation', 
   kind: 'agent',
   title: `Phase 10: Narrative Documentation - ${args.gameName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive narrative documentation',

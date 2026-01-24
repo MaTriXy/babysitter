@@ -214,7 +214,7 @@ export const tokenSpecificationTask = defineTask('token-specification', (args, t
   kind: 'agent',
   title: `Phase 1: Token Specification - ${args.tokenName}`,
   agent: {
-    name: 'token-architect',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-011: erc20-implementation)
     prompt: {
       role: 'Token Architect',
       task: 'Define comprehensive token specification',
@@ -258,7 +258,7 @@ export const contractImplementationTask = defineTask('contract-implementation', 
   kind: 'agent',
   title: `Phase 2: Contract Implementation - ${args.projectName}`,
   agent: {
-    name: 'solidity-developer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-011: erc20-implementation, SK-001: solidity-dev)
     prompt: {
       role: 'Senior Solidity Developer',
       task: 'Implement ERC-20 token contract',
@@ -300,7 +300,7 @@ export const extensionsImplementationTask = defineTask('extensions-implementatio
   kind: 'agent',
   title: `Phase 3: Extensions Implementation - ${args.projectName}`,
   agent: {
-    name: 'extension-developer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-011: erc20-implementation)
     prompt: {
       role: 'Token Extension Developer',
       task: 'Implement ERC-20 extensions',
@@ -341,7 +341,7 @@ export const accessControlSetupTask = defineTask('access-control-setup', (args, 
   kind: 'agent',
   title: `Phase 4: Access Control Setup - ${args.projectName}`,
   agent: {
-    name: 'access-control-engineer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Access Control Engineer',
       task: 'Configure token access control',
@@ -383,7 +383,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Smart Contract Test Engineer',
       task: 'Create comprehensive test suite',
@@ -425,7 +425,7 @@ export const securityAuditTask = defineTask('security-audit', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Security Audit - ${args.projectName}`,
   agent: {
-    name: 'security-auditor',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-002: slither-analysis)
     prompt: {
       role: 'Smart Contract Security Auditor',
       task: 'Audit token contract security',
@@ -468,7 +468,7 @@ export const deploymentPreparationTask = defineTask('deployment-preparation', (a
   kind: 'agent',
   title: `Phase 7: Deployment Preparation - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework, SK-009: hardhat-framework)
     prompt: {
       role: 'Deployment Engineer',
       task: 'Prepare token deployment',

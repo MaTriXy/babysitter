@@ -367,7 +367,7 @@ export const tokenDesignTask = defineTask('token-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Token Design - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Design token types and structures',
@@ -411,7 +411,7 @@ export const lexerArchitectureTask = defineTask('lexer-architecture', (args, tas
   kind: 'agent',
   title: `Phase 2: Lexer Architecture - ${args.languageName}`,
   agent: {
-    name: 'lexer-architect',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Architecture Engineer',
       task: 'Design lexer architecture',
@@ -454,7 +454,7 @@ export const charStreamTask = defineTask('char-stream', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Character Stream - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement character stream handling',
@@ -496,7 +496,7 @@ export const whitespaceHandlingTask = defineTask('whitespace-handling', (args, t
   kind: 'agent',
   title: `Phase 4: Whitespace Handling - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement whitespace and comment handling',
@@ -538,7 +538,7 @@ export const keywordScanningTask = defineTask('keyword-scanning', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Keyword Scanning - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement keyword and identifier scanning',
@@ -580,7 +580,7 @@ export const literalScanningTask = defineTask('literal-scanning', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: ${args.literalType} Literal Scanning - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: `Implement ${args.literalType} literal scanning`,
@@ -622,7 +622,7 @@ export const operatorScanningTask = defineTask('operator-scanning', (args, taskC
   kind: 'agent',
   title: `Phase 7: Operator Scanning - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement operator scanning',
@@ -664,7 +664,7 @@ export const locationTrackingTask = defineTask('location-tracking', (args, taskC
   kind: 'agent',
   title: `Phase 8: Location Tracking - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement source location tracking',
@@ -706,7 +706,7 @@ export const lexerErrorRecoveryTask = defineTask('lexer-error-recovery', (args, 
   kind: 'agent',
   title: `Phase 9: Error Recovery - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Implement lexer error recovery',
@@ -748,7 +748,7 @@ export const lexerIntegrationTask = defineTask('lexer-integration', (args, taskC
   kind: 'agent',
   title: `Phase 10: Lexer Integration - ${args.languageName}`,
   agent: {
-    name: 'lexer-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Frontend Engineer',
       task: 'Integrate lexer components',
@@ -789,7 +789,7 @@ export const lexerTestingTask = defineTask('lexer-testing', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 11: Lexer Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive lexer tests',
@@ -831,7 +831,7 @@ export const lexerBenchmarkTask = defineTask('lexer-benchmark', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 12: Lexer Benchmarking - ${args.languageName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'compiler-performance-engineer',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark lexer performance',
@@ -874,7 +874,7 @@ export const lexerDocumentationTask = defineTask('lexer-documentation', (args, t
   kind: 'agent',
   title: `Phase 13: Lexer Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate lexer documentation',

@@ -177,7 +177,7 @@ export const codebaseAssessmentTask = defineTask('codebase-assessment', (args, t
   kind: 'agent',
   title: `Assess Codebase - ${args.projectName}`,
   agent: {
-    name: 'code-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Code Analyst',
       task: 'Assess codebase structure and identify security-critical code paths',
@@ -216,7 +216,7 @@ export const automatedStaticAnalysisTask = defineTask('automated-static-analysis
   kind: 'agent',
   title: `Run Automated Analysis - ${args.projectName}`,
   agent: {
-    name: 'sast-specialist',
+    name: 'vuln-researcher',
     prompt: {
       role: 'SAST Engineer',
       task: 'Run automated static analysis with security rules',
@@ -255,7 +255,7 @@ export const dataFlowAnalysisTask = defineTask('data-flow-analysis', (args, task
   kind: 'agent',
   title: `Analyze Data Flows - ${args.projectName}`,
   agent: {
-    name: 'data-flow-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Data Flow Security Analyst',
       task: 'Trace data flow from sources to sinks for security analysis',
@@ -294,7 +294,7 @@ export const authReviewTask = defineTask('auth-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Review Auth Logic - ${args.projectName}`,
   agent: {
-    name: 'auth-specialist',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Authentication Security Specialist',
       task: 'Review authentication and authorization implementation',
@@ -333,7 +333,7 @@ export const cryptoReviewTask = defineTask('crypto-review', (args, taskCtx) => (
   kind: 'agent',
   title: `Review Cryptography - ${args.projectName}`,
   agent: {
-    name: 'crypto-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Cryptography Security Analyst',
       task: 'Review cryptographic implementations for weaknesses',
@@ -372,7 +372,7 @@ export const findingsConsolidationTask = defineTask('findings-consolidation', (a
   kind: 'agent',
   title: `Consolidate Findings - ${args.projectName}`,
   agent: {
-    name: 'report-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Report Specialist',
       task: 'Consolidate all findings into comprehensive report',

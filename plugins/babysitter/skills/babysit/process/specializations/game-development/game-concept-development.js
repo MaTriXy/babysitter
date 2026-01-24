@@ -295,7 +295,7 @@ export const highConceptTask = defineTask('high-concept', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: High Concept - ${args.conceptName}`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Senior Game Designer',
       task: 'Define high concept and elevator pitch for game',
@@ -341,7 +341,7 @@ export const marketAnalysisTask = defineTask('market-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Market Analysis - ${args.conceptName}`,
   agent: {
-    name: 'market-analyst',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Game Market Analyst',
       task: 'Conduct market research and competitor analysis',
@@ -386,7 +386,7 @@ export const audienceAnalysisTask = defineTask('audience-analysis', (args, taskC
   kind: 'agent',
   title: `Phase 3: Audience Analysis - ${args.conceptName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: {
       role: 'Game UX Researcher',
       task: 'Define target audience and player personas',
@@ -430,7 +430,7 @@ export const coreGameplayTask = defineTask('core-gameplay', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Core Gameplay - ${args.conceptName}`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Senior Game Designer',
       task: 'Design core gameplay loop and mechanics',
@@ -475,7 +475,7 @@ export const visualDirectionTask = defineTask('visual-direction', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Visual Direction - ${args.conceptName}`,
   agent: {
-    name: 'art-director',
+    name: 'art-director-agent',
     prompt: {
       role: 'Art Director',
       task: 'Define visual direction and create mood boards',
@@ -520,7 +520,7 @@ export const gddCreationTask = defineTask('gdd-creation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: GDD Creation - ${args.conceptName}`,
   agent: {
-    name: 'game-designer',
+    name: 'gdd-writer-agent',
     prompt: {
       role: 'Lead Game Designer',
       task: 'Create initial Game Design Document',
@@ -565,7 +565,7 @@ export const pitchDeckTask = defineTask('pitch-deck', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Pitch Deck - ${args.conceptName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Game Producer',
       task: 'Create pitch deck for stakeholder presentation',
@@ -607,7 +607,7 @@ export const conceptValidationTask = defineTask('concept-validation', (args, tas
   kind: 'agent',
   title: `Phase 8: Concept Validation - ${args.conceptName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Executive Producer',
       task: 'Validate game concept and provide recommendations',

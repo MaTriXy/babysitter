@@ -220,7 +220,7 @@ export const documentationTask = defineTask('serverless-documentation', (args, t
   kind: 'agent',
   title: `Serverless Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate serverless documentation',

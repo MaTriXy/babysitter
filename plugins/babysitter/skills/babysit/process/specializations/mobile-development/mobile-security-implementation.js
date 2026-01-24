@@ -87,8 +87,9 @@ function createSecurityTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'secure-storage' },
     agent: {
-      name: 'mobile-security-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Mobile Security Engineer',
         task: `Implement ${title.toLowerCase()} for mobile security`,

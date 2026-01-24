@@ -228,7 +228,7 @@ export const specAnalysisTask = defineTask('spec-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: API Specification Analysis - ${args.projectName}`,
   agent: {
-    name: 'api-analyst',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Specification Analyst',
       task: 'Analyze API specification for code generation',
@@ -286,7 +286,7 @@ export const generatorConfigTask = defineTask('generator-config', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Generator Configuration - ${args.projectName}`,
   agent: {
-    name: 'codegen-engineer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'Code Generation Engineer',
       task: 'Configure code generator for SDK generation',
@@ -349,7 +349,7 @@ export const templateCustomizationTask = defineTask('template-customization', (a
   kind: 'agent',
   title: `Phase 3: Template Customization - ${args.language}`,
   agent: {
-    name: 'template-engineer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'SDK Template Engineer',
       task: `Create custom templates for ${args.language} SDK generation`,
@@ -405,7 +405,7 @@ export const postProcessingTask = defineTask('post-processing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Post-Generation Processing - ${args.projectName}`,
   agent: {
-    name: 'codegen-engineer',
+    name: 'template-customization-agent',
     prompt: {
       role: 'Code Generation Engineer',
       task: 'Implement post-generation processing for idiomatic code',
@@ -462,7 +462,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Set up CI/CD integration for SDK code generation',
@@ -518,7 +518,7 @@ export const validationConfigTask = defineTask('validation-config', (args, taskC
   kind: 'agent',
   title: `Phase 6: Validation Configuration - ${args.projectName}`,
   agent: {
-    name: 'quality-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'SDK Quality Engineer',
       task: 'Configure validation and linting for generated code',
@@ -573,7 +573,7 @@ export const breakingChangeTask = defineTask('breaking-change-detection', (args,
   kind: 'agent',
   title: `Phase 7: Breaking Change Detection - ${args.projectName}`,
   agent: {
-    name: 'api-analyst',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Compatibility Analyst',
       task: 'Set up breaking change detection for API specifications',
@@ -625,7 +625,7 @@ export const pipelineDocumentationTask = defineTask('pipeline-documentation', (a
   kind: 'agent',
   title: `Phase 8: Pipeline Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate code generation pipeline documentation',

@@ -88,7 +88,7 @@ export const rlTaskDefinitionTask = defineTask('rl-task-definition', (args, task
   kind: 'agent',
   title: `Task Definition - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Define task and reward function', context: args, instructions: ['1. Define task objectives', '2. Specify success criteria', '3. Identify constraints', '4. Define episode structure', '5. Document task specification'] },
     outputSchema: { type: 'object', required: ['taskSpec', 'successCriteria', 'artifacts'], properties: { taskSpec: { type: 'object' }, successCriteria: { type: 'object' }, episodeLength: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -100,7 +100,7 @@ export const rlEnvironmentSetupTask = defineTask('rl-environment-setup', (args, 
   kind: 'agent',
   title: `Environment Setup - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: { role: 'Simulation Engineer', task: 'Set up simulation environment with Gym interface', context: args, instructions: ['1. Create Gym environment wrapper', '2. Configure physics simulation', '3. Set up robot model', '4. Configure reset function', '5. Test environment'] },
     outputSchema: { type: 'object', required: ['envConfig', 'gymInterface', 'artifacts'], properties: { envConfig: { type: 'object' }, gymInterface: { type: 'object' }, resetConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -112,7 +112,7 @@ export const rlAlgorithmSelectionTask = defineTask('rl-algorithm-selection', (ar
   kind: 'agent',
   title: `Algorithm Selection - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Select RL algorithm', context: args, instructions: ['1. Evaluate PPO, SAC, TD3', '2. Consider action space type', '3. Configure hyperparameters', '4. Set up network architecture', '5. Document selection'] },
     outputSchema: { type: 'object', required: ['algorithm', 'hyperparameters', 'artifacts'], properties: { algorithm: { type: 'string' }, hyperparameters: { type: 'object' }, networkArchitecture: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -124,7 +124,7 @@ export const observationActionSpaceTask = defineTask('observation-action-space',
   kind: 'agent',
   title: `Observation/Action Space - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement observation and action spaces', context: args, instructions: ['1. Define observation space', '2. Define action space', '3. Normalize observations', '4. Scale actions', '5. Test spaces'] },
     outputSchema: { type: 'object', required: ['observationSpace', 'actionSpace', 'artifacts'], properties: { observationSpace: { type: 'object' }, actionSpace: { type: 'object' }, normalization: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -136,7 +136,7 @@ export const rewardDesignTask = defineTask('reward-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Reward Design - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Design reward shaping strategy', context: args, instructions: ['1. Define primary reward', '2. Add auxiliary rewards', '3. Implement reward shaping', '4. Configure reward scaling', '5. Test reward signal'] },
     outputSchema: { type: 'object', required: ['rewardFunction', 'components', 'artifacts'], properties: { rewardFunction: { type: 'object' }, components: { type: 'array' }, shaping: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -148,7 +148,7 @@ export const rlTrainingTask = defineTask('rl-training', (args, taskCtx) => ({
   kind: 'agent',
   title: `RL Training - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Train agent in simulation', context: args, instructions: ['1. Configure parallel environments', '2. Start training', '3. Monitor reward curves', '4. Save checkpoints', '5. Select best policy'] },
     outputSchema: { type: 'object', required: ['policyPath', 'finalReward', 'totalEpisodes', 'artifacts'], properties: { policyPath: { type: 'string' }, finalReward: { type: 'number' }, totalEpisodes: { type: 'number' }, trainingCurve: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -160,7 +160,7 @@ export const policyValidationTask = defineTask('policy-validation', (args, taskC
   kind: 'agent',
   title: `Policy Validation - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Validate trained policy', context: args, instructions: ['1. Run evaluation episodes', '2. Measure success rate', '3. Analyze failure cases', '4. Test edge cases', '5. Generate validation report'] },
     outputSchema: { type: 'object', required: ['successRate', 'evaluationResults', 'artifacts'], properties: { successRate: { type: 'number' }, evaluationResults: { type: 'object' }, failureCases: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -172,7 +172,7 @@ export const simToRealTransferTask = defineTask('sim-to-real-transfer', (args, t
   kind: 'agent',
   title: `Sim-to-Real Transfer - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement sim-to-real transfer techniques', context: args, instructions: ['1. Apply domain randomization', '2. Add observation noise', '3. Randomize dynamics', '4. Test transfer robustness', '5. Document transfer method'] },
     outputSchema: { type: 'object', required: ['transferConfig', 'randomizationParams', 'artifacts'], properties: { transferConfig: { type: 'object' }, randomizationParams: { type: 'object' }, robustnessTests: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -184,7 +184,7 @@ export const rlHardwareTestingTask = defineTask('rl-hardware-testing', (args, ta
   kind: 'agent',
   title: `Hardware Testing - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test on physical robot', context: args, instructions: ['1. Deploy policy to robot', '2. Run safety-constrained tests', '3. Measure real-world performance', '4. Compare to simulation', '5. Document transfer gap'] },
     outputSchema: { type: 'object', required: ['successRate', 'realWorldResults', 'artifacts'], properties: { successRate: { type: 'number' }, realWorldResults: { type: 'object' }, transferGap: { type: 'number' }, artifacts: { type: 'array' } } }
   },

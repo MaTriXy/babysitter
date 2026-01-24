@@ -266,7 +266,7 @@ export const errorFormatDesignTask = defineTask('error-format-design', (args, ta
   kind: 'agent',
   title: `Phase 1: Error Format Design - ${args.projectName}`,
   agent: {
-    name: 'cli-ux-designer',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Error Message Designer',
       task: 'Design error message format',
@@ -305,7 +305,7 @@ export const errorHierarchyTask = defineTask('error-hierarchy', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Error Hierarchy - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Error Architecture Specialist',
       task: 'Create error hierarchy/types',
@@ -345,7 +345,7 @@ export const contextualErrorsTask = defineTask('contextual-errors', (args, taskC
   kind: 'agent',
   title: `Phase 3: Contextual Errors - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Contextual Error Specialist',
       task: 'Implement contextual error messages',
@@ -385,7 +385,7 @@ export const fixSuggestionsTask = defineTask('fix-suggestions', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Fix Suggestions - ${args.projectName}`,
   agent: {
-    name: 'cli-ux-designer',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Error Recovery Specialist',
       task: 'Add fix suggestions for common errors',
@@ -425,7 +425,7 @@ export const didYouMeanTask = defineTask('did-you-mean', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Did You Mean - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Typo Detection Specialist',
       task: 'Create "did you mean" suggestions for typos',
@@ -465,7 +465,7 @@ export const stackTraceHandlingTask = defineTask('stack-trace-handling', (args, 
   kind: 'agent',
   title: `Phase 6: Stack Trace Handling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Debug Mode Specialist',
       task: 'Implement stack trace handling (debug vs production)',
@@ -504,7 +504,7 @@ export const errorCodesTask = defineTask('error-codes', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Error Codes - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Exit Code Specialist',
       task: 'Add error codes for scripting',
@@ -544,7 +544,7 @@ export const errorDocumentationTask = defineTask('error-documentation', (args, t
   kind: 'agent',
   title: `Phase 8: Error Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Error Documentation Specialist',
       task: 'Create error documentation',
@@ -584,7 +584,7 @@ export const errorTelemetryTask = defineTask('error-telemetry', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Error Telemetry - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-error-handler-designer',
     prompt: {
       role: 'CLI Telemetry Specialist',
       task: 'Implement error reporting/telemetry (opt-in)',
@@ -623,7 +623,7 @@ export const errorTestingTask = defineTask('error-testing', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 10: Error Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: {
       role: 'CLI Error Testing Specialist',
       task: 'Test error scenarios comprehensively',
@@ -665,7 +665,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Error Handling Documentation Specialist',
       task: 'Document error handling patterns',

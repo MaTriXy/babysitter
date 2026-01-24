@@ -194,7 +194,7 @@ export const exercisePlanningTask = defineTask('exercise-planning', (args, taskC
   kind: 'agent',
   title: `Plan Exercise - ${args.projectName}`,
   agent: {
-    name: 'exercise-planner',
+    name: 'purple-team-coordinator',
     prompt: {
       role: 'Purple Team Exercise Planner',
       task: 'Plan purple team exercise',
@@ -233,7 +233,7 @@ export const detectionBaselineTask = defineTask('detection-baseline', (args, tas
   kind: 'agent',
   title: `Establish Baseline - ${args.projectName}`,
   agent: {
-    name: 'detection-analyst',
+    name: 'purple-team-coordinator',
     prompt: {
       role: 'Detection Baseline Analyst',
       task: 'Establish detection baseline',
@@ -272,7 +272,7 @@ export const attackSimulationTask = defineTask('attack-simulation', (args, taskC
   kind: 'agent',
   title: `Simulate Attacks - ${args.projectName}`,
   agent: {
-    name: 'attack-simulator',
+    name: 'red-team-operator',
     prompt: {
       role: 'Attack Simulation Specialist',
       task: 'Execute attack simulations',
@@ -311,7 +311,7 @@ export const detectionValidationTask = defineTask('detection-validation', (args,
   kind: 'agent',
   title: `Validate Detection - ${args.projectName}`,
   agent: {
-    name: 'detection-validator',
+    name: 'purple-team-coordinator',
     prompt: {
       role: 'Detection Validation Specialist',
       task: 'Validate detection capabilities',
@@ -351,7 +351,7 @@ export const responseTestingTask = defineTask('response-testing', (args, taskCtx
   kind: 'agent',
   title: `Test Response - ${args.projectName}`,
   agent: {
-    name: 'response-tester',
+    name: 'purple-team-coordinator',
     prompt: {
       role: 'Incident Response Tester',
       task: 'Test incident response',
@@ -390,7 +390,7 @@ export const improvementRecommendationsTask = defineTask('improvement-recommenda
   kind: 'agent',
   title: `Generate Recommendations - ${args.projectName}`,
   agent: {
-    name: 'improvement-advisor',
+    name: 'purple-team-coordinator',
     prompt: {
       role: 'Security Improvement Advisor',
       task: 'Generate improvement recommendations',
@@ -429,7 +429,7 @@ export const purpleTeamReportTask = defineTask('purple-team-report', (args, task
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Purple Team Report Specialist',
       task: 'Generate purple team report',

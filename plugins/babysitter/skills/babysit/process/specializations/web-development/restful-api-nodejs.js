@@ -74,10 +74,10 @@ export async function process(inputs, ctx) {
 }
 
 export const projectSetupTask = defineTask('rest-api-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `REST API Setup - ${args.projectName}`,
-  agent: {
-    name: 'nodejs-developer',
+  skill: {
+    name: 'express-skill',
     prompt: {
       role: 'Node.js API Developer',
       task: 'Set up Express.js REST API project',
@@ -95,7 +95,7 @@ export const routingSetupTask = defineTask('rest-api-routing', (args, taskCtx) =
   kind: 'agent',
   title: `REST API Routing - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'api-developer-agent',
     prompt: {
       role: 'REST API Architect',
       task: 'Design and implement RESTful routes',
@@ -167,7 +167,7 @@ export const authSetupTask = defineTask('rest-api-auth', (args, taskCtx) => ({
   kind: 'agent',
   title: `REST API Authentication - ${args.projectName}`,
   agent: {
-    name: 'auth-specialist',
+    name: 'auth-specialist-agent',
     prompt: {
       role: 'API Authentication Specialist',
       task: 'Implement API authentication',
@@ -182,10 +182,10 @@ export const authSetupTask = defineTask('rest-api-auth', (args, taskCtx) => ({
 }));
 
 export const apiDocumentationTask = defineTask('rest-api-docs', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `REST API Documentation - ${args.projectName}`,
-  agent: {
-    name: 'api-documentation-specialist',
+  skill: {
+    name: 'swagger-skill',
     prompt: {
       role: 'API Documentation Specialist',
       task: 'Generate API documentation',
@@ -221,7 +221,7 @@ export const documentationTask = defineTask('rest-api-full-docs', (args, taskCtx
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate project documentation',

@@ -111,7 +111,8 @@ export const codebaseAnalysisTask = defineTask('codebase-analysis', (args, taskC
   kind: 'agent',
   title: `Codebase Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['hip-rocm'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze CUDA codebase for porting',
@@ -152,7 +153,8 @@ export const hipifyConversionTask = defineTask('hipify-conversion', (args, taskC
   kind: 'agent',
   title: `Hipify Conversion - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['hip-rocm'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Convert CUDA to HIP using hipify',
@@ -193,7 +195,8 @@ export const apiDifferencesTask = defineTask('api-differences', (args, taskCtx) 
   kind: 'agent',
   title: `API Differences - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['hip-rocm'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Handle API differences',
@@ -234,7 +237,8 @@ export const crossPlatformBuildTask = defineTask('cross-platform-build', (args, 
   kind: 'agent',
   title: `Cross-Platform Build - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['hip-rocm'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Create cross-platform build system',
@@ -275,7 +279,8 @@ export const platformTestingTask = defineTask('platform-testing', (args, taskCtx
   kind: 'agent',
   title: `Platform Testing - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['hip-rocm'],
     prompt: {
       role: 'GPU Test Engineer',
       task: 'Test on multiple platforms',
@@ -317,6 +322,7 @@ export const crossPlatformPerformanceTask = defineTask('cross-platform-performan
   title: `Performance Comparison - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'hip-rocm'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Compare performance across platforms',

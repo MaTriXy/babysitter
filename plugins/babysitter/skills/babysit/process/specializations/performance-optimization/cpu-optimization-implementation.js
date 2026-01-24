@@ -113,7 +113,7 @@ export const reviewProfilingResultsTask = defineTask('review-profiling-results',
   kind: 'agent',
   title: `Review Profiling Results - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Review profiling results and recommendations',
@@ -141,7 +141,7 @@ export const designOptimizationApproachTask = defineTask('design-optimization-ap
   kind: 'agent',
   title: `Design Optimization Approach - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Design CPU optimization approach',
@@ -169,7 +169,7 @@ export const implementAlgorithmicImprovementsTask = defineTask('implement-algori
   kind: 'agent',
   title: `Implement Algorithmic Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Implement algorithmic improvements',
@@ -197,7 +197,7 @@ export const optimizeHotCodePathsTask = defineTask('optimize-hot-code-paths', (a
   kind: 'agent',
   title: `Optimize Hot Code Paths - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize hot code paths',
@@ -225,7 +225,7 @@ export const addComputationCachingTask = defineTask('add-computation-caching', (
   kind: 'agent',
   title: `Add Computation Caching - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Add caching for expensive computations',
@@ -253,7 +253,7 @@ export const implementParallelProcessingTask = defineTask('implement-parallel-pr
   kind: 'agent',
   title: `Implement Parallel Processing - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Implement parallel processing',
@@ -281,7 +281,7 @@ export const benchmarkChangesTask = defineTask('benchmark-changes', (args, taskC
   kind: 'agent',
   title: `Benchmark Changes - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark before and after changes',
@@ -309,7 +309,7 @@ export const validateImprovementsTask = defineTask('validate-improvements', (arg
   kind: 'agent',
   title: `Validate Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Validate improvements meet targets',

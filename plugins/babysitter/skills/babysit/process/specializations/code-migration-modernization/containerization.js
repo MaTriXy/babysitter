@@ -187,7 +187,7 @@ export const containerizationAssessmentTask = defineTask('containerization-asses
   kind: 'agent',
   title: `Phase 1: Containerization Assessment - ${args.projectName}`,
   agent: {
-    name: 'container-analyst',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Container Architect',
       task: 'Assess application for containerization',
@@ -230,7 +230,7 @@ export const dockerfileCreationTask = defineTask('dockerfile-creation', (args, t
   kind: 'agent',
   title: `Phase 2: Dockerfile Creation - ${args.projectName}`,
   agent: {
-    name: 'dockerfile-developer',
+    name: 'iac-generator',
     prompt: {
       role: 'Docker Developer',
       task: 'Create optimized Dockerfiles',
@@ -273,7 +273,7 @@ export const imageBuildOptimizationTask = defineTask('image-build-optimization',
   kind: 'agent',
   title: `Phase 3: Image Build and Optimization - ${args.projectName}`,
   agent: {
-    name: 'image-builder',
+    name: 'iac-generator',
     prompt: {
       role: 'Container Engineer',
       task: 'Build and optimize container images',
@@ -315,7 +315,7 @@ export const kubernetesManifestCreationTask = defineTask('kubernetes-manifest-cr
   kind: 'agent',
   title: `Phase 4: Kubernetes Manifest Creation - ${args.projectName}`,
   agent: {
-    name: 'k8s-developer',
+    name: 'iac-generator',
     prompt: {
       role: 'Kubernetes Developer',
       task: 'Create Kubernetes manifests',
@@ -357,7 +357,7 @@ export const configurationExternalizationTask = defineTask('configuration-extern
   kind: 'agent',
   title: `Phase 5: Configuration Externalization - ${args.projectName}`,
   agent: {
-    name: 'config-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Configuration Engineer',
       task: 'Externalize application configuration',
@@ -399,7 +399,7 @@ export const healthReadinessImplementationTask = defineTask('health-readiness-im
   kind: 'agent',
   title: `Phase 6: Health and Readiness Implementation - ${args.projectName}`,
   agent: {
-    name: 'health-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'SRE Engineer',
       task: 'Implement health and readiness probes',
@@ -441,7 +441,7 @@ export const deploymentTestingTask = defineTask('deployment-testing', (args, tas
   kind: 'agent',
   title: `Phase 7: Deployment Testing - ${args.projectName}`,
   agent: {
-    name: 'deployment-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Test containerized deployment',

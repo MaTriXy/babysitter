@@ -113,7 +113,8 @@ export const platformDiscoveryTask = defineTask('platform-discovery', (args, tas
   kind: 'agent',
   title: `Platform Discovery - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement OpenCL platform and device discovery',
@@ -154,7 +155,8 @@ export const contextSetupTask = defineTask('context-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Context Setup - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Create OpenCL context and command queues',
@@ -195,7 +197,8 @@ export const openclKernelDevelopmentTask = defineTask('opencl-kernel-development
   kind: 'agent',
   title: `Kernel Development - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Develop OpenCL kernels',
@@ -236,7 +239,8 @@ export const bufferManagementTask = defineTask('buffer-management', (args, taskC
   kind: 'agent',
   title: `Buffer Management - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement OpenCL buffer management',
@@ -277,7 +281,8 @@ export const kernelCompilationTask = defineTask('kernel-compilation', (args, tas
   kind: 'agent',
   title: `Kernel Compilation - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement OpenCL kernel compilation',
@@ -318,7 +323,8 @@ export const openclHostApplicationTask = defineTask('opencl-host-application', (
   kind: 'agent',
   title: `Host Application - ${args.appName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Create OpenCL host application',
@@ -359,7 +365,8 @@ export const crossPlatformTestingTask = defineTask('cross-platform-testing', (ar
   kind: 'agent',
   title: `Cross-Platform Testing - ${args.appName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'cross-platform-gpu-expert',
+    skills: ['opencl-runtime'],
     prompt: {
       role: 'GPU Test Engineer',
       task: 'Test OpenCL application across platforms',

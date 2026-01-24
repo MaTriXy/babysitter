@@ -287,8 +287,9 @@ export async function process(inputs, ctx) {
 export const requirementsGatheringTask = defineTask('requirements-gathering', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Requirements Gathering - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'protocol-architect',
+    name: 'network-architect',
     prompt: {
       role: 'Protocol Architect',
       task: 'Gather and formalize protocol requirements',
@@ -326,8 +327,9 @@ export const requirementsGatheringTask = defineTask('requirements-gathering', (a
 export const messageFormatTask = defineTask('message-format', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Message Format Design - ${args.projectName}`,
+  skill: { name: 'serialization' },
   agent: {
-    name: 'message-designer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Message Designer',
       task: 'Design message format and semantics',
@@ -366,8 +368,9 @@ export const messageFormatTask = defineTask('message-format', (args, taskCtx) =>
 export const framingDesignTask = defineTask('framing-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Framing Design - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'framing-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Framing Engineer',
       task: 'Design framing and multiplexing strategy',
@@ -405,8 +408,9 @@ export const framingDesignTask = defineTask('framing-design', (args, taskCtx) =>
 export const handshakeDesignTask = defineTask('handshake-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Handshake Design - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'handshake-designer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Handshake Designer',
       task: 'Design handshake and connection establishment',
@@ -444,8 +448,9 @@ export const handshakeDesignTask = defineTask('handshake-design', (args, taskCtx
 export const flowControlTask = defineTask('flow-control', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Flow Control - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'flow-control-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Flow Control Engineer',
       task: 'Implement flow control and backpressure',
@@ -483,8 +488,9 @@ export const flowControlTask = defineTask('flow-control', (args, taskCtx) => ({
 export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Error Handling - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'error-handling-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Error Handling Engineer',
       task: 'Implement error handling and recovery',
@@ -522,8 +528,9 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
 export const serializationTask = defineTask('serialization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Serialization - ${args.projectName}`,
+  skill: { name: 'serialization' },
   agent: {
-    name: 'serialization-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Serialization Engineer',
       task: 'Implement message serialization/deserialization',
@@ -561,8 +568,9 @@ export const serializationTask = defineTask('serialization', (args, taskCtx) => 
 export const protocolSpecTask = defineTask('protocol-spec', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Protocol Specification - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'spec-writer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Specification Writer',
       task: 'Create protocol specification document',
@@ -600,8 +608,9 @@ export const protocolSpecTask = defineTask('protocol-spec', (args, taskCtx) => (
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Test Suite - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'test-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Test Engineer',
       task: 'Build comprehensive test suite',
@@ -640,8 +649,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Validation - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'validation-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Validation Engineer',
       task: 'Validate protocol design and implementation',

@@ -46,8 +46,9 @@ export async function process(inputs, ctx) {
 export const advancedDPLearningTask = defineTask('advanced-dp-learning', (args, taskCtx) => ({
   kind: 'agent',
   title: `Learn ${args.technique}`,
+  skills: ['dp-optimizer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Learn advanced DP technique',
@@ -68,8 +69,9 @@ export const advancedDPLearningTask = defineTask('advanced-dp-learning', (args, 
 export const advancedDPImplementationTask = defineTask('advanced-dp-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implement ${args.technique}`,
+  skills: ['dp-optimizer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement advanced DP technique',
@@ -90,8 +92,9 @@ export const advancedDPImplementationTask = defineTask('advanced-dp-implementati
 export const advancedDPExamplesTask = defineTask('advanced-dp-examples', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Solve Example Problems',
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Solve example problems using technique',

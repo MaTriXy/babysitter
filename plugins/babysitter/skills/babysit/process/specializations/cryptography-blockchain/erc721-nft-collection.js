@@ -250,7 +250,7 @@ export const collectionDesignTask = defineTask('collection-design', (args, taskC
   kind: 'agent',
   title: `Phase 1: Collection Design - ${args.collectionName}`,
   agent: {
-    name: 'nft-designer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-012: erc721-implementation)
     prompt: {
       role: 'NFT Collection Designer',
       task: 'Design NFT collection specifications',
@@ -293,7 +293,7 @@ export const metadataDesignTask = defineTask('metadata-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Metadata Design - ${args.projectName}`,
   agent: {
-    name: 'metadata-designer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-012: erc721-implementation)
     prompt: {
       role: 'NFT Metadata Designer',
       task: 'Design metadata schema and structure',
@@ -335,7 +335,7 @@ export const contractImplementationTask = defineTask('contract-implementation', 
   kind: 'agent',
   title: `Phase 3: Contract Implementation - ${args.projectName}`,
   agent: {
-    name: 'nft-developer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-012: erc721-implementation, SK-001: solidity-dev)
     prompt: {
       role: 'NFT Contract Developer',
       task: 'Implement ERC-721 contract',
@@ -377,7 +377,7 @@ export const mintingMechanismTask = defineTask('minting-mechanism', (args, taskC
   kind: 'agent',
   title: `Phase 4: Minting Mechanism - ${args.projectName}`,
   agent: {
-    name: 'minting-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-012: erc721-implementation)
     prompt: {
       role: 'Minting Mechanism Engineer',
       task: 'Implement minting mechanisms',
@@ -419,7 +419,7 @@ export const royaltyImplementationTask = defineTask('royalty-implementation', (a
   kind: 'agent',
   title: `Phase 5: Royalty Implementation - ${args.projectName}`,
   agent: {
-    name: 'royalty-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-012: erc721-implementation)
     prompt: {
       role: 'Royalty Implementation Engineer',
       task: 'Implement ERC-2981 royalties',
@@ -461,7 +461,7 @@ export const metadataInfrastructureTask = defineTask('metadata-infrastructure', 
   kind: 'agent',
   title: `Phase 6: Metadata Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'infrastructure-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist
     prompt: {
       role: 'Metadata Infrastructure Engineer',
       task: 'Set up metadata storage and serving',
@@ -503,7 +503,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'NFT Test Engineer',
       task: 'Create comprehensive NFT test suite',
@@ -545,7 +545,7 @@ export const marketplaceIntegrationTask = defineTask('marketplace-integration', 
   kind: 'agent',
   title: `Phase 8: Marketplace Integration - ${args.projectName}`,
   agent: {
-    name: 'marketplace-integrator',
+    name: 'token-standards', // AG-003: Token Standards Specialist
     prompt: {
       role: 'Marketplace Integration Specialist',
       task: 'Prepare marketplace integration',
@@ -586,7 +586,7 @@ export const deploymentPreparationTask = defineTask('deployment-preparation', (a
   kind: 'agent',
   title: `Phase 9: Deployment Preparation - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'NFT Deployment Engineer',
       task: 'Prepare NFT deployment',

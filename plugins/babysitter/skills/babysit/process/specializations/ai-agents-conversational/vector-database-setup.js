@@ -177,7 +177,7 @@ export const dbSelectionTask = defineTask('db-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: `Select Vector Database - ${args.projectName}`,
   agent: {
-    name: 'db-architect',
+    name: 'vector-db-specialist',  // AG-RAG-004: Optimizes vector database configuration and indexing
     prompt: {
       role: 'Database Architect',
       task: 'Configure vector database for project',
@@ -212,10 +212,10 @@ export const dbSelectionTask = defineTask('db-selection', (args, taskCtx) => ({
 }));
 
 export const indexConfigurationTask = defineTask('index-configuration', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Configure Index - ${args.projectName}`,
-  agent: {
-    name: 'index-specialist',
+  skill: {
+    name: 'vector-store-configs',  // SK-RAG-004: Vector store connection and configuration templates
     prompt: {
       role: 'Index Specialist',
       task: 'Configure vector index for optimal performance',

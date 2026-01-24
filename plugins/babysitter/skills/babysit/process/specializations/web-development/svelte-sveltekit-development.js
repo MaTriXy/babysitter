@@ -218,10 +218,10 @@ export async function process(inputs, ctx) {
 // ============================================================================
 
 export const projectSetupTask = defineTask('sveltekit-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 1: SvelteKit Setup - ${args.projectName}`,
-  agent: {
-    name: 'svelte-developer',
+  skill: {
+    name: 'svelte-skill',
     prompt: {
       role: 'Senior Svelte/SvelteKit Developer',
       task: 'Set up SvelteKit project',
@@ -461,10 +461,10 @@ export const formActionsTask = defineTask('sveltekit-form-actions', (args, taskC
 }));
 
 export const testingSetupTask = defineTask('svelte-testing', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: Svelte Testing - ${args.projectName}`,
-  agent: {
-    name: 'svelte-testing-specialist',
+  skill: {
+    name: 'vitest-skill',
     prompt: {
       role: 'Svelte Testing Specialist',
       task: 'Set up testing infrastructure',
@@ -546,7 +546,7 @@ export const documentationTask = defineTask('svelte-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Svelte documentation',

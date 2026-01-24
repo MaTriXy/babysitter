@@ -49,7 +49,7 @@ export const divideConquerDesignTask = defineTask('divide-conquer-design', (args
   kind: 'agent',
   title: 'Design Divide and Conquer',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Designer',
       task: 'Design divide and conquer solution',
@@ -71,7 +71,7 @@ export const recurrenceAnalysisTask = defineTask('recurrence-analysis', (args, t
   kind: 'agent',
   title: 'Analyze Recurrence',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Analyze recurrence relation',
@@ -93,7 +93,7 @@ export const divideConquerImplementationTask = defineTask('divide-conquer-implem
   kind: 'agent',
   title: 'Implement Divide and Conquer',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement divide and conquer algorithm',

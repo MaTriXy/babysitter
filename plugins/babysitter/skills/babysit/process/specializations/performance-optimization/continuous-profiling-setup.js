@@ -96,7 +96,7 @@ export const selectContinuousProfilingToolTask = defineTask('select-continuous-p
   kind: 'agent',
   title: `Select Continuous Profiling Tool - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Select continuous profiling tool', context: args,
       instructions: ['1. Evaluate Pyroscope, Parca', '2. Consider overhead', '3. Evaluate features', '4. Select tool', '5. Document selection'],
       outputFormat: 'JSON with tool selection' },
@@ -110,7 +110,7 @@ export const deployProfilingInfrastructureTask = defineTask('deploy-profiling-in
   kind: 'agent',
   title: `Deploy Profiling Infrastructure - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Deploy profiling infrastructure', context: args,
       instructions: ['1. Deploy profiling server', '2. Configure storage', '3. Set up networking', '4. Configure retention', '5. Document deployment'],
       outputFormat: 'JSON with infrastructure deployment' },
@@ -124,7 +124,7 @@ export const instrumentServicesForProfilingTask = defineTask('instrument-service
   kind: 'agent',
   title: `Instrument Services - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Instrument services for profiling', context: args,
       instructions: ['1. Deploy profiling agents', '2. Configure connections', '3. Set sampling rates', '4. Verify profiling', '5. Document instrumentation'],
       outputFormat: 'JSON with instrumentation results' },
@@ -138,7 +138,7 @@ export const configureLowOverheadSettingsTask = defineTask('configure-low-overhe
   kind: 'agent',
   title: `Configure Low Overhead - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Configure low-overhead profiling settings', context: args,
       instructions: ['1. Set sampling frequency', '2. Configure CPU limits', '3. Set memory limits', '4. Measure overhead', '5. Document settings'],
       outputFormat: 'JSON with overhead configuration' },
@@ -152,7 +152,7 @@ export const setupFlameGraphGenerationTask = defineTask('setup-flame-graph-gener
   kind: 'agent',
   title: `Setup Flame Graph Generation - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Setup flame graph generation', context: args,
       instructions: ['1. Configure flame graph rendering', '2. Set time ranges', '3. Configure filters', '4. Add comparison mode', '5. Document setup'],
       outputFormat: 'JSON with flame graph setup' },
@@ -166,7 +166,7 @@ export const configureHistoricalComparisonTask = defineTask('configure-historica
   kind: 'agent',
   title: `Configure Historical Comparison - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Configure historical comparison', context: args,
       instructions: ['1. Set baseline periods', '2. Configure diff views', '3. Enable regression detection', '4. Set comparison windows', '5. Document configuration'],
       outputFormat: 'JSON with historical comparison config' },
@@ -180,7 +180,7 @@ export const createProfilingDashboardsTask = defineTask('create-profiling-dashbo
   kind: 'agent',
   title: `Create Profiling Dashboards - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Create profiling dashboards', context: args,
       instructions: ['1. Create service overview', '2. Add flame graph panels', '3. Add CPU/memory panels', '4. Add comparison views', '5. Document dashboards'],
       outputFormat: 'JSON with dashboard configuration' },
@@ -194,7 +194,7 @@ export const setupProfilingAlertingTask = defineTask('setup-profiling-alerting',
   kind: 'agent',
   title: `Setup Profiling Alerting - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Setup profiling alerting', context: args,
       instructions: ['1. Set CPU usage alerts', '2. Set memory alerts', '3. Configure regression alerts', '4. Set up notifications', '5. Document alerting'],
       outputFormat: 'JSON with alerting configuration' },
@@ -208,7 +208,7 @@ export const documentContinuousProfilingTask = defineTask('document-continuous-p
   kind: 'agent',
   title: `Document Continuous Profiling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'nodejs-profiling',
     prompt: { role: 'Performance Engineer', task: 'Document continuous profiling setup', context: args,
       instructions: ['1. Document architecture', '2. Add usage guide', '3. Include interpretation guide', '4. Add troubleshooting', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

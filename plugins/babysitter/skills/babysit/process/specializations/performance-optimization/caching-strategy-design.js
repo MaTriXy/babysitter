@@ -92,7 +92,7 @@ export const analyzeDataAccessPatternsTask = defineTask('analyze-data-access-pat
   kind: 'agent',
   title: `Analyze Data Access Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'caching-architect',
     prompt: { role: 'Performance Engineer', task: 'Analyze data access patterns for caching', context: args,
       instructions: ['1. Analyze read/write ratios', '2. Identify hot data', '3. Measure access frequency', '4. Analyze data sizes', '5. Document patterns'],
       outputFormat: 'JSON with access patterns' },
@@ -106,7 +106,7 @@ export const identifyCacheableDataTask = defineTask('identify-cacheable-data', (
   kind: 'agent',
   title: `Identify Cacheable Data - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'caching-architect',
     prompt: { role: 'Performance Engineer', task: 'Identify cacheable data', context: args,
       instructions: ['1. Evaluate cache candidacy', '2. Check consistency needs', '3. Analyze volatility', '4. Assess size', '5. Document candidates'],
       outputFormat: 'JSON with cacheable items' },
@@ -117,10 +117,10 @@ export const identifyCacheableDataTask = defineTask('identify-cacheable-data', (
 }));
 
 export const selectCacheLayersTask = defineTask('select-cache-layers', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Select Cache Layers - ${args.projectName}`,
-  agent: {
-    name: 'performance-engineer',
+  skill: {
+    name: 'distributed-caching',
     prompt: { role: 'Performance Engineer', task: 'Select cache layers', context: args,
       instructions: ['1. Evaluate local caching', '2. Evaluate distributed cache', '3. Consider CDN', '4. Design tiering', '5. Document selection'],
       outputFormat: 'JSON with cache layers' },
@@ -134,7 +134,7 @@ export const designCacheKeyStrategyTask = defineTask('design-cache-key-strategy'
   kind: 'agent',
   title: `Design Cache Key Strategy - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'caching-architect',
     prompt: { role: 'Performance Engineer', task: 'Design cache key strategy', context: args,
       instructions: ['1. Design key structure', '2. Include versioning', '3. Add namespacing', '4. Handle parameters', '5. Document strategy'],
       outputFormat: 'JSON with key strategy' },
@@ -145,10 +145,10 @@ export const designCacheKeyStrategyTask = defineTask('design-cache-key-strategy'
 }));
 
 export const configureCacheTTLsTask = defineTask('configure-cache-ttls', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Configure Cache TTLs - ${args.projectName}`,
-  agent: {
-    name: 'performance-engineer',
+  skill: {
+    name: 'distributed-caching',
     prompt: { role: 'Performance Engineer', task: 'Configure cache TTLs', context: args,
       instructions: ['1. Analyze data volatility', '2. Set appropriate TTLs', '3. Consider stale-while-revalidate', '4. Configure per data type', '5. Document configuration'],
       outputFormat: 'JSON with TTL configs' },
@@ -159,10 +159,10 @@ export const configureCacheTTLsTask = defineTask('configure-cache-ttls', (args, 
 }));
 
 export const implementCacheInvalidationTask = defineTask('implement-cache-invalidation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Cache Invalidation - ${args.projectName}`,
-  agent: {
-    name: 'performance-engineer',
+  skill: {
+    name: 'distributed-caching',
     prompt: { role: 'Performance Engineer', task: 'Implement cache invalidation', context: args,
       instructions: ['1. Design invalidation strategy', '2. Implement event-based invalidation', '3. Handle cascade invalidation', '4. Add manual invalidation', '5. Document patterns'],
       outputFormat: 'JSON with invalidation implementation' },
@@ -176,7 +176,7 @@ export const addCacheMonitoringTask = defineTask('add-cache-monitoring', (args, 
   kind: 'agent',
   title: `Add Cache Monitoring - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'caching-architect',
     prompt: { role: 'Performance Engineer', task: 'Add cache monitoring', context: args,
       instructions: ['1. Track hit/miss rates', '2. Monitor memory usage', '3. Track evictions', '4. Set up alerts', '5. Create dashboards'],
       outputFormat: 'JSON with monitoring setup' },
@@ -190,7 +190,7 @@ export const documentCachingStrategyTask = defineTask('document-caching-strategy
   kind: 'agent',
   title: `Document Caching Strategy - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'caching-architect',
     prompt: { role: 'Performance Engineer', task: 'Document caching strategy', context: args,
       instructions: ['1. Document architecture', '2. Document key strategy', '3. Document TTL policies', '4. Document invalidation', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

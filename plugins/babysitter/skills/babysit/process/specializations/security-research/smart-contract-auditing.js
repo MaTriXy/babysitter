@@ -192,7 +192,7 @@ export const contractAnalysisTask = defineTask('contract-analysis', (args, taskC
   kind: 'agent',
   title: `Analyze Contracts - ${args.projectName}`,
   agent: {
-    name: 'contract-analyst',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Analyst',
       task: 'Analyze contract structure',
@@ -231,7 +231,7 @@ export const contractStaticAnalysisTask = defineTask('contract-static-analysis',
   kind: 'agent',
   title: `Static Analysis - ${args.projectName}`,
   agent: {
-    name: 'static-analyst',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Static Analyst',
       task: 'Run static analysis tools',
@@ -269,7 +269,7 @@ export const commonVulnsTask = defineTask('common-vulns', (args, taskCtx) => ({
   kind: 'agent',
   title: `Check Common Vulns - ${args.projectName}`,
   agent: {
-    name: 'vuln-checker',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Vulnerability Specialist',
       task: 'Check for common vulnerability patterns',
@@ -307,7 +307,7 @@ export const contractBusinessLogicTask = defineTask('contract-business-logic', (
   kind: 'agent',
   title: `Business Logic Analysis - ${args.projectName}`,
   agent: {
-    name: 'logic-analyst',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Logic Analyst',
       task: 'Analyze business logic security',
@@ -345,7 +345,7 @@ export const contractAccessControlTask = defineTask('contract-access-control', (
   kind: 'agent',
   title: `Access Control Review - ${args.projectName}`,
   agent: {
-    name: 'access-analyst',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Access Control Analyst',
       task: 'Review access control',
@@ -383,7 +383,7 @@ export const gasAnalysisTask = defineTask('gas-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Gas Analysis - ${args.projectName}`,
   agent: {
-    name: 'gas-analyst',
+    name: 'smart-contract-auditor',
     prompt: {
       role: 'Smart Contract Gas Analyst',
       task: 'Analyze gas usage',
@@ -421,7 +421,7 @@ export const contractAuditReportTask = defineTask('contract-audit-report', (args
   kind: 'agent',
   title: `Generate Audit Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Smart Contract Audit Report Specialist',
       task: 'Generate audit report',

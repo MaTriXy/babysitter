@@ -409,7 +409,7 @@ export const dataRequirementsAnalysisTask = defineTask('data-requirements-analys
   kind: 'agent',
   title: `Phase 1: Data Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Architect with expertise in requirements elicitation and analysis',
       task: 'Analyze and document comprehensive data requirements for the system',
@@ -568,7 +568,7 @@ export const conceptualDataModelTask = defineTask('conceptual-data-model', (args
   kind: 'agent',
   title: `Phase 2: Conceptual Data Model Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Modeler with expertise in conceptual modeling and entity-relationship diagrams',
       task: 'Design high-level conceptual data model showing entities and relationships',
@@ -664,7 +664,7 @@ export const logicalDataModelTask = defineTask('logical-data-model', (args, task
   kind: 'agent',
   title: `Phase 3: Logical Data Model Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Modeler with expertise in logical modeling and normalization',
       task: 'Design detailed logical data model with attributes, keys, and normalized structure',
@@ -786,7 +786,7 @@ export const storageSelectionTask = defineTask('storage-selection', (args, taskC
   kind: 'agent',
   title: `Phase 4: Storage Technology Selection - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Database Architect with expertise in storage technology selection',
       task: 'Identify and evaluate candidate storage technologies for the data architecture',
@@ -869,7 +869,7 @@ export const storageEvaluationTask = defineTask('storage-evaluation', (args, tas
   kind: 'agent',
   title: `Phase 4.${args.candidateIndex}: Storage Evaluation - ${args.candidate.name}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Database Engineer with deep expertise in storage systems',
       task: 'Perform detailed evaluation of storage technology candidate',
@@ -1016,7 +1016,7 @@ export const storageArchitectureTask = defineTask('storage-architecture', (args,
   kind: 'agent',
   title: `Phase 5: Storage Architecture Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Architect with expertise in polyglot persistence and storage architecture',
       task: 'Design comprehensive storage architecture based on evaluated technologies',
@@ -1188,7 +1188,7 @@ export const physicalDataModelTask = defineTask('physical-data-model', (args, ta
   kind: 'agent',
   title: `Phase 6: Physical Data Model Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Database Engineer with expertise in physical database design and optimization',
       task: 'Design physical data model optimized for target storage technologies',
@@ -1324,7 +1324,7 @@ export const dataFlowDesignTask = defineTask('data-flow-design', (args, taskCtx)
   kind: 'agent',
   title: `Phase 7: Data Flow Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Engineer with expertise in ETL/ELT pipelines and data flow design',
       task: 'Design comprehensive data flow architecture from sources to targets',
@@ -1462,7 +1462,7 @@ export const dataIntegrationTask = defineTask('data-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: Data Integration Architecture - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Integration Architect with expertise in data integration patterns',
       task: 'Design data integration architecture with existing systems and external services',
@@ -1559,7 +1559,7 @@ export const dataGovernanceTask = defineTask('data-governance', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Data Governance Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Governance Specialist with expertise in data management policies',
       task: 'Design comprehensive data governance framework and policies',
@@ -1697,7 +1697,7 @@ export const dataSecurityTask = defineTask('data-security', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 10: Data Security Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Security Architect with expertise in data protection and compliance',
       task: 'Design comprehensive data security architecture and controls',
@@ -1874,7 +1874,7 @@ export const dataMigrationTask = defineTask('data-migration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 11: Data Migration Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Migration Specialist with expertise in large-scale data migrations',
       task: 'Design comprehensive data migration strategy from existing to new architecture',
@@ -2016,7 +2016,7 @@ export const performanceOptimizationTask = defineTask('performance-optimization'
   kind: 'agent',
   title: `Phase 12: Performance Optimization Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Database Performance Engineer with expertise in query optimization',
       task: 'Design performance optimization strategy for data architecture',
@@ -2131,7 +2131,7 @@ export const disasterRecoveryTask = defineTask('disaster-recovery', (args, taskC
   kind: 'agent',
   title: `Phase 13: Disaster Recovery and Backup Strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Infrastructure Architect with expertise in disaster recovery and business continuity',
       task: 'Design disaster recovery and backup strategy for data architecture',
@@ -2260,7 +2260,7 @@ export const implementationRoadmapTask = defineTask('implementation-roadmap', (a
   kind: 'agent',
   title: `Phase 14: Implementation Roadmap - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Data Architecture Program Manager with expertise in implementation planning',
       task: 'Create detailed implementation roadmap for data architecture',
@@ -2389,7 +2389,7 @@ export const dataArchitectureRiskAnalysisTask = defineTask('data-architecture-ri
   kind: 'agent',
   title: `Phase 15: Data Architecture Risk Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-architect',
     prompt: {
       role: 'Risk Analyst specializing in data architecture and infrastructure risks',
       task: 'Analyze risks specific to the data architecture and implementation plan',

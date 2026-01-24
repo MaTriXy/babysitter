@@ -97,8 +97,11 @@ export const i18nRequirementsTask = defineTask('i18n-requirements', (args, taskC
 export const setupI18nFrameworkTask = defineTask('setup-i18n-framework', (args, taskCtx) => ({
   kind: 'agent',
   title: `i18n Framework Setup - ${args.projectName}`,
+  skill: {
+    name: 'i18next-electron-setup',
+  },
   agent: {
-    name: 'i18n-framework-developer',
+    name: 'desktop-i18n-engineer',
     prompt: { role: 'i18n Framework Developer', task: 'Set up i18n framework', context: args, instructions: ['1. Install i18next/react-intl', '2. Configure initialization', '3. Set up language detection', '4. Configure fallbacks', '5. Set up namespaces', '6. Configure interpolation', '7. Set up caching', '8. Generate i18n configuration'] },
     outputSchema: { type: 'object', required: ['library', 'configPath', 'artifacts'], properties: { library: { type: 'string' }, configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -109,8 +112,11 @@ export const setupI18nFrameworkTask = defineTask('setup-i18n-framework', (args, 
 export const extractStringsTask = defineTask('extract-strings', (args, taskCtx) => ({
   kind: 'agent',
   title: `String Extraction - ${args.projectName}`,
+  skill: {
+    name: 'translation-string-extractor',
+  },
   agent: {
-    name: 'string-extractor',
+    name: 'desktop-i18n-engineer',
     prompt: { role: 'String Extraction Developer', task: 'Extract translatable strings', context: args, instructions: ['1. Configure extraction tool', '2. Scan source files', '3. Extract marked strings', '4. Generate translation keys', '5. Create base translation file', '6. Handle plurals', '7. Handle context', '8. Generate extraction report'] },
     outputSchema: { type: 'object', required: ['stringCount', 'artifacts'], properties: { stringCount: { type: 'number' }, keys: { type: 'array' }, artifacts: { type: 'array' } } }
   },

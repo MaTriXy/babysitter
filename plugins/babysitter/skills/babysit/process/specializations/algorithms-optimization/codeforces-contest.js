@@ -178,8 +178,9 @@ export async function process(inputs, ctx) {
 export const contestPreparationTask = defineTask('contest-preparation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Contest Preparation - ${args.contestId}`,
+  skills: ['codeforces-api-client', 'code-template-manager'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Prepare for Codeforces contest',
@@ -215,8 +216,9 @@ export const contestPreparationTask = defineTask('contest-preparation', (args, t
 export const problemSolvingTask = defineTask('problem-solving', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Problem Solving - ${args.contestId}`,
+  skills: ['codeforces-api-client', 'test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Solve contest problems systematically',
@@ -254,8 +256,9 @@ export const problemSolvingTask = defineTask('problem-solving', (args, taskCtx) 
 export const postContestAnalysisTask = defineTask('post-contest-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Post-Contest Analysis - ${args.contestId}`,
+  skills: ['codeforces-api-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'contest-strategist',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Analyze contest performance',
@@ -292,8 +295,9 @@ export const postContestAnalysisTask = defineTask('post-contest-analysis', (args
 export const upsolvingTask = defineTask('upsolving', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Upsolving - ${args.contestId}`,
+  skills: ['codeforces-api-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'upsolving-coach',
     prompt: {
       role: 'Algorithm Learner',
       task: 'Upsolve problems not solved during contest',
@@ -330,8 +334,9 @@ export const upsolvingTask = defineTask('upsolving', (args, taskCtx) => ({
 export const progressTrackingTask = defineTask('progress-tracking', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Progress Tracking - ${args.contestId}`,
+  skills: ['codeforces-api-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Performance Analyst',
       task: 'Track rating and progress over time',

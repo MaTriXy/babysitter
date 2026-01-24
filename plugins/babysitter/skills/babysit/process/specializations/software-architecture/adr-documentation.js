@@ -265,8 +265,9 @@ export async function process(inputs, ctx) {
 export const decisionAnalysisTask = defineTask('decision-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze decision need and scope',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'architecture-analyst',
+    name: 'adr-author',
     prompt: {
       role: 'senior software architect and decision analyst',
       task: 'Analyze whether the decision warrants an ADR and refine decision scope',
@@ -328,8 +329,9 @@ export const decisionAnalysisTask = defineTask('decision-analysis', (args, taskC
 export const alternativesResearchTask = defineTask('alternatives-research', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Research and analyze decision alternatives',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'solutions-architect',
+    name: 'adr-author',
     prompt: {
       role: 'solutions architect and technology researcher',
       task: 'Research viable alternatives for the decision and analyze pros/cons',
@@ -397,8 +399,9 @@ export const alternativesResearchTask = defineTask('alternatives-research', (arg
 export const adrNumberingTask = defineTask('adr-numbering', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Assign sequential ADR number',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'adr-manager',
+    name: 'adr-author',
     prompt: {
       role: 'ADR repository manager',
       task: 'Assign next sequential ADR number',
@@ -438,6 +441,7 @@ export const adrNumberingTask = defineTask('adr-numbering', (args, taskCtx) => (
 export const adrDraftingTask = defineTask('adr-drafting', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Draft ADR document',
+  skill: { name: 'markdown-processor' },
   agent: {
     name: 'technical-writer',
     prompt: {
@@ -511,8 +515,9 @@ export const adrDraftingTask = defineTask('adr-drafting', (args, taskCtx) => ({
 export const adrQualityScoringTask = defineTask('adr-quality-scoring', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Score ADR quality and completeness',
+  skill: { name: 'tech-writing-linter' },
   agent: {
-    name: 'adr-validator',
+    name: 'adr-author',
     prompt: {
       role: 'principal architect and ADR quality auditor',
       task: 'Assess ADR quality, completeness, and adherence to best practices',
@@ -587,8 +592,9 @@ export const adrQualityScoringTask = defineTask('adr-quality-scoring', (args, ta
 export const adrReviewTask = defineTask('adr-review', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Conduct ADR review and approval',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'architecture-review-board',
+    name: 'adr-author',
     prompt: {
       role: 'architecture review board facilitator',
       task: 'Facilitate ADR review meeting and gather approval',
@@ -645,6 +651,7 @@ export const adrReviewTask = defineTask('adr-review', (args, taskCtx) => ({
 export const adrRevisionTask = defineTask('adr-revision', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Incorporate review feedback',
+  skill: { name: 'markdown-processor' },
   agent: {
     name: 'technical-writer',
     prompt: {
@@ -694,8 +701,9 @@ export const adrRevisionTask = defineTask('adr-revision', (args, taskCtx) => ({
 export const adrPublishingTask = defineTask('adr-publishing', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Publish ADR to repository',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'adr-publisher',
+    name: 'adr-author',
     prompt: {
       role: 'ADR repository manager',
       task: 'Publish ADR to version control and update status',
@@ -736,8 +744,9 @@ export const adrPublishingTask = defineTask('adr-publishing', (args, taskCtx) =>
 export const adrIndexUpdateTask = defineTask('adr-index-update', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Update ADR index and related links',
+  skill: { name: 'adr-generator' },
   agent: {
-    name: 'adr-indexer',
+    name: 'adr-author',
     prompt: {
       role: 'ADR repository maintainer',
       task: 'Update ADR index, catalog, and related ADR links',

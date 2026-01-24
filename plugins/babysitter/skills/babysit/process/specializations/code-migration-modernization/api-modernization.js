@@ -253,7 +253,7 @@ export const legacyApiInventoryTask = defineTask('legacy-api-inventory', (args, 
   kind: 'agent',
   title: `Phase 1: Legacy API Inventory - ${args.projectName}`,
   agent: {
-    name: 'api-analyst',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Analyst',
       task: 'Document existing API endpoints and usage',
@@ -295,7 +295,7 @@ export const targetApiDesignTask = defineTask('target-api-design', (args, taskCt
   kind: 'agent',
   title: `Phase 2: Target API Design - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Architect',
       task: 'Design modern API structure',
@@ -337,7 +337,7 @@ export const backwardCompatibilityPlanningTask = defineTask('backward-compatibil
   kind: 'agent',
   title: `Phase 3: Backward Compatibility Planning - ${args.projectName}`,
   agent: {
-    name: 'compatibility-planner',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Migration Specialist',
       task: 'Plan backward compatibility strategy',
@@ -379,7 +379,7 @@ export const apiGatewaySetupTask = defineTask('api-gateway-setup', (args, taskCt
   kind: 'agent',
   title: `Phase 4: API Gateway Setup - ${args.projectName}`,
   agent: {
-    name: 'gateway-engineer',
+    name: 'api-gateway-configurator',
     prompt: {
       role: 'Platform Engineer',
       task: 'Configure API gateway',
@@ -421,7 +421,7 @@ export const endpointMigrationTask = defineTask('endpoint-migration', (args, tas
   kind: 'agent',
   title: `Phase 5: Endpoint Migration - ${args.projectName}`,
   agent: {
-    name: 'migration-developer',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Developer',
       task: 'Migrate endpoints to new API',
@@ -463,7 +463,7 @@ export const consumerMigrationSupportTask = defineTask('consumer-migration-suppo
   kind: 'agent',
   title: `Phase 6: Consumer Migration Support - ${args.projectName}`,
   agent: {
-    name: 'consumer-support',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'Developer Relations',
       task: 'Support API consumers during migration',
@@ -504,7 +504,7 @@ export const legacyApiDeprecationTask = defineTask('legacy-api-deprecation', (ar
   kind: 'agent',
   title: `Phase 7: Legacy API Deprecation - ${args.projectName}`,
   agent: {
-    name: 'deprecation-manager',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Lifecycle Manager',
       task: 'Manage legacy API deprecation',
@@ -546,7 +546,7 @@ export const documentationSdkUpdateTask = defineTask('documentation-sdk-update',
   kind: 'agent',
   title: `Phase 8: Documentation and SDK Update - ${args.projectName}`,
   agent: {
-    name: 'documentation-engineer',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'Technical Writer',
       task: 'Update API documentation and SDKs',

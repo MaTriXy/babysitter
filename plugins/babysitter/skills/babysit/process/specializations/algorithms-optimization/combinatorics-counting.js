@@ -44,7 +44,7 @@ export const combinatoricsLibraryTask = defineTask('combinatorics-library', (arg
   kind: 'agent',
   title: 'Build Combinatorics Library',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Combinatorics Expert',
       task: 'Build combinatorics computation library',
@@ -66,7 +66,7 @@ export const countingProblemTask = defineTask('counting-problem', (args, taskCtx
   kind: 'agent',
   title: `Solve ${args.problemType} Problem`,
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Combinatorics Expert',
       task: 'Solve counting problem',

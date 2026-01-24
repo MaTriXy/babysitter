@@ -630,7 +630,7 @@ export const dataRequirementsAnalysisTask = defineTask('data-requirements-analys
   kind: 'agent',
   title: `Phase 1: Data Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'data-analyst',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Test Data Analyst and Domain Modeler',
       task: 'Analyze test data requirements across all test types and identify data entities, relationships, and volume needs',
@@ -711,7 +711,7 @@ export const dataStrategyDefinitionTask = defineTask('data-strategy-definition',
   kind: 'agent',
   title: `Phase 2: Data Strategy Definition - ${args.projectName}`,
   agent: {
-    name: 'data-strategist',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Test Data Management Architect',
       task: 'Define comprehensive test data management strategy including sourcing, generation, storage, and lifecycle',
@@ -788,7 +788,7 @@ export const privacyComplianceSetupTask = defineTask('privacy-compliance-setup',
   kind: 'agent',
   title: `Phase 3: Privacy & Compliance Setup - ${args.projectName}`,
   agent: {
-    name: 'privacy-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Privacy Engineer and Compliance Specialist',
       task: 'Implement privacy controls, data protection measures, and compliance validation for test data',
@@ -876,7 +876,7 @@ export const syntheticDataGenerationSetupTask = defineTask('synthetic-data-gener
   kind: 'agent',
   title: `Phase 4: Synthetic Data Generation - ${args.projectName}`,
   agent: {
-    name: 'data-generator-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Synthetic Data Engineer',
       task: 'Create synthetic data generators using Faker.js and custom algorithms for realistic test data',
@@ -942,7 +942,7 @@ export const dataMaskingImplementationTask = defineTask('data-masking-implementa
   kind: 'agent',
   title: `Phase 5: Data Masking & Anonymization - ${args.projectName}`,
   agent: {
-    name: 'masking-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Data Masking Specialist',
       task: 'Implement data masking and anonymization techniques to protect sensitive information',
@@ -1007,7 +1007,7 @@ export const dataRepositorySetupTask = defineTask('data-repository-setup', (args
   kind: 'agent',
   title: `Phase 6: Data Repository Setup - ${args.projectName}`,
   agent: {
-    name: 'repository-architect',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Data Repository Architect',
       task: 'Design and implement test data repositories with proper organization and access patterns',
@@ -1076,7 +1076,7 @@ export const environmentDataConfigTask = defineTask('environment-data-config', (
   kind: 'agent',
   title: `Phase 7: Environment Data Config - ${args.environment}`,
   agent: {
-    name: 'environment-config-engineer',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Environment Configuration Specialist',
       task: `Configure test data management for ${args.environment} environment`,
@@ -1141,7 +1141,7 @@ export const dataSeedingSetupTask = defineTask('data-seeding-setup', (args, task
   kind: 'agent',
   title: `Phase 8: Data Seeding Scripts - ${args.projectName}`,
   agent: {
-    name: 'seeding-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Database Seeding Engineer',
       task: 'Create database seeding scripts and data initialization utilities',
@@ -1207,7 +1207,7 @@ export const dataVersioningSetupTask = defineTask('data-versioning-setup', (args
   kind: 'agent',
   title: `Phase 9: Data Versioning - ${args.projectName}`,
   agent: {
-    name: 'versioning-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Data Versioning Specialist',
       task: 'Implement data versioning and state management with snapshot and rollback capabilities',
@@ -1267,7 +1267,7 @@ export const dataCleanupSetupTask = defineTask('data-cleanup-setup', (args, task
   kind: 'agent',
   title: `Phase 10: Data Cleanup & Lifecycle - ${args.projectName}`,
   agent: {
-    name: 'cleanup-engineer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Data Lifecycle Manager',
       task: 'Implement data cleanup, retention policies, and lifecycle management',
@@ -1333,7 +1333,7 @@ export const dataAccessApiTask = defineTask('data-access-api', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 11: Data Access API - ${args.projectName}`,
   agent: {
-    name: 'api-developer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Test Data API Developer',
       task: 'Create fluent data access API and utilities for easy test data consumption',
@@ -1398,7 +1398,7 @@ export const testDataFactoryTask = defineTask('test-data-factory', (args, taskCt
   kind: 'agent',
   title: `Phase 12: Test Data Factories - ${args.projectName}`,
   agent: {
-    name: 'factory-developer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Test Data Factory Engineer',
       task: 'Implement factory pattern for test data creation with fixtures and traits',
@@ -1466,7 +1466,7 @@ export const dataManagementPerformanceTestTask = defineTask('data-management-per
   kind: 'agent',
   title: `Phase 13: Performance Testing - ${args.projectName}`,
   agent: {
-    name: 'performance-tester',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Performance Testing Engineer',
       task: 'Test data management system performance and identify bottlenecks',
@@ -1529,7 +1529,7 @@ export const dataManagementDocumentationTask = defineTask('data-management-docum
   kind: 'agent',
   title: `Phase 14: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Create comprehensive documentation for test data management system',
@@ -1596,7 +1596,7 @@ export const dataManagementValidationTask = defineTask('data-management-validati
   kind: 'agent',
   title: `Phase 15: System Validation - ${args.projectName}`,
   agent: {
-    name: 'system-validator',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'QA System Validator and Auditor',
       task: 'Validate test data management system against quality criteria',
@@ -1666,7 +1666,7 @@ export const finalReviewHandoffTask = defineTask('final-review-handoff', (args, 
   kind: 'agent',
   title: `Phase 16: Final Review - ${args.projectName}`,
   agent: {
-    name: 'project-lead',
+    name: 'test-data-expert', // AG-006: Test Data Expert Agent
     prompt: {
       role: 'QA Project Lead',
       task: 'Conduct final review and prepare team handoff for test data management system',

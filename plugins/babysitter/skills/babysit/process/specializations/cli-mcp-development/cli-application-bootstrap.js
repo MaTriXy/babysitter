@@ -260,7 +260,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'Senior CLI Developer with expertise in command-line application architecture',
       task: 'Analyze requirements and validate CLI framework selection',
@@ -325,7 +325,7 @@ export const projectStructureTask = defineTask('project-structure', (args, taskC
   kind: 'agent',
   title: `Phase 2: Project Structure - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Project Architect',
       task: 'Initialize project directory structure',

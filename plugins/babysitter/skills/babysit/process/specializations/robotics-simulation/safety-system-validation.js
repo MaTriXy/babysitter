@@ -129,7 +129,7 @@ export const hardwareSafetyTestingTask = defineTask('hardware-safety-testing', (
   kind: 'agent',
   title: `Hardware Safety Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test hardware safety systems', context: args, instructions: ['1. Test safety relays', '2. Test safety PLCs', '3. Test safety sensors', '4. Verify redundancy', '5. Document test results'] },
     outputSchema: { type: 'object', required: ['testResults', 'passRate', 'artifacts'], properties: { testResults: { type: 'array' }, passRate: { type: 'number' }, diagnosticCoverage: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const softwareSafetyTestingTask = defineTask('software-safety-testing', (
   kind: 'agent',
   title: `Software Safety Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test software safety systems', context: args, instructions: ['1. Test safety software', '2. Verify watchdogs', '3. Test safe states', '4. Verify fault detection', '5. Document test results'] },
     outputSchema: { type: 'object', required: ['testResults', 'coverage', 'artifacts'], properties: { testResults: { type: 'array' }, coverage: { type: 'number' }, faultDetectionRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const emergencyStopValidationTask = defineTask('emergency-stop-validation
   kind: 'agent',
   title: `E-Stop Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate emergency stop systems', context: args, instructions: ['1. Test all e-stop buttons', '2. Measure stopping time', '3. Test from all states', '4. Verify safe state', '5. Document validation'] },
     outputSchema: { type: 'object', required: ['estopTests', 'stoppingTime', 'artifacts'], properties: { estopTests: { type: 'array' }, stoppingTime: { type: 'number' }, allPassed: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },

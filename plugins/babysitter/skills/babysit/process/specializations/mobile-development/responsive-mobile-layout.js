@@ -313,8 +313,9 @@ export const responsiveStrategyTask = defineTask('responsive-strategy', (args, t
 export const breakpointConfigTask = defineTask('breakpoint-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Breakpoint Configuration - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Layout Developer',
       task: 'Configure breakpoints for responsive layouts',
@@ -358,8 +359,9 @@ export const breakpointConfigTask = defineTask('breakpoint-config', (args, taskC
 export const dimensionUtilsTask = defineTask('dimension-utils', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Dimension Utilities - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Layout Developer',
       task: 'Create dimension and scaling utilities',
@@ -402,8 +404,9 @@ export const dimensionUtilsTask = defineTask('dimension-utils', (args, taskCtx) 
 export const responsiveHooksTask = defineTask('responsive-hooks', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Responsive Hooks - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Hook Developer',
       task: 'Build responsive hooks and utilities',
@@ -448,7 +451,7 @@ export const flexibleContainersTask = defineTask('flexible-containers', (args, t
   kind: 'agent',
   title: `Phase 5: Flexible Containers - ${args.appName}`,
   agent: {
-    name: 'mobile-ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile UI Developer',
       task: 'Create flexible container components',
@@ -491,7 +494,7 @@ export const adaptiveLayoutsTask = defineTask('adaptive-layouts', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Adaptive Layouts - ${args.appName}`,
   agent: {
-    name: 'mobile-ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Layout Developer',
       task: 'Implement adaptive layouts for different devices',
@@ -535,8 +538,9 @@ export const adaptiveLayoutsTask = defineTask('adaptive-layouts', (args, taskCtx
 export const orientationHandlingTask = defineTask('orientation-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Orientation Handling - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Orientation Specialist',
       task: 'Handle orientation changes',
@@ -580,8 +584,9 @@ export const orientationHandlingTask = defineTask('orientation-handling', (args,
 export const safeAreaHandlingTask = defineTask('safe-area-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Safe Area Handling - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Safe Area Specialist',
       task: 'Implement safe area handling',
@@ -669,8 +674,9 @@ export const responsiveTextTask = defineTask('responsive-text', (args, taskCtx) 
 export const responsiveImagesTask = defineTask('responsive-images', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Responsive Images - ${args.appName}`,
+  skill: { name: 'responsive-design' },
   agent: {
-    name: 'mobile-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Image Specialist',
       task: 'Handle responsive images',
@@ -714,7 +720,7 @@ export const gridSystemTask = defineTask('grid-system', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Grid System - ${args.appName}`,
   agent: {
-    name: 'mobile-ui-developer',
+    name: 'mobile-ux-engineer',
     prompt: {
       role: 'Mobile Grid Specialist',
       task: 'Build responsive grid system',
@@ -759,7 +765,7 @@ export const responsiveTestingTask = defineTask('responsive-testing', (args, tas
   kind: 'agent',
   title: `Phase 12: Responsive Testing - ${args.appName}`,
   agent: {
-    name: 'mobile-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Mobile Test Engineer',
       task: 'Test responsive layouts',

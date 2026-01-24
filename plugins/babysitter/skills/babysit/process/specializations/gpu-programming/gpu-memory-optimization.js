@@ -113,7 +113,8 @@ export const memoryAccessAnalysisTask = defineTask('memory-access-analysis', (ar
   kind: 'agent',
   title: `Memory Access Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze GPU memory access patterns',
@@ -154,7 +155,8 @@ export const coalescingOptimizationTask = defineTask('coalescing-optimization', 
   kind: 'agent',
   title: `Coalescing Optimization - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize memory coalescing',
@@ -195,7 +197,8 @@ export const sharedMemoryOptimizationTask = defineTask('shared-memory-optimizati
   kind: 'agent',
   title: `Shared Memory Optimization - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize shared memory usage',
@@ -236,7 +239,8 @@ export const bankConflictResolutionTask = defineTask('bank-conflict-resolution',
   kind: 'agent',
   title: `Bank Conflict Resolution - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Resolve shared memory bank conflicts',
@@ -277,7 +281,8 @@ export const cacheUtilizationTask = defineTask('cache-utilization', (args, taskC
   kind: 'agent',
   title: `Cache Utilization - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize GPU cache utilization',
@@ -318,7 +323,8 @@ export const specialMemoryOptimizationTask = defineTask('special-memory-optimiza
   kind: 'agent',
   title: `Special Memory Optimization - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize texture and constant memory usage',
@@ -359,7 +365,8 @@ export const bandwidthMeasurementTask = defineTask('bandwidth-measurement', (arg
   kind: 'agent',
   title: `Bandwidth Measurement - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Measure final memory bandwidth',

@@ -188,7 +188,7 @@ export const preEngagementTask = defineTask('pre-engagement', (args, taskCtx) =>
   kind: 'agent',
   title: `Pre-Engagement - ${args.projectName}`,
   agent: {
-    name: 'pentest-coordinator',
+    name: 'red-team-operator',
     prompt: {
       role: 'Penetration Test Coordinator',
       task: 'Prepare for penetration test engagement',
@@ -227,7 +227,7 @@ export const networkReconTask = defineTask('network-recon', (args, taskCtx) => (
   kind: 'agent',
   title: `Network Reconnaissance - ${args.projectName}`,
   agent: {
-    name: 'recon-specialist',
+    name: 'red-team-operator',
     prompt: {
       role: 'Network Reconnaissance Specialist',
       task: 'Perform network reconnaissance',
@@ -266,7 +266,7 @@ export const scanningEnumerationTask = defineTask('scanning-enumeration', (args,
   kind: 'agent',
   title: `Scanning and Enumeration - ${args.projectName}`,
   agent: {
-    name: 'scanner-specialist',
+    name: 'red-team-operator',
     prompt: {
       role: 'Network Scanner Specialist',
       task: 'Scan and enumerate network',
@@ -306,7 +306,7 @@ export const vulnAnalysisTask = defineTask('vuln-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Vulnerability Analysis - ${args.projectName}`,
   agent: {
-    name: 'vuln-analyst',
+    name: 'red-team-operator',
     prompt: {
       role: 'Vulnerability Analyst',
       task: 'Analyze network vulnerabilities',
@@ -345,7 +345,7 @@ export const exploitationTask = defineTask('exploitation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Exploitation - ${args.projectName}`,
   agent: {
-    name: 'exploit-specialist',
+    name: 'red-team-operator',
     prompt: {
       role: 'Penetration Test Exploit Specialist',
       task: 'Attempt exploitation of vulnerabilities',
@@ -384,7 +384,7 @@ export const postExploitationTask = defineTask('post-exploitation', (args, taskC
   kind: 'agent',
   title: `Post-Exploitation - ${args.projectName}`,
   agent: {
-    name: 'post-exploit-specialist',
+    name: 'red-team-operator',
     prompt: {
       role: 'Post-Exploitation Specialist',
       task: 'Perform post-exploitation activities',
@@ -424,7 +424,7 @@ export const pentestReportTask = defineTask('pentest-report', (args, taskCtx) =>
   kind: 'agent',
   title: `Penetration Test Report - ${args.projectName}`,
   agent: {
-    name: 'pentest-reporter',
+    name: 'security-report-writer',
     prompt: {
       role: 'Penetration Test Report Specialist',
       task: 'Generate penetration test report',

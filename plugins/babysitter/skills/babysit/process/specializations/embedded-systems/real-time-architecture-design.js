@@ -223,7 +223,7 @@ export const rtRequirementsAnalysisTask = defineTask('rt-requirements-analysis',
   kind: 'agent',
   title: `Phase 1: Requirements - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Analyze real-time requirements',
@@ -265,7 +265,7 @@ export const layerDesignTask = defineTask('layer-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Layer Design - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Design software layers',
@@ -307,7 +307,7 @@ export const rtTaskArchitectureTask = defineTask('rt-task-architecture', (args, 
   kind: 'agent',
   title: `Phase 3: Task Architecture - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Design task architecture',
@@ -349,7 +349,7 @@ export const schedulingAnalysisTask = defineTask('scheduling-analysis', (args, t
   kind: 'agent',
   title: `Phase 4: Scheduling Analysis - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Analyze scheduling',
@@ -392,7 +392,7 @@ export const interComponentCommunicationTask = defineTask('inter-component-commu
   kind: 'agent',
   title: `Phase 5: Communication Design - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Design inter-component communication',
@@ -434,7 +434,7 @@ export const faultToleranceDesignTask = defineTask('fault-tolerance-design', (ar
   kind: 'agent',
   title: `Phase 6: Fault Tolerance - ${args.projectName}`,
   agent: {
-    name: 'rt-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Real-Time Systems Architect',
       task: 'Design fault tolerance mechanisms',
@@ -475,7 +475,7 @@ export const rtArchitectureDocumentationTask = defineTask('rt-architecture-docum
   kind: 'agent',
   title: `Phase 7: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate architecture documentation',

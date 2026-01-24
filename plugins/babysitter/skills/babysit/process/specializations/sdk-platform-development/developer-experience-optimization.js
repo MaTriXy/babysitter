@@ -243,7 +243,7 @@ export const dxAuditTask = defineTask('dx-audit', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: DX Audit - ${args.projectName}`,
   agent: {
-    name: 'dx-specialist',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Developer Experience Specialist',
       task: 'Conduct comprehensive DX audit',
@@ -301,7 +301,7 @@ export const ttfsAnalysisTask = defineTask('ttfs-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Time-to-First-Success Analysis - ${args.projectName}`,
   agent: {
-    name: 'dx-analyst',
+    name: 'dx-content-writer',
     prompt: {
       role: 'DX Analyst',
       task: 'Analyze and optimize time-to-first-success',
@@ -347,7 +347,7 @@ export const configMinimizationTask = defineTask('config-minimization', (args, t
   kind: 'agent',
   title: `Phase 3: Configuration Minimization - ${args.projectName}`,
   agent: {
-    name: 'sdk-designer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Designer',
       task: 'Minimize required configuration',
@@ -393,7 +393,7 @@ export const progressiveDisclosureTask = defineTask('progressive-disclosure', (a
   kind: 'agent',
   title: `Phase 4: Progressive Disclosure - ${args.projectName}`,
   agent: {
-    name: 'ux-designer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'API UX Designer',
       task: 'Design progressive disclosure of features',
@@ -449,7 +449,7 @@ export const apiUsabilityTask = defineTask('api-usability', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: API Usability - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Designer',
       task: 'Improve API usability and intuitiveness',
@@ -504,7 +504,7 @@ export const errorEnhancementTask = defineTask('error-enhancement', (args, taskC
   kind: 'agent',
   title: `Phase 6: Error Enhancement - ${args.projectName}`,
   agent: {
-    name: 'dx-engineer',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'DX Engineer',
       task: 'Enhance error messages and debugging experience',
@@ -549,7 +549,7 @@ export const onboardingOptimizationTask = defineTask('onboarding-optimization', 
   kind: 'agent',
   title: `Phase 7: Onboarding Optimization - ${args.projectName}`,
   agent: {
-    name: 'dx-specialist',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'DX Specialist',
       task: 'Optimize onboarding experience',
@@ -605,7 +605,7 @@ export const dxMetricsTask = defineTask('dx-metrics', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: DX Metrics Framework - ${args.projectName}`,
   agent: {
-    name: 'dx-analyst',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'DX Analyst',
       task: 'Establish DX metrics framework',
@@ -658,7 +658,7 @@ export const improvementBacklogTask = defineTask('improvement-backlog', (args, t
   kind: 'agent',
   title: `Phase 9: Improvement Backlog - ${args.projectName}`,
   agent: {
-    name: 'product-manager',
+    name: 'dx-content-writer',
     prompt: {
       role: 'DX Product Manager',
       task: 'Create prioritized improvement backlog',
@@ -719,7 +719,7 @@ export const dxDocumentationTask = defineTask('dx-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 10: DX Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate DX optimization documentation',

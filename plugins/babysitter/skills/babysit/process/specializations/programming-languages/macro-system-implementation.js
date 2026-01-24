@@ -212,7 +212,7 @@ export const macroSyntaxTask = defineTask('macro-syntax', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Macro Syntax - ${args.languageName}`,
   agent: {
-    name: 'macro-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Macro System Engineer',
       task: 'Design macro definition syntax',
@@ -252,7 +252,7 @@ export const patternMatchingTask = defineTask('pattern-matching', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Pattern Matching - ${args.languageName}`,
   agent: {
-    name: 'macro-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Macro System Engineer',
       task: 'Implement macro pattern matching',
@@ -293,7 +293,7 @@ export const macroExpansionTask = defineTask('macro-expansion', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Macro Expansion - ${args.languageName}`,
   agent: {
-    name: 'macro-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Macro System Engineer',
       task: 'Implement macro expansion',
@@ -334,7 +334,7 @@ export const hygieneSystemTask = defineTask('hygiene-system', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: Hygiene System - ${args.languageName}`,
   agent: {
-    name: 'macro-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Macro System Engineer',
       task: 'Implement hygienic macros',
@@ -374,7 +374,7 @@ export const macroIntegrationTask = defineTask('macro-integration', (args, taskC
   kind: 'agent',
   title: `Phase 5: Macro Integration - ${args.languageName}`,
   agent: {
-    name: 'macro-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Macro System Engineer',
       task: 'Integrate macro system',
@@ -415,7 +415,7 @@ export const macroTestingTask = defineTask('macro-testing', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 6: Macro Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive macro tests',
@@ -456,7 +456,7 @@ export const macroDocumentationTask = defineTask('macro-documentation', (args, t
   kind: 'agent',
   title: `Phase 7: Macro Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate macro documentation',

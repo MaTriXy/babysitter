@@ -105,7 +105,8 @@ export const dynamicParallelismUseCaseTask = defineTask('dynamic-parallelism-use
   kind: 'agent',
   title: `Use Case Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'dynamic-parallelism'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze dynamic parallelism use case',
@@ -146,7 +147,8 @@ export const kernelHierarchyDesignTask = defineTask('kernel-hierarchy-design', (
   kind: 'agent',
   title: `Kernel Hierarchy - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'dynamic-parallelism'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design kernel hierarchy',
@@ -187,7 +189,8 @@ export const deviceMemoryManagementTask = defineTask('device-memory-management',
   kind: 'agent',
   title: `Device Memory - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'dynamic-parallelism'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement device-side memory management',
@@ -228,7 +231,8 @@ export const dynamicSyncDesignTask = defineTask('dynamic-sync-design', (args, ta
   kind: 'agent',
   title: `Synchronization Design - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'dynamic-parallelism'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design synchronization for dynamic parallelism',
@@ -269,7 +273,8 @@ export const dynamicParallelismImplementationTask = defineTask('dynamic-parallel
   kind: 'agent',
   title: `Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'dynamic-parallelism'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement dynamic parallelism',
@@ -311,6 +316,7 @@ export const dynamicParallelismPerformanceTask = defineTask('dynamic-parallelism
   title: `Performance Analysis - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze dynamic parallelism performance',

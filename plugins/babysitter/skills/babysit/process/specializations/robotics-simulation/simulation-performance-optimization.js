@@ -227,7 +227,7 @@ export const performanceProfilingTask = defineTask('performance-profiling', (arg
   kind: 'agent',
   title: `Phase 1: Performance Profiling`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'Performance Engineer',
       task: 'Profile simulation bottlenecks',
@@ -271,7 +271,7 @@ export const collisionGeometryOptimizationTask = defineTask('collision-geometry-
   kind: 'agent',
   title: `Phase 2: Collision Geometry Optimization`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Optimize collision geometry',
@@ -314,7 +314,7 @@ export const lodRenderingTask = defineTask('lod-rendering', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 3: LOD Rendering`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Graphics Engineer',
       task: 'Implement level-of-detail rendering',
@@ -357,7 +357,7 @@ export const parallelSimulationTask = defineTask('parallel-simulation', (args, t
   kind: 'agent',
   title: `Phase 4: Parallel Simulation`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Configure parallel simulation instances',
@@ -400,7 +400,7 @@ export const gpuAccelerationTask = defineTask('gpu-acceleration', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: GPU Acceleration`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'GPU Engineer',
       task: 'Configure GPU acceleration',
@@ -443,7 +443,7 @@ export const sensorRateOptimizationTask = defineTask('sensor-rate-optimization',
   kind: 'agent',
   title: `Phase 6: Sensor Rate Optimization`,
   agent: {
-    name: 'sensor-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: {
       role: 'Sensor Engineer',
       task: 'Optimize sensor update rates',
@@ -486,7 +486,7 @@ export const headlessModeConfigTask = defineTask('headless-mode-config', (args, 
   kind: 'agent',
   title: `Phase 7: Headless Mode Configuration`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Configure headless simulation mode',
@@ -529,7 +529,7 @@ export const performanceBenchmarkingTask = defineTask('performance-benchmarking'
   kind: 'agent',
   title: `Phase 8: Performance Benchmarking`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark optimized simulation',

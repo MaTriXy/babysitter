@@ -115,7 +115,8 @@ export const modelProfilingTask = defineTask('model-profiling', (args, taskCtx) 
   kind: 'agent',
   title: `Model Profiling - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Profile inference model',
@@ -156,7 +157,8 @@ export const quantizationImplementationTask = defineTask('quantization-implement
   kind: 'agent',
   title: `Quantization - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Implement model quantization',
@@ -197,7 +199,8 @@ export const tensorrtOptimizationTask = defineTask('tensorrt-optimization', (arg
   kind: 'agent',
   title: `TensorRT Optimization - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Optimize with TensorRT',
@@ -238,7 +241,8 @@ export const batchingStrategyTask = defineTask('batching-strategy', (args, taskC
   kind: 'agent',
   title: `Batching Strategy - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Design batching strategy',
@@ -279,7 +283,8 @@ export const kernelFusionTask = defineTask('kernel-fusion', (args, taskCtx) => (
   kind: 'agent',
   title: `Kernel Fusion - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Analyze and apply kernel fusion',
@@ -320,7 +325,8 @@ export const inferenceBenchmarkingTask = defineTask('inference-benchmarking', (a
   kind: 'agent',
   title: `Benchmarking - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'tensor-core-ops'],
     prompt: {
       role: 'ML Engineer',
       task: 'Benchmark inference performance',

@@ -315,7 +315,7 @@ export const auditPreparationTask = defineTask('audit-preparation', (args, taskC
   kind: 'agent',
   title: `Phase 1: Audit Preparation - ${args.projectName}`,
   agent: {
-    name: 'security-auditor',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Smart Contract Security Auditor',
       task: 'Prepare audit scope and inventory contracts',
@@ -358,7 +358,7 @@ export const slitherAnalysisTask = defineTask('slither-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 2a: Slither Analysis - ${args.projectName}`,
   agent: {
-    name: 'security-tool-operator',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-002: slither-analysis)
     prompt: {
       role: 'Security Tool Operator',
       task: 'Run Slither static analysis',
@@ -400,7 +400,7 @@ export const mythrilAnalysisTask = defineTask('mythril-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 2b: Mythril Analysis - ${args.projectName}`,
   agent: {
-    name: 'security-tool-operator',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-003: mythril-symbolic)
     prompt: {
       role: 'Security Tool Operator',
       task: 'Run Mythril symbolic execution analysis',
@@ -442,7 +442,7 @@ export const customDetectorsTask = defineTask('custom-detectors', (args, taskCtx
   kind: 'agent',
   title: `Phase 2c: Custom Detectors - ${args.projectName}`,
   agent: {
-    name: 'security-researcher',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Security Researcher',
       task: 'Run custom vulnerability detectors',
@@ -483,7 +483,7 @@ export const manualCodeReviewTask = defineTask('manual-code-review', (args, task
   kind: 'agent',
   title: `Phase 3: Manual Code Review - ${args.projectName}`,
   agent: {
-    name: 'senior-security-auditor',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Senior Security Auditor',
       task: 'Conduct thorough manual code review',
@@ -525,7 +525,7 @@ export const accessControlAnalysisTask = defineTask('access-control-analysis', (
   kind: 'agent',
   title: `Phase 4: Access Control Analysis - ${args.projectName}`,
   agent: {
-    name: 'access-control-specialist',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Access Control Specialist',
       task: 'Analyze access control mechanisms',
@@ -567,7 +567,7 @@ export const reentrancyAnalysisTask = defineTask('reentrancy-analysis', (args, t
   kind: 'agent',
   title: `Phase 5: Reentrancy Analysis - ${args.projectName}`,
   agent: {
-    name: 'reentrancy-specialist',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Reentrancy Security Specialist',
       task: 'Analyze reentrancy and state consistency',
@@ -609,7 +609,7 @@ export const economicAnalysisTask = defineTask('economic-analysis', (args, taskC
   kind: 'agent',
   title: `Phase 6: Economic Analysis - ${args.projectName}`,
   agent: {
-    name: 'defi-security-specialist',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-020: chain-forensics)
     prompt: {
       role: 'DeFi Security Specialist',
       task: 'Analyze economic attack vectors',
@@ -651,7 +651,7 @@ export const formalVerificationTask = defineTask('formal-verification', (args, t
   kind: 'agent',
   title: `Phase 7: Formal Verification - ${args.projectName}`,
   agent: {
-    name: 'formal-verification-engineer',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer (uses SK-006: certora-prover)
     prompt: {
       role: 'Formal Verification Engineer',
       task: 'Formally verify critical properties',
@@ -693,7 +693,7 @@ export const findingClassificationTask = defineTask('finding-classification', (a
   kind: 'agent',
   title: `Phase 8: Finding Classification - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Security Analyst',
       task: 'Classify and deduplicate findings',
@@ -739,7 +739,7 @@ export const remediationTask = defineTask('remediation-recommendations', (args, 
   kind: 'agent',
   title: `Phase 9: Remediation Recommendations - ${args.projectName}`,
   agent: {
-    name: 'security-consultant',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Security Consultant',
       task: 'Generate remediation recommendations',
@@ -781,7 +781,7 @@ export const auditReportTask = defineTask('audit-report', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Audit Report - ${args.projectName}`,
   agent: {
-    name: 'audit-report-writer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Audit Report Writer',
       task: 'Generate comprehensive audit report',

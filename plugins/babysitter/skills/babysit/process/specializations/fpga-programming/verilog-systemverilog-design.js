@@ -284,7 +284,7 @@ export const svDesignSpecTask = defineTask('sv-design-spec', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 1: Design Specification - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: `Create ${args.language} design specification`,
@@ -327,7 +327,7 @@ export const moduleInterfaceTask = defineTask('module-interface', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Module Interface - ${args.moduleName}`,
   agent: {
-    name: 'hdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'HDL Design Engineer',
       task: `Design ${args.language} module interface`,
@@ -370,7 +370,7 @@ export const rtlImplementationTask = defineTask('rtl-implementation', (args, tas
   kind: 'agent',
   title: `Phase 3: RTL Implementation - ${args.moduleName}`,
   agent: {
-    name: 'hdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'HDL Design Engineer',
       task: `Implement RTL in ${args.language}`,
@@ -414,7 +414,7 @@ export const svInterfaceDefinitionTask = defineTask('sv-interface-definition', (
   kind: 'agent',
   title: `Phase 4: SV Interface Definition - ${args.moduleName}`,
   agent: {
-    name: 'systemverilog-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (SystemVerilog)
     prompt: {
       role: 'SystemVerilog Design Engineer',
       task: 'Define SystemVerilog interfaces',
@@ -456,7 +456,7 @@ export const svaDesignTask = defineTask('sva-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: SVA Design - ${args.moduleName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'Verification Engineer',
       task: 'Design SystemVerilog Assertions',
@@ -499,7 +499,7 @@ export const svSynthesisDirectivesTask = defineTask('sv-synthesis-directives', (
   kind: 'agent',
   title: `Phase 6: Synthesis Directives - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'synthesis-expert', // AG-007: Synthesis Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Add synthesis directives and attributes',
@@ -541,7 +541,7 @@ export const svTestbenchTask = defineTask('sv-testbench', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Testbench - ${args.moduleName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'Verification Engineer',
       task: `Develop ${args.language} testbench`,
@@ -584,7 +584,7 @@ export const svCodeQualityTask = defineTask('sv-code-quality', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 8: Code Quality - ${args.moduleName}`,
   agent: {
-    name: 'code-reviewer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent (code quality)
     prompt: {
       role: 'HDL Code Quality Reviewer',
       task: `Check ${args.language} code quality`,

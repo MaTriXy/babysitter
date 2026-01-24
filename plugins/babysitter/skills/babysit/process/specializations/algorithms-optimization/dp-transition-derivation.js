@@ -50,8 +50,9 @@ export async function process(inputs, ctx) {
 export const recurrenceDerivationTask = defineTask('recurrence-derivation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Derive Recurrence Relation',
+  skills: ['dp-state-designer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Derive DP recurrence relation',
@@ -72,8 +73,9 @@ export const recurrenceDerivationTask = defineTask('recurrence-derivation', (arg
 export const baseCaseEstablishmentTask = defineTask('base-case-establishment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Establish Base Cases',
+  skills: ['dp-state-designer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: 'Establish DP base cases',
@@ -94,8 +96,9 @@ export const baseCaseEstablishmentTask = defineTask('base-case-establishment', (
 export const dpImplementationTask = defineTask('dp-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement DP Solution',
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement DP using memoization and tabulation',
@@ -116,8 +119,9 @@ export const dpImplementationTask = defineTask('dp-implementation', (args, taskC
 export const transitionVerificationTask = defineTask('transition-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Verify DP Transition',
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'correctness-verifier',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Verify DP transition correctness',

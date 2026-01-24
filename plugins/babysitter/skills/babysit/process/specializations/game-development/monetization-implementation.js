@@ -71,7 +71,7 @@ export const monetizationStrategyTask = defineTask('monetization-strategy', (arg
   kind: 'agent',
   title: `Monetization Strategy - ${args.projectName}`,
   agent: {
-    name: 'monetization-designer',
+    name: 'monetization-analyst-agent',
     prompt: { role: 'Monetization Designer', task: 'Define monetization strategy', context: args, instructions: ['1. Define monetization pillars', '2. Plan revenue streams', '3. Define pricing strategy', '4. Create ethical guidelines'] },
     outputSchema: { type: 'object', required: ['docPath', 'revenueStreams', 'artifacts'], properties: { docPath: { type: 'string' }, revenueStreams: { type: 'array' }, pricingStrategy: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -83,7 +83,7 @@ export const virtualEconomyTask = defineTask('virtual-economy', (args, taskCtx) 
   kind: 'agent',
   title: `Virtual Economy - ${args.projectName}`,
   agent: {
-    name: 'economy-designer',
+    name: 'economy-designer-agent',
     prompt: { role: 'Economy Designer', task: 'Design virtual economy', context: args, instructions: ['1. Define currencies and exchange', '2. Design resource sinks/faucets', '3. Model economy simulation', '4. Set price points'] },
     outputSchema: { type: 'object', required: ['modelDetails', 'currencies', 'artifacts'], properties: { modelDetails: { type: 'object' }, currencies: { type: 'array' }, pricePoints: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -95,7 +95,7 @@ export const storeImplementationTask = defineTask('store-implementation', (args,
   kind: 'agent',
   title: `Store Implementation - ${args.projectName}`,
   agent: {
-    name: 'ui-programmer',
+    name: 'ui-programmer-agent',
     prompt: { role: 'UI Programmer', task: 'Implement in-game store', context: args, instructions: ['1. Build store UI', '2. Implement product catalog', '3. Add purchase flow', '4. Implement receipts'] },
     outputSchema: { type: 'object', required: ['productCount', 'storeReady', 'artifacts'], properties: { productCount: { type: 'number' }, storeReady: { type: 'boolean' }, purchaseFlow: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -107,7 +107,7 @@ export const iapIntegrationTask = defineTask('iap-integration', (args, taskCtx) 
   kind: 'agent',
   title: `IAP Integration - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Platform Engineer', task: 'Integrate IAP systems', context: args, instructions: ['1. Integrate platform stores', '2. Implement purchase validation', '3. Handle edge cases', '4. Test purchase flows'] },
     outputSchema: { type: 'object', required: ['integrated', 'platforms', 'artifacts'], properties: { integrated: { type: 'boolean' }, platforms: { type: 'array' }, validation: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -119,7 +119,7 @@ export const monetizationTestingTask = defineTask('monetization-testing', (args,
   kind: 'agent',
   title: `Monetization Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Test monetization systems', context: args, instructions: ['1. Test all purchase flows', '2. Test refunds', '3. Test edge cases', '4. Verify receipt validation'] },
     outputSchema: { type: 'object', required: ['testsPassed', 'issues', 'artifacts'], properties: { testsPassed: { type: 'number' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -131,7 +131,7 @@ export const ethicsReviewTask = defineTask('ethics-review', (args, taskCtx) => (
   kind: 'agent',
   title: `Ethics Review - ${args.projectName}`,
   agent: {
-    name: 'ethics-reviewer',
+    name: 'ethics-reviewer-agent',
     prompt: { role: 'Ethics Reviewer', task: 'Review monetization ethics', context: args, instructions: ['1. Review for predatory practices', '2. Check age-appropriate design', '3. Verify spend limits', '4. Review disclosures'] },
     outputSchema: { type: 'object', required: ['passed', 'recommendations', 'artifacts'], properties: { passed: { type: 'boolean' }, recommendations: { type: 'array' }, concerns: { type: 'array' }, artifacts: { type: 'array' } } }
   },

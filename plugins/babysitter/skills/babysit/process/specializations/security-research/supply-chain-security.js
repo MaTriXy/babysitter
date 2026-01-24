@@ -189,7 +189,7 @@ export const dependencyEnumerationTask = defineTask('dependency-enumeration', (a
   kind: 'agent',
   title: `Enumerate Dependencies - ${args.projectName}`,
   agent: {
-    name: 'dependency-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Dependency Analyst',
       task: 'Enumerate all dependencies',
@@ -229,7 +229,7 @@ export const sbomGenerationTask = defineTask('sbom-generation', (args, taskCtx) 
   kind: 'agent',
   title: `Generate SBOM - ${args.projectName}`,
   agent: {
-    name: 'sbom-generator',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'SBOM Generation Specialist',
       task: 'Generate Software Bill of Materials',
@@ -268,7 +268,7 @@ export const dependencyVulnScanningTask = defineTask('dependency-vuln-scanning',
   kind: 'agent',
   title: `Scan for Vulnerabilities - ${args.projectName}`,
   agent: {
-    name: 'vuln-scanner',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Dependency Vulnerability Scanner',
       task: 'Scan dependencies for vulnerabilities',
@@ -307,7 +307,7 @@ export const licenseAnalysisTask = defineTask('license-analysis', (args, taskCtx
   kind: 'agent',
   title: `Analyze Licenses - ${args.projectName}`,
   agent: {
-    name: 'license-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'License Analysis Specialist',
       task: 'Analyze dependency licenses',
@@ -346,7 +346,7 @@ export const buildSecurityTask = defineTask('build-security', (args, taskCtx) =>
   kind: 'agent',
   title: `Analyze Build Security - ${args.projectName}`,
   agent: {
-    name: 'build-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Build Security Analyst',
       task: 'Analyze build system security',
@@ -385,7 +385,7 @@ export const artifactIntegrityTask = defineTask('artifact-integrity', (args, tas
   kind: 'agent',
   title: `Verify Artifact Integrity - ${args.projectName}`,
   agent: {
-    name: 'integrity-analyst',
+    name: 'hardware-security-researcher',
     prompt: {
       role: 'Artifact Integrity Analyst',
       task: 'Verify artifact integrity',
@@ -424,7 +424,7 @@ export const supplyChainReportTask = defineTask('supply-chain-report', (args, ta
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Supply Chain Report Specialist',
       task: 'Generate supply chain security report',

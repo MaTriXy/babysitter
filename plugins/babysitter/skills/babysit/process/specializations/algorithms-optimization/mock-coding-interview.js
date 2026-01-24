@@ -50,8 +50,9 @@ export async function process(inputs, ctx) {
 export const problemSelectionTask = defineTask('problem-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Select Interview Problem',
+  skills: ['interview-question-bank', 'leetcode-problem-fetcher'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interviewer',
       task: 'Select appropriate interview problem',
@@ -72,8 +73,9 @@ export const problemSelectionTask = defineTask('problem-selection', (args, taskC
 export const interviewSimulationTask = defineTask('interview-simulation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Simulate Interview',
+  skills: ['mock-interview-runner'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interviewer',
       task: 'Simulate coding interview',
@@ -94,8 +96,9 @@ export const interviewSimulationTask = defineTask('interview-simulation', (args,
 export const solutionEvaluationTask = defineTask('solution-evaluation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Evaluate Solution',
+  skills: ['solution-comparator', 'complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interviewer',
       task: 'Evaluate interview solution',
@@ -117,7 +120,7 @@ export const detailedFeedbackTask = defineTask('detailed-feedback', (args, taskC
   kind: 'agent',
   title: 'Provide Detailed Feedback',
   agent: {
-    name: 'general-purpose',
+    name: 'feedback-generator',
     prompt: {
       role: 'Interview Coach',
       task: 'Provide detailed interview feedback',

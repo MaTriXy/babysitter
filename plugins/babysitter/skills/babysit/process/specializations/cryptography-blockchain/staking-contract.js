@@ -89,7 +89,7 @@ export const stakingDesignTask = defineTask('staking-design', (args, taskCtx) =>
   kind: 'agent',
   title: `Staking Design - ${args.projectName}`,
   agent: {
-    name: 'staking-architect',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Staking Mechanism Architect',
       task: 'Design staking mechanism',
@@ -107,7 +107,7 @@ export const rewardCalculationTask = defineTask('reward-calculation', (args, tas
   kind: 'agent',
   title: `Reward Calculation - ${args.projectName}`,
   agent: {
-    name: 'reward-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Reward Calculation Engineer',
       task: 'Implement reward calculation',
@@ -125,7 +125,7 @@ export const lockupVestingTask = defineTask('lockup-vesting', (args, taskCtx) =>
   kind: 'agent',
   title: `Lockup and Vesting - ${args.projectName}`,
   agent: {
-    name: 'lockup-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Lockup/Vesting Engineer',
       task: 'Implement lockup and vesting',
@@ -143,7 +143,7 @@ export const delegationTask = defineTask('delegation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Delegation - ${args.projectName}`,
   agent: {
-    name: 'delegation-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Delegation Developer',
       task: 'Implement delegation functionality',
@@ -161,7 +161,7 @@ export const emergencyWithdrawTask = defineTask('emergency-withdraw', (args, tas
   kind: 'agent',
   title: `Emergency Withdraw - ${args.projectName}`,
   agent: {
-    name: 'emergency-engineer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Emergency Systems Engineer',
       task: 'Implement emergency withdraw',
@@ -179,7 +179,7 @@ export const rewardAdjustmentTask = defineTask('reward-adjustment', (args, taskC
   kind: 'agent',
   title: `Reward Adjustment - ${args.projectName}`,
   agent: {
-    name: 'reward-admin',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'Reward Administration Engineer',
       task: 'Implement reward rate adjustment',
@@ -197,7 +197,7 @@ export const contractImplementationTask = defineTask('contract-implementation', 
   kind: 'agent',
   title: `Contract Implementation - ${args.projectName}`,
   agent: {
-    name: 'staking-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'Staking Contract Developer',
       task: 'Implement staking contract',
@@ -215,7 +215,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'staking-tester',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Staking Contract Tester',
       task: 'Create comprehensive tests',

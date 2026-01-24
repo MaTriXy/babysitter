@@ -183,7 +183,7 @@ export const systemArchitectureTask = defineTask('system-architecture', (args, t
   kind: 'agent',
   title: `Design Multi-Agent Architecture - ${args.systemName}`,
   agent: {
-    name: 'multi-agent-architect',
+    name: 'multi-agent-coordinator',  // AG-AA-003: Designs multi-agent systems with supervisor/worker patterns
     prompt: {
       role: 'Multi-Agent Systems Architect',
       task: 'Design multi-agent system architecture',
@@ -220,10 +220,10 @@ export const systemArchitectureTask = defineTask('system-architecture', (args, t
 }));
 
 export const agentRoleDefinitionTask = defineTask('agent-role-definition', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Define Agent Roles - ${args.systemName}`,
-  agent: {
-    name: 'role-designer',
+  skill: {
+    name: 'system-prompt-templates',  // SK-PE-001: Reusable system prompt templates for agent personas
     prompt: {
       role: 'Agent Role Designer',
       task: 'Define roles and responsibilities for each agent',
@@ -268,10 +268,10 @@ export const agentRoleDefinitionTask = defineTask('agent-role-definition', (args
 }));
 
 export const coordinationLogicTask = defineTask('coordination-logic', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Coordination Logic - ${args.systemName}`,
-  agent: {
-    name: 'coordination-developer',
+  skill: {
+    name: 'crewai-agents',  // SK-CR-001: CrewAI agent and crew configuration utilities
     prompt: {
       role: 'Coordination Logic Developer',
       task: 'Implement agent coordination logic',
@@ -307,10 +307,10 @@ export const coordinationLogicTask = defineTask('coordination-logic', (args, tas
 }));
 
 export const communicationProtocolTask = defineTask('communication-protocol', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Communication Protocol - ${args.systemName}`,
-  agent: {
-    name: 'protocol-developer',
+  skill: {
+    name: 'autogen-conversation',  // SK-AG-002: AutoGen conversation pattern and message handling
     prompt: {
       role: 'Communication Protocol Developer',
       task: 'Implement agent communication protocol',
@@ -346,10 +346,10 @@ export const communicationProtocolTask = defineTask('communication-protocol', (a
 }));
 
 export const agentImplementationTask = defineTask('agent-implementation-multi', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Agents - ${args.systemName}`,
-  agent: {
-    name: 'agent-implementer',
+  skill: {
+    name: 'autogen-agent',  // SK-AG-001: AutoGen conversable agent setup and configuration
     prompt: {
       role: 'Agent Implementer',
       task: 'Implement all agents in the multi-agent system',

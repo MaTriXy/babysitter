@@ -85,8 +85,9 @@ function createPublishingTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'play-console' },
     agent: {
-      name: 'android-release-manager',
+      name: 'mobile-devops',
       prompt: {
         role: 'Android Play Store Publishing Specialist',
         task: `Execute ${title.toLowerCase()} for Play Store publishing`,

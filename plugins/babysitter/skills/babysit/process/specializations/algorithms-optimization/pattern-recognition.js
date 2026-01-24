@@ -75,8 +75,9 @@ export async function process(inputs, ctx) {
 export const problemParsingTask = defineTask('problem-parsing', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Problem Parsing',
+  skills: ['leetcode-problem-fetcher', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Algorithm Problem Analyst',
       task: 'Parse and understand problem statement',
@@ -109,8 +110,9 @@ export const problemParsingTask = defineTask('problem-parsing', (args, taskCtx) 
 export const patternIdentificationTask = defineTask('pattern-identification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Pattern Identification',
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Algorithm Pattern Expert',
       task: 'Identify applicable algorithmic patterns',
@@ -144,8 +146,9 @@ export const patternIdentificationTask = defineTask('pattern-identification', (a
 export const constraintAnalysisTask = defineTask('constraint-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Constraint Analysis',
+  skills: ['complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Complexity Analyst',
       task: 'Analyze constraints to determine feasible algorithms',
@@ -177,8 +180,9 @@ export const constraintAnalysisTask = defineTask('constraint-analysis', (args, t
 export const algorithmSelectionTask = defineTask('algorithm-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Algorithm Selection',
+  skills: ['dp-pattern-library', 'complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Algorithm Selection Expert',
       task: 'Select optimal algorithm based on patterns and constraints',

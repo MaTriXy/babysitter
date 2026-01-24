@@ -205,7 +205,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Analyze ReAct Agent Requirements - ${args.agentName}`,
   agent: {
-    name: 'ai-agent-architect',
+    name: 'react-agent-architect',  // AG-AA-001: Designs ReAct agent loops with thought-action-observation patterns
     prompt: {
       role: 'AI Agent Architect specializing in ReAct agents',
       task: 'Analyze requirements for ReAct agent implementation',
@@ -245,10 +245,10 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
 }));
 
 export const toolDefinitionTask = defineTask('tool-definition', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Define Tools for ${args.agentName}`,
-  agent: {
-    name: 'tool-designer',
+  skill: {
+    name: 'langchain-tools',  // SK-LC-004: LangChain tool creation and integration utilities
     prompt: {
       role: 'AI Tool Designer',
       task: 'Define tool schemas and implementations for ReAct agent',
@@ -295,10 +295,10 @@ export const toolDefinitionTask = defineTask('tool-definition', (args, taskCtx) 
 }));
 
 export const reactPromptEngineeringTask = defineTask('react-prompt-engineering', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Engineer ReAct Prompts - ${args.agentName}`,
-  agent: {
-    name: 'prompt-engineer',
+  skill: {
+    name: 'chain-of-thought-prompts',  // SK-PE-003: Chain-of-thought and step-by-step reasoning prompts
     prompt: {
       role: 'Prompt Engineer specializing in ReAct agents',
       task: 'Design ReAct prompts with thought-action-observation pattern',
@@ -342,10 +342,10 @@ export const reactPromptEngineeringTask = defineTask('react-prompt-engineering',
 }));
 
 export const agentImplementationTask = defineTask('agent-implementation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement ReAct Agent - ${args.agentName}`,
-  agent: {
-    name: 'agent-developer',
+  skill: {
+    name: 'langchain-react-agent',  // SK-LC-001: LangChain ReAct agent implementation with tool binding
     prompt: {
       role: 'AI Agent Developer',
       task: 'Implement ReAct agent with full reasoning loop',
@@ -438,7 +438,7 @@ export const agentEvaluationTask = defineTask('agent-evaluation', (args, taskCtx
   kind: 'agent',
   title: `Evaluate ReAct Agent - ${args.agentName}`,
   agent: {
-    name: 'agent-evaluator',
+    name: 'agent-evaluator',  // AG-SAF-004: Designs evaluation frameworks and benchmarks
     prompt: {
       role: 'AI Agent Evaluator',
       task: 'Evaluate ReAct agent performance and generate metrics',

@@ -217,7 +217,7 @@ export const interruptRequirementsTask = defineTask('interrupt-requirements', (a
   kind: 'agent',
   title: `Phase 1: Interrupt Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze interrupt requirements',
@@ -259,7 +259,7 @@ export const prioritySchemeDesignTask = defineTask('priority-scheme-design', (ar
   kind: 'agent',
   title: `Phase 2: Priority Scheme - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design interrupt priority scheme',
@@ -301,7 +301,7 @@ export const isrImplementationDesignTask = defineTask('isr-implementation-design
   kind: 'agent',
   title: `Phase 3: ISR Implementation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design ISR implementations',
@@ -343,7 +343,7 @@ export const deferredProcessingDesignTask = defineTask('deferred-processing-desi
   kind: 'agent',
   title: `Phase 4: Deferred Processing - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design deferred interrupt processing',
@@ -385,7 +385,7 @@ export const criticalSectionDesignTask = defineTask('critical-section-design', (
   kind: 'agent',
   title: `Phase 5: Critical Sections - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design critical sections',
@@ -427,7 +427,7 @@ export const isrLatencyAnalysisTask = defineTask('isr-latency-analysis', (args, 
   kind: 'agent',
   title: `Phase 6: Latency Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze ISR latency',
@@ -470,7 +470,7 @@ export const isrDocumentationTask = defineTask('isr-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 7: ISR Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate ISR documentation',

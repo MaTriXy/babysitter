@@ -111,7 +111,8 @@ export const tensorCoreSuitabilityTask = defineTask('tensor-core-suitability', (
   kind: 'agent',
   title: `Suitability Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'cutlass-library'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze tensor core suitability',
@@ -152,7 +153,8 @@ export const wmmaImplementationTask = defineTask('wmma-implementation', (args, t
   kind: 'agent',
   title: `WMMA Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'cutlass-library'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement WMMA API',
@@ -193,7 +195,8 @@ export const cublasTensorCoreTask = defineTask('cublas-tensor-core', (args, task
   kind: 'agent',
   title: `cuBLAS Integration - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'cutlass-library'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Integrate cuBLAS tensor core mode',
@@ -234,7 +237,8 @@ export const mixedPrecisionTask = defineTask('mixed-precision', (args, taskCtx) 
   kind: 'agent',
   title: `Mixed Precision - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'cutlass-library'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement mixed precision computation',
@@ -275,7 +279,8 @@ export const tensorCoreProfilingTask = defineTask('tensor-core-profiling', (args
   kind: 'agent',
   title: `Performance Profiling - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Profile tensor core performance',
@@ -317,7 +322,8 @@ export const precisionAnalysisTask = defineTask('precision-analysis', (args, tas
   kind: 'agent',
   title: `Precision Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'tensor-core-specialist',
+    skills: ['tensor-core-ops', 'cutlass-library'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze numerical precision',

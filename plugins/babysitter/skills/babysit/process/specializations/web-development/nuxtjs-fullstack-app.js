@@ -210,10 +210,10 @@ export async function process(inputs, ctx) {
 // ============================================================================
 
 export const projectSetupTask = defineTask('nuxt-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 1: Nuxt Setup - ${args.projectName}`,
-  agent: {
-    name: 'nuxt-developer',
+  skill: {
+    name: 'nuxt-skill',
     prompt: {
       role: 'Senior Nuxt.js Developer',
       task: 'Set up Nuxt 3 project',
@@ -412,10 +412,10 @@ export const serverRoutesSetupTask = defineTask('nuxt-server-routes', (args, tas
 }));
 
 export const databaseSetupTask = defineTask('nuxt-database', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 6: Database Setup - ${args.projectName}`,
-  agent: {
-    name: 'database-specialist',
+  skill: {
+    name: 'prisma-skill',
     prompt: {
       role: 'Database Specialist',
       task: 'Integrate database',
@@ -452,10 +452,10 @@ export const databaseSetupTask = defineTask('nuxt-database', (args, taskCtx) => 
 }));
 
 export const stateSetupTask = defineTask('nuxt-state', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: State Management - ${args.projectName}`,
-  agent: {
-    name: 'pinia-specialist',
+  skill: {
+    name: 'pinia-skill',
     prompt: {
       role: 'Pinia State Management Specialist',
       task: 'Set up Pinia',
@@ -535,7 +535,7 @@ export const documentationTask = defineTask('nuxt-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Nuxt documentation',

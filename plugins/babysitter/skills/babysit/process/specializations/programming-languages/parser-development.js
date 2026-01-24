@@ -322,7 +322,7 @@ export const parsingStrategyTask = defineTask('parsing-strategy', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Parsing Strategy - ${args.languageName}`,
   agent: {
-    name: 'parser-architect',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Architecture Expert',
       task: 'Analyze and validate parsing strategy selection',
@@ -365,7 +365,7 @@ export const parserArchitectureTask = defineTask('parser-architecture', (args, t
   kind: 'agent',
   title: `Phase 2: Parser Architecture - ${args.languageName}`,
   agent: {
-    name: 'parser-architect',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Architecture Expert',
       task: 'Design parser architecture',
@@ -407,7 +407,7 @@ export const astNodeGenerationTask = defineTask('ast-node-generation', (args, ta
   kind: 'agent',
   title: `Phase 3: AST Node Generation - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Generate AST node definitions',
@@ -451,7 +451,7 @@ export const expressionParserTask = defineTask('expression-parser', (args, taskC
   kind: 'agent',
   title: `Phase 4: Expression Parser - ${args.languageName}`,
   agent: {
-    name: 'parser-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Implementation Engineer',
       task: 'Implement expression parser',
@@ -493,7 +493,7 @@ export const statementParserTask = defineTask('statement-parser', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Statement Parser - ${args.languageName}`,
   agent: {
-    name: 'parser-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Implementation Engineer',
       task: 'Implement statement parser',
@@ -534,7 +534,7 @@ export const declarationParserTask = defineTask('declaration-parser', (args, tas
   kind: 'agent',
   title: `Phase 6: Declaration Parser - ${args.languageName}`,
   agent: {
-    name: 'parser-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Implementation Engineer',
       task: 'Implement declaration parser',
@@ -575,7 +575,7 @@ export const parserErrorRecoveryTask = defineTask('parser-error-recovery', (args
   kind: 'agent',
   title: `Phase 7: Error Recovery - ${args.languageName}`,
   agent: {
-    name: 'parser-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Implementation Engineer',
       task: 'Implement parser error recovery',
@@ -617,7 +617,7 @@ export const parserDiagnosticsTask = defineTask('parser-diagnostics', (args, tas
   kind: 'agent',
   title: `Phase 8: Parser Diagnostics - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Implement diagnostic messages',
@@ -659,7 +659,7 @@ export const parserIntegrationTask = defineTask('parser-integration', (args, tas
   kind: 'agent',
   title: `Phase 9: Parser Integration - ${args.languageName}`,
   agent: {
-    name: 'parser-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Parser Implementation Engineer',
       task: 'Integrate parser components',
@@ -700,7 +700,7 @@ export const parserTestingTask = defineTask('parser-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 10: Parser Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive parser tests',
@@ -742,7 +742,7 @@ export const parserDocumentationTask = defineTask('parser-documentation', (args,
   kind: 'agent',
   title: `Phase 11: Parser Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate parser documentation',

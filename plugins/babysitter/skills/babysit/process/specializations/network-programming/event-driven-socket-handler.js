@@ -296,8 +296,9 @@ export async function process(inputs, ctx) {
 export const platformAnalysisTask = defineTask('platform-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Platform Analysis - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'systems-architect',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'High-Performance Systems Architect',
       task: 'Analyze platform and select I/O multiplexing API',
@@ -336,8 +337,9 @@ export const platformAnalysisTask = defineTask('platform-analysis', (args, taskC
 export const eventLoopDesignTask = defineTask('event-loop-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Event Loop Design - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'event-loop-architect',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Event-Driven Systems Architect',
       task: 'Design event loop architecture',
@@ -375,8 +377,9 @@ export const eventLoopDesignTask = defineTask('event-loop-design', (args, taskCt
 export const eventRegistrationTask = defineTask('event-registration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Event Registration - ${args.projectName}`,
+  skill: { name: 'socket-programming' },
   agent: {
-    name: 'event-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Event Systems Engineer',
       task: 'Implement event registration and management',
@@ -414,8 +417,9 @@ export const eventRegistrationTask = defineTask('event-registration', (args, tas
 export const stateMachineTask = defineTask('state-machine', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Connection State Machine - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'state-machine-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Protocol State Machine Engineer',
       task: 'Implement connection state machine',
@@ -453,8 +457,9 @@ export const stateMachineTask = defineTask('state-machine', (args, taskCtx) => (
 export const eventHandlersTask = defineTask('event-handlers', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Event Handlers - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'handler-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Event Handler Engineer',
       task: 'Implement event handlers',
@@ -492,8 +497,9 @@ export const eventHandlersTask = defineTask('event-handlers', (args, taskCtx) =>
 export const timerSignalTask = defineTask('timer-signal', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Timer and Signal Handling - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'timer-signal-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Systems Engineer',
       task: 'Implement timer and signal handling',
@@ -531,8 +537,9 @@ export const timerSignalTask = defineTask('timer-signal', (args, taskCtx) => ({
 export const performanceOptimizationTask = defineTask('performance-optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Performance Optimization - ${args.projectName}`,
+  skill: { name: 'event-loop' },
   agent: {
-    name: 'performance-engineer',
+    name: 'hpc-network-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize for low latency and high throughput',
@@ -570,8 +577,9 @@ export const performanceOptimizationTask = defineTask('performance-optimization'
 export const benchmarkTask = defineTask('benchmark', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Benchmarking - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'benchmark-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'Performance Testing Engineer',
       task: 'Run load tests and benchmarks',
@@ -613,7 +621,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'network-architect',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate comprehensive documentation',
@@ -651,8 +659,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Validation - ${args.projectName}`,
+  skill: { name: 'network-testing' },
   agent: {
-    name: 'validation-engineer',
+    name: 'network-testing-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate implementation against requirements',

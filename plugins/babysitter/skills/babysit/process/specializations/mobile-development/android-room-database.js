@@ -279,8 +279,9 @@ export async function process(inputs, ctx) {
 export const dependenciesSetupTask = defineTask('dependencies-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Dependencies Setup - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Build Configuration Specialist',
       task: 'Add Room dependencies to project',
@@ -323,8 +324,9 @@ export const dependenciesSetupTask = defineTask('dependencies-setup', (args, tas
 export const entityDefinitionTask = defineTask('entity-definition', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Entity Definition - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Developer',
       task: 'Define Room entities with @Entity annotation',
@@ -368,8 +370,9 @@ export const entityDefinitionTask = defineTask('entity-definition', (args, taskC
 export const daoImplementationTask = defineTask('dao-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: DAO Implementation - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Developer',
       task: 'Implement Data Access Objects with @Dao',
@@ -412,8 +415,9 @@ export const daoImplementationTask = defineTask('dao-implementation', (args, tas
 export const databaseClassTask = defineTask('database-class', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Database Class - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Developer',
       task: 'Create RoomDatabase abstract class',
@@ -458,8 +462,9 @@ export const databaseClassTask = defineTask('database-class', (args, taskCtx) =>
 export const typeConvertersTask = defineTask('type-converters', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Type Converters - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Developer',
       task: 'Implement TypeConverters for complex types',
@@ -501,8 +506,9 @@ export const typeConvertersTask = defineTask('type-converters', (args, taskCtx) 
 export const relationshipsSetupTask = defineTask('relationships-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Relationships - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Relationship Specialist',
       task: 'Handle entity relationships',
@@ -546,8 +552,9 @@ export const relationshipsSetupTask = defineTask('relationships-setup', (args, t
 export const flowIntegrationTask = defineTask('flow-integration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Flow Integration - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Reactive Programming Specialist',
       task: 'Add Flow for reactive database queries',
@@ -590,8 +597,9 @@ export const flowIntegrationTask = defineTask('flow-integration', (args, taskCtx
 export const repositoryPatternTask = defineTask('repository-pattern', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Repository Pattern - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Architecture Specialist',
       task: 'Implement Repository pattern for data access',
@@ -635,8 +643,9 @@ export const repositoryPatternTask = defineTask('repository-pattern', (args, tas
 export const migrationsSetupTask = defineTask('migrations-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Migrations - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Database Migration Specialist',
       task: 'Set up database migrations',
@@ -680,8 +689,9 @@ export const migrationsSetupTask = defineTask('migrations-setup', (args, taskCtx
 export const prePopulationTask = defineTask('pre-population', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Pre-population - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Room Developer',
       task: 'Database pre-population and seeding',
@@ -724,8 +734,9 @@ export const prePopulationTask = defineTask('pre-population', (args, taskCtx) =>
 export const diIntegrationTask = defineTask('di-integration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: DI Integration - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Dependency Injection Specialist',
       task: 'Integrate with Hilt/Dagger',
@@ -769,8 +780,9 @@ export const diIntegrationTask = defineTask('di-integration', (args, taskCtx) =>
 export const databaseTestsTask = defineTask('database-tests', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Database Tests - ${args.appName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'android-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Android Test Engineer',
       task: 'Write database tests',
@@ -816,8 +828,9 @@ export const databaseTestsTask = defineTask('database-tests', (args, taskCtx) =>
 export const backupExportTask = defineTask('backup-export', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Backup and Export - ${args.appName}`,
+  skill: { name: 'android-room' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Data Management Specialist',
       task: 'Implement backup and export functionality',

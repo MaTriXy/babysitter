@@ -260,7 +260,7 @@ export const effectSyntaxTask = defineTask('effect-syntax', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Effect Syntax - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Design effect system syntax',
@@ -300,7 +300,7 @@ export const effectDeclarationTask = defineTask('effect-declaration', (args, tas
   kind: 'agent',
   title: `Phase 2: Effect Declaration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement effect declaration',
@@ -341,7 +341,7 @@ export const effectHandlersTask = defineTask('effect-handlers', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Effect Handlers - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement effect handlers',
@@ -382,7 +382,7 @@ export const effectTrackingTask = defineTask('effect-tracking', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Effect Tracking - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement effect tracking',
@@ -422,7 +422,7 @@ export const effectPolymorphismTask = defineTask('effect-polymorphism', (args, t
   kind: 'agent',
   title: `Phase 5: Effect Polymorphism - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement effect polymorphism',
@@ -462,7 +462,7 @@ export const effectInferenceTask = defineTask('effect-inference', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Effect Inference - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement effect inference',
@@ -503,7 +503,7 @@ export const effectRuntimeTask = defineTask('effect-runtime', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 7: Effect Runtime - ${args.languageName}`,
   agent: {
-    name: 'runtime-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Runtime Engineer',
       task: 'Implement effect runtime',
@@ -544,7 +544,7 @@ export const effectSystemIntegrationTask = defineTask('effect-system-integration
   kind: 'agent',
   title: `Phase 8: Effect System Integration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Integrate effect system',
@@ -584,7 +584,7 @@ export const effectSystemTestingTask = defineTask('effect-system-testing', (args
   kind: 'agent',
   title: `Phase 9: Effect System Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive effect system tests',
@@ -625,7 +625,7 @@ export const effectSystemDocumentationTask = defineTask('effect-system-documenta
   kind: 'agent',
   title: `Phase 10: Effect System Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate effect system documentation',

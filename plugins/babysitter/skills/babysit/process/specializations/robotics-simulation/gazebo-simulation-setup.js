@@ -258,7 +258,7 @@ export const worldFileDesignTask = defineTask('world-file-design', (args, taskCt
   kind: 'agent',
   title: `Phase 1: World File Design - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Design Gazebo world file with terrain and obstacles',
@@ -301,7 +301,7 @@ export const modelImportTask = defineTask('model-import', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Model Import - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Import or create 3D models for environment',
@@ -343,7 +343,7 @@ export const physicsConfigurationTask = defineTask('physics-configuration', (arg
   kind: 'agent',
   title: `Phase 3: Physics Configuration - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'physics-simulation-expert',  // AG-008: Physics Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Configure physics engine parameters',
@@ -387,7 +387,7 @@ export const lightingEnvironmentTask = defineTask('lighting-environment', (args,
   kind: 'agent',
   title: `Phase 4: Lighting and Environment - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Configure lighting and environmental effects',
@@ -430,7 +430,7 @@ export const sensorPluginImplementationTask = defineTask('sensor-plugin-implemen
   kind: 'agent',
   title: `Phase 5: Sensor Plugin Implementation - ${args.worldName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Implement sensor plugins for Gazebo',
@@ -472,7 +472,7 @@ export const dynamicObjectsTask = defineTask('dynamic-objects', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Dynamic Objects - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'gazebo-simulation-expert',  // AG-002: Gazebo Simulation Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Create dynamic objects and actors',
@@ -514,7 +514,7 @@ export const multiRobotSetupTask = defineTask('multi-robot-setup', (args, taskCt
   kind: 'agent',
   title: `Phase 7: Multi-Robot Setup - ${args.worldName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Set up multiple robot instances',
@@ -556,7 +556,7 @@ export const performanceOptimizationTask = defineTask('performance-optimization'
   kind: 'agent',
   title: `Phase 8: Performance Optimization - ${args.worldName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Optimize simulation performance',
@@ -599,7 +599,7 @@ export const physicsValidationTask = defineTask('physics-validation', (args, tas
   kind: 'agent',
   title: `Phase 9: Physics Validation - ${args.worldName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Simulation Test Engineer',
       task: 'Validate physics accuracy',
@@ -642,7 +642,7 @@ export const launchFileGenerationTask = defineTask('launch-file-generation', (ar
   kind: 'agent',
   title: `Phase 10: Launch File Generation - ${args.worldName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Generate ROS launch files for simulation',

@@ -75,8 +75,9 @@ export async function process(inputs, ctx) {
 export const contestSetupTask = defineTask('contest-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `AtCoder Setup - ${args.contestId}`,
+  skills: ['atcoder-client', 'code-template-manager'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Set up AtCoder contest environment',
@@ -102,8 +103,9 @@ export const contestSetupTask = defineTask('contest-setup', (args, taskCtx) => (
 export const problemSolvingTask = defineTask('problem-solving', (args, taskCtx) => ({
   kind: 'agent',
   title: `AtCoder Problem Solving - ${args.contestId}`,
+  skills: ['atcoder-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programmer',
       task: 'Solve AtCoder contest problems',
@@ -134,8 +136,9 @@ export const problemSolvingTask = defineTask('problem-solving', (args, taskCtx) 
 export const editorialAnalysisTask = defineTask('editorial-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `AtCoder Editorial Analysis - ${args.contestId}`,
+  skills: ['atcoder-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'upsolving-coach',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Analyze contest editorials',
@@ -161,8 +164,9 @@ export const editorialAnalysisTask = defineTask('editorial-analysis', (args, tas
 export const performanceReviewTask = defineTask('performance-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `AtCoder Performance Review - ${args.contestId}`,
+  skills: ['atcoder-client'],
   agent: {
-    name: 'general-purpose',
+    name: 'contest-strategist',
     prompt: {
       role: 'Performance Analyst',
       task: 'Review contest performance',

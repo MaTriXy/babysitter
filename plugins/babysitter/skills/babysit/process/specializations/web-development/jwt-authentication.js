@@ -65,7 +65,7 @@ export const jwtSetupTask = defineTask('jwt-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `JWT Setup - ${args.projectName}`,
   agent: {
-    name: 'auth-developer',
+    name: 'auth-specialist-agent',
     prompt: { role: 'Authentication Developer', task: 'Set up JWT authentication infrastructure', context: args,
       instructions: ['1. Install JWT libraries', '2. Configure secret management', '3. Set up token config', '4. Configure expiration', '5. Set up token types', '6. Configure algorithms', '7. Set up validation', '8. Configure storage', '9. Set up utilities', '10. Document setup'],
       outputFormat: 'JSON with JWT setup'
@@ -140,7 +140,7 @@ export const documentationTask = defineTask('jwt-documentation', (args, taskCtx)
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: { role: 'Technical Writer', task: 'Generate JWT documentation', context: args,
       instructions: ['1. Create README', '2. Document token flow', '3. Create endpoint docs', '4. Document middleware', '5. Create security guide', '6. Document best practices', '7. Create integration guide', '8. Document troubleshooting', '9. Create migration guide', '10. Generate examples'],
       outputFormat: 'JSON with documentation'

@@ -220,7 +220,7 @@ export const dapProtocolSetupTask = defineTask('dap-protocol-setup', (args, task
   kind: 'agent',
   title: `Phase 1: DAP Protocol Setup - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Set up DAP protocol handling',
@@ -260,7 +260,7 @@ export const breakpointManagementTask = defineTask('breakpoint-management', (arg
   kind: 'agent',
   title: `Phase 2: Breakpoint Management - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement breakpoint management',
@@ -301,7 +301,7 @@ export const executionControlTask = defineTask('execution-control', (args, taskC
   kind: 'agent',
   title: `Phase 3: Execution Control - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement execution control',
@@ -342,7 +342,7 @@ export const variableInspectionTask = defineTask('variable-inspection', (args, t
   kind: 'agent',
   title: `Phase 4: Variable Inspection - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement variable inspection',
@@ -383,7 +383,7 @@ export const stackTraceTask = defineTask('stack-trace', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Stack Trace - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Implement stack trace',
@@ -424,7 +424,7 @@ export const dapIntegrationTask = defineTask('dap-integration', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: DAP Integration - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Language Tooling Engineer',
       task: 'Integrate debug adapter',
@@ -465,7 +465,7 @@ export const dapTestingTask = defineTask('dap-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: DAP Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive DAP tests',
@@ -506,7 +506,7 @@ export const dapDocumentationTask = defineTask('dap-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 8: DAP Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate DAP documentation',

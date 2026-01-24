@@ -93,7 +93,7 @@ export const designStressTestPlanTask = defineTask('design-stress-test-plan', (a
   kind: 'agent',
   title: `Design Stress Test Plan - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Design stress test plan', context: args,
       instructions: ['1. Define load increments', '2. Set duration per level', '3. Define success criteria', '4. Plan monitoring', '5. Document plan'],
       outputFormat: 'JSON with stress test plan' },
@@ -107,7 +107,7 @@ export const configureExtremeMonitoringTask = defineTask('configure-extreme-moni
   kind: 'agent',
   title: `Configure Extreme Monitoring - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Configure monitoring for extreme conditions', context: args,
       instructions: ['1. Add detailed metrics', '2. Configure high frequency sampling', '3. Set up alerts', '4. Enable resource tracking', '5. Document configuration'],
       outputFormat: 'JSON with monitoring configuration' },
@@ -121,7 +121,7 @@ export const runIncrementalLoadTestsTask = defineTask('run-incremental-load-test
   kind: 'agent',
   title: `Run Incremental Load Tests - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Run incremental load tests', context: args,
       instructions: ['1. Start with low load', '2. Increment gradually', '3. Monitor at each level', '4. Record metrics', '5. Find degradation point'],
       outputFormat: 'JSON with incremental test results' },
@@ -135,7 +135,7 @@ export const identifyBreakingPointTask = defineTask('identify-breaking-point', (
   kind: 'agent',
   title: `Identify Breaking Point - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Identify system breaking point', context: args,
       instructions: ['1. Push beyond sustainable', '2. Monitor for failures', '3. Identify failure mode', '4. Document breaking point', '5. Record symptoms'],
       outputFormat: 'JSON with breaking point analysis' },
@@ -149,7 +149,7 @@ export const analyzeDegradationPatternsTask = defineTask('analyze-degradation-pa
   kind: 'agent',
   title: `Analyze Degradation Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Analyze degradation patterns', context: args,
       instructions: ['1. Plot degradation curve', '2. Identify inflection points', '3. Correlate with resources', '4. Document patterns', '5. Find root causes'],
       outputFormat: 'JSON with degradation analysis' },
@@ -163,7 +163,7 @@ export const testSystemRecoveryTask = defineTask('test-system-recovery', (args, 
   kind: 'agent',
   title: `Test System Recovery - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Test system recovery', context: args,
       instructions: ['1. Remove load', '2. Monitor recovery', '3. Measure recovery time', '4. Verify full recovery', '5. Document recovery'],
       outputFormat: 'JSON with recovery test results' },
@@ -177,7 +177,7 @@ export const documentResourceLimitsTask = defineTask('document-resource-limits',
   kind: 'agent',
   title: `Document Resource Limits - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Document resource limits', context: args,
       instructions: ['1. Document CPU limits', '2. Document memory limits', '3. Document I/O limits', '4. Document network limits', '5. Create limits report'],
       outputFormat: 'JSON with resource limits' },
@@ -191,7 +191,7 @@ export const provideCapacityRecommendationsTask = defineTask('provide-capacity-r
   kind: 'agent',
   title: `Provide Capacity Recommendations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Provide capacity recommendations', context: args,
       instructions: ['1. Calculate headroom', '2. Recommend scaling', '3. Suggest optimizations', '4. Define alerting thresholds', '5. Document recommendations'],
       outputFormat: 'JSON with capacity recommendations' },

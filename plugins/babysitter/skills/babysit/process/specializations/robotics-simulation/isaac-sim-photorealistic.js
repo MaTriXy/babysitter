@@ -240,7 +240,7 @@ export const isaacSimEnvironmentTask = defineTask('isaac-sim-environment', (args
   kind: 'agent',
   title: `Phase 1: Isaac Sim Environment - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'isaac-sim-expert',  // AG-017: Isaac Sim Expert Agent
     prompt: {
       role: 'Isaac Sim Engineer',
       task: 'Set up Isaac Sim environment and USD assets',
@@ -283,7 +283,7 @@ export const robotModelImportTask = defineTask('robot-model-import', (args, task
   kind: 'agent',
   title: `Phase 2: Robot Model Import - ${args.projectName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Import robot model (URDF to USD conversion)',
@@ -326,7 +326,7 @@ export const photorealisticEnvironmentTask = defineTask('photorealistic-environm
   kind: 'agent',
   title: `Phase 3: Photorealistic Environment - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'isaac-sim-expert',  // AG-017: Isaac Sim Expert Agent
     prompt: {
       role: 'Isaac Sim Engineer',
       task: 'Design photorealistic environments with ray tracing',
@@ -369,7 +369,7 @@ export const physxConfigurationTask = defineTask('physx-configuration', (args, t
   kind: 'agent',
   title: `Phase 4: PhysX Configuration - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'isaac-sim-expert',  // AG-017: Isaac Sim Expert Agent
     prompt: {
       role: 'Physics Simulation Engineer',
       task: 'Configure PhysX physics simulation',
@@ -412,7 +412,7 @@ export const syntheticDataGenerationTask = defineTask('synthetic-data-generation
   kind: 'agent',
   title: `Phase 5: Synthetic Data Generation - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Set up synthetic data generation pipeline',
@@ -454,7 +454,7 @@ export const domainRandomizationTask = defineTask('domain-randomization', (args,
   kind: 'agent',
   title: `Phase 6: Domain Randomization - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: {
       role: 'ML Engineer',
       task: 'Configure domain randomization',
@@ -496,7 +496,7 @@ export const scenarioCreationTask = defineTask('scenario-creation', (args, taskC
   kind: 'agent',
   title: `Phase 7: Scenario Creation - ${args.projectName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'isaac-sim-expert',  // AG-017: Isaac Sim Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Create simulation scenarios and test cases',
@@ -538,7 +538,7 @@ export const gpuOptimizationTask = defineTask('gpu-optimization', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: GPU Optimization - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize GPU performance',
@@ -581,7 +581,7 @@ export const datasetExportTask = defineTask('dataset-export', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Dataset Export - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: {
       role: 'ML Data Engineer',
       task: 'Export synthetic datasets',

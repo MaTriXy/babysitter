@@ -91,7 +91,7 @@ export const robotModelDerivationTask = defineTask('robot-model-derivation', (ar
   kind: 'agent',
   title: `Robot Model Derivation - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Derive robot kinematic or dynamic model', context: args, instructions: ['1. Define state vector', '2. Derive kinematics', '3. Add dynamics if needed', '4. Discretize model', '5. Validate model accuracy'] },
     outputSchema: { type: 'object', required: ['stateSpace', 'discretization', 'artifacts'], properties: { stateSpace: { type: 'object' }, discretization: { type: 'object' }, stateVector: { type: 'array' }, controlVector: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -103,7 +103,7 @@ export const mpcFormulationTask = defineTask('mpc-formulation', (args, taskCtx) 
   kind: 'agent',
   title: `MPC Formulation - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Formulate MPC optimization problem', context: args, instructions: ['1. Define cost function', '2. Set state weights', '3. Set control weights', '4. Define terminal cost', '5. Add constraint formulations'] },
     outputSchema: { type: 'object', required: ['costFunction', 'constraints', 'artifacts'], properties: { costFunction: { type: 'object' }, constraints: { type: 'array' }, stateWeights: { type: 'array' }, controlWeights: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -115,7 +115,7 @@ export const mpcSolverImplementationTask = defineTask('mpc-solver-implementation
   kind: 'agent',
   title: `MPC Solver Implementation - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Implement MPC solver', context: args, instructions: ['1. Select solver (CasADi, ACADO, CVXPY)', '2. Configure solver settings', '3. Implement warm starting', '4. Add solver diagnostics', '5. Test solver convergence'] },
     outputSchema: { type: 'object', required: ['solver', 'solverConfig', 'artifacts'], properties: { solver: { type: 'string' }, solverConfig: { type: 'object' }, warmStarting: { type: 'boolean' }, convergenceCriteria: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -127,7 +127,7 @@ export const mpcParameterTuningTask = defineTask('mpc-parameter-tuning', (args, 
   kind: 'agent',
   title: `MPC Parameter Tuning - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Tune MPC parameters', context: args, instructions: ['1. Tune prediction horizon', '2. Tune state weights Q', '3. Tune control weights R', '4. Set control horizon', '5. Validate tuning'] },
     outputSchema: { type: 'object', required: ['predictionHorizon', 'weights', 'configPath', 'artifacts'], properties: { predictionHorizon: { type: 'number' }, weights: { type: 'object' }, controlHorizon: { type: 'number' }, configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -139,7 +139,7 @@ export const mpcConstraintHandlingTask = defineTask('mpc-constraint-handling', (
   kind: 'agent',
   title: `Constraint Handling - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Add constraint handling', context: args, instructions: ['1. Add velocity limits', '2. Add acceleration limits', '3. Add collision avoidance', '4. Add actuator limits', '5. Test constraint satisfaction'] },
     outputSchema: { type: 'object', required: ['constraints', 'softConstraints', 'artifacts'], properties: { constraints: { type: 'array' }, softConstraints: { type: 'array' }, velocityLimits: { type: 'object' }, accelerationLimits: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -151,7 +151,7 @@ export const trajectoryTrackingTestTask = defineTask('trajectory-tracking-test',
   kind: 'agent',
   title: `Trajectory Tracking Test - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test tracking performance on reference trajectories', context: args, instructions: ['1. Test straight line tracking', '2. Test curve tracking', '3. Test varying speed profiles', '4. Measure tracking error', '5. Measure control effort'] },
     outputSchema: { type: 'object', required: ['trackingError', 'controlEffort', 'artifacts'], properties: { trackingError: { type: 'number' }, controlEffort: { type: 'number' }, trajectoryTests: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -163,7 +163,7 @@ export const mpcSimulationValidationTask = defineTask('mpc-simulation-validation
   kind: 'agent',
   title: `Simulation Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate in simulation and hardware', context: args, instructions: ['1. Test in Gazebo simulation', '2. Test with model uncertainty', '3. Test disturbance rejection', '4. Validate on hardware', '5. Document validation results'] },
     outputSchema: { type: 'object', required: ['simResults', 'hardwareResults', 'artifacts'], properties: { simResults: { type: 'object' }, hardwareResults: { type: 'object' }, robustness: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -175,7 +175,7 @@ export const mpcRealTimeOptimizationTask = defineTask('mpc-real-time-optimizatio
   kind: 'agent',
   title: `Real-Time Optimization - ${args.robotName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Optimize solver runtime for real-time execution', context: args, instructions: ['1. Profile solver time', '2. Reduce horizon if needed', '3. Optimize code generation', '4. Add parallel computation', '5. Verify real-time capability'] },
     outputSchema: { type: 'object', required: ['solverTime', 'realTimeCapable', 'artifacts'], properties: { solverTime: { type: 'number' }, realTimeCapable: { type: 'boolean' }, optimizations: { type: 'array' }, controlRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -187,7 +187,7 @@ export const mpcBaselineComparisonTask = defineTask('mpc-baseline-comparison', (
   kind: 'agent',
   title: `Baseline Comparison - ${args.robotName}`,
   agent: {
-    name: 'control-engineer',
+    name: 'control-systems-expert',  // AG-003: Control Systems Expert Agent
     prompt: { role: 'Control Engineer', task: 'Compare with baseline controllers', context: args, instructions: ['1. Compare with PID controller', '2. Compare with LQR', '3. Measure performance improvement', '4. Document trade-offs', '5. Generate comparison report'] },
     outputSchema: { type: 'object', required: ['comparison', 'improvement', 'artifacts'], properties: { comparison: { type: 'object' }, improvement: { type: 'object' }, tradeoffs: { type: 'array' }, recommendation: { type: 'string' }, artifacts: { type: 'array' } } }
   },

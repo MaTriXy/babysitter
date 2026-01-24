@@ -47,7 +47,7 @@ export const patternMatchingDesignTask = defineTask('pattern-matching-design', (
   kind: 'agent',
   title: 'Design Pattern Matching Algorithms',
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'String Algorithm Expert',
       task: 'Design pattern matching algorithm implementations',
@@ -69,7 +69,7 @@ export const patternMatchingImplementationTask = defineTask('pattern-matching-im
   kind: 'agent',
   title: 'Implement Pattern Matching',
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement pattern matching algorithms',
@@ -91,7 +91,7 @@ export const algorithmComparisonTask = defineTask('algorithm-comparison', (args,
   kind: 'agent',
   title: 'Compare Algorithms',
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Compare pattern matching algorithms',

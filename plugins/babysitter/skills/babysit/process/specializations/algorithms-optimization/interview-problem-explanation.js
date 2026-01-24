@@ -50,7 +50,7 @@ export const clarificationPracticeTask = defineTask('clarification-practice', (a
   kind: 'agent',
   title: 'Practice Clarifications',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Practice asking clarifying questions',
@@ -72,7 +72,7 @@ export const approachExplanationTask = defineTask('approach-explanation', (args,
   kind: 'agent',
   title: 'Practice Approach Explanation',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Practice explaining solution approach',
@@ -94,7 +94,7 @@ export const implementationExplanationTask = defineTask('implementation-explanat
   kind: 'agent',
   title: 'Practice Implementation Walkthrough',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Practice explaining implementation',
@@ -116,7 +116,7 @@ export const communicationEvaluationTask = defineTask('communication-evaluation'
   kind: 'agent',
   title: 'Evaluate Communication',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Interview Coach',
       task: 'Evaluate communication quality',

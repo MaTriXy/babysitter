@@ -198,7 +198,7 @@ export const securityAssessmentTask = defineTask('security-assessment', (args, t
   kind: 'agent',
   title: `Security Assessment - ${args.agentName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'tool-safety-auditor',  // AG-TU-003: Implements tool validation, sandboxing, and safety controls
     prompt: {
       role: 'Security Analyst',
       task: 'Assess security requirements for tool-using agent',
@@ -234,10 +234,10 @@ export const securityAssessmentTask = defineTask('security-assessment', (args, t
 }));
 
 export const validationFrameworkTask = defineTask('validation-framework', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Build Validation Framework - ${args.agentName}`,
-  agent: {
-    name: 'validation-architect',
+  skill: {
+    name: 'tool-safety-validation',  // SK-TU-002: Tool safety validation and permission checking
     prompt: {
       role: 'Validation Framework Architect',
       task: 'Build comprehensive input validation framework',

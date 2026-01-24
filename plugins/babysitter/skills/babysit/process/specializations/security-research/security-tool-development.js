@@ -176,7 +176,7 @@ export const toolDesignTask = defineTask('tool-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design Tool - ${args.projectName}`,
   agent: {
-    name: 'tool-architect',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Security Tool Architect',
       task: 'Design tool architecture',
@@ -216,7 +216,7 @@ export const coreImplementationTask = defineTask('core-implementation', (args, t
   kind: 'agent',
   title: `Implement Core - ${args.projectName}`,
   agent: {
-    name: 'tool-developer',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Security Tool Developer',
       task: 'Implement core functionality',
@@ -255,7 +255,7 @@ export const featureImplementationTask = defineTask('feature-implementation', (a
   kind: 'agent',
   title: `Implement Features - ${args.projectName}`,
   agent: {
-    name: 'feature-developer',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Feature Developer',
       task: 'Implement features',
@@ -294,7 +294,7 @@ export const toolTestingTask = defineTask('tool-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Tool - ${args.projectName}`,
   agent: {
-    name: 'tool-tester',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Security Tool Tester',
       task: 'Test tool functionality',
@@ -334,7 +334,7 @@ export const toolSecurityReviewTask = defineTask('tool-security-review', (args, 
   kind: 'agent',
   title: `Security Review - ${args.projectName}`,
   agent: {
-    name: 'security-reviewer',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Code Reviewer',
       task: 'Security review of tool code',
@@ -373,7 +373,7 @@ export const toolDocumentationTask = defineTask('tool-documentation', (args, tas
   kind: 'agent',
   title: `Document Tool - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Create tool documentation',

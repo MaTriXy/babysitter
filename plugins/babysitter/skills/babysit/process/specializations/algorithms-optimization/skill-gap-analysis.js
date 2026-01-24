@@ -49,7 +49,7 @@ export const skillAssessmentTask = defineTask('skill-assessment', (args, taskCtx
   kind: 'agent',
   title: 'Assess Algorithm Skills',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Algorithm Skills Assessor',
       task: 'Assess current algorithm knowledge',
@@ -71,7 +71,7 @@ export const gapAnalysisTask = defineTask('gap-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze Skill Gaps',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Learning Analyst',
       task: 'Identify skill gaps between current and target level',
@@ -93,7 +93,7 @@ export const learningPlanCreationTask = defineTask('learning-plan-creation', (ar
   kind: 'agent',
   title: 'Create Learning Plan',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Learning Plan Designer',
       task: 'Create personalized learning plan',

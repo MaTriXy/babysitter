@@ -223,7 +223,7 @@ export const targetIdentificationTask = defineTask('target-identification', (arg
   kind: 'agent',
   title: `Identify Fuzzing Targets - ${args.projectName}`,
   agent: {
-    name: 'fuzzing-analyst',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Fuzzing Target Analyst',
       task: 'Identify optimal fuzzing targets in the application',
@@ -262,7 +262,7 @@ export const instrumentedBuildTask = defineTask('instrumented-build', (args, tas
   kind: 'agent',
   title: `Build Instrumented Binary - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Fuzzing Build Engineer',
       task: 'Build instrumented binaries for fuzzing',
@@ -301,7 +301,7 @@ export const corpusCreationTask = defineTask('corpus-creation', (args, taskCtx) 
   kind: 'agent',
   title: `Create Seed Corpus - ${args.projectName}`,
   agent: {
-    name: 'corpus-engineer',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Fuzzing Corpus Engineer',
       task: 'Create or enhance seed corpus for fuzzing',
@@ -340,7 +340,7 @@ export const harnessConfigTask = defineTask('harness-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Configure Fuzzing Harness - ${args.projectName}`,
   agent: {
-    name: 'harness-engineer',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Fuzzing Harness Engineer',
       task: 'Configure fuzzing harness for optimal performance',
@@ -379,7 +379,7 @@ export const campaignExecutionTask = defineTask('campaign-execution', (args, tas
   kind: 'agent',
   title: `Execute Fuzzing Campaign - ${args.projectName}`,
   agent: {
-    name: 'fuzzing-operator',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Fuzzing Campaign Operator',
       task: 'Execute and monitor fuzzing campaign',
@@ -419,7 +419,7 @@ export const crashTriageTask = defineTask('crash-triage', (args, taskCtx) => ({
   kind: 'agent',
   title: `Triage Crashes - ${args.projectName}`,
   agent: {
-    name: 'crash-analyst',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Crash Triage Analyst',
       task: 'Triage and analyze fuzzing crashes',
@@ -458,7 +458,7 @@ export const crashMinimizationTask = defineTask('crash-minimization', (args, tas
   kind: 'agent',
   title: `Minimize Crashes - ${args.projectName}`,
   agent: {
-    name: 'minimization-specialist',
+    name: 'fuzzing-engineer',
     prompt: {
       role: 'Crash Minimization Specialist',
       task: 'Minimize crash inputs and deduplicate findings',
@@ -497,7 +497,7 @@ export const fuzzingReportTask = defineTask('fuzzing-report', (args, taskCtx) =>
   kind: 'agent',
   title: `Generate Fuzzing Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Fuzzing Report Specialist',
       task: 'Generate comprehensive fuzzing campaign report',

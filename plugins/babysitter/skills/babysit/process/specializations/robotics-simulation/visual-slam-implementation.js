@@ -249,7 +249,7 @@ export const slamAlgorithmSelectionTask = defineTask('slam-algorithm-selection',
   kind: 'agent',
   title: `Phase 1: SLAM Algorithm Selection - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Select and configure SLAM algorithm',
@@ -292,7 +292,7 @@ export const cameraConfigurationTask = defineTask('camera-configuration', (args,
   kind: 'agent',
   title: `Phase 2: Camera Configuration - ${args.robotName}`,
   agent: {
-    name: 'sensor-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: {
       role: 'Sensor Engineer',
       task: 'Configure camera parameters for SLAM',
@@ -335,7 +335,7 @@ export const featureDetectionSetupTask = defineTask('feature-detection-setup', (
   kind: 'agent',
   title: `Phase 3: Feature Detection Setup - ${args.robotName}`,
   agent: {
-    name: 'computer-vision-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: {
       role: 'Computer Vision Engineer',
       task: 'Set up visual feature detection and tracking',
@@ -378,7 +378,7 @@ export const loopClosureConfigTask = defineTask('loop-closure-config', (args, ta
   kind: 'agent',
   title: `Phase 4: Loop Closure Configuration - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Configure loop closure detection',
@@ -421,7 +421,7 @@ export const slamParameterTuningTask = defineTask('slam-parameter-tuning', (args
   kind: 'agent',
   title: `Phase 5: SLAM Parameter Tuning - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Tune SLAM parameters',
@@ -464,7 +464,7 @@ export const visualInertialFusionTask = defineTask('visual-inertial-fusion', (ar
   kind: 'agent',
   title: `Phase 6: Visual-Inertial Fusion - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Set up visual-inertial fusion',
@@ -507,7 +507,7 @@ export const environmentTestingTask = defineTask('environment-testing', (args, t
   kind: 'agent',
   title: `Phase 7: Environment Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Robotics Test Engineer',
       task: 'Test SLAM in diverse environments',
@@ -550,7 +550,7 @@ export const accuracyEvaluationTask = defineTask('accuracy-evaluation', (args, t
   kind: 'agent',
   title: `Phase 8: Accuracy Evaluation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Robotics Test Engineer',
       task: 'Evaluate SLAM accuracy',
@@ -594,7 +594,7 @@ export const realTimeOptimizationTask = defineTask('real-time-optimization', (ar
   kind: 'agent',
   title: `Phase 9: Real-Time Optimization - ${args.robotName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize for real-time performance',

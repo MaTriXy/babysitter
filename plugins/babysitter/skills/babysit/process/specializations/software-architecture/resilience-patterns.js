@@ -316,8 +316,9 @@ export async function process(inputs, ctx) {
 export const failurePointAnalysisTask = defineTask('failure-point-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze system failure points and vulnerabilities',
+  skill: { name: 'dependency-graph-generator' },
   agent: {
-    name: 'resilience-analyst',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'reliability engineer and chaos engineering specialist',
       task: 'Analyze system architecture to identify potential failure points, single points of failure, and resilience gaps',
@@ -390,7 +391,7 @@ export const resiliencePatternSelectionTask = defineTask('resilience-pattern-sel
   kind: 'agent',
   title: 'Select and configure appropriate resilience patterns',
   agent: {
-    name: 'pattern-architect',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'resilience architecture specialist',
       task: 'Select optimal resilience patterns for identified failure points and configure pattern parameters',
@@ -439,7 +440,7 @@ export const circuitBreakerDesignTask = defineTask('circuit-breaker-design', (ar
   kind: 'agent',
   title: 'Design and implement circuit breaker patterns',
   agent: {
-    name: 'circuit-breaker-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'circuit breaker implementation specialist',
       task: 'Design and implement circuit breaker patterns with threshold configuration, state management, and fallback handling',
@@ -495,7 +496,7 @@ export const bulkheadImplementationTask = defineTask('bulkhead-implementation', 
   kind: 'agent',
   title: 'Implement bulkhead isolation patterns',
   agent: {
-    name: 'bulkhead-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'resource isolation specialist',
       task: 'Implement bulkhead patterns to isolate resources and prevent cascading failures',
@@ -548,7 +549,7 @@ export const retryLogicConfigurationTask = defineTask('retry-logic-configuration
   kind: 'agent',
   title: 'Configure retry logic with backoff strategies',
   agent: {
-    name: 'retry-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'retry policy specialist',
       task: 'Configure intelligent retry logic with exponential backoff, jitter, and retry budgets',
@@ -605,7 +606,7 @@ export const timeoutConfigurationTask = defineTask('timeout-configuration', (arg
   kind: 'agent',
   title: 'Configure timeout policies for operations',
   agent: {
-    name: 'timeout-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'timeout policy specialist',
       task: 'Configure timeout policies for all operations based on SLAs and performance requirements',
@@ -659,7 +660,7 @@ export const rateLimitingImplementationTask = defineTask('rate-limiting-implemen
   kind: 'agent',
   title: 'Implement rate limiting patterns',
   agent: {
-    name: 'rate-limiter-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'rate limiting specialist',
       task: 'Implement rate limiting patterns to prevent overload and protect system resources',
@@ -712,7 +713,7 @@ export const fallbackImplementationTask = defineTask('fallback-implementation', 
   kind: 'agent',
   title: 'Implement fallback and degradation mechanisms',
   agent: {
-    name: 'fallback-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'graceful degradation specialist',
       task: 'Implement fallback mechanisms and graceful degradation strategies',
@@ -765,7 +766,7 @@ export const patternIntegrationTask = defineTask('pattern-integration', (args, t
   kind: 'agent',
   title: 'Integrate resilience patterns and run integration tests',
   agent: {
-    name: 'integration-engineer',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'system integration specialist',
       task: 'Integrate all resilience patterns into the system and verify integration through testing',
@@ -866,7 +867,7 @@ export const autoRemediationTask = defineTask('auto-remediation', (args, taskCtx
   kind: 'agent',
   title: 'Auto-remediate failed chaos tests',
   agent: {
-    name: 'remediation-engineer',
+    name: 'sre-reliability-engineer',
     prompt: {
       role: 'resilience remediation specialist',
       task: 'Analyze failed chaos tests and automatically adjust resilience configurations to fix issues',
@@ -918,7 +919,7 @@ export const monitoringSetupTask = defineTask('monitoring-setup', (args, taskCtx
   kind: 'agent',
   title: 'Set up monitoring and alerting for resilience patterns',
   agent: {
-    name: 'monitoring-engineer',
+    name: 'sre-reliability-engineer',
     prompt: {
       role: 'observability specialist',
       task: 'Configure comprehensive monitoring, metrics, and alerting for all resilience patterns',
@@ -979,7 +980,7 @@ export const resilienceValidationTask = defineTask('resilience-validation', (arg
   kind: 'agent',
   title: 'Calculate resilience score and validate implementation',
   agent: {
-    name: 'resilience-validator',
+    name: 'resilience-patterns-engineer',
     prompt: {
       role: 'resilience assessment specialist',
       task: 'Calculate overall system resilience score and validate implementation against best practices',
@@ -1031,7 +1032,7 @@ export const resilienceDocumentationTask = defineTask('resilience-documentation'
   kind: 'agent',
   title: 'Generate comprehensive resilience documentation and runbooks',
   agent: {
-    name: 'documentation-specialist',
+    name: 'technical-writer',
     prompt: {
       role: 'technical writer and SRE specialist',
       task: 'Create comprehensive documentation, architecture diagrams, and operational runbooks for resilience implementation',

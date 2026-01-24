@@ -295,7 +295,7 @@ export const interpreterStrategyTask = defineTask('interpreter-strategy', (args,
   kind: 'agent',
   title: `Phase 1: Interpreter Strategy - ${args.languageName}`,
   agent: {
-    name: 'interpreter-architect',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Architect',
       task: 'Select and validate interpreter strategy',
@@ -336,7 +336,7 @@ export const valueRepresentationTask = defineTask('value-representation', (args,
   kind: 'agent',
   title: `Phase 2: Value Representation - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement value representation',
@@ -377,7 +377,7 @@ export const environmentImplementationTask = defineTask('environment-implementat
   kind: 'agent',
   title: `Phase 3: Environment - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement environment',
@@ -418,7 +418,7 @@ export const expressionEvaluationTask = defineTask('expression-evaluation', (arg
   kind: 'agent',
   title: `Phase 4: Expression Evaluation - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement expression evaluation',
@@ -458,7 +458,7 @@ export const statementExecutionTask = defineTask('statement-execution', (args, t
   kind: 'agent',
   title: `Phase 5: Statement Execution - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement statement execution',
@@ -499,7 +499,7 @@ export const functionHandlingTask = defineTask('function-handling', (args, taskC
   kind: 'agent',
   title: `Phase 6: Function Handling - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement function handling',
@@ -540,7 +540,7 @@ export const builtinFunctionsTask = defineTask('builtin-functions', (args, taskC
   kind: 'agent',
   title: `Phase 7: Built-in Functions - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement built-in functions',
@@ -582,7 +582,7 @@ export const interpreterErrorHandlingTask = defineTask('interpreter-error-handli
   kind: 'agent',
   title: `Phase 8: Error Handling - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Implement error handling',
@@ -623,7 +623,7 @@ export const interpreterIntegrationTask = defineTask('interpreter-integration', 
   kind: 'agent',
   title: `Phase 9: Interpreter Integration - ${args.languageName}`,
   agent: {
-    name: 'interpreter-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Interpreter Engineer',
       task: 'Integrate interpreter components',
@@ -664,7 +664,7 @@ export const interpreterTestingTask = defineTask('interpreter-testing', (args, t
   kind: 'agent',
   title: `Phase 10: Interpreter Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive interpreter tests',
@@ -705,7 +705,7 @@ export const interpreterDocumentationTask = defineTask('interpreter-documentatio
   kind: 'agent',
   title: `Phase 11: Interpreter Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate interpreter documentation',

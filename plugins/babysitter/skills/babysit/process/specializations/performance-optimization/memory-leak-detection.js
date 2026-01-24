@@ -127,7 +127,7 @@ export const setupMemoryLeakDetectionTask = defineTask('setup-memory-leak-detect
   kind: 'agent',
   title: `Setup Memory Leak Detection - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Setup memory leak detection tooling',
@@ -145,7 +145,7 @@ export const runMemoryProfilerTask = defineTask('run-memory-profiler', (args, ta
   kind: 'agent',
   title: `Run Memory Profiler - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Run application under memory profiler',
@@ -163,7 +163,7 @@ export const captureHeapSnapshotsTask = defineTask('capture-heap-snapshots', (ar
   kind: 'agent',
   title: `Capture Heap Snapshots - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Capture heap snapshots over time',
@@ -181,7 +181,7 @@ export const identifyMemoryGrowthPatternsTask = defineTask('identify-memory-grow
   kind: 'agent',
   title: `Identify Memory Growth Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Identify growing memory patterns',
@@ -199,7 +199,7 @@ export const analyzeObjectRetentionPathsTask = defineTask('analyze-object-retent
   kind: 'agent',
   title: `Analyze Object Retention Paths - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Analyze object retention paths',
@@ -217,7 +217,7 @@ export const locateLeakSourceTask = defineTask('locate-leak-source', (args, task
   kind: 'agent',
   title: `Locate Leak Source - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Locate leak source in code',
@@ -235,7 +235,7 @@ export const implementLeakFixesTask = defineTask('implement-leak-fixes', (args, 
   kind: 'agent',
   title: `Implement Leak Fixes - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Implement fixes for identified leaks',
@@ -253,7 +253,7 @@ export const validateLeaksResolvedTask = defineTask('validate-leaks-resolved', (
   kind: 'agent',
   title: `Validate Leaks Resolved - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Validate leaks are resolved',
@@ -271,7 +271,7 @@ export const addLeakRegressionTestsTask = defineTask('add-leak-regression-tests'
   kind: 'agent',
   title: `Add Leak Regression Tests - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'memlab-analysis',
     prompt: {
       role: 'Performance Engineer',
       task: 'Add regression tests for leaks',

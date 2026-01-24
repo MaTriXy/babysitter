@@ -284,7 +284,7 @@ export const inputPathAuditTask = defineTask('input-path-audit', (args, taskCtx)
   kind: 'agent',
   title: `Phase 1: Input Path Audit - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'MCP Security Auditor',
       task: 'Audit all input paths',
@@ -324,7 +324,7 @@ export const pathTraversalPreventionTask = defineTask('path-traversal-prevention
   kind: 'agent',
   title: `Phase 2: Path Traversal Prevention - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Path Security Specialist',
       task: 'Implement path traversal prevention',
@@ -366,7 +366,7 @@ export const commandInjectionProtectionTask = defineTask('command-injection-prot
   kind: 'agent',
   title: `Phase 3: Command Injection Protection - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Command Injection Prevention Specialist',
       task: 'Add command injection protection',
@@ -407,7 +407,7 @@ export const sandboxedExecutionTask = defineTask('sandboxed-execution', (args, t
   kind: 'agent',
   title: `Phase 4: Sandboxed Execution - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Sandbox Environment Specialist',
       task: 'Create sandboxed execution environment',
@@ -450,7 +450,7 @@ export const rateLimitingTask = defineTask('rate-limiting', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: Rate Limiting - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Rate Limiting Specialist',
       task: 'Implement rate limiting',
@@ -490,7 +490,7 @@ export const requestSizeLimitsTask = defineTask('request-size-limits', (args, ta
   kind: 'agent',
   title: `Phase 6: Request Size Limits - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Request Validation Specialist',
       task: 'Add request size limits',
@@ -529,7 +529,7 @@ export const allowedDirectoriesConfigTask = defineTask('allowed-directories-conf
   kind: 'agent',
   title: `Phase 7: Allowed Directories Config - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Directory Access Control Specialist',
       task: 'Configure allowed directories and resources',
@@ -569,7 +569,7 @@ export const permissionModelTask = defineTask('permission-model', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: Permission Model - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Permission System Designer',
       task: 'Implement permission model',
@@ -609,7 +609,7 @@ export const auditLoggingTask = defineTask('audit-logging', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 9: Audit Logging - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'Audit Logging Specialist',
       task: 'Add audit logging',
@@ -649,7 +649,7 @@ export const securityTestsTask = defineTask('security-tests', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 10: Security Tests - ${args.projectName}`,
   agent: {
-    name: 'security-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: {
       role: 'Security Testing Specialist',
       task: 'Create security tests',
@@ -694,7 +694,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: {
       role: 'Security Documentation Specialist',
       task: 'Document security model',

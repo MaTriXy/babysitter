@@ -86,7 +86,7 @@ export const updateArchitectureTask = defineTask('update-architecture', (args, t
   kind: 'agent',
   title: `Update Architecture - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: { role: 'Update Architecture Specialist', task: 'Design update architecture', context: args, instructions: ['1. Define update flow', '2. Plan version sources', '3. Design download strategy', '4. Plan rollback mechanism', '5. Generate architecture doc'], outputFormat: 'JSON with update architecture' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -98,7 +98,7 @@ export const versionCheckingTask = defineTask('version-checking', (args, taskCtx
   kind: 'agent',
   title: `Version Checking - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Version Checking Specialist', task: 'Implement version checking', context: args, instructions: ['1. Query GitHub releases', '2. Parse version tags', '3. Compare semver', '4. Cache results', '5. Generate version check code'], outputFormat: 'JSON with version checking' },
     outputSchema: { type: 'object', required: ['checkPath', 'artifacts'], properties: { checkPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -110,7 +110,7 @@ export const downloadManagerTask = defineTask('download-manager', (args, taskCtx
   kind: 'agent',
   title: `Download Manager - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Download Manager Specialist', task: 'Implement download manager', context: args, instructions: ['1. Create download client', '2. Add progress display', '3. Handle interruptions', '4. Resume downloads', '5. Generate download code'], outputFormat: 'JSON with download manager' },
     outputSchema: { type: 'object', required: ['downloadPath', 'artifacts'], properties: { downloadPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -122,7 +122,7 @@ export const checksumVerificationTask = defineTask('checksum-verification', (arg
   kind: 'agent',
   title: `Checksum Verification - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Checksum Verification Specialist', task: 'Implement checksum verification', context: args, instructions: ['1. Download checksum file', '2. Verify SHA256', '3. Verify GPG signature', '4. Report mismatches', '5. Generate verification code'], outputFormat: 'JSON with checksum verification' },
     outputSchema: { type: 'object', required: ['verificationPath', 'artifacts'], properties: { verificationPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -134,7 +134,7 @@ export const binaryReplacementTask = defineTask('binary-replacement', (args, tas
   kind: 'agent',
   title: `Binary Replacement - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Binary Replacement Specialist', task: 'Implement binary replacement', context: args, instructions: ['1. Backup current binary', '2. Handle running process', '3. Replace atomically', '4. Handle permissions', '5. Generate replacement code'], outputFormat: 'JSON with binary replacement' },
     outputSchema: { type: 'object', required: ['replacementPath', 'artifacts'], properties: { replacementPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -146,7 +146,7 @@ export const rollbackSystemTask = defineTask('rollback-system', (args, taskCtx) 
   kind: 'agent',
   title: `Rollback System - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Rollback System Specialist', task: 'Implement rollback system', context: args, instructions: ['1. Store previous versions', '2. Create rollback command', '3. Validate rollback', '4. Clean old versions', '5. Generate rollback code'], outputFormat: 'JSON with rollback system' },
     outputSchema: { type: 'object', required: ['rollbackPath', 'artifacts'], properties: { rollbackPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -158,7 +158,7 @@ export const updateNotificationsTask = defineTask('update-notifications', (args,
   kind: 'agent',
   title: `Update Notifications - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Update Notification Specialist', task: 'Implement update notifications', context: args, instructions: ['1. Check on startup', '2. Display notification', '3. Allow dismissal', '4. Configure frequency', '5. Generate notification code'], outputFormat: 'JSON with update notifications' },
     outputSchema: { type: 'object', required: ['notificationPath', 'artifacts'], properties: { notificationPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -170,7 +170,7 @@ export const channelManagementTask = defineTask('channel-management', (args, tas
   kind: 'agent',
   title: `Channel Management - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Update Channel Specialist', task: 'Implement channel management', context: args, instructions: ['1. Define stable channel', '2. Add beta channel', '3. Add nightly channel', '4. Allow channel switching', '5. Generate channel code'], outputFormat: 'JSON with channel management' },
     outputSchema: { type: 'object', required: ['channelConfig', 'artifacts'], properties: { channelConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -182,7 +182,7 @@ export const updateTestingTask = defineTask('update-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Update Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: { role: 'Update Testing Specialist', task: 'Create update system tests', context: args, instructions: ['1. Mock release server', '2. Test version checks', '3. Test downloads', '4. Test rollback', '5. Generate test suite'], outputFormat: 'JSON with update tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -194,7 +194,7 @@ export const updateDocumentationTask = defineTask('update-documentation', (args,
   kind: 'agent',
   title: `Update Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: { role: 'Update Documentation Specialist', task: 'Document update system', context: args, instructions: ['1. Document update command', '2. Document channels', '3. Document rollback', '4. Add troubleshooting', '5. Generate documentation'], outputFormat: 'JSON with update documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

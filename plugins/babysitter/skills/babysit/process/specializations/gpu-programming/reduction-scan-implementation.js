@@ -106,7 +106,8 @@ export const reductionAlgorithmDesignTask = defineTask('reduction-algorithm-desi
   kind: 'agent',
   title: `Algorithm Design - ${args.projectName}`,
   agent: {
-    name: 'algorithm-designer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'Parallel Algorithm Designer',
       task: 'Design reduction/scan algorithms',
@@ -147,7 +148,8 @@ export const basicReductionTask = defineTask('basic-reduction', (args, taskCtx) 
   kind: 'agent',
   title: `Basic Reduction - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement basic parallel reduction',
@@ -188,7 +190,8 @@ export const warpLevelReductionTask = defineTask('warp-level-reduction', (args, 
   kind: 'agent',
   title: `Warp-Level Reduction - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement warp-level reduction',
@@ -229,7 +232,8 @@ export const scanImplementationTask = defineTask('scan-implementation', (args, t
   kind: 'agent',
   title: `Scan Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement parallel scan (prefix sum)',
@@ -270,7 +274,8 @@ export const largeArrayHandlingTask = defineTask('large-array-handling', (args, 
   kind: 'agent',
   title: `Large Array Handling - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['parallel-patterns', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Handle large array reduction/scan',
@@ -312,6 +317,7 @@ export const reductionBenchmarkingTask = defineTask('reduction-benchmarking', (a
   title: `Benchmarking - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark reduction/scan performance',

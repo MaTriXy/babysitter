@@ -231,7 +231,7 @@ export const sourceAnalysisTask = defineTask('source-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Source Analysis - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze source code structure',
@@ -273,7 +273,7 @@ export const documentationAuditTask = defineTask('documentation-audit', (args, t
   kind: 'agent',
   title: `Phase 2: Documentation Audit - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Audit existing documentation',
@@ -315,7 +315,7 @@ export const documentationTemplateTask = defineTask('documentation-template', (a
   kind: 'agent',
   title: `Phase 3: Documentation Templates - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Design documentation templates',
@@ -357,7 +357,7 @@ export const apiCommentEnhancementTask = defineTask('api-comment-enhancement', (
   kind: 'agent',
   title: `Phase 4: Comment Enhancement - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Enhance API comments',
@@ -398,7 +398,7 @@ export const exampleCodeGenerationTask = defineTask('example-code-generation', (
   kind: 'agent',
   title: `Phase 5: Example Generation - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Generate example code',
@@ -439,7 +439,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: `Phase 6: Doc Generation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate documentation',
@@ -481,7 +481,7 @@ export const integrationGuideTask = defineTask('integration-guide', (args, taskC
   kind: 'agent',
   title: `Phase 7: Integration Guide - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Create integration guide',
@@ -523,7 +523,7 @@ export const documentationReviewTask = defineTask('documentation-review', (args,
   kind: 'agent',
   title: `Phase 8: Documentation Review - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Review generated documentation',

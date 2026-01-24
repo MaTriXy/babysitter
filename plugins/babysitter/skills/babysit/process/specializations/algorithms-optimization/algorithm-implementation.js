@@ -90,8 +90,9 @@ export async function process(inputs, ctx) {
 export const algorithmUnderstandingTask = defineTask('algorithm-understanding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Understanding ${args.algorithmName}`,
+  skills: ['code-template-manager', 'complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Understand algorithm theory and design',
@@ -124,8 +125,9 @@ export const algorithmUnderstandingTask = defineTask('algorithm-understanding', 
 export const implementationTask = defineTask('implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implementing ${args.algorithmName}`,
+  skills: ['code-template-manager', 'data-structure-selector'],
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement algorithm in target language',
@@ -157,8 +159,9 @@ export const implementationTask = defineTask('implementation', (args, taskCtx) =
 export const correctnessProofTask = defineTask('correctness-proof', (args, taskCtx) => ({
   kind: 'agent',
   title: `Correctness Proof - ${args.algorithmName}`,
+  skills: ['invariant-analyzer', 'proof-assistant'],
   agent: {
-    name: 'general-purpose',
+    name: 'correctness-verifier',
     prompt: {
       role: 'Algorithm Theorist',
       task: 'Prove algorithm correctness',
@@ -191,8 +194,9 @@ export const correctnessProofTask = defineTask('correctness-proof', (args, taskC
 export const testingTask = defineTask('testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Testing ${args.algorithmName}`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Test algorithm implementation',
@@ -225,8 +229,9 @@ export const testingTask = defineTask('testing', (args, taskCtx) => ({
 export const complexityTask = defineTask('complexity', (args, taskCtx) => ({
   kind: 'agent',
   title: `Complexity Analysis - ${args.algorithmName}`,
+  skills: ['complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Analyze time and space complexity',
@@ -260,8 +265,9 @@ export const complexityTask = defineTask('complexity', (args, taskCtx) => ({
 export const optimizationTask = defineTask('optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Optimization - ${args.algorithmName}`,
+  skills: ['code-profiler', 'micro-optimizer'],
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize algorithm implementation',

@@ -124,7 +124,8 @@ export const clusterArchitectureTask = defineTask('cluster-architecture', (args,
   kind: 'agent',
   title: `Cluster Architecture - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Design GPU cluster architecture',
@@ -165,7 +166,8 @@ export const mpiConfigurationTask = defineTask('mpi-configuration', (args, taskC
   kind: 'agent',
   title: `MPI Configuration - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Configure MPI for GPU cluster',
@@ -206,7 +208,8 @@ export const gpuDirectSetupTask = defineTask('gpu-direct-setup', (args, taskCtx)
   kind: 'agent',
   title: `GPU-Direct Setup - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Configure GPU-Direct RDMA',
@@ -247,7 +250,8 @@ export const distributedWorkloadTask = defineTask('distributed-workload', (args,
   kind: 'agent',
   title: `Workload Partitioning - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Design distributed workload partitioning',
@@ -288,7 +292,8 @@ export const collectiveCommunicationsTask = defineTask('collective-communication
   kind: 'agent',
   title: `Collective Communications - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Implement collective communications',
@@ -329,7 +334,8 @@ export const faultToleranceTask = defineTask('fault-tolerance', (args, taskCtx) 
   kind: 'agent',
   title: `Fault Tolerance - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Implement fault tolerance',
@@ -370,7 +376,8 @@ export const clusterScalingBenchmarkTask = defineTask('cluster-scaling-benchmark
   kind: 'agent',
   title: `Scaling Benchmark - ${args.projectName}`,
   agent: {
-    name: 'hpc-engineer',
+    name: 'hpc-domain-expert',
+    skills: ['nccl-communication', 'gpu-direct-rdma'],
     prompt: {
       role: 'HPC Engineer',
       task: 'Benchmark cluster scaling',

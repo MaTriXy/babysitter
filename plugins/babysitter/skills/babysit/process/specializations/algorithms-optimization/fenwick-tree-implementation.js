@@ -47,7 +47,7 @@ export const fenwickImplementationTask = defineTask('fenwick-implementation', (a
   kind: 'agent',
   title: `Implement Fenwick Tree - ${args.variant}`,
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement Fenwick tree',
@@ -69,7 +69,7 @@ export const fenwickApplicationsTask = defineTask('fenwick-applications', (args,
   kind: 'agent',
   title: 'Demonstrate Applications',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Demonstrate Fenwick tree applications',
@@ -91,7 +91,7 @@ export const fenwickTestingTask = defineTask('fenwick-testing', (args, taskCtx) 
   kind: 'agent',
   title: 'Test Fenwick Tree',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Test Fenwick tree implementation',

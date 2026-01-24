@@ -199,7 +199,7 @@ export const compatibilityPolicyTask = defineTask('compatibility-policy', (args,
   kind: 'agent',
   title: `Phase 1: Compatibility Policy - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Define compatibility guarantees',
@@ -244,7 +244,7 @@ export const deprecationProcessTask = defineTask('deprecation-process', (args, t
   kind: 'agent',
   title: `Phase 2: Deprecation Process - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Implement deprecation warning system',
@@ -290,7 +290,7 @@ export const migrationPathsTask = defineTask('migration-paths', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Migration Paths - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create migration path documentation',
@@ -335,7 +335,7 @@ export const compatibilityVerificationTask = defineTask('compatibility-verificat
   kind: 'agent',
   title: `Phase 4: Compatibility Verification - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'QA Engineer',
       task: 'Build compatibility verification tests',
@@ -380,7 +380,7 @@ export const breakingChangeProcessTask = defineTask('breaking-change-process', (
   kind: 'agent',
   title: `Phase 5: Breaking Change Process - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Define breaking change management',
@@ -426,7 +426,7 @@ export const sdkDeprecationWarningsTask = defineTask('sdk-deprecation-warnings',
   kind: 'agent',
   title: `Phase 6: SDK Deprecation Warnings - ${args.projectName}`,
   agent: {
-    name: 'sdk-engineer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Engineer',
       task: 'Implement SDK deprecation warnings',
@@ -471,7 +471,7 @@ export const migrationToolsTask = defineTask('migration-tools', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Migration Tools - ${args.projectName}`,
   agent: {
-    name: 'tools-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Tools Engineer',
       task: 'Create automated migration tools',
@@ -516,7 +516,7 @@ export const compatibilityDocumentationTask = defineTask('compatibility-document
   kind: 'agent',
   title: `Phase 8: Compatibility Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate compatibility documentation',

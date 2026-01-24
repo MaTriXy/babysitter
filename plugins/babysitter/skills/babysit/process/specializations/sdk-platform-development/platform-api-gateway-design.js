@@ -264,7 +264,7 @@ export const routingConfigTask = defineTask('routing-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Routing Configuration - ${args.projectName}`,
   agent: {
-    name: 'gateway-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Gateway Engineer',
       task: 'Configure request routing and load balancing',
@@ -312,7 +312,7 @@ export const rateLimitingTask = defineTask('rate-limiting', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 3: Rate Limiting - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Implement rate limiting policies',
@@ -368,7 +368,7 @@ export const gatewayAuthTask = defineTask('gateway-auth', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Gateway Authentication - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Set up gateway authentication and authorization',
@@ -414,7 +414,7 @@ export const resilienceConfigTask = defineTask('resilience-config', (args, taskC
   kind: 'agent',
   title: `Phase 5: Resilience Configuration - ${args.projectName}`,
   agent: {
-    name: 'reliability-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Reliability Engineer',
       task: 'Design circuit breaker and retry policies',
@@ -474,7 +474,7 @@ export const cachingConfigTask = defineTask('caching-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Caching Configuration - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Performance Engineer',
       task: 'Configure response caching',
@@ -525,7 +525,7 @@ export const gatewayMonitoringTask = defineTask('gateway-monitoring', (args, tas
   kind: 'agent',
   title: `Phase 7: Gateway Monitoring - ${args.projectName}`,
   agent: {
-    name: 'observability-engineer',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Observability Engineer',
       task: 'Set up gateway monitoring and logging',
@@ -572,7 +572,7 @@ export const gatewayDocumentationTask = defineTask('gateway-documentation', (arg
   kind: 'agent',
   title: `Phase 8: Gateway Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate gateway documentation',

@@ -189,7 +189,7 @@ export const programReviewTask = defineTask('program-review', (args, taskCtx) =>
   kind: 'agent',
   title: `Review Program - ${args.projectName}`,
   agent: {
-    name: 'bounty-hunter',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Bug Bounty Program Specialist',
       task: 'Review bug bounty program scope and rules',
@@ -229,7 +229,7 @@ export const reconnaissanceTask = defineTask('reconnaissance', (args, taskCtx) =
   kind: 'agent',
   title: `Conduct Recon - ${args.projectName}`,
   agent: {
-    name: 'recon-specialist',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Bug Bounty Reconnaissance Specialist',
       task: 'Conduct target reconnaissance',
@@ -269,7 +269,7 @@ export const vulnHuntingTask = defineTask('vuln-hunting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Hunt Vulnerabilities - ${args.projectName}`,
   agent: {
-    name: 'vuln-hunter',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Vulnerability Hunter',
       task: 'Hunt for vulnerabilities',
@@ -308,7 +308,7 @@ export const bountyValidationTask = defineTask('bounty-validation', (args, taskC
   kind: 'agent',
   title: `Validate Findings - ${args.projectName}`,
   agent: {
-    name: 'validation-specialist',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Finding Validation Specialist',
       task: 'Validate and prioritize findings',
@@ -347,7 +347,7 @@ export const reportPreparationTask = defineTask('report-preparation', (args, tas
   kind: 'agent',
   title: `Prepare Reports - ${args.projectName}`,
   agent: {
-    name: 'report-writer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Bug Bounty Report Writer',
       task: 'Prepare submission reports',
@@ -385,7 +385,7 @@ export const submissionTask = defineTask('submission', (args, taskCtx) => ({
   kind: 'agent',
   title: `Submit Reports - ${args.projectName}`,
   agent: {
-    name: 'submission-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Bug Bounty Submission Specialist',
       task: 'Submit to bug bounty platform',
@@ -423,7 +423,7 @@ export const followUpTask = defineTask('follow-up', (args, taskCtx) => ({
   kind: 'agent',
   title: `Manage Follow-up - ${args.projectName}`,
   agent: {
-    name: 'follow-up-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Bug Bounty Follow-up Specialist',
       task: 'Manage follow-up communication',

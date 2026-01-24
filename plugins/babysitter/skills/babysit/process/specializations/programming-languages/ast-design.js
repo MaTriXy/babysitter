@@ -251,7 +251,7 @@ export const grammarAnalysisTask = defineTask('grammar-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Grammar Analysis - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Analyze grammar for AST node mapping',
@@ -292,7 +292,7 @@ export const nodeHierarchyTask = defineTask('node-hierarchy', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Node Hierarchy - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Design AST node hierarchy',
@@ -334,7 +334,7 @@ export const spanTrackingTask = defineTask('span-tracking', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 3: Span Tracking - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Implement source span tracking',
@@ -375,7 +375,7 @@ export const visitorPatternTask = defineTask('visitor-pattern', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Visitor Pattern - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Implement visitor pattern',
@@ -417,7 +417,7 @@ export const treeTransformationsTask = defineTask('tree-transformations', (args,
   kind: 'agent',
   title: `Phase 5: Tree Transformations - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Implement tree transformation utilities',
@@ -458,7 +458,7 @@ export const serializationTask = defineTask('serialization', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 6: Serialization - ${args.languageName}`,
   agent: {
-    name: 'ast-designer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'AST Designer',
       task: 'Implement AST serialization',
@@ -499,7 +499,7 @@ export const astTestingTask = defineTask('ast-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: AST Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive AST tests',
@@ -540,7 +540,7 @@ export const astDocumentationTask = defineTask('ast-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 8: AST Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate AST documentation',

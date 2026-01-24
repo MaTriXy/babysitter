@@ -55,7 +55,7 @@ export const theoryAssessmentTask = defineTask('theory-assessment', (args, taskC
   kind: 'agent',
   title: `Theory Assessment - ${args.topic}`,
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Algorithm Examiner',
       task: 'Assess theoretical knowledge',
@@ -77,7 +77,7 @@ export const practicalAssessmentTask = defineTask('practical-assessment', (args,
   kind: 'agent',
   title: `Practical Assessment - ${args.topic}`,
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Algorithm Examiner',
       task: 'Assess practical problem-solving ability',
@@ -99,7 +99,7 @@ export const scoringTask = defineTask('scoring', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Calculate Final Score',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Certification Administrator',
       task: 'Calculate final certification score',
@@ -121,7 +121,7 @@ export const certificateGenerationTask = defineTask('certificate-generation', (a
   kind: 'agent',
   title: 'Generate Certificate',
   agent: {
-    name: 'general-purpose',
+    name: 'progress-tracker',
     prompt: {
       role: 'Certification Administrator',
       task: 'Generate mastery certificate',

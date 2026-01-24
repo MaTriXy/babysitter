@@ -279,7 +279,7 @@ export const economyFoundationTask = defineTask('economy-foundation', (args, tas
   kind: 'agent',
   title: `Phase 1: Economy Foundation - ${args.gameName}`,
   agent: {
-    name: 'game-economist',
+    name: 'economy-designer-agent',
     prompt: {
       role: 'Game Economy Designer',
       task: 'Design economy foundation and currency systems',
@@ -324,7 +324,7 @@ export const progressionDesignTask = defineTask('progression-design', (args, tas
   kind: 'agent',
   title: `Phase 2: Progression Design - ${args.gameName}`,
   agent: {
-    name: 'game-designer',
+    name: 'systems-designer-agent',
     prompt: {
       role: 'Systems Designer',
       task: 'Design progression systems and player advancement',
@@ -369,7 +369,7 @@ export const balanceSpreadsheetsTask = defineTask('balance-spreadsheets', (args,
   kind: 'agent',
   title: `Phase 3: Balance Spreadsheets - ${args.gameName}`,
   agent: {
-    name: 'game-economist',
+    name: 'economy-designer-agent',
     prompt: {
       role: 'Game Balance Designer',
       task: 'Create comprehensive balance spreadsheets',
@@ -413,7 +413,7 @@ export const economySimulationTask = defineTask('economy-simulation', (args, tas
   kind: 'agent',
   title: `Phase 4: Economy Simulation - ${args.gameName}`,
   agent: {
-    name: 'game-economist',
+    name: 'economy-designer-agent',
     prompt: {
       role: 'Economy Simulation Specialist',
       task: 'Run economy simulations and model player behavior',
@@ -458,7 +458,7 @@ export const balanceTestingTask = defineTask('balance-testing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Balance Testing - ${args.gameName}`,
   agent: {
-    name: 'qa-analyst',
+    name: 'balance-tester-agent',
     prompt: {
       role: 'Balance QA Analyst',
       task: 'Conduct balance testing and collect data',
@@ -503,7 +503,7 @@ export const imbalanceAnalysisTask = defineTask('imbalance-analysis', (args, tas
   kind: 'agent',
   title: `Phase 6: Imbalance Analysis - ${args.gameName}`,
   agent: {
-    name: 'game-analyst',
+    name: 'balance-tester-agent',
     prompt: {
       role: 'Game Balance Analyst',
       task: 'Identify and categorize balance issues',
@@ -547,7 +547,7 @@ export const balanceIterationTask = defineTask('balance-iteration', (args, taskC
   kind: 'agent',
   title: `Phase 7: Balance Iteration - ${args.gameName}`,
   agent: {
-    name: 'game-designer',
+    name: 'economy-designer-agent',
     prompt: {
       role: 'Lead Balance Designer',
       task: 'Iterate on balance based on analysis',
@@ -590,7 +590,7 @@ export const balanceDocumentationTask = defineTask('balance-documentation', (arg
   kind: 'agent',
   title: `Phase 8: Balance Documentation - ${args.gameName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive balance documentation',

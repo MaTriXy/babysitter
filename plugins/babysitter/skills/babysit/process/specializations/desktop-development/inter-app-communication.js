@@ -103,8 +103,11 @@ export async function process(inputs, ctx) {
 export const ipcRequirementsTask = defineTask('ipc-requirements', (args, taskCtx) => ({
   kind: 'agent',
   title: `IPC Requirements - ${args.projectName}`,
+  skill: {
+    name: 'electron-ipc-security-audit',
+  },
   agent: {
-    name: 'ipc-analyst',
+    name: 'electron-architect',
     prompt: { role: 'IPC Systems Analyst', task: 'Analyze IPC requirements', context: args, instructions: ['1. Analyze IPC needs', '2. Document platform capabilities', '3. Assess security requirements', '4. Define message types', '5. Document latency requirements', '6. Assess reliability needs', '7. Identify use cases', '8. Generate requirements document'] },
     outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -127,8 +130,11 @@ export const implementSingleInstanceTask = defineTask('implement-single-instance
 export const implementProtocolHandlerTask = defineTask('implement-protocol-handler', (args, taskCtx) => ({
   kind: 'agent',
   title: `Protocol Handler - ${args.projectName}`,
+  skill: {
+    name: 'electron-protocol-handler-setup',
+  },
   agent: {
-    name: 'protocol-developer',
+    name: 'electron-architect',
     prompt: { role: 'Protocol Handler Developer', task: 'Implement custom protocol handler', context: args, instructions: ['1. Register custom protocol (myapp://)', '2. Handle protocol launch', '3. Parse protocol URL', '4. Route to appropriate handler', '5. Handle deep linking', '6. Configure platform registration', '7. Handle URL encoding', '8. Generate protocol module'] },
     outputSchema: { type: 'object', required: ['protocols', 'artifacts'], properties: { protocols: { type: 'array' }, artifacts: { type: 'array' } } }
   },

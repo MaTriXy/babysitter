@@ -55,8 +55,9 @@ export async function process(inputs, ctx) {
 export const classicDPSolutionTask = defineTask('classic-dp-solution', (args, taskCtx) => ({
   kind: 'agent',
   title: `Solve ${args.problem}`,
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Expert',
       task: `Solve classic DP problem: ${args.problem}`,
@@ -92,7 +93,7 @@ export const libraryDocumentationTask = defineTask('library-documentation', (arg
   kind: 'agent',
   title: 'Document DP Library',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-teacher',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive DP library documentation',

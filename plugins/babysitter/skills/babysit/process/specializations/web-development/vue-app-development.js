@@ -207,7 +207,7 @@ export const architectureTask = defineTask('vue-architecture', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 1: Vue Architecture - ${args.projectName}`,
   agent: {
-    name: 'vue-architect',
+    name: 'frontend-architect-agent',
     prompt: {
       role: 'Senior Vue.js Architect',
       task: 'Design Vue application architecture',
@@ -248,7 +248,7 @@ export const scaffoldingTask = defineTask('vue-scaffolding', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 2: Vue Scaffolding - ${args.projectName}`,
   agent: {
-    name: 'vue-developer',
+    name: 'vue-developer-agent',
     prompt: {
       role: 'Vue.js Developer',
       task: 'Scaffold Vue project with Vite',
@@ -286,10 +286,10 @@ export const scaffoldingTask = defineTask('vue-scaffolding', (args, taskCtx) => 
 }));
 
 export const piniaSetupTask = defineTask('pinia-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: Pinia Setup - ${args.projectName}`,
-  agent: {
-    name: 'vue-state-specialist',
+  skill: {
+    name: 'pinia-skill',
     prompt: {
       role: 'Vue State Management Specialist',
       task: 'Configure Pinia state management',
@@ -410,7 +410,7 @@ export const componentDevelopmentTask = defineTask('vue-components', (args, task
   kind: 'agent',
   title: `Phase 6: Vue Components - ${args.projectName}`,
   agent: {
-    name: 'vue-component-developer',
+    name: 'component-developer-agent',
     prompt: {
       role: 'Vue Component Developer',
       task: 'Develop Vue components',
@@ -447,10 +447,10 @@ export const componentDevelopmentTask = defineTask('vue-components', (args, task
 }));
 
 export const testingSetupTask = defineTask('vue-testing', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: Vue Testing - ${args.projectName}`,
-  agent: {
-    name: 'vue-testing-specialist',
+  skill: {
+    name: 'vitest-skill',
     prompt: {
       role: 'Vue Testing Specialist',
       task: 'Set up Vue testing infrastructure',
@@ -491,7 +491,7 @@ export const documentationTask = defineTask('vue-documentation', (args, taskCtx)
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Vue project documentation',

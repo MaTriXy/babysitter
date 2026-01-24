@@ -208,7 +208,7 @@ export const cloudEnumerationTask = defineTask('cloud-enumeration', (args, taskC
   kind: 'agent',
   title: `Enumerate Cloud Resources - ${args.projectName}`,
   agent: {
-    name: 'cloud-researcher',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Cloud Security Researcher',
       task: 'Enumerate cloud resources',
@@ -247,7 +247,7 @@ export const iamAnalysisTask = defineTask('iam-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `IAM Analysis - ${args.projectName}`,
   agent: {
-    name: 'iam-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'IAM Security Analyst',
       task: 'Analyze IAM policies and permissions',
@@ -286,7 +286,7 @@ export const storageSecurityTask = defineTask('storage-security', (args, taskCtx
   kind: 'agent',
   title: `Storage Security - ${args.projectName}`,
   agent: {
-    name: 'storage-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Cloud Storage Security Analyst',
       task: 'Analyze storage security',
@@ -325,7 +325,7 @@ export const cloudNetworkSecurityTask = defineTask('cloud-network-security', (ar
   kind: 'agent',
   title: `Network Security - ${args.projectName}`,
   agent: {
-    name: 'network-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Cloud Network Security Analyst',
       task: 'Analyze network security configurations',
@@ -364,7 +364,7 @@ export const computeSecurityTask = defineTask('compute-security', (args, taskCtx
   kind: 'agent',
   title: `Compute Security - ${args.projectName}`,
   agent: {
-    name: 'compute-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Cloud Compute Security Analyst',
       task: 'Analyze compute instance security',
@@ -403,7 +403,7 @@ export const containerServerlessTask = defineTask('container-serverless', (args,
   kind: 'agent',
   title: `Container/Serverless Security - ${args.projectName}`,
   agent: {
-    name: 'container-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Container and Serverless Security Analyst',
       task: 'Analyze container and serverless security',
@@ -442,7 +442,7 @@ export const loggingMonitoringTask = defineTask('logging-monitoring', (args, tas
   kind: 'agent',
   title: `Logging & Monitoring - ${args.projectName}`,
   agent: {
-    name: 'logging-analyst',
+    name: 'cloud-security-researcher',
     prompt: {
       role: 'Cloud Logging and Monitoring Analyst',
       task: 'Analyze logging and monitoring',
@@ -481,7 +481,7 @@ export const cloudSecurityReportTask = defineTask('cloud-security-report', (args
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Cloud Security Report Specialist',
       task: 'Generate cloud security report',

@@ -199,7 +199,7 @@ export const vulnSummaryTask = defineTask('vuln-summary', (args, taskCtx) => ({
   kind: 'agent',
   title: `Create Summary - ${args.projectName}`,
   agent: {
-    name: 'advisory-writer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Advisory Writer',
       task: 'Create vulnerability summary',
@@ -239,7 +239,7 @@ export const advisoryCvssTask = defineTask('advisory-cvss', (args, taskCtx) => (
   kind: 'agent',
   title: `Calculate CVSS - ${args.projectName}`,
   agent: {
-    name: 'cvss-specialist',
+    name: 'vuln-researcher',
     prompt: {
       role: 'CVSS Scoring Specialist',
       task: 'Calculate CVSS score for advisory',
@@ -279,7 +279,7 @@ export const technicalWriteupTask = defineTask('technical-writeup', (args, taskC
   kind: 'agent',
   title: `Write Technical Details - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Technical Writer',
       task: 'Write technical details for advisory',
@@ -318,7 +318,7 @@ export const impactAssessmentTask = defineTask('impact-assessment', (args, taskC
   kind: 'agent',
   title: `Assess Impact - ${args.projectName}`,
   agent: {
-    name: 'impact-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Security Impact Analyst',
       task: 'Document vulnerability impact',
@@ -358,7 +358,7 @@ export const remediationGuidanceTask = defineTask('remediation-guidance', (args,
   kind: 'agent',
   title: `Write Remediation - ${args.projectName}`,
   agent: {
-    name: 'remediation-advisor',
+    name: 'security-report-writer',
     prompt: {
       role: 'Security Remediation Advisor',
       task: 'Write remediation guidance',
@@ -398,7 +398,7 @@ export const cveRequestTask = defineTask('cve-request', (args, taskCtx) => ({
   kind: 'agent',
   title: `Prepare CVE Request - ${args.projectName}`,
   agent: {
-    name: 'cve-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'CVE Request Specialist',
       task: 'Prepare CVE request',
@@ -437,7 +437,7 @@ export const advisoryFormattingTask = defineTask('advisory-formatting', (args, t
   kind: 'agent',
   title: `Format Advisory - ${args.projectName}`,
   agent: {
-    name: 'advisory-formatter',
+    name: 'security-report-writer',
     prompt: {
       role: 'Advisory Formatting Specialist',
       task: 'Format final security advisory',

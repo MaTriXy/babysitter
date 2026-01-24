@@ -272,8 +272,9 @@ export async function process(inputs, ctx) {
 export const firebaseSetupTask = defineTask('firebase-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Firebase Setup - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Firebase Specialist',
       task: 'Set up Firebase project for FCM',
@@ -315,8 +316,9 @@ export const firebaseSetupTask = defineTask('firebase-setup', (args, taskCtx) =>
 export const fcmDependenciesTask = defineTask('fcm-dependencies', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: FCM Dependencies - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Build Configuration Specialist',
       task: 'Add FCM dependencies to project',
@@ -359,8 +361,9 @@ export const fcmDependenciesTask = defineTask('fcm-dependencies', (args, taskCtx
 export const messagingServiceTask = defineTask('messaging-service', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Messaging Service - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android FCM Developer',
       task: 'Implement FirebaseMessagingService',
@@ -404,8 +407,9 @@ export const messagingServiceTask = defineTask('messaging-service', (args, taskC
 export const tokenManagementTask = defineTask('token-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Token Management - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android FCM Developer',
       task: 'Implement FCM token management',
@@ -447,8 +451,9 @@ export const tokenManagementTask = defineTask('token-management', (args, taskCtx
 export const notificationChannelsTask = defineTask('notification-channels', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Notification Channels - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Notification Specialist',
       task: 'Set up notification channels (Android 8+)',
@@ -491,8 +496,9 @@ export const notificationChannelsTask = defineTask('notification-channels', (arg
 export const notificationHandlingTask = defineTask('notification-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Notification Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Notification Developer',
       task: 'Implement notification display and handling',
@@ -535,8 +541,9 @@ export const notificationHandlingTask = defineTask('notification-handling', (arg
 export const dataMessageHandlingTask = defineTask('data-message-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Data Message Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android FCM Developer',
       task: 'Implement data message handling',
@@ -578,8 +585,9 @@ export const dataMessageHandlingTask = defineTask('data-message-handling', (args
 export const topicSetupTask = defineTask('topic-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Topic Subscriptions - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android FCM Developer',
       task: 'Implement topic subscriptions',
@@ -622,8 +630,9 @@ export const topicSetupTask = defineTask('topic-setup', (args, taskCtx) => ({
 export const backgroundHandlingTask = defineTask('background-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Background Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Background Processing Specialist',
       task: 'Handle notifications when app is in background/killed',
@@ -665,8 +674,9 @@ export const backgroundHandlingTask = defineTask('background-handling', (args, t
 export const deepLinkingTask = defineTask('deep-linking', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Deep Linking - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Navigation Developer',
       task: 'Implement deep linking from notifications',
@@ -708,8 +718,9 @@ export const deepLinkingTask = defineTask('deep-linking', (args, taskCtx) => ({
 export const permissionHandlingTask = defineTask('permission-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Permission Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Permissions Specialist',
       task: 'Handle notification permissions (Android 13+)',
@@ -751,8 +762,9 @@ export const permissionHandlingTask = defineTask('permission-handling', (args, t
 export const serverIntegrationTask = defineTask('server-integration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Server Integration - ${args.appName}`,
+  skill: { name: 'firebase-integration' },
   agent: {
-    name: 'backend-developer',
+    name: 'cross-platform-architect',
     prompt: {
       role: 'Backend FCM Integration Specialist',
       task: 'Document server-side FCM integration',
@@ -795,7 +807,7 @@ export const testingStrategyTask = defineTask('testing-strategy', (args, taskCtx
   kind: 'agent',
   title: `Phase 13: Testing Strategy - ${args.appName}`,
   agent: {
-    name: 'android-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Android Test Engineer',
       task: 'Create testing strategy for FCM',

@@ -315,7 +315,7 @@ export const fsmSpecificationTask = defineTask('fsm-specification', (args, taskC
   kind: 'agent',
   title: `Phase 1: FSM Specification - ${args.fsmName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Create FSM specification and state definitions',
@@ -359,7 +359,7 @@ export const stateTransitionTask = defineTask('state-transition', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: State Transitions - ${args.fsmName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design state transition logic',
@@ -403,7 +403,7 @@ export const outputLogicTask = defineTask('output-logic', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Output Logic - ${args.fsmName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design FSM output logic',
@@ -447,7 +447,7 @@ export const stateEncodingTask = defineTask('state-encoding', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: State Encoding - ${args.fsmName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Implement state encoding',
@@ -491,7 +491,7 @@ export const fsmRtlImplementationTask = defineTask('fsm-rtl-implementation', (ar
   kind: 'agent',
   title: `Phase 5: FSM RTL - ${args.fsmName}`,
   agent: {
-    name: 'hdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'HDL Design Engineer',
       task: 'Implement FSM in RTL',
@@ -535,7 +535,7 @@ export const illegalStateHandlingTask = defineTask('illegal-state-handling', (ar
   kind: 'agent',
   title: `Phase 6: Illegal State Handling - ${args.fsmName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Implement illegal state recovery',
@@ -578,7 +578,7 @@ export const stateDiagramTask = defineTask('state-diagram', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: State Diagram - ${args.fsmName}`,
   agent: {
-    name: 'documentation-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (documentation)
     prompt: {
       role: 'Documentation Engineer',
       task: 'Generate state diagram',
@@ -620,7 +620,7 @@ export const fsmTestbenchTask = defineTask('fsm-testbench', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 8: FSM Testbench - ${args.fsmName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'Verification Engineer',
       task: 'Develop FSM testbench',
@@ -662,7 +662,7 @@ export const formalVerificationTask = defineTask('formal-verification', (args, t
   kind: 'agent',
   title: `Phase 9: Formal Properties - ${args.fsmName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'Formal Verification Engineer',
       task: 'Define formal verification properties',
@@ -705,7 +705,7 @@ export const fsmQualityAnalysisTask = defineTask('fsm-quality-analysis', (args, 
   kind: 'agent',
   title: `Phase 10: Quality Analysis - ${args.fsmName}`,
   agent: {
-    name: 'quality-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent (quality)
     prompt: {
       role: 'Quality Assurance Engineer',
       task: 'Analyze FSM quality and coverage',

@@ -212,7 +212,7 @@ export const codesignRequirementsTask = defineTask('codesign-requirements', (arg
   kind: 'agent',
   title: `Phase 1: Requirements - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Analyze co-design requirements',
@@ -254,7 +254,7 @@ export const functionalPartitioningTask = defineTask('functional-partitioning', 
   kind: 'agent',
   title: `Phase 2: Partitioning - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Partition functionality between HW and SW',
@@ -296,7 +296,7 @@ export const interfaceSpecificationTask = defineTask('interface-specification', 
   kind: 'agent',
   title: `Phase 3: Interface Spec - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Specify HW-SW interfaces',
@@ -338,7 +338,7 @@ export const communicationProtocolDesignTask = defineTask('communication-protoco
   kind: 'agent',
   title: `Phase 4: Protocol Design - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Design communication protocols',
@@ -380,7 +380,7 @@ export const architectureOptimizationTask = defineTask('architecture-optimizatio
   kind: 'agent',
   title: `Phase 5: Architecture Optimization - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Optimize system architecture',
@@ -421,7 +421,7 @@ export const tradeoffAnalysisTask = defineTask('tradeoff-analysis', (args, taskC
   kind: 'agent',
   title: `Phase 6: Tradeoff Analysis - ${args.projectName}`,
   agent: {
-    name: 'systems-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Systems Architect',
       task: 'Analyze design tradeoffs',
@@ -462,7 +462,7 @@ export const codesignDocumentationTask = defineTask('codesign-documentation', (a
   kind: 'agent',
   title: `Phase 7: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate co-design documentation',

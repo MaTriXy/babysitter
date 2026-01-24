@@ -174,7 +174,7 @@ export const mappingCollectionTask = defineTask('mapping-collection', (args, tas
   kind: 'agent',
   title: `Phase 1: Mapping Collection - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Tooling Engineer',
       task: 'Implement mapping collection',
@@ -214,7 +214,7 @@ export const vlqEncodingTask = defineTask('vlq-encoding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: VLQ Encoding - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Tooling Engineer',
       task: 'Implement VLQ encoding',
@@ -254,7 +254,7 @@ export const sourceMapGenerationTask = defineTask('sourcemap-generation', (args,
   kind: 'agent',
   title: `Phase 3: Source Map Generation - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Tooling Engineer',
       task: 'Implement source map generation',
@@ -295,7 +295,7 @@ export const sourceMapIntegrationTask = defineTask('sourcemap-integration', (arg
   kind: 'agent',
   title: `Phase 4: Source Map Integration - ${args.languageName}`,
   agent: {
-    name: 'tooling-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Compiler Tooling Engineer',
       task: 'Integrate source map generator',
@@ -335,7 +335,7 @@ export const sourceMapTestingTask = defineTask('sourcemap-testing', (args, taskC
   kind: 'agent',
   title: `Phase 5: Source Map Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-tooling-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive source map tests',
@@ -376,7 +376,7 @@ export const sourceMapDocumentationTask = defineTask('sourcemap-documentation', 
   kind: 'agent',
   title: `Phase 6: Source Map Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate source map documentation',

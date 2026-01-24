@@ -52,8 +52,9 @@ export async function process(inputs, ctx) {
 export const skillAssessmentTask = defineTask('skill-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Assess Technical Skills',
+  skills: ['interview-question-bank'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interview Coach',
       task: 'Assess current technical skills for interview readiness',
@@ -74,8 +75,9 @@ export const skillAssessmentTask = defineTask('skill-assessment', (args, taskCtx
 export const preparationPlanTask = defineTask('preparation-plan', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create Preparation Plan',
+  skills: ['interview-question-bank'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interview Coach',
       task: 'Create interview preparation plan',
@@ -96,8 +98,9 @@ export const preparationPlanTask = defineTask('preparation-plan', (args, taskCtx
 export const practiceSessionTask = defineTask('practice-session', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Run Practice Session',
+  skills: ['interview-question-bank', 'leetcode-problem-fetcher'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interview Coach',
       task: 'Conduct problem-solving practice session',
@@ -118,8 +121,9 @@ export const practiceSessionTask = defineTask('practice-session', (args, taskCtx
 export const mockInterviewTask = defineTask('mock-interview', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Conduct Mock Interview',
+  skills: ['interview-question-bank', 'mock-interview-runner'],
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'Technical Interviewer',
       task: 'Conduct mock technical interview',

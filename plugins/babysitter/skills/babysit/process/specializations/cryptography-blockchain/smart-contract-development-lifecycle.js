@@ -363,7 +363,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'smart-contract-analyst',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Smart Contract Requirements Analyst',
       task: 'Analyze and document smart contract requirements',
@@ -415,7 +415,7 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
   kind: 'agent',
   title: `Phase 2: Architecture Design - ${args.projectName}`,
   agent: {
-    name: 'smart-contract-architect',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Smart Contract Architect',
       task: 'Design smart contract architecture with security patterns',
@@ -467,7 +467,7 @@ export const contractImplementationTask = defineTask('contract-implementation', 
   kind: 'agent',
   title: `Phase 3: Contract Implementation - ${args.projectName}`,
   agent: {
-    name: 'smart-contract-developer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-001: solidity-dev)
     prompt: {
       role: 'Senior Smart Contract Developer',
       task: 'Implement smart contracts following best practices',
@@ -517,7 +517,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'smart-contract-tester',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-004: foundry-framework)
     prompt: {
       role: 'Smart Contract Testing Specialist',
       task: 'Create comprehensive test suite for smart contracts',
@@ -567,7 +567,7 @@ export const gasOptimizationTask = defineTask('gas-optimization', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Gas Optimization - ${args.projectName}`,
   agent: {
-    name: 'gas-optimization-specialist',
+    name: 'gas-optimizer', // AG-008: Smart Contract Gas Optimizer (uses SK-018: gas-optimization)
     prompt: {
       role: 'Smart Contract Gas Optimization Specialist',
       task: 'Optimize gas consumption while maintaining security',
@@ -615,7 +615,7 @@ export const staticAnalysisTask = defineTask('static-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6a: Static Analysis - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-002: slither-analysis, SK-003: mythril-symbolic)
     prompt: {
       role: 'Smart Contract Security Analyst',
       task: 'Run static analysis tools to identify vulnerabilities',
@@ -663,7 +663,7 @@ export const dynamicAnalysisTask = defineTask('dynamic-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 6b: Dynamic Analysis - ${args.projectName}`,
   agent: {
-    name: 'security-analyst',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-005: echidna-fuzzer)
     prompt: {
       role: 'Smart Contract Security Analyst',
       task: 'Run dynamic analysis and fuzzing to find vulnerabilities',
@@ -712,7 +712,7 @@ export const formalVerificationTask = defineTask('formal-verification', (args, t
   kind: 'agent',
   title: `Phase 7: Formal Verification - ${args.projectName}`,
   agent: {
-    name: 'formal-verification-engineer',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer (uses SK-006: certora-prover)
     prompt: {
       role: 'Formal Verification Engineer',
       task: 'Formally verify critical contract properties',
@@ -759,7 +759,7 @@ export const testnetDeploymentTask = defineTask('testnet-deployment', (args, tas
   kind: 'agent',
   title: `Phase 8: Testnet Deployment - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor (uses SK-004: foundry-framework, SK-009: hardhat-framework)
     prompt: {
       role: 'Smart Contract Deployment Engineer',
       task: 'Deploy contracts to testnet',
@@ -809,7 +809,7 @@ export const testnetVerificationTask = defineTask('testnet-verification', (args,
   kind: 'agent',
   title: `Phase 9: Testnet Verification - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Smart Contract QA Engineer',
       task: 'Verify testnet deployment and run integration tests',
@@ -858,7 +858,7 @@ export const auditPreparationTask = defineTask('audit-preparation', (args, taskC
   kind: 'agent',
   title: `Phase 10: Audit Preparation - ${args.projectName}`,
   agent: {
-    name: 'audit-coordinator',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Security Audit Coordinator',
       task: 'Prepare comprehensive audit package',
@@ -910,7 +910,7 @@ export const deploymentDocumentationTask = defineTask('deployment-documentation'
   kind: 'agent',
   title: `Phase 11: Deployment Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Create comprehensive deployment documentation',

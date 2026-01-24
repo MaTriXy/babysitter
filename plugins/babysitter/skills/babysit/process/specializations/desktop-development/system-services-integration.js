@@ -111,8 +111,11 @@ export const servicesRequirementsTask = defineTask('services-requirements', (arg
 export const implementClipboardTask = defineTask('implement-clipboard', (args, taskCtx) => ({
   kind: 'agent',
   title: `Clipboard Integration - ${args.projectName}`,
+  skill: {
+    name: 'electron-clipboard-handler',
+  },
   agent: {
-    name: 'clipboard-developer',
+    name: 'system-integration-specialist',
     prompt: { role: 'Clipboard Developer', task: 'Implement clipboard integration', context: args, instructions: ['1. Implement text read/write', '2. Implement image read/write', '3. Implement HTML read/write', '4. Handle file clipboard', '5. Implement clipboard watching', '6. Handle rich content', '7. Implement clear operation', '8. Generate clipboard module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'capabilities', 'artifacts'], properties: { modulePath: { type: 'string' }, capabilities: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -123,8 +126,11 @@ export const implementClipboardTask = defineTask('implement-clipboard', (args, t
 export const implementGlobalShortcutsTask = defineTask('implement-global-shortcuts', (args, taskCtx) => ({
   kind: 'agent',
   title: `Global Shortcuts - ${args.projectName}`,
+  skill: {
+    name: 'global-shortcut-manager',
+  },
   agent: {
-    name: 'shortcuts-developer',
+    name: 'system-integration-specialist',
     prompt: { role: 'Global Shortcuts Developer', task: 'Implement global keyboard shortcuts', context: args, instructions: ['1. Register global shortcuts', '2. Handle shortcut conflicts', '3. Implement shortcut manager', '4. Handle platform differences', '5. Implement unregister on blur', '6. Add user customization', '7. Handle media keys', '8. Generate shortcuts module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'capabilities', 'artifacts'], properties: { modulePath: { type: 'string' }, capabilities: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -147,8 +153,11 @@ export const implementPowerMonitorTask = defineTask('implement-power-monitor', (
 export const implementScreenCaptureTask = defineTask('implement-screen-capture', (args, taskCtx) => ({
   kind: 'agent',
   title: `Screen Capture - ${args.projectName}`,
+  skill: {
+    name: 'desktop-capture-api',
+  },
   agent: {
-    name: 'capture-developer',
+    name: 'system-integration-specialist',
     prompt: { role: 'Screen Capture Developer', task: 'Implement screen capture functionality', context: args, instructions: ['1. Implement screen capture', '2. Implement window capture', '3. Get screen sources list', '4. Handle permission requests', '5. Implement region selection', '6. Handle multi-monitor', '7. Implement video capture', '8. Generate capture module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'capabilities', 'artifacts'], properties: { modulePath: { type: 'string' }, capabilities: { type: 'array' }, artifacts: { type: 'array' } } }
   },

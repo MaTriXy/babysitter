@@ -365,7 +365,7 @@ export const bspArchitectureTask = defineTask('bsp-architecture', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: BSP Architecture - ${args.boardName}`,
   agent: {
-    name: 'embedded-architect',
+    name: 'firmware-architect',
     prompt: {
       role: 'Embedded Systems Architect',
       task: 'Design BSP architecture with proper layering and abstraction',
@@ -408,7 +408,7 @@ export const startupCodeTask = defineTask('startup-code', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Startup Code - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create startup code and linker script for the target MCU',
@@ -452,7 +452,7 @@ export const systemInitTask = defineTask('system-init', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: System Initialization - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement system initialization sequence',
@@ -493,7 +493,7 @@ export const clockConfigModuleTask = defineTask('clock-config', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Clock Configuration - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create clock configuration module',
@@ -534,7 +534,7 @@ export const gpioAbstractionTask = defineTask('gpio-abstraction', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: GPIO Abstraction - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create GPIO abstraction layer',
@@ -575,7 +575,7 @@ export const peripheralDriverTask = defineTask('peripheral-driver', (args, taskC
   kind: 'agent',
   title: `Phase 6: ${args.peripheral} Driver - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: `Create ${args.peripheral} peripheral driver`,
@@ -618,7 +618,7 @@ export const interruptManagementTask = defineTask('interrupt-management', (args,
   kind: 'agent',
   title: `Phase 7: Interrupt Management - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'device-driver-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement interrupt management system',
@@ -660,7 +660,7 @@ export const lowPowerManagementTask = defineTask('low-power-management', (args, 
   kind: 'agent',
   title: `Phase 8: Low-Power Management - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'power-optimization-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement low-power management module',
@@ -702,7 +702,7 @@ export const rtosIntegrationTask = defineTask('rtos-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: ${args.rtos} Integration - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'rtos-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: `Integrate ${args.rtos} with BSP`,
@@ -744,7 +744,7 @@ export const debugSupportTask = defineTask('debug-support', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 10: Debug Support - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Add debug and logging support to BSP',
@@ -785,7 +785,7 @@ export const bspConfigHeaderTask = defineTask('bsp-config-header', (args, taskCt
   kind: 'agent',
   title: `Phase 11: BSP Configuration - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Create BSP configuration header file',
@@ -868,7 +868,7 @@ export const bspDocumentationTask = defineTask('bsp-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 13: BSP Documentation - ${args.boardName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Documentation Engineer',
       task: 'Create BSP documentation',

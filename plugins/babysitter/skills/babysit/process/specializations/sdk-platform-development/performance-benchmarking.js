@@ -201,7 +201,7 @@ export const benchmarkStrategyTask = defineTask('benchmark-strategy', (args, tas
   kind: 'agent',
   title: `Phase 1: Benchmark Strategy - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Performance Engineer',
       task: 'Define performance benchmark strategy',
@@ -247,7 +247,7 @@ export const kpiDefinitionTask = defineTask('kpi-definition', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: KPI Definition - ${args.projectName}`,
   agent: {
-    name: 'performance-analyst',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Performance Analyst',
       task: 'Define performance KPIs and targets',
@@ -293,7 +293,7 @@ export const benchmarkSuiteTask = defineTask('benchmark-suite', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Benchmark Suites - ${args.projectName}`,
   agent: {
-    name: 'benchmark-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Benchmark Engineer',
       task: 'Create benchmark test suites',
@@ -338,7 +338,7 @@ export const loadTestingTask = defineTask('load-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Load Testing - ${args.projectName}`,
   agent: {
-    name: 'load-test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Load Test Engineer',
       task: 'Design load testing scenarios',
@@ -384,7 +384,7 @@ export const continuousMonitoringTask = defineTask('continuous-monitoring', (arg
   kind: 'agent',
   title: `Phase 5: Continuous Monitoring - ${args.projectName}`,
   agent: {
-    name: 'monitoring-engineer',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Monitoring Engineer',
       task: 'Implement continuous performance monitoring',
@@ -430,7 +430,7 @@ export const performanceDashboardTask = defineTask('performance-dashboard', (arg
   kind: 'agent',
   title: `Phase 6: Performance Dashboard - ${args.projectName}`,
   agent: {
-    name: 'dashboard-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Dashboard Engineer',
       task: 'Create monitoring dashboards',
@@ -476,7 +476,7 @@ export const regressionDetectionTask = defineTask('regression-detection', (args,
   kind: 'agent',
   title: `Phase 7: Regression Detection - ${args.projectName}`,
   agent: {
-    name: 'performance-analyst',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Performance Analyst',
       task: 'Set up performance regression detection',
@@ -522,7 +522,7 @@ export const performanceDocumentationTask = defineTask('performance-documentatio
   kind: 'agent',
   title: `Phase 8: Performance Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate performance documentation',

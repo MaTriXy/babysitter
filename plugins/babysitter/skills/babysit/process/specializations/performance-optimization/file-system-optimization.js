@@ -90,7 +90,7 @@ export const analyzeFileAccessPatternsTask = defineTask('analyze-file-access-pat
   kind: 'agent',
   title: `Analyze File Access Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze file access patterns', context: args,
       instructions: ['1. Trace file operations', '2. Analyze read/write patterns', '3. Identify hot files', '4. Find access issues', '5. Document patterns'],
       outputFormat: 'JSON with access analysis' },
@@ -104,7 +104,7 @@ export const evaluateFileSystemChoiceTask = defineTask('evaluate-file-system-cho
   kind: 'agent',
   title: `Evaluate File System Choice - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Evaluate file system choice', context: args,
       instructions: ['1. Analyze workload type', '2. Compare file systems', '3. Evaluate performance', '4. Recommend changes', '5. Document evaluation'],
       outputFormat: 'JSON with evaluation' },
@@ -118,7 +118,7 @@ export const optimizeDirectoryStructuresTask = defineTask('optimize-directory-st
   kind: 'agent',
   title: `Optimize Directory Structures - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Optimize directory structures', context: args,
       instructions: ['1. Analyze directory layout', '2. Flatten deep directories', '3. Distribute files', '4. Optimize naming', '5. Document changes'],
       outputFormat: 'JSON with directory optimizations' },
@@ -132,7 +132,7 @@ export const configureFilesystemMountOptionsTask = defineTask('configure-filesys
   kind: 'agent',
   title: `Configure Mount Options - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure file system mount options', context: args,
       instructions: ['1. Review mount options', '2. Enable noatime', '3. Configure barriers', '4. Tune read-ahead', '5. Document configuration'],
       outputFormat: 'JSON with mount options' },
@@ -146,7 +146,7 @@ export const implementMemoryMappedIOTask = defineTask('implement-memory-mapped-i
   kind: 'agent',
   title: `Implement Memory-Mapped I/O - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement memory-mapped I/O', context: args,
       instructions: ['1. Identify mmap candidates', '2. Implement mmap', '3. Handle page faults', '4. Manage mappings', '5. Document implementation'],
       outputFormat: 'JSON with mmap implementation' },
@@ -160,7 +160,7 @@ export const optimizeFileCachingTask = defineTask('optimize-file-caching', (args
   kind: 'agent',
   title: `Optimize File Caching - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Optimize file caching', context: args,
       instructions: ['1. Configure page cache', '2. Tune dirty pages', '3. Configure read-ahead', '4. Optimize VFS cache', '5. Document settings'],
       outputFormat: 'JSON with caching optimizations' },
@@ -174,7 +174,7 @@ export const benchmarkFileSystemImprovementsTask = defineTask('benchmark-file-sy
   kind: 'agent',
   title: `Benchmark File System Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Benchmark file system improvements', context: args,
       instructions: ['1. Run baseline benchmarks', '2. Run optimized benchmarks', '3. Compare metrics', '4. Calculate improvement', '5. Document results'],
       outputFormat: 'JSON with benchmark results' },
@@ -188,7 +188,7 @@ export const documentFileSystemBestPracticesTask = defineTask('document-file-sys
   kind: 'agent',
   title: `Document Best Practices - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Document file system best practices', context: args,
       instructions: ['1. Document optimizations', '2. Create guidelines', '3. Include benchmarks', '4. Add recommendations', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

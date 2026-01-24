@@ -86,8 +86,9 @@ function createOfflineTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'offline-storage' },
     agent: {
-      name: 'offline-architect',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Offline-First Architecture Specialist',
         task: `Implement ${title.toLowerCase()} for offline-first app`,

@@ -320,7 +320,7 @@ export const okrReviewTask = defineTask('okr-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: OKR Review and Retrospective - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Senior Product Manager with expertise in OKR framework and retrospective facilitation',
       task: 'Conduct comprehensive OKR review and retrospective for the previous quarter',
@@ -437,7 +437,7 @@ export const marketAnalysisTask = defineTask('market-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Market Analysis and Competitive Intelligence - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Product Marketing Manager with expertise in competitive intelligence and market research',
       task: 'Conduct comprehensive market analysis and competitive intelligence for quarterly planning',
@@ -575,7 +575,7 @@ export const customerResearchSynthesisTask = defineTask('customer-research-synth
   kind: 'agent',
   title: `Phase 3: Customer Research Synthesis - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'UX Researcher and Customer Insights Analyst with expertise in qualitative and quantitative research synthesis',
       task: 'Synthesize customer feedback, research, and usage data to inform roadmap priorities',
@@ -713,7 +713,7 @@ export const themeIdentificationTask = defineTask('theme-identification', (args,
   kind: 'agent',
   title: `Phase 4: Strategic Theme Identification - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Chief Product Officer with expertise in strategic planning and theme-based roadmapping',
       task: 'Identify and define strategic themes that will guide the quarterly roadmap',
@@ -824,7 +824,7 @@ export const initiativeMappingTask = defineTask('initiative-mapping', (args, tas
   kind: 'agent',
   title: `Phase 5: Initiative Mapping and Prioritization - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'prioritization-expert',
     prompt: {
       role: 'Senior Product Manager with expertise in initiative planning and prioritization frameworks',
       task: 'Map specific initiatives to strategic themes and prioritize based on impact, effort, and strategic alignment',
@@ -931,7 +931,7 @@ export const capacityPlanningTask = defineTask('capacity-planning', (args, taskC
   kind: 'agent',
   title: `Phase 6: Capacity Planning and Resource Allocation - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'prioritization-expert',
     prompt: {
       role: 'Engineering Manager and Resource Planning Specialist with expertise in capacity planning',
       task: 'Plan team capacity allocation ensuring 70% committed / 30% exploratory split',
@@ -1048,7 +1048,7 @@ export const timelinePlanningTask = defineTask('timeline-planning', (args, taskC
   kind: 'agent',
   title: `Phase 7: Timeline Creation and Milestone Planning - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'prioritization-expert',
     prompt: {
       role: 'Agile Delivery Manager with expertise in release planning and milestone management',
       task: 'Create detailed quarterly timeline with milestones, delivery schedule, and dependencies',
@@ -1172,7 +1172,7 @@ export const okrDefinitionTask = defineTask('okr-definition', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 8: OKR Definition for Upcoming Quarter - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'OKR Coach and Goal-Setting Specialist with expertise in SMART objectives',
       task: 'Define clear, measurable OKRs for the upcoming quarter based on themes and initiatives',
@@ -1283,7 +1283,7 @@ export const riskAssessmentTask = defineTask('risk-assessment', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Risk Assessment and Dependency Mapping - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Risk Management Specialist and Program Manager with expertise in roadmap risk assessment',
       task: 'Identify, assess, and create mitigation plans for roadmap risks and dependencies',
@@ -1396,7 +1396,7 @@ export const communicationPlanTask = defineTask('communication-plan', (args, tas
   kind: 'agent',
   title: `Phase 10: Stakeholder Communication Plan - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Product Communications Manager with expertise in stakeholder management and communication planning',
       task: 'Create comprehensive communication plan for roadmap rollout and ongoing updates',
@@ -1525,7 +1525,7 @@ export const roadmapDocumentGenerationTask = defineTask('roadmap-document-genera
   kind: 'agent',
   title: `Phase 11: Final Roadmap Document Generation - ${args.quarter}`,
   agent: {
-    name: 'general-purpose',
+    name: 'product-strategist',
     prompt: {
       role: 'Senior Product Manager and Technical Writer with expertise in roadmap documentation',
       task: 'Generate comprehensive quarterly roadmap document synthesizing all planning phases',

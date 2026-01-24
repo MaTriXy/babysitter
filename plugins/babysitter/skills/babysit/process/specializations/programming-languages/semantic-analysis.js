@@ -237,7 +237,7 @@ export const symbolTableDesignTask = defineTask('symbol-table-design', (args, ta
   kind: 'agent',
   title: `Phase 1: Symbol Table Design - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Design symbol table structure',
@@ -278,7 +278,7 @@ export const symbolTableImplementationTask = defineTask('symbol-table-impl', (ar
   kind: 'agent',
   title: `Phase 2: Symbol Table Implementation - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement symbol table',
@@ -318,7 +318,7 @@ export const nameResolutionTask = defineTask('name-resolution', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Name Resolution - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement name resolution',
@@ -359,7 +359,7 @@ export const scopeAnalysisTask = defineTask('scope-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: Scope Analysis - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement scope analysis',
@@ -400,7 +400,7 @@ export const semanticValidationTask = defineTask('semantic-validation', (args, t
   kind: 'agent',
   title: `Phase 5: Semantic Validation - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement semantic validation',
@@ -441,7 +441,7 @@ export const semanticAnalyzerIntegrationTask = defineTask('semantic-integration'
   kind: 'agent',
   title: `Phase 6: Semantic Analyzer Integration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Integrate semantic analyzer',
@@ -481,7 +481,7 @@ export const semanticAnalysisTestingTask = defineTask('semantic-testing', (args,
   kind: 'agent',
   title: `Phase 7: Semantic Analysis Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive semantic analysis tests',
@@ -522,7 +522,7 @@ export const semanticAnalysisDocumentationTask = defineTask('semantic-documentat
   kind: 'agent',
   title: `Phase 8: Semantic Analysis Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate semantic analysis documentation',

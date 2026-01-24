@@ -206,7 +206,7 @@ export const compatibilityStrategyTask = defineTask('compatibility-strategy', (a
   kind: 'agent',
   title: `Phase 1: Compatibility Strategy - ${args.projectName}`,
   agent: {
-    name: 'qa-architect',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'QA Architect',
       task: 'Define compatibility testing strategy',
@@ -252,7 +252,7 @@ export const testMatrixSetupTask = defineTask('test-matrix-setup', (args, taskCt
   kind: 'agent',
   title: `Phase 2: Test Matrix Setup - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Test Engineer',
       task: 'Set up multi-version testing matrix',
@@ -299,7 +299,7 @@ export const crossPlatformTestingTask = defineTask('cross-platform-testing', (ar
   kind: 'agent',
   title: `Phase 3: Cross-Platform Testing - ${args.projectName}`,
   agent: {
-    name: 'platform-test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Platform Test Engineer',
       task: 'Test cross-platform compatibility',
@@ -345,7 +345,7 @@ export const dependencyCompatibilityTask = defineTask('dependency-compatibility'
   kind: 'agent',
   title: `Phase 4: Dependency Compatibility - ${args.projectName}`,
   agent: {
-    name: 'dependency-analyst',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'Dependency Analyst',
       task: 'Validate dependency compatibility',
@@ -391,7 +391,7 @@ export const breakingChangeDetectionTask = defineTask('breaking-change-detection
   kind: 'agent',
   title: `Phase 5: Breaking Change Detection - ${args.projectName}`,
   agent: {
-    name: 'api-analyst',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Analyst',
       task: 'Implement breaking change detection',
@@ -437,7 +437,7 @@ export const backwardCompatibilityTask = defineTask('backward-compatibility', (a
   kind: 'agent',
   title: `Phase 6: Backward Compatibility Tests - ${args.projectName}`,
   agent: {
-    name: 'compatibility-engineer',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'Compatibility Engineer',
       task: 'Create backward compatibility tests',
@@ -483,7 +483,7 @@ export const compatibilityCicdTask = defineTask('compatibility-cicd', (args, tas
   kind: 'agent',
   title: `Phase 7: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate compatibility tests with CI/CD',
@@ -529,7 +529,7 @@ export const compatibilityDocumentationTask = defineTask('compatibility-document
   kind: 'agent',
   title: `Phase 8: Compatibility Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate compatibility documentation',

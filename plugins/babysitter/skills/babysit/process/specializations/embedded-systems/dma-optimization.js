@@ -219,7 +219,7 @@ export const dmaRequirementsTask = defineTask('dma-requirements', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: DMA Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze DMA requirements',
@@ -261,7 +261,7 @@ export const dmaControllerMappingTask = defineTask('dma-controller-mapping', (ar
   kind: 'agent',
   title: `Phase 2: Controller Mapping - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Map DMA controllers',
@@ -303,7 +303,7 @@ export const dmaChannelConfigTask = defineTask('dma-channel-config', (args, task
   kind: 'agent',
   title: `Phase 3: Channel Configuration - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure DMA channels',
@@ -344,7 +344,7 @@ export const dmaBufferDesignTask = defineTask('dma-buffer-design', (args, taskCt
   kind: 'agent',
   title: `Phase 4: Buffer Design - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design DMA buffers',
@@ -386,7 +386,7 @@ export const circularModeSetupTask = defineTask('circular-mode-setup', (args, ta
   kind: 'agent',
   title: `Phase 5: Circular Mode - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Set up circular DMA mode',
@@ -427,7 +427,7 @@ export const dmaInterruptOptimizationTask = defineTask('dma-interrupt-optimizati
   kind: 'agent',
   title: `Phase 6: Interrupt Optimization - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Optimize DMA interrupts',
@@ -469,7 +469,7 @@ export const dmaPerformanceVerificationTask = defineTask('dma-performance-verifi
   kind: 'agent',
   title: `Phase 7: Performance Verification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'performance-optimization-agent',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Verify DMA performance',
@@ -512,7 +512,7 @@ export const dmaDocumentationTask = defineTask('dma-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 8: DMA Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate DMA documentation',

@@ -108,7 +108,8 @@ export const stencilAnalysisTask = defineTask('stencil-analysis', (args, taskCtx
   kind: 'agent',
   title: `Stencil Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze stencil computation',
@@ -149,7 +150,8 @@ export const stencilTilingTask = defineTask('stencil-tiling', (args, taskCtx) =>
   kind: 'agent',
   title: `Tiling Strategy - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design stencil tiling strategy',
@@ -190,7 +192,8 @@ export const stencilSharedMemoryTask = defineTask('stencil-shared-memory', (args
   kind: 'agent',
   title: `Shared Memory Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement shared memory stencil',
@@ -231,7 +234,8 @@ export const boundaryHandlingTask = defineTask('boundary-handling', (args, taskC
   kind: 'agent',
   title: `Boundary Handling - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement boundary conditions',
@@ -272,7 +276,8 @@ export const temporalBlockingTask = defineTask('temporal-blocking', (args, taskC
   kind: 'agent',
   title: `Temporal Blocking - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'parallel-patterns'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement temporal blocking',
@@ -314,6 +319,7 @@ export const stencilBenchmarkingTask = defineTask('stencil-benchmarking', (args,
   title: `Benchmarking - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark stencil performance',

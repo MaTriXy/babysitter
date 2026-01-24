@@ -634,7 +634,7 @@ export const codegenTestingTask = defineTask('codegen-testing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Codegen Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive codegen tests',
@@ -675,7 +675,7 @@ export const codegenBenchmarkTask = defineTask('codegen-benchmark', (args, taskC
   kind: 'agent',
   title: `Phase 10: Codegen Benchmarking - ${args.languageName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'compiler-performance-engineer',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark generated code',
@@ -717,7 +717,7 @@ export const codegenDocumentationTask = defineTask('codegen-documentation', (arg
   kind: 'agent',
   title: `Phase 11: Codegen Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'llvm-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate code generation documentation',

@@ -101,7 +101,7 @@ export const baselineProfilingTask = defineTask('baseline-profiling', (args, tas
   kind: 'agent',
   title: `Baseline Profiling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'optimization-engineer-agent',
     prompt: { role: 'Performance Engineer', task: 'Profile baseline performance', context: args, instructions: ['1. Profile CPU usage', '2. Profile GPU usage', '3. Measure memory usage', '4. Identify bottlenecks'] },
     outputSchema: { type: 'object', required: ['currentFps', 'currentMemory', 'bottlenecks', 'artifacts'], properties: { currentFps: { type: 'number' }, currentMemory: { type: 'string' }, bottlenecks: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -113,7 +113,7 @@ export const cpuOptimizationTask = defineTask('cpu-optimization', (args, taskCtx
   kind: 'agent',
   title: `CPU Optimization - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'optimization-engineer-agent',
     prompt: { role: 'Performance Engineer', task: 'Optimize CPU performance', context: args, instructions: ['1. Optimize hot paths', '2. Implement multithreading', '3. Optimize algorithms', '4. Reduce allocations'] },
     outputSchema: { type: 'object', required: ['optimizations', 'fpsGain', 'artifacts'], properties: { optimizations: { type: 'array' }, fpsGain: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -125,7 +125,7 @@ export const gpuOptimizationTask = defineTask('gpu-optimization', (args, taskCtx
   kind: 'agent',
   title: `GPU Optimization - ${args.projectName}`,
   agent: {
-    name: 'graphics-engineer',
+    name: 'graphics-programmer-agent',
     prompt: { role: 'Graphics Engineer', task: 'Optimize GPU performance', context: args, instructions: ['1. Optimize draw calls', '2. Implement LOD', '3. Optimize shaders', '4. Add occlusion culling'] },
     outputSchema: { type: 'object', required: ['optimizations', 'fpsGain', 'artifacts'], properties: { optimizations: { type: 'array' }, fpsGain: { type: 'number' }, drawCallReduction: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -137,7 +137,7 @@ export const memoryOptimizationTask = defineTask('memory-optimization', (args, t
   kind: 'agent',
   title: `Memory Optimization - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'optimization-engineer-agent',
     prompt: { role: 'Performance Engineer', task: 'Optimize memory usage', context: args, instructions: ['1. Implement asset streaming', '2. Optimize texture memory', '3. Implement object pooling', '4. Fix memory leaks'] },
     outputSchema: { type: 'object', required: ['optimizations', 'memorySaved', 'artifacts'], properties: { optimizations: { type: 'array' }, memorySaved: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -149,7 +149,7 @@ export const loadTimeOptimizationTask = defineTask('load-time-optimization', (ar
   kind: 'agent',
   title: `Load Time Optimization - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'optimization-engineer-agent',
     prompt: { role: 'Performance Engineer', task: 'Optimize load times', context: args, instructions: ['1. Implement async loading', '2. Optimize asset formats', '3. Add loading prioritization', '4. Implement level streaming'] },
     outputSchema: { type: 'object', required: ['loadTimeReduction', 'techniques', 'artifacts'], properties: { loadTimeReduction: { type: 'number' }, techniques: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -161,7 +161,7 @@ export const platformOptimizationTask = defineTask('platform-optimization', (arg
   kind: 'agent',
   title: `Platform Optimization - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-programmer-agent',
     prompt: { role: 'Platform Engineer', task: 'Apply platform-specific optimizations', context: args, instructions: ['1. Use platform APIs', '2. Optimize for hardware', '3. Add quality presets', '4. Test on target hardware'] },
     outputSchema: { type: 'object', required: ['platformOptimizations', 'artifacts'], properties: { platformOptimizations: { type: 'object' }, qualityPresets: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -173,7 +173,7 @@ export const finalProfilingTask = defineTask('final-profiling', (args, taskCtx) 
   kind: 'agent',
   title: `Final Profiling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'optimization-engineer-agent',
     prompt: { role: 'Performance Engineer', task: 'Profile final performance', context: args, instructions: ['1. Profile all platforms', '2. Compare to baseline', '3. Verify targets met', '4. Generate performance report'] },
     outputSchema: { type: 'object', required: ['avgFps', 'memoryUsage', 'loadTime', 'targetsMet', 'improvements', 'reportPath', 'artifacts'], properties: { avgFps: { type: 'number' }, memoryUsage: { type: 'string' }, loadTime: { type: 'number' }, targetsMet: { type: 'boolean' }, improvements: { type: 'object' }, reportPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

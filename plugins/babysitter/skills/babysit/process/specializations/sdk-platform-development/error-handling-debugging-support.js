@@ -114,7 +114,7 @@ export const errorArchitectureDesignTask = defineTask('error-architecture-design
   kind: 'agent',
   title: 'Design error handling architecture',
   agent: {
-    name: 'sdk-error-architect',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'SDK error handling architect',
       task: `Design comprehensive error handling architecture for ${args.sdkName}`,
@@ -157,7 +157,7 @@ export const errorCatalogCreationTask = defineTask('error-catalog-creation', (ar
   kind: 'agent',
   title: 'Create comprehensive error catalog',
   agent: {
-    name: 'error-catalog-creator',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'SDK error documentation specialist',
       task: `Create comprehensive error catalog for ${args.sdkName}`,
@@ -198,7 +198,7 @@ export const debugModeImplementationTask = defineTask('debug-mode-implementation
   kind: 'agent',
   title: 'Implement SDK debug modes',
   agent: {
-    name: 'debug-mode-implementer',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'SDK debugging specialist',
       task: `Implement debug modes for ${args.sdkName}`,
@@ -239,7 +239,7 @@ export const stackTraceHandlingTask = defineTask('stack-trace-handling', (args, 
   kind: 'agent',
   title: 'Implement stack trace handling',
   agent: {
-    name: 'stack-trace-specialist',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'Error diagnostics engineer',
       task: `Implement stack trace handling for ${args.sdkName}`,
@@ -281,7 +281,7 @@ export const developerToolsIntegrationTask = defineTask('developer-tools-integra
   kind: 'agent',
   title: 'Create developer debugging tools',
   agent: {
-    name: 'developer-tools-creator',
+    name: 'platform-architect',
     prompt: {
       role: 'Developer tools engineer',
       task: `Create debugging tools integration for ${args.sdkName}`,

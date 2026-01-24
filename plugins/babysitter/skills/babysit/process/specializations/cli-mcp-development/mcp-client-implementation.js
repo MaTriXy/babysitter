@@ -86,7 +86,7 @@ export const clientArchitectureTask = defineTask('client-architecture', (args, t
   kind: 'agent',
   title: `Client Architecture - ${args.projectName}`,
   agent: {
-    name: 'mcp-architect',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Client Architecture Specialist', task: 'Design client architecture', context: args, instructions: ['1. Define client structure', '2. Plan transport abstraction', '3. Design capability handling', '4. Plan extension points', '5. Generate architecture doc'], outputFormat: 'JSON with client architecture' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -98,7 +98,7 @@ export const clientTransportLayerTask = defineTask('client-transport-layer', (ar
   kind: 'agent',
   title: `Transport Layer - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Transport Specialist', task: 'Implement transport layer', context: args, instructions: ['1. Implement stdio transport', '2. Implement SSE transport', '3. Add WebSocket transport', '4. Handle reconnection', '5. Generate transport code'], outputFormat: 'JSON with transport layer' },
     outputSchema: { type: 'object', required: ['transportPaths', 'artifacts'], properties: { transportPaths: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -110,7 +110,7 @@ export const capabilityNegotiationTask = defineTask('capability-negotiation', (a
   kind: 'agent',
   title: `Capability Negotiation - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Capability Specialist', task: 'Implement capability negotiation', context: args, instructions: ['1. Handle initialize request', '2. Negotiate capabilities', '3. Track server capabilities', '4. Handle version differences', '5. Generate negotiation code'], outputFormat: 'JSON with capability negotiation' },
     outputSchema: { type: 'object', required: ['negotiationPath', 'artifacts'], properties: { negotiationPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -122,7 +122,7 @@ export const toolInvocationTask = defineTask('tool-invocation', (args, taskCtx) 
   kind: 'agent',
   title: `Tool Invocation - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Tool Invocation Specialist', task: 'Implement tool invocation', context: args, instructions: ['1. List available tools', '2. Invoke tools with arguments', '3. Handle tool responses', '4. Validate schemas', '5. Generate tool invocation code'], outputFormat: 'JSON with tool invocation' },
     outputSchema: { type: 'object', required: ['toolPath', 'artifacts'], properties: { toolPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -134,7 +134,7 @@ export const resourceAccessTask = defineTask('resource-access', (args, taskCtx) 
   kind: 'agent',
   title: `Resource Access - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Resource Specialist', task: 'Implement resource access', context: args, instructions: ['1. List resources', '2. Read resources', '3. Handle templates', '4. Subscribe to resources', '5. Generate resource code'], outputFormat: 'JSON with resource access' },
     outputSchema: { type: 'object', required: ['resourcePath', 'artifacts'], properties: { resourcePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -146,7 +146,7 @@ export const promptHandlingTask = defineTask('prompt-handling', (args, taskCtx) 
   kind: 'agent',
   title: `Prompt Handling - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Prompt Specialist', task: 'Implement prompt handling', context: args, instructions: ['1. List prompts', '2. Get prompt templates', '3. Handle prompt arguments', '4. Process prompt results', '5. Generate prompt code'], outputFormat: 'JSON with prompt handling' },
     outputSchema: { type: 'object', required: ['promptPath', 'artifacts'], properties: { promptPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -158,7 +158,7 @@ export const connectionManagementTask = defineTask('connection-management', (arg
   kind: 'agent',
   title: `Connection Management - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'Connection Management Specialist', task: 'Implement connection management', context: args, instructions: ['1. Handle connection lifecycle', '2. Implement reconnection', '3. Manage multiple connections', '4. Handle timeouts', '5. Generate connection code'], outputFormat: 'JSON with connection management' },
     outputSchema: { type: 'object', required: ['connectionPath', 'artifacts'], properties: { connectionPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -170,7 +170,7 @@ export const clientErrorHandlingTask = defineTask('client-error-handling', (args
   kind: 'agent',
   title: `Error Handling - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: { role: 'MCP Error Handling Specialist', task: 'Implement client error handling', context: args, instructions: ['1. Handle JSON-RPC errors', '2. Handle transport errors', '3. Create typed errors', '4. Implement retry logic', '5. Generate error handling code'], outputFormat: 'JSON with error handling' },
     outputSchema: { type: 'object', required: ['errorPath', 'artifacts'], properties: { errorPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -182,7 +182,7 @@ export const clientTestingTask = defineTask('client-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Client Testing - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'MCP Client Testing Specialist', task: 'Create client test suite', context: args, instructions: ['1. Create mock servers', '2. Test all transports', '3. Test tool invocation', '4. Test error scenarios', '5. Generate test suite'], outputFormat: 'JSON with client tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -194,7 +194,7 @@ export const clientDocumentationTask = defineTask('client-documentation', (args,
   kind: 'agent',
   title: `Client Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'MCP Client Documentation Specialist', task: 'Document MCP client library', context: args, instructions: ['1. Document installation', '2. Document API reference', '3. Add usage examples', '4. Document transports', '5. Generate documentation'], outputFormat: 'JSON with client documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

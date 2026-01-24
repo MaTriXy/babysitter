@@ -572,8 +572,11 @@ export const dependencyDiscoveryTask = defineTask('dependency-discovery', (args,
 
 // Task 2: Vulnerability Scanning
 export const vulnerabilityScanningTask = defineTask('vulnerability-scanning', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Run vulnerability scan with ${args.tool}`,
+  skill: {
+    name: 'dependency-scanner',
+  },
   agent: {
     name: `${args.tool}-scanner`,
     prompt: {

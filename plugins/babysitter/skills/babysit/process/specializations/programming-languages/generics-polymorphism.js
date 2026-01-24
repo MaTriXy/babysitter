@@ -253,7 +253,7 @@ export const genericSyntaxTask = defineTask('generic-syntax', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Generic Syntax - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Design generic syntax',
@@ -293,7 +293,7 @@ export const typeParametersTask = defineTask('type-parameters', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Type Parameters - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement type parameters',
@@ -333,7 +333,7 @@ export const typeBoundsTask = defineTask('type-bounds', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Type Bounds - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement type bounds',
@@ -373,7 +373,7 @@ export const traitsInterfacesTask = defineTask('traits-interfaces', (args, taskC
   kind: 'agent',
   title: `Phase 4: Traits/Interfaces - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement traits/interfaces',
@@ -413,7 +413,7 @@ export const genericTypeInferenceTask = defineTask('generic-type-inference', (ar
   kind: 'agent',
   title: `Phase 5: Generic Type Inference - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement type inference for generics',
@@ -453,7 +453,7 @@ export const instantiationStrategyTask = defineTask('instantiation-strategy', (a
   kind: 'agent',
   title: `Phase 6: Instantiation Strategy - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement instantiation strategy',
@@ -494,7 +494,7 @@ export const varianceTask = defineTask('variance', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Variance - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement variance',
@@ -534,7 +534,7 @@ export const genericsIntegrationTask = defineTask('generics-integration', (args,
   kind: 'agent',
   title: `Phase 8: Generics Integration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Integrate generics system',
@@ -574,7 +574,7 @@ export const genericsTestingTask = defineTask('generics-testing', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: Generics Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive generics tests',
@@ -615,7 +615,7 @@ export const genericsDocumentationTask = defineTask('generics-documentation', (a
   kind: 'agent',
   title: `Phase 10: Generics Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate generics documentation',

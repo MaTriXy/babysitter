@@ -74,10 +74,10 @@ export async function process(inputs, ctx) {
 }
 
 export const projectSetupTask = defineTask('nestjs-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `NestJS Setup - ${args.projectName}`,
-  agent: {
-    name: 'nestjs-developer',
+  skill: {
+    name: 'nestjs-skill',
     prompt: {
       role: 'NestJS Developer',
       task: 'Set up NestJS microservices project',
@@ -221,7 +221,7 @@ export const documentationTask = defineTask('nestjs-documentation', (args, taskC
   kind: 'agent',
   title: `NestJS Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate NestJS documentation',

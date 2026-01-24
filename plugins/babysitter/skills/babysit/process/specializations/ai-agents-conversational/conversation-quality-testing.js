@@ -212,7 +212,7 @@ export const intentAccuracyTestingTask = defineTask('intent-accuracy-testing', (
   kind: 'agent',
   title: `Test Intent Accuracy - ${args.systemName}`,
   agent: {
-    name: 'intent-tester',
+    name: 'llm-judge',  // AG-SAF-005: Implements LLM-as-judge evaluation patterns
     prompt: {
       role: 'Intent Accuracy Tester',
       task: 'Test intent classification accuracy',

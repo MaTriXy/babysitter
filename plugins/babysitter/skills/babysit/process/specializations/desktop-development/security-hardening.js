@@ -116,8 +116,11 @@ export async function process(inputs, ctx) {
 export const securityAuditTask = defineTask('security-audit', (args, taskCtx) => ({
   kind: 'agent',
   title: `Security Audit - ${args.projectName}`,
+  skill: {
+    name: 'electron-ipc-security-audit',
+  },
   agent: {
-    name: 'security-auditor',
+    name: 'desktop-security-auditor',
     prompt: { role: 'Desktop Security Auditor', task: 'Conduct security audit', context: args, instructions: ['1. Scan for common vulnerabilities', '2. Check Electron/framework settings', '3. Review IPC channels', '4. Check for nodeIntegration issues', '5. Review remote module usage', '6. Check for CSP violations', '7. Assess risk level', '8. Generate audit report'] },
     outputSchema: { type: 'object', required: ['vulnerabilities', 'riskLevel', 'artifacts'], properties: { vulnerabilities: { type: 'array' }, riskLevel: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -140,8 +143,11 @@ export const implementCspTask = defineTask('implement-csp', (args, taskCtx) => (
 export const implementContextIsolationTask = defineTask('implement-context-isolation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Context Isolation - ${args.projectName}`,
+  skill: {
+    name: 'electron-main-preload-generator',
+  },
   agent: {
-    name: 'isolation-developer',
+    name: 'electron-architect',
     prompt: { role: 'Context Isolation Developer', task: 'Implement context isolation', context: args, instructions: ['1. Enable contextIsolation', '2. Disable nodeIntegration', '3. Configure preload script', '4. Use contextBridge', '5. Expose safe APIs only', '6. Validate exposed APIs', '7. Handle legacy code', '8. Generate isolation configuration'] },
     outputSchema: { type: 'object', required: ['enabled', 'artifacts'], properties: { enabled: { type: 'boolean' }, exposedApis: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -152,8 +158,11 @@ export const implementContextIsolationTask = defineTask('implement-context-isola
 export const implementSandboxingTask = defineTask('implement-sandboxing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Sandboxing - ${args.projectName}`,
+  skill: {
+    name: 'sandbox-entitlements-auditor',
+  },
   agent: {
-    name: 'sandbox-developer',
+    name: 'desktop-security-auditor',
     prompt: { role: 'Sandbox Developer', task: 'Implement process sandboxing', context: args, instructions: ['1. Enable renderer sandbox', '2. Configure sandbox flags', '3. Handle sandbox limitations', '4. Configure utility processes', '5. Handle native modules', '6. Configure platform-specific sandbox', '7. Test sandbox restrictions', '8. Generate sandbox configuration'] },
     outputSchema: { type: 'object', required: ['enabled', 'artifacts'], properties: { enabled: { type: 'boolean' }, restrictions: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -176,8 +185,11 @@ export const implementSecureIpcTask = defineTask('implement-secure-ipc', (args, 
 export const implementPreloadSecurityTask = defineTask('implement-preload-security', (args, taskCtx) => ({
   kind: 'agent',
   title: `Preload Security - ${args.projectName}`,
+  skill: {
+    name: 'electron-main-preload-generator',
+  },
   agent: {
-    name: 'preload-security-developer',
+    name: 'electron-architect',
     prompt: { role: 'Preload Security Developer', task: 'Implement secure preload scripts', context: args, instructions: ['1. Use contextBridge.exposeInMainWorld', '2. Expose minimal API surface', '3. Validate all inputs', '4. Avoid exposing Node.js', '5. Use typed API definitions', '6. Implement wrapper functions', '7. Add security comments', '8. Generate secure preload'] },
     outputSchema: { type: 'object', required: ['exposedApis', 'artifacts'], properties: { exposedApis: { type: 'array' }, preloadPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -201,7 +213,7 @@ export const validateSecurityTask = defineTask('validate-security', (args, taskC
   kind: 'agent',
   title: `Validate Security - ${args.projectName}`,
   agent: {
-    name: 'security-validator',
+    name: 'update-security-analyst',
     prompt: { role: 'Security Validator', task: 'Validate security hardening', context: args, instructions: ['1. Re-scan for vulnerabilities', '2. Verify CSP enforcement', '3. Test context isolation', '4. Verify sandbox', '5. Test IPC security', '6. Calculate hardening score', '7. Count mitigated issues', '8. Generate security report'] },
     outputSchema: { type: 'object', required: ['hardeningScore', 'mitigatedCount', 'artifacts'], properties: { hardeningScore: { type: 'number' }, mitigatedCount: { type: 'number' }, remainingIssues: { type: 'array' }, artifacts: { type: 'array' } } }
   },

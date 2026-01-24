@@ -86,7 +86,7 @@ export const observabilityArchitectureTask = defineTask('observability-architect
   kind: 'agent',
   title: `Observability Architecture - ${args.projectName}`,
   agent: {
-    name: 'mcp-architect',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Observability Architect', task: 'Design observability architecture', context: args, instructions: ['1. Define observability pillars', '2. Plan instrumentation', '3. Design data pipeline', '4. Plan dashboards', '5. Generate architecture doc'], outputFormat: 'JSON with observability architecture' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -98,7 +98,7 @@ export const structuredLoggingTask = defineTask('structured-logging', (args, tas
   kind: 'agent',
   title: `Structured Logging - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Structured Logging Specialist', task: 'Implement structured logging', context: args, instructions: ['1. Configure logger', '2. Define log schema', '3. Add correlation IDs', '4. Configure outputs', '5. Generate logging code'], outputFormat: 'JSON with structured logging' },
     outputSchema: { type: 'object', required: ['loggingPath', 'artifacts'], properties: { loggingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -110,7 +110,7 @@ export const distributedTracingTask = defineTask('distributed-tracing', (args, t
   kind: 'agent',
   title: `Distributed Tracing - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Distributed Tracing Specialist', task: 'Implement distributed tracing', context: args, instructions: ['1. Configure OpenTelemetry', '2. Add span instrumentation', '3. Propagate context', '4. Configure exporters', '5. Generate tracing code'], outputFormat: 'JSON with distributed tracing' },
     outputSchema: { type: 'object', required: ['tracingPath', 'artifacts'], properties: { tracingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -122,7 +122,7 @@ export const metricsCollectionTask = defineTask('metrics-collection', (args, tas
   kind: 'agent',
   title: `Metrics Collection - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Metrics Collection Specialist', task: 'Implement metrics collection', context: args, instructions: ['1. Define MCP metrics', '2. Add counters and gauges', '3. Track latencies', '4. Configure Prometheus', '5. Generate metrics code'], outputFormat: 'JSON with metrics collection' },
     outputSchema: { type: 'object', required: ['metricsPath', 'artifacts'], properties: { metricsPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -134,7 +134,7 @@ export const mcpInspectorTask = defineTask('mcp-inspector', (args, taskCtx) => (
   kind: 'agent',
   title: `MCP Inspector - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Inspector Specialist', task: 'Set up MCP inspector', context: args, instructions: ['1. Configure inspector', '2. Set up message logging', '3. Add protocol viewer', '4. Enable breakpoints', '5. Generate inspector config'], outputFormat: 'JSON with MCP inspector' },
     outputSchema: { type: 'object', required: ['inspectorPath', 'artifacts'], properties: { inspectorPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -146,7 +146,7 @@ export const debuggingToolsTask = defineTask('debugging-tools', (args, taskCtx) 
   kind: 'agent',
   title: `Debugging Tools - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'MCP Debugging Specialist', task: 'Implement debugging tools', context: args, instructions: ['1. Add debug mode', '2. Implement request replay', '3. Add state inspection', '4. Create debug CLI', '5. Generate debugging tools'], outputFormat: 'JSON with debugging tools' },
     outputSchema: { type: 'object', required: ['debugPath', 'artifacts'], properties: { debugPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -158,7 +158,7 @@ export const errorTrackingTask = defineTask('error-tracking', (args, taskCtx) =>
   kind: 'agent',
   title: `Error Tracking - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Error Tracking Specialist', task: 'Implement error tracking', context: args, instructions: ['1. Configure error capture', '2. Add stack trace handling', '3. Integrate Sentry/similar', '4. Add error grouping', '5. Generate error tracking code'], outputFormat: 'JSON with error tracking' },
     outputSchema: { type: 'object', required: ['errorPath', 'artifacts'], properties: { errorPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -170,7 +170,7 @@ export const alertingSetupTask = defineTask('alerting-setup', (args, taskCtx) =>
   kind: 'agent',
   title: `Alerting Setup - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'mcp-protocol-expert',
     prompt: { role: 'Alerting Specialist', task: 'Set up alerting', context: args, instructions: ['1. Define alert rules', '2. Configure thresholds', '3. Set up notifications', '4. Create runbooks', '5. Generate alerting config'], outputFormat: 'JSON with alerting setup' },
     outputSchema: { type: 'object', required: ['alertingPath', 'artifacts'], properties: { alertingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -182,7 +182,7 @@ export const monitoringTestingTask = defineTask('monitoring-testing', (args, tas
   kind: 'agent',
   title: `Monitoring Testing - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: { role: 'Monitoring Testing Specialist', task: 'Test monitoring setup', context: args, instructions: ['1. Test log output', '2. Verify traces', '3. Check metrics', '4. Test alerts', '5. Generate test suite'], outputFormat: 'JSON with monitoring tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -194,7 +194,7 @@ export const monitoringDocumentationTask = defineTask('monitoring-documentation'
   kind: 'agent',
   title: `Monitoring Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: { role: 'Monitoring Documentation Specialist', task: 'Document monitoring system', context: args, instructions: ['1. Document logging format', '2. Document metrics', '3. Add runbooks', '4. Document debugging', '5. Generate documentation'], outputFormat: 'JSON with monitoring documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

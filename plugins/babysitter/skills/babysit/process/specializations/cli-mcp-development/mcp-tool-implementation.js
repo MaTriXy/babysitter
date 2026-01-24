@@ -280,7 +280,7 @@ export const toolDefinitionTask = defineTask('tool-definition', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Tool Definition - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Tool Designer with expertise in AI-consumable API design',
       task: 'Define tool purpose and use cases',
@@ -325,7 +325,7 @@ export const schemaDesignTask = defineTask('schema-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Schema Design - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'JSON Schema Designer',
       task: 'Design input schema with JSON Schema',
@@ -368,7 +368,7 @@ export const parameterValidationTask = defineTask('parameter-validation', (args,
   kind: 'agent',
   title: `Phase 3: Parameter Validation - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Validation Specialist',
       task: 'Implement parameter validation',
@@ -411,7 +411,7 @@ export const executionHandlerTask = defineTask('execution-handler', (args, taskC
   kind: 'agent',
   title: `Phase 4: Execution Handler - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Tool Implementation Specialist',
       task: 'Create tool execution handler',
@@ -454,7 +454,7 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Error Handling - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Error Handling Specialist',
       task: 'Add error handling with MCP error codes',
@@ -496,7 +496,7 @@ export const resultFormattingTask = defineTask('result-formatting', (args, taskC
   kind: 'agent',
   title: `Phase 6: Result Formatting - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Result Formatting Specialist',
       task: 'Implement result formatting',
@@ -537,7 +537,7 @@ export const rateLimitingTask = defineTask('rate-limiting', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Rate Limiting - ${args.toolName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-tool-designer',
     prompt: {
       role: 'MCP Rate Limiting Specialist',
       task: 'Add rate limiting',
@@ -576,7 +576,7 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Test Suite - ${args.toolName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: {
       role: 'MCP Testing Specialist',
       task: 'Create comprehensive tests',
@@ -620,7 +620,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.toolName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: {
       role: 'MCP Tool Documentation Specialist',
       task: 'Write tool documentation for AI consumption',
@@ -666,7 +666,7 @@ export const clientTestingTask = defineTask('client-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 10: Client Testing - ${args.toolName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: {
       role: 'MCP Integration Tester',
       task: 'Test with MCP client',

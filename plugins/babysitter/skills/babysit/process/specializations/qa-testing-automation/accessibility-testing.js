@@ -576,7 +576,7 @@ export const wcagStandardsReviewTask = defineTask('wcag-standards-review', (args
   kind: 'agent',
   title: `Phase 1: WCAG Standards Review - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Accessibility Specialist and WCAG Expert',
       task: 'Review WCAG 2.1/2.2 standards and create accessibility testing requirements',
@@ -643,7 +643,7 @@ export const accessibilityFrameworkSetupTask = defineTask('accessibility-framewo
   kind: 'agent',
   title: `Phase 2: Accessibility Framework Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Test Automation Engineer specializing in Accessibility Testing',
       task: 'Set up comprehensive accessibility testing framework with tools and configuration',
@@ -723,7 +723,7 @@ export const automatedAccessibilityScanTask = defineTask('automated-accessibilit
   kind: 'agent',
   title: `Phase 3: Automated Scan - ${args.page}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Accessibility Testing Engineer',
       task: 'Run comprehensive automated accessibility scan on specified page',
@@ -797,7 +797,7 @@ export const componentAccessibilityTestTask = defineTask('component-accessibilit
   kind: 'agent',
   title: `Phase 4: Component Test - ${args.component.name}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Component Testing Specialist',
       task: 'Test accessibility of individual UI component in isolation',
@@ -854,7 +854,7 @@ export const keyboardNavigationTestTask = defineTask('keyboard-navigation-test',
   kind: 'agent',
   title: `Phase 5: Keyboard Navigation Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Keyboard Accessibility Specialist',
       task: 'Test keyboard-only navigation and interaction across all pages',
@@ -922,7 +922,7 @@ export const colorContrastAnalysisTask = defineTask('color-contrast-analysis', (
   kind: 'agent',
   title: `Phase 6: Color Contrast Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Visual Accessibility Specialist',
       task: 'Analyze color contrast ratios across all pages for WCAG compliance',
@@ -991,7 +991,7 @@ export const screenReaderCompatibilityTask = defineTask('screen-reader-compatibi
   kind: 'agent',
   title: `Phase 7: Screen Reader Compatibility - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Assistive Technology Specialist',
       task: 'Test and document screen reader compatibility',
@@ -1058,7 +1058,7 @@ export const manualTestingGuideTask = defineTask('manual-testing-guide', (args, 
   kind: 'agent',
   title: `Phase 8: Manual Testing Guide Generation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Accessibility QA Lead',
       task: 'Create comprehensive manual accessibility testing guide',
@@ -1123,7 +1123,7 @@ export const violationAnalysisTask = defineTask('violation-analysis', (args, tas
   kind: 'agent',
   title: `Phase 9: Violation Analysis and Prioritization - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Senior Accessibility Analyst',
       task: 'Analyze all accessibility violations and prioritize remediation',
@@ -1206,7 +1206,7 @@ export const comprehensiveReportTask = defineTask('comprehensive-accessibility-r
   kind: 'agent',
   title: `Phase 10: Comprehensive Accessibility Report - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Accessibility Documentation Specialist',
       task: 'Generate comprehensive accessibility testing report',
@@ -1289,7 +1289,7 @@ export const remediationPlanTask = defineTask('remediation-plan', (args, taskCtx
   kind: 'agent',
   title: `Phase 11: Remediation Plan Generation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Accessibility Remediation Strategist',
       task: 'Create actionable remediation plan to address accessibility violations',
@@ -1383,7 +1383,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 12: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer specializing in Quality Gates',
       task: 'Set up CI/CD integration for automated accessibility testing',
@@ -1445,7 +1445,7 @@ export const accessibilityMonitoringTask = defineTask('accessibility-monitoring'
   kind: 'agent',
   title: `Phase 13: Accessibility Monitoring Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Observability Engineer',
       task: 'Set up continuous accessibility monitoring and alerting',
@@ -1515,7 +1515,7 @@ export const finalAccessibilityReviewTask = defineTask('final-accessibility-revi
   kind: 'agent',
   title: `Phase 14: Final Accessibility Review - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'accessibility-testing-expert', // AG-008: Accessibility Testing Expert Agent
     prompt: {
       role: 'Principal Accessibility Consultant',
       task: 'Conduct final comprehensive accessibility review and provide deployment recommendation',

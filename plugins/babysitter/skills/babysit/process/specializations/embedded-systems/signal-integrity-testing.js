@@ -208,7 +208,7 @@ export const signalTestSetupTask = defineTask('signal-test-setup', (args, taskCt
   kind: 'agent',
   title: `Phase 1: Test Setup - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Set up signal integrity test equipment',
@@ -249,7 +249,7 @@ export const voltageLevelVerificationTask = defineTask('voltage-level-verificati
   kind: 'agent',
   title: `Phase 2: Voltage Levels - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Verify voltage levels',
@@ -290,7 +290,7 @@ export const signalTimingAnalysisTask = defineTask('signal-timing-analysis', (ar
   kind: 'agent',
   title: `Phase 3: Timing Analysis - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Analyze signal timing',
@@ -333,7 +333,7 @@ export const signalQualityMeasurementTask = defineTask('signal-quality-measureme
   kind: 'agent',
   title: `Phase 4: Signal Quality - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Measure signal quality',
@@ -375,7 +375,7 @@ export const protocolComplianceTask = defineTask('protocol-compliance', (args, t
   kind: 'agent',
   title: `Phase 5: Protocol Compliance - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Test protocol compliance',
@@ -416,7 +416,7 @@ export const noiseAnalysisTask = defineTask('noise-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Noise Analysis - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Signal Integrity Engineer',
       task: 'Analyze crosstalk and noise',
@@ -458,7 +458,7 @@ export const signalIntegrityReportTask = defineTask('signal-integrity-report', (
   kind: 'agent',
   title: `Phase 7: SI Report - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate signal integrity report',

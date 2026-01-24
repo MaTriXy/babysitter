@@ -264,7 +264,7 @@ export const designSpecificationTask = defineTask('design-specification', (args,
   kind: 'agent',
   title: `Phase 1: Design Specification - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Create detailed design specification for VHDL module',
@@ -307,7 +307,7 @@ export const entityDeclarationTask = defineTask('entity-declaration', (args, tas
   kind: 'agent',
   title: `Phase 2: Entity Declaration - ${args.moduleName}`,
   agent: {
-    name: 'vhdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (VHDL)
     prompt: {
       role: 'VHDL Design Engineer',
       task: 'Develop VHDL entity declaration with generics and ports',
@@ -351,7 +351,7 @@ export const architectureImplementationTask = defineTask('architecture-implement
   kind: 'agent',
   title: `Phase 3: Architecture Implementation - ${args.moduleName}`,
   agent: {
-    name: 'vhdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (VHDL)
     prompt: {
       role: 'VHDL Design Engineer',
       task: 'Implement RTL architecture in VHDL',
@@ -395,7 +395,7 @@ export const packageDevelopmentTask = defineTask('package-development', (args, t
   kind: 'agent',
   title: `Phase 4: Package Development - ${args.moduleName}`,
   agent: {
-    name: 'vhdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (VHDL)
     prompt: {
       role: 'VHDL Design Engineer',
       task: 'Develop VHDL packages for types and functions',
@@ -439,7 +439,7 @@ export const componentDeclarationTask = defineTask('component-declaration', (arg
   kind: 'agent',
   title: `Phase 5: Component Declaration - ${args.moduleName}`,
   agent: {
-    name: 'vhdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent (VHDL)
     prompt: {
       role: 'VHDL Design Engineer',
       task: 'Create component declarations and instantiation templates',
@@ -482,7 +482,7 @@ export const synthesisAttributesTask = defineTask('synthesis-attributes', (args,
   kind: 'agent',
   title: `Phase 6: Synthesis Attributes - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'synthesis-expert', // AG-007: Synthesis Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Add synthesis attributes and pragmas',
@@ -525,7 +525,7 @@ export const vhdlTestbenchTask = defineTask('vhdl-testbench', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 7: Testbench Development - ${args.moduleName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'VHDL Verification Engineer',
       task: 'Develop VHDL testbench for module verification',
@@ -569,7 +569,7 @@ export const vhdlCodeQualityTask = defineTask('vhdl-code-quality', (args, taskCt
   kind: 'agent',
   title: `Phase 8: Code Quality Check - ${args.moduleName}`,
   agent: {
-    name: 'code-reviewer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent (code quality)
     prompt: {
       role: 'VHDL Code Quality Reviewer',
       task: 'Check VHDL code quality and synthesis guidelines',

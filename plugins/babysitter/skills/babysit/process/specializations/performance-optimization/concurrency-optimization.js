@@ -98,7 +98,7 @@ export const analyzeConcurrencyModelTask = defineTask('analyze-concurrency-model
   kind: 'agent',
   title: `Analyze Concurrency Model - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze current concurrency model', context: args,
       instructions: ['1. Identify threading model', '2. Map shared resources', '3. Document synchronization', '4. Identify patterns', '5. Document model'],
       outputFormat: 'JSON with concurrency model analysis' },
@@ -112,7 +112,7 @@ export const identifyContentionPointsTask = defineTask('identify-contention-poin
   kind: 'agent',
   title: `Identify Contention Points - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Identify contention points', context: args,
       instructions: ['1. Profile lock contention', '2. Identify hot locks', '3. Measure wait times', '4. Map contention sources', '5. Document findings'],
       outputFormat: 'JSON with contention point analysis' },
@@ -126,7 +126,7 @@ export const analyzeLockUsageTask = defineTask('analyze-lock-usage', (args, task
   kind: 'agent',
   title: `Analyze Lock Usage - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze lock usage patterns', context: args,
       instructions: ['1. Map lock hierarchy', '2. Identify lock scope issues', '3. Find unnecessary locks', '4. Detect potential deadlocks', '5. Document issues'],
       outputFormat: 'JSON with lock usage analysis' },
@@ -140,7 +140,7 @@ export const designLockOptimizationsTask = defineTask('design-lock-optimizations
   kind: 'agent',
   title: `Design Lock Optimizations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Design lock optimizations', context: args,
       instructions: ['1. Reduce lock scope', '2. Use finer-grained locks', '3. Consider read-write locks', '4. Design lock striping', '5. Document optimizations'],
       outputFormat: 'JSON with lock optimization designs' },
@@ -154,7 +154,7 @@ export const evaluateLockFreeAlgorithmsTask = defineTask('evaluate-lock-free-alg
   kind: 'agent',
   title: `Evaluate Lock-Free Algorithms - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Evaluate lock-free algorithm opportunities', context: args,
       instructions: ['1. Identify CAS opportunities', '2. Evaluate atomic operations', '3. Consider concurrent collections', '4. Assess complexity tradeoffs', '5. Document recommendations'],
       outputFormat: 'JSON with lock-free evaluation' },
@@ -168,7 +168,7 @@ export const configureThreadPoolsTask = defineTask('configure-thread-pools', (ar
   kind: 'agent',
   title: `Configure Thread Pools - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure thread pools for optimal performance', context: args,
       instructions: ['1. Analyze workload types', '2. Size CPU-bound pools', '3. Size I/O-bound pools', '4. Configure queue strategies', '5. Document configuration'],
       outputFormat: 'JSON with thread pool configuration' },
@@ -182,7 +182,7 @@ export const implementAsyncProcessingTask = defineTask('implement-async-processi
   kind: 'agent',
   title: `Implement Async Processing - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement async processing patterns', context: args,
       instructions: ['1. Identify async opportunities', '2. Design async workflows', '3. Implement non-blocking I/O', '4. Add async error handling', '5. Document patterns'],
       outputFormat: 'JSON with async processing implementation' },
@@ -196,7 +196,7 @@ export const benchmarkConcurrentPerformanceTask = defineTask('benchmark-concurre
   kind: 'agent',
   title: `Benchmark Concurrent Performance - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Benchmark concurrent performance', context: args,
       instructions: ['1. Design concurrent benchmarks', '2. Measure throughput', '3. Measure contention', '4. Compare before/after', '5. Document results'],
       outputFormat: 'JSON with benchmark results' },
@@ -210,7 +210,7 @@ export const documentConcurrencyPatternsTask = defineTask('document-concurrency-
   kind: 'agent',
   title: `Document Concurrency Patterns - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'throughput-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Document concurrency optimization patterns', context: args,
       instructions: ['1. Document lock patterns', '2. Document async patterns', '3. Include thread pool guidelines', '4. Add anti-patterns', '5. Generate report'],
       outputFormat: 'JSON with concurrency documentation' },

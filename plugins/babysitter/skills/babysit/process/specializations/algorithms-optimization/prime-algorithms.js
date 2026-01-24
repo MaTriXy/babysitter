@@ -50,7 +50,7 @@ export const sieveImplementationTask = defineTask('sieve-implementation', (args,
   kind: 'agent',
   title: 'Implement Sieve of Eratosthenes',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Implement Sieve of Eratosthenes',
@@ -72,7 +72,7 @@ export const primalityTestingTask = defineTask('primality-testing', (args, taskC
   kind: 'agent',
   title: 'Implement Primality Testing',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Implement primality testing algorithms',
@@ -94,7 +94,7 @@ export const factorizationTask = defineTask('factorization', (args, taskCtx) => 
   kind: 'agent',
   title: 'Implement Prime Factorization',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Algorithm Expert',
       task: 'Implement prime factorization',
@@ -116,7 +116,7 @@ export const primeLibraryTask = defineTask('prime-library', (args, taskCtx) => (
   kind: 'agent',
   title: 'Create Prime Library',
   agent: {
-    name: 'general-purpose',
+    name: 'number-theory-specialist',
     prompt: {
       role: 'Library Designer',
       task: 'Create prime algorithms library',

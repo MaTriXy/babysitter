@@ -232,7 +232,7 @@ export const upgradePathAnalysisTask = defineTask('upgrade-path-analysis', (args
   kind: 'agent',
   title: `Phase 1: Upgrade Path Analysis - ${args.projectName}`,
   agent: {
-    name: 'upgrade-analyst',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Framework Migration Specialist',
       task: 'Analyze upgrade path between framework versions',
@@ -275,7 +275,7 @@ export const impactAssessmentTask = defineTask('impact-assessment', (args, taskC
   kind: 'agent',
   title: `Phase 2: Impact Assessment - ${args.projectName}`,
   agent: {
-    name: 'impact-analyst',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Code Impact Analyst',
       task: 'Assess impact of framework upgrade on codebase',
@@ -318,7 +318,7 @@ export const testSuitePreparationTask = defineTask('test-suite-preparation', (ar
   kind: 'agent',
   title: `Phase 3: Test Suite Preparation - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Prepare test suite for framework upgrade',
@@ -360,7 +360,7 @@ export const dependencyUpdatesTask = defineTask('dependency-updates', (args, tas
   kind: 'agent',
   title: `Phase 4: Dependency Updates - ${args.projectName}`,
   agent: {
-    name: 'dependency-engineer',
+    name: 'dependency-modernization-agent',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Update framework and related dependencies',
@@ -402,7 +402,7 @@ export const codeMigrationTask = defineTask('code-migration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Code Migration - ${args.projectName}`,
   agent: {
-    name: 'migration-developer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Senior Developer',
       task: 'Migrate code to new framework version',
@@ -444,7 +444,7 @@ export const testingValidationTask = defineTask('testing-validation', (args, tas
   kind: 'agent',
   title: `Phase 6: Testing and Validation - ${args.projectName}`,
   agent: {
-    name: 'validation-engineer',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Lead',
       task: 'Test and validate upgraded codebase',
@@ -487,7 +487,7 @@ export const stagingDeploymentTask = defineTask('staging-deployment', (args, tas
   kind: 'agent',
   title: `Phase 7: Staging Deployment - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'cutover-coordinator',
     prompt: {
       role: 'Release Engineer',
       task: 'Deploy upgraded application to staging',
@@ -529,7 +529,7 @@ export const productionDeploymentTask = defineTask('production-deployment', (arg
   kind: 'agent',
   title: `Phase 8: Production Deployment - ${args.projectName}`,
   agent: {
-    name: 'production-engineer',
+    name: 'cutover-coordinator',
     prompt: {
       role: 'Production Engineer',
       task: 'Deploy upgraded application to production',

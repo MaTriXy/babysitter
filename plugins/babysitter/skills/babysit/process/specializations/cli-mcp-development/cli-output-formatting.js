@@ -264,7 +264,7 @@ export const formatStrategyTask = defineTask('format-strategy', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Format Strategy - ${args.projectName}`,
   agent: {
-    name: 'cli-ux-designer',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Output Designer',
       task: 'Design output format strategy',
@@ -303,7 +303,7 @@ export const textOutputTask = defineTask('text-output', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Text Output - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Text Output Specialist',
       task: 'Implement human-readable text output',
@@ -344,7 +344,7 @@ export const jsonOutputTask = defineTask('json-output', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: JSON Output - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI JSON Output Specialist',
       task: 'Add JSON output mode',
@@ -384,7 +384,7 @@ export const tableFormattingTask = defineTask('table-formatting', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Table Formatting - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Table Formatting Specialist',
       task: 'Create table formatting for lists',
@@ -425,7 +425,7 @@ export const colorStylingTask = defineTask('color-styling', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: Color and Styling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Color Styling Specialist',
       task: 'Implement color and styling helpers',
@@ -465,7 +465,7 @@ export const quietModeTask = defineTask('quiet-mode', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Quiet Mode - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Mode Designer',
       task: 'Add quiet mode',
@@ -503,7 +503,7 @@ export const verboseModeTask = defineTask('verbose-mode', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Verbose Mode - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Debug Mode Designer',
       task: 'Create verbose mode with debug info',
@@ -541,7 +541,7 @@ export const outputToFileTask = defineTask('output-to-file', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 8: Output to File - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI File Output Specialist',
       task: 'Implement output to file option',
@@ -579,7 +579,7 @@ export const pipedOutputDetectionTask = defineTask('piped-output-detection', (ar
   kind: 'agent',
   title: `Phase 9: Piped Output Detection - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-output-architect',
     prompt: {
       role: 'CLI Pipe Detection Specialist',
       task: 'Handle piped output detection',
@@ -618,7 +618,7 @@ export const crossPlatformTestingTask = defineTask('cross-platform-testing', (ar
   kind: 'agent',
   title: `Phase 10: Cross-Platform Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: {
       role: 'CLI Cross-Platform Tester',
       task: 'Test cross-platform output',
@@ -659,7 +659,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'CLI Output Documentation Specialist',
       task: 'Document output options',

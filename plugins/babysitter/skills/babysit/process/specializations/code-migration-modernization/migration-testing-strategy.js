@@ -289,7 +289,7 @@ export const testScopeDefinitionTask = defineTask('test-scope-definition', (args
   kind: 'agent',
   title: `Phase 1: Test Scope Definition - ${args.projectName}`,
   agent: {
-    name: 'test-strategist',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'QA Architect',
       task: 'Define comprehensive test scope for migration',
@@ -332,7 +332,7 @@ export const characterizationTestDevelopmentTask = defineTask('characterization-
   kind: 'agent',
   title: `Phase 2: Characterization Test Development - ${args.projectName}`,
   agent: {
-    name: 'characterization-developer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Test Developer',
       task: 'Develop characterization tests to capture legacy behavior',
@@ -374,7 +374,7 @@ export const regressionTestPlanningTask = defineTask('regression-test-planning',
   kind: 'agent',
   title: `Phase 3: Regression Test Planning - ${args.projectName}`,
   agent: {
-    name: 'regression-planner',
+    name: 'regression-detector',
     prompt: {
       role: 'Test Lead',
       task: 'Plan regression test suite for migration',
@@ -417,7 +417,7 @@ export const dataValidationTestDesignTask = defineTask('data-validation-test-des
   kind: 'agent',
   title: `Phase 4: Data Validation Test Design - ${args.projectName}`,
   agent: {
-    name: 'data-validation-designer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Data Quality Engineer',
       task: 'Design data validation test suite',
@@ -458,7 +458,7 @@ export const integrationTestPlanningTask = defineTask('integration-test-planning
   kind: 'agent',
   title: `Phase 5: Integration Test Planning - ${args.projectName}`,
   agent: {
-    name: 'integration-planner',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Integration Test Lead',
       task: 'Plan integration tests for migration',
@@ -500,7 +500,7 @@ export const performanceTestDesignTask = defineTask('performance-test-design', (
   kind: 'agent',
   title: `Phase 6: Performance Test Design - ${args.projectName}`,
   agent: {
-    name: 'performance-designer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Performance Engineer',
       task: 'Design performance test suite for migration',
@@ -542,7 +542,7 @@ export const testAutomationSetupTask = defineTask('test-automation-setup', (args
   kind: 'agent',
   title: `Phase 7: Test Automation Setup - ${args.projectName}`,
   agent: {
-    name: 'automation-engineer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Set up test automation framework',
@@ -584,7 +584,7 @@ export const testExecutionPlanningTask = defineTask('test-execution-planning', (
   kind: 'agent',
   title: `Phase 8: Test Execution Planning - ${args.projectName}`,
   agent: {
-    name: 'execution-planner',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Test Manager',
       task: 'Plan test execution aligned with migration phases',
@@ -626,7 +626,7 @@ export const defectManagementSetupTask = defineTask('defect-management-setup', (
   kind: 'agent',
   title: `Phase 9: Defect Management Setup - ${args.projectName}`,
   agent: {
-    name: 'defect-manager',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'QA Manager',
       task: 'Set up defect management process',
@@ -668,7 +668,7 @@ export const testReportingSetupTask = defineTask('test-reporting-setup', (args, 
   kind: 'agent',
   title: `Phase 10: Test Reporting Setup - ${args.projectName}`,
   agent: {
-    name: 'reporting-engineer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Test Reporting Specialist',
       task: 'Set up test reporting and dashboards',

@@ -279,7 +279,7 @@ export const uriSchemeDesignTask = defineTask('uri-scheme-design', (args, taskCt
   kind: 'agent',
   title: `Phase 1: URI Scheme Design - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Resource URI Designer',
       task: 'Define resource URI scheme',
@@ -321,7 +321,7 @@ export const listingHandlerTask = defineTask('listing-handler', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Listing Handler - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Resource Listing Specialist',
       task: 'Implement resource listing handler',
@@ -363,7 +363,7 @@ export const contentFetchingTask = defineTask('content-fetching', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Content Fetching - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Resource Content Specialist',
       task: 'Create resource content fetching',
@@ -406,7 +406,7 @@ export const mimeTypeDetectionTask = defineTask('mime-type-detection', (args, ta
   kind: 'agent',
   title: `Phase 4: MIME Type Detection - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Content Type Specialist',
       task: 'Add MIME type detection',
@@ -446,7 +446,7 @@ export const resourceTemplatesTask = defineTask('resource-templates', (args, tas
   kind: 'agent',
   title: `Phase 5: Resource Templates - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Resource Template Designer',
       task: 'Implement resource templates (parameterized URIs)',
@@ -486,7 +486,7 @@ export const cachingStrategyTask = defineTask('caching-strategy', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Caching Strategy - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Caching Specialist',
       task: 'Add caching strategy',
@@ -526,7 +526,7 @@ export const paginationHandlingTask = defineTask('pagination-handling', (args, t
   kind: 'agent',
   title: `Phase 7: Pagination Handling - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Pagination Specialist',
       task: 'Handle large content with pagination',
@@ -566,7 +566,7 @@ export const subscriptionSupportTask = defineTask('subscription-support', (args,
   kind: 'agent',
   title: `Phase 8: Subscription Support - ${args.resourceType}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-resource-designer',
     prompt: {
       role: 'MCP Subscription Specialist',
       task: 'Implement subscription for resource changes',
@@ -606,7 +606,7 @@ export const resourceTestsTask = defineTask('resource-tests', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Resource Tests - ${args.resourceType}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: {
       role: 'MCP Resource Testing Specialist',
       task: 'Create tests for resource access',
@@ -650,7 +650,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.resourceType}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: {
       role: 'MCP Resource Documentation Specialist',
       task: 'Document resource patterns',

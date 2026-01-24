@@ -605,7 +605,7 @@ export const structureReviewTask = defineTask('structure-review', (args, taskCtx
   kind: 'agent',
   title: `Review IaC Structure: ${args.projectName}`,
   agent: {
-    name: 'iac-structure-reviewer',
+    name: 'iac-specialist',
     prompt: {
       role: 'Senior DevOps Architect specialized in Infrastructure as Code best practices',
       task: 'Review the structure and organization of Infrastructure as Code files',
@@ -670,7 +670,7 @@ export const securityScanTask = defineTask('security-scan', (args, taskCtx) => (
   kind: 'agent',
   title: `Security Scan: ${args.projectName}`,
   agent: {
-    name: 'iac-security-scanner',
+    name: 'security-architect',
     prompt: {
       role: 'Cloud Security Engineer specialized in Infrastructure as Code security',
       task: 'Perform comprehensive security scanning of IaC configurations',
@@ -728,7 +728,7 @@ export const complianceCheckTask = defineTask('compliance-check', (args, taskCtx
   kind: 'agent',
   title: `Compliance Check: ${args.projectName}`,
   agent: {
-    name: 'iac-compliance-checker',
+    name: 'compliance-specialist',
     prompt: {
       role: 'Compliance Auditor specialized in cloud infrastructure compliance',
       task: 'Verify IaC configurations meet compliance requirements',
@@ -771,7 +771,7 @@ export const secretsDetectionTask = defineTask('secrets-detection', (args, taskC
   kind: 'agent',
   title: `Secrets Detection: ${args.projectName}`,
   agent: {
-    name: 'iac-secrets-detector',
+    name: 'security-architect',
     prompt: {
       role: 'Security Engineer specialized in secrets detection and management',
       task: 'Scan IaC files for exposed secrets, credentials, and sensitive data',
@@ -825,7 +825,7 @@ export const resourceValidationTask = defineTask('resource-validation', (args, t
   kind: 'agent',
   title: `Resource Validation: ${args.projectName}`,
   agent: {
-    name: 'iac-resource-validator',
+    name: 'iac-specialist',
     prompt: {
       role: 'Cloud Architect specialized in resource configuration and best practices',
       task: 'Validate resource configurations for correctness, availability, and resilience',
@@ -881,7 +881,7 @@ export const costEstimationTask = defineTask('cost-estimation', (args, taskCtx) 
   kind: 'agent',
   title: `Cost Estimation: ${args.projectName}`,
   agent: {
-    name: 'iac-cost-estimator',
+    name: 'finops-specialist',
     prompt: {
       role: 'Cloud FinOps Analyst specialized in infrastructure cost analysis',
       task: 'Estimate infrastructure costs and compare against budget',
@@ -938,7 +938,7 @@ export const costOptimizationTask = defineTask('cost-optimization', (args, taskC
   kind: 'agent',
   title: `Cost Optimization: ${args.projectName}`,
   agent: {
-    name: 'iac-cost-optimizer',
+    name: 'finops-specialist',
     prompt: {
       role: 'Cloud FinOps Engineer specialized in cost optimization strategies',
       task: 'Identify cost optimization opportunities in IaC configurations',
@@ -996,7 +996,7 @@ export const stateManagementReviewTask = defineTask('state-management-review', (
   kind: 'agent',
   title: `State Management Review: ${args.projectName}`,
   agent: {
-    name: 'iac-state-reviewer',
+    name: 'iac-specialist',
     prompt: {
       role: 'DevOps Engineer specialized in IaC state management and backends',
       task: 'Review state management configuration for safety and best practices',
@@ -1055,7 +1055,7 @@ export const documentationReviewTask = defineTask('documentation-review', (args,
   kind: 'agent',
   title: `Documentation Review: ${args.projectName}`,
   agent: {
-    name: 'iac-documentation-reviewer',
+    name: 'technical-writer',
     prompt: {
       role: 'Technical Writer specialized in infrastructure documentation',
       task: 'Review IaC documentation for completeness and maintainability',
@@ -1125,7 +1125,7 @@ export const planValidationTask = defineTask('plan-validation', (args, taskCtx) 
   kind: 'agent',
   title: `Plan Validation: ${args.projectName}`,
   agent: {
-    name: 'iac-plan-validator',
+    name: 'iac-specialist',
     prompt: {
       role: 'DevOps Engineer specialized in infrastructure change validation',
       task: 'Generate and validate infrastructure plan for proposed changes',
@@ -1175,7 +1175,7 @@ export const iacTestingTask = defineTask('iac-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `IaC Testing: ${args.projectName}`,
   agent: {
-    name: 'iac-tester',
+    name: 'iac-specialist',
     prompt: {
       role: 'Test Engineer specialized in infrastructure testing',
       task: 'Validate IaC testing strategy and execute available tests',
@@ -1219,7 +1219,7 @@ export const finalReportGenerationTask = defineTask('final-report-generation', (
   kind: 'agent',
   title: `Generate Final Report: ${args.projectName}`,
   agent: {
-    name: 'iac-report-generator',
+    name: 'technical-writer',
     prompt: {
       role: 'Technical Lead specialized in infrastructure review reporting',
       task: 'Generate comprehensive IaC review report with executive summary',
@@ -1277,7 +1277,7 @@ export const implementationPlanTask = defineTask('implementation-plan', (args, t
   kind: 'agent',
   title: `Generate Implementation Plan: ${args.projectName}`,
   agent: {
-    name: 'iac-implementation-planner',
+    name: 'iac-specialist',
     prompt: {
       role: 'DevOps Lead specialized in infrastructure remediation planning',
       task: 'Create actionable implementation plan for addressing review findings',

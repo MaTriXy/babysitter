@@ -107,6 +107,7 @@ export const occupancyAnalysisBaselineTask = defineTask('occupancy-analysis-base
   title: `Occupancy Baseline - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze current occupancy',
@@ -148,6 +149,7 @@ export const registerOptimizationTask = defineTask('register-optimization', (arg
   title: `Register Optimization - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize register usage',
@@ -189,6 +191,7 @@ export const sharedMemoryTuningTask = defineTask('shared-memory-tuning', (args, 
   title: `Shared Memory Tuning - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Tune shared memory for occupancy',
@@ -230,6 +233,7 @@ export const blockSizeOptimizationTask = defineTask('block-size-optimization', (
   title: `Block Size Optimization - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize thread block size',
@@ -270,7 +274,8 @@ export const launchBoundsConfigTask = defineTask('launch-bounds-config', (args, 
   kind: 'agent',
   title: `Launch Bounds Configuration - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-performance-engineer',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Configure launch bounds',
@@ -312,6 +317,7 @@ export const finalOccupancyMeasurementTask = defineTask('final-occupancy-measure
   title: `Final Occupancy Measurement - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Measure final occupancy',

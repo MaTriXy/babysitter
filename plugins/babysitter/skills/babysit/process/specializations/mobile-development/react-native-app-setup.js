@@ -287,8 +287,9 @@ export async function process(inputs, ctx) {
 export const projectInitTask = defineTask('project-init', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Project Initialization - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Senior React Native Developer',
       task: 'Initialize React Native project with CLI or Expo',
@@ -336,8 +337,9 @@ export const projectInitTask = defineTask('project-init', (args, taskCtx) => ({
 export const projectStructureTask = defineTask('project-structure', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Project Structure Setup - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-architect',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native Architect',
       task: 'Set up scalable project folder structure',
@@ -381,8 +383,9 @@ export const projectStructureTask = defineTask('project-structure', (args, taskC
 export const codeQualityTask = defineTask('code-quality', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Code Quality Configuration - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'code-quality-engineer',
+    name: 'react-native-expert',
     prompt: {
       role: 'Code Quality Engineer',
       task: 'Configure TypeScript, ESLint, and Prettier for code quality',
@@ -426,8 +429,9 @@ export const codeQualityTask = defineTask('code-quality', (args, taskCtx) => ({
 export const navigationSetupTask = defineTask('navigation-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Navigation Setup - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native Navigation Specialist',
       task: 'Set up React Navigation for app routing',
@@ -472,8 +476,9 @@ export const navigationSetupTask = defineTask('navigation-setup', (args, taskCtx
 export const stateManagementTask = defineTask('state-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: State Management - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native State Management Specialist',
       task: 'Configure state management solution',
@@ -517,8 +522,9 @@ export const stateManagementTask = defineTask('state-management', (args, taskCtx
 export const networkingSetupTask = defineTask('networking-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Networking Setup - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native API Integration Specialist',
       task: 'Set up API client and networking layer',
@@ -562,8 +568,9 @@ export const networkingSetupTask = defineTask('networking-setup', (args, taskCtx
 export const storageConfigTask = defineTask('storage-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Storage Configuration - ${args.projectName}`,
+  skill: { name: 'offline-storage' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native Storage Specialist',
       task: 'Configure local storage and data persistence',
@@ -605,8 +612,9 @@ export const storageConfigTask = defineTask('storage-config', (args, taskCtx) =>
 export const testingSetupTask = defineTask('testing-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Testing Setup - ${args.projectName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'test-automation-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'React Native Testing Specialist',
       task: 'Set up comprehensive testing infrastructure',
@@ -651,8 +659,9 @@ export const testingSetupTask = defineTask('testing-setup', (args, taskCtx) => (
 export const debuggingConfigTask = defineTask('debugging-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Debugging Configuration - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native Debugging Specialist',
       task: 'Configure debugging tools and utilities',
@@ -695,8 +704,9 @@ export const debuggingConfigTask = defineTask('debugging-config', (args, taskCtx
 export const envConfigTask = defineTask('env-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Environment Configuration - ${args.projectName}`,
+  skill: { name: 'react-native-dev' },
   agent: {
-    name: 'react-native-developer',
+    name: 'react-native-expert',
     prompt: {
       role: 'React Native Configuration Specialist',
       task: 'Set up environment variables and secrets management',
@@ -739,8 +749,9 @@ export const envConfigTask = defineTask('env-config', (args, taskCtx) => ({
 export const codeSigningTask = defineTask('code-signing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Code Signing Setup - ${args.projectName}`,
+  skill: { name: 'fastlane-cicd' },
   agent: {
-    name: 'mobile-devops-engineer',
+    name: 'mobile-devops',
     prompt: {
       role: 'Mobile DevOps Engineer',
       task: 'Configure code signing for iOS and Android',

@@ -313,7 +313,7 @@ export const scopeDefinitionTask = defineTask('scope-definition', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Scope Definition - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Executive Producer',
       task: 'Define project scope and feature list',
@@ -358,7 +358,7 @@ export const teamStructureTask = defineTask('team-structure', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Team Structure - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Production Director',
       task: 'Define team structure and roles',
@@ -403,7 +403,7 @@ export const milestonePlanningTask = defineTask('milestone-planning', (args, tas
   kind: 'agent',
   title: `Phase 3: Milestone Planning - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Senior Producer',
       task: 'Define milestones and acceptance criteria',
@@ -447,7 +447,7 @@ export const detailedScheduleTask = defineTask('detailed-schedule', (args, taskC
   kind: 'agent',
   title: `Phase 4: Detailed Schedule - ${args.projectName}`,
   agent: {
-    name: 'project-manager',
+    name: 'scrum-master-games-agent',
     prompt: {
       role: 'Project Manager',
       task: 'Create detailed task schedule',
@@ -491,7 +491,7 @@ export const resourceAllocationTask = defineTask('resource-allocation', (args, t
   kind: 'agent',
   title: `Phase 5: Resource Allocation - ${args.projectName}`,
   agent: {
-    name: 'resource-manager',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Resource Manager',
       task: 'Allocate resources across project',
@@ -535,7 +535,7 @@ export const dependencyMappingTask = defineTask('dependency-mapping', (args, tas
   kind: 'agent',
   title: `Phase 6: Dependency Mapping - ${args.projectName}`,
   agent: {
-    name: 'project-manager',
+    name: 'scrum-master-games-agent',
     prompt: {
       role: 'Project Manager',
       task: 'Map cross-discipline dependencies',
@@ -578,7 +578,7 @@ export const riskAssessmentTask = defineTask('risk-assessment', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Risk Assessment - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Risk Manager',
       task: 'Assess and plan for project risks',
@@ -622,7 +622,7 @@ export const communicationPlanTask = defineTask('communication-plan', (args, tas
   kind: 'agent',
   title: `Phase 8: Communication Plan - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Producer',
       task: 'Define communication protocols',
@@ -666,7 +666,7 @@ export const trackingSetupTask = defineTask('tracking-setup', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Tracking Setup - ${args.projectName}`,
   agent: {
-    name: 'project-manager',
+    name: 'scrum-master-games-agent',
     prompt: {
       role: 'Project Manager',
       task: 'Set up project tracking tools and metrics',
@@ -710,7 +710,7 @@ export const productionPlanDocTask = defineTask('production-plan-doc', (args, ta
   kind: 'agent',
   title: `Phase 10: Production Plan Document - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive production plan document',

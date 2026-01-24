@@ -108,6 +108,7 @@ export const divergenceAnalysisTask = defineTask('divergence-analysis', (args, t
   title: `Divergence Analysis - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['warp-primitives', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze warp divergence',
@@ -148,7 +149,8 @@ export const controlFlowOptimizationTask = defineTask('control-flow-optimization
   kind: 'agent',
   title: `Control Flow Optimization - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Optimize divergent control flow',
@@ -189,7 +191,8 @@ export const dataReorganizationTask = defineTask('data-reorganization', (args, t
   kind: 'agent',
   title: `Data Reorganization - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Reorganize data for warp coherence',
@@ -230,7 +233,8 @@ export const warpPrimitivesTask = defineTask('warp-primitives', (args, taskCtx) 
   kind: 'agent',
   title: `Warp Primitives - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement warp-level primitives',
@@ -271,7 +275,8 @@ export const warpSynchronousTask = defineTask('warp-synchronous', (args, taskCtx
   kind: 'agent',
   title: `Warp-Synchronous Programming - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'parallel-algorithm-designer',
+    skills: ['warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement warp-synchronous patterns',
@@ -313,6 +318,7 @@ export const warpEfficiencyMeasurementTask = defineTask('warp-efficiency-measure
   title: `Warp Efficiency Measurement - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['warp-primitives', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Measure final warp efficiency',

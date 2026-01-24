@@ -197,7 +197,7 @@ export const patternSelectionTask = defineTask('pattern-selection', (args, taskC
   kind: 'agent',
   title: `Select RAG Patterns - ${args.patternName}`,
   agent: {
-    name: 'rag-architect',
+    name: 'advanced-rag-specialist',  // AG-RAG-002: Implements advanced RAG patterns (HyDE, self-RAG, multi-query)
     prompt: {
       role: 'RAG Architect',
       task: 'Select optimal RAG patterns for use case',
@@ -231,10 +231,10 @@ export const patternSelectionTask = defineTask('pattern-selection', (args, taskC
 }));
 
 export const multiQueryRagTask = defineTask('multi-query-rag', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Multi-Query RAG - ${args.patternName}`,
-  agent: {
-    name: 'rag-developer',
+  skill: {
+    name: 'retrieval-strategies',  // SK-RAG-006: Retrieval strategy implementations (hybrid, reranking)
     prompt: {
       role: 'RAG Developer',
       task: 'Implement multi-query RAG for comprehensive retrieval',
@@ -309,10 +309,10 @@ export const hierarchicalRetrievalTask = defineTask('hierarchical-retrieval', (a
 }));
 
 export const hybridSearchTask = defineTask('hybrid-search', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Hybrid Search - ${args.patternName}`,
-  agent: {
-    name: 'search-developer',
+  skill: {
+    name: 'retrieval-strategies',  // SK-RAG-006: Retrieval strategy implementations (hybrid, reranking)
     prompt: {
       role: 'Search Developer',
       task: 'Implement hybrid search (semantic + keyword)',
@@ -429,7 +429,7 @@ export const qualityAssessmentTask = defineTask('quality-assessment', (args, tas
   kind: 'agent',
   title: `Quality Assessment - ${args.patternName}`,
   agent: {
-    name: 'quality-assessor',
+    name: 'rag-evaluator',  // AG-RAG-003: Creates RAG evaluation frameworks with RAGAS metrics
     prompt: {
       role: 'Quality Assessor',
       task: 'Assess advanced RAG quality',

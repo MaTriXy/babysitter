@@ -749,8 +749,11 @@ export const reconnaissanceTask = defineTask('reconnaissance', (args, taskCtx) =
 
 // Task 3: Automated Vulnerability Assessment
 export const automatedVulnerabilityAssessmentTask = defineTask('automated-vulnerability-assessment', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Conduct automated vulnerability assessment',
+  skill: {
+    name: 'owasp-security-scanner',
+  },
   agent: {
     name: 'vulnerability-scanner',
     prompt: {
@@ -1030,8 +1033,11 @@ export const postExploitationTask = defineTask('post-exploitation', (args, taskC
 
 // Task 7: OWASP Web Application Testing
 export const owaspWebAppTestingTask = defineTask('owasp-webapp-testing', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Test web application: ${args.targetApplication}`,
+  skill: {
+    name: 'owasp-security-scanner',
+  },
   agent: {
     name: 'webapp-security-tester',
     prompt: {
@@ -1374,7 +1380,7 @@ export const riskAnalysisTask = defineTask('risk-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: 'Conduct risk analysis and business impact assessment',
   agent: {
-    name: 'risk-analyst',
+    name: 'risk-scoring-agent',
     prompt: {
       role: 'cybersecurity risk analyst and business impact assessor',
       task: 'Analyze security risks, quantify business impact, and determine overall security posture',

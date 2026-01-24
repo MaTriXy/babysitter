@@ -106,7 +106,7 @@ export const engineRequirementsTask = defineTask('engine-requirements', (args, t
   kind: 'agent',
   title: `Engine Requirements - ${args.projectName}`,
   agent: {
-    name: 'technical-director',
+    name: 'technical-director-agent',
     prompt: { role: 'Technical Director', task: 'Analyze engine requirements', context: args, instructions: ['1. Define graphics requirements', '2. Define platform requirements', '3. Assess multiplayer needs', '4. Identify performance targets'] },
     outputSchema: { type: 'object', required: ['requirements', 'priorities', 'artifacts'], properties: { requirements: { type: 'object' }, priorities: { type: 'array' }, constraints: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -118,7 +118,7 @@ export const engineEvaluationTask = defineTask('engine-evaluation', (args, taskC
   kind: 'agent',
   title: `Engine Evaluation - ${args.projectName}`,
   agent: {
-    name: 'technical-director',
+    name: 'technical-director-agent',
     prompt: { role: 'Technical Director', task: 'Evaluate game engines', context: args, instructions: ['1. Evaluate Unity against requirements', '2. Evaluate Unreal against requirements', '3. Evaluate Godot against requirements', '4. Score and recommend'] },
     outputSchema: { type: 'object', required: ['scores', 'recommendedEngine', 'artifacts'], properties: { scores: { type: 'object' }, recommendedEngine: { type: 'string' }, evaluationNotes: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -130,7 +130,7 @@ export const engineSelectionTask = defineTask('engine-selection', (args, taskCtx
   kind: 'agent',
   title: `Engine Selection - ${args.projectName}`,
   agent: {
-    name: 'technical-director',
+    name: 'technical-director-agent',
     prompt: { role: 'Technical Director', task: 'Finalize engine selection', context: args, instructions: ['1. Review evaluation results', '2. Consider team input', '3. Document selection rationale', '4. Plan training if needed'] },
     outputSchema: { type: 'object', required: ['selectedEngine', 'rationale', 'artifacts'], properties: { selectedEngine: { type: 'string' }, rationale: { type: 'string' }, trainingNeeds: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -142,7 +142,7 @@ export const projectSetupTask = defineTask('project-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Project Setup - ${args.projectName}`,
   agent: {
-    name: 'lead-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Lead Programmer', task: 'Set up engine project', context: args, instructions: ['1. Create project with proper settings', '2. Configure render pipeline', '3. Set up folder structure', '4. Configure platform settings'] },
     outputSchema: { type: 'object', required: ['projectPath', 'configuration', 'artifacts'], properties: { projectPath: { type: 'string' }, configuration: { type: 'object' }, folderStructure: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -154,7 +154,7 @@ export const versionControlSetupTask = defineTask('version-control-setup', (args
   kind: 'agent',
   title: `Version Control Setup - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'devops-engineer-agent',
     prompt: { role: 'DevOps Engineer', task: 'Set up version control', context: args, instructions: ['1. Create repository', '2. Configure .gitignore for engine', '3. Set up Git LFS for assets', '4. Create branching strategy'] },
     outputSchema: { type: 'object', required: ['repoUrl', 'branchStrategy', 'artifacts'], properties: { repoUrl: { type: 'string' }, branchStrategy: { type: 'object' }, lfsConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -166,7 +166,7 @@ export const codingStandardsTask = defineTask('coding-standards', (args, taskCtx
   kind: 'agent',
   title: `Coding Standards - ${args.projectName}`,
   agent: {
-    name: 'lead-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Lead Programmer', task: 'Define coding standards', context: args, instructions: ['1. Define naming conventions', '2. Create code style guide', '3. Define architecture patterns', '4. Set up linting tools'] },
     outputSchema: { type: 'object', required: ['standardsPath', 'patterns', 'artifacts'], properties: { standardsPath: { type: 'string' }, patterns: { type: 'array' }, lintingConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -178,7 +178,7 @@ export const buildPipelineSetupTask = defineTask('build-pipeline-setup', (args, 
   kind: 'agent',
   title: `Build Pipeline - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Configure build pipeline', context: args, instructions: ['1. Set up CI/CD pipeline', '2. Configure platform builds', '3. Add automated testing', '4. Configure artifact storage'] },
     outputSchema: { type: 'object', required: ['pipelinePath', 'platforms', 'artifacts'], properties: { pipelinePath: { type: 'string' }, platforms: { type: 'array' }, testingConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },

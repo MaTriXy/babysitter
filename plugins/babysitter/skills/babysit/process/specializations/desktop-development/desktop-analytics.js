@@ -107,8 +107,11 @@ export const configurePrivacyTask = defineTask('configure-privacy', (args, taskC
 export const setupCrashReportingTask = defineTask('setup-crash-reporting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Crash Reporting - ${args.projectName}`,
+  skill: {
+    name: 'sentry-electron-setup',
+  },
   agent: {
-    name: 'crash-reporting-developer',
+    name: 'desktop-telemetry-engineer',
     prompt: { role: 'Crash Reporting Developer', task: 'Set up crash reporting', context: args, instructions: ['1. Install Sentry/crash reporter', '2. Configure DSN/keys', '3. Set up breadcrumbs', '4. Configure error boundaries', '5. Add context data', '6. Configure source maps', '7. Set up alerts', '8. Generate crash reporting configuration'] },
     outputSchema: { type: 'object', required: ['enabled', 'provider', 'artifacts'], properties: { enabled: { type: 'boolean' }, provider: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -119,8 +122,11 @@ export const setupCrashReportingTask = defineTask('setup-crash-reporting', (args
 export const setupUsageAnalyticsTask = defineTask('setup-usage-analytics', (args, taskCtx) => ({
   kind: 'agent',
   title: `Usage Analytics - ${args.projectName}`,
+  skill: {
+    name: 'amplitude-electron-integration',
+  },
   agent: {
-    name: 'usage-analytics-developer',
+    name: 'desktop-telemetry-engineer',
     prompt: { role: 'Usage Analytics Developer', task: 'Set up usage analytics', context: args, instructions: ['1. Install analytics SDK', '2. Configure initialization', '3. Set up user identification', '4. Configure session tracking', '5. Define custom properties', '6. Set up funnel tracking', '7. Configure retention tracking', '8. Generate analytics configuration'] },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, trackingEvents: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -143,8 +149,11 @@ export const implementEventTrackingTask = defineTask('implement-event-tracking',
 export const implementConsentManagementTask = defineTask('implement-consent-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Consent Management - ${args.projectName}`,
+  skill: {
+    name: 'gdpr-consent-dialog',
+  },
   agent: {
-    name: 'consent-developer',
+    name: 'privacy-compliance-specialist',
     prompt: { role: 'Consent Management Developer', task: 'Implement consent management', context: args, instructions: ['1. Create consent UI', '2. Implement opt-in flow', '3. Implement opt-out flow', '4. Store consent preferences', '5. Respect system DNT', '6. Handle consent changes', '7. Add consent API', '8. Generate consent management module'] },
     outputSchema: { type: 'object', required: ['consentUI', 'artifacts'], properties: { consentUI: { type: 'string' }, storageMethod: { type: 'string' }, artifacts: { type: 'array' } } }
   },

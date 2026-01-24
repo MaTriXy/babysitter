@@ -86,8 +86,9 @@ function createASOTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'aso-strategy' },
     agent: {
-      name: 'aso-specialist',
+      name: 'mobile-devops',
       prompt: {
         role: 'App Store Optimization Specialist',
         task: `Execute ${title.toLowerCase()} for ASO strategy`,

@@ -81,7 +81,7 @@ export const modelAnalysisTask = defineTask('model-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: `Model Analysis - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Analyze model architecture and complexity', context: args, instructions: ['1. Profile model layers', '2. Count parameters', '3. Identify bottlenecks', '4. Check device compatibility', '5. Document analysis'] },
     outputSchema: { type: 'object', required: ['architecture', 'parameters', 'artifacts'], properties: { architecture: { type: 'object' }, parameters: { type: 'number' }, bottlenecks: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const onnxConversionTask = defineTask('onnx-conversion', (args, taskCtx) 
   kind: 'agent',
   title: `ONNX Conversion - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Convert model to ONNX format', context: args, instructions: ['1. Export to ONNX', '2. Verify operators', '3. Check dynamic shapes', '4. Validate output', '5. Document conversion'] },
     outputSchema: { type: 'object', required: ['onnxPath', 'opsetVersion', 'artifacts'], properties: { onnxPath: { type: 'string' }, opsetVersion: { type: 'number' }, warnings: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const quantizationTask = defineTask('quantization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Quantization - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Apply quantization for reduced precision', context: args, instructions: ['1. Calibrate with dataset', '2. Apply PTQ or QAT', '3. Configure precision levels', '4. Validate accuracy', '5. Document quantization'] },
     outputSchema: { type: 'object', required: ['quantizedPath', 'precision', 'artifacts'], properties: { quantizedPath: { type: 'string' }, precision: { type: 'string' }, accuracyDrop: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const pruningOptimizationTask = defineTask('pruning-optimization', (args,
   kind: 'agent',
   title: `Pruning - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Apply pruning to reduce model size', context: args, instructions: ['1. Identify prunable layers', '2. Apply structured pruning', '3. Fine-tune if needed', '4. Validate accuracy', '5. Document pruning'] },
     outputSchema: { type: 'object', required: ['prunedPath', 'sparsity', 'artifacts'], properties: { prunedPath: { type: 'string' }, sparsity: { type: 'number' }, sizeReduction: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const tensorrtConversionTask = defineTask('tensorrt-conversion', (args, t
   kind: 'agent',
   title: `TensorRT Conversion - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Convert to TensorRT engine', context: args, instructions: ['1. Build TensorRT engine', '2. Configure workspace', '3. Set precision mode', '4. Optimize for device', '5. Validate engine'] },
     outputSchema: { type: 'object', required: ['enginePath', 'format', 'artifacts'], properties: { enginePath: { type: 'string' }, format: { type: 'string' }, buildConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const runtimeOptimizationTask = defineTask('runtime-optimization', (args,
   kind: 'agent',
   title: `Runtime Optimization - ${args.modelName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Optimize inference runtime', context: args, instructions: ['1. Configure CUDA streams', '2. Enable async inference', '3. Optimize memory allocation', '4. Configure batch processing', '5. Test runtime performance'] },
     outputSchema: { type: 'object', required: ['runtimeConfig', 'optimizations', 'artifacts'], properties: { runtimeConfig: { type: 'object' }, optimizations: { type: 'array' }, memoryUsage: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const accuracyValidationTask = defineTask('accuracy-validation', (args, t
   kind: 'agent',
   title: `Accuracy Validation - ${args.modelName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate optimized model accuracy', context: args, instructions: ['1. Run on test dataset', '2. Compare to baseline', '3. Calculate accuracy retention', '4. Check edge cases', '5. Generate validation report'] },
     outputSchema: { type: 'object', required: ['accuracyRetention', 'baselineAccuracy', 'artifacts'], properties: { accuracyRetention: { type: 'number' }, baselineAccuracy: { type: 'number' }, optimizedAccuracy: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const latencyBenchmarkTask = defineTask('latency-benchmark', (args, taskC
   kind: 'agent',
   title: `Latency Benchmark - ${args.modelName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: { role: 'Performance Engineer', task: 'Benchmark inference latency', context: args, instructions: ['1. Warm up model', '2. Run latency benchmark', '3. Measure throughput', '4. Calculate speedup', '5. Generate performance report'] },
     outputSchema: { type: 'object', required: ['latencyMs', 'speedup', 'artifacts'], properties: { latencyMs: { type: 'number' }, speedup: { type: 'number' }, throughput: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const deploymentPackageTask = defineTask('deployment-package', (args, tas
   kind: 'agent',
   title: `Deployment Package - ${args.modelName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Create deployment package', context: args, instructions: ['1. Package optimized model', '2. Create ROS node wrapper', '3. Add configuration files', '4. Write deployment docs', '5. Test deployment'] },
     outputSchema: { type: 'object', required: ['modelPath', 'deploymentConfig', 'artifacts'], properties: { modelPath: { type: 'string' }, deploymentConfig: { type: 'object' }, rosNodePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

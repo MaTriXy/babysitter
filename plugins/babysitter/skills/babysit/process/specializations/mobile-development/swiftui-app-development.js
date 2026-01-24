@@ -313,8 +313,9 @@ export async function process(inputs, ctx) {
 export const designAnalysisTask = defineTask('design-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Design Analysis - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-ui-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS UI/UX Developer',
       task: 'Analyze designs and create view hierarchy',
@@ -359,8 +360,9 @@ export const designAnalysisTask = defineTask('design-analysis', (args, taskCtx) 
 export const projectSetupTask = defineTask('project-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Xcode Project Setup - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'Senior iOS Developer',
       task: 'Set up Xcode project with SwiftUI',
@@ -405,8 +407,9 @@ export const projectSetupTask = defineTask('project-setup', (args, taskCtx) => (
 export const navigationStructureTask = defineTask('navigation-structure', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Navigation Structure - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Navigation Specialist',
       task: 'Create app navigation structure with NavigationStack and TabView',
@@ -451,8 +454,9 @@ export const navigationStructureTask = defineTask('navigation-structure', (args,
 export const modelsSetupTask = defineTask('models-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Models Setup - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Data Architect',
       task: 'Define data models and view models',
@@ -499,7 +503,7 @@ export const viewsImplementationTask = defineTask('views-implementation', (args,
   kind: 'agent',
   title: `Phase 5: Views Implementation - ${args.appName}`,
   agent: {
-    name: 'swiftui-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'SwiftUI Developer',
       task: 'Implement SwiftUI views following designs',
@@ -545,7 +549,7 @@ export const reusableComponentsTask = defineTask('reusable-components', (args, t
   kind: 'agent',
   title: `Phase 6: Reusable Components - ${args.appName}`,
   agent: {
-    name: 'swiftui-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'SwiftUI Component Developer',
       task: 'Create reusable SwiftUI components',
@@ -588,8 +592,9 @@ export const reusableComponentsTask = defineTask('reusable-components', (args, t
 export const stateManagementTask = defineTask('state-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: State Management - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS State Management Specialist',
       task: 'Implement @State, @Binding, @ObservedObject patterns',
@@ -633,8 +638,9 @@ export const stateManagementTask = defineTask('state-management', (args, taskCtx
 export const networkLayerTask = defineTask('network-layer', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Network Layer - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Networking Specialist',
       task: 'Integrate network layer with URLSession',
@@ -677,8 +683,9 @@ export const networkLayerTask = defineTask('network-layer', (args, taskCtx) => (
 export const persistenceLayerTask = defineTask('persistence-layer', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Persistence Layer - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Data Persistence Specialist',
       task: 'Add data persistence with UserDefaults and optionally Core Data',
@@ -768,7 +775,7 @@ export const animationsSetupTask = defineTask('animations-setup', (args, taskCtx
   kind: 'agent',
   title: `Phase 11: Animations Setup - ${args.appName}`,
   agent: {
-    name: 'swiftui-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'SwiftUI Animation Specialist',
       task: 'Add animations and transitions',
@@ -811,8 +818,9 @@ export const animationsSetupTask = defineTask('animations-setup', (args, taskCtx
 export const deviceAdaptationTask = defineTask('device-adaptation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Device Adaptation - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Device Adaptation Specialist',
       task: 'Handle different device sizes and orientations',
@@ -855,8 +863,9 @@ export const deviceAdaptationTask = defineTask('device-adaptation', (args, taskC
 export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Testing Suite - ${args.appName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'ios-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'iOS Test Engineer',
       task: 'Write unit and UI tests with XCTest',
@@ -901,8 +910,9 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
 export const performanceOptimizationTask = defineTask('performance-optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Performance Optimization - ${args.appName}`,
+  skill: { name: 'mobile-perf' },
   agent: {
-    name: 'ios-performance-engineer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Performance Engineer',
       task: 'Optimize performance with Instruments',
@@ -945,8 +955,9 @@ export const performanceOptimizationTask = defineTask('performance-optimization'
 export const appStoreAssetsTask = defineTask('appstore-assets', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 15: App Store Assets - ${args.appName}`,
+  skill: { name: 'swift-swiftui' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Release Manager',
       task: 'Prepare App Store submission assets',

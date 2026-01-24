@@ -175,7 +175,7 @@ export const personaDefinitionTask = defineTask('persona-definition', (args, tas
   kind: 'agent',
   title: `Define Persona - ${args.personaName}`,
   agent: {
-    name: 'persona-designer',
+    name: 'persona-designer',  // AG-CAI-005: Creates chatbot personas and brand voice guidelines
     prompt: {
       role: 'Persona Designer',
       task: 'Define conversational persona',

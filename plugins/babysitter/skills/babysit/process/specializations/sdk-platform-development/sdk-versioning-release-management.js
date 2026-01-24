@@ -204,7 +204,7 @@ export const versioningPolicyTask = defineTask('versioning-policy', (args, taskC
   kind: 'agent',
   title: `Phase 1: Versioning Policy - ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'Release Manager',
       task: 'Implement semantic versioning policy',
@@ -250,7 +250,7 @@ export const releasePipelineTask = defineTask('release-pipeline', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Release Pipeline - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Create automated release pipelines',
@@ -296,7 +296,7 @@ export const changelogAutomationTask = defineTask('changelog-automation', (args,
   kind: 'agent',
   title: `Phase 3: Changelog Automation - ${args.projectName}`,
   agent: {
-    name: 'release-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Release Engineer',
       task: 'Build changelog generation from commits',
@@ -342,7 +342,7 @@ export const rcTestingTask = defineTask('rc-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: RC Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'QA Engineer',
       task: 'Design release candidate testing process',
@@ -388,7 +388,7 @@ export const packagePublishingTask = defineTask('package-publishing', (args, tas
   kind: 'agent',
   title: `Phase 5: Package Publishing - ${args.projectName}`,
   agent: {
-    name: 'release-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Release Engineer',
       task: 'Configure package registry publishing',
@@ -434,7 +434,7 @@ export const releaseNotificationTask = defineTask('release-notification', (args,
   kind: 'agent',
   title: `Phase 6: Release Notification - ${args.projectName}`,
   agent: {
-    name: 'communications-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Communications Engineer',
       task: 'Set up release notifications',
@@ -480,7 +480,7 @@ export const rollbackProceduresTask = defineTask('rollback-procedures', (args, t
   kind: 'agent',
   title: `Phase 7: Rollback Procedures - ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'platform-architect',
     prompt: {
       role: 'Release Manager',
       task: 'Define rollback procedures',
@@ -526,7 +526,7 @@ export const releaseDocumentationTask = defineTask('release-documentation', (arg
   kind: 'agent',
   title: `Phase 8: Release Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate release documentation',

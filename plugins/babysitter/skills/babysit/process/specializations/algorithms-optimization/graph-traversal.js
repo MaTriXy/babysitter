@@ -46,8 +46,9 @@ export async function process(inputs, ctx) {
 export const traversalSelectionTask = defineTask('traversal-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Select Traversal Method',
+  skills: ['graph-modeler', 'graph-algorithm-selector'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Algorithm Expert',
       task: 'Select appropriate traversal method for application',
@@ -68,8 +69,9 @@ export const traversalSelectionTask = defineTask('traversal-selection', (args, t
 export const traversalImplementationTask = defineTask('traversal-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement Traversal',
+  skills: ['graph-modeler'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement graph traversal algorithm',
@@ -90,8 +92,9 @@ export const traversalImplementationTask = defineTask('traversal-implementation'
 export const traversalAnalysisTask = defineTask('traversal-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze Traversal Results',
+  skills: ['graph-modeler'],
   agent: {
-    name: 'general-purpose',
+    name: 'graph-specialist',
     prompt: {
       role: 'Graph Analyst',
       task: 'Analyze graph traversal results for application',

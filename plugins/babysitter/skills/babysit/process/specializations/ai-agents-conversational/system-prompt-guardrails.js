@@ -180,7 +180,7 @@ export const roleDefinitionTask = defineTask('role-definition', (args, taskCtx) 
   kind: 'agent',
   title: `Define Role - ${args.agentName}`,
   agent: {
-    name: 'role-designer',
+    name: 'system-prompt-engineer',  // AG-PE-001: Crafts system prompts with guardrails and safety constraints
     prompt: {
       role: 'Role Designer',
       task: 'Define agent role and personality',

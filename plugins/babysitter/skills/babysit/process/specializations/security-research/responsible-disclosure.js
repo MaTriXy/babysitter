@@ -213,7 +213,7 @@ export const disclosurePreparationTask = defineTask('disclosure-preparation', (a
   kind: 'agent',
   title: `Prepare Disclosure - ${args.projectName}`,
   agent: {
-    name: 'disclosure-coordinator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Vulnerability Disclosure Coordinator',
       task: 'Prepare disclosure package',
@@ -252,7 +252,7 @@ export const vendorContactTask = defineTask('vendor-contact', (args, taskCtx) =>
   kind: 'agent',
   title: `Contact Vendor - ${args.projectName}`,
   agent: {
-    name: 'vendor-liaison',
+    name: 'security-report-writer',
     prompt: {
       role: 'Vendor Communication Specialist',
       task: 'Establish vendor contact',
@@ -292,7 +292,7 @@ export const initialReportTask = defineTask('initial-report', (args, taskCtx) =>
   kind: 'agent',
   title: `Send Initial Report - ${args.projectName}`,
   agent: {
-    name: 'report-sender',
+    name: 'security-report-writer',
     prompt: {
       role: 'Disclosure Report Specialist',
       task: 'Send initial vulnerability report',
@@ -332,7 +332,7 @@ export const responseTrackingTask = defineTask('response-tracking', (args, taskC
   kind: 'agent',
   title: `Track Response - ${args.projectName}`,
   agent: {
-    name: 'response-tracker',
+    name: 'security-report-writer',
     prompt: {
       role: 'Vendor Response Tracker',
       task: 'Track vendor response',
@@ -373,7 +373,7 @@ export const remediationSupportTask = defineTask('remediation-support', (args, t
   kind: 'agent',
   title: `Support Remediation - ${args.projectName}`,
   agent: {
-    name: 'remediation-supporter',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Remediation Support Specialist',
       task: 'Provide remediation support',
@@ -413,7 +413,7 @@ export const timelineManagementTask = defineTask('timeline-management', (args, t
   kind: 'agent',
   title: `Manage Timeline - ${args.projectName}`,
   agent: {
-    name: 'timeline-manager',
+    name: 'security-report-writer',
     prompt: {
       role: 'Disclosure Timeline Manager',
       task: 'Manage disclosure timeline',
@@ -453,7 +453,7 @@ export const publicDisclosureTask = defineTask('public-disclosure', (args, taskC
   kind: 'agent',
   title: `Prepare Public Disclosure - ${args.projectName}`,
   agent: {
-    name: 'public-disclosure-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Public Disclosure Specialist',
       task: 'Prepare for public disclosure',

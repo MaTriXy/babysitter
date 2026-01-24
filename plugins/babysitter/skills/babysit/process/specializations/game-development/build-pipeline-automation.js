@@ -83,7 +83,7 @@ export const pipelineArchitectureTask = defineTask('pipeline-architecture', (arg
   kind: 'agent',
   title: `Pipeline Architecture - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'devops-engineer-agent',
     prompt: { role: 'DevOps Engineer', task: 'Design build pipeline architecture', context: args, instructions: ['1. Define pipeline stages', '2. Map build dependencies', '3. Design artifact flow', '4. Document architecture'] },
     outputSchema: { type: 'object', required: ['config', 'docPath', 'artifacts'], properties: { config: { type: 'object' }, docPath: { type: 'string' }, stages: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -95,7 +95,7 @@ export const buildServerSetupTask = defineTask('build-server-setup', (args, task
   kind: 'agent',
   title: `Build Server Setup - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'devops-engineer-agent',
     prompt: { role: 'DevOps Engineer', task: 'Set up build server', context: args, instructions: ['1. Configure CI provider', '2. Set up build agents', '3. Configure secrets', '4. Test basic builds'] },
     outputSchema: { type: 'object', required: ['serverReady', 'configuration', 'artifacts'], properties: { serverReady: { type: 'boolean' }, configuration: { type: 'object' }, agents: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -107,7 +107,7 @@ export const platformBuildScriptTask = defineTask('platform-build-script', (args
   kind: 'agent',
   title: `Build Script - ${args.platform}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Create platform build script', context: args, instructions: ['1. Configure build settings', '2. Set platform-specific options', '3. Add optimization flags', '4. Test build script'] },
     outputSchema: { type: 'object', required: ['platform', 'scriptPath', 'artifacts'], properties: { platform: { type: 'string' }, scriptPath: { type: 'string' }, buildTime: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -119,7 +119,7 @@ export const assetProcessingTask = defineTask('asset-processing', (args, taskCtx
   kind: 'agent',
   title: `Asset Processing - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Set up asset processing', context: args, instructions: ['1. Configure texture compression', '2. Set up mesh optimization', '3. Add audio processing', '4. Test asset pipeline'] },
     outputSchema: { type: 'object', required: ['pipelineReady', 'processors', 'artifacts'], properties: { pipelineReady: { type: 'boolean' }, processors: { type: 'array' }, optimizations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -131,7 +131,7 @@ export const automatedTestingTask = defineTask('automated-testing', (args, taskC
   kind: 'agent',
   title: `Automated Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Set up automated testing', context: args, instructions: ['1. Configure unit tests', '2. Add integration tests', '3. Set up smoke tests', '4. Configure test reporting'] },
     outputSchema: { type: 'object', required: ['testSuites', 'coverage', 'artifacts'], properties: { testSuites: { type: 'array' }, coverage: { type: 'number' }, testFramework: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -143,7 +143,7 @@ export const artifactStorageTask = defineTask('artifact-storage', (args, taskCtx
   kind: 'agent',
   title: `Artifact Storage - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'devops-engineer-agent',
     prompt: { role: 'DevOps Engineer', task: 'Configure artifact storage', context: args, instructions: ['1. Set up storage location', '2. Configure versioning', '3. Add retention policies', '4. Test artifact retrieval'] },
     outputSchema: { type: 'object', required: ['storageReady', 'configuration', 'artifacts'], properties: { storageReady: { type: 'boolean' }, configuration: { type: 'object' }, retentionPolicy: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -155,7 +155,7 @@ export const releaseBuildTask = defineTask('release-build', (args, taskCtx) => (
   kind: 'agent',
   title: `Release Build Process - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Create release build process', context: args, instructions: ['1. Define release workflow', '2. Add signing and packaging', '3. Configure submission prep', '4. Document release process'] },
     outputSchema: { type: 'object', required: ['releaseProcess', 'artifacts'], properties: { releaseProcess: { type: 'object' }, signingConfigured: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -167,7 +167,7 @@ export const pipelineTestingTask = defineTask('pipeline-testing', (args, taskCtx
   kind: 'agent',
   title: `Pipeline Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Test build pipeline', context: args, instructions: ['1. Run full pipeline', '2. Verify all platforms', '3. Test failure recovery', '4. Create test report'] },
     outputSchema: { type: 'object', required: ['passRate', 'results', 'artifacts'], properties: { passRate: { type: 'number' }, results: { type: 'array' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },

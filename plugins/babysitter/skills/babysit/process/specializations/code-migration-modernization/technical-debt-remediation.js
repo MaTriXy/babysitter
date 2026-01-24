@@ -236,7 +236,7 @@ export const debtInventoryTask = defineTask('debt-inventory', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Debt Inventory - ${args.projectName}`,
   agent: {
-    name: 'debt-analyst',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Technical Debt Analyst',
       task: 'Create comprehensive debt inventory',
@@ -277,7 +277,7 @@ export const debtCategorizationTask = defineTask('debt-categorization', (args, t
   kind: 'agent',
   title: `Phase 2: Debt Categorization - ${args.projectName}`,
   agent: {
-    name: 'categorizer',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Technical Debt Specialist',
       task: 'Categorize debt items',
@@ -318,7 +318,7 @@ export const debtImpactAnalysisTask = defineTask('debt-impact-analysis', (args, 
   kind: 'agent',
   title: `Phase 3: Impact Analysis - ${args.projectName}`,
   agent: {
-    name: 'impact-analyst',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Business Analyst',
       task: 'Analyze business impact of debt',
@@ -359,7 +359,7 @@ export const debtPrioritizationTask = defineTask('debt-prioritization', (args, t
   kind: 'agent',
   title: `Phase 4: Debt Prioritization - ${args.projectName}`,
   agent: {
-    name: 'prioritizer',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Product Manager',
       task: 'Prioritize debt remediation',
@@ -401,7 +401,7 @@ export const remediationPlanningTask = defineTask('remediation-planning', (args,
   kind: 'agent',
   title: `Phase 5: Remediation Planning - ${args.projectName}`,
   agent: {
-    name: 'remediation-planner',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Technical Lead',
       task: 'Plan debt remediation',
@@ -443,7 +443,7 @@ export const sprintAllocationTask = defineTask('sprint-allocation', (args, taskC
   kind: 'agent',
   title: `Phase 6: Sprint Allocation - ${args.projectName}`,
   agent: {
-    name: 'sprint-planner',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Scrum Master',
       task: 'Allocate debt items to sprints',
@@ -484,7 +484,7 @@ export const remediationExecutionTask = defineTask('remediation-execution', (arg
   kind: 'agent',
   title: `Phase 7: Remediation Execution - ${args.projectName}`,
   agent: {
-    name: 'remediation-executor',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Senior Developer',
       task: 'Execute debt remediation',
@@ -526,7 +526,7 @@ export const remediationVerificationTask = defineTask('remediation-verification'
   kind: 'agent',
   title: `Phase 8: Remediation Verification - ${args.projectName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Lead',
       task: 'Verify debt remediation',
@@ -568,7 +568,7 @@ export const debtPreventionTask = defineTask('debt-prevention', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Debt Prevention - ${args.projectName}`,
   agent: {
-    name: 'prevention-engineer',
+    name: 'technical-debt-auditor',
     prompt: {
       role: 'Engineering Manager',
       task: 'Set up debt prevention measures',

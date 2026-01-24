@@ -78,8 +78,9 @@ function createAccessibilityTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'accessibility-testing' },
     agent: {
-      name: 'accessibility-developer',
+      name: 'mobile-ux-engineer',
       prompt: {
         role: 'Mobile Accessibility Specialist',
         task: `Implement ${title.toLowerCase()} for mobile app`,

@@ -90,7 +90,7 @@ export const fusionArchitectureTask = defineTask('fusion-architecture', (args, t
   kind: 'agent',
   title: `Fusion Architecture - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Design sensor fusion architecture', context: args, instructions: ['1. Define state vector', '2. Design sensor model', '3. Plan filter structure', '4. Define output states', '5. Document architecture'] },
     outputSchema: { type: 'object', required: ['stateVector', 'sensorModels', 'artifacts'], properties: { stateVector: { type: 'array' }, sensorModels: { type: 'array' }, filterStructure: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -102,7 +102,7 @@ export const filterImplementationTask = defineTask('filter-implementation', (arg
   kind: 'agent',
   title: `Filter Implementation - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement EKF or UKF filter', context: args, instructions: ['1. Implement prediction step', '2. Implement update step', '3. Configure covariances', '4. Set up state transition', '5. Implement measurement models'] },
     outputSchema: { type: 'object', required: ['filterConfig', 'stateTransition', 'artifacts'], properties: { filterConfig: { type: 'object' }, stateTransition: { type: 'object' }, measurementModels: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -114,7 +114,7 @@ export const sensorIntegrationTask = defineTask('sensor-integration', (args, tas
   kind: 'agent',
   title: `Sensor Integration - ${args.robotName}`,
   agent: {
-    name: 'sensor-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: { role: 'Sensor Engineer', task: 'Fuse data from IMU, wheel, GPS, vision', context: args, instructions: ['1. Configure IMU integration', '2. Add wheel odometry', '3. Integrate GPS', '4. Add visual odometry', '5. Test sensor fusion'] },
     outputSchema: { type: 'object', required: ['sensorConfigs', 'topics', 'artifacts'], properties: { sensorConfigs: { type: 'array' }, topics: { type: 'array' }, frameIds: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -126,7 +126,7 @@ export const sensorDelayHandlingTask = defineTask('sensor-delay-handling', (args
   kind: 'agent',
   title: `Delay Handling - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Handle sensor delays and async measurements', context: args, instructions: ['1. Measure sensor latencies', '2. Implement delay compensation', '3. Handle out-of-order messages', '4. Configure buffers', '5. Test timing accuracy'] },
     outputSchema: { type: 'object', required: ['delayConfig', 'sensorLatencies', 'artifacts'], properties: { delayConfig: { type: 'object' }, sensorLatencies: { type: 'object' }, bufferConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -138,7 +138,7 @@ export const outlierRejectionTask = defineTask('outlier-rejection', (args, taskC
   kind: 'agent',
   title: `Outlier Rejection - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement outlier rejection', context: args, instructions: ['1. Implement Mahalanobis distance check', '2. Configure chi-squared thresholds', '3. Add innovation monitoring', '4. Implement RANSAC for vision', '5. Test outlier detection'] },
     outputSchema: { type: 'object', required: ['outlierConfig', 'thresholds', 'artifacts'], properties: { outlierConfig: { type: 'object' }, thresholds: { type: 'object' }, rejectionRate: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -150,7 +150,7 @@ export const fusionParameterTuningTask = defineTask('fusion-parameter-tuning', (
   kind: 'agent',
   title: `Parameter Tuning - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Tune filter parameters', context: args, instructions: ['1. Tune process noise', '2. Tune measurement noise', '3. Configure initial covariances', '4. Optimize parameters', '5. Validate tuning'] },
     outputSchema: { type: 'object', required: ['parameters', 'configPath', 'artifacts'], properties: { parameters: { type: 'object' }, configPath: { type: 'string' }, processNoise: { type: 'object' }, measurementNoise: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -162,7 +162,7 @@ export const fusionValidationTask = defineTask('fusion-validation', (args, taskC
   kind: 'agent',
   title: `Fusion Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate against ground truth', context: args, instructions: ['1. Compare to ground truth', '2. Compute position error', '3. Compute orientation error', '4. Test in various conditions', '5. Generate validation report'] },
     outputSchema: { type: 'object', required: ['positionError', 'orientationError', 'meetsRequirements', 'artifacts'], properties: { positionError: { type: 'number' }, orientationError: { type: 'number' }, meetsRequirements: { type: 'boolean' }, testResults: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -174,7 +174,7 @@ export const sensorDegradationTestingTask = defineTask('sensor-degradation-testi
   kind: 'agent',
   title: `Degradation Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test under sensor degradation', context: args, instructions: ['1. Test with GPS dropout', '2. Test with IMU noise', '3. Test wheel slip scenarios', '4. Test sensor failure recovery', '5. Document robustness'] },
     outputSchema: { type: 'object', required: ['degradationResults', 'robustnessScore', 'artifacts'], properties: { degradationResults: { type: 'array' }, robustnessScore: { type: 'number' }, failureModes: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -186,7 +186,7 @@ export const fusionMonitoringTask = defineTask('fusion-monitoring', (args, taskC
   kind: 'agent',
   title: `Fusion Monitoring - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'slam-localization-expert',  // AG-006: SLAM and Localization Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Monitor and log fusion performance', context: args, instructions: ['1. Set up covariance monitoring', '2. Add innovation logging', '3. Configure health diagnostics', '4. Add performance metrics', '5. Create monitoring dashboard'] },
     outputSchema: { type: 'object', required: ['monitoringConfig', 'diagnostics', 'artifacts'], properties: { monitoringConfig: { type: 'object' }, diagnostics: { type: 'array' }, metrics: { type: 'array' }, artifacts: { type: 'array' } } }
   },

@@ -306,8 +306,9 @@ export async function process(inputs, ctx) {
 export const apnsPlanningTask = defineTask('apns-planning', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: APNs Planning - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Specialist',
       task: 'Plan APNs implementation architecture',
@@ -352,8 +353,9 @@ export const apnsPlanningTask = defineTask('apns-planning', (args, taskCtx) => (
 export const certificateManagementTask = defineTask('certificate-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Certificate Management - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Certificate Specialist',
       task: 'Manage APNs certificates and authentication keys',
@@ -395,8 +397,9 @@ export const certificateManagementTask = defineTask('certificate-management', (a
 export const xcodeCapabilitiesTask = defineTask('xcode-capabilities', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Xcode Capabilities - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Developer',
       task: 'Enable Push Notification capability in Xcode',
@@ -438,8 +441,9 @@ export const xcodeCapabilitiesTask = defineTask('xcode-capabilities', (args, tas
 export const tokenRegistrationTask = defineTask('token-registration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Token Registration - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Implement device token registration',
@@ -481,8 +485,9 @@ export const tokenRegistrationTask = defineTask('token-registration', (args, tas
 export const permissionHandlingTask = defineTask('permission-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Permission Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Handle user permission requests',
@@ -525,8 +530,9 @@ export const permissionHandlingTask = defineTask('permission-handling', (args, t
 export const payloadParsingTask = defineTask('payload-parsing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Payload Parsing - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Parse notification payloads',
@@ -568,8 +574,9 @@ export const payloadParsingTask = defineTask('payload-parsing', (args, taskCtx) 
 export const notificationHandlingTask = defineTask('notification-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Notification Handling - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Handle notifications in foreground and background',
@@ -612,8 +619,9 @@ export const notificationHandlingTask = defineTask('notification-handling', (arg
 export const actionsSetupTask = defineTask('actions-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Actions Setup - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Define notification actions and categories',
@@ -656,8 +664,9 @@ export const actionsSetupTask = defineTask('actions-setup', (args, taskCtx) => (
 export const richNotificationsTask = defineTask('rich-notifications', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Rich Notifications - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Rich Notification Specialist',
       task: 'Implement rich notifications with service extension',
@@ -699,8 +708,9 @@ export const richNotificationsTask = defineTask('rich-notifications', (args, tas
 export const groupingSetupTask = defineTask('grouping-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Notification Grouping - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Push Notification Developer',
       task: 'Implement notification grouping',
@@ -742,8 +752,9 @@ export const groupingSetupTask = defineTask('grouping-setup', (args, taskCtx) =>
 export const silentNotificationsTask = defineTask('silent-notifications', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Silent Notifications - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Background Processing Specialist',
       task: 'Configure silent/background push notifications',
@@ -785,8 +796,9 @@ export const silentNotificationsTask = defineTask('silent-notifications', (args,
 export const localNotificationsTask = defineTask('local-notifications', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Local Notifications - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Notification Developer',
       task: 'Implement local notifications integration',
@@ -828,8 +840,9 @@ export const localNotificationsTask = defineTask('local-notifications', (args, t
 export const notificationCenterTask = defineTask('notification-center', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Notification Center - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Notification Developer',
       task: 'Integrate with Notification Center',
@@ -871,8 +884,9 @@ export const notificationCenterTask = defineTask('notification-center', (args, t
 export const serverSetupTask = defineTask('server-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Server Setup - ${args.appName}`,
+  skill: { name: 'push-notifications' },
   agent: {
-    name: 'backend-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'Backend Push Notification Specialist',
       task: 'Document server-side setup for APNs',
@@ -914,8 +928,9 @@ export const serverSetupTask = defineTask('server-setup', (args, taskCtx) => ({
 export const testingStrategyTask = defineTask('testing-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 15: Testing Strategy - ${args.appName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'ios-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'iOS Test Engineer',
       task: 'Create testing strategy for push notifications',

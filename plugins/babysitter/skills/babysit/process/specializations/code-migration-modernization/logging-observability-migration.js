@@ -196,7 +196,7 @@ export const loggingAnalysisTask = defineTask('logging-analysis', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Logging Analysis - ${args.projectName}`,
   agent: {
-    name: 'logging-analyst',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Observability Analyst',
       task: 'Analyze current logging implementation',
@@ -239,7 +239,7 @@ export const observabilityDesignTask = defineTask('observability-design', (args,
   kind: 'agent',
   title: `Phase 2: Observability Design - ${args.projectName}`,
   agent: {
-    name: 'observability-architect',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Observability Architect',
       task: 'Design observability stack',
@@ -281,7 +281,7 @@ export const structuredLoggingImplementationTask = defineTask('structured-loggin
   kind: 'agent',
   title: `Phase 3: Structured Logging Implementation - ${args.projectName}`,
   agent: {
-    name: 'logging-developer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Developer',
       task: 'Implement structured logging',
@@ -322,7 +322,7 @@ export const distributedTracingSetupTask = defineTask('distributed-tracing-setup
   kind: 'agent',
   title: `Phase 4: Distributed Tracing Setup - ${args.projectName}`,
   agent: {
-    name: 'tracing-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'SRE Engineer',
       task: 'Set up distributed tracing',
@@ -363,7 +363,7 @@ export const metricsImplementationTask = defineTask('metrics-implementation', (a
   kind: 'agent',
   title: `Phase 5: Metrics Implementation - ${args.projectName}`,
   agent: {
-    name: 'metrics-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Metrics Engineer',
       task: 'Implement application metrics',
@@ -405,7 +405,7 @@ export const centralizedCollectionTask = defineTask('centralized-collection', (a
   kind: 'agent',
   title: `Phase 6: Centralized Collection - ${args.projectName}`,
   agent: {
-    name: 'collection-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Platform Engineer',
       task: 'Set up centralized collection',
@@ -447,7 +447,7 @@ export const dashboardsAlertsTask = defineTask('dashboards-alerts', (args, taskC
   kind: 'agent',
   title: `Phase 7: Dashboards and Alerts - ${args.projectName}`,
   agent: {
-    name: 'dashboard-engineer',
+    name: 'cloud-migration-planner',
     prompt: {
       role: 'Observability Engineer',
       task: 'Create dashboards and alerts',

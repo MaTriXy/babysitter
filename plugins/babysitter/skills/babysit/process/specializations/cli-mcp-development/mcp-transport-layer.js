@@ -283,7 +283,7 @@ export const protocolSelectionTask = defineTask('protocol-selection', (args, tas
   kind: 'agent',
   title: `Phase 1: Protocol Selection - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Transport Protocol Specialist',
       task: 'Select transport protocol based on use case',
@@ -323,7 +323,7 @@ export const transportServerTask = defineTask('transport-server', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Transport Server - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Server Implementation Specialist',
       task: 'Implement transport server',
@@ -366,7 +366,7 @@ export const sseEndpointTask = defineTask('sse-endpoint', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: SSE Endpoint - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'SSE Implementation Specialist',
       task: 'Configure SSE endpoint for server-to-client',
@@ -406,7 +406,7 @@ export const postEndpointTask = defineTask('post-endpoint', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: POST Endpoint - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Endpoint Specialist',
       task: 'Add POST endpoint for client-to-server',
@@ -447,7 +447,7 @@ export const connectionManagementTask = defineTask('connection-management', (arg
   kind: 'agent',
   title: `Phase 5: Connection Management - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Connection Management Specialist',
       task: 'Implement connection management',
@@ -488,7 +488,7 @@ export const authConfigTask = defineTask('auth-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Auth Configuration - ${args.projectName}`,
   agent: {
-    name: 'mcp-security-engineer',
+    name: 'mcp-security-auditor',
     prompt: {
       role: 'MCP Authentication Specialist',
       task: 'Add authentication and authorization',
@@ -529,7 +529,7 @@ export const corsConfigTask = defineTask('cors-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: CORS Configuration - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'CORS Configuration Specialist',
       task: 'Configure CORS for web clients',
@@ -568,7 +568,7 @@ export const reconnectionHandlingTask = defineTask('reconnection-handling', (arg
   kind: 'agent',
   title: `Phase 8: Reconnection Handling - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Reconnection Specialist',
       task: 'Implement reconnection handling',
@@ -608,7 +608,7 @@ export const healthCheckTask = defineTask('health-check', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Health Check - ${args.projectName}`,
   agent: {
-    name: 'mcp-developer',
+    name: 'mcp-transport-architect',
     prompt: {
       role: 'MCP Health Check Specialist',
       task: 'Add health check endpoint',
@@ -647,7 +647,7 @@ export const integrationTestsTask = defineTask('integration-tests', (args, taskC
   kind: 'agent',
   title: `Phase 10: Integration Tests - ${args.projectName}`,
   agent: {
-    name: 'mcp-qa-engineer',
+    name: 'mcp-testing-expert',
     prompt: {
       role: 'MCP Integration Testing Specialist',
       task: 'Create integration tests',
@@ -689,7 +689,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'mcp-tool-documenter',
     prompt: {
       role: 'MCP Transport Documentation Specialist',
       task: 'Document transport configuration',

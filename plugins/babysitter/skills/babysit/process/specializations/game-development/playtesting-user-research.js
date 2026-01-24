@@ -79,7 +79,7 @@ export const researchPlanningTask = defineTask('research-planning', (args, taskC
   kind: 'agent',
   title: `Research Planning - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Plan playtesting research', context: args, instructions: ['1. Define research goals', '2. Create hypotheses', '3. Design test scenarios', '4. Create research protocol'] },
     outputSchema: { type: 'object', required: ['researchPlan', 'hypotheses', 'artifacts'], properties: { researchPlan: { type: 'object' }, hypotheses: { type: 'array' }, scenarios: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -91,7 +91,7 @@ export const participantRecruitmentTask = defineTask('participant-recruitment', 
   kind: 'agent',
   title: `Participant Recruitment - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Recruit playtest participants', context: args, instructions: ['1. Define target demographics', '2. Create screening criteria', '3. Recruit participants', '4. Schedule sessions'] },
     outputSchema: { type: 'object', required: ['participantsRecruited', 'demographics', 'artifacts'], properties: { participantsRecruited: { type: 'number' }, demographics: { type: 'object' }, schedule: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -103,7 +103,7 @@ export const testBuildPrepTask = defineTask('test-build-prep', (args, taskCtx) =
   kind: 'agent',
   title: `Test Build Preparation - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'build-engineer-agent',
     prompt: { role: 'Build Engineer', task: 'Prepare playtest build', context: args, instructions: ['1. Create stable test build', '2. Add telemetry hooks', '3. Disable debug features', '4. Test build stability'] },
     outputSchema: { type: 'object', required: ['buildReady', 'buildVersion', 'artifacts'], properties: { buildReady: { type: 'boolean' }, buildVersion: { type: 'string' }, telemetryEnabled: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -115,7 +115,7 @@ export const playtestSessionsTask = defineTask('playtest-sessions', (args, taskC
   kind: 'agent',
   title: `Playtest Sessions - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Conduct playtest sessions', context: args, instructions: ['1. Run moderated sessions', '2. Use think-aloud protocol', '3. Observe player behavior', '4. Record sessions'] },
     outputSchema: { type: 'object', required: ['sessionCount', 'observations', 'artifacts'], properties: { sessionCount: { type: 'number' }, observations: { type: 'array' }, recordings: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -127,7 +127,7 @@ export const metricsCollectionTask = defineTask('metrics-collection', (args, tas
   kind: 'agent',
   title: `Metrics Collection - ${args.projectName}`,
   agent: {
-    name: 'data-analyst',
+    name: 'analytics-engineer-agent',
     prompt: { role: 'Data Analyst', task: 'Collect playtest metrics', context: args, instructions: ['1. Gather telemetry data', '2. Track completion rates', '3. Measure time metrics', '4. Compile metrics report'] },
     outputSchema: { type: 'object', required: ['metrics', 'completionRates', 'artifacts'], properties: { metrics: { type: 'object' }, completionRates: { type: 'object' }, timeMetrics: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -139,7 +139,7 @@ export const qualitativeAnalysisTask = defineTask('qualitative-analysis', (args,
   kind: 'agent',
   title: `Qualitative Analysis - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Analyze qualitative data', context: args, instructions: ['1. Code observations', '2. Identify themes', '3. Analyze feedback', '4. Create affinity diagram'] },
     outputSchema: { type: 'object', required: ['themes', 'insights', 'artifacts'], properties: { themes: { type: 'array' }, insights: { type: 'array' }, painPoints: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -151,7 +151,7 @@ export const quantitativeAnalysisTask = defineTask('quantitative-analysis', (arg
   kind: 'agent',
   title: `Quantitative Analysis - ${args.projectName}`,
   agent: {
-    name: 'data-analyst',
+    name: 'analytics-engineer-agent',
     prompt: { role: 'Data Analyst', task: 'Analyze quantitative data', context: args, instructions: ['1. Calculate statistics', '2. Identify patterns', '3. Create visualizations', '4. Statistical significance tests'] },
     outputSchema: { type: 'object', required: ['statistics', 'patterns', 'artifacts'], properties: { statistics: { type: 'object' }, patterns: { type: 'array' }, visualizations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -163,7 +163,7 @@ export const researchSynthesisTask = defineTask('research-synthesis', (args, tas
   kind: 'agent',
   title: `Research Synthesis - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Synthesize research findings', context: args, instructions: ['1. Combine qual and quant', '2. Prioritize findings', '3. Create recommendations', '4. Write research report'] },
     outputSchema: { type: 'object', required: ['reportPath', 'findings', 'recommendations', 'findingCount', 'recommendationCount', 'artifacts'], properties: { reportPath: { type: 'string' }, findings: { type: 'array' }, recommendations: { type: 'array' }, findingCount: { type: 'number' }, recommendationCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },

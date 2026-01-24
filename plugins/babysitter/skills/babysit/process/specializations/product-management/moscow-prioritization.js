@@ -524,7 +524,7 @@ export const stakeholderValidationTask = defineTask('stakeholder-validation', (a
   kind: 'agent',
   title: 'Validate prioritization with stakeholders',
   agent: {
-    name: 'stakeholder-facilitator',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product manager and stakeholder engagement specialist',
       task: 'Facilitate stakeholder validation workshop for MoSCoW prioritization',
@@ -717,7 +717,7 @@ export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, t
   kind: 'agent',
   title: 'Analyze requirement dependencies',
   agent: {
-    name: 'technical-analyst',
+    name: 'requirements-analyst',
     prompt: {
       role: 'technical analyst and system architect',
       task: 'Analyze dependencies between requirements',
@@ -809,7 +809,7 @@ export const effortValueEstimationTask = defineTask('effort-value-estimation', (
   kind: 'agent',
   title: 'Estimate effort and business value',
   agent: {
-    name: 'estimation-expert',
+    name: 'prioritization-expert',
     prompt: {
       role: 'agile estimation expert and business analyst',
       task: 'Estimate development effort and business value for each requirement',
@@ -931,7 +931,7 @@ export const releaseScopeDefinitionTask = defineTask('release-scope-definition',
   kind: 'agent',
   title: 'Define release scope and iterations',
   agent: {
-    name: 'release-planner',
+    name: 'prioritization-expert',
     prompt: {
       role: 'agile release planner and delivery manager',
       task: 'Define release scope, iterations, and delivery milestones',
@@ -1036,7 +1036,7 @@ export const mvpSpecificationTask = defineTask('mvp-specification', (args, taskC
   kind: 'agent',
   title: 'Specify Minimum Viable Product (MVP)',
   agent: {
-    name: 'product-strategist',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product strategist and MVP expert',
       task: 'Create comprehensive MVP specification from Must-have requirements',
@@ -1173,7 +1173,7 @@ export const roadmapGenerationTask = defineTask('roadmap-generation', (args, tas
   kind: 'agent',
   title: 'Generate product roadmap',
   agent: {
-    name: 'product-roadmap-specialist',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product roadmap specialist and strategic planner',
       task: 'Generate product roadmap showing release timeline and evolution',
@@ -1282,7 +1282,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: 'Generate final documentation and reports',
   agent: {
-    name: 'documentation-specialist',
+    name: 'requirements-analyst',
     prompt: {
       role: 'technical writer and product documentation specialist',
       task: 'Generate comprehensive MoSCoW prioritization documentation',

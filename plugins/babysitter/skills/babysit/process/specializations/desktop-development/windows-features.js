@@ -104,7 +104,7 @@ export const windowsRequirementsTask = defineTask('windows-requirements', (args,
   kind: 'agent',
   title: `Windows Requirements - ${args.projectName}`,
   agent: {
-    name: 'windows-analyst',
+    name: 'windows-platform-expert',
     prompt: { role: 'Windows Features Analyst', task: 'Analyze Windows feature requirements', context: args, instructions: ['1. Analyze feature needs', '2. Check Windows version requirements', '3. Document API availability', '4. Assess manifest requirements', '5. Document dependencies', '6. Plan feature interactions', '7. Document testing needs', '8. Generate requirements document'] },
     outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -115,8 +115,11 @@ export const windowsRequirementsTask = defineTask('windows-requirements', (args,
 export const implementJumpListsTask = defineTask('implement-jump-lists', (args, taskCtx) => ({
   kind: 'agent',
   title: `Jump Lists - ${args.projectName}`,
+  skill: {
+    name: 'windows-jumplist-builder',
+  },
   agent: {
-    name: 'jumplist-developer',
+    name: 'windows-platform-expert',
     prompt: { role: 'Jump List Developer', task: 'Implement Windows Jump Lists', context: args, instructions: ['1. Create Jump List categories', '2. Add recent items', '3. Add frequent items', '4. Add custom tasks', '5. Handle item clicks', '6. Update Jump List dynamically', '7. Clear Jump List', '8. Generate Jump List module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'artifacts'], properties: { modulePath: { type: 'string' }, categories: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -175,8 +178,11 @@ export const implementOverlayIconTask = defineTask('implement-overlay-icon', (ar
 export const implementStoreIntegrationTask = defineTask('implement-store-integration', (args, taskCtx) => ({
   kind: 'agent',
   title: `Windows Store Integration - ${args.projectName}`,
+  skill: {
+    name: 'msix-packaging',
+  },
   agent: {
-    name: 'store-developer',
+    name: 'windows-platform-expert',
     prompt: { role: 'Windows Store Developer', task: 'Implement Windows Store integration', context: args, instructions: ['1. Configure app identity', '2. Create MSIX package', '3. Configure capabilities', '4. Handle licensing', '5. Implement in-app purchases', '6. Configure auto-updates', '7. Handle store ratings', '8. Generate store configuration'] },
     outputSchema: { type: 'object', required: ['appId', 'artifacts'], properties: { appId: { type: 'string' }, packageConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },

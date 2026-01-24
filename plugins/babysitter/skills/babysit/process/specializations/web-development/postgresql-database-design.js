@@ -140,7 +140,7 @@ export const documentationTask = defineTask('pg-documentation', (args, taskCtx) 
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: { role: 'Technical Writer', task: 'Generate database documentation', context: args,
       instructions: ['1. Create README', '2. Document schema', '3. Create ERD', '4. Document relationships', '5. Create index guide', '6. Document migrations', '7. Create performance guide', '8. Document queries', '9. Create troubleshooting', '10. Generate examples'],
       outputFormat: 'JSON with documentation'

@@ -262,7 +262,7 @@ export const securityRequirementsTask = defineTask('security-requirements', (arg
   kind: 'agent',
   title: `Phase 1: Security Requirements - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Analyze security requirements',
@@ -304,7 +304,7 @@ export const rootOfTrustDesignTask = defineTask('root-of-trust-design', (args, t
   kind: 'agent',
   title: `Phase 2: Root of Trust - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Design root of trust',
@@ -346,7 +346,7 @@ export const keyManagementDesignTask = defineTask('key-management-design', (args
   kind: 'agent',
   title: `Phase 3: Key Management - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Design key management',
@@ -389,7 +389,7 @@ export const bootChainDesignTask = defineTask('boot-chain-design', (args, taskCt
   kind: 'agent',
   title: `Phase 4: Boot Chain - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Design boot chain',
@@ -431,7 +431,7 @@ export const signatureVerificationTask = defineTask('signature-verification', (a
   kind: 'agent',
   title: `Phase 5: Signature Verification - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Implement signature verification',
@@ -473,7 +473,7 @@ export const antiRollbackTask = defineTask('anti-rollback', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 6: Anti-Rollback - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Implement anti-rollback protection',
@@ -515,7 +515,7 @@ export const debugProtectionTask = defineTask('debug-protection', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: Debug Protection - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Implement debug protection',
@@ -557,7 +557,7 @@ export const secureBootVerificationTask = defineTask('secure-boot-verification',
   kind: 'agent',
   title: `Phase 8: Verification - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'embedded-security-expert',
     prompt: {
       role: 'Embedded Security Engineer',
       task: 'Verify secure boot implementation',
@@ -599,7 +599,7 @@ export const secureBootDocumentationTask = defineTask('secure-boot-documentation
   kind: 'agent',
   title: `Phase 9: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate secure boot documentation',

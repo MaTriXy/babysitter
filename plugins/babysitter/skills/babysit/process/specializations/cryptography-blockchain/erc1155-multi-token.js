@@ -198,7 +198,7 @@ export const tokenTypeDesignTask = defineTask('token-type-design', (args, taskCt
   kind: 'agent',
   title: `Phase 1: Token Type Design - ${args.projectName}`,
   agent: {
-    name: 'token-designer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-013: erc1155-implementation)
     prompt: {
       role: 'Multi-Token Designer',
       task: 'Design token types for ERC-1155',
@@ -239,7 +239,7 @@ export const uriSchemeDesignTask = defineTask('uri-scheme-design', (args, taskCt
   kind: 'agent',
   title: `Phase 2: URI Scheme Design - ${args.projectName}`,
   agent: {
-    name: 'uri-designer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-013: erc1155-implementation)
     prompt: {
       role: 'URI Scheme Designer',
       task: 'Design metadata URI scheme',
@@ -281,7 +281,7 @@ export const contractImplementationTask = defineTask('contract-implementation', 
   kind: 'agent',
   title: `Phase 3: Contract Implementation - ${args.projectName}`,
   agent: {
-    name: 'erc1155-developer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-013: erc1155-implementation, SK-001: solidity-dev)
     prompt: {
       role: 'ERC-1155 Developer',
       task: 'Implement ERC-1155 contract',
@@ -323,7 +323,7 @@ export const batchOperationsTask = defineTask('batch-operations', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: Batch Operations - ${args.projectName}`,
   agent: {
-    name: 'batch-operations-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-013: erc1155-implementation)
     prompt: {
       role: 'Batch Operations Engineer',
       task: 'Implement efficient batch operations',
@@ -364,7 +364,7 @@ export const supplyManagementTask = defineTask('supply-management', (args, taskC
   kind: 'agent',
   title: `Phase 5: Supply Management - ${args.projectName}`,
   agent: {
-    name: 'supply-manager',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-013: erc1155-implementation)
     prompt: {
       role: 'Token Supply Manager',
       task: 'Implement supply management',
@@ -405,7 +405,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 6: Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'ERC-1155 Test Engineer',
       task: 'Create comprehensive test suite',
@@ -447,7 +447,7 @@ export const marketplaceCompatibilityTask = defineTask('marketplace-compatibilit
   kind: 'agent',
   title: `Phase 7: Marketplace Compatibility - ${args.projectName}`,
   agent: {
-    name: 'marketplace-tester',
+    name: 'token-standards', // AG-003: Token Standards Specialist
     prompt: {
       role: 'Marketplace Compatibility Tester',
       task: 'Test marketplace compatibility',
@@ -488,7 +488,7 @@ export const deploymentPreparationTask = defineTask('deployment-preparation', (a
   kind: 'agent',
   title: `Phase 8: Deployment Preparation - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'token-standards', // AG-003: Token Standards Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Deployment Engineer',
       task: 'Prepare ERC-1155 deployment',

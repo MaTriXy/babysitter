@@ -92,7 +92,7 @@ export const analyzeNetworkTrafficTask = defineTask('analyze-network-traffic', (
   kind: 'agent',
   title: `Analyze Network Traffic - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze network traffic patterns', context: args,
       instructions: ['1. Capture network traffic', '2. Analyze request patterns', '3. Measure latencies', '4. Calculate bandwidth', '5. Document patterns'],
       outputFormat: 'JSON with traffic analysis' },
@@ -106,7 +106,7 @@ export const identifyChattyCommunicationTask = defineTask('identify-chatty-commu
   kind: 'agent',
   title: `Identify Chatty Communication - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'latency-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Identify chatty communication patterns', context: args,
       instructions: ['1. Find excessive round-trips', '2. Identify small requests', '3. Find redundant calls', '4. Analyze request frequency', '5. Document issues'],
       outputFormat: 'JSON with chatty communication issues' },
@@ -120,7 +120,7 @@ export const implementConnectionPoolingTask = defineTask('implement-connection-p
   kind: 'agent',
   title: `Implement Connection Pooling - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement connection pooling', context: args,
       instructions: ['1. Configure connection pools', '2. Set pool sizes', '3. Configure timeouts', '4. Add health checks', '5. Document configuration'],
       outputFormat: 'JSON with connection pooling details' },
@@ -134,7 +134,7 @@ export const configureTCPParametersTask = defineTask('configure-tcp-parameters',
   kind: 'agent',
   title: `Configure TCP Parameters - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure TCP parameters', context: args,
       instructions: ['1. Tune TCP buffers', '2. Enable TCP fastopen', '3. Configure keep-alive', '4. Tune congestion control', '5. Document settings'],
       outputFormat: 'JSON with TCP configuration' },
@@ -148,7 +148,7 @@ export const enableCompressionTask = defineTask('enable-compression', (args, tas
   kind: 'agent',
   title: `Enable Compression - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Enable compression where appropriate', context: args,
       instructions: ['1. Identify compressible content', '2. Configure gzip/brotli', '3. Set compression levels', '4. Test compression ratios', '5. Document configuration'],
       outputFormat: 'JSON with compression details' },
@@ -162,7 +162,7 @@ export const implementRequestBatchingTask = defineTask('implement-request-batchi
   kind: 'agent',
   title: `Implement Request Batching - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement request batching', context: args,
       instructions: ['1. Identify batchable requests', '2. Implement batching logic', '3. Configure batch sizes', '4. Add timeout handling', '5. Document batching'],
       outputFormat: 'JSON with batching details' },
@@ -176,7 +176,7 @@ export const optimizeProtocolChoicesTask = defineTask('optimize-protocol-choices
   kind: 'agent',
   title: `Optimize Protocol Choices - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'io-performance-expert',
     prompt: { role: 'Performance Engineer', task: 'Optimize protocol choices', context: args,
       instructions: ['1. Evaluate HTTP/2/3', '2. Consider gRPC', '3. Evaluate WebSocket', '4. Implement improvements', '5. Document changes'],
       outputFormat: 'JSON with protocol optimizations' },
@@ -190,7 +190,7 @@ export const benchmarkNetworkImprovementsTask = defineTask('benchmark-network-im
   kind: 'agent',
   title: `Benchmark Network Improvements - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'latency-optimization-expert',
     prompt: { role: 'Performance Engineer', task: 'Benchmark network improvements', context: args,
       instructions: ['1. Measure baseline latency', '2. Measure optimized latency', '3. Measure throughput', '4. Calculate improvements', '5. Document results'],
       outputFormat: 'JSON with benchmark results' },

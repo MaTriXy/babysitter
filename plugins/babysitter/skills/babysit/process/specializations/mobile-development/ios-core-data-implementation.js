@@ -367,8 +367,9 @@ export const modelDesignTask = defineTask('model-design', (args, taskCtx) => ({
 export const xcdatamodelTask = defineTask('xcdatamodel', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: XCDataModel Creation - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Create .xcdatamodel file in Xcode',
@@ -411,8 +412,9 @@ export const xcdatamodelTask = defineTask('xcdatamodel', (args, taskCtx) => ({
 export const managedObjectTask = defineTask('managed-object', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: NSManagedObject Subclasses - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Generate NSManagedObject subclasses',
@@ -455,8 +457,9 @@ export const managedObjectTask = defineTask('managed-object', (args, taskCtx) =>
 export const stackSetupTask = defineTask('stack-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Core Data Stack Setup - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Set up Core Data stack with NSPersistentContainer',
@@ -500,8 +503,9 @@ export const stackSetupTask = defineTask('stack-setup', (args, taskCtx) => ({
 export const crudOperationsTask = defineTask('crud-operations', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: CRUD Operations - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Implement CRUD operations for all entities',
@@ -545,8 +549,9 @@ export const crudOperationsTask = defineTask('crud-operations', (args, taskCtx) 
 export const fetchRequestsTask = defineTask('fetch-requests', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Fetch Requests - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Create fetch requests and predicates',
@@ -590,8 +595,9 @@ export const fetchRequestsTask = defineTask('fetch-requests', (args, taskCtx) =>
 export const sortingFilteringTask = defineTask('sorting-filtering', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Sorting and Filtering - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Developer',
       task: 'Implement sorting and filtering',
@@ -635,8 +641,9 @@ export const sortingFilteringTask = defineTask('sorting-filtering', (args, taskC
 export const batchOperationsTask = defineTask('batch-operations', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Batch Operations - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Performance Specialist',
       task: 'Set up batch operations for performance',
@@ -679,8 +686,9 @@ export const batchOperationsTask = defineTask('batch-operations', (args, taskCtx
 export const backgroundContextsTask = defineTask('background-contexts', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Background Contexts - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Concurrency Specialist',
       task: 'Configure background contexts for heavy operations',
@@ -723,8 +731,9 @@ export const backgroundContextsTask = defineTask('background-contexts', (args, t
 export const migrationSetupTask = defineTask('migration-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Migration Setup - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Core Data Migration Specialist',
       task: 'Implement Core Data migration strategy',
@@ -768,8 +777,9 @@ export const migrationSetupTask = defineTask('migration-setup', (args, taskCtx) 
 export const cloudKitSetupTask = defineTask('cloudkit-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: CloudKit Setup - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS CloudKit Specialist',
       task: 'Add iCloud sync with CloudKit',
@@ -812,8 +822,9 @@ export const cloudKitSetupTask = defineTask('cloudkit-setup', (args, taskCtx) =>
 export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: Error Handling - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Error Handling Specialist',
       task: 'Implement error handling and validation',
@@ -856,8 +867,9 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
 export const dataAccessLayerTask = defineTask('data-access-layer', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Data Access Layer - ${args.projectName}`,
+  skill: { name: 'ios-persistence' },
   agent: {
-    name: 'ios-developer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Data Layer Architect',
       task: 'Create data access layer/repository pattern',
@@ -902,8 +914,9 @@ export const dataAccessLayerTask = defineTask('data-access-layer', (args, taskCt
 export const unitTestsTask = defineTask('unit-tests', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Unit Tests - ${args.projectName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'ios-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'iOS Test Engineer',
       task: 'Write tests for data operations',
@@ -949,7 +962,7 @@ export const performanceProfilingTask = defineTask('performance-profiling', (arg
   kind: 'agent',
   title: `Phase 15: Performance Profiling - ${args.projectName}`,
   agent: {
-    name: 'ios-performance-engineer',
+    name: 'ios-native-expert',
     prompt: {
       role: 'iOS Performance Engineer',
       task: 'Profile and optimize queries',

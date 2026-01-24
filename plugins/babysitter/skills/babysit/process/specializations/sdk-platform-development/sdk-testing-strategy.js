@@ -211,7 +211,7 @@ export const testingStrategyTask = defineTask('testing-strategy', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Testing Strategy - ${args.projectName}`,
   agent: {
-    name: 'qa-architect',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'QA Architect',
       task: 'Define comprehensive SDK testing strategy',
@@ -257,7 +257,7 @@ export const unitTestSetupTask = defineTask('unit-test-setup', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 2: Unit Tests - ${args.language}`,
   agent: {
-    name: 'test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Test Engineer',
       task: `Set up unit test suite for ${args.language} SDK`,
@@ -304,7 +304,7 @@ export const integrationTestSetupTask = defineTask('integration-test-setup', (ar
   kind: 'agent',
   title: `Phase 3: Integration Tests - ${args.projectName}`,
   agent: {
-    name: 'integration-test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Integration Test Engineer',
       task: 'Implement integration tests for API interactions',
@@ -350,7 +350,7 @@ export const contractTestSetupTask = defineTask('contract-test-setup', (args, ta
   kind: 'agent',
   title: `Phase 4: Contract Tests - ${args.projectName}`,
   agent: {
-    name: 'contract-test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Contract Test Engineer',
       task: 'Design contract tests for API compatibility (Pact)',
@@ -396,7 +396,7 @@ export const e2eTestSetupTask = defineTask('e2e-test-setup', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 5: E2E Tests - ${args.projectName}`,
   agent: {
-    name: 'e2e-test-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'E2E Test Engineer',
       task: 'Build end-to-end test scenarios',
@@ -442,7 +442,7 @@ export const coverageConfigTask = defineTask('coverage-config', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Coverage Configuration - ${args.projectName}`,
   agent: {
-    name: 'quality-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'Quality Engineer',
       task: 'Configure test coverage requirements',
@@ -495,7 +495,7 @@ export const testCicdIntegrationTask = defineTask('test-cicd-integration', (args
   kind: 'agent',
   title: `Phase 7: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate tests with CI/CD pipeline',
@@ -542,7 +542,7 @@ export const testingDocumentationTask = defineTask('testing-documentation', (arg
   kind: 'agent',
   title: `Phase 8: Testing Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate testing guidelines and documentation',

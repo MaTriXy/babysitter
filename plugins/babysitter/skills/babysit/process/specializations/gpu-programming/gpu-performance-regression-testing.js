@@ -114,6 +114,7 @@ export const benchmarkSuiteDesignTask = defineTask('benchmark-suite-design', (ar
   title: `Benchmark Suite Design - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Design benchmark suite',
@@ -155,6 +156,7 @@ export const baselineEstablishmentTask = defineTask('baseline-establishment', (a
   title: `Baseline Establishment - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Establish performance baseline',
@@ -196,6 +198,7 @@ export const thresholdConfigurationTask = defineTask('threshold-configuration', 
   title: `Threshold Configuration - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Configure regression thresholds',
@@ -237,6 +240,7 @@ export const regressionDetectionTask = defineTask('regression-detection', (args,
   title: `Regression Detection - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Implement regression detection',
@@ -278,6 +282,7 @@ export const ciCdIntegrationTask = defineTask('ci-cd-integration', (args, taskCt
   title: `CI/CD Integration - ${args.projectName}`,
   agent: {
     name: 'devops-engineer',
+    skills: ['ci-cd-integration'],
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate with CI/CD pipeline',
@@ -319,6 +324,7 @@ export const performanceDashboardTask = defineTask('performance-dashboard', (arg
   title: `Dashboard and Reporting - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Create performance dashboard',

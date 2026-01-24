@@ -190,7 +190,7 @@ export const integrationInventoryTask = defineTask('integration-inventory', (arg
   kind: 'agent',
   title: `Phase 1: Integration Inventory - ${args.projectName}`,
   agent: {
-    name: 'integration-analyst',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'Integration Analyst',
       task: 'Create integration inventory',
@@ -232,7 +232,7 @@ export const targetPatternDesignTask = defineTask('target-pattern-design', (args
   kind: 'agent',
   title: `Phase 2: Target Pattern Design - ${args.projectName}`,
   agent: {
-    name: 'integration-architect',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'Integration Architect',
       task: 'Design target integration patterns',
@@ -274,7 +274,7 @@ export const contractDesignTask = defineTask('contract-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Contract Design - ${args.projectName}`,
   agent: {
-    name: 'contract-designer',
+    name: 'api-modernization-architect',
     prompt: {
       role: 'API Designer',
       task: 'Design integration contracts',
@@ -316,7 +316,7 @@ export const integrationImplementationTask = defineTask('integration-implementat
   kind: 'agent',
   title: `Phase 4: Integration Implementation - ${args.projectName}`,
   agent: {
-    name: 'integration-developer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Integration Developer',
       task: 'Implement new integrations',
@@ -357,7 +357,7 @@ export const partnerCoordinationTask = defineTask('partner-coordination', (args,
   kind: 'agent',
   title: `Phase 5: Partner Coordination - ${args.projectName}`,
   agent: {
-    name: 'partner-coordinator',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Integration Manager',
       task: 'Coordinate with integration partners',
@@ -398,7 +398,7 @@ export const integrationTestingTask = defineTask('integration-testing', (args, t
   kind: 'agent',
   title: `Phase 6: Integration Testing - ${args.projectName}`,
   agent: {
-    name: 'integration-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Test migrated integrations',
@@ -440,7 +440,7 @@ export const integrationCutoverTask = defineTask('integration-cutover', (args, t
   kind: 'agent',
   title: `Phase 7: Integration Cutover - ${args.projectName}`,
   agent: {
-    name: 'cutover-engineer',
+    name: 'cutover-coordinator',
     prompt: {
       role: 'Release Manager',
       task: 'Execute integration cutover',

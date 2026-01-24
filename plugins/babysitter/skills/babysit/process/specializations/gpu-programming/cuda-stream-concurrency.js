@@ -111,7 +111,8 @@ export const executionGraphDesignTask = defineTask('execution-graph-design', (ar
   kind: 'agent',
   title: `Execution Graph - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design execution dependency graph',
@@ -152,7 +153,8 @@ export const streamArchitectureTask = defineTask('stream-architecture', (args, t
   kind: 'agent',
   title: `Stream Architecture - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design stream architecture',
@@ -193,7 +195,8 @@ export const eventSynchronizationTask = defineTask('event-synchronization', (arg
   kind: 'agent',
   title: `Event Synchronization - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement event-based synchronization',
@@ -234,7 +237,8 @@ export const kernelOverlappingTask = defineTask('kernel-overlapping', (args, tas
   kind: 'agent',
   title: `Kernel Overlapping - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement kernel overlapping',
@@ -275,7 +279,8 @@ export const cudaGraphsTask = defineTask('cuda-graphs', (args, taskCtx) => ({
   kind: 'agent',
   title: `CUDA Graphs - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement CUDA Graphs',
@@ -317,6 +322,7 @@ export const concurrencyProfilingTask = defineTask('concurrency-profiling', (arg
   title: `Concurrency Profiling - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Profile concurrency efficiency',

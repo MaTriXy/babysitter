@@ -255,7 +255,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'Senior SDK Architect with expertise in developer tools and API design',
       task: 'Analyze requirements and constraints for SDK architecture',
@@ -313,7 +313,7 @@ export const componentHierarchyTask = defineTask('component-hierarchy', (args, t
   kind: 'agent',
   title: `Phase 2: Component Hierarchy Design - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Component Architect',
       task: 'Design SDK component hierarchy with Core, Service, Utility, and Extension layers',
@@ -381,7 +381,7 @@ export const authIntegrationTask = defineTask('auth-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Authentication Integration Design - ${args.projectName}`,
   agent: {
-    name: 'security-architect',
+    name: 'security-review-agent',
     prompt: {
       role: 'SDK Security Architect',
       task: 'Design authentication integration patterns for SDK',
@@ -439,7 +439,7 @@ export const transportStrategyTask = defineTask('transport-strategy', (args, tas
   kind: 'agent',
   title: `Phase 4: Transport Strategy Design - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Transport Architect',
       task: 'Plan serialization and transport strategies',
@@ -502,7 +502,7 @@ export const extensionArchitectureTask = defineTask('extension-architecture', (a
   kind: 'agent',
   title: `Phase 5: Extension Architecture Design - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Extensibility Architect',
       task: 'Establish extension and plugin architecture',
@@ -566,7 +566,7 @@ export const errorHandlingStrategyTask = defineTask('error-handling-strategy', (
   kind: 'agent',
   title: `Phase 6: Error Handling Strategy - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'SDK Error Handling Specialist',
       task: 'Design comprehensive error handling strategy',
@@ -629,7 +629,7 @@ export const configurationManagementTask = defineTask('configuration-management'
   kind: 'agent',
   title: `Phase 7: Configuration Management Design - ${args.projectName}`,
   agent: {
-    name: 'sdk-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK Configuration Specialist',
       task: 'Design configuration management approach',
@@ -693,7 +693,7 @@ export const architectureDocumentationTask = defineTask('architecture-documentat
   kind: 'agent',
   title: `Phase 8: Architecture Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'SDK Technical Writer',
       task: 'Generate comprehensive architecture documentation',

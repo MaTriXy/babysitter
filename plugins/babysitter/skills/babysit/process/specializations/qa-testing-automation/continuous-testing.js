@@ -834,7 +834,7 @@ export const assessCurrentStateTask = defineTask('assess-current-state', (args, 
   kind: 'agent',
   title: `Phase 1: Current State Assessment - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Senior DevOps Engineer and Testing Architect',
       task: 'Assess current testing and CI/CD maturity state',
@@ -916,7 +916,7 @@ export const setupTestInfrastructureTask = defineTask('setup-test-infrastructure
   kind: 'agent',
   title: `Phase 2: Test Infrastructure Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Infrastructure Engineer',
       task: 'Set up comprehensive test infrastructure and frameworks',
@@ -995,7 +995,7 @@ export const designTestStrategyTask = defineTask('design-test-strategy', (args, 
   kind: 'agent',
   title: `Phase 3: Test Strategy Design - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Strategy Architect',
       task: 'Design comprehensive continuous testing strategy',
@@ -1086,7 +1086,7 @@ export const configurePreCommitStageTask = defineTask('configure-pre-commit-stag
   kind: 'agent',
   title: `Phase 4.1: Pre-Commit Stage Configuration - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Configure pre-commit hooks and local development checks',
@@ -1156,7 +1156,7 @@ export const configureCommitStageTask = defineTask('configure-commit-stage', (ar
   kind: 'agent',
   title: `Phase 4.2: Commit Stage Configuration - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'CI/CD Pipeline Engineer',
       task: 'Configure commit stage with fast feedback tests',
@@ -1237,7 +1237,7 @@ export const configureAcceptanceStageTask = defineTask('configure-acceptance-sta
   kind: 'agent',
   title: `Phase 4.3: Acceptance Stage Configuration - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Automation Lead',
       task: 'Configure acceptance stage with comprehensive E2E and acceptance tests',
@@ -1311,7 +1311,7 @@ export const configureProductionStageTask = defineTask('configure-production-sta
   kind: 'agent',
   title: `Phase 4.4: Production Stage Configuration - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Production Engineering Lead',
       task: 'Configure production deployment and monitoring stage',
@@ -1392,7 +1392,7 @@ export const implementQualityGatesTask = defineTask('implement-quality-gates', (
   kind: 'agent',
   title: `Phase 5: Quality Gates Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Quality Engineering Lead',
       task: 'Implement quality gates at each pipeline stage',
@@ -1463,7 +1463,7 @@ export const implementUnitTestsTask = defineTask('implement-unit-tests', (args, 
   kind: 'agent',
   title: `Phase 6.1: Unit Tests Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement comprehensive unit tests',
@@ -1524,7 +1524,7 @@ export const implementIntegrationTestsTask = defineTask('implement-integration-t
   kind: 'agent',
   title: `Phase 6.2: Integration Tests Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Integration Test Engineer',
       task: 'Implement integration tests for component interactions',
@@ -1590,7 +1590,7 @@ export const implementApiTestsTask = defineTask('implement-api-tests', (args, ta
   kind: 'agent',
   title: `Phase 6.3: API Tests Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'API Test Automation Engineer',
       task: 'Implement comprehensive API tests',
@@ -1656,7 +1656,7 @@ export const implementE2eTestsTask = defineTask('implement-e2e-tests', (args, ta
   kind: 'agent',
   title: `Phase 6.4: E2E Tests Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'E2E Test Automation Engineer',
       task: 'Implement end-to-end tests for critical user journeys',
@@ -1722,7 +1722,7 @@ export const setupPerformanceTestingTask = defineTask('setup-performance-testing
   kind: 'agent',
   title: `Phase 7.1: Performance Testing Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Performance Test Engineer',
       task: 'Set up performance testing and benchmarking',
@@ -1791,7 +1791,7 @@ export const setupSecurityTestingTask = defineTask('setup-security-testing', (ar
   kind: 'agent',
   title: `Phase 7.2: Security Testing Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Security Test Engineer',
       task: 'Set up security testing and vulnerability scanning',
@@ -1870,7 +1870,7 @@ export const validatePipelineTask = defineTask('validate-pipeline', (args, taskC
   kind: 'agent',
   title: `Phase 8: Pipeline Validation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'CI/CD Validation Engineer',
       task: 'Validate complete pipeline execution',
@@ -1935,7 +1935,7 @@ export const configureFeedbackMechanismsTask = defineTask('configure-feedback-me
   kind: 'agent',
   title: `Phase 9: Feedback Mechanisms Configuration - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps Communication Engineer',
       task: 'Configure feedback loops and notifications',
@@ -2005,7 +2005,7 @@ export const setupTestDataManagementTask = defineTask('setup-test-data-managemen
   kind: 'agent',
   title: `Phase 10: Test Data Management Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Data Management Specialist',
       task: 'Set up test data management and isolation',
@@ -2072,7 +2072,7 @@ export const setupMonitoringTask = defineTask('setup-monitoring', (args, taskCtx
   kind: 'agent',
   title: `Phase 11: Monitoring and Observability Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Observability Engineer',
       task: 'Set up test monitoring and observability',
@@ -2154,7 +2154,7 @@ export const setupFlakinessManagementTask = defineTask('setup-flakiness-manageme
   kind: 'agent',
   title: `Phase 12: Flakiness Detection and Management - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Test Reliability Engineer',
       task: 'Set up flakiness detection and remediation',
@@ -2222,7 +2222,7 @@ export const optimizeParallelExecutionTask = defineTask('optimize-parallel-execu
   kind: 'agent',
   title: `Phase 13: Parallel Execution Optimization - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Performance Optimization Engineer',
       task: 'Optimize parallel test execution for speed',
@@ -2292,7 +2292,7 @@ export const implementShiftRightTestingTask = defineTask('implement-shift-right-
   kind: 'agent',
   title: `Phase 14: Shift-Right Testing Implementation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Production Testing Engineer',
       task: 'Implement shift-right testing in production',
@@ -2364,7 +2364,7 @@ export const generateDocumentationTask = defineTask('generate-documentation', (a
   kind: 'agent',
   title: `Phase 15: Documentation Generation - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Generate comprehensive continuous testing documentation',
@@ -2419,7 +2419,7 @@ export const executeFinalPipelineTask = defineTask('execute-final-pipeline', (ar
   kind: 'agent',
   title: `Phase 16: Final Pipeline Execution - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'CI/CD Execution Engineer',
       task: 'Execute final end-to-end pipeline and collect metrics',
@@ -2491,7 +2491,7 @@ export const setupContinuousImprovementTask = defineTask('setup-continuous-impro
   kind: 'agent',
   title: `Phase 17: Continuous Improvement Setup - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Continuous Improvement Lead',
       task: 'Set up continuous improvement mechanisms for testing',
@@ -2562,7 +2562,7 @@ export const computeFinalAssessmentTask = defineTask('compute-final-assessment',
   kind: 'agent',
   title: `Phase 18: Final Assessment and Scoring - ${args.projectPath}`,
   agent: {
-    name: 'general-purpose',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Continuous Testing Maturity Assessor',
       task: 'Compute final continuous testing maturity score and readiness',

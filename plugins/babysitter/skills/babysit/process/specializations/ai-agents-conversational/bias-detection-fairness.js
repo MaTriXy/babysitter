@@ -194,7 +194,7 @@ export const biasAssessmentFrameworkTask = defineTask('bias-assessment-framework
   kind: 'agent',
   title: `Setup Bias Assessment - ${args.systemName}`,
   agent: {
-    name: 'fairness-architect',
+    name: 'bias-fairness-analyst',  // AG-SAF-003: Audits for bias and implements fairness testing
     prompt: {
       role: 'Fairness Architect',
       task: 'Setup bias assessment framework',

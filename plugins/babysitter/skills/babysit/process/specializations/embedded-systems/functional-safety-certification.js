@@ -240,7 +240,7 @@ export const safetyPlanningTask = defineTask('safety-planning', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Safety Planning - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Create safety plan',
@@ -282,7 +282,7 @@ export const hazardAnalysisTask = defineTask('hazard-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Hazard Analysis - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Perform hazard analysis',
@@ -324,7 +324,7 @@ export const safetyRequirementsTask = defineTask('safety-requirements', (args, t
   kind: 'agent',
   title: `Phase 3: Safety Requirements - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Derive safety requirements',
@@ -366,7 +366,7 @@ export const safetyArchitectureTask = defineTask('safety-architecture', (args, t
   kind: 'agent',
   title: `Phase 4: Safety Architecture - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Design safety architecture',
@@ -408,7 +408,7 @@ export const safetyMechanismsTask = defineTask('safety-mechanisms', (args, taskC
   kind: 'agent',
   title: `Phase 5: Safety Mechanisms - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Design safety mechanisms',
@@ -450,7 +450,7 @@ export const safetyVerificationTask = defineTask('safety-verification', (args, t
   kind: 'agent',
   title: `Phase 6: Safety Verification - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Verify safety implementation',
@@ -492,7 +492,7 @@ export const safetyCaseTask = defineTask('safety-case', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Safety Case - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Build safety case',
@@ -534,7 +534,7 @@ export const certificationPackageTask = defineTask('certification-package', (arg
   kind: 'agent',
   title: `Phase 8: Certification Package - ${args.projectName}`,
   agent: {
-    name: 'safety-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Functional Safety Engineer',
       task: 'Prepare certification package',

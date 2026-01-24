@@ -284,7 +284,7 @@ export const frameworkSelectionTask = defineTask('framework-selection', (args, t
   kind: 'agent',
   title: `Phase 1: Framework Selection - ${args.projectName}`,
   agent: {
-    name: 'tui-architect',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Framework Architect',
       task: 'Select TUI framework',
@@ -325,7 +325,7 @@ export const projectConfigTask = defineTask('project-config', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 2: Project Configuration - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Project Configuration Specialist',
       task: 'Configure project for TUI development',
@@ -365,7 +365,7 @@ export const mainComponentTask = defineTask('main-component', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Main Component - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Component Developer',
       task: 'Implement main application component',
@@ -405,7 +405,7 @@ export const layoutSystemTask = defineTask('layout-system', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Layout System - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Layout Specialist',
       task: 'Create layout system',
@@ -445,7 +445,7 @@ export const inputHandlingTask = defineTask('input-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Input Handling - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Input Handling Specialist',
       task: 'Add input handling',
@@ -485,7 +485,7 @@ export const focusManagementTask = defineTask('focus-management', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Focus Management - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Focus Management Specialist',
       task: 'Implement focus management',
@@ -524,7 +524,7 @@ export const componentLibraryTask = defineTask('component-library', (args, taskC
   kind: 'agent',
   title: `Phase 7: Component Library - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Component Library Developer',
       task: 'Create base component library',
@@ -566,7 +566,7 @@ export const keyboardNavigationTask = defineTask('keyboard-navigation', (args, t
   kind: 'agent',
   title: `Phase 8: Keyboard Navigation - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Keyboard Navigation Specialist',
       task: 'Add keyboard navigation',
@@ -606,7 +606,7 @@ export const responsiveLayoutTask = defineTask('responsive-layout', (args, taskC
   kind: 'agent',
   title: `Phase 9: Responsive Layout - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Responsive Layout Specialist',
       task: 'Implement responsive layout',
@@ -646,7 +646,7 @@ export const hotReloadingTask = defineTask('hot-reloading', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 10: Hot Reloading - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Development Tools Specialist',
       task: 'Set up hot reloading for development',
@@ -686,7 +686,7 @@ export const testingUtilitiesTask = defineTask('testing-utilities', (args, taskC
   kind: 'agent',
   title: `Phase 11: Testing Utilities - ${args.projectName}`,
   agent: {
-    name: 'tui-qa-engineer',
+    name: 'tui-testing-architect',
     prompt: {
       role: 'TUI Testing Specialist',
       task: 'Create testing utilities',
@@ -726,7 +726,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 12: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'TUI Documentation Specialist',
       task: 'Generate documentation',

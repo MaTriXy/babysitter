@@ -289,7 +289,7 @@ export const pipelineRequirementsTask = defineTask('pipeline-requirements', (arg
   kind: 'agent',
   title: `Phase 1: Pipeline Requirements - ${args.projectName}`,
   agent: {
-    name: 'devops-architect',
+    name: 'desktop-ci-architect',
     prompt: {
       role: 'Desktop DevOps Architect',
       task: 'Analyze requirements for desktop application CI/CD pipeline',
@@ -330,7 +330,7 @@ export const configureBuildMatrixTask = defineTask('configure-build-matrix', (ar
   kind: 'agent',
   title: `Phase 2: Configure Build Matrix - ${args.projectName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'electron-builder-packager',
     prompt: {
       role: 'Desktop Build Engineer',
       task: 'Configure build matrix for multi-platform desktop builds',
@@ -533,8 +533,11 @@ export const configureCachingTask = defineTask('configure-caching', (args, taskC
 export const generatePipelineFilesTask = defineTask('generate-pipeline-files', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Generate Pipeline Files - ${args.projectName}`,
+  skill: {
+    name: 'electron-builder-config',
+  },
   agent: {
-    name: 'pipeline-generator',
+    name: 'release-manager',
     prompt: {
       role: 'CI/CD Pipeline Generator',
       task: 'Generate complete pipeline configuration files',

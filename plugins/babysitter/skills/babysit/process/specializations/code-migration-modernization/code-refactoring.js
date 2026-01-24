@@ -224,7 +224,7 @@ export const codeAnalysisTask = defineTask('code-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Code Analysis - ${args.projectName}`,
   agent: {
-    name: 'code-analyst',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Code Quality Analyst',
       task: 'Analyze code quality metrics',
@@ -267,7 +267,7 @@ export const smellDetectionTask = defineTask('smell-detection', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Smell Detection - ${args.projectName}`,
   agent: {
-    name: 'smell-detector',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Code Smell Expert',
       task: 'Detect code smells and anti-patterns',
@@ -309,7 +309,7 @@ export const refactoringPlanningTask = defineTask('refactoring-planning', (args,
   kind: 'agent',
   title: `Phase 3: Refactoring Planning - ${args.projectName}`,
   agent: {
-    name: 'refactoring-planner',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Refactoring Specialist',
       task: 'Plan refactoring activities',
@@ -352,7 +352,7 @@ export const testCoverageEnhancementTask = defineTask('test-coverage-enhancement
   kind: 'agent',
   title: `Phase 4: Test Coverage Enhancement - ${args.projectName}`,
   agent: {
-    name: 'test-developer',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'Test Engineer',
       task: 'Enhance test coverage before refactoring',
@@ -394,7 +394,7 @@ export const refactoringExecutionTask = defineTask('refactoring-execution', (arg
   kind: 'agent',
   title: `Phase 5: Refactoring Execution - ${args.projectName}`,
   agent: {
-    name: 'refactoring-developer',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Senior Developer',
       task: 'Execute planned refactorings',
@@ -436,7 +436,7 @@ export const refactoringValidationTask = defineTask('refactoring-validation', (a
   kind: 'agent',
   title: `Phase 6: Refactoring Validation - ${args.projectName}`,
   agent: {
-    name: 'validation-engineer',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate refactored code',
@@ -479,7 +479,7 @@ export const metricsComparisonTask = defineTask('metrics-comparison', (args, tas
   kind: 'agent',
   title: `Phase 7: Metrics Comparison - ${args.projectName}`,
   agent: {
-    name: 'metrics-analyst',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Quality Analyst',
       task: 'Compare quality metrics before and after',

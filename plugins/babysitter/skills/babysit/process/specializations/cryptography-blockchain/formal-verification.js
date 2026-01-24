@@ -188,7 +188,7 @@ export const propertyIdentificationTask = defineTask('property-identification', 
   kind: 'agent',
   title: `Phase 1: Property Identification - ${args.projectName}`,
   agent: {
-    name: 'formal-methods-engineer',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer (uses SK-006: certora-prover)
     prompt: {
       role: 'Formal Methods Engineer',
       task: 'Identify critical properties to verify',
@@ -230,7 +230,7 @@ export const specificationWritingTask = defineTask('specification-writing', (arg
   kind: 'agent',
   title: `Phase 2: Specification Writing - ${args.projectName}`,
   agent: {
-    name: 'specification-writer',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer (uses SK-006: certora-prover, SK-007: k-framework)
     prompt: {
       role: 'Formal Specification Writer',
       task: 'Write formal specifications in CVL or K',
@@ -272,7 +272,7 @@ export const contractModelingTask = defineTask('contract-modeling', (args, taskC
   kind: 'agent',
   title: `Phase 3: Contract Modeling - ${args.projectName}`,
   agent: {
-    name: 'model-builder',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer
     prompt: {
       role: 'Contract Model Builder',
       task: 'Create contract model for verification',
@@ -314,7 +314,7 @@ export const verificationExecutionTask = defineTask('verification-execution', (a
   kind: 'agent',
   title: `Phase 4: Verification Execution - ${args.projectName}`,
   agent: {
-    name: 'verification-runner',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer (uses SK-006: certora-prover, SK-007: k-framework)
     prompt: {
       role: 'Verification Runner',
       task: 'Execute formal verification',
@@ -357,7 +357,7 @@ export const counterexampleAnalysisTask = defineTask('counterexample-analysis', 
   kind: 'agent',
   title: `Phase 5: Counterexample Analysis - ${args.projectName}`,
   agent: {
-    name: 'counterexample-analyst',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer
     prompt: {
       role: 'Counterexample Analyst',
       task: 'Analyze counterexamples from verification',
@@ -399,7 +399,7 @@ export const verificationReportTask = defineTask('verification-report', (args, t
   kind: 'agent',
   title: `Phase 6: Verification Report - ${args.projectName}`,
   agent: {
-    name: 'verification-reporter',
+    name: 'formal-methods', // AG-005: Formal Methods Engineer
     prompt: {
       role: 'Verification Report Writer',
       task: 'Generate comprehensive verification report',

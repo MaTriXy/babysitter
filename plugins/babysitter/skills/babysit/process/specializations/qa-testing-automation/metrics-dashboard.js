@@ -598,7 +598,7 @@ export const metricsRequirementsTask = defineTask('metrics-requirements', (args,
   kind: 'agent',
   title: `Phase 1: Metrics Requirements Definition - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'QA Metrics and Analytics Architect',
       task: 'Define comprehensive quality metrics requirements and KPIs for test automation dashboard',
@@ -672,7 +672,7 @@ export const dataSourceIntegrationTask = defineTask('data-source-integration', (
   kind: 'agent',
   title: `Phase 2: Data Source Integration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Test Data Integration Engineer',
       task: 'Integrate all test result data sources into metrics pipeline',
@@ -758,7 +758,7 @@ export const dataPipelineSetupTask = defineTask('data-pipeline-setup', (args, ta
   kind: 'agent',
   title: `Phase 3: Data Pipeline Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Data Pipeline Engineer',
       task: 'Set up data pipeline and storage for metrics data',
@@ -833,7 +833,7 @@ export const metricsCalculationEngineTask = defineTask('metrics-calculation-engi
   kind: 'agent',
   title: `Phase 4: Metrics Calculation Engine - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Metrics Engineering Specialist',
       task: 'Build metrics calculation engine with aggregation and computation logic',
@@ -909,7 +909,7 @@ export const dashboardDesignTask = defineTask('dashboard-design', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Dashboard UI Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'UI/UX Designer specializing in data visualization',
       task: 'Design comprehensive dashboard UI with effective data visualizations',
@@ -994,7 +994,7 @@ export const executionMetricsWidgetTask = defineTask('execution-metrics-widget',
   kind: 'agent',
   title: `Phase 6: Test Execution Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer',
       task: 'Implement test execution metrics widget with visualizations',
@@ -1061,7 +1061,7 @@ export const coverageMetricsWidgetTask = defineTask('coverage-metrics-widget', (
   kind: 'agent',
   title: `Phase 6: Code Coverage Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer',
       task: 'Implement code coverage metrics widget with visualizations',
@@ -1120,7 +1120,7 @@ export const flakinessMetricsWidgetTask = defineTask('flakiness-metrics-widget',
   kind: 'agent',
   title: `Phase 6: Test Flakiness Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer',
       task: 'Implement test flakiness tracking and analysis widget',
@@ -1175,7 +1175,7 @@ export const performanceMetricsWidgetTask = defineTask('performance-metrics-widg
   kind: 'agent',
   title: `Phase 6: Test Performance Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer',
       task: 'Implement test execution performance metrics widget',
@@ -1232,7 +1232,7 @@ export const qualityGatesWidgetTask = defineTask('quality-gates-widget', (args, 
   kind: 'agent',
   title: `Phase 6: Quality Gates Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer',
       task: 'Implement quality gates tracking and violation monitoring widget',
@@ -1297,7 +1297,7 @@ export const trendAnalysisWidgetTask = defineTask('trend-analysis-widget', (args
   kind: 'agent',
   title: `Phase 6: Trend Analysis Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer and Data Analyst',
       task: 'Implement historical trend analysis and forecasting widget',
@@ -1356,7 +1356,7 @@ export const defectMetricsWidgetTask = defineTask('defect-metrics-widget', (args
   kind: 'agent',
   title: `Phase 7: Defect Metrics Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer and Quality Analyst',
       task: 'Implement defect tracking and quality metrics widget',
@@ -1413,7 +1413,7 @@ export const automationROIWidgetTask = defineTask('automation-roi-widget', (args
   kind: 'agent',
   title: `Phase 7: Test Automation ROI Widget - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Dashboard Developer and Business Analyst',
       task: 'Implement test automation ROI and cost-benefit analysis widget',
@@ -1471,7 +1471,7 @@ export const alertingSystemTask = defineTask('alerting-system', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Alerting and Notification System - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'DevOps Engineer specializing in monitoring and alerting',
       task: 'Configure comprehensive alerting and notification system for quality metrics',
@@ -1543,7 +1543,7 @@ export const cicdDashboardIntegrationTask = defineTask('cicd-dashboard-integrati
   kind: 'agent',
   title: `Phase 9: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'DevOps CI/CD Engineer',
       task: 'Integrate metrics dashboard with CI/CD pipeline for automated reporting',
@@ -1602,7 +1602,7 @@ export const dashboardDeploymentTask = defineTask('dashboard-deployment', (args,
   kind: 'agent',
   title: `Phase 10: Dashboard Deployment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'DevOps Deployment Engineer',
       task: 'Deploy metrics dashboard to production environment',
@@ -1672,7 +1672,7 @@ export const dataValidationTask = defineTask('data-validation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 11: Data Validation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Quality Assurance Data Analyst',
       task: 'Validate metrics data accuracy and dashboard correctness',
@@ -1741,7 +1741,7 @@ export const dashboardDocumentationTask = defineTask('dashboard-documentation', 
   kind: 'agent',
   title: `Phase 12: Dashboard Documentation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Technical Writer specializing in data visualization',
       task: 'Create comprehensive dashboard documentation and user guide',
@@ -1802,7 +1802,7 @@ export const dashboardQualityAssessmentTask = defineTask('dashboard-quality-asse
   kind: 'agent',
   title: `Phase 13: Dashboard Quality Assessment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Senior QA Architect and Dashboard Auditor',
       task: 'Assess overall dashboard quality, completeness, and effectiveness',
@@ -1876,7 +1876,7 @@ export const userAcceptanceTask = defineTask('user-acceptance', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 14: User Acceptance and Training - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'QA Team Lead and Training Facilitator',
       task: 'Conduct user acceptance testing and team training for dashboard',

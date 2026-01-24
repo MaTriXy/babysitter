@@ -496,7 +496,7 @@ export const typeErrorReportingTask = defineTask('type-error-reporting', (args, 
   kind: 'agent',
   title: `Phase 6: Error Reporting - ${args.languageName}`,
   agent: {
-    name: 'diagnostics-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Diagnostics Engineer',
       task: 'Implement type error reporting',
@@ -579,7 +579,7 @@ export const typeSystemTestingTask = defineTask('type-system-testing', (args, ta
   kind: 'agent',
   title: `Phase 8: Type System Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Compiler Test Engineer',
       task: 'Create comprehensive type system tests',
@@ -620,7 +620,7 @@ export const typeSystemDocumentationTask = defineTask('type-system-documentation
   kind: 'agent',
   title: `Phase 9: Type System Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'type-system-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate type system documentation',

@@ -526,7 +526,7 @@ export const calibrationValidationTask = defineTask('calibration-validation', (a
   kind: 'agent',
   title: `Phase 7: Calibration Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Robotics Test Engineer',
       task: 'Validate calibration accuracy',
@@ -570,7 +570,7 @@ export const calibrationFileGenerationTask = defineTask('calibration-file-genera
   kind: 'agent',
   title: `Phase 8: Calibration File Generation - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'robotics-architect',  // AG-001: Robotics System Architect Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Generate calibration files',
@@ -612,7 +612,7 @@ export const calibrationDocumentationTask = defineTask('calibration-documentatio
   kind: 'agent',
   title: `Phase 9: Calibration Documentation - ${args.robotName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'robotics-documentation-specialist',  // AG-020: Robotics Documentation Specialist Agent
     prompt: {
       role: 'Technical Writer',
       task: 'Document calibration procedures and results',

@@ -522,8 +522,9 @@ export async function process(inputs, ctx) {
 export const apiSpecificationAnalysisTask = defineTask('api-specification-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze API specification and discover endpoints',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'api-analyst',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist and technical analyst',
       task: 'Analyze API specification and discover all endpoints with their details',
@@ -596,8 +597,9 @@ export const apiSpecificationAnalysisTask = defineTask('api-specification-analys
 export const documentationStructureDesignTask = defineTask('documentation-structure-design', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Design documentation structure and information architecture',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'information-architect',
+    name: 'info-architect',
     prompt: {
       role: 'technical documentation information architect',
       task: 'Design comprehensive documentation structure and navigation',
@@ -669,8 +671,9 @@ export const documentationStructureDesignTask = defineTask('documentation-struct
 export const authenticationDocumentationTask = defineTask('authentication-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create authentication and authorization documentation',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'auth-doc-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API security and authentication documentation specialist',
       task: 'Create comprehensive authentication documentation with code examples',
@@ -733,8 +736,9 @@ export const authenticationDocumentationTask = defineTask('authentication-docume
 export const endpointReferenceDocumentationTask = defineTask('endpoint-reference-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Document ${args.category} endpoints with complete reference`,
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'endpoint-documenter',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation technical writer',
       task: 'Create comprehensive endpoint reference documentation',
@@ -796,8 +800,9 @@ export const endpointReferenceDocumentationTask = defineTask('endpoint-reference
 export const codeExamplesGenerationTask = defineTask('code-examples-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Generate ${args.language} code examples`,
+  skill: { name: 'code-sample-validator' },
   agent: {
-    name: 'code-example-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: `${args.language} developer and API integration specialist`,
       task: `Generate idiomatic ${args.language} code examples for API endpoints`,
@@ -864,8 +869,9 @@ export const codeExamplesGenerationTask = defineTask('code-examples-generation',
 export const errorReferenceDocumentationTask = defineTask('error-reference-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create error codes and troubleshooting reference',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'error-doc-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist focusing on error handling',
       task: 'Create comprehensive error reference and troubleshooting guide',
@@ -933,8 +939,9 @@ export const errorReferenceDocumentationTask = defineTask('error-reference-docum
 export const quickstartGuideCreationTask = defineTask('quickstart-guide-creation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create quickstart guide for rapid onboarding',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'quickstart-writer',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'developer educator and technical writer',
       task: 'Create concise quickstart guide for 5-10 minute setup',
@@ -986,8 +993,9 @@ export const quickstartGuideCreationTask = defineTask('quickstart-guide-creation
 export const rateLimitingGuideTask = defineTask('rate-limiting-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create rate limiting guide',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'rate-limit-doc-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist',
       task: 'Create comprehensive rate limiting guide',
@@ -1032,8 +1040,9 @@ export const rateLimitingGuideTask = defineTask('rate-limiting-guide', (args, ta
 export const paginationGuideTask = defineTask('pagination-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create pagination guide',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'pagination-doc-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist',
       task: 'Create comprehensive pagination guide',
@@ -1078,8 +1087,9 @@ export const paginationGuideTask = defineTask('pagination-guide', (args, taskCtx
 export const webhooksGuideTask = defineTask('webhooks-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create webhooks guide',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'webhooks-doc-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist',
       task: 'Create webhooks integration guide',
@@ -1126,8 +1136,9 @@ export const webhooksGuideTask = defineTask('webhooks-guide', (args, taskCtx) =>
 export const bestPracticesGuideTask = defineTask('best-practices-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create API best practices guide',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'best-practices-specialist',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'senior API architect and developer advocate',
       task: 'Create comprehensive API best practices guide',
@@ -1187,8 +1198,9 @@ export const bestPracticesGuideTask = defineTask('best-practices-guide', (args, 
 export const sdkIntegrationGuideTask = defineTask('sdk-integration-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: `Create ${args.language} SDK integration guide`,
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'sdk-integration-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: `${args.language} SDK specialist and developer educator`,
       task: `Create comprehensive ${args.language} SDK integration guide`,
@@ -1243,8 +1255,9 @@ export const sdkIntegrationGuideTask = defineTask('sdk-integration-guide', (args
 export const interactiveApiExplorerTask = defineTask('interactive-api-explorer', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Setup interactive API explorer',
+  skill: { name: 'readme-platform' },
   agent: {
-    name: 'api-explorer-specialist',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation engineer and tooling specialist',
       task: 'Setup interactive API explorer with try-it-out functionality',
@@ -1297,8 +1310,9 @@ export const interactiveApiExplorerTask = defineTask('interactive-api-explorer',
 export const documentationQualityValidationTask = defineTask('documentation-quality-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate documentation quality and completeness',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'documentation-qa-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality assurance specialist',
       task: 'Validate documentation completeness, accuracy, and quality',
@@ -1382,8 +1396,9 @@ export const documentationQualityValidationTask = defineTask('documentation-qual
 export const documentationPackagingTask = defineTask('documentation-packaging', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Package documentation with index and navigation',
+  skill: { name: 'readme-platform' },
   agent: {
-    name: 'documentation-publisher',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation engineer and technical writer',
       task: 'Package complete documentation with index, navigation, and deployment configuration',

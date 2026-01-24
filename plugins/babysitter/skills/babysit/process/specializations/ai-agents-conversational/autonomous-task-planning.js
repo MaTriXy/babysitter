@@ -187,7 +187,7 @@ export const planningEngineTask = defineTask('planning-engine', (args, taskCtx) 
   kind: 'agent',
   title: `Build Planning Engine - ${args.agentName}`,
   agent: {
-    name: 'planning-developer',
+    name: 'plan-execute-designer',  // AG-AA-003: Builds plan-and-execute agent architectures
     prompt: {
       role: 'Planning Engine Developer',
       task: 'Build autonomous planning engine',

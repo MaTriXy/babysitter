@@ -240,7 +240,7 @@ export const patternSyntaxTask = defineTask('pattern-syntax', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Pattern Syntax - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Design pattern matching syntax',
@@ -280,7 +280,7 @@ export const patternTypesTask = defineTask('pattern-types', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Pattern Types - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement pattern types',
@@ -320,7 +320,7 @@ export const matchingAlgorithmTask = defineTask('matching-algorithm', (args, tas
   kind: 'agent',
   title: `Phase 3: Matching Algorithm - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement matching algorithm',
@@ -361,7 +361,7 @@ export const guardsBindingsTask = defineTask('guards-bindings', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Guards and Bindings - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement guards and bindings',
@@ -401,7 +401,7 @@ export const exhaustivenessTask = defineTask('exhaustiveness', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 5: Exhaustiveness Checking - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement exhaustiveness checking',
@@ -442,7 +442,7 @@ export const patternOptimizationTask = defineTask('pattern-optimization', (args,
   kind: 'agent',
   title: `Phase 6: Pattern Optimization - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement pattern optimization',
@@ -482,7 +482,7 @@ export const patternMatchingIntegrationTask = defineTask('pattern-matching-integ
   kind: 'agent',
   title: `Phase 7: Pattern Matching Integration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Integrate pattern matching',
@@ -522,7 +522,7 @@ export const patternMatchingTestingTask = defineTask('pattern-matching-testing',
   kind: 'agent',
   title: `Phase 8: Pattern Matching Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive pattern matching tests',
@@ -563,7 +563,7 @@ export const patternMatchingDocumentationTask = defineTask('pattern-matching-doc
   kind: 'agent',
   title: `Phase 9: Pattern Matching Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'compiler-frontend-architect',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate pattern matching documentation',

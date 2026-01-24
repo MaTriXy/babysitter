@@ -258,7 +258,7 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
   kind: 'agent',
   title: `Phase 1: Architecture Design - ${args.projectName}`,
   agent: {
-    name: 'react-architect',
+    name: 'frontend-architect-agent',
     prompt: {
       role: 'Senior React Architect with expertise in scalable application design',
       task: 'Design comprehensive React application architecture',
@@ -309,7 +309,7 @@ export const projectScaffoldingTask = defineTask('project-scaffolding', (args, t
   kind: 'agent',
   title: `Phase 2: Project Scaffolding - ${args.projectName}`,
   agent: {
-    name: 'react-developer',
+    name: 'react-developer-agent',
     prompt: {
       role: 'React Developer specializing in project setup',
       task: 'Scaffold React project with Vite and configure build tools',
@@ -355,10 +355,10 @@ export const projectScaffoldingTask = defineTask('project-scaffolding', (args, t
 }));
 
 export const stateManagementSetupTask = defineTask('state-management-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: State Management Setup - ${args.projectName}`,
-  agent: {
-    name: 'react-state-specialist',
+  skill: {
+    name: 'redux-toolkit-skill',
     prompt: {
       role: 'React State Management Specialist',
       task: 'Configure state management solution',
@@ -452,7 +452,7 @@ export const componentLibraryTask = defineTask('component-library', (args, taskC
   kind: 'agent',
   title: `Phase 5: Component Library - ${args.projectName}`,
   agent: {
-    name: 'react-component-developer',
+    name: 'component-developer-agent',
     prompt: {
       role: 'React Component Developer',
       task: 'Develop reusable component library',
@@ -498,7 +498,7 @@ export const hooksUtilitiesTask = defineTask('hooks-utilities', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Custom Hooks and Utilities - ${args.projectName}`,
   agent: {
-    name: 'react-hooks-developer',
+    name: 'hooks-developer-agent',
     prompt: {
       role: 'React Hooks Developer',
       task: 'Create custom hooks and utility functions',
@@ -540,10 +540,10 @@ export const hooksUtilitiesTask = defineTask('hooks-utilities', (args, taskCtx) 
 }));
 
 export const testingInfrastructureTask = defineTask('testing-infrastructure', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: Testing Infrastructure - ${args.projectName}`,
-  agent: {
-    name: 'react-testing-specialist',
+  skill: {
+    name: 'vitest-skill',
     prompt: {
       role: 'React Testing Specialist',
       task: 'Set up comprehensive testing infrastructure',
@@ -636,7 +636,7 @@ export const errorHandlingTask = defineTask('error-handling', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Error Handling - ${args.projectName}`,
   agent: {
-    name: 'react-developer',
+    name: 'react-developer-agent',
     prompt: {
       role: 'React Developer specializing in error handling',
       task: 'Set up error handling and error boundaries',
@@ -680,7 +680,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate comprehensive project documentation',

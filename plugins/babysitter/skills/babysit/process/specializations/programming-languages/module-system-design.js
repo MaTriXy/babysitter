@@ -222,7 +222,7 @@ export const moduleStructureTask = defineTask('module-structure', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: Module Structure - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Design module structure',
@@ -262,7 +262,7 @@ export const importExportTask = defineTask('import-export', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Import/Export - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Implement import/export system',
@@ -302,7 +302,7 @@ export const visibilityRulesTask = defineTask('visibility-rules', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Visibility Rules - ${args.languageName}`,
   agent: {
-    name: 'language-designer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Programming Language Designer',
       task: 'Implement visibility rules',
@@ -343,7 +343,7 @@ export const dependencyResolutionTask = defineTask('dependency-resolution', (arg
   kind: 'agent',
   title: `Phase 4: Dependency Resolution - ${args.languageName}`,
   agent: {
-    name: 'build-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Build Systems Engineer',
       task: 'Implement dependency resolution',
@@ -384,7 +384,7 @@ export const nameResolutionTask = defineTask('name-resolution', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Name Resolution - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Implement name resolution',
@@ -424,7 +424,7 @@ export const moduleSystemIntegrationTask = defineTask('module-system-integration
   kind: 'agent',
   title: `Phase 6: Module System Integration - ${args.languageName}`,
   agent: {
-    name: 'compiler-engineer',
+    name: 'semantic-analysis-engineer',
     prompt: {
       role: 'Compiler Engineer',
       task: 'Integrate module system',
@@ -464,7 +464,7 @@ export const moduleSystemTestingTask = defineTask('module-system-testing', (args
   kind: 'agent',
   title: `Phase 7: Module System Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive module system tests',
@@ -505,7 +505,7 @@ export const moduleSystemDocumentationTask = defineTask('module-system-documenta
   kind: 'agent',
   title: `Phase 8: Module System Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate module system documentation',

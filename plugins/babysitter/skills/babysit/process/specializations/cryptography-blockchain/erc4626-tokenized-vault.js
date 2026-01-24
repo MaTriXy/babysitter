@@ -246,7 +246,7 @@ export const vaultSpecificationTask = defineTask('vault-specification', (args, t
   kind: 'agent',
   title: `Phase 1: Vault Specification - ${args.projectName}`,
   agent: {
-    name: 'vault-architect',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Vault Architect',
       task: 'Define vault specification',
@@ -288,7 +288,7 @@ export const shareCalculationDesignTask = defineTask('share-calculation-design',
   kind: 'agent',
   title: `Phase 2: Share Calculation Design - ${args.projectName}`,
   agent: {
-    name: 'defi-mathematician',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Mathematician',
       task: 'Design share calculation logic',
@@ -330,7 +330,7 @@ export const vaultImplementationTask = defineTask('vault-implementation', (args,
   kind: 'agent',
   title: `Phase 3: Vault Implementation - ${args.projectName}`,
   agent: {
-    name: 'vault-developer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns, SK-001: solidity-dev)
     prompt: {
       role: 'ERC-4626 Developer',
       task: 'Implement vault contract',
@@ -372,7 +372,7 @@ export const strategyIntegrationTask = defineTask('strategy-integration', (args,
   kind: 'agent',
   title: `Phase 4: Strategy Integration - ${args.projectName}`,
   agent: {
-    name: 'strategy-integrator',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Strategy Integrator',
       task: 'Integrate yield strategy',
@@ -414,7 +414,7 @@ export const feeImplementationTask = defineTask('fee-implementation', (args, tas
   kind: 'agent',
   title: `Phase 5: Fee Implementation - ${args.projectName}`,
   agent: {
-    name: 'fee-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Fee Engineer',
       task: 'Implement fee mechanism',
@@ -456,7 +456,7 @@ export const edgeCaseHandlingTask = defineTask('edge-case-handling', (args, task
   kind: 'agent',
   title: `Phase 6: Edge Case Handling - ${args.projectName}`,
   agent: {
-    name: 'edge-case-engineer',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Edge Case Engineer',
       task: 'Handle vault edge cases',
@@ -497,7 +497,7 @@ export const testingSuiteTask = defineTask('testing-suite', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Testing Suite - ${args.projectName}`,
   agent: {
-    name: 'vault-tester',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'ERC-4626 Test Engineer',
       task: 'Create comprehensive vault tests',
@@ -539,7 +539,7 @@ export const defiIntegrationTask = defineTask('defi-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: DeFi Integration - ${args.projectName}`,
   agent: {
-    name: 'defi-integrator',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-015: defi-protocol-patterns)
     prompt: {
       role: 'DeFi Integration Specialist',
       task: 'Test DeFi protocol integration',
@@ -580,7 +580,7 @@ export const securityAuditTask = defineTask('security-audit', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 9: Security Audit - ${args.projectName}`,
   agent: {
-    name: 'security-auditor',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'DeFi Security Auditor',
       task: 'Audit vault security',
@@ -622,7 +622,7 @@ export const deploymentPreparationTask = defineTask('deployment-preparation', (a
   kind: 'agent',
   title: `Phase 10: Deployment Preparation - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'defi-specialist', // AG-004: DeFi Protocol Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Vault Deployment Engineer',
       task: 'Prepare vault deployment',

@@ -810,7 +810,7 @@ export const securityRequirementsAnalysisTask = defineTask('security-requirement
   kind: 'agent',
   title: `Phase 1: Security Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Architect and Threat Modeling Expert',
       task: 'Analyze security requirements and create comprehensive threat model',
@@ -895,7 +895,7 @@ export const securityTestEnvironmentSetupTask = defineTask('security-environment
   kind: 'agent',
   title: `Phase 2: Security Test Environment Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Testing Infrastructure Engineer',
       task: 'Set up comprehensive security testing environment and tools',
@@ -982,7 +982,7 @@ export const reconnaissanceTask = defineTask('reconnaissance', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 3: Reconnaissance and Attack Surface Mapping - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Reconnaissance Specialist',
       task: 'Perform reconnaissance and map application attack surface',
@@ -1074,7 +1074,7 @@ export const sastTask = defineTask('sast', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Static Application Security Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Static Code Security Analyst',
       task: 'Perform static application security testing to identify code vulnerabilities',
@@ -1143,7 +1143,7 @@ export const authenticationTestingTask = defineTask('authentication-testing', (a
   kind: 'agent',
   title: `Phase 5: Authentication and Session Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Authentication Security Specialist',
       task: 'Test authentication mechanisms and session management for vulnerabilities',
@@ -1215,7 +1215,7 @@ export const authorizationTestingTask = defineTask('authorization-testing', (arg
   kind: 'agent',
   title: `Phase 6: Authorization and Access Control Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Access Control Security Expert',
       task: 'Test authorization mechanisms and access control for privilege escalation vulnerabilities',
@@ -1281,7 +1281,7 @@ export const injectionTestingTask = defineTask('injection-testing', (args, taskC
   kind: 'agent',
   title: `Phase 7: Injection Vulnerability Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Injection Vulnerability Specialist',
       task: 'Test for SQL injection, command injection, and other injection vulnerabilities',
@@ -1348,7 +1348,7 @@ export const xssTestingTask = defineTask('xss-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: XSS and Client-Side Security Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Client-Side Security Expert',
       task: 'Test for Cross-Site Scripting (XSS) and other client-side vulnerabilities',
@@ -1416,7 +1416,7 @@ export const apiSecurityTestingTask = defineTask('api-security-testing', (args, 
   kind: 'agent',
   title: `Phase 9: API Security Testing (OWASP API Top 10) - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'API Security Specialist',
       task: 'Test API security following OWASP API Security Top 10',
@@ -1489,7 +1489,7 @@ export const dastTask = defineTask('dast', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Dynamic Application Security Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Dynamic Security Testing Specialist',
       task: 'Perform dynamic application security testing using automated scanners',
@@ -1557,7 +1557,7 @@ export const cryptographyTestingTask = defineTask('cryptography-testing', (args,
   kind: 'agent',
   title: `Phase 11: Cryptography and Data Protection Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Cryptography and Data Security Expert',
       task: 'Test cryptographic implementations and data protection mechanisms',
@@ -1629,7 +1629,7 @@ export const configurationTestingTask = defineTask('configuration-testing', (arg
   kind: 'agent',
   title: `Phase 12: Security Configuration Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Configuration Specialist',
       task: 'Test security configuration and hardening',
@@ -1699,7 +1699,7 @@ export const dependencySecurityTask = defineTask('dependency-security', (args, t
   kind: 'agent',
   title: `Phase 13: Dependency and Supply Chain Security - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Supply Chain Security Analyst',
       task: 'Scan dependencies for known vulnerabilities',
@@ -1765,7 +1765,7 @@ export const businessLogicTestingTask = defineTask('business-logic-testing', (ar
   kind: 'agent',
   title: `Phase 14: Business Logic Security Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Business Logic Security Expert',
       task: 'Test business logic and workflow security vulnerabilities',
@@ -1829,7 +1829,7 @@ export const penetrationTestingTask = defineTask('penetration-testing', (args, t
   kind: 'agent',
   title: `Phase 15: Penetration Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Penetration Testing Expert',
       task: 'Conduct manual penetration testing to find exploitable vulnerabilities',
@@ -1896,7 +1896,7 @@ export const vulnerabilityAnalysisTask = defineTask('vulnerability-analysis', (a
   kind: 'agent',
   title: `Phase 16: Vulnerability Analysis and Prioritization - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Vulnerability Analyst',
       task: 'Deduplicate, analyze, and prioritize security vulnerabilities',
@@ -1980,7 +1980,7 @@ export const complianceVerificationTask = defineTask('compliance-verification', 
   kind: 'agent',
   title: `Phase 17: Security Compliance Verification - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Compliance Auditor',
       task: 'Verify compliance with security standards and regulations',
@@ -2059,7 +2059,7 @@ export const securityReportingTask = defineTask('security-reporting', (args, tas
   kind: 'agent',
   title: `Phase 18: Security Reporting - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Report Specialist',
       task: 'Generate comprehensive security testing reports',
@@ -2117,7 +2117,7 @@ export const remediationPlanningTask = defineTask('remediation-planning', (args,
   kind: 'agent',
   title: `Phase 19: Security Remediation Planning - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Remediation Strategist',
       task: 'Create comprehensive security remediation plan',
@@ -2195,7 +2195,7 @@ export const securityGateAssessmentTask = defineTask('security-gate-assessment',
   kind: 'agent',
   title: `Phase 20: Security Gate Assessment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-testing-expert', // AG-005: Security Testing Expert Agent
     prompt: {
       role: 'Security Gate Assessor and CISO',
       task: 'Conduct final security gate assessment and production readiness evaluation',

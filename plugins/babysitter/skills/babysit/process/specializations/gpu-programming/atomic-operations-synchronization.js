@@ -109,7 +109,8 @@ export const synchronizationRequirementsTask = defineTask('synchronization-requi
   kind: 'agent',
   title: `Sync Requirements - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Analyze synchronization requirements',
@@ -150,7 +151,8 @@ export const atomicSelectionTask = defineTask('atomic-selection', (args, taskCtx
   kind: 'agent',
   title: `Atomic Selection - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Select and implement atomic operations',
@@ -191,7 +193,8 @@ export const lockFreeDesignTask = defineTask('lock-free-design', (args, taskCtx)
   kind: 'agent',
   title: `Lock-Free Design - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design lock-free algorithms',
@@ -233,6 +236,7 @@ export const contentionMinimizationTask = defineTask('contention-minimization', 
   title: `Contention Minimization - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Minimize atomic contention',
@@ -273,7 +277,8 @@ export const cooperativeGroupsTask = defineTask('cooperative-groups', (args, tas
   kind: 'agent',
   title: `Cooperative Groups - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement cooperative groups',
@@ -315,6 +320,7 @@ export const atomicPerformanceTask = defineTask('atomic-performance', (args, tas
   title: `Performance Analysis - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze atomic performance',

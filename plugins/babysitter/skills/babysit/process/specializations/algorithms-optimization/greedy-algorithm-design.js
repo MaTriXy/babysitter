@@ -48,7 +48,7 @@ export const greedyAnalysisTask = defineTask('greedy-analysis', (args, taskCtx) 
   kind: 'agent',
   title: 'Analyze for Greedy',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Designer',
       task: 'Analyze problem for greedy solution',
@@ -70,7 +70,7 @@ export const greedyProofTask = defineTask('greedy-proof', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Prove Greedy Correctness',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Theorist',
       task: 'Prove greedy algorithm correctness',
@@ -92,7 +92,7 @@ export const greedyImplementationTask = defineTask('greedy-implementation', (arg
   kind: 'agent',
   title: 'Implement Greedy',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement greedy algorithm',

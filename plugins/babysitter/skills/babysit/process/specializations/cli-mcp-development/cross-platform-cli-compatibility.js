@@ -87,7 +87,7 @@ export const compatibilityAnalysisTask = defineTask('compatibility-analysis', (a
   kind: 'agent',
   title: `Compatibility Analysis - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: { role: 'Cross-Platform Compatibility Specialist', task: 'Analyze compatibility requirements', context: args, instructions: ['1. Identify platform differences', '2. List compatibility concerns', '3. Plan abstraction layers', '4. Define test matrix', '5. Generate analysis report'], outputFormat: 'JSON with compatibility analysis' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const pathHandlingTask = defineTask('path-handling', (args, taskCtx) => (
   kind: 'agent',
   title: `Path Handling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Path Handling Specialist', task: 'Implement cross-platform path handling', context: args, instructions: ['1. Use path module correctly', '2. Handle separators', '3. Normalize paths', '4. Handle home directory', '5. Generate path utilities'], outputFormat: 'JSON with path handling' },
     outputSchema: { type: 'object', required: ['pathUtilsPath', 'artifacts'], properties: { pathUtilsPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const terminalDetectionTask = defineTask('terminal-detection', (args, tas
   kind: 'agent',
   title: `Terminal Detection - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Terminal Detection Specialist', task: 'Implement terminal detection', context: args, instructions: ['1. Detect terminal type', '2. Check TTY status', '3. Detect color support', '4. Handle CI environments', '5. Generate detection code'], outputFormat: 'JSON with terminal detection' },
     outputSchema: { type: 'object', required: ['detectionPath', 'artifacts'], properties: { detectionPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const encodingHandlingTask = defineTask('encoding-handling', (args, taskC
   kind: 'agent',
   title: `Encoding Handling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Encoding Handling Specialist', task: 'Implement encoding handling', context: args, instructions: ['1. Handle UTF-8 consistently', '2. Detect console encoding', '3. Handle Windows codepages', '4. Convert encodings', '5. Generate encoding code'], outputFormat: 'JSON with encoding handling' },
     outputSchema: { type: 'object', required: ['encodingPath', 'artifacts'], properties: { encodingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const lineEndingHandlingTask = defineTask('line-ending-handling', (args, 
   kind: 'agent',
   title: `Line Ending Handling - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Line Ending Specialist', task: 'Implement line ending handling', context: args, instructions: ['1. Detect line endings', '2. Normalize line endings', '3. Handle mixed endings', '4. Configure git attributes', '5. Generate line ending code'], outputFormat: 'JSON with line ending handling' },
     outputSchema: { type: 'object', required: ['lineEndingPath', 'artifacts'], properties: { lineEndingPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -147,7 +147,7 @@ export const shellSpawningTask = defineTask('shell-spawning', (args, taskCtx) =>
   kind: 'agent',
   title: `Shell Spawning - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Shell Spawning Specialist', task: 'Implement cross-platform shell spawning', context: args, instructions: ['1. Use correct shell', '2. Handle arguments', '3. Manage environment', '4. Handle signals', '5. Generate spawn code'], outputFormat: 'JSON with shell spawning' },
     outputSchema: { type: 'object', required: ['spawnPath', 'artifacts'], properties: { spawnPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -159,7 +159,7 @@ export const environmentVariablesTask = defineTask('environment-variables', (arg
   kind: 'agent',
   title: `Environment Variables - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'Environment Variable Specialist', task: 'Handle cross-platform env vars', context: args, instructions: ['1. Handle case sensitivity', '2. Map common variables', '3. Handle PATH differences', '4. Manage temp directories', '5. Generate env utilities'], outputFormat: 'JSON with env var handling' },
     outputSchema: { type: 'object', required: ['envPath', 'artifacts'], properties: { envPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -171,7 +171,7 @@ export const filePermissionsTask = defineTask('file-permissions', (args, taskCtx
   kind: 'agent',
   title: `File Permissions - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-packaging-specialist',
     prompt: { role: 'File Permissions Specialist', task: 'Handle cross-platform file permissions', context: args, instructions: ['1. Handle Unix permissions', '2. Handle Windows ACLs', '3. Check executability', '4. Handle readonly files', '5. Generate permission code'], outputFormat: 'JSON with file permissions' },
     outputSchema: { type: 'object', required: ['permissionsPath', 'artifacts'], properties: { permissionsPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -183,7 +183,7 @@ export const crossPlatformTestingTask = defineTask('cross-platform-testing', (ar
   kind: 'agent',
   title: `Cross-Platform Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: { role: 'Cross-Platform Testing Specialist', task: 'Set up cross-platform tests', context: args, instructions: ['1. Configure test matrix', '2. Set up CI for all platforms', '3. Create platform-specific tests', '4. Test compatibility layer', '5. Generate test suite'], outputFormat: 'JSON with cross-platform tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -195,7 +195,7 @@ export const compatibilityDocumentationTask = defineTask('compatibility-document
   kind: 'agent',
   title: `Compatibility Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: { role: 'Compatibility Documentation Specialist', task: 'Document cross-platform compatibility', context: args, instructions: ['1. Document platform requirements', '2. Document known issues', '3. Add platform-specific notes', '4. Document testing process', '5. Generate documentation'], outputFormat: 'JSON with compatibility documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

@@ -83,8 +83,9 @@ function createSubmissionTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'appstore-connect' },
     agent: {
-      name: 'ios-release-manager',
+      name: 'mobile-devops',
       prompt: {
         role: 'iOS App Store Submission Specialist',
         task: `Execute ${title.toLowerCase()} for App Store submission`,

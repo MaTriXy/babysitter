@@ -178,7 +178,7 @@ export const dataPreparationTask = defineTask('data-preparation', (args, taskCtx
   kind: 'agent',
   title: `Prepare Training Data - ${args.modelName}`,
   agent: {
-    name: 'data-preparer',
+    name: 'fine-tuning-specialist',  // AG-DOM-003: Manages LLM fine-tuning pipelines
     prompt: {
       role: 'Fine-Tuning Data Preparer',
       task: 'Prepare training data for fine-tuning',

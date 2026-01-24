@@ -209,7 +209,7 @@ export const storageVerificationTask = defineTask('storage-verification', (args,
   kind: 'agent',
   title: `Phase 1: Storage Verification - ${args.projectName}`,
   agent: {
-    name: 'upgrade-engineer',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist (uses SK-017: proxy-upgrade)
     prompt: {
       role: 'Smart Contract Upgrade Engineer',
       task: 'Verify storage layout compatibility',
@@ -251,7 +251,7 @@ export const implementationAuditTask = defineTask('implementation-audit', (args,
   kind: 'agent',
   title: `Phase 2: Implementation Audit - ${args.projectName}`,
   agent: {
-    name: 'security-auditor',
+    name: 'solidity-auditor', // AG-001: Senior Solidity Security Auditor
     prompt: {
       role: 'Security Auditor',
       task: 'Audit new implementation for upgrade safety',
@@ -292,7 +292,7 @@ export const testnetSimulationTask = defineTask('testnet-simulation', (args, tas
   kind: 'agent',
   title: `Phase 3: Testnet Simulation - ${args.projectName}`,
   agent: {
-    name: 'deployment-engineer',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist (uses SK-004: foundry-framework)
     prompt: {
       role: 'Deployment Engineer',
       task: 'Simulate upgrade on testnet',
@@ -334,7 +334,7 @@ export const governanceProposalTask = defineTask('governance-proposal', (args, t
   kind: 'agent',
   title: `Phase 4: Governance Proposal - ${args.projectName}`,
   agent: {
-    name: 'governance-coordinator',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist
     prompt: {
       role: 'Governance Coordinator',
       task: 'Create and submit governance proposal',
@@ -377,7 +377,7 @@ export const multisigCoordinationTask = defineTask('multisig-coordination', (arg
   kind: 'agent',
   title: `Phase 5: Multi-sig Coordination - ${args.projectName}`,
   agent: {
-    name: 'multisig-coordinator',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist
     prompt: {
       role: 'Multi-sig Coordinator',
       task: 'Coordinate multi-sig execution',
@@ -419,7 +419,7 @@ export const postUpgradeVerificationTask = defineTask('post-upgrade-verification
   kind: 'agent',
   title: `Phase 6: Post-Upgrade Verification - ${args.projectName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist (uses SK-017: proxy-upgrade)
     prompt: {
       role: 'Verification Engineer',
       task: 'Verify upgrade completed successfully',
@@ -461,7 +461,7 @@ export const rollbackDocumentationTask = defineTask('rollback-documentation', (a
   kind: 'agent',
   title: `Phase 7: Rollback Documentation - ${args.projectName}`,
   agent: {
-    name: 'documentation-engineer',
+    name: 'upgrade-specialist', // AG-007: Proxy Upgrade Specialist
     prompt: {
       role: 'Documentation Engineer',
       task: 'Document rollback procedures',

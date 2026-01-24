@@ -75,7 +75,7 @@ export const testPlanCreationTask = defineTask('test-plan-creation', (args, task
   kind: 'agent',
   title: `Test Plan - ${args.projectName}`,
   agent: {
-    name: 'qa-lead',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Lead', task: 'Create comprehensive test plan', context: args, instructions: ['1. Define test scope', '2. Identify test resources', '3. Create test schedule', '4. Define pass/fail criteria'] },
     outputSchema: { type: 'object', required: ['planDetails', 'artifacts'], properties: { planDetails: { type: 'object' }, schedule: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -87,7 +87,7 @@ export const testCaseDevTask = defineTask('test-case-dev', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Cases - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Develop test cases', context: args, instructions: ['1. Create functional test cases', '2. Create edge case tests', '3. Create regression tests', '4. Document expected results'] },
     outputSchema: { type: 'object', required: ['testCases', 'testCaseCount', 'artifacts'], properties: { testCases: { type: 'array' }, testCaseCount: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const automatedTestingSetupTask = defineTask('automated-testing-setup', (
   kind: 'agent',
   title: `Automated Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-automation',
+    name: 'automation-tester-agent',
     prompt: { role: 'QA Automation Engineer', task: 'Set up automated testing', context: args, instructions: ['1. Configure test framework', '2. Write automated tests', '3. Set up CI integration', '4. Create test reports'] },
     outputSchema: { type: 'object', required: ['automatedTests', 'ciIntegrated', 'artifacts'], properties: { automatedTests: { type: 'number' }, ciIntegrated: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const functionalTestingTask = defineTask('functional-testing', (args, tas
   kind: 'agent',
   title: `Functional Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-tester',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Tester', task: 'Execute functional tests', context: args, instructions: ['1. Execute all test cases', '2. Document results', '3. Report bugs found', '4. Calculate pass rate'] },
     outputSchema: { type: 'object', required: ['passRate', 'coverage', 'bugsFound', 'artifacts'], properties: { passRate: { type: 'number' }, coverage: { type: 'number' }, bugsFound: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const compatibilityTestingTask = defineTask('compatibility-testing', (arg
   kind: 'agent',
   title: `Compatibility Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-tester',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Tester', task: 'Test platform compatibility', context: args, instructions: ['1. Test each platform', '2. Test hardware configurations', '3. Document issues', '4. Verify performance targets'] },
     outputSchema: { type: 'object', required: ['platformResults', 'issues', 'artifacts'], properties: { platformResults: { type: 'object' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const bugTriageReportingTask = defineTask('bug-triage-reporting', (args, 
   kind: 'agent',
   title: `Bug Reporting - ${args.projectName}`,
   agent: {
-    name: 'qa-lead',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Lead', task: 'Triage and report bugs', context: args, instructions: ['1. Triage all bugs', '2. Prioritize by severity', '3. Create bug report', '4. Track resolution'] },
     outputSchema: { type: 'object', required: ['totalBugs', 'criticalBugs', 'reportPath', 'artifacts'], properties: { totalBugs: { type: 'number' }, criticalBugs: { type: 'number' }, reportPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

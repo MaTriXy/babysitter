@@ -337,7 +337,7 @@ export const defineRequirementsTask = defineTask('define-requirements', (args, t
   kind: 'agent',
   title: `Phase 1: Define Requirements - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Software Architect and Requirements Engineer with expertise in technology evaluation',
       task: 'Define comprehensive requirements for technology stack evaluation including functional, non-functional, and constraint analysis',
@@ -462,7 +462,7 @@ export const identifyCandidatesTask = defineTask('identify-candidates', (args, t
   kind: 'agent',
   title: `Phase 2: Identify Candidates - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Technology Research Analyst with deep knowledge of software ecosystems',
       task: 'Research and identify candidate technologies for evaluation, creating a shortlist of viable options',
@@ -557,7 +557,7 @@ export const defineEvaluationCriteriaTask = defineTask('define-evaluation-criter
   kind: 'agent',
   title: `Phase 3: Define Evaluation Criteria - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Technology Evaluation Specialist with expertise in multi-criteria decision analysis',
       task: 'Define comprehensive, weighted evaluation criteria for comparing technology candidates',
@@ -654,7 +654,7 @@ export const researchCandidateTask = defineTask('research-candidate', (args, tas
   kind: 'agent',
   title: `Phase 4.${args.candidateIndex}: Research Candidate - ${args.candidate.name}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Technology Research Analyst specializing in in-depth technology evaluation',
       task: 'Conduct comprehensive research on candidate technology gathering data for evaluation criteria',
@@ -796,7 +796,7 @@ export const buildPoCTask = defineTask('build-poc', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5.${args.candidateIndex}: Build PoC - ${args.candidate.name}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Software Engineer with expertise in rapid prototyping and technology evaluation',
       task: 'Build proof of concept to validate candidate technology through hands-on implementation',
@@ -919,7 +919,7 @@ export const scoreAndCompareTask = defineTask('score-and-compare', (args, taskCt
   kind: 'agent',
   title: `Phase 6: Score and Compare - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Technology Analyst specializing in multi-criteria decision analysis and scoring',
       task: 'Score each candidate against evaluation criteria, calculate weighted scores, and generate comparison matrix',
@@ -1035,7 +1035,7 @@ export const assessRisksTask = defineTask('assess-risks', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Assess Risks - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Risk Management Specialist with expertise in technology adoption risks',
       task: 'Identify and assess risks associated with each technology candidate',
@@ -1138,7 +1138,7 @@ export const makeRecommendationTask = defineTask('make-recommendation', (args, t
   kind: 'agent',
   title: `Phase 8: Make Final Recommendation - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Chief Technology Officer with expertise in strategic technology decisions',
       task: 'Make final technology recommendation synthesizing scores, risks, and strategic considerations',
@@ -1245,7 +1245,7 @@ export const createADRTask = defineTask('create-adr', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Create ADR - ${args.technologyCategory}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Software Architect specializing in architecture decision documentation',
       task: 'Create Architecture Decision Record (ADR) documenting technology selection decision',
@@ -1313,7 +1313,7 @@ export const createOnboardingPlanTask = defineTask('create-onboarding-plan', (ar
   kind: 'agent',
   title: `Phase 10: Create Onboarding Plan - ${args.recommendation.selectedTechnology}`,
   agent: {
-    name: 'general-purpose',
+    name: 'tech-stack-evaluator',
     prompt: {
       role: 'Learning and Development Specialist with expertise in technical onboarding',
       task: 'Create comprehensive onboarding plan for team to adopt selected technology',

@@ -117,8 +117,9 @@ export async function process(inputs, ctx) {
 export const caSetupTask = defineTask('ca-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `CA Setup - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'pki-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'PKI Infrastructure Engineer',
       task: 'Set up Certificate Authority infrastructure',
@@ -138,8 +139,9 @@ export const caSetupTask = defineTask('ca-setup', (args, taskCtx) => ({
 export const serverCertTask = defineTask('server-cert', (args, taskCtx) => ({
   kind: 'agent',
   title: `Server Certificate - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'cert-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Engineer',
       task: 'Configure server certificates',
@@ -159,8 +161,9 @@ export const serverCertTask = defineTask('server-cert', (args, taskCtx) => ({
 export const clientCertTask = defineTask('client-cert', (args, taskCtx) => ({
   kind: 'agent',
   title: `Client Certificate - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'client-cert-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Client Certificate Engineer',
       task: 'Configure client certificate requirements',
@@ -180,8 +183,9 @@ export const clientCertTask = defineTask('client-cert', (args, taskCtx) => ({
 export const certValidationTask = defineTask('cert-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Validation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'validation-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Validation Engineer',
       task: 'Implement certificate validation',
@@ -201,8 +205,9 @@ export const certValidationTask = defineTask('cert-validation', (args, taskCtx) 
 export const revocationTask = defineTask('revocation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Revocation Checking - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'revocation-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Revocation Engineer',
       task: 'Implement revocation checking',
@@ -222,8 +227,9 @@ export const revocationTask = defineTask('revocation', (args, taskCtx) => ({
 export const certRotationTask = defineTask('cert-rotation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Rotation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'rotation-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Rotation Engineer',
       task: 'Implement certificate rotation',
@@ -243,8 +249,9 @@ export const certRotationTask = defineTask('cert-rotation', (args, taskCtx) => (
 export const identityExtractionTask = defineTask('identity-extraction', (args, taskCtx) => ({
   kind: 'agent',
   title: `Identity Extraction - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'identity-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Identity Engineer',
       task: 'Extract client identity from certificates',
@@ -264,8 +271,9 @@ export const identityExtractionTask = defineTask('identity-extraction', (args, t
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Suite - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'test-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'mTLS Test Engineer',
       task: 'Create mTLS test suite',
@@ -285,8 +293,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const documentationTask = defineTask('documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'technical-writer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate mTLS documentation',
@@ -306,8 +315,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'qa-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate mTLS implementation',

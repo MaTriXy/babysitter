@@ -139,7 +139,7 @@ export const documentationTask = defineTask('oauth-documentation', (args, taskCt
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: { role: 'Technical Writer', task: 'Generate OAuth documentation', context: args,
       instructions: ['1. Create README', '2. Document providers setup', '3. Create flow diagrams', '4. Document callbacks', '5. Create integration guide', '6. Document account linking', '7. Create troubleshooting', '8. Document security', '9. Create frontend guide', '10. Generate examples'],
       outputFormat: 'JSON with documentation'

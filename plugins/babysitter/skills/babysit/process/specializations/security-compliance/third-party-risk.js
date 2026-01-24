@@ -745,8 +745,11 @@ export const vendorInventoryTask = defineTask('vendor-inventory', (args, taskCtx
 
 // Phase 2: Distribute Security Questionnaire
 export const distributeQuestionnaireTask = defineTask('distribute-questionnaire', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: Distribute Security Questionnaires - ${args.projectName}`,
+  skill: {
+    name: 'vendor-security-questionnaire',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {
@@ -1280,8 +1283,11 @@ export const assessFinancialRiskTask = defineTask('assess-financial-risk', (args
 
 // Phase 7: Setup Continuous Monitoring
 export const setupContinuousMonitoringTask = defineTask('setup-continuous-monitoring', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: Setup Continuous Security Monitoring - ${args.projectName}`,
+  skill: {
+    name: 'vendor-risk-monitor',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {

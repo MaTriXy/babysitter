@@ -117,7 +117,8 @@ export const operatorSpecificationTask = defineTask('operator-specification', (a
   kind: 'agent',
   title: `Operator Specification - ${args.operatorName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'cuda-toolkit'],
     prompt: {
       role: 'ML Engineer',
       task: 'Specify custom operator interface',
@@ -158,7 +159,8 @@ export const forwardKernelTask = defineTask('forward-kernel', (args, taskCtx) =>
   kind: 'agent',
   title: `Forward Kernel - ${args.operatorName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement forward CUDA kernel',
@@ -199,7 +201,8 @@ export const backwardKernelTask = defineTask('backward-kernel', (args, taskCtx) 
   kind: 'agent',
   title: `Backward Kernel - ${args.operatorName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'cuda-kernel-expert',
+    skills: ['cuda-toolkit', 'warp-primitives'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement backward CUDA kernel',
@@ -240,7 +243,8 @@ export const frameworkIntegrationTask = defineTask('framework-integration', (arg
   kind: 'agent',
   title: `Framework Integration - ${args.operatorName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'cuda-toolkit'],
     prompt: {
       role: 'ML Engineer',
       task: 'Integrate with deep learning framework',
@@ -281,7 +285,8 @@ export const gradientVerificationTask = defineTask('gradient-verification', (arg
   kind: 'agent',
   title: `Gradient Verification - ${args.operatorName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-inference-optimizer',
+    skills: ['tensorrt-builder', 'cuda-toolkit'],
     prompt: {
       role: 'ML Engineer',
       task: 'Verify gradient correctness',
@@ -323,6 +328,7 @@ export const operatorBenchmarkingTask = defineTask('operator-benchmarking', (arg
   title: `Benchmarking - ${args.operatorName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark custom operator',

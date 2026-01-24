@@ -115,8 +115,11 @@ export async function process(inputs, ctx) {
 export const migrationAssessmentTask = defineTask('migration-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: `Migration Assessment - ${args.projectName}`,
+  skill: {
+    name: 'codebase-analysis-tool',
+  },
   agent: {
-    name: 'migration-assessor',
+    name: 'legacy-migration-specialist',
     prompt: { role: 'Migration Assessment Specialist', task: 'Assess migration complexity and risks', context: args, instructions: ['1. Analyze source codebase', '2. Inventory features and components', '3. Assess framework dependencies', '4. Evaluate native code usage', '5. Identify breaking changes', '6. Assess team skills', '7. Estimate effort', '8. Generate assessment report'] },
     outputSchema: { type: 'object', required: ['complexity', 'estimatedEffort', 'risks', 'artifacts'], properties: { complexity: { type: 'string' }, estimatedEffort: { type: 'string' }, risks: { type: 'array' }, dependencies: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -128,7 +131,7 @@ export const mapArchitectureTask = defineTask('map-architecture', (args, taskCtx
   kind: 'agent',
   title: `Architecture Mapping - ${args.projectName}`,
   agent: {
-    name: 'architecture-mapper',
+    name: 'cross-platform-abstraction-architect',
     prompt: { role: 'Architecture Mapping Specialist', task: 'Map source to target architecture', context: args, instructions: ['1. Document source architecture', '2. Define target architecture', '3. Map components', '4. Map patterns (MVVM, MVC)', '5. Map data layers', '6. Map services', '7. Identify gaps', '8. Generate architecture mapping'] },
     outputSchema: { type: 'object', required: ['sourceArch', 'targetArch', 'mapping', 'artifacts'], properties: { sourceArch: { type: 'object' }, targetArch: { type: 'object' }, mapping: { type: 'array' }, gaps: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -163,8 +166,11 @@ export const planDataMigrationTask = defineTask('plan-data-migration', (args, ta
 export const defineMigrationStrategyTask = defineTask('define-migration-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Migration Strategy - ${args.projectName}`,
+  skill: {
+    name: 'strangler-pattern-planner',
+  },
   agent: {
-    name: 'migration-strategist',
+    name: 'legacy-migration-specialist',
     prompt: { role: 'Migration Strategy Specialist', task: 'Define migration strategy and phases', context: args, instructions: ['1. Choose approach (big bang, strangler, parallel)', '2. Define migration phases', '3. Set milestones', '4. Plan resource allocation', '5. Define success criteria', '6. Plan parallel running', '7. Define cutover plan', '8. Generate migration strategy'] },
     outputSchema: { type: 'object', required: ['approach', 'phases', 'totalDuration', 'artifacts'], properties: { approach: { type: 'string' }, phases: { type: 'array' }, totalDuration: { type: 'string' }, milestones: { type: 'array' }, artifacts: { type: 'array' } } }
   },

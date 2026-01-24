@@ -450,8 +450,9 @@ export async function process(inputs, ctx) {
 export const domainAnalysisTask = defineTask('domain-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Domain Analysis - ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'domain-architect',
+    name: 'ddd-expert',
     prompt: {
       role: 'Domain-Driven Design expert and enterprise architect',
       task: 'Analyze business domain and identify bounded contexts for microservices decomposition',
@@ -539,8 +540,9 @@ export const domainAnalysisTask = defineTask('domain-analysis', (args, taskCtx) 
 export const serviceBoundaryTask = defineTask('service-boundary', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Service Boundary Identification - ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'service-architect',
+    name: 'microservices-architect',
     prompt: {
       role: 'Microservices architect specializing in service boundary design',
       task: 'Define optimal service boundaries aligned with bounded contexts and business capabilities',
@@ -625,8 +627,9 @@ export const serviceBoundaryTask = defineTask('service-boundary', (args, taskCtx
 export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Dependency Analysis - ${args.projectName}`,
+  skill: { name: 'dependency-graph-generator' },
   agent: {
-    name: 'dependency-analyst',
+    name: 'microservices-architect',
     prompt: {
       role: 'Software architect specializing in dependency analysis and decoupling strategies',
       task: 'Analyze inter-service dependencies and design decoupling strategies',
@@ -738,6 +741,7 @@ export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, t
 export const dataDecompositionTask = defineTask('data-decomposition', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Data Decomposition - ${args.projectName}`,
+  skill: { name: 'mermaid-renderer' },
   agent: {
     name: 'data-architect',
     prompt: {
@@ -838,8 +842,9 @@ export const dataDecompositionTask = defineTask('data-decomposition', (args, tas
 export const apiContractDesignTask = defineTask('api-contract-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: API Contract Design - ${args.projectName}`,
+  skill: { name: 'openapi-generator' },
   agent: {
-    name: 'api-architect',
+    name: 'api-design-architect',
     prompt: {
       role: 'API architect specializing in microservices communication patterns',
       task: 'Design comprehensive API contracts and inter-service communication patterns',
@@ -948,8 +953,9 @@ export const apiContractDesignTask = defineTask('api-contract-design', (args, ta
 export const crossCuttingConcernsTask = defineTask('cross-cutting-concerns', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Cross-Cutting Concerns - ${args.projectName}`,
+  skill: { name: 'c4-diagram-generator' },
   agent: {
-    name: 'infrastructure-architect',
+    name: 'cloud-solutions-architect',
     prompt: {
       role: 'Infrastructure architect specializing in microservices cross-cutting concerns',
       task: 'Design infrastructure patterns for cross-cutting concerns',
@@ -1022,6 +1028,7 @@ export const crossCuttingConcernsTask = defineTask('cross-cutting-concerns', (ar
 export const migrationStrategyTask = defineTask('migration-strategy', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Migration Strategy - ${args.projectName}`,
+  skill: { name: 'mermaid-renderer' },
   agent: {
     name: 'migration-strategist',
     prompt: {
@@ -1115,7 +1122,7 @@ export const servicePrioritizationTask = defineTask('service-prioritization', (a
   kind: 'agent',
   title: `Phase 8: Service Prioritization - ${args.projectName}`,
   agent: {
-    name: 'prioritization-analyst',
+    name: 'microservices-architect',
     prompt: {
       role: 'Technical product manager specializing in migration prioritization',
       task: 'Prioritize services for extraction and sequence migration waves',
@@ -1304,7 +1311,7 @@ export const observabilityStrategyTask = defineTask('observability-strategy', (a
   kind: 'agent',
   title: `Phase 10: Observability Strategy - ${args.projectName}`,
   agent: {
-    name: 'sre-architect',
+    name: 'sre-reliability-engineer',
     prompt: {
       role: 'SRE architect specializing in microservices observability',
       task: 'Design comprehensive observability, monitoring, and operational strategy',
@@ -1405,7 +1412,7 @@ export const migrationRoadmapTask = defineTask('migration-roadmap', (args, taskC
   kind: 'agent',
   title: `Phase 11: Migration Roadmap - ${args.projectName}`,
   agent: {
-    name: 'program-manager',
+    name: 'microservices-architect',
     prompt: {
       role: 'Technical program manager specializing in large-scale migrations',
       task: 'Create detailed migration roadmap with phases, milestones, and resource allocation',
@@ -1514,7 +1521,7 @@ export const riskAssessmentTask = defineTask('risk-assessment', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 12: Risk Assessment - ${args.projectName}`,
   agent: {
-    name: 'risk-analyst',
+    name: 'security-architect',
     prompt: {
       role: 'Enterprise architect specializing in migration risk analysis',
       task: 'Conduct comprehensive risk assessment for microservices migration',
@@ -1598,7 +1605,7 @@ export const decompositionQualityScoringTask = defineTask('decomposition-quality
   kind: 'agent',
   title: `Phase 13: Decomposition Quality Scoring - ${args.projectName}`,
   agent: {
-    name: 'quality-assessor',
+    name: 'microservices-architect',
     prompt: {
       role: 'Principal architect specializing in microservices quality assessment',
       task: 'Evaluate overall decomposition strategy quality and completeness',

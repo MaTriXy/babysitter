@@ -181,7 +181,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Analyze Requirements - ${args.projectName}`,
   agent: {
-    name: 'shellcode-architect',
+    name: 'exploit-developer',
     prompt: {
       role: 'Shellcode Architect',
       task: 'Analyze shellcode requirements',
@@ -220,7 +220,7 @@ export const shellcodeDesignTask = defineTask('shellcode-design', (args, taskCtx
   kind: 'agent',
   title: `Design Shellcode - ${args.projectName}`,
   agent: {
-    name: 'shellcode-designer',
+    name: 'exploit-developer',
     prompt: {
       role: 'Shellcode Designer',
       task: 'Design shellcode structure',
@@ -259,7 +259,7 @@ export const assemblyDevelopmentTask = defineTask('assembly-development', (args,
   kind: 'agent',
   title: `Develop Assembly - ${args.projectName}`,
   agent: {
-    name: 'assembly-developer',
+    name: 'exploit-developer',
     prompt: {
       role: 'Assembly Developer',
       task: 'Write shellcode assembly',
@@ -298,7 +298,7 @@ export const encodingOptimizationTask = defineTask('encoding-optimization', (arg
   kind: 'agent',
   title: `Encode and Optimize - ${args.projectName}`,
   agent: {
-    name: 'shellcode-encoder',
+    name: 'exploit-developer',
     prompt: {
       role: 'Shellcode Encoder',
       task: 'Encode and optimize shellcode',
@@ -338,7 +338,7 @@ export const shellcodeTestingTask = defineTask('shellcode-testing', (args, taskC
   kind: 'agent',
   title: `Test Shellcode - ${args.projectName}`,
   agent: {
-    name: 'shellcode-tester',
+    name: 'exploit-developer',
     prompt: {
       role: 'Shellcode Tester',
       task: 'Test shellcode functionality',
@@ -377,7 +377,7 @@ export const shellcodeDocumentationTask = defineTask('shellcode-documentation', 
   kind: 'agent',
   title: `Document Shellcode - ${args.projectName}`,
   agent: {
-    name: 'shellcode-documenter',
+    name: 'security-report-writer',
     prompt: {
       role: 'Shellcode Documentation Specialist',
       task: 'Document shellcode',

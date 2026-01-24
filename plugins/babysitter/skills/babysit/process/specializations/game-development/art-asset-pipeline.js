@@ -75,7 +75,7 @@ export const artDirectionTask = defineTask('art-direction', (args, taskCtx) => (
   kind: 'agent',
   title: `Art Direction - ${args.projectName}`,
   agent: {
-    name: 'art-director',
+    name: 'art-director-agent',
     prompt: { role: 'Art Director', task: 'Define art direction', context: args, instructions: ['1. Define visual style', '2. Create mood boards', '3. Define color theory', '4. Establish visual hierarchy'] },
     outputSchema: { type: 'object', required: ['artStyleDoc', 'moodBoards', 'artifacts'], properties: { artStyleDoc: { type: 'string' }, moodBoards: { type: 'array' }, colorPalette: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -87,7 +87,7 @@ export const styleGuideTask = defineTask('style-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: `Style Guide - ${args.projectName}`,
   agent: {
-    name: 'art-director',
+    name: 'art-director-agent',
     prompt: { role: 'Art Director', task: 'Create comprehensive style guide', context: args, instructions: ['1. Document character style', '2. Document environment style', '3. Define prop guidelines', '4. Create visual examples'] },
     outputSchema: { type: 'object', required: ['guidePath', 'categories', 'artifacts'], properties: { guidePath: { type: 'string' }, categories: { type: 'array' }, examples: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const artPipelineSetupTask = defineTask('art-pipeline-setup', (args, task
   kind: 'agent',
   title: `Pipeline Setup - ${args.projectName}`,
   agent: {
-    name: 'tech-artist',
+    name: 'tech-artist-agent',
     prompt: { role: 'Tech Artist', task: 'Set up art production pipeline', context: args, instructions: ['1. Define folder structure', '2. Set up version control', '3. Configure asset import', '4. Create validation tools'] },
     outputSchema: { type: 'object', required: ['docPath', 'pipelineTools', 'artifacts'], properties: { docPath: { type: 'string' }, pipelineTools: { type: 'array' }, workflows: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const assetSpecificationsTask = defineTask('asset-specifications', (args,
   kind: 'agent',
   title: `Asset Specifications - ${args.projectName}`,
   agent: {
-    name: 'tech-artist',
+    name: 'tech-artist-agent',
     prompt: { role: 'Tech Artist', task: 'Define asset specifications', context: args, instructions: ['1. Define poly budgets', '2. Define texture sizes', '3. Specify LOD requirements', '4. Document naming conventions'] },
     outputSchema: { type: 'object', required: ['assets', 'specifications', 'artifacts'], properties: { assets: { type: 'array' }, specifications: { type: 'object' }, namingConventions: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const artQualityGatesTask = defineTask('art-quality-gates', (args, taskCt
   kind: 'agent',
   title: `Quality Gates - ${args.projectName}`,
   agent: {
-    name: 'art-director',
+    name: 'art-director-agent',
     prompt: { role: 'Art Director', task: 'Define art quality gates', context: args, instructions: ['1. Define concept approval', '2. Define modeling checkpoints', '3. Define final approval', '4. Create checklists'] },
     outputSchema: { type: 'object', required: ['gates', 'checklists', 'artifacts'], properties: { gates: { type: 'array' }, checklists: { type: 'object' }, approvalProcess: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const artOptimizationTask = defineTask('art-optimization', (args, taskCtx
   kind: 'agent',
   title: `Optimization Guidelines - ${args.projectName}`,
   agent: {
-    name: 'tech-artist',
+    name: 'tech-artist-agent',
     prompt: { role: 'Tech Artist', task: 'Create optimization guidelines', context: args, instructions: ['1. Define optimization targets', '2. Create LOD guidelines', '3. Define texture compression', '4. Document best practices'] },
     outputSchema: { type: 'object', required: ['guidelines', 'targets', 'artifacts'], properties: { guidelines: { type: 'object' }, targets: { type: 'object' }, bestPractices: { type: 'array' }, artifacts: { type: 'array' } } }
   },

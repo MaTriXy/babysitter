@@ -338,8 +338,11 @@ export const setupTrayIconsTask = defineTask('setup-tray-icons', (args, taskCtx)
 export const implementSystemTrayTask = defineTask('implement-system-tray', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: System Tray Implementation - ${args.projectName}`,
+  skill: {
+    name: 'electron-tray-menu-builder',
+  },
   agent: {
-    name: 'tray-developer',
+    name: 'system-tray-menu-manager',
     prompt: {
       role: 'System Tray Developer',
       task: 'Implement core system tray functionality',
@@ -378,8 +381,11 @@ export const implementSystemTrayTask = defineTask('implement-system-tray', (args
 export const implementContextMenuTask = defineTask('implement-context-menu', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Context Menu - ${args.projectName}`,
+  skill: {
+    name: 'appkit-menu-bar-builder',
+  },
   agent: {
-    name: 'menu-developer',
+    name: 'system-tray-menu-manager',
     prompt: {
       role: 'Context Menu Developer',
       task: 'Implement tray context menu',

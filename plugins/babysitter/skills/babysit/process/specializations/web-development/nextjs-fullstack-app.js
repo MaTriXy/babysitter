@@ -231,7 +231,7 @@ export const projectSetupTask = defineTask('nextjs-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Next.js Setup - ${args.projectName}`,
   agent: {
-    name: 'nextjs-developer',
+    name: 'nextjs-developer-agent',
     prompt: {
       role: 'Senior Next.js Developer',
       task: 'Set up Next.js project with App Router',
@@ -269,10 +269,10 @@ export const projectSetupTask = defineTask('nextjs-setup', (args, taskCtx) => ({
 }));
 
 export const appRouterSetupTask = defineTask('app-router-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: App Router Setup - ${args.projectName}`,
-  agent: {
-    name: 'nextjs-routing-specialist',
+  skill: {
+    name: 'nextjs-app-router-skill',
     prompt: {
       role: 'Next.js App Router Specialist',
       task: 'Configure App Router',
@@ -310,10 +310,10 @@ export const appRouterSetupTask = defineTask('app-router-setup', (args, taskCtx)
 }));
 
 export const serverComponentsTask = defineTask('server-components', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: Server Components - ${args.projectName}`,
-  agent: {
-    name: 'rsc-specialist',
+  skill: {
+    name: 'react-server-components-skill',
     prompt: {
       role: 'React Server Components Specialist',
       task: 'Implement React Server Components',
@@ -351,10 +351,10 @@ export const serverComponentsTask = defineTask('server-components', (args, taskC
 }));
 
 export const databaseSetupTask = defineTask('database-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 4: Database Setup - ${args.projectName}`,
-  agent: {
-    name: 'database-specialist',
+  skill: {
+    name: 'prisma-skill',
     prompt: {
       role: 'Database Integration Specialist',
       task: 'Set up database with Prisma',
@@ -474,10 +474,10 @@ export const apiRoutesTask = defineTask('api-routes', (args, taskCtx) => ({
 }));
 
 export const authSetupTask = defineTask('auth-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: Authentication Setup - ${args.projectName}`,
-  agent: {
-    name: 'auth-specialist',
+  skill: {
+    name: 'nextauth-skill',
     prompt: {
       role: 'Next.js Authentication Specialist',
       task: 'Set up authentication',
@@ -559,7 +559,7 @@ export const deploymentConfigTask = defineTask('deployment-config', (args, taskC
   kind: 'agent',
   title: `Phase 9: Deployment Configuration - ${args.projectName}`,
   agent: {
-    name: 'nextjs-devops',
+    name: 'deployment-agent',
     prompt: {
       role: 'Next.js DevOps Engineer',
       task: 'Configure deployment',
@@ -600,7 +600,7 @@ export const documentationTask = defineTask('nextjs-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate Next.js documentation',

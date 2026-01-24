@@ -47,8 +47,9 @@ export async function process(inputs, ctx) {
 export const stringProblemAnalysisTask = defineTask('string-problem-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Analyze ${args.problemType}`,
+  skills: ['kmp-builder', 'z-function-calculator', 'suffix-array-builder'],
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'String Algorithm Expert',
       task: 'Analyze string problem',
@@ -70,7 +71,7 @@ export const stringSolutionTask = defineTask('string-solution', (args, taskCtx) 
   kind: 'agent',
   title: `Solve ${args.problemType}`,
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement string algorithm solution',
@@ -92,7 +93,7 @@ export const stringTestingTask = defineTask('string-testing', (args, taskCtx) =>
   kind: 'agent',
   title: 'Test String Solution',
   agent: {
-    name: 'general-purpose',
+    name: 'string-specialist',
     prompt: {
       role: 'QA Engineer',
       task: 'Test string algorithm solution',

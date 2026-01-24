@@ -450,7 +450,7 @@ export const featureCollectionTask = defineTask('feature-collection', (args, tas
   kind: 'agent',
   title: 'Collect and prepare features for prioritization',
   agent: {
-    name: 'product-manager',
+    name: 'prioritization-expert',
     prompt: {
       role: 'senior product manager with expertise in backlog management and feature planning',
       task: 'Collect, validate, and prepare features for RICE prioritization',
@@ -514,7 +514,7 @@ export const strategicAlignmentTask = defineTask('strategic-alignment', (args, t
   kind: 'agent',
   title: 'Assess strategic alignment of features',
   agent: {
-    name: 'strategy-analyst',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product strategy analyst specializing in strategic alignment and goal mapping',
       task: 'Assess how well each feature aligns with strategic goals and business objectives',
@@ -583,7 +583,7 @@ export const reachEstimationTask = defineTask('reach-estimation', (args, taskCtx
   kind: 'agent',
   title: 'Estimate reach for each feature',
   agent: {
-    name: 'data-analyst',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product data analyst specializing in user impact estimation and metrics',
       task: 'Estimate how many users/customers will be reached by each feature within the timeframe',
@@ -647,7 +647,7 @@ export const impactScoringTask = defineTask('impact-scoring', (args, taskCtx) =>
   kind: 'agent',
   title: 'Score impact for each feature',
   agent: {
-    name: 'product-strategist',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product strategist specializing in impact assessment and value measurement',
       task: 'Score the impact each feature will have on users using RICE impact scale',
@@ -720,7 +720,7 @@ export const confidenceAssessmentTask = defineTask('confidence-assessment', (arg
   kind: 'agent',
   title: 'Assess confidence levels for estimates',
   agent: {
-    name: 'estimation-expert',
+    name: 'prioritization-expert',
     prompt: {
       role: 'estimation expert specializing in uncertainty quantification and confidence assessment',
       task: 'Assess confidence level in Reach, Impact, and Effort estimates for each feature',
@@ -796,7 +796,7 @@ export const effortEstimationTask = defineTask('effort-estimation', (args, taskC
   kind: 'agent',
   title: 'Estimate effort for each feature',
   agent: {
-    name: 'engineering-lead',
+    name: 'prioritization-expert',
     prompt: {
       role: 'engineering lead with expertise in estimation and capacity planning',
       task: 'Estimate development effort for each feature in person-months',
@@ -870,7 +870,7 @@ export const riceCalculationTask = defineTask('rice-calculation', (args, taskCtx
   kind: 'agent',
   title: 'Calculate RICE scores',
   agent: {
-    name: 'analytics-specialist',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product analytics specialist with expertise in prioritization scoring',
       task: 'Calculate RICE scores using formula: (Reach × Impact × Confidence) / Effort',
@@ -953,7 +953,7 @@ export const rankingAnalysisTask = defineTask('ranking-analysis', (args, taskCtx
   kind: 'agent',
   title: 'Rank features and analyze results',
   agent: {
-    name: 'prioritization-analyst',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product prioritization analyst specializing in ranking and portfolio optimization',
       task: 'Rank features by RICE score and analyze prioritization results',
@@ -1040,7 +1040,7 @@ export const strategicFilteringTask = defineTask('strategic-filtering', (args, t
   kind: 'agent',
   title: 'Apply strategic filters and constraints',
   agent: {
-    name: 'product-director',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product director with expertise in strategic portfolio management',
       task: 'Apply strategic filters, business constraints, and portfolio balancing to ranked features',
@@ -1118,7 +1118,7 @@ export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, t
   kind: 'agent',
   title: 'Analyze feature dependencies',
   agent: {
-    name: 'technical-architect',
+    name: 'prioritization-expert',
     prompt: {
       role: 'technical architect with expertise in dependency management and sequencing',
       task: 'Analyze dependencies between features and determine optimal sequencing',
@@ -1205,7 +1205,7 @@ export const roadmapCreationTask = defineTask('roadmap-creation', (args, taskCtx
   kind: 'agent',
   title: 'Create prioritized roadmap',
   agent: {
-    name: 'roadmap-planner',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product roadmap planner specializing in timeline and capacity planning',
       task: 'Create time-phased roadmap with prioritized features sequenced by priority and dependencies',
@@ -1314,7 +1314,7 @@ export const sensitivityAnalysisTask = defineTask('sensitivity-analysis', (args,
   kind: 'agent',
   title: 'Perform sensitivity analysis',
   agent: {
-    name: 'risk-analyst',
+    name: 'prioritization-expert',
     prompt: {
       role: 'quantitative analyst specializing in sensitivity analysis and scenario planning',
       task: 'Test how rankings change under different assumptions and identify critical factors',
@@ -1401,7 +1401,7 @@ export const stakeholderCommunicationTask = defineTask('stakeholder-communicatio
   kind: 'agent',
   title: 'Create stakeholder communication package',
   agent: {
-    name: 'product-communicator',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product communications specialist with expertise in executive communication',
       task: 'Create comprehensive communication package for stakeholders with prioritization results',
@@ -1475,7 +1475,7 @@ export const qualityValidationTask = defineTask('quality-validation', (args, tas
   kind: 'agent',
   title: 'Validate prioritization quality',
   agent: {
-    name: 'quality-auditor',
+    name: 'prioritization-expert',
     prompt: {
       role: 'product process auditor and quality assurance specialist',
       task: 'Validate quality and completeness of RICE prioritization process and outputs',

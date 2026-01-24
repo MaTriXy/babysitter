@@ -62,60 +62,70 @@ export async function process(inputs, ctx) {
 
 export const architectureTask = defineTask('architecture', (args, taskCtx) => ({
   kind: 'agent', title: `Architecture - ${args.projectName}`,
-  agent: { name: 'architect', prompt: { role: 'Systems Architect', task: 'Design load tester', context: args, instructions: ['1. Worker architecture', '2. Connection pooling', '3. Metrics pipeline', '4. Distributed coordination'] }, outputSchema: { type: 'object', required: ['design', 'artifacts'], properties: { design: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Systems Architect', task: 'Design load tester', context: args, instructions: ['1. Worker architecture', '2. Connection pooling', '3. Metrics pipeline', '4. Distributed coordination'] }, outputSchema: { type: 'object', required: ['design', 'artifacts'], properties: { design: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'architecture']
 }));
 
 export const connectionEngineTask = defineTask('connection-engine', (args, taskCtx) => ({
   kind: 'agent', title: `Connection Engine - ${args.projectName}`,
-  agent: { name: 'connection-engineer', prompt: { role: 'Connection Engineer', task: 'Build connection engine', context: args, instructions: ['1. High concurrency', '2. Connection reuse', '3. Rate limiting', '4. Ramp-up patterns'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-simulation' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Connection Engineer', task: 'Build connection engine', context: args, instructions: ['1. High concurrency', '2. Connection reuse', '3. Rate limiting', '4. Ramp-up patterns'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'connection']
 }));
 
 export const requestGeneratorTask = defineTask('request-generator', (args, taskCtx) => ({
   kind: 'agent', title: `Request Generator - ${args.projectName}`,
-  agent: { name: 'generator-engineer', prompt: { role: 'Generator Engineer', task: 'Build request generator', context: args, instructions: ['1. Request templates', '2. Dynamic payloads', '3. Data providers', '4. Scenario scripting'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Generator Engineer', task: 'Build request generator', context: args, instructions: ['1. Request templates', '2. Dynamic payloads', '3. Data providers', '4. Scenario scripting'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'generator']
 }));
 
 export const protocolPluginsTask = defineTask('protocol-plugins', (args, taskCtx) => ({
   kind: 'agent', title: `Protocol Plugins - ${args.projectName}`,
-  agent: { name: 'protocol-engineer', prompt: { role: 'Protocol Engineer', task: 'Build protocol plugins', context: args, instructions: ['1. HTTP/HTTPS plugin', '2. WebSocket plugin', '3. gRPC plugin', '4. Custom protocols'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Protocol Engineer', task: 'Build protocol plugins', context: args, instructions: ['1. HTTP/HTTPS plugin', '2. WebSocket plugin', '3. gRPC plugin', '4. Custom protocols'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'protocols']
 }));
 
 export const metricsCollectorTask = defineTask('metrics-collector', (args, taskCtx) => ({
   kind: 'agent', title: `Metrics Collector - ${args.projectName}`,
-  agent: { name: 'metrics-engineer', prompt: { role: 'Metrics Engineer', task: 'Build metrics collector', context: args, instructions: ['1. Latency histograms', '2. Throughput metrics', '3. Error tracking', '4. Percentile calculations'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Metrics Engineer', task: 'Build metrics collector', context: args, instructions: ['1. Latency histograms', '2. Throughput metrics', '3. Error tracking', '4. Percentile calculations'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'metrics']
 }));
 
 export const distributedModeTask = defineTask('distributed-mode', (args, taskCtx) => ({
   kind: 'agent', title: `Distributed Mode - ${args.projectName}`,
-  agent: { name: 'distributed-engineer', prompt: { role: 'Distributed Engineer', task: 'Implement distributed mode', context: args, instructions: ['1. Worker coordination', '2. Test distribution', '3. Result aggregation', '4. Failure handling'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-simulation' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Distributed Engineer', task: 'Implement distributed mode', context: args, instructions: ['1. Worker coordination', '2. Test distribution', '3. Result aggregation', '4. Failure handling'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'distributed']
 }));
 
 export const realtimeDashboardTask = defineTask('realtime-dashboard', (args, taskCtx) => ({
   kind: 'agent', title: `Realtime Dashboard - ${args.projectName}`,
-  agent: { name: 'dashboard-engineer', prompt: { role: 'Dashboard Engineer', task: 'Build realtime dashboard', context: args, instructions: ['1. Live metrics', '2. Graphs/charts', '3. Test control', '4. Alert thresholds'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Dashboard Engineer', task: 'Build realtime dashboard', context: args, instructions: ['1. Live metrics', '2. Graphs/charts', '3. Test control', '4. Alert thresholds'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'dashboard']
 }));
 
 export const reportingTask = defineTask('reporting', (args, taskCtx) => ({
   kind: 'agent', title: `Reporting - ${args.projectName}`,
-  agent: { name: 'reporting-engineer', prompt: { role: 'Reporting Engineer', task: 'Build reporting system', context: args, instructions: ['1. HTML reports', '2. JSON export', '3. Comparison reports', '4. CI integration'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Reporting Engineer', task: 'Build reporting system', context: args, instructions: ['1. HTML reports', '2. JSON export', '3. Comparison reports', '4. CI integration'] }, outputSchema: { type: 'object', required: ['implementation', 'artifacts'], properties: { implementation: { type: 'object' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'reporting']
 }));
 
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent', title: `Test Suite - ${args.projectName}`,
-  agent: { name: 'test-engineer', prompt: { role: 'Test Engineer', task: 'Create tool tests', context: args, instructions: ['1. Engine tests', '2. Protocol tests', '3. Metrics tests', '4. Distributed tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'Test Engineer', task: 'Create tool tests', context: args, instructions: ['1. Engine tests', '2. Protocol tests', '3. Metrics tests', '4. Distributed tests'] }, outputSchema: { type: 'object', required: ['totalTests', 'passedTests', 'artifacts'], properties: { totalTests: { type: 'number' }, passedTests: { type: 'number' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'testing']
 }));
 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent', title: `Validation - ${args.projectName}`,
-  agent: { name: 'qa-engineer', prompt: { role: 'QA Engineer', task: 'Validate load tester', context: args, instructions: ['1. Verify protocols', '2. Check metrics', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
+  skill: { name: 'network-testing' },
+  agent: { name: 'network-testing-expert', prompt: { role: 'QA Engineer', task: 'Validate load tester', context: args, instructions: ['1. Verify protocols', '2. Check metrics', '3. Validate tests', '4. Calculate score'] }, outputSchema: { type: 'object', required: ['overallScore', 'passedChecks', 'artifacts'], properties: { overallScore: { type: 'number' }, passedChecks: { type: 'array' }, artifacts: { type: 'array' } } } },
   io: { inputJsonPath: `tasks/${taskCtx.effectId}/input.json`, outputJsonPath: `tasks/${taskCtx.effectId}/result.json` }, labels: ['network', 'load-testing', 'validation']
 }));

@@ -83,8 +83,9 @@ function createBetaTestingTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'mobile-testing' },
     agent: {
-      name: 'beta-testing-specialist',
+      name: 'mobile-qa-expert',
       prompt: {
         role: 'Mobile Beta Testing Specialist',
         task: `Configure ${title.toLowerCase()} for beta testing`,

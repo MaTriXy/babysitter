@@ -599,7 +599,7 @@ export const journeyIdentificationTask = defineTask('journey-identification', (a
   kind: 'agent',
   title: `Phase 1: Critical User Journey Identification - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior QA Architect and Test Strategist',
       task: 'Identify and analyze critical user journeys for E2E test automation',
@@ -677,7 +677,7 @@ export const testDesignTask = defineTask('test-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Test Scenario and Test Case Design - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Design Specialist with expertise in E2E testing',
       task: 'Create comprehensive test scenarios and test cases for identified journeys',
@@ -768,7 +768,7 @@ export const pageObjectDevelopmentTask = defineTask('page-object-development', (
   kind: 'agent',
   title: `Phase 3: Page Object Model Development - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer specializing in Page Object Model',
       task: 'Build comprehensive Page Objects for all application screens using POM pattern',
@@ -860,7 +860,7 @@ export const testDataSetupTask = defineTask('test-data-setup', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 4: Test Data and Fixtures Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Data Management Specialist',
       task: 'Create comprehensive test data and fixtures for E2E testing',
@@ -964,7 +964,7 @@ export const authenticationTestsTask = defineTask('authentication-tests', (args,
   kind: 'agent',
   title: `Phase 5: Authentication Tests Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement E2E tests for authentication user journeys',
@@ -1028,7 +1028,7 @@ export const coreWorkflowTestsTask = defineTask('core-workflow-tests', (args, ta
   kind: 'agent',
   title: `Phase 5: Core Workflow Tests Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement E2E tests for core workflow user journeys',
@@ -1092,7 +1092,7 @@ export const dataManagementTestsTask = defineTask('data-management-tests', (args
   kind: 'agent',
   title: `Phase 5: Data Management Tests Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement E2E tests for data management user journeys',
@@ -1156,7 +1156,7 @@ export const testExecutionTask = defineTask('test-execution', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Test Suite Execution - ${args.executionType} - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Execution Specialist',
       task: 'Execute E2E test suite and analyze results',
@@ -1233,7 +1233,7 @@ export const debuggingAndFixesTask = defineTask('debugging-fixes', (args, taskCt
   kind: 'agent',
   title: `Phase 7: Test Debugging and Fixes - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Debugging Expert',
       task: 'Debug test failures and implement fixes',
@@ -1317,7 +1317,7 @@ export const stabilityImprovementsTask = defineTask('stability-improvements', (a
   kind: 'agent',
   title: `Phase 8: Test Stability Improvements - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Stability Engineer',
       task: 'Eliminate test flakiness and improve overall test stability',
@@ -1393,7 +1393,7 @@ export const codeReviewTask = defineTask('code-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Test Code Review and Refinement - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Test Automation Architect and Code Reviewer',
       task: 'Conduct comprehensive code review of test suite',
@@ -1481,7 +1481,7 @@ export const visualRegressionSetupTask = defineTask('visual-regression-setup', (
   kind: 'agent',
   title: `Phase 11: Visual Regression Testing Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Visual Testing Specialist',
       task: 'Set up visual regression testing for E2E test suite',
@@ -1548,7 +1548,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: `Phase 12: Test Suite Documentation Generation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Generate comprehensive E2E test suite documentation',
@@ -1607,7 +1607,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 13: CI/CD Integration Verification - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'DevOps Engineer specializing in Test Automation',
       task: 'Verify CI/CD integration readiness for E2E test suite',
@@ -1671,7 +1671,7 @@ export const finalAssessmentTask = defineTask('final-assessment', (args, taskCtx
   kind: 'agent',
   title: `Phase 14: Final Assessment and Metrics - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Lead and Test Strategy Expert',
       task: 'Conduct final assessment of E2E test suite and compute metrics',

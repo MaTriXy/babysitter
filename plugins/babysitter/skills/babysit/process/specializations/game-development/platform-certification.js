@@ -65,7 +65,7 @@ export const certRequirementsTask = defineTask('cert-requirements', (args, taskC
   kind: 'agent',
   title: `Certification Requirements - ${args.targetPlatform}`,
   agent: {
-    name: 'certification-specialist',
+    name: 'compliance-tester-agent',
     prompt: { role: 'Certification Specialist', task: 'Review platform requirements', context: args, instructions: ['1. Get latest TRC/XR requirements', '2. Review submission guidelines', '3. Identify mandatory features', '4. Create compliance checklist'] },
     outputSchema: { type: 'object', required: ['requirements', 'checklist', 'artifacts'], properties: { requirements: { type: 'array' }, checklist: { type: 'array' }, deadlines: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -77,7 +77,7 @@ export const complianceCheckTask = defineTask('compliance-check', (args, taskCtx
   kind: 'agent',
   title: `Compliance Check - ${args.projectName}`,
   agent: {
-    name: 'qa-certification',
+    name: 'compliance-tester-agent',
     prompt: { role: 'Certification QA', task: 'Check platform compliance', context: args, instructions: ['1. Test all TRC/XR items', '2. Document compliance status', '3. Identify violations', '4. Generate compliance report'] },
     outputSchema: { type: 'object', required: ['complianceRate', 'violations', 'reportPath', 'artifacts'], properties: { complianceRate: { type: 'number' }, violations: { type: 'array' }, reportPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -89,7 +89,7 @@ export const preCertTestingTask = defineTask('pre-cert-testing', (args, taskCtx)
   kind: 'agent',
   title: `Pre-Certification Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-certification',
+    name: 'compliance-tester-agent',
     prompt: { role: 'Certification QA', task: 'Run pre-certification tests', context: args, instructions: ['1. Run full certification test pass', '2. Test edge cases', '3. Verify all mandatory features', '4. Document any issues'] },
     outputSchema: { type: 'object', required: ['testsPassed', 'issues', 'artifacts'], properties: { testsPassed: { type: 'number' }, issues: { type: 'array' }, readyForSubmission: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -101,7 +101,7 @@ export const submissionPrepTask = defineTask('submission-prep', (args, taskCtx) 
   kind: 'agent',
   title: `Submission Preparation - ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'release-manager-agent',
     prompt: { role: 'Release Manager', task: 'Prepare submission package', context: args, instructions: ['1. Create submission build', '2. Prepare documentation', '3. Fill submission forms', '4. Package all materials'] },
     outputSchema: { type: 'object', required: ['packageReady', 'documents', 'artifacts'], properties: { packageReady: { type: 'boolean' }, documents: { type: 'array' }, buildVersion: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -113,7 +113,7 @@ export const certSubmissionTask = defineTask('cert-submission', (args, taskCtx) 
   kind: 'agent',
   title: `Certification Submission - ${args.projectName}`,
   agent: {
-    name: 'release-manager',
+    name: 'release-manager-agent',
     prompt: { role: 'Release Manager', task: 'Submit for certification', context: args, instructions: ['1. Upload submission package', '2. Submit via platform portal', '3. Document submission ID', '4. Set up tracking'] },
     outputSchema: { type: 'object', required: ['status', 'submissionId', 'artifacts'], properties: { status: { type: 'string' }, submissionId: { type: 'string' }, expectedReviewDate: { type: 'string' }, artifacts: { type: 'array' } } }
   },

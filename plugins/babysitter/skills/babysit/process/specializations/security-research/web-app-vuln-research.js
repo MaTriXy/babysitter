@@ -209,7 +209,7 @@ export const webAppReconTask = defineTask('webapp-recon', (args, taskCtx) => ({
   kind: 'agent',
   title: `Web App Recon - ${args.projectName}`,
   agent: {
-    name: 'web-researcher',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Web Application Researcher',
       task: 'Conduct web application reconnaissance',
@@ -248,7 +248,7 @@ export const authTestingTask = defineTask('auth-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Auth Testing - ${args.projectName}`,
   agent: {
-    name: 'auth-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Authentication Security Tester',
       task: 'Test authentication mechanisms',
@@ -286,7 +286,7 @@ export const sessionTestingTask = defineTask('session-testing', (args, taskCtx) 
   kind: 'agent',
   title: `Session Testing - ${args.projectName}`,
   agent: {
-    name: 'session-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Session Management Tester',
       task: 'Test session management',
@@ -324,7 +324,7 @@ export const inputValidationTestingTask = defineTask('input-validation-testing',
   kind: 'agent',
   title: `Input Testing - ${args.projectName}`,
   agent: {
-    name: 'injection-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Input Validation Tester',
       task: 'Test input validation (injection attacks)',
@@ -362,7 +362,7 @@ export const accessControlTestingTask = defineTask('access-control-testing', (ar
   kind: 'agent',
   title: `Access Control Testing - ${args.projectName}`,
   agent: {
-    name: 'access-control-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Access Control Tester',
       task: 'Test access control',
@@ -400,7 +400,7 @@ export const clientSideTestingTask = defineTask('client-side-testing', (args, ta
   kind: 'agent',
   title: `Client-Side Testing - ${args.projectName}`,
   agent: {
-    name: 'client-side-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Client-Side Security Tester',
       task: 'Test client-side security',
@@ -438,7 +438,7 @@ export const businessLogicTestingTask = defineTask('business-logic-testing', (ar
   kind: 'agent',
   title: `Business Logic Testing - ${args.projectName}`,
   agent: {
-    name: 'logic-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Business Logic Tester',
       task: 'Test business logic',
@@ -476,7 +476,7 @@ export const webAppReportTask = defineTask('webapp-report', (args, taskCtx) => (
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Web App Security Report Specialist',
       task: 'Generate web app security report',

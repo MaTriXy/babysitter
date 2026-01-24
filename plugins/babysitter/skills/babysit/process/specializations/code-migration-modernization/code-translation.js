@@ -185,7 +185,7 @@ export const translationAnalysisTask = defineTask('translation-analysis', (args,
   kind: 'agent',
   title: `Phase 1: Translation Analysis - ${args.projectName}`,
   agent: {
-    name: 'translation-analyst',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Language Migration Specialist',
       task: 'Analyze code translation requirements',
@@ -228,7 +228,7 @@ export const translationToolSelectionTask = defineTask('translation-tool-selecti
   kind: 'agent',
   title: `Phase 2: Tool Selection - ${args.projectName}`,
   agent: {
-    name: 'tool-selector',
+    name: 'framework-upgrade-specialist',
     prompt: {
       role: 'Migration Engineer',
       task: 'Select appropriate translation tools',
@@ -270,7 +270,7 @@ export const automatedTranslationTask = defineTask('automated-translation', (arg
   kind: 'agent',
   title: `Phase 3: Automated Translation - ${args.projectName}`,
   agent: {
-    name: 'translator',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Migration Developer',
       task: 'Run automated code translation',
@@ -312,7 +312,7 @@ export const manualTranslationFixesTask = defineTask('manual-translation-fixes',
   kind: 'agent',
   title: `Phase 4: Manual Translation Fixes - ${args.projectName}`,
   agent: {
-    name: 'manual-translator',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Senior Developer',
       task: 'Apply manual translation fixes',
@@ -353,7 +353,7 @@ export const idiomOptimizationTask = defineTask('idiom-optimization', (args, tas
   kind: 'agent',
   title: `Phase 5: Idiom Optimization - ${args.projectName}`,
   agent: {
-    name: 'idiom-optimizer',
+    name: 'refactoring-pattern-applier',
     prompt: {
       role: 'Language Expert',
       task: 'Optimize for target language idioms',
@@ -394,7 +394,7 @@ export const translationTestingTask = defineTask('translation-testing', (args, t
   kind: 'agent',
   title: `Phase 6: Translation Testing - ${args.projectName}`,
   agent: {
-    name: 'translation-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'QA Engineer',
       task: 'Test translated code',

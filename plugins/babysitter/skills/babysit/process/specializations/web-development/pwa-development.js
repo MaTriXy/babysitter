@@ -226,7 +226,7 @@ export const requirementsAnalysisTask = defineTask('pwa-requirements', (args, ta
   kind: 'agent',
   title: `Phase 1: PWA Requirements - ${args.projectName}`,
   agent: {
-    name: 'pwa-architect',
+    name: 'performance-auditor-agent',
     prompt: {
       role: 'PWA Architect',
       task: 'Analyze PWA requirements',
@@ -305,10 +305,10 @@ export const manifestSetupTask = defineTask('pwa-manifest', (args, taskCtx) => (
 }));
 
 export const serviceWorkerSetupTask = defineTask('service-worker-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: Service Worker Setup - ${args.projectName}`,
-  agent: {
-    name: 'service-worker-specialist',
+  skill: {
+    name: 'caching-skill',
     prompt: {
       role: 'Service Worker Specialist',
       task: 'Configure Service Worker with Workbox',
@@ -346,10 +346,10 @@ export const serviceWorkerSetupTask = defineTask('service-worker-setup', (args, 
 }));
 
 export const cachingStrategiesTask = defineTask('caching-strategies', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 4: Caching Strategies - ${args.projectName}`,
-  agent: {
-    name: 'caching-specialist',
+  skill: {
+    name: 'caching-skill',
     prompt: {
       role: 'PWA Caching Specialist',
       task: 'Implement caching strategies',
@@ -554,7 +554,7 @@ export const documentationTask = defineTask('pwa-documentation', (args, taskCtx)
   kind: 'agent',
   title: `Phase 9: PWA Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate PWA documentation',

@@ -207,7 +207,7 @@ export const ffiTypeMappingTask = defineTask('ffi-type-mapping', (args, taskCtx)
   kind: 'agent',
   title: `Phase 1: FFI Type Mapping - ${args.languageName}`,
   agent: {
-    name: 'ffi-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'FFI Engineer',
       task: 'Implement type mapping',
@@ -248,7 +248,7 @@ export const callingConventionsTask = defineTask('calling-conventions', (args, t
   kind: 'agent',
   title: `Phase 2: Calling Conventions - ${args.languageName}`,
   agent: {
-    name: 'ffi-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'FFI Engineer',
       task: 'Implement calling conventions',
@@ -289,7 +289,7 @@ export const ffiMemoryManagementTask = defineTask('ffi-memory-management', (args
   kind: 'agent',
   title: `Phase 3: FFI Memory Management - ${args.languageName}`,
   agent: {
-    name: 'ffi-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'FFI Engineer',
       task: 'Implement FFI memory management',
@@ -330,7 +330,7 @@ export const bindingGenerationTask = defineTask('binding-generation', (args, tas
   kind: 'agent',
   title: `Phase 4: Binding Generation - ${args.languageName}`,
   agent: {
-    name: 'ffi-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'FFI Engineer',
       task: 'Implement binding generation',
@@ -371,7 +371,7 @@ export const ffiIntegrationTask = defineTask('ffi-integration', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: FFI Integration - ${args.languageName}`,
   agent: {
-    name: 'ffi-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'FFI Engineer',
       task: 'Integrate FFI system',
@@ -411,7 +411,7 @@ export const ffiTestingTask = defineTask('ffi-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: FFI Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive FFI tests',
@@ -452,7 +452,7 @@ export const ffiDocumentationTask = defineTask('ffi-documentation', (args, taskC
   kind: 'agent',
   title: `Phase 7: FFI Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'ffi-interop-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate FFI documentation',

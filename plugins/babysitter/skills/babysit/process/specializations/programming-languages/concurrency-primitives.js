@@ -235,7 +235,7 @@ export const concurrencyModelTask = defineTask('concurrency-model', (args, taskC
   kind: 'agent',
   title: `Phase 1: Concurrency Model - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Design concurrency model',
@@ -276,7 +276,7 @@ export const schedulerTask = defineTask('scheduler', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Scheduler - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Implement scheduler',
@@ -317,7 +317,7 @@ export const syncPrimitivesTask = defineTask('sync-primitives', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Sync Primitives - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Implement synchronization primitives',
@@ -358,7 +358,7 @@ export const commPrimitivesTask = defineTask('comm-primitives', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Communication Primitives - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Implement communication primitives',
@@ -399,7 +399,7 @@ export const asyncRuntimeTask = defineTask('async-runtime', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: Async Runtime - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Implement async runtime',
@@ -440,7 +440,7 @@ export const concurrencyIntegrationTask = defineTask('concurrency-integration', 
   kind: 'agent',
   title: `Phase 6: Concurrency Integration - ${args.languageName}`,
   agent: {
-    name: 'concurrency-engineer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Concurrency Engineer',
       task: 'Integrate concurrency runtime',
@@ -480,7 +480,7 @@ export const concurrencyTestingTask = defineTask('concurrency-testing', (args, t
   kind: 'agent',
   title: `Phase 7: Concurrency Testing - ${args.languageName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'language-feature-designer',
     prompt: {
       role: 'Test Engineer',
       task: 'Create comprehensive concurrency tests',
@@ -521,7 +521,7 @@ export const concurrencyDocumentationTask = defineTask('concurrency-documentatio
   kind: 'agent',
   title: `Phase 8: Concurrency Documentation - ${args.languageName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'runtime-systems-engineer',
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate concurrency documentation',

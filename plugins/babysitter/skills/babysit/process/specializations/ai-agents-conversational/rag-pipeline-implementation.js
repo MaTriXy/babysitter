@@ -186,10 +186,10 @@ export async function process(inputs, ctx) {
 // ============================================================================
 
 export const documentIngestionTask = defineTask('document-ingestion', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Setup Document Ingestion - ${args.pipelineName}`,
-  agent: {
-    name: 'data-engineer',
+  skill: {
+    name: 'document-loaders',  // SK-RAG-001: Document loader configurations for various file types
     prompt: {
       role: 'Data Engineer',
       task: 'Setup document ingestion pipeline',
@@ -225,10 +225,10 @@ export const documentIngestionTask = defineTask('document-ingestion', (args, tas
 }));
 
 export const chunkingStrategyTask = defineTask('chunking-strategy', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Chunking - ${args.pipelineName}`,
-  agent: {
-    name: 'chunking-specialist',
+  skill: {
+    name: 'text-splitters',  // SK-RAG-002: Text splitter configurations for semantic chunking
     prompt: {
       role: 'Chunking Specialist',
       task: 'Implement document chunking strategy',
@@ -264,10 +264,10 @@ export const chunkingStrategyTask = defineTask('chunking-strategy', (args, taskC
 }));
 
 export const embeddingGenerationTask = defineTask('embedding-generation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Setup Embedding Generation - ${args.pipelineName}`,
-  agent: {
-    name: 'embedding-specialist',
+  skill: {
+    name: 'embedding-models',  // SK-RAG-003: Embedding model integration helpers
     prompt: {
       role: 'Embedding Specialist',
       task: 'Setup embedding generation pipeline',
@@ -303,10 +303,10 @@ export const embeddingGenerationTask = defineTask('embedding-generation', (args,
 }));
 
 export const vectorStorageTask = defineTask('vector-storage', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Configure Vector Storage - ${args.pipelineName}`,
-  agent: {
-    name: 'vector-db-specialist',
+  skill: {
+    name: 'vector-store-configs',  // SK-RAG-004: Vector store connection and configuration templates
     prompt: {
       role: 'Vector Database Specialist',
       task: 'Configure vector database storage',
@@ -345,7 +345,7 @@ export const retrievalLogicTask = defineTask('retrieval-logic', (args, taskCtx) 
   kind: 'agent',
   title: `Implement Retrieval - ${args.pipelineName}`,
   agent: {
-    name: 'retrieval-specialist',
+    name: 'rag-architect',  // AG-RAG-001: Designs RAG pipelines with optimal retrieval strategies
     prompt: {
       role: 'Retrieval Specialist',
       task: 'Implement retrieval logic',
@@ -381,10 +381,10 @@ export const retrievalLogicTask = defineTask('retrieval-logic', (args, taskCtx) 
 }));
 
 export const generationPipelineTask = defineTask('generation-pipeline', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Build Generation Pipeline - ${args.pipelineName}`,
-  agent: {
-    name: 'rag-developer',
+  skill: {
+    name: 'rag-prompt-templates',  // SK-RAG-005: RAG prompt templates for context injection
     prompt: {
       role: 'RAG Developer',
       task: 'Build complete generation pipeline',

@@ -528,7 +528,7 @@ export const defineRequirementsTask = defineTask('define-requirements', (args, t
   kind: 'agent',
   title: `Phase 1: Define Observability Requirements - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Observability Architect',
       task: 'Define comprehensive observability requirements for the system',
@@ -633,7 +633,7 @@ export const structuredLoggingTask = defineTask('structured-logging', (args, tas
   kind: 'agent',
   title: `Phase 2: Implement Structured Logging - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Logging Infrastructure Specialist',
       task: 'Implement structured logging across the system',
@@ -706,7 +706,7 @@ export const defineMetricsTask = defineTask('define-metrics', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Define Metrics and SLIs - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Site Reliability Engineer (SRE)',
       task: 'Define and configure comprehensive metrics and SLIs',
@@ -803,7 +803,7 @@ export const distributedTracingTask = defineTask('distributed-tracing', (args, t
   kind: 'agent',
   title: `Phase 4: Implement Distributed Tracing - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Distributed Systems Engineer',
       task: 'Implement distributed tracing across microservices',
@@ -881,7 +881,7 @@ export const createDashboardsTask = defineTask('create-dashboards', (args, taskC
   kind: 'agent',
   title: `Phase 5: Create Observability Dashboards - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Observability Visualization Specialist',
       task: 'Create comprehensive observability dashboards',
@@ -956,7 +956,7 @@ export const setupAlertsTask = defineTask('setup-alerts', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Setup Alerts and Notifications - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Alert Engineering Specialist',
       task: 'Configure comprehensive alerting and notification system',
@@ -1047,7 +1047,7 @@ export const testObservabilityTask = defineTask('test-observability', (args, tas
   kind: 'agent',
   title: `Phase 7: Test Observability Implementation - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Observability Testing Engineer',
       task: 'Validate observability implementation and coverage',
@@ -1160,7 +1160,7 @@ export const createRunbooksTask = defineTask('create-runbooks', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Create Incident Response Runbooks - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'SRE Runbook Specialist',
       task: 'Create incident response runbooks for common scenarios',
@@ -1232,7 +1232,7 @@ export const reportGenerationTask = defineTask('report-generation', (args, taskC
   kind: 'agent',
   title: `Phase 9: Generate Observability Report - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Observability Documentation Specialist',
       task: 'Generate comprehensive observability implementation report',
@@ -1293,7 +1293,7 @@ export const observabilityAssessmentTask = defineTask('observability-assessment'
   kind: 'agent',
   title: `Phase 10: Final Observability Assessment - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Observability Architect',
       task: 'Conduct final observability assessment and scoring',
@@ -1374,7 +1374,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 11: Documentation and Maintenance Plan - ${args.systemName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'observability-architect',
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Create comprehensive documentation and maintenance plan',

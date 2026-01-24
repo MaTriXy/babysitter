@@ -558,7 +558,7 @@ export const flakinessDetectionTask = defineTask('flakiness-detection', (args, t
   kind: 'agent',
   title: `Phase 1: Flakiness Detection - ${args.testSuite}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Test Engineer specializing in test stability and reliability',
       task: 'Detect flaky tests through repeated execution and statistical analysis',
@@ -636,7 +636,7 @@ export const rootCauseAnalysisTask = defineTask('root-cause-analysis', (args, ta
   kind: 'agent',
   title: `Phase 2: Root Cause Analysis - ${args.flakyTests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Architect specializing in test stability',
       task: 'Analyze root causes of flaky tests and categorize by issue type',
@@ -728,7 +728,7 @@ export const stabilizationPlanningTask = defineTask('stabilization-planning', (a
   kind: 'agent',
   title: `Phase 3: Stabilization Planning - ${args.categorizedTests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Strategy Lead',
       task: 'Create comprehensive stabilization plan with prioritization and strategies',
@@ -830,7 +830,7 @@ export const timingIssueStabilizationTask = defineTask('timing-issue-stabilizati
   kind: 'agent',
   title: `Timing Stabilization - ${args.test.testName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Stabilize test with timing or race condition issues',
@@ -886,7 +886,7 @@ export const testIsolationStabilizationTask = defineTask('test-isolation-stabili
   kind: 'agent',
   title: `Isolation Stabilization - ${args.test.testName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Stabilize test with isolation and dependency issues',
@@ -939,7 +939,7 @@ export const environmentIssueStabilizationTask = defineTask('environment-issue-s
   kind: 'agent',
   title: `Environment Stabilization - ${args.tests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'DevOps Engineer specializing in test infrastructure',
       task: 'Stabilize environment and infrastructure issues affecting tests',
@@ -1008,7 +1008,7 @@ export const networkIssueStabilizationTask = defineTask('network-issue-stabiliza
   kind: 'agent',
   title: `Network Stabilization - ${args.test.testName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Stabilize test with network and external dependency issues',
@@ -1068,7 +1068,7 @@ export const testDesignStabilizationTask = defineTask('test-design-stabilization
   kind: 'agent',
   title: `Design Stabilization - ${args.tests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Test Automation Architect',
       task: 'Improve test design to eliminate brittleness and flakiness',
@@ -1137,7 +1137,7 @@ export const testQuarantineTask = defineTask('test-quarantine', (args, taskCtx) 
   kind: 'agent',
   title: `Test Quarantine - ${args.tests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Infrastructure Engineer',
       task: 'Quarantine unstabilized flaky tests to protect build stability',
@@ -1204,7 +1204,7 @@ export const stabilizationValidationTask = defineTask('stabilization-validation'
   kind: 'agent',
   title: `Phase 10: Validation - ${args.stabilizedTests.length} tests`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Validation Engineer',
       task: 'Validate that stabilized tests are now reliable through repeated execution',
@@ -1270,7 +1270,7 @@ export const flakinessMonitoringSetupTask = defineTask('flakiness-monitoring-set
   kind: 'agent',
   title: `Phase 11: Monitoring Setup`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'DevOps Engineer specializing in test observability',
       task: 'Set up continuous flakiness monitoring and alerting',
@@ -1336,7 +1336,7 @@ export const bestPracticesDocumentationTask = defineTask('best-practices-documen
   kind: 'agent',
   title: `Phase 12: Best Practices Documentation`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Technical Writer specializing in test automation',
       task: 'Document best practices for preventing and fixing flaky tests',
@@ -1402,7 +1402,7 @@ export const flakinessEliminationReportTask = defineTask('flakiness-elimination-
   kind: 'agent',
   title: `Phase 13: Final Report Generation`,
   agent: {
-    name: 'general-purpose',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Manager and Technical Reporter',
       task: 'Generate comprehensive flakiness elimination final report',

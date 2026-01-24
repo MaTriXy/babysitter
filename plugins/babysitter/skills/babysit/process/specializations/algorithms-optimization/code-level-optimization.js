@@ -48,7 +48,7 @@ export const codeProfilingTask = defineTask('code-profiling', (args, taskCtx) =>
   kind: 'agent',
   title: 'Profile Code',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Engineer',
       task: 'Profile code to identify optimization opportunities',
@@ -70,7 +70,7 @@ export const microOptimizationTask = defineTask('micro-optimization', (args, tas
   kind: 'agent',
   title: 'Apply Micro-Optimizations',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Engineer',
       task: 'Apply code-level optimizations',
@@ -92,7 +92,7 @@ export const benchmarkingTask = defineTask('benchmarking', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Benchmark Optimizations',
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Tester',
       task: 'Benchmark original vs optimized code',

@@ -637,8 +637,9 @@ export async function process(inputs, ctx) {
 export const versionAnalysisTask = defineTask('version-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze version structure and validate inputs',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'version-analyst',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation versioning specialist',
       task: 'Analyze version numbers, strategy, and create version management plan',
@@ -709,8 +710,9 @@ export const versionAnalysisTask = defineTask('version-analysis', (args, taskCtx
 export const docsSnapshotTask = defineTask('docs-snapshot', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create documentation snapshot for current version',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'snapshot-creator',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation versioning engineer',
       task: 'Create immutable snapshot of current documentation for version archival',
@@ -770,8 +772,9 @@ export const docsSnapshotTask = defineTask('docs-snapshot', (args, taskCtx) => (
 export const changelogGenerationTask = defineTask('changelog-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate changelog and release notes',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'changelog-generator',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'technical writer and release manager',
       task: 'Generate comprehensive changelog following Keep a Changelog format',
@@ -840,8 +843,9 @@ export const changelogGenerationTask = defineTask('changelog-generation', (args,
 export const deprecationNoticesTask = defineTask('deprecation-notices', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate deprecation notices and warnings',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'deprecation-specialist',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'API deprecation specialist and technical writer',
       task: 'Identify deprecated features and create clear deprecation notices',
@@ -906,8 +910,9 @@ export const deprecationNoticesTask = defineTask('deprecation-notices', (args, t
 export const migrationGuidesTask = defineTask('migration-guides', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create version migration guides',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'migration-guide-writer',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'technical writer specializing in migration documentation',
       task: 'Create comprehensive step-by-step migration guides between versions',
@@ -971,8 +976,9 @@ export const migrationGuidesTask = defineTask('migration-guides', (args, taskCtx
 export const versionStructureTask = defineTask('version-structure', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Set up version structure for documentation platform',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'version-structure-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation platform engineer',
       task: 'Create version-specific directory structure and configuration for documentation platform',
@@ -1035,8 +1041,9 @@ export const versionStructureTask = defineTask('version-structure', (args, taskC
 export const versionSwitcherTask = defineTask('version-switcher', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement version switcher UI component',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'version-switcher-developer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'frontend developer specializing in documentation UIs',
       task: 'Create version switcher dropdown component for documentation site',
@@ -1100,8 +1107,9 @@ export const versionSwitcherTask = defineTask('version-switcher', (args, taskCtx
 export const navigationUpdateTask = defineTask('navigation-update', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Update navigation and cross-version links',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'navigation-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation information architect',
       task: 'Update navigation menus and links to support multi-version documentation',
@@ -1155,8 +1163,9 @@ export const navigationUpdateTask = defineTask('navigation-update', (args, taskC
 export const versionBannersTask = defineTask('version-banners', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Add version banners and warnings',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'banner-designer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'UX designer and frontend developer',
       task: 'Create informative version banners and deprecation warnings for documentation pages',
@@ -1225,8 +1234,9 @@ export const versionBannersTask = defineTask('version-banners', (args, taskCtx) 
 export const versionLinkValidationTask = defineTask('version-link-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate links in version',
+  skill: { name: 'link-validator' },
   agent: {
-    name: 'link-validator',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'quality assurance engineer',
       task: 'Validate all internal and external links in documentation version',
@@ -1291,8 +1301,9 @@ export const versionLinkValidationTask = defineTask('version-link-validation', (
 export const versionRetentionTask = defineTask('version-retention', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Apply version retention policy and archival',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'retention-manager',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation lifecycle manager',
       task: 'Apply retention policy to determine which versions to keep active vs archive',
@@ -1352,8 +1363,9 @@ export const versionRetentionTask = defineTask('version-retention', (args, taskC
 export const hostingConfigurationTask = defineTask('hosting-configuration', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Configure hosting for multi-version documentation',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'hosting-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer and documentation hosting specialist',
       task: 'Configure hosting platform to serve multi-version documentation',
@@ -1414,8 +1426,9 @@ export const hostingConfigurationTask = defineTask('hosting-configuration', (arg
 export const versionIndexTask = defineTask('version-index', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create version index and metadata',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'index-creator',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation metadata specialist',
       task: 'Create comprehensive version index with metadata and relationships',
@@ -1488,8 +1501,9 @@ export const versionIndexTask = defineTask('version-index', (args, taskCtx) => (
 export const deploymentAutomationTask = defineTask('deployment-automation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate deployment automation scripts',
+  skill: { name: 'git-github-flow' },
   agent: {
-    name: 'automation-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps automation engineer',
       task: 'Create automated deployment scripts and CI/CD workflows for versioned documentation',
@@ -1561,8 +1575,9 @@ export const deploymentAutomationTask = defineTask('deployment-automation', (arg
 export const releaseValidationTask = defineTask('release-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate version release readiness',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'release-validator',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality assurance lead',
       task: 'Validate that versioned documentation meets all release criteria',
@@ -1638,8 +1653,9 @@ export const releaseValidationTask = defineTask('release-validation', (args, tas
 export const releasePackageTask = defineTask('release-package', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create final release package',
+  skill: { name: 'pdf-generation' },
   agent: {
-    name: 'release-packager',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation release manager',
       task: 'Create comprehensive release package with all deliverables and documentation',

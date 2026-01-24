@@ -167,8 +167,9 @@ export async function process(inputs, ctx) {
 export const createThreatModelTask = defineTask('create-threat-model', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create threat model using STRIDE methodology',
+  skill: { name: 'threat-modeler' },
   agent: {
-    name: 'threat-modeler',
+    name: 'security-architect',
     prompt: {
       role: 'security architect specializing in threat modeling',
       task: 'Create a comprehensive threat model for the system using STRIDE methodology (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)',
@@ -245,8 +246,9 @@ export const createThreatModelTask = defineTask('create-threat-model', (args, ta
 export const identifyAttackSurfacesTask = defineTask('identify-attack-surfaces', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Identify and analyze attack surfaces',
+  skill: { name: 'security-scanner' },
   agent: {
-    name: 'attack-surface-analyzer',
+    name: 'security-architect',
     prompt: {
       role: 'penetration testing specialist',
       task: 'Identify all attack surfaces in the system architecture',
@@ -304,8 +306,9 @@ export const identifyAttackSurfacesTask = defineTask('identify-attack-surfaces',
 export const reviewSecurityPatternsTask = defineTask('review-security-patterns', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Review security patterns and best practices',
+  skill: { name: 'security-scanner' },
   agent: {
-    name: 'security-pattern-reviewer',
+    name: 'security-architect',
     prompt: {
       role: 'security architecture expert',
       task: 'Review the architecture for security patterns and best practices',
@@ -379,7 +382,7 @@ export const assessAuthenticationAuthorizationTask = defineTask('assess-authenti
   kind: 'agent',
   title: 'Assess authentication and authorization mechanisms',
   agent: {
-    name: 'auth-specialist',
+    name: 'security-architect',
     prompt: {
       role: 'identity and access management specialist',
       task: 'Comprehensively assess authentication and authorization architecture',
@@ -465,7 +468,7 @@ export const reviewDataProtectionTask = defineTask('review-data-protection', (ar
   kind: 'agent',
   title: 'Review data protection and encryption',
   agent: {
-    name: 'data-protection-specialist',
+    name: 'security-architect',
     prompt: {
       role: 'data security and privacy expert',
       task: 'Review data protection mechanisms across the system',
@@ -562,8 +565,9 @@ export const reviewDataProtectionTask = defineTask('review-data-protection', (ar
 export const checkComplianceTask = defineTask('check-compliance', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Check compliance with security standards',
+  skill: { name: 'compliance-checker' },
   agent: {
-    name: 'compliance-auditor',
+    name: 'compliance-specialist',
     prompt: {
       role: 'security compliance auditor',
       task: 'Assess architecture compliance with specified security standards and regulations',
@@ -652,7 +656,7 @@ export const performSecurityTestingTask = defineTask('perform-security-testing',
   kind: 'agent',
   title: 'Define security testing strategy and test cases',
   agent: {
-    name: 'security-tester',
+    name: 'security-architect',
     prompt: {
       role: 'security testing specialist',
       task: 'Define comprehensive security testing strategy based on threat model and attack surfaces',
@@ -735,7 +739,7 @@ export const generateRiskRegisterTask = defineTask('generate-risk-register', (ar
   kind: 'agent',
   title: 'Generate comprehensive risk register and remediation plan',
   agent: {
-    name: 'risk-manager',
+    name: 'security-architect',
     prompt: {
       role: 'security risk management specialist',
       task: 'Consolidate all security findings into a comprehensive risk register and create a prioritized remediation plan',
@@ -828,7 +832,7 @@ export const createFinalReportTask = defineTask('create-final-report', (args, ta
   kind: 'agent',
   title: 'Create comprehensive security architecture review report',
   agent: {
-    name: 'security-report-writer',
+    name: 'technical-writer',
     prompt: {
       role: 'security documentation specialist',
       task: 'Create a comprehensive, executive-friendly security architecture review report',

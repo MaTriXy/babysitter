@@ -195,7 +195,7 @@ export const workflowAnalysisTask = defineTask('workflow-analysis', (args, taskC
   kind: 'agent',
   title: `Phase 1: Workflow Analysis - ${args.projectName}`,
   agent: {
-    name: 'cli-ux-designer',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI User Experience Designer',
       task: 'Analyze user workflows and use cases',
@@ -239,7 +239,7 @@ export const hierarchyDesignTask = defineTask('hierarchy-design', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Hierarchy Design - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Command Architect',
       task: 'Design command hierarchy',
@@ -284,7 +284,7 @@ export const commandGroupsTask = defineTask('command-groups', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 3: Command Groups - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Group Designer',
       task: 'Implement command groups and namespaces',
@@ -334,7 +334,7 @@ export const optionsDesignTask = defineTask('options-design', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: Options Design - ${args.projectName}`,
   agent: {
-    name: 'cli-architect',
+    name: 'argument-schema-designer',
     prompt: {
       role: 'CLI Options Designer',
       task: 'Define global vs command-specific options',
@@ -377,7 +377,7 @@ export const aliasesDesignTask = defineTask('aliases-design', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Aliases Design - ${args.projectName}`,
   agent: {
-    name: 'cli-ux-designer',
+    name: 'cli-ux-architect',
     prompt: {
       role: 'CLI Alias Designer',
       task: 'Create command aliases for common operations',

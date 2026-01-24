@@ -98,7 +98,7 @@ export const defineEnduranceObjectivesTask = defineTask('define-endurance-object
   kind: 'agent',
   title: `Define Endurance Test Objectives - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Define endurance test objectives', context: args,
       instructions: ['1. Define stability objectives', '2. Define degradation thresholds', '3. Define memory limits', '4. Define resource boundaries', '5. Document objectives'],
       outputFormat: 'JSON with endurance test objectives' },
@@ -112,7 +112,7 @@ export const designSustainedLoadScenarioTask = defineTask('design-sustained-load
   kind: 'agent',
   title: `Design Sustained Load Scenario - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Design sustained load scenario', context: args,
       instructions: ['1. Define load pattern', '2. Set target RPS', '3. Configure ramp-up', '4. Define steady-state', '5. Document scenario'],
       outputFormat: 'JSON with load scenario' },
@@ -126,7 +126,7 @@ export const configureExtendedMonitoringTask = defineTask('configure-extended-mo
   kind: 'agent',
   title: `Configure Extended Monitoring - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Configure extended monitoring for endurance test', context: args,
       instructions: ['1. Configure memory monitoring', '2. Configure CPU monitoring', '3. Configure response time tracking', '4. Set up trend logging', '5. Document monitoring'],
       outputFormat: 'JSON with monitoring configuration' },
@@ -140,7 +140,7 @@ export const executeEnduranceTestTask = defineTask('execute-endurance-test', (ar
   kind: 'agent',
   title: `Execute Endurance Test - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Execute endurance test', context: args,
       instructions: ['1. Start load generation', '2. Monitor throughout duration', '3. Collect metrics continuously', '4. Track anomalies', '5. Compile results'],
       outputFormat: 'JSON with test execution results' },
@@ -154,7 +154,7 @@ export const monitorForMemoryLeaksTask = defineTask('monitor-for-memory-leaks', 
   kind: 'agent',
   title: `Monitor for Memory Leaks - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Monitor for memory leaks during endurance test', context: args,
       instructions: ['1. Track heap usage over time', '2. Identify growing patterns', '3. Analyze GC behavior', '4. Detect unreleased memory', '5. Document findings'],
       outputFormat: 'JSON with memory leak analysis' },
@@ -168,7 +168,7 @@ export const detectPerformanceDegradationTask = defineTask('detect-performance-d
   kind: 'agent',
   title: `Detect Performance Degradation - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Detect performance degradation over time', context: args,
       instructions: ['1. Analyze latency trends', '2. Compare start vs end metrics', '3. Identify degradation patterns', '4. Calculate degradation rate', '5. Document findings'],
       outputFormat: 'JSON with degradation detection results' },
@@ -182,7 +182,7 @@ export const analyzeResourceTrendsTask = defineTask('analyze-resource-trends', (
   kind: 'agent',
   title: `Analyze Resource Trends - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Analyze resource utilization trends', context: args,
       instructions: ['1. Analyze CPU trends', '2. Analyze memory trends', '3. Analyze I/O trends', '4. Identify concerning patterns', '5. Document trends'],
       outputFormat: 'JSON with resource trend analysis' },
@@ -196,7 +196,7 @@ export const generateEnduranceFindingsTask = defineTask('generate-endurance-find
   kind: 'agent',
   title: `Generate Endurance Findings - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Generate endurance test findings', context: args,
       instructions: ['1. Summarize memory findings', '2. Summarize degradation findings', '3. Summarize resource findings', '4. Generate recommendations', '5. Document findings'],
       outputFormat: 'JSON with endurance test findings' },
@@ -210,7 +210,7 @@ export const documentEnduranceRecommendationsTask = defineTask('document-enduran
   kind: 'agent',
   title: `Document Endurance Recommendations - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'gatling-load-testing',
     prompt: { role: 'Performance Engineer', task: 'Document endurance test recommendations', context: args,
       instructions: ['1. Prioritize recommendations', '2. Detail memory fixes', '3. Detail performance fixes', '4. Provide implementation guidance', '5. Generate report'],
       outputFormat: 'JSON with recommendations documentation' },

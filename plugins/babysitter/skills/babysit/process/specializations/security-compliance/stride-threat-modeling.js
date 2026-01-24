@@ -521,7 +521,7 @@ export const decomposeArchitectureTask = defineTask('decompose-architecture', (a
   kind: 'agent',
   title: `Phase 1: Decompose Architecture - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'security-architecture-reviewer-agent',
     prompt: {
       role: 'Security Architect specializing in threat modeling',
       task: 'Decompose system architecture into threat modeling elements',
@@ -743,7 +743,7 @@ export const identifySpoofingThreatsTask = defineTask('identify-spoofing-threats
   kind: 'agent',
   title: `Phase 3: Identify Spoofing Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Spoofing threats - threats where attackers pretend to be something or someone else',
@@ -826,7 +826,7 @@ export const identifyTamperingThreatsTask = defineTask('identify-tampering-threa
   kind: 'agent',
   title: `Phase 4: Identify Tampering Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Tampering threats - threats where attackers modify data or code',
@@ -909,7 +909,7 @@ export const identifyRepudiationThreatsTask = defineTask('identify-repudiation-t
   kind: 'agent',
   title: `Phase 5: Identify Repudiation Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Repudiation threats - threats where users deny performing actions',
@@ -993,7 +993,7 @@ export const identifyInformationDisclosureThreatsTask = defineTask('identify-inf
   kind: 'agent',
   title: `Phase 6: Identify Information Disclosure Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Information Disclosure threats - threats where attackers access confidential data',
@@ -1083,7 +1083,7 @@ export const identifyDenialOfServiceThreatsTask = defineTask('identify-denial-of
   kind: 'agent',
   title: `Phase 7: Identify Denial of Service Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Denial of Service threats - threats where attackers make system unavailable',
@@ -1171,7 +1171,7 @@ export const identifyElevationOfPrivilegeThreatsTask = defineTask('identify-elev
   kind: 'agent',
   title: `Phase 8: Identify Elevation of Privilege Threats - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-modeling-agent',
     prompt: {
       role: 'Security Threat Analyst specializing in STRIDE',
       task: 'Identify Elevation of Privilege threats - threats where attackers gain unauthorized privileges',
@@ -1263,7 +1263,7 @@ export const assessThreatRiskTask = defineTask('assess-threat-risk', (args, task
   kind: 'agent',
   title: `Phase 9: Assess Threat Risk - ${args.system}`,
   agent: {
-    name: 'general-purpose',
+    name: 'risk-scoring-agent',
     prompt: {
       role: 'Security Risk Analyst',
       task: 'Assess and score risk for all identified threats',

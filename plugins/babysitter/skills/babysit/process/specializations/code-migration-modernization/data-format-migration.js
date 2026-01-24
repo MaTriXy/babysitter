@@ -195,7 +195,7 @@ export const formatAnalysisTask = defineTask('format-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Format Analysis - ${args.projectName}`,
   agent: {
-    name: 'format-analyst',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'Data Engineer',
       task: 'Analyze source and target data formats',
@@ -238,7 +238,7 @@ export const transformationDesignTask = defineTask('transformation-design', (arg
   kind: 'agent',
   title: `Phase 2: Transformation Design - ${args.projectName}`,
   agent: {
-    name: 'transformation-designer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'ETL Architect',
       task: 'Design data transformation rules',
@@ -280,7 +280,7 @@ export const pipelineDevelopmentTask = defineTask('pipeline-development', (args,
   kind: 'agent',
   title: `Phase 3: Pipeline Development - ${args.projectName}`,
   agent: {
-    name: 'pipeline-developer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Data Engineer',
       task: 'Develop transformation pipeline',
@@ -322,7 +322,7 @@ export const sampleValidationTask = defineTask('sample-validation', (args, taskC
   kind: 'agent',
   title: `Phase 4: Sample Validation - ${args.projectName}`,
   agent: {
-    name: 'sample-validator',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate transformation with sample data',
@@ -364,7 +364,7 @@ export const fullMigrationTask = defineTask('full-migration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Full Migration - ${args.projectName}`,
   agent: {
-    name: 'migration-executor',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Data Migration Engineer',
       task: 'Execute full data migration',
@@ -406,7 +406,7 @@ export const dataValidationTask = defineTask('data-validation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Data Validation - ${args.projectName}`,
   agent: {
-    name: 'data-validator',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'Data Quality Engineer',
       task: 'Validate migrated data',

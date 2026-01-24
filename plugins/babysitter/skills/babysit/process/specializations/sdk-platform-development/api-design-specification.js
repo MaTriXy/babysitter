@@ -280,7 +280,7 @@ export const requirementsTask = defineTask('requirements', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: API Requirements - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'Senior API Designer',
       task: 'Gather and document API requirements',
@@ -337,7 +337,7 @@ export const resourceDesignTask = defineTask('resource-design', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Resource Design - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Architect',
       task: 'Design resource-oriented API structure',
@@ -394,7 +394,7 @@ export const urlConventionsTask = defineTask('url-conventions', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: URL Conventions - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Designer',
       task: 'Establish URL conventions and naming standards',
@@ -449,7 +449,7 @@ export const schemaDesignTask = defineTask('schema-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Schema Design - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Schema Designer',
       task: 'Design request/response schemas',
@@ -506,7 +506,7 @@ export const errorPatternsTask = defineTask('error-patterns', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Error Handling Patterns - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'error-message-reviewer',
     prompt: {
       role: 'API Designer',
       task: 'Document error handling patterns',
@@ -567,7 +567,7 @@ export const authDesignTask = defineTask('auth-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Authentication Design - ${args.projectName}`,
   agent: {
-    name: 'security-architect',
+    name: 'security-review-agent',
     prompt: {
       role: 'API Security Architect',
       task: 'Design authentication and authorization',
@@ -623,7 +623,7 @@ export const paginationDesignTask = defineTask('pagination-design', (args, taskC
   kind: 'agent',
   title: `Phase 7: Pagination Design - ${args.projectName}`,
   agent: {
-    name: 'api-designer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Designer',
       task: 'Design pagination and filtering patterns',
@@ -684,7 +684,7 @@ export const versioningDesignTask = defineTask('versioning-design', (args, taskC
   kind: 'agent',
   title: `Phase 8: Versioning Strategy - ${args.projectName}`,
   agent: {
-    name: 'api-architect',
+    name: 'compatibility-auditor',
     prompt: {
       role: 'API Architect',
       task: 'Define API versioning strategy',
@@ -737,7 +737,7 @@ export const specGenerationTask = defineTask('spec-generation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 9: Specification Generation - ${args.projectName}`,
   agent: {
-    name: 'api-engineer',
+    name: 'api-design-reviewer',
     prompt: {
       role: 'API Specification Engineer',
       task: 'Generate API specification document',
@@ -790,7 +790,7 @@ export const guidelinesTask = defineTask('guidelines', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: API Guidelines - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'API Documentation Writer',
       task: 'Generate API design guidelines',

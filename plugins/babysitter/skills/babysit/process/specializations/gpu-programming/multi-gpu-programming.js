@@ -119,7 +119,8 @@ export const topologyDiscoveryTask = defineTask('topology-discovery', (args, tas
   kind: 'agent',
   title: `Topology Discovery - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Discover GPU topology',
@@ -160,7 +161,8 @@ export const workloadPartitioningTask = defineTask('workload-partitioning', (arg
   kind: 'agent',
   title: `Workload Partitioning - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design workload partitioning',
@@ -201,7 +203,8 @@ export const p2pCommunicationTask = defineTask('p2p-communication', (args, taskC
   kind: 'agent',
   title: `P2P Communication - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement peer-to-peer communication',
@@ -242,7 +245,8 @@ export const ncclIntegrationTask = defineTask('nccl-integration', (args, taskCtx
   kind: 'agent',
   title: `NCCL Integration - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Integrate NCCL collective operations',
@@ -283,7 +287,8 @@ export const multiGpuStreamManagementTask = defineTask('multi-gpu-stream-managem
   kind: 'agent',
   title: `Stream Management - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Manage streams across GPUs',
@@ -324,7 +329,8 @@ export const multiGpuSynchronizationTask = defineTask('multi-gpu-synchronization
   kind: 'agent',
   title: `Synchronization - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'unified-memory'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement multi-GPU synchronization',
@@ -365,7 +371,8 @@ export const scalingAnalysisTask = defineTask('scaling-analysis', (args, taskCtx
   kind: 'agent',
   title: `Scaling Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'multi-gpu-systems-expert',
+    skills: ['nccl-communication', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze multi-GPU scaling',

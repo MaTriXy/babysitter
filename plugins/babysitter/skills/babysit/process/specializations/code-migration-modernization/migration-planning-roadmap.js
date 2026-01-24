@@ -276,7 +276,7 @@ export const defineMigrationGoalsTask = defineTask('define-migration-goals', (ar
   kind: 'agent',
   title: `Phase 1: Define Migration Goals - ${args.projectName}`,
   agent: {
-    name: 'migration-strategist',
+    name: 'migration-readiness-assessor',
     prompt: {
       role: 'Migration Strategy Consultant',
       task: 'Define clear, measurable migration goals aligned with business objectives',
@@ -320,7 +320,7 @@ export const selectMigrationStrategyTask = defineTask('select-migration-strategy
   kind: 'agent',
   title: `Phase 2: Select Migration Strategy - ${args.projectName}`,
   agent: {
-    name: 'migration-architect',
+    name: 'ddd-analyst',
     prompt: {
       role: 'Migration Architect',
       task: 'Select optimal migration strategy based on goals and constraints',
@@ -364,7 +364,7 @@ export const defineTargetArchitectureTask = defineTask('define-target-architectu
   kind: 'agent',
   title: `Phase 3: Define Target Architecture - ${args.projectName}`,
   agent: {
-    name: 'architecture-designer',
+    name: 'ddd-analyst',
     prompt: {
       role: 'Principal Software Architect',
       task: 'Design comprehensive target architecture for migrated system',
@@ -407,7 +407,7 @@ export const identifyMigrationPhasesTask = defineTask('identify-migration-phases
   kind: 'agent',
   title: `Phase 4: Identify Migration Phases - ${args.projectName}`,
   agent: {
-    name: 'migration-planner',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Migration Program Manager',
       task: 'Identify and sequence migration phases',
@@ -448,7 +448,7 @@ export const createDetailedRoadmapTask = defineTask('create-detailed-roadmap', (
   kind: 'agent',
   title: `Phase 5: Create Detailed Roadmap - ${args.projectName}`,
   agent: {
-    name: 'roadmap-planner',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Project Manager',
       task: 'Create detailed migration roadmap with timelines and resources',
@@ -492,7 +492,7 @@ export const planDataMigrationTask = defineTask('plan-data-migration', (args, ta
   kind: 'agent',
   title: `Phase 6: Plan Data Migration - ${args.projectName}`,
   agent: {
-    name: 'data-migration-planner',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Data Migration Architect',
       task: 'Plan comprehensive data migration strategy',
@@ -535,7 +535,7 @@ export const defineTestingStrategyTask = defineTask('define-testing-strategy', (
   kind: 'agent',
   title: `Phase 7: Define Testing Strategy - ${args.projectName}`,
   agent: {
-    name: 'test-strategist',
+    name: 'migration-testing-strategist',
     prompt: {
       role: 'QA Architect',
       task: 'Define comprehensive testing strategy for migration',
@@ -577,7 +577,7 @@ export const planCommunicationTask = defineTask('plan-communication', (args, tas
   kind: 'agent',
   title: `Phase 8: Plan Communication - ${args.projectName}`,
   agent: {
-    name: 'communication-planner',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Change Management Specialist',
       task: 'Plan stakeholder communication throughout migration',
@@ -619,7 +619,7 @@ export const planRiskMitigationTask = defineTask('plan-risk-mitigation', (args, 
   kind: 'agent',
   title: `Phase 9: Plan Risk Mitigation - ${args.projectName}`,
   agent: {
-    name: 'risk-planner',
+    name: 'migration-readiness-assessor',
     prompt: {
       role: 'Risk Management Specialist',
       task: 'Plan risk mitigation strategies for migration',
@@ -661,7 +661,7 @@ export const finalizeMigrationPlanTask = defineTask('finalize-migration-plan', (
   kind: 'agent',
   title: `Phase 10: Finalize Migration Plan - ${args.projectName}`,
   agent: {
-    name: 'plan-finalizer',
+    name: 'migration-project-coordinator',
     prompt: {
       role: 'Migration Program Director',
       task: 'Finalize and consolidate migration plan documentation',

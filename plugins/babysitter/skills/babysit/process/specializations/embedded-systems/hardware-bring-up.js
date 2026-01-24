@@ -311,7 +311,7 @@ export const preBringUpPreparationTask = defineTask('pre-bring-up-preparation', 
   kind: 'agent',
   title: `Phase 1: Pre-Bring-Up Preparation - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Prepare for hardware bring-up by reviewing documentation and creating test plan',
@@ -356,7 +356,7 @@ export const powerSupplyValidationTask = defineTask('power-supply-validation', (
   kind: 'agent',
   title: `Phase 2: Power Supply Validation - ${args.boardName}`,
   agent: {
-    name: 'hardware-test-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Hardware Test Engineer',
       task: 'Validate power supply rails and voltage regulators',
@@ -400,7 +400,7 @@ export const clockConfigurationTask = defineTask('clock-configuration', (args, t
   kind: 'agent',
   title: `Phase 3: Clock Configuration - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Configure and validate clock system',
@@ -443,7 +443,7 @@ export const debugInterfaceValidationTask = defineTask('debug-interface-validati
   kind: 'agent',
   title: `Phase 4: Debug Interface Validation - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Validate debug interface connection and functionality',
@@ -488,7 +488,7 @@ export const memoryTestingTask = defineTask('memory-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Memory Testing - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Test internal and external memory systems',
@@ -533,7 +533,7 @@ export const peripheralValidationTask = defineTask('peripheral-validation', (arg
   kind: 'agent',
   title: `Phase 6: ${args.peripheral} Validation - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: `Validate ${args.peripheral} peripheral functionality`,
@@ -577,7 +577,7 @@ export const firmwareLoadTestTask = defineTask('firmware-load-test', (args, task
   kind: 'agent',
   title: `Phase 7: Firmware Load Test - ${args.boardName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'hw-bringup-specialist',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Test initial firmware load and execution',
@@ -621,7 +621,7 @@ export const bringUpReportTask = defineTask('bring-up-report', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 8: Bring-Up Report - ${args.boardName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Documentation Engineer',
       task: 'Generate comprehensive hardware bring-up report',

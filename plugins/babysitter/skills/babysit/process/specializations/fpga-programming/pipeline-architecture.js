@@ -301,7 +301,7 @@ export const pipelineSpecificationTask = defineTask('pipeline-specification', (a
   kind: 'agent',
   title: `Phase 1: Pipeline Specification - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-architect',
+    name: 'fpga-architect', // AG-006: FPGA Architect Agent
     prompt: {
       role: 'FPGA Pipeline Architect',
       task: 'Create pipeline specification',
@@ -344,7 +344,7 @@ export const stageDefinitionTask = defineTask('stage-definition', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Stage Definition - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Define pipeline stages',
@@ -387,7 +387,7 @@ export const interStageRegisterTask = defineTask('inter-stage-register', (args, 
   kind: 'agent',
   title: `Phase 3: Inter-Stage Registers - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design inter-stage pipeline registers',
@@ -429,7 +429,7 @@ export const hazardAnalysisTask = defineTask('hazard-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Hazard Analysis - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Analyze pipeline hazards',
@@ -473,7 +473,7 @@ export const hazardResolutionTask = defineTask('hazard-resolution', (args, taskC
   kind: 'agent',
   title: `Phase 5: Hazard Resolution - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design hazard resolution logic',
@@ -516,7 +516,7 @@ export const pipelineControlTask = defineTask('pipeline-control', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Pipeline Control - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design pipeline control logic',
@@ -560,7 +560,7 @@ export const pipelineRtlTask = defineTask('pipeline-rtl', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Pipeline RTL - ${args.pipelineName}`,
   agent: {
-    name: 'hdl-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'HDL Design Engineer',
       task: 'Implement pipeline RTL',
@@ -603,7 +603,7 @@ export const pipelineTimingTask = defineTask('pipeline-timing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Pipeline Timing - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-timing-engineer',
+    name: 'fpga-timing-expert', // AG-002: FPGA Timing Expert Agent
     prompt: {
       role: 'FPGA Timing Engineer',
       task: 'Analyze pipeline timing',
@@ -647,7 +647,7 @@ export const throughputAnalysisTask = defineTask('throughput-analysis', (args, t
   kind: 'agent',
   title: `Phase 9: Throughput Analysis - ${args.pipelineName}`,
   agent: {
-    name: 'fpga-architect',
+    name: 'fpga-architect', // AG-006: FPGA Architect Agent
     prompt: {
       role: 'FPGA Performance Architect',
       task: 'Analyze pipeline throughput',
@@ -692,7 +692,7 @@ export const pipelineTestbenchTask = defineTask('pipeline-testbench', (args, tas
   kind: 'agent',
   title: `Phase 10: Pipeline Testbench - ${args.pipelineName}`,
   agent: {
-    name: 'verification-engineer',
+    name: 'verification-expert', // AG-003: Verification Expert Agent
     prompt: {
       role: 'Verification Engineer',
       task: 'Develop pipeline testbench',

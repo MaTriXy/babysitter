@@ -266,7 +266,7 @@ export const presentMethodTask = defineTask('present-method', (args, taskCtx) =>
   kind: 'agent',
   title: `Present ATAM Method for ${args.systemName}`,
   agent: {
-    name: 'atam-facilitator',
+    name: 'atam-analyst',
     prompt: {
       role: 'ATAM facilitator and architecture evaluation expert',
       task: 'Present the ATAM method to stakeholders',
@@ -319,7 +319,7 @@ export const presentBusinessDriversTask = defineTask('present-business-drivers',
   kind: 'agent',
   title: `Present Business Drivers for ${args.systemName}`,
   agent: {
-    name: 'business-analyst',
+    name: 'atam-analyst',
     prompt: {
       role: 'business analyst and architect',
       task: 'Present and analyze business drivers for the system',
@@ -399,7 +399,7 @@ export const presentArchitectureTask = defineTask('present-architecture', (args,
   kind: 'agent',
   title: `Present Architecture for ${args.systemName}`,
   agent: {
-    name: 'architect',
+    name: 'atam-analyst',
     prompt: {
       role: 'software architect',
       task: 'Present the system architecture',
@@ -473,7 +473,7 @@ export const identifyArchitecturalApproachesTask = defineTask('identify-architec
   kind: 'agent',
   title: `Identify Architectural Approaches for ${args.systemName}`,
   agent: {
-    name: 'architecture-analyst',
+    name: 'atam-analyst',
     prompt: {
       role: 'architecture analyst',
       task: 'Identify and catalog architectural approaches used in the system',
@@ -530,7 +530,7 @@ export const generateUtilityTreeTask = defineTask('generate-utility-tree', (args
   kind: 'agent',
   title: `Generate Quality Attribute Utility Tree for ${args.systemName}`,
   agent: {
-    name: 'quality-attributes-expert',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'quality attributes specialist',
       task: 'Generate a quality attribute utility tree with prioritized scenarios',
@@ -614,7 +614,7 @@ export const analyzeArchitecturalApproachTask = defineTask('analyze-architectura
   kind: 'agent',
   title: `Analyze Scenario: ${args.scenario.id}`,
   agent: {
-    name: 'architecture-evaluator',
+    name: 'atam-analyst',
     prompt: {
       role: 'architecture evaluation expert',
       task: 'Analyze how architectural approaches support a specific quality attribute scenario',
@@ -722,7 +722,7 @@ export const brainstormScenariosTask = defineTask('brainstorm-scenarios', (args,
   kind: 'agent',
   title: `Brainstorm Additional Scenarios for ${args.systemName}`,
   agent: {
-    name: 'scenario-brainstormer',
+    name: 'quality-attributes-specialist',
     prompt: {
       role: 'stakeholder facilitator and scenario expert',
       task: 'Facilitate brainstorming of additional quality attribute scenarios',
@@ -794,7 +794,7 @@ export const presentResultsTask = defineTask('present-results', (args, taskCtx) 
   kind: 'agent',
   title: `Present ATAM Results for ${args.systemName}`,
   agent: {
-    name: 'atam-facilitator',
+    name: 'atam-analyst',
     prompt: {
       role: 'ATAM facilitator and technical communicator',
       task: 'Synthesize and present ATAM evaluation results',

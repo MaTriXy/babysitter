@@ -275,7 +275,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: `Phase 1: Requirements Analysis - ${args.moduleName}`,
   agent: {
-    name: 'fpga-architect',
+    name: 'fpga-architect', // AG-006: FPGA Architect Agent
     prompt: {
       role: 'FPGA Design Architect',
       task: 'Analyze and document RTL module requirements',
@@ -319,7 +319,7 @@ export const interfaceDefinitionTask = defineTask('interface-definition', (args,
   kind: 'agent',
   title: `Phase 2: Interface Definition - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Define module interfaces and port specifications',
@@ -363,7 +363,7 @@ export const datapathArchitectureTask = defineTask('datapath-architecture', (arg
   kind: 'agent',
   title: `Phase 3: Datapath Architecture - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design internal datapath architecture',
@@ -408,7 +408,7 @@ export const controlLogicDesignTask = defineTask('control-logic-design', (args, 
   kind: 'agent',
   title: `Phase 4: Control Logic Design - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'rtl-design-expert', // AG-001: RTL Design Expert Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Design control logic and state machines',
@@ -452,7 +452,7 @@ export const moduleHierarchyTask = defineTask('module-hierarchy', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: Module Hierarchy - ${args.moduleName}`,
   agent: {
-    name: 'fpga-architect',
+    name: 'fpga-architect', // AG-006: FPGA Architect Agent
     prompt: {
       role: 'FPGA Design Architect',
       task: 'Define module hierarchy and decomposition',
@@ -496,7 +496,7 @@ export const timingAnalysisTask = defineTask('timing-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 6: Timing Analysis - ${args.moduleName}`,
   agent: {
-    name: 'fpga-timing-engineer',
+    name: 'fpga-timing-expert', // AG-002: FPGA Timing Expert Agent
     prompt: {
       role: 'FPGA Timing Engineer',
       task: 'Analyze timing requirements and critical paths',
@@ -541,7 +541,7 @@ export const resourceEstimationTask = defineTask('resource-estimation', (args, t
   kind: 'agent',
   title: `Phase 7: Resource Estimation - ${args.moduleName}`,
   agent: {
-    name: 'fpga-engineer',
+    name: 'fpga-architect', // AG-006: FPGA Architect Agent
     prompt: {
       role: 'FPGA Design Engineer',
       task: 'Estimate resource utilization and optimization planning',

@@ -618,7 +618,7 @@ export const performanceRequirementsTask = defineTask('performance-requirements'
   kind: 'agent',
   title: `Phase 1: Performance Requirements Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Engineering Architect',
       task: 'Analyze and define comprehensive performance requirements and SLAs',
@@ -727,7 +727,7 @@ export const workloadModelingTask = defineTask('workload-modeling', (args, taskC
   kind: 'agent',
   title: `Phase 2: Workload Modeling - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Design Specialist',
       task: 'Model realistic workload patterns and user behavior for performance testing',
@@ -804,7 +804,7 @@ export const environmentSetupTask = defineTask('environment-setup', (args, taskC
   kind: 'agent',
   title: `Phase 3: Test Environment Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Testing Infrastructure Engineer',
       task: 'Set up and validate performance testing environment',
@@ -874,7 +874,7 @@ export const baselineTestTask = defineTask('baseline-test', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 4: Baseline Performance Test - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Engineer',
       task: 'Establish performance baseline for future comparison',
@@ -960,7 +960,7 @@ export const testScriptDevelopmentTask = defineTask('test-script-development', (
   kind: 'agent',
   title: `Phase 5: Performance Test Script Development - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Automation Engineer',
       task: 'Develop performance test scripts for all test scenarios',
@@ -1031,7 +1031,7 @@ export const loadTestTask = defineTask('load-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Load Test Execution - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Execution Specialist',
       task: 'Execute load test to validate performance under expected load',
@@ -1118,7 +1118,7 @@ export const stressTestTask = defineTask('stress-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Stress Test Execution - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Execution Specialist',
       task: 'Execute stress test to find system breaking point',
@@ -1187,7 +1187,7 @@ export const spikeTestTask = defineTask('spike-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Spike Test Execution - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Execution Specialist',
       task: 'Execute spike test to validate system behavior under sudden load spikes',
@@ -1249,7 +1249,7 @@ export const soakTestTask = defineTask('soak-test', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Soak Test Execution - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Test Execution Specialist',
       task: 'Execute soak test to identify memory leaks and long-term stability issues',
@@ -1320,7 +1320,7 @@ export const bottleneckAnalysisTask = defineTask('bottleneck-analysis', (args, t
   kind: 'agent',
   title: `Phase 8: Performance Bottleneck Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Analysis Expert',
       task: 'Identify and analyze performance bottlenecks from test results',
@@ -1399,7 +1399,7 @@ export const scalabilityTestTask = defineTask('scalability-test', (args, taskCtx
   kind: 'agent',
   title: `Phase 9: Scalability Test - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Scalability Testing Specialist',
       task: 'Test system scalability and capacity limits',
@@ -1473,7 +1473,7 @@ export const optimizationRecommendationsTask = defineTask('optimization-recommen
   kind: 'agent',
   title: `Phase 10: Performance Optimization Recommendations - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Optimization Consultant',
       task: 'Generate actionable performance optimization recommendations',
@@ -1544,7 +1544,7 @@ export const comparativeAnalysisTask = defineTask('comparative-analysis', (args,
   kind: 'agent',
   title: `Phase 11: Comparative Performance Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Analyst',
       task: 'Compare current performance against baseline',
@@ -1613,7 +1613,7 @@ export const performanceReportTask = defineTask('performance-report', (args, tas
   kind: 'agent',
   title: `Phase 12: Performance Test Report Generation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Testing Report Specialist',
       task: 'Generate comprehensive performance testing report',
@@ -1674,7 +1674,7 @@ export const performanceAssessmentTask = defineTask('performance-assessment', (a
   kind: 'agent',
   title: `Phase 13: Final Performance Assessment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'Performance Engineering Lead',
       task: 'Conduct final performance assessment and scoring',
@@ -1752,7 +1752,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 14: CI/CD Integration Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'performance-testing-expert', // AG-004: Performance Testing Expert Agent
     prompt: {
       role: 'DevOps Performance Testing Specialist',
       task: 'Configure CI/CD integration for automated performance testing',

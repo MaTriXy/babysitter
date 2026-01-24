@@ -224,7 +224,7 @@ export const physicalRobotModelingTask = defineTask('physical-robot-modeling', (
   kind: 'agent',
   title: `Phase 1: Physical Robot Modeling - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'digital-twin-expert',  // AG-013: Digital Twin Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Model physical robot accurately for digital twin',
@@ -267,7 +267,7 @@ export const bidirectionalCommunicationTask = defineTask('bidirectional-communic
   kind: 'agent',
   title: `Phase 2: Bidirectional Communication - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'digital-twin-expert',  // AG-013: Digital Twin Expert Agent
     prompt: {
       role: 'Robotics Software Engineer',
       task: 'Implement bidirectional robot-sim communication',
@@ -310,7 +310,7 @@ export const stateSynchronizationTask = defineTask('state-synchronization', (arg
   kind: 'agent',
   title: `Phase 3: State Synchronization - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'digital-twin-expert',  // AG-013: Digital Twin Expert Agent
     prompt: {
       role: 'Robotics Software Engineer',
       task: 'Implement robot state synchronization',
@@ -353,7 +353,7 @@ export const fidelityValidationTask = defineTask('fidelity-validation', (args, t
   kind: 'agent',
   title: `Phase 4: Fidelity Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Robotics Test Engineer',
       task: 'Validate simulation fidelity against real robot',
@@ -397,7 +397,7 @@ export const hilTestingTask = defineTask('hil-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: HIL Testing - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'HIL Test Engineer',
       task: 'Implement hardware-in-the-loop testing',
@@ -440,7 +440,7 @@ export const simToRealValidationTask = defineTask('sim-to-real-validation', (arg
   kind: 'agent',
   title: `Phase 6: Sim-to-Real Validation - ${args.robotName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: {
       role: 'ML Engineer',
       task: 'Validate sim-to-real transfer',
@@ -484,7 +484,7 @@ export const realityGapMonitoringTask = defineTask('reality-gap-monitoring', (ar
   kind: 'agent',
   title: `Phase 7: Reality Gap Monitoring - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'digital-twin-expert',  // AG-013: Digital Twin Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Monitor and reduce reality gap',
@@ -527,7 +527,7 @@ export const digitalTwinDocumentationTask = defineTask('digital-twin-documentati
   kind: 'agent',
   title: `Phase 8: Documentation - ${args.robotName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'robotics-documentation-specialist',  // AG-020: Robotics Documentation Specialist Agent
     prompt: {
       role: 'Technical Writer',
       task: 'Document digital twin',

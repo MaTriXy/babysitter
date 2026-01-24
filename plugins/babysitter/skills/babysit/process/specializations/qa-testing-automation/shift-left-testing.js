@@ -186,7 +186,7 @@ export const analyzeCurrentStateTask = defineTask('analyze-current-state', (args
   kind: 'agent',
   title: 'Analyze Current Testing Practices',
   agent: {
-    name: 'qa-analyst',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Senior QA Analyst',
       task: 'Analyze current testing practices and establish baseline metrics',
@@ -272,7 +272,7 @@ export const establishRequirementsReviewTask = defineTask('establish-requirement
   kind: 'agent',
   title: 'Establish Requirements Review Process with QA',
   agent: {
-    name: 'process-designer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'QA Process Lead',
       task: 'Design and implement requirements review process with early QA involvement',
@@ -354,7 +354,7 @@ export const conductTddBddTrainingTask = defineTask('conduct-tdd-bdd-training', 
   kind: 'agent',
   title: 'Create TDD/BDD Training Program',
   agent: {
-    name: 'training-coordinator',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Technical Training Lead',
       task: 'Design and deliver TDD/BDD training program for development team',
@@ -429,7 +429,7 @@ export const configureIdeTestIntegrationTask = defineTask('configure-ide-test-in
   kind: 'agent',
   title: 'Configure Tests to Run in Developer IDEs',
   agent: {
-    name: 'dev-tools-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Developer Experience Engineer',
       task: 'Configure test execution within developer IDEs for immediate feedback',
@@ -505,7 +505,7 @@ export const setupPreCommitHooksTask = defineTask('setup-pre-commit-hooks', (arg
   kind: 'agent',
   title: 'Configure Pre-Commit Test Hooks',
   agent: {
-    name: 'automation-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps/Automation Engineer',
       task: 'Set up pre-commit hooks to run tests before code is committed',
@@ -575,7 +575,7 @@ export const establishPairProgrammingTask = defineTask('establish-pair-programmi
   kind: 'agent',
   title: 'Establish Dev+QA Pair Programming Practices',
   agent: {
-    name: 'agile-coach',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Agile Coach',
       task: 'Design pair programming practices for developer and QA collaboration',
@@ -658,7 +658,7 @@ export const integrateStaticAnalysisTask = defineTask('integrate-static-analysis
   kind: 'agent',
   title: 'Integrate Static Analysis and Type Checking',
   agent: {
-    name: 'quality-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'Code Quality Engineer',
       task: 'Set up static analysis, linting, and type checking for early defect detection',
@@ -743,7 +743,7 @@ export const fosterCultureChangeTask = defineTask('foster-culture-change', (args
   kind: 'agent',
   title: 'Foster Quality-First Culture Change',
   agent: {
-    name: 'culture-change-lead',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Organizational Change Leader',
       task: 'Design and implement culture change initiatives for quality-first mindset',
@@ -823,7 +823,7 @@ export const validateImplementationTask = defineTask('validate-implementation', 
   kind: 'agent',
   title: 'Validate Shift-Left Implementation',
   agent: {
-    name: 'qa-validator',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'QA Validation Lead',
       task: 'Validate shift-left implementation success against quality targets',

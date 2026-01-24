@@ -110,7 +110,8 @@ export const allocationPatternAnalysisTask = defineTask('allocation-pattern-anal
   kind: 'agent',
   title: `Allocation Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze allocation patterns',
@@ -151,7 +152,8 @@ export const poolArchitectureTask = defineTask('pool-architecture', (args, taskC
   kind: 'agent',
   title: `Pool Architecture - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design memory pool architecture',
@@ -192,7 +194,8 @@ export const allocatorImplementationTask = defineTask('allocator-implementation'
   kind: 'agent',
   title: `Allocator Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement memory allocator',
@@ -233,7 +236,8 @@ export const fragmentationManagementTask = defineTask('fragmentation-management'
   kind: 'agent',
   title: `Fragmentation Management - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement fragmentation management',
@@ -274,7 +278,8 @@ export const cudaMemoryPoolsTask = defineTask('cuda-memory-pools', (args, taskCt
   kind: 'agent',
   title: `CUDA Memory Pools - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Integrate CUDA memory pools API',
@@ -315,7 +320,8 @@ export const allocatorBenchmarkingTask = defineTask('allocator-benchmarking', (a
   kind: 'agent',
   title: `Benchmarking - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'cuda-toolkit'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark memory allocator',

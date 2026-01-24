@@ -235,8 +235,9 @@ export async function process(inputs, ctx) {
 export const analyzeSpecTask = defineTask('analyze-spec', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze OpenAPI/Swagger Specification',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'spec-analyzer',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation specialist',
       task: 'Analyze and validate OpenAPI/Swagger specification',
@@ -278,8 +279,9 @@ export const analyzeSpecTask = defineTask('analyze-spec', (args, taskCtx) => ({
 export const generateApiReferenceTask = defineTask('generate-api-reference', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate API Reference Documentation',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'api-reference-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'technical writer specializing in API documentation',
       task: 'Generate comprehensive API reference documentation',
@@ -319,8 +321,9 @@ export const generateApiReferenceTask = defineTask('generate-api-reference', (ar
 export const generateCodeExamplesTask = defineTask('generate-code-examples', (args, taskCtx) => ({
   kind: 'agent',
   title: `Generate Code Examples (${args.languages.join(', ')})`,
+  skill: { name: 'code-sample-validator' },
   agent: {
-    name: 'code-example-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'developer advocate with expertise in multiple programming languages',
       task: 'Generate working code examples for API endpoints',
@@ -370,8 +373,9 @@ export const generateCodeExamplesTask = defineTask('generate-code-examples', (ar
 export const generateAuthGuideTask = defineTask('generate-auth-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate Authentication Guide',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'auth-guide-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'security-focused technical writer',
       task: 'Create comprehensive authentication and authorization guide',
@@ -411,8 +415,9 @@ export const generateAuthGuideTask = defineTask('generate-auth-guide', (args, ta
 export const setupInteractiveDocsTask = defineTask('setup-interactive-docs', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Setup Interactive API Explorer',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'interactive-docs-setup',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'DevOps engineer specializing in documentation platforms',
       task: 'Setup interactive API documentation with Swagger UI or Redoc',
@@ -453,8 +458,9 @@ export const setupInteractiveDocsTask = defineTask('setup-interactive-docs', (ar
 export const generateErrorReferenceTask = defineTask('generate-error-reference', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate Error Reference Documentation',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'error-reference-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'technical writer specializing in API error documentation',
       task: 'Create comprehensive error code reference',
@@ -506,8 +512,9 @@ export const generateErrorReferenceTask = defineTask('generate-error-reference',
 export const generateSdkIntegrationTask = defineTask('generate-sdk-integration', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate SDK Integration Guide',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'sdk-integration-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'developer advocate creating SDK integration guides',
       task: 'Create comprehensive SDK integration documentation',
@@ -548,8 +555,9 @@ export const generateSdkIntegrationTask = defineTask('generate-sdk-integration',
 export const validateDocumentationQualityTask = defineTask('validate-documentation-quality', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate Documentation Quality',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'documentation-quality-validator',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality assurance specialist',
       task: 'Assess documentation quality against best practices',
@@ -592,8 +600,9 @@ export const validateDocumentationQualityTask = defineTask('validate-documentati
 export const testCodeExamplesTask = defineTask('test-code-examples', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Test Code Examples',
+  skill: { name: 'code-sample-validator' },
   agent: {
-    name: 'code-example-tester',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'QA engineer testing documentation code examples',
       task: 'Validate and test all code examples for correctness',
@@ -646,8 +655,9 @@ export const testCodeExamplesTask = defineTask('test-code-examples', (args, task
 export const assembleAndDeployTask = defineTask('assemble-and-deploy', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Assemble and Deploy Documentation',
+  skill: { name: 'openapi-swagger' },
   agent: {
-    name: 'documentation-assembler',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'documentation engineer managing deployment',
       task: 'Assemble complete documentation package and prepare deployment',

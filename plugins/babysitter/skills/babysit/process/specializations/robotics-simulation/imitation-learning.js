@@ -81,7 +81,7 @@ export const demonstrationCollectionTask = defineTask('demonstration-collection'
   kind: 'agent',
   title: `Demo Collection - ${args.projectName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Collect expert demonstrations', context: args, instructions: ['1. Set up data collection system', '2. Record teleoperation demos', '3. Collect motion capture data', '4. Annotate demonstrations', '5. Validate demo quality'] },
     outputSchema: { type: 'object', required: ['demoDataset', 'numDemos', 'artifacts'], properties: { demoDataset: { type: 'string' }, numDemos: { type: 'number' }, demoFormat: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const demonstrationPreprocessingTask = defineTask('demonstration-preproce
   kind: 'agent',
   title: `Demo Preprocessing - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Data Engineer', task: 'Preprocess and augment demonstration data', context: args, instructions: ['1. Clean noisy demonstrations', '2. Normalize data', '3. Apply data augmentation', '4. Create train/val splits', '5. Verify data quality'] },
     outputSchema: { type: 'object', required: ['processedDataset', 'statistics', 'artifacts'], properties: { processedDataset: { type: 'string' }, statistics: { type: 'object' }, augmentations: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const policyNetworkDesignTask = defineTask('policy-network-design', (args
   kind: 'agent',
   title: `Network Design - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Design neural network architecture', context: args, instructions: ['1. Design policy network', '2. Choose architecture type', '3. Configure input/output layers', '4. Add regularization', '5. Document architecture'] },
     outputSchema: { type: 'object', required: ['architecture', 'layers', 'artifacts'], properties: { architecture: { type: 'object' }, layers: { type: 'array' }, parameters: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const behaviorCloningTrainingTask = defineTask('behavior-cloning-training
   kind: 'agent',
   title: `BC Training - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Implement behavior cloning training', context: args, instructions: ['1. Configure training loop', '2. Set loss function', '3. Train on demonstrations', '4. Monitor validation loss', '5. Save best model'] },
     outputSchema: { type: 'object', required: ['modelPath', 'trainingLoss', 'artifacts'], properties: { modelPath: { type: 'string' }, trainingLoss: { type: 'number' }, validationLoss: { type: 'number' }, epochs: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const daggerImprovementTask = defineTask('dagger-improvement', (args, tas
   kind: 'agent',
   title: `DAgger Improvement - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Add DAgger for iterative improvement', context: args, instructions: ['1. Run policy in environment', '2. Query expert for corrections', '3. Aggregate new data', '4. Retrain policy', '5. Iterate until convergence'] },
     outputSchema: { type: 'object', required: ['improvedPolicy', 'daggerIterations', 'artifacts'], properties: { improvedPolicy: { type: 'string' }, daggerIterations: { type: 'number' }, performanceGain: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const imitationSimValidationTask = defineTask('imitation-sim-validation',
   kind: 'agent',
   title: `Sim Validation - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Validate learned policy in simulation', context: args, instructions: ['1. Run evaluation episodes', '2. Compare to demonstrations', '3. Test generalization', '4. Analyze failure modes', '5. Generate report'] },
     outputSchema: { type: 'object', required: ['validationResults', 'successRate', 'artifacts'], properties: { validationResults: { type: 'object' }, successRate: { type: 'number' }, failureModes: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const imitationAccuracyTask = defineTask('imitation-accuracy', (args, tas
   kind: 'agent',
   title: `Accuracy Measurement - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Measure imitation accuracy', context: args, instructions: ['1. Compute trajectory similarity', '2. Measure action accuracy', '3. Calculate success rate', '4. Compare to expert', '5. Document metrics'] },
     outputSchema: { type: 'object', required: ['accuracy', 'successRate', 'artifacts'], properties: { accuracy: { type: 'number' }, successRate: { type: 'number' }, trajectorySimilarity: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const rlFineTuningTask = defineTask('rl-fine-tuning', (args, taskCtx) => 
   kind: 'agent',
   title: `RL Fine-Tuning - ${args.projectName}`,
   agent: {
-    name: 'ml-engineer',
+    name: 'ml-robotics-engineer',  // AG-007: ML/RL Robotics Engineer Agent
     prompt: { role: 'ML Engineer', task: 'Fine-tune with RL if needed', context: args, instructions: ['1. Initialize from BC policy', '2. Configure RL fine-tuning', '3. Train with sparse reward', '4. Balance exploration', '5. Validate improvement'] },
     outputSchema: { type: 'object', required: ['policyPath', 'improvement', 'artifacts'], properties: { policyPath: { type: 'string' }, improvement: { type: 'number' }, rlEpisodes: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const imitationDeploymentTask = defineTask('imitation-deployment', (args,
   kind: 'agent',
   title: `Robot Deployment - ${args.projectName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Deploy to physical robot', context: args, instructions: ['1. Export policy for deployment', '2. Configure ROS interface', '3. Test on hardware', '4. Measure real performance', '5. Document deployment'] },
     outputSchema: { type: 'object', required: ['deploymentConfig', 'realWorldResults', 'artifacts'], properties: { deploymentConfig: { type: 'object' }, realWorldResults: { type: 'object' }, transferGap: { type: 'number' }, artifacts: { type: 'array' } } }
   },

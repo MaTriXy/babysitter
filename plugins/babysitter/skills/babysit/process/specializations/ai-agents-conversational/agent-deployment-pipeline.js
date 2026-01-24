@@ -174,7 +174,7 @@ export const containerizationTask = defineTask('containerization', (args, taskCt
   kind: 'agent',
   title: `Setup Containerization - ${args.agentName}`,
   agent: {
-    name: 'container-developer',
+    name: 'agent-deployment-engineer',  // AG-OPS-001: Configures containerization and deployment pipelines
     prompt: {
       role: 'Container Developer',
       task: 'Setup containerization for agent deployment',

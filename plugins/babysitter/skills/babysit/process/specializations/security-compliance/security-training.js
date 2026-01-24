@@ -685,8 +685,11 @@ export const programDesignTask = defineTask('program-design', (args, taskCtx) =>
 
 // Phase 3: Content Development
 export const contentDevelopmentTask = defineTask('content-development', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Develop training content and materials',
+  skill: {
+    name: 'secure-coding-training-skill',
+  },
   agent: {
     name: 'content-developer',
     prompt: {
@@ -831,8 +834,11 @@ export const roleBasedCustomizationTask = defineTask('role-based-customization',
 
 // Phase 5: Phishing Simulation
 export const phishingSimulationTask = defineTask('phishing-simulation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: 'Develop phishing simulation campaign',
+  skill: {
+    name: 'phishing-simulation-skill',
+  },
   agent: {
     name: 'phishing-specialist',
     prompt: {

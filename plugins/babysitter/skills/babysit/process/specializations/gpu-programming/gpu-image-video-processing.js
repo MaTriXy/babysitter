@@ -107,7 +107,8 @@ export const processingPipelineDesignTask = defineTask('processing-pipeline-desi
   kind: 'agent',
   title: `Pipeline Design - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['npp-library', 'video-codec-sdk'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design image/video processing pipeline',
@@ -148,7 +149,8 @@ export const imageProcessingKernelsTask = defineTask('image-processing-kernels',
   kind: 'agent',
   title: `Processing Kernels - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['npp-library', 'video-codec-sdk'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement image processing kernels',
@@ -189,7 +191,8 @@ export const videoCodecIntegrationTask = defineTask('video-codec-integration', (
   kind: 'agent',
   title: `Codec Integration - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['npp-library', 'video-codec-sdk'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Integrate video codec acceleration',
@@ -230,7 +233,8 @@ export const imageTilingTask = defineTask('image-tiling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Tiling and Boundaries - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'graphics-compute-expert',
+    skills: ['npp-library', 'video-codec-sdk'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement image tiling',
@@ -272,6 +276,7 @@ export const pipelineOptimizationTask = defineTask('pipeline-optimization', (arg
   title: `Pipeline Optimization - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize processing pipeline',
@@ -313,6 +318,7 @@ export const imageVideoBenchmarkingTask = defineTask('image-video-benchmarking',
   title: `Benchmarking - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['gpu-benchmarking', 'nsight-profiler'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Benchmark image/video processing',

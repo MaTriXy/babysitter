@@ -106,8 +106,9 @@ export async function process(inputs, ctx) {
 export const strategyDesignTask = defineTask('strategy-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Strategy Design - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'framing-architect',
+    name: 'protocol-expert',
     prompt: {
       role: 'Protocol Framing Architect',
       task: 'Design framing strategy',
@@ -135,8 +136,9 @@ export const strategyDesignTask = defineTask('strategy-design', (args, taskCtx) 
 export const frameEncoderTask = defineTask('frame-encoder', (args, taskCtx) => ({
   kind: 'agent',
   title: `Frame Encoder - ${args.projectName}`,
+  skill: { name: 'serialization' },
   agent: {
-    name: 'encoder-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Frame Encoder Engineer',
       task: 'Implement frame encoder',
@@ -156,8 +158,9 @@ export const frameEncoderTask = defineTask('frame-encoder', (args, taskCtx) => (
 export const frameDecoderTask = defineTask('frame-decoder', (args, taskCtx) => ({
   kind: 'agent',
   title: `Frame Decoder - ${args.projectName}`,
+  skill: { name: 'serialization' },
   agent: {
-    name: 'decoder-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Frame Decoder Engineer',
       task: 'Implement frame decoder with partial handling',
@@ -177,8 +180,9 @@ export const frameDecoderTask = defineTask('frame-decoder', (args, taskCtx) => (
 export const bufferManagementTask = defineTask('buffer-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Buffer Management - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'buffer-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Buffer Management Engineer',
       task: 'Implement buffer management optimization',
@@ -198,8 +202,9 @@ export const bufferManagementTask = defineTask('buffer-management', (args, taskC
 export const frameValidationTask = defineTask('frame-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Frame Validation - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'validation-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Frame Validation Engineer',
       task: 'Implement frame validation',
@@ -219,8 +224,9 @@ export const frameValidationTask = defineTask('frame-validation', (args, taskCtx
 export const oversizedHandlingTask = defineTask('oversized-handling', (args, taskCtx) => ({
   kind: 'agent',
   title: `Oversized Handling - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'size-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Message Size Engineer',
       task: 'Handle oversized messages',
@@ -240,8 +246,9 @@ export const oversizedHandlingTask = defineTask('oversized-handling', (args, tas
 export const errorRecoveryTask = defineTask('error-recovery', (args, taskCtx) => ({
   kind: 'agent',
   title: `Error Recovery - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'recovery-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Error Recovery Engineer',
       task: 'Implement error recovery for malformed frames',
@@ -261,8 +268,9 @@ export const errorRecoveryTask = defineTask('error-recovery', (args, taskCtx) =>
 export const performanceTask = defineTask('performance', (args, taskCtx) => ({
   kind: 'agent',
   title: `Performance Optimization - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'performance-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Performance Engineer',
       task: 'Optimize framing performance',
@@ -282,8 +290,9 @@ export const performanceTask = defineTask('performance', (args, taskCtx) => ({
 export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
   kind: 'agent',
   title: `Test Suite - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'test-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'Test Engineer',
       task: 'Create framing test suite',
@@ -303,8 +312,9 @@ export const testSuiteTask = defineTask('test-suite', (args, taskCtx) => ({
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validation - ${args.projectName}`,
+  skill: { name: 'protocol-parser' },
   agent: {
-    name: 'qa-engineer',
+    name: 'protocol-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate framing implementation',

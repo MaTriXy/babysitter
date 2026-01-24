@@ -293,7 +293,7 @@ export const formStructureTask = defineTask('form-structure', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Form Structure - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Form Architect',
       task: 'Design form component structure',
@@ -334,7 +334,7 @@ export const textInputFieldsTask = defineTask('text-input-fields', (args, taskCt
   kind: 'agent',
   title: `Phase 2: Text Input Fields - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Input Component Developer',
       task: 'Implement text input fields',
@@ -375,7 +375,7 @@ export const selectFieldsTask = defineTask('select-fields', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 3: Select Fields - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Select Component Developer',
       task: 'Add select/dropdown fields',
@@ -416,7 +416,7 @@ export const checkboxFieldsTask = defineTask('checkbox-fields', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 4: Checkbox Fields - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Checkbox Component Developer',
       task: 'Create checkbox and toggle fields',
@@ -456,7 +456,7 @@ export const dateTimePickersTask = defineTask('datetime-pickers', (args, taskCtx
   kind: 'agent',
   title: `Phase 5: DateTime Pickers - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI DateTime Component Developer',
       task: 'Implement date/time pickers',
@@ -496,7 +496,7 @@ export const fieldValidationTask = defineTask('field-validation', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Field Validation - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Validation Specialist',
       task: 'Add field validation',
@@ -538,7 +538,7 @@ export const formNavigationTask = defineTask('form-navigation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Form Navigation - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Navigation Specialist',
       task: 'Create form navigation (tab, arrows)',
@@ -578,7 +578,7 @@ export const formSubmissionTask = defineTask('form-submission', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 8: Form Submission - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Form Submission Specialist',
       task: 'Implement form submission handling',
@@ -617,7 +617,7 @@ export const formStateManagementTask = defineTask('form-state-management', (args
   kind: 'agent',
   title: `Phase 9: Form State Management - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI State Management Specialist',
       task: 'Add form state management',
@@ -656,7 +656,7 @@ export const fieldDependenciesTask = defineTask('field-dependencies', (args, tas
   kind: 'agent',
   title: `Phase 10: Field Dependencies - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Field Dependencies Specialist',
       task: 'Create field dependencies',
@@ -695,7 +695,7 @@ export const accessibilityTestingTask = defineTask('accessibility-testing', (arg
   kind: 'agent',
   title: `Phase 11: Accessibility Testing - ${args.projectName}`,
   agent: {
-    name: 'tui-qa-engineer',
+    name: 'terminal-accessibility-expert',
     prompt: {
       role: 'TUI Accessibility Tester',
       task: 'Test keyboard accessibility',
@@ -735,7 +735,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 12: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'TUI Form Documentation Specialist',
       task: 'Generate documentation',

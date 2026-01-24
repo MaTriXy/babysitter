@@ -85,8 +85,9 @@ function createPerformanceTask(name, title) {
   return (args, taskCtx) => ({
     kind: 'agent',
     title: `${title} - ${args.appName}`,
+    skill: { name: 'mobile-perf' },
     agent: {
-      name: 'performance-engineer',
+      name: 'cross-platform-architect',
       prompt: {
         role: 'Mobile Performance Engineer',
         task: `Execute ${title.toLowerCase()} for mobile app`,

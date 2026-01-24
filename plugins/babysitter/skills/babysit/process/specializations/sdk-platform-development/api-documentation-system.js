@@ -262,7 +262,7 @@ export const documentationStrategyTask = defineTask('documentation-strategy', (a
   kind: 'agent',
   title: `Phase 1: Documentation Strategy - ${args.projectName}`,
   agent: {
-    name: 'documentation-architect',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Documentation Architect',
       task: 'Define comprehensive documentation strategy using Diataxis framework',
@@ -319,7 +319,7 @@ export const toolingSetupTask = defineTask('tooling-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Documentation Tooling - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Documentation Platform Engineer',
       task: 'Set up documentation tooling and platform',
@@ -366,7 +366,7 @@ export const gettingStartedTask = defineTask('getting-started', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Getting Started Guide - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Developer Experience Writer',
       task: 'Create 5-minute getting started guide',
@@ -412,7 +412,7 @@ export const conceptualGuidesTask = defineTask('conceptual-guides', (args, taskC
   kind: 'agent',
   title: `Phase 4: Conceptual Guides - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Develop conceptual and explanation guides',
@@ -466,7 +466,7 @@ export const howToGuidesTask = defineTask('how-to-guides', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: How-To Guides - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Build how-to guides for common tasks',
@@ -520,7 +520,7 @@ export const apiReferenceTask = defineTask('api-reference', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 6: API Reference - ${args.projectName}`,
   agent: {
-    name: 'api-documentation-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'API Documentation Engineer',
       task: 'Generate interactive API reference documentation',
@@ -568,7 +568,7 @@ export const codeExamplesTask = defineTask('code-examples', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 7: Code Examples - ${args.projectName}`,
   agent: {
-    name: 'developer-advocate',
+    name: 'tutorial-builder-agent',
     prompt: {
       role: 'Developer Advocate',
       task: 'Create comprehensive code examples repository',
@@ -615,7 +615,7 @@ export const interactiveConsoleTask = defineTask('interactive-console', (args, t
   kind: 'agent',
   title: `Phase 8: Interactive Console - ${args.projectName}`,
   agent: {
-    name: 'frontend-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Developer Tools Engineer',
       task: 'Set up interactive API console',
@@ -660,7 +660,7 @@ export const searchNavigationTask = defineTask('search-navigation', (args, taskC
   kind: 'agent',
   title: `Phase 9: Search and Navigation - ${args.projectName}`,
   agent: {
-    name: 'ux-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Documentation UX Engineer',
       task: 'Configure search and navigation for documentation',
@@ -712,7 +712,7 @@ export const docsCicdTask = defineTask('docs-cicd', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Documentation CI/CD - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Set up documentation CI/CD pipeline',

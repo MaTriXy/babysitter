@@ -78,8 +78,9 @@ export async function process(inputs, ctx) {
 export const dsDesignTask = defineTask('ds-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Design ${args.dataStructure}`,
+  skills: ['data-structure-selector', 'segment-tree-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Data Structure Expert',
       task: 'Design data structure with all operations',
@@ -111,8 +112,9 @@ export const dsDesignTask = defineTask('ds-design', (args, taskCtx) => ({
 export const dsImplementationTask = defineTask('ds-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Implement ${args.dataStructure}`,
+  skills: ['data-structure-selector', 'segment-tree-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement data structure',
@@ -144,8 +146,9 @@ export const dsImplementationTask = defineTask('ds-implementation', (args, taskC
 export const operationVerificationTask = defineTask('operation-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Verify ${args.dataStructure} Operations`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Verify all data structure operations',
@@ -176,8 +179,9 @@ export const operationVerificationTask = defineTask('operation-verification', (a
 export const performanceBenchmarkingTask = defineTask('performance-benchmarking', (args, taskCtx) => ({
   kind: 'agent',
   title: `Benchmark ${args.dataStructure}`,
+  skills: ['code-profiler'],
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Performance Engineer',
       task: 'Benchmark data structure performance',

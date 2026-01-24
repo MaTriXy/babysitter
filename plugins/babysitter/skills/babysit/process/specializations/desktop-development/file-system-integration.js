@@ -288,8 +288,11 @@ export const fileSystemRequirementsTask = defineTask('file-system-requirements',
 export const implementFileDialogsTask = defineTask('implement-file-dialogs', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: File Dialogs - ${args.projectName}`,
+  skill: {
+    name: 'file-dialog-abstraction',
+  },
   agent: {
-    name: 'dialog-developer',
+    name: 'file-system-path-handler',
     prompt: {
       role: 'File Dialog Developer',
       task: 'Implement native file dialogs',
@@ -367,8 +370,11 @@ export const implementFileOperationsTask = defineTask('implement-file-operations
 export const setupFileWatcherTask = defineTask('setup-file-watcher', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: File Watcher - ${args.projectName}`,
+  skill: {
+    name: 'file-watcher-setup',
+  },
   agent: {
-    name: 'watcher-developer',
+    name: 'cross-platform-abstraction-architect',
     prompt: {
       role: 'File Watcher Developer',
       task: 'Set up file watching system',
@@ -448,7 +454,7 @@ export const implementPathManagementTask = defineTask('implement-path-management
   kind: 'agent',
   title: `Phase 6: Path Management - ${args.projectName}`,
   agent: {
-    name: 'path-developer',
+    name: 'file-system-path-handler',
     prompt: {
       role: 'Path Management Developer',
       task: 'Implement cross-platform path management',

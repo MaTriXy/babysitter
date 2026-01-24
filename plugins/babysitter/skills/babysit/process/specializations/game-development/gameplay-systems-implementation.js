@@ -97,7 +97,7 @@ export const systemArchitectureTask = defineTask('system-architecture', (args, t
   kind: 'agent',
   title: `System Architecture - ${args.projectName}`,
   agent: {
-    name: 'lead-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Lead Programmer', task: 'Design gameplay system architecture', context: args, instructions: ['1. Design component interfaces', '2. Define data flow', '3. Plan event systems', '4. Design state management'] },
     outputSchema: { type: 'object', required: ['components', 'componentCount', 'artifacts'], properties: { components: { type: 'array' }, componentCount: { type: 'number' }, dataFlow: { type: 'object' }, eventSystem: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -109,7 +109,7 @@ export const systemImplementationTask = defineTask('system-implementation', (arg
   kind: 'agent',
   title: `Implement ${args.system} - ${args.projectName}`,
   agent: {
-    name: 'gameplay-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Gameplay Programmer', task: `Implement ${args.system} system`, context: args, instructions: ['1. Implement core components', '2. Add game feel and juice', '3. Implement edge cases', '4. Add debug logging'] },
     outputSchema: { type: 'object', required: ['implemented', 'components', 'artifacts'], properties: { implemented: { type: 'boolean' }, components: { type: 'array' }, codePaths: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -121,7 +121,7 @@ export const systemIntegrationTask = defineTask('system-integration', (args, tas
   kind: 'agent',
   title: `System Integration - ${args.projectName}`,
   agent: {
-    name: 'lead-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Lead Programmer', task: 'Integrate all gameplay systems', context: args, instructions: ['1. Connect system interfaces', '2. Verify event flow', '3. Test system interactions', '4. Fix integration issues'] },
     outputSchema: { type: 'object', required: ['integrationComplete', 'issues', 'artifacts'], properties: { integrationComplete: { type: 'boolean' }, issues: { type: 'array' }, interactions: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -133,7 +133,7 @@ export const debugToolsTask = defineTask('debug-tools', (args, taskCtx) => ({
   kind: 'agent',
   title: `Debug Tools - ${args.projectName}`,
   agent: {
-    name: 'tools-programmer',
+    name: 'engine-tools-developer-agent',
     prompt: { role: 'Tools Programmer', task: 'Create debugging and cheat tools', context: args, instructions: ['1. Create debug console', '2. Add cheat commands', '3. Create state inspectors', '4. Add visualization tools'] },
     outputSchema: { type: 'object', required: ['toolsCreated', 'commands', 'artifacts'], properties: { toolsCreated: { type: 'array' }, commands: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -145,7 +145,7 @@ export const gameplayUnitTestingTask = defineTask('gameplay-unit-testing', (args
   kind: 'agent',
   title: `Unit Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Write and run unit tests', context: args, instructions: ['1. Write unit tests for systems', '2. Test edge cases', '3. Add integration tests', '4. Generate coverage report'] },
     outputSchema: { type: 'object', required: ['testsRun', 'testsPassed', 'artifacts'], properties: { testsRun: { type: 'number' }, testsPassed: { type: 'number' }, coverage: { type: 'number' }, failedTests: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -157,7 +157,7 @@ export const systemApiDocTask = defineTask('system-api-doc', (args, taskCtx) => 
   kind: 'agent',
   title: `API Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: { role: 'Technical Writer', task: 'Document system APIs', context: args, instructions: ['1. Document public APIs', '2. Create usage examples', '3. Document events and signals', '4. Create integration guide'] },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, apiEndpoints: { type: 'number' }, examples: { type: 'number' }, artifacts: { type: 'array' } } }
   },

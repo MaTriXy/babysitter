@@ -51,7 +51,7 @@ export const conceptReviewTask = defineTask('concept-review', (args, taskCtx) =>
   kind: 'agent',
   title: 'Review System Design Concepts',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'System Design Expert',
       task: 'Review relevant system design concepts',
@@ -73,7 +73,7 @@ export const requirementsGatheringTask = defineTask('requirements-gathering', (a
   kind: 'agent',
   title: 'Gather Requirements',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'System Design Interviewer',
       task: 'Gather functional and non-functional requirements',
@@ -95,7 +95,7 @@ export const systemDesignTask = defineTask('system-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Design ${args.topic}`,
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'System Architect',
       task: 'Create high-level system design',
@@ -117,7 +117,7 @@ export const deepDiveTask = defineTask('deep-dive', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Deep Dive Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'interview-coach',
     prompt: {
       role: 'System Design Expert',
       task: 'Deep dive into critical components',

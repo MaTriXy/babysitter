@@ -81,7 +81,7 @@ export const robotCommunicationSetupTask = defineTask('robot-communication-setup
   kind: 'agent',
   title: `Communication Setup - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Set up robot communication', context: args, instructions: ['1. Configure ROS multi-master', '2. Set up discovery protocol', '3. Configure message routing', '4. Set up shared topics', '5. Test communication'] },
     outputSchema: { type: 'object', required: ['configPath', 'communicationConfig', 'artifacts'], properties: { configPath: { type: 'string' }, communicationConfig: { type: 'object' }, latency: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -93,7 +93,7 @@ export const taskAllocationSystemTask = defineTask('task-allocation-system', (ar
   kind: 'agent',
   title: `Task Allocation - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement task allocation', context: args, instructions: ['1. Implement auction-based allocation', '2. Configure market-based approach', '3. Handle task dependencies', '4. Optimize assignments', '5. Test allocation'] },
     outputSchema: { type: 'object', required: ['allocationAlgorithm', 'efficiency', 'artifacts'], properties: { allocationAlgorithm: { type: 'object' }, efficiency: { type: 'number' }, fairness: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -105,7 +105,7 @@ export const formationControlTask = defineTask('formation-control', (args, taskC
   kind: 'agent',
   title: `Formation Control - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement formation control', context: args, instructions: ['1. Define formation shapes', '2. Implement leader-follower', '3. Add behavior-based control', '4. Handle formation changes', '5. Test formations'] },
     outputSchema: { type: 'object', required: ['formationConfig', 'formations', 'artifacts'], properties: { formationConfig: { type: 'object' }, formations: { type: 'array' }, transitionTime: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -117,7 +117,7 @@ export const multiRobotCollisionAvoidanceTask = defineTask('multi-robot-collisio
   kind: 'agent',
   title: `Collision Avoidance - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement multi-robot collision avoidance', context: args, instructions: ['1. Implement ORCA/RVO', '2. Configure safety distances', '3. Handle deadlocks', '4. Add priority rules', '5. Test avoidance'] },
     outputSchema: { type: 'object', required: ['collisionFree', 'algorithm', 'artifacts'], properties: { collisionFree: { type: 'boolean' }, algorithm: { type: 'string' }, safetyDistance: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -129,7 +129,7 @@ export const pathCoordinationTask = defineTask('path-coordination', (args, taskC
   kind: 'agent',
   title: `Path Coordination - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Coordinate robot paths', context: args, instructions: ['1. Implement CBS planner', '2. Add priority planning', '3. Handle dynamic replanning', '4. Optimize total path cost', '5. Test coordination'] },
     outputSchema: { type: 'object', required: ['planningAlgorithm', 'avgPathLength', 'artifacts'], properties: { planningAlgorithm: { type: 'object' }, avgPathLength: { type: 'number' }, planningTime: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -141,7 +141,7 @@ export const consensusAlgorithmsTask = defineTask('consensus-algorithms', (args,
   kind: 'agent',
   title: `Consensus Algorithms - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement consensus algorithms', context: args, instructions: ['1. Implement state consensus', '2. Add distributed estimation', '3. Handle network failures', '4. Configure convergence', '5. Test consensus'] },
     outputSchema: { type: 'object', required: ['consensusConfig', 'convergenceTime', 'artifacts'], properties: { consensusConfig: { type: 'object' }, convergenceTime: { type: 'number' }, robustness: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -153,7 +153,7 @@ export const trafficManagementTask = defineTask('traffic-management', (args, tas
   kind: 'agent',
   title: `Traffic Management - ${args.fleetName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'ros-expert',  // AG-015: ROS/ROS2 Expert Agent
     prompt: { role: 'Robotics Engineer', task: 'Implement traffic management', context: args, instructions: ['1. Define traffic zones', '2. Implement intersection control', '3. Add queue management', '4. Handle congestion', '5. Test traffic flow'] },
     outputSchema: { type: 'object', required: ['trafficConfig', 'throughput', 'artifacts'], properties: { trafficConfig: { type: 'object' }, throughput: { type: 'number' }, avgWaitTime: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -165,7 +165,7 @@ export const multiRobotSimulationTestingTask = defineTask('multi-robot-simulatio
   kind: 'agent',
   title: `Simulation Testing - ${args.fleetName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test multi-robot system in simulation', context: args, instructions: ['1. Run fleet simulations', '2. Test task scenarios', '3. Measure completion rates', '4. Analyze bottlenecks', '5. Generate test report'] },
     outputSchema: { type: 'object', required: ['taskCompletionRate', 'avgTaskTime', 'artifacts'], properties: { taskCompletionRate: { type: 'number' }, avgTaskTime: { type: 'number' }, bottlenecks: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -177,7 +177,7 @@ export const scalabilityTestingTask = defineTask('scalability-testing', (args, t
   kind: 'agent',
   title: `Scalability Testing - ${args.fleetName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: { role: 'Test Engineer', task: 'Test system scalability', context: args, instructions: ['1. Test with increasing robots', '2. Measure throughput', '3. Identify scaling limits', '4. Analyze performance curves', '5. Document scalability'] },
     outputSchema: { type: 'object', required: ['throughput', 'maxRobots', 'artifacts'], properties: { throughput: { type: 'number' }, maxRobots: { type: 'number' }, scalingCurve: { type: 'array' }, artifacts: { type: 'array' } } }
   },

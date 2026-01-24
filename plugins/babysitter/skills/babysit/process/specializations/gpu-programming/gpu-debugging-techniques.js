@@ -117,7 +117,8 @@ export const cpuReferenceTask = defineTask('cpu-reference', (args, taskCtx) => (
   kind: 'agent',
   title: `CPU Reference - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Create CPU reference implementation',
@@ -158,7 +159,8 @@ export const memoryErrorDetectionTask = defineTask('memory-error-detection', (ar
   kind: 'agent',
   title: `Memory Error Detection - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Detect memory errors',
@@ -199,7 +201,8 @@ export const raceConditionDetectionTask = defineTask('race-condition-detection',
   kind: 'agent',
   title: `Race Condition Detection - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Detect race conditions',
@@ -240,7 +243,8 @@ export const correctnessValidationTask = defineTask('correctness-validation', (a
   kind: 'agent',
   title: `Correctness Validation - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Test Engineer',
       task: 'Validate kernel correctness',
@@ -281,7 +285,8 @@ export const debugInstrumentationTask = defineTask('debug-instrumentation', (arg
   kind: 'agent',
   title: `Debug Instrumentation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Add debug instrumentation',
@@ -322,7 +327,8 @@ export const issueResolutionTask = defineTask('issue-resolution', (args, taskCtx
   kind: 'agent',
   title: `Issue Resolution - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-debugging-specialist',
+    skills: ['cuda-debugging'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Resolve identified issues',

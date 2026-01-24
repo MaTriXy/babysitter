@@ -97,7 +97,7 @@ export const selectBenchmarkFrameworkTask = defineTask('select-benchmark-framewo
   kind: 'agent',
   title: `Select Benchmark Framework - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Select benchmark framework', context: args,
       instructions: ['1. Evaluate JMH, Benchmark.js', '2. Consider language/platform', '3. Select framework', '4. Configure setup', '5. Document selection'],
       outputFormat: 'JSON with framework selection' },
@@ -111,7 +111,7 @@ export const identifyBenchmarkComponentsTask = defineTask('identify-benchmark-co
   kind: 'agent',
   title: `Identify Components to Benchmark - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Identify components to benchmark', context: args,
       instructions: ['1. Identify hot paths', '2. Find critical operations', '3. Select components', '4. Define interfaces', '5. Document components'],
       outputFormat: 'JSON with benchmark components' },
@@ -125,7 +125,7 @@ export const designBenchmarkTestsTask = defineTask('design-benchmark-tests', (ar
   kind: 'agent',
   title: `Design Benchmark Tests - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Design benchmark tests', context: args,
       instructions: ['1. Design test scenarios', '2. Define input variations', '3. Choose measurement modes', '4. Design state handling', '5. Document designs'],
       outputFormat: 'JSON with benchmark designs' },
@@ -139,7 +139,7 @@ export const implementBenchmarkCodeTask = defineTask('implement-benchmark-code',
   kind: 'agent',
   title: `Implement Benchmark Code - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement benchmark code', context: args,
       instructions: ['1. Create benchmark classes', '2. Implement setup/teardown', '3. Add annotations', '4. Handle state', '5. Document code'],
       outputFormat: 'JSON with benchmark implementation' },
@@ -153,7 +153,7 @@ export const configureBenchmarkParametersTask = defineTask('configure-benchmark-
   kind: 'agent',
   title: `Configure Benchmark Parameters - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure warm-up and iterations', context: args,
       instructions: ['1. Set warm-up iterations', '2. Set measurement iterations', '3. Configure forks', '4. Set time units', '5. Document configuration'],
       outputFormat: 'JSON with benchmark parameters' },
@@ -167,7 +167,7 @@ export const runBaselineBenchmarksTask = defineTask('run-baseline-benchmarks', (
   kind: 'agent',
   title: `Run Baseline Benchmarks - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Run baseline benchmarks', context: args,
       instructions: ['1. Run all benchmarks', '2. Collect results', '3. Save baseline data', '4. Verify stability', '5. Document results'],
       outputFormat: 'JSON with baseline results' },
@@ -181,7 +181,7 @@ export const analyzeStatisticalSignificanceTask = defineTask('analyze-statistica
   kind: 'agent',
   title: `Analyze Statistical Significance - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Analyze statistical significance', context: args,
       instructions: ['1. Calculate variance', '2. Compute confidence intervals', '3. Check for outliers', '4. Assess reliability', '5. Document analysis'],
       outputFormat: 'JSON with statistical analysis' },
@@ -195,7 +195,7 @@ export const integrateBenchmarksWithCITask = defineTask('integrate-benchmarks-wi
   kind: 'agent',
   title: `Integrate with CI - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Integrate benchmarks with CI', context: args,
       instructions: ['1. Create CI job', '2. Configure benchmark execution', '3. Add comparison logic', '4. Set regression alerts', '5. Document integration'],
       outputFormat: 'JSON with CI integration' },
@@ -209,7 +209,7 @@ export const documentBenchmarkSuiteTask = defineTask('document-benchmark-suite',
   kind: 'agent',
   title: `Document Benchmark Suite - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Document benchmark suite', context: args,
       instructions: ['1. Document all benchmarks', '2. Add usage instructions', '3. Include baseline data', '4. Add interpretation guide', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

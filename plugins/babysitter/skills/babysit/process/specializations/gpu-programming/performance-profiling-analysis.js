@@ -117,6 +117,7 @@ export const systemProfilingTask = defineTask('system-profiling', (args, taskCtx
   title: `System Profiling - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Perform system-wide profiling',
@@ -158,6 +159,7 @@ export const kernelProfilingTask = defineTask('kernel-profiling', (args, taskCtx
   title: `Kernel Profiling - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Profile kernel performance',
@@ -199,6 +201,7 @@ export const memoryProfilingTask = defineTask('memory-profiling', (args, taskCtx
   title: `Memory Profiling - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Profile memory performance',
@@ -240,6 +243,7 @@ export const occupancyAnalysisTask = defineTask('occupancy-analysis', (args, tas
   title: `Occupancy Analysis - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze kernel occupancy',
@@ -281,6 +285,7 @@ export const rooflineAnalysisTask = defineTask('roofline-analysis', (args, taskC
   title: `Roofline Analysis - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Create roofline model analysis',
@@ -323,6 +328,7 @@ export const bottleneckIdentificationTask = defineTask('bottleneck-identificatio
   title: `Bottleneck Identification - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Identify performance bottlenecks',
@@ -364,6 +370,7 @@ export const optimizationRecommendationsTask = defineTask('optimization-recommen
   title: `Optimization Recommendations - ${args.projectName}`,
   agent: {
     name: 'gpu-performance-engineer',
+    skills: ['nsight-profiler', 'gpu-benchmarking'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Generate optimization recommendations',

@@ -46,8 +46,9 @@ export async function process(inputs, ctx) {
 export const geometryAnalysisTask = defineTask('geometry-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Analyze ${args.problemType}`,
+  skills: ['convex-hull-solver', 'geometry-primitives'],
   agent: {
-    name: 'general-purpose',
+    name: 'geometry-specialist',
     prompt: {
       role: 'Computational Geometry Expert',
       task: 'Analyze geometry problem',
@@ -68,8 +69,9 @@ export const geometryAnalysisTask = defineTask('geometry-analysis', (args, taskC
 export const geometryImplementationTask = defineTask('geometry-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement Geometry Algorithm',
+  skills: ['convex-hull-solver', 'geometry-primitives'],
   agent: {
-    name: 'general-purpose',
+    name: 'geometry-specialist',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement computational geometry algorithm',
@@ -90,8 +92,9 @@ export const geometryImplementationTask = defineTask('geometry-implementation', 
 export const geometryVerificationTask = defineTask('geometry-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Verify Geometry Solution',
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Verify geometry implementation',

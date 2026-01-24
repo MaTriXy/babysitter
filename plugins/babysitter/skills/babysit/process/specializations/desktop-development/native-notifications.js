@@ -121,8 +121,11 @@ export const notificationRequirementsTask = defineTask('notification-requirement
 export const implementCoreNotificationTask = defineTask('implement-core-notification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Core Notification Module - ${args.projectName}`,
+  skill: {
+    name: 'native-notification-builder',
+  },
   agent: {
-    name: 'notification-developer',
+    name: 'native-notification-api-integrator',
     prompt: {
       role: 'Notification Developer',
       task: 'Implement core notification module',
@@ -139,7 +142,7 @@ export const implementPlatformNotificationTask = defineTask('implement-platform-
   kind: 'agent',
   title: `${args.platform} Notifications - ${args.projectName}`,
   agent: {
-    name: 'platform-notification-developer',
+    name: 'native-notification-api-integrator',
     prompt: {
       role: 'Platform Notification Developer',
       task: `Implement ${args.platform}-specific notifications`,

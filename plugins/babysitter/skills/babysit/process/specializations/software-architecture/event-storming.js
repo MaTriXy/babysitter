@@ -202,7 +202,7 @@ export const prepareWorkshopTask = defineTask('prepare-workshop', (args, taskCtx
   kind: 'agent',
   title: `Prepare Event Storming Workshop: ${args.domain}`,
   agent: {
-    name: 'workshop-facilitator',
+    name: 'event-storming-facilitator',
     prompt: {
       role: 'Expert Event Storming facilitator and Domain-Driven Design practitioner',
       task: 'Prepare comprehensive workshop materials for an Event Storming session',
@@ -257,7 +257,7 @@ export const chaoticExplorationTask = defineTask('chaotic-exploration', (args, t
   kind: 'agent',
   title: 'Chaotic Exploration - Discover Domain Events',
   agent: {
-    name: 'domain-explorer',
+    name: 'event-storming-facilitator',
     prompt: {
       role: 'Domain expert facilitating rapid event discovery',
       task: 'Facilitate chaotic exploration phase to discover all significant domain events',
@@ -310,7 +310,7 @@ export const enforceTimelineTask = defineTask('enforce-timeline', (args, taskCtx
   kind: 'agent',
   title: 'Enforce Timeline - Refine Event Ordering',
   agent: {
-    name: 'timeline-organizer',
+    name: 'event-storming-facilitator',
     prompt: {
       role: 'Process analyst organizing domain events chronologically',
       task: 'Refine and enforce chronological ordering of domain events',
@@ -365,7 +365,7 @@ export const identifyCommandsTask = defineTask('identify-commands', (args, taskC
   kind: 'agent',
   title: 'Identify Commands - Triggers for Events',
   agent: {
-    name: 'command-identifier',
+    name: 'ddd-expert',
     prompt: {
       role: 'Domain modeler identifying commands and triggers',
       task: 'Identify commands that trigger each domain event',
@@ -419,7 +419,7 @@ export const identifyActorsTask = defineTask('identify-actors', (args, taskCtx) 
   kind: 'agent',
   title: 'Identify Actors - Users and Systems',
   agent: {
-    name: 'actor-identifier',
+    name: 'ddd-expert',
     prompt: {
       role: 'User experience and domain analyst',
       task: 'Identify all actors (users, roles, external systems) that interact with the domain',
@@ -473,7 +473,7 @@ export const identifyAggregatesTask = defineTask('identify-aggregates', (args, t
   kind: 'agent',
   title: 'Identify Aggregates - Consistency Boundaries',
   agent: {
-    name: 'aggregate-identifier',
+    name: 'ddd-expert',
     prompt: {
       role: 'Domain-Driven Design expert identifying aggregates and boundaries',
       task: 'Identify aggregates as consistency boundaries around related events and commands',
@@ -537,7 +537,7 @@ export const identifyExternalSystemsTask = defineTask('identify-external-systems
   kind: 'agent',
   title: 'Identify External Systems - Integrations',
   agent: {
-    name: 'integration-analyzer',
+    name: 'ddd-expert',
     prompt: {
       role: 'Integration architect mapping external system dependencies',
       task: 'Identify external systems, APIs, and third-party services that integrate with the domain',
@@ -592,7 +592,7 @@ export const identifyPoliciesTask = defineTask('identify-policies', (args, taskC
   kind: 'agent',
   title: 'Identify Policies - Business Rules and Automation',
   agent: {
-    name: 'policy-identifier',
+    name: 'ddd-expert',
     prompt: {
       role: 'Business analyst identifying policies and automation rules',
       task: 'Identify business policies, rules, and automation that react to domain events',
@@ -646,7 +646,7 @@ export const identifyBoundedContextsTask = defineTask('identify-bounded-contexts
   kind: 'agent',
   title: 'Identify Bounded Contexts - Domain Boundaries',
   agent: {
-    name: 'context-mapper',
+    name: 'ddd-expert',
     prompt: {
       role: 'Strategic DDD expert identifying bounded contexts',
       task: 'Identify bounded contexts as cohesive domain boundaries with consistent language',
@@ -714,7 +714,7 @@ export const createDomainModelTask = defineTask('create-domain-model', (args, ta
   kind: 'agent',
   title: 'Create Domain Model - Comprehensive Documentation',
   agent: {
-    name: 'domain-modeler',
+    name: 'cqrs-event-sourcing-expert',
     prompt: {
       role: 'Domain architect synthesizing complete domain model',
       task: 'Create comprehensive domain model integrating all event storming artifacts',
@@ -759,7 +759,7 @@ export const createContextMapTask = defineTask('create-context-map', (args, task
   kind: 'agent',
   title: 'Create Context Map - Strategic Design',
   agent: {
-    name: 'strategic-designer',
+    name: 'ddd-expert',
     prompt: {
       role: 'Strategic DDD expert creating context maps',
       task: 'Create context map showing bounded context relationships and integration patterns',
@@ -806,7 +806,7 @@ export const createDocumentationTask = defineTask('create-documentation', (args,
   kind: 'agent',
   title: 'Create Documentation - Artifacts and Reports',
   agent: {
-    name: 'documentation-specialist',
+    name: 'technical-writer',
     prompt: {
       role: 'Technical writer creating comprehensive event storming documentation',
       task: 'Create complete documentation suite from event storming session',
@@ -854,7 +854,7 @@ export const validateDomainModelTask = defineTask('validate-domain-model', (args
   kind: 'agent',
   title: 'Validate Domain Model - Quality Assessment',
   agent: {
-    name: 'quality-validator',
+    name: 'event-storming-facilitator',
     prompt: {
       role: 'Domain modeling expert performing quality assessment',
       task: 'Validate domain model completeness, consistency, and quality',

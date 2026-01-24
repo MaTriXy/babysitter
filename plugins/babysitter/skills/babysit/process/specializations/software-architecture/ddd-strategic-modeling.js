@@ -500,7 +500,7 @@ export const domainKnowledgeDiscoveryTask = defineTask('domain-knowledge-discove
   kind: 'agent',
   title: `Phase 1: Domain Knowledge Discovery - ${args.projectName}`,
   agent: {
-    name: 'domain-expert',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD strategic designer and domain expert facilitator',
       task: 'Discover deep domain knowledge through business capability analysis',
@@ -595,7 +595,7 @@ export const subdomainClassificationTask = defineTask('subdomain-classification'
   kind: 'agent',
   title: `Phase 2: Subdomain Classification - ${args.projectName}`,
   agent: {
-    name: 'subdomain-strategist',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD strategic designer specializing in subdomain classification',
       task: 'Classify subdomains into Core, Supporting, and Generic based on business value and competitive advantage',
@@ -669,7 +669,7 @@ export const boundedContextIdentificationTask = defineTask('bounded-context-iden
   kind: 'agent',
   title: `Phase 3: Bounded Context Identification - ${args.projectName}`,
   agent: {
-    name: 'context-mapper',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD context mapping specialist',
       task: 'Identify bounded contexts with clear boundaries and consistent models',
@@ -746,7 +746,7 @@ export const ubiquitousLanguageTask = defineTask('ubiquitous-language', (args, t
   kind: 'agent',
   title: `Phase 4: Ubiquitous Language Definition - ${args.projectName}`,
   agent: {
-    name: 'language-curator',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD language expert and terminology specialist',
       task: 'Define ubiquitous language glossary for each bounded context',
@@ -821,7 +821,7 @@ export const contextMappingTask = defineTask('context-mapping', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Context Mapping - ${args.projectName}`,
   agent: {
-    name: 'integration-architect',
+    name: 'microservices-architect',
     prompt: {
       role: 'DDD context mapping and integration pattern expert',
       task: 'Map relationships between bounded contexts using strategic DDD patterns',
@@ -908,7 +908,7 @@ export const aggregateIdentificationTask = defineTask('aggregate-identification'
   kind: 'agent',
   title: `Phase 6: Aggregate Identification - ${args.boundedContext.name}`,
   agent: {
-    name: 'aggregate-designer',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD tactical designer specializing in aggregate design',
       task: 'Identify aggregates and consistency boundaries within bounded context',
@@ -993,7 +993,7 @@ export const domainEventIdentificationTask = defineTask('domain-event-identifica
   kind: 'agent',
   title: `Phase 7: Domain Event Identification - ${args.projectName}`,
   agent: {
-    name: 'event-modeler',
+    name: 'cqrs-event-sourcing-expert',
     prompt: {
       role: 'DDD event modeling and event storming facilitator',
       task: 'Identify domain events and event flows across bounded contexts',
@@ -1070,7 +1070,7 @@ export const teamTopologyAlignmentTask = defineTask('team-topology-alignment', (
   kind: 'agent',
   title: `Phase 8: Team Topology Alignment - ${args.projectName}`,
   agent: {
-    name: 'org-designer',
+    name: 'microservices-architect',
     prompt: {
       role: 'Organization designer applying Conway\'s Law and Team Topologies',
       task: 'Align team structure with bounded contexts following Conway\'s Law',
@@ -1157,7 +1157,7 @@ export const antiCorruptionLayerTask = defineTask('anti-corruption-layer', (args
   kind: 'agent',
   title: `Phase 9: Anti-Corruption Layer Design - ${args.projectName}`,
   agent: {
-    name: 'acl-architect',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD integration architect specializing in anti-corruption layers',
       task: 'Design anti-corruption layers to protect bounded contexts from external models',
@@ -1235,7 +1235,7 @@ export const sharedKernelTask = defineTask('shared-kernel', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 10: Shared Kernel Identification - ${args.projectName}`,
   agent: {
-    name: 'kernel-analyst',
+    name: 'ddd-expert',
     prompt: {
       role: 'DDD architect specializing in shared kernel and published language patterns',
       task: 'Identify shared kernels and published languages for context integration',
@@ -1311,7 +1311,7 @@ export const integrationStrategyTask = defineTask('integration-strategy', (args,
   kind: 'agent',
   title: `Phase 11: Integration Strategy - ${args.projectName}`,
   agent: {
-    name: 'integration-strategist',
+    name: 'microservices-architect',
     prompt: {
       role: 'Integration architect specializing in distributed system communication',
       task: 'Define comprehensive integration strategy between bounded contexts',
@@ -1390,7 +1390,7 @@ export const strategicModelValidationTask = defineTask('strategic-model-validati
   kind: 'agent',
   title: `Phase 12: Strategic Model Validation - ${args.projectName}`,
   agent: {
-    name: 'model-validator',
+    name: 'ddd-expert',
     prompt: {
       role: 'Senior DDD architect and model validation specialist',
       task: 'Validate strategic model for consistency, completeness, and quality',
@@ -1473,7 +1473,7 @@ export const strategicQualityScoringTask = defineTask('strategic-quality-scoring
   kind: 'agent',
   title: `Phase 13: Strategic Quality Scoring - ${args.projectName}`,
   agent: {
-    name: 'quality-assessor',
+    name: 'ddd-expert',
     prompt: {
       role: 'Principal architect specializing in DDD strategic design quality assessment',
       task: 'Score strategic model quality across multiple dimensions',

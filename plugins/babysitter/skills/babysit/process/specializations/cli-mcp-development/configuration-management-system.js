@@ -87,7 +87,7 @@ export const configArchitectureTask = defineTask('config-architecture', (args, t
   kind: 'agent',
   title: `Config Architecture - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Configuration Architecture Specialist', task: 'Design config architecture', context: args, instructions: ['1. Define config structure', '2. Plan loading order', '3. Design merge strategy', '4. Plan extension points', '5. Generate architecture doc'], outputFormat: 'JSON with config architecture' },
     outputSchema: { type: 'object', required: ['configPath', 'artifacts'], properties: { configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const fileLoadingTask = defineTask('file-loading', (args, taskCtx) => ({
   kind: 'agent',
   title: `File Loading - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config File Loading Specialist', task: 'Implement config file loading', context: args, instructions: ['1. Add JSON loader', '2. Add YAML loader', '3. Add TOML loader', '4. Add INI loader', '5. Generate file loaders'], outputFormat: 'JSON with file loading' },
     outputSchema: { type: 'object', required: ['loaderPaths', 'artifacts'], properties: { loaderPaths: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const envVarIntegrationTask = defineTask('env-var-integration', (args, ta
   kind: 'agent',
   title: `Env Var Integration - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Environment Variable Specialist', task: 'Implement env var integration', context: args, instructions: ['1. Define env var prefix', '2. Map nested config to env', '3. Handle type conversion', '4. Support .env files', '5. Generate env integration'], outputFormat: 'JSON with env var integration' },
     outputSchema: { type: 'object', required: ['envConfig', 'artifacts'], properties: { envConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const hierarchicalMergingTask = defineTask('hierarchical-merging', (args,
   kind: 'agent',
   title: `Hierarchical Merging - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config Merging Specialist', task: 'Implement hierarchical config merging', context: args, instructions: ['1. Define merge priorities', '2. Implement deep merge', '3. Handle array merging', '4. Support overrides', '5. Generate merge logic'], outputFormat: 'JSON with hierarchical merging' },
     outputSchema: { type: 'object', required: ['mergePath', 'artifacts'], properties: { mergePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const schemaValidationTask = defineTask('schema-validation', (args, taskC
   kind: 'agent',
   title: `Schema Validation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config Validation Specialist', task: 'Implement config schema validation', context: args, instructions: ['1. Define config schema', '2. Add type validation', '3. Add constraint validation', '4. Generate helpful errors', '5. Generate validation code'], outputFormat: 'JSON with schema validation' },
     outputSchema: { type: 'object', required: ['schemaPath', 'artifacts'], properties: { schemaPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -147,7 +147,7 @@ export const configSecretsManagementTask = defineTask('config-secrets-management
   kind: 'agent',
   title: `Secrets Management - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config Secrets Specialist', task: 'Implement secrets management', context: args, instructions: ['1. Encrypt sensitive values', '2. Support secret stores', '3. Mask in logs', '4. Handle rotation', '5. Generate secrets config'], outputFormat: 'JSON with secrets management' },
     outputSchema: { type: 'object', required: ['secretsConfig', 'artifacts'], properties: { secretsConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -159,7 +159,7 @@ export const configWatchingTask = defineTask('config-watching', (args, taskCtx) 
   kind: 'agent',
   title: `Config Watching - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config Watching Specialist', task: 'Implement config file watching', context: args, instructions: ['1. Watch config files', '2. Debounce changes', '3. Validate on change', '4. Emit change events', '5. Generate watch code'], outputFormat: 'JSON with config watching' },
     outputSchema: { type: 'object', required: ['watchConfig', 'artifacts'], properties: { watchConfig: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -171,7 +171,7 @@ export const defaultsGenerationTask = defineTask('defaults-generation', (args, t
   kind: 'agent',
   title: `Defaults Generation - ${args.projectName}`,
   agent: {
-    name: 'cli-developer',
+    name: 'cli-ux-architect',
     prompt: { role: 'Config Defaults Specialist', task: 'Implement config defaults generation', context: args, instructions: ['1. Define default values', '2. Generate example configs', '3. Create init command', '4. Document all options', '5. Generate defaults code'], outputFormat: 'JSON with defaults generation' },
     outputSchema: { type: 'object', required: ['defaultsPath', 'artifacts'], properties: { defaultsPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -183,7 +183,7 @@ export const configTestingTask = defineTask('config-testing', (args, taskCtx) =>
   kind: 'agent',
   title: `Config Testing - ${args.projectName}`,
   agent: {
-    name: 'cli-qa-engineer',
+    name: 'cli-testing-architect',
     prompt: { role: 'Config Testing Specialist', task: 'Create config system tests', context: args, instructions: ['1. Test file loading', '2. Test env vars', '3. Test merging', '4. Test validation', '5. Generate test suite'], outputFormat: 'JSON with config tests' },
     outputSchema: { type: 'object', required: ['testPath', 'artifacts'], properties: { testPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -195,7 +195,7 @@ export const configDocumentationTask = defineTask('config-documentation', (args,
   kind: 'agent',
   title: `Config Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: { role: 'Config Documentation Specialist', task: 'Document configuration system', context: args, instructions: ['1. Document all options', '2. Document file formats', '3. Document env vars', '4. Add examples', '5. Generate documentation'], outputFormat: 'JSON with config documentation' },
     outputSchema: { type: 'object', required: ['docPath', 'artifacts'], properties: { docPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

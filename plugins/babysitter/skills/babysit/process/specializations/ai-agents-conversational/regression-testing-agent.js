@@ -172,7 +172,7 @@ export const testCaseManagementTask = defineTask('test-case-management', (args, 
   kind: 'agent',
   title: `Setup Test Case Management - ${args.agentName}`,
   agent: {
-    name: 'test-manager',
+    name: 'agent-evaluator',  // AG-SAF-004: Designs evaluation frameworks and benchmarks
     prompt: {
       role: 'Test Case Manager',
       task: 'Setup test case management system',

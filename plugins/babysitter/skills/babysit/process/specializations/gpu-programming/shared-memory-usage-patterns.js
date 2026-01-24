@@ -118,7 +118,8 @@ export const dataReuseAnalysisTask = defineTask('data-reuse-analysis', (args, ta
   kind: 'agent',
   title: `Data Reuse Analysis - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'warp-primitives'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Analyze data reuse opportunities',
@@ -159,7 +160,8 @@ export const tilingStrategyDesignTask = defineTask('tiling-strategy-design', (ar
   kind: 'agent',
   title: `Tiling Strategy - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design tiling strategy',
@@ -200,7 +202,8 @@ export const sharedMemoryAllocationTask = defineTask('shared-memory-allocation',
   kind: 'agent',
   title: `Shared Memory Allocation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design shared memory allocation',
@@ -241,7 +244,8 @@ export const sharedMemBankConflictTask = defineTask('shared-mem-bank-conflict', 
   kind: 'agent',
   title: `Bank Conflict Optimization - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'warp-primitives'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Optimize bank conflicts',
@@ -282,7 +286,8 @@ export const sharedMemSyncDesignTask = defineTask('shared-mem-sync-design', (arg
   kind: 'agent',
   title: `Synchronization Design - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Design synchronization for shared memory',
@@ -323,7 +328,8 @@ export const sharedMemImplementationTask = defineTask('shared-mem-implementation
   kind: 'agent',
   title: `Implementation - ${args.projectName}`,
   agent: {
-    name: 'gpu-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis'],
     prompt: {
       role: 'GPU Software Engineer',
       task: 'Implement shared memory optimizations',
@@ -364,7 +370,8 @@ export const sharedMemPerformanceTask = defineTask('shared-mem-performance', (ar
   kind: 'agent',
   title: `Performance Validation - ${args.projectName}`,
   agent: {
-    name: 'gpu-performance-engineer',
+    name: 'gpu-memory-expert',
+    skills: ['gpu-memory-analysis', 'warp-primitives'],
     prompt: {
       role: 'GPU Performance Engineer',
       task: 'Validate shared memory performance',

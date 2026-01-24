@@ -214,7 +214,7 @@ export const apiDiscoveryTask = defineTask('api-discovery', (args, taskCtx) => (
   kind: 'agent',
   title: `API Discovery - ${args.projectName}`,
   agent: {
-    name: 'api-researcher',
+    name: 'web-security-researcher',
     prompt: {
       role: 'API Security Researcher',
       task: 'Discover API endpoints and structure',
@@ -253,7 +253,7 @@ export const apiAuthTestingTask = defineTask('api-auth-testing', (args, taskCtx)
   kind: 'agent',
   title: `API Auth Testing - ${args.projectName}`,
   agent: {
-    name: 'api-auth-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'API Authentication Tester',
       task: 'Test API authentication',
@@ -291,7 +291,7 @@ export const apiAuthzTestingTask = defineTask('api-authz-testing', (args, taskCt
   kind: 'agent',
   title: `API Authz Testing - ${args.projectName}`,
   agent: {
-    name: 'api-authz-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'API Authorization Tester',
       task: 'Test API authorization (BOLA/BFLA)',
@@ -330,7 +330,7 @@ export const apiInputTestingTask = defineTask('api-input-testing', (args, taskCt
   kind: 'agent',
   title: `API Input Testing - ${args.projectName}`,
   agent: {
-    name: 'api-input-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'API Input Validation Tester',
       task: 'Test API input validation',
@@ -368,7 +368,7 @@ export const rateLimitTestingTask = defineTask('rate-limit-testing', (args, task
   kind: 'agent',
   title: `Rate Limit Testing - ${args.projectName}`,
   agent: {
-    name: 'rate-limit-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Rate Limiting Tester',
       task: 'Test rate limiting and resource consumption',
@@ -406,7 +406,7 @@ export const dataExposureTestingTask = defineTask('data-exposure-testing', (args
   kind: 'agent',
   title: `Data Exposure Testing - ${args.projectName}`,
   agent: {
-    name: 'data-exposure-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Data Exposure Tester',
       task: 'Test for excessive data exposure',
@@ -444,7 +444,7 @@ export const massAssignmentTestingTask = defineTask('mass-assignment-testing', (
   kind: 'agent',
   title: `Mass Assignment Testing - ${args.projectName}`,
   agent: {
-    name: 'mass-assignment-tester',
+    name: 'web-security-researcher',
     prompt: {
       role: 'Mass Assignment Tester',
       task: 'Test for mass assignment vulnerabilities',
@@ -482,7 +482,7 @@ export const apiSecurityReportTask = defineTask('api-security-report', (args, ta
   kind: 'agent',
   title: `Generate API Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'API Security Report Specialist',
       task: 'Generate API security report',

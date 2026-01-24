@@ -72,10 +72,10 @@ export async function process(inputs, ctx) {
 }
 
 export const projectSetupTask = defineTask('trpc-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `tRPC Setup - ${args.projectName}`,
-  agent: {
-    name: 'trpc-developer',
+  skill: {
+    name: 'trpc-skill',
     prompt: {
       role: 'tRPC Developer',
       task: 'Set up tRPC project',
@@ -219,7 +219,7 @@ export const documentationTask = defineTask('trpc-documentation', (args, taskCtx
   kind: 'agent',
   title: `tRPC Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate tRPC documentation',

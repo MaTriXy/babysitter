@@ -68,7 +68,7 @@ export const liveOpsStrategyTask = defineTask('live-ops-strategy', (args, taskCt
   kind: 'agent',
   title: `Live Ops Strategy - ${args.projectName}`,
   agent: {
-    name: 'live-ops-manager',
+    name: 'liveops-manager-agent',
     prompt: { role: 'Live Ops Manager', task: 'Define live ops strategy', context: args, instructions: ['1. Define content roadmap', '2. Plan seasonal content', '3. Define KPIs', '4. Create live ops calendar'] },
     outputSchema: { type: 'object', required: ['docPath', 'roadmap', 'artifacts'], properties: { docPath: { type: 'string' }, roadmap: { type: 'array' }, kpis: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -80,7 +80,7 @@ export const analyticsSetupTask = defineTask('analytics-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Analytics Setup - ${args.projectName}`,
   agent: {
-    name: 'data-analyst',
+    name: 'analytics-engineer-agent',
     prompt: { role: 'Data Analyst', task: 'Set up game analytics', context: args, instructions: ['1. Configure analytics platform', '2. Define event taxonomy', '3. Create dashboards', '4. Set up alerts'] },
     outputSchema: { type: 'object', required: ['setupDetails', 'events', 'artifacts'], properties: { setupDetails: { type: 'object' }, events: { type: 'array' }, dashboards: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -92,7 +92,7 @@ export const remoteConfigTask = defineTask('remote-config', (args, taskCtx) => (
   kind: 'agent',
   title: `Remote Config - ${args.projectName}`,
   agent: {
-    name: 'backend-engineer',
+    name: 'backend-engineer-agent',
     prompt: { role: 'Backend Engineer', task: 'Set up remote configuration', context: args, instructions: ['1. Configure remote config service', '2. Define config parameters', '3. Set up A/B testing', '4. Create deployment process'] },
     outputSchema: { type: 'object', required: ['configParams', 'abTestingEnabled', 'artifacts'], properties: { configParams: { type: 'array' }, abTestingEnabled: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -104,7 +104,7 @@ export const contentPipelineTask = defineTask('content-pipeline', (args, taskCtx
   kind: 'agent',
   title: `Content Pipeline - ${args.projectName}`,
   agent: {
-    name: 'live-ops-manager',
+    name: 'liveops-manager-agent',
     prompt: { role: 'Live Ops Manager', task: 'Establish content delivery pipeline', context: args, instructions: ['1. Set up content delivery', '2. Create asset bundles', '3. Define update process', '4. Test hot updates'] },
     outputSchema: { type: 'object', required: ['pipelineDetails', 'deliveryMethod', 'artifacts'], properties: { pipelineDetails: { type: 'object' }, deliveryMethod: { type: 'string' }, hotUpdateSupport: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -116,7 +116,7 @@ export const communityManagementTask = defineTask('community-management', (args,
   kind: 'agent',
   title: `Community Management - ${args.projectName}`,
   agent: {
-    name: 'community-manager',
+    name: 'community-manager-agent',
     prompt: { role: 'Community Manager', task: 'Set up community management', context: args, instructions: ['1. Set up social channels', '2. Create moderation policies', '3. Define engagement strategy', '4. Set up feedback collection'] },
     outputSchema: { type: 'object', required: ['channels', 'policies', 'artifacts'], properties: { channels: { type: 'array' }, policies: { type: 'object' }, engagementPlan: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -128,7 +128,7 @@ export const supportSystemsTask = defineTask('support-systems', (args, taskCtx) 
   kind: 'agent',
   title: `Support Systems - ${args.projectName}`,
   agent: {
-    name: 'support-lead',
+    name: 'support-lead-agent',
     prompt: { role: 'Support Lead', task: 'Set up player support systems', context: args, instructions: ['1. Configure help desk', '2. Create FAQ and knowledge base', '3. Set up ticket escalation', '4. Define SLAs'] },
     outputSchema: { type: 'object', required: ['helpDeskReady', 'knowledgeBase', 'artifacts'], properties: { helpDeskReady: { type: 'boolean' }, knowledgeBase: { type: 'string' }, slas: { type: 'object' }, artifacts: { type: 'array' } } }
   },

@@ -78,8 +78,9 @@ export async function process(inputs, ctx) {
 export const invariantIdentificationTask = defineTask('invariant-identification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Identify Invariants - ${args.algorithmName}`,
+  skills: ['invariant-analyzer', 'proof-assistant'],
   agent: {
-    name: 'general-purpose',
+    name: 'correctness-verifier',
     prompt: {
       role: 'Algorithm Theorist',
       task: 'Identify loop invariants and properties',
@@ -111,8 +112,9 @@ export const invariantIdentificationTask = defineTask('invariant-identification'
 export const formalProofTask = defineTask('formal-proof', (args, taskCtx) => ({
   kind: 'agent',
   title: `Formal Proof - ${args.algorithmName}`,
+  skills: ['proof-assistant'],
   agent: {
-    name: 'general-purpose',
+    name: 'correctness-verifier',
     prompt: {
       role: 'Formal Methods Expert',
       task: 'Construct formal correctness proof',
@@ -144,8 +146,9 @@ export const formalProofTask = defineTask('formal-proof', (args, taskCtx) => ({
 export const testCaseGenerationTask = defineTask('test-case-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Generate Test Cases - ${args.algorithmName}`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'Test Engineer',
       task: 'Generate comprehensive test cases',
@@ -177,8 +180,9 @@ export const testCaseGenerationTask = defineTask('test-case-generation', (args, 
 export const comprehensiveTestingTask = defineTask('comprehensive-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Run Tests - ${args.algorithmName}`,
+  skills: ['test-case-generator', 'solution-comparator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Run all tests and report results',

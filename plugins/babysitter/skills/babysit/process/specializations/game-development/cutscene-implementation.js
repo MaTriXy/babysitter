@@ -75,7 +75,7 @@ export const cutsceneSystemTask = defineTask('cutscene-system', (args, taskCtx) 
   kind: 'agent',
   title: `Cutscene System - ${args.projectName}`,
   agent: {
-    name: 'cinematic-designer',
+    name: 'animator-agent',
     prompt: { role: 'Cinematic Designer', task: 'Set up cutscene system', context: args, instructions: ['1. Design cutscene architecture', '2. Set up skip and pause', '3. Create transition system', '4. Document system'] },
     outputSchema: { type: 'object', required: ['docPath', 'system', 'artifacts'], properties: { docPath: { type: 'string' }, system: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -87,7 +87,7 @@ export const cinematicCameraTask = defineTask('cinematic-camera', (args, taskCtx
   kind: 'agent',
   title: `Cinematic Camera - ${args.projectName}`,
   agent: {
-    name: 'cinematic-designer',
+    name: 'animator-agent',
     prompt: { role: 'Cinematic Designer', task: 'Set up cinematic cameras', context: args, instructions: ['1. Create camera rigs', '2. Set up dolly and crane', '3. Add camera shake', '4. Create transitions'] },
     outputSchema: { type: 'object', required: ['cameraRigs', 'artifacts'], properties: { cameraRigs: { type: 'array' }, transitions: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -99,7 +99,7 @@ export const sequencerSetupTask = defineTask('sequencer-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Sequencer Setup - ${args.projectName}`,
   agent: {
-    name: 'tools-programmer',
+    name: 'tools-programmer-agent',
     prompt: { role: 'Tools Programmer', task: 'Set up sequencer tools', context: args, instructions: ['1. Configure timeline', '2. Add animation tracks', '3. Add audio tracks', '4. Create templates'] },
     outputSchema: { type: 'object', required: ['sequencerReady', 'trackTypes', 'artifacts'], properties: { sequencerReady: { type: 'boolean' }, trackTypes: { type: 'array' }, templates: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -111,7 +111,7 @@ export const cutsceneCreationTask = defineTask('cutscene-creation', (args, taskC
   kind: 'agent',
   title: `Cutscene Creation - ${args.projectName}`,
   agent: {
-    name: 'cinematic-designer',
+    name: 'animator-agent',
     prompt: { role: 'Cinematic Designer', task: 'Create cutscenes', context: args, instructions: ['1. Block out scenes', '2. Direct performances', '3. Add camera work', '4. Sync audio'] },
     outputSchema: { type: 'object', required: ['cutscenes', 'cutsceneCount', 'totalDuration', 'artifacts'], properties: { cutscenes: { type: 'array' }, cutsceneCount: { type: 'number' }, totalDuration: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -123,7 +123,7 @@ export const interactiveSequencesTask = defineTask('interactive-sequences', (arg
   kind: 'agent',
   title: `Interactive Sequences - ${args.projectName}`,
   agent: {
-    name: 'cinematic-designer',
+    name: 'animator-agent',
     prompt: { role: 'Cinematic Designer', task: 'Create interactive sequences', context: args, instructions: ['1. Design QTE sequences', '2. Add player choices', '3. Create branching paths', '4. Test interactions'] },
     outputSchema: { type: 'object', required: ['sequences', 'artifacts'], properties: { sequences: { type: 'array' }, qteCount: { type: 'number' }, branchPoints: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -135,7 +135,7 @@ export const cutsceneIntegrationTask = defineTask('cutscene-integration', (args,
   kind: 'agent',
   title: `Cutscene Integration - ${args.projectName}`,
   agent: {
-    name: 'gameplay-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Gameplay Programmer', task: 'Integrate cutscenes', context: args, instructions: ['1. Add trigger points', '2. Handle game state', '3. Connect to progression', '4. Test transitions'] },
     outputSchema: { type: 'object', required: ['integrated', 'triggerPoints', 'artifacts'], properties: { integrated: { type: 'boolean' }, triggerPoints: { type: 'number' }, artifacts: { type: 'array' } } }
   },
@@ -147,7 +147,7 @@ export const cutsceneTestingTask = defineTask('cutscene-testing', (args, taskCtx
   kind: 'agent',
   title: `Cutscene Testing - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'game-qa-agent',
     prompt: { role: 'QA Engineer', task: 'Test cutscenes', context: args, instructions: ['1. Test playback', '2. Test skip functionality', '3. Test triggers', '4. Check performance'] },
     outputSchema: { type: 'object', required: ['passRate', 'issues', 'artifacts'], properties: { passRate: { type: 'number' }, issues: { type: 'array' }, artifacts: { type: 'array' } } }
   },

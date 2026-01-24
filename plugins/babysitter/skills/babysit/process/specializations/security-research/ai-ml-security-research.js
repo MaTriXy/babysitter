@@ -191,7 +191,7 @@ export const modelReconTask = defineTask('model-recon', (args, taskCtx) => ({
   kind: 'agent',
   title: `Model Reconnaissance - ${args.projectName}`,
   agent: {
-    name: 'ai-security-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'AI/ML Security Analyst',
       task: 'Perform model reconnaissance',
@@ -230,7 +230,7 @@ export const promptInjectionTask = defineTask('prompt-injection', (args, taskCtx
   kind: 'agent',
   title: `Prompt Injection Testing - ${args.projectName}`,
   agent: {
-    name: 'prompt-injection-tester',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Prompt Injection Specialist',
       task: 'Test prompt injection attacks',
@@ -269,7 +269,7 @@ export const adversarialAttacksTask = defineTask('adversarial-attacks', (args, t
   kind: 'agent',
   title: `Adversarial Attacks - ${args.projectName}`,
   agent: {
-    name: 'adversarial-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Adversarial Attack Specialist',
       task: 'Test adversarial attacks',
@@ -308,7 +308,7 @@ export const modelExtractionTask = defineTask('model-extraction', (args, taskCtx
   kind: 'agent',
   title: `Model Extraction - ${args.projectName}`,
   agent: {
-    name: 'extraction-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Model Extraction Specialist',
       task: 'Test model extraction vulnerabilities',
@@ -346,7 +346,7 @@ export const dataLeakageTask = defineTask('data-leakage', (args, taskCtx) => ({
   kind: 'agent',
   title: `Data Leakage Testing - ${args.projectName}`,
   agent: {
-    name: 'leakage-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'Data Leakage Specialist',
       task: 'Test for data leakage',
@@ -384,7 +384,7 @@ export const mlInfraSecurityTask = defineTask('ml-infra-security', (args, taskCt
   kind: 'agent',
   title: `ML Infra Security - ${args.projectName}`,
   agent: {
-    name: 'infra-analyst',
+    name: 'vuln-researcher',
     prompt: {
       role: 'ML Infrastructure Security Analyst',
       task: 'Test ML infrastructure security',
@@ -422,7 +422,7 @@ export const aiSecurityReportTask = defineTask('ai-security-report', (args, task
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'AI Security Report Specialist',
       task: 'Generate AI/ML security report',

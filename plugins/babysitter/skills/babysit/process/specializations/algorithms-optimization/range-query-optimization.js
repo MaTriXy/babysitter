@@ -48,7 +48,7 @@ export const rangeQueryAnalysisTask = defineTask('range-query-analysis', (args, 
   kind: 'agent',
   title: 'Analyze Range Query Requirements',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Data Structure Expert',
       task: 'Analyze requirements and recommend data structure',
@@ -70,7 +70,7 @@ export const rangeQueryImplementationTask = defineTask('range-query-implementati
   kind: 'agent',
   title: 'Implement Range Query Structure',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement recommended data structure',
@@ -92,7 +92,7 @@ export const rangeQueryComparisonTask = defineTask('range-query-comparison', (ar
   kind: 'agent',
   title: 'Compare Range Query Approaches',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Performance Analyst',
       task: 'Compare different range query approaches',

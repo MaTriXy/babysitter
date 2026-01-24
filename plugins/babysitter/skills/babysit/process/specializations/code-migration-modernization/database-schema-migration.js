@@ -283,7 +283,7 @@ export const schemaAnalysisTask = defineTask('schema-analysis', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 1: Schema Analysis - ${args.projectName}`,
   agent: {
-    name: 'database-analyst',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Database Architect',
       task: 'Analyze source and target database schemas',
@@ -326,7 +326,7 @@ export const migrationScriptDevelopmentTask = defineTask('migration-script-devel
   kind: 'agent',
   title: `Phase 2: Migration Script Development - ${args.projectName}`,
   agent: {
-    name: 'migration-developer',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Database Migration Developer',
       task: 'Develop migration scripts using expand-contract pattern',
@@ -368,7 +368,7 @@ export const testEnvironmentPreparationTask = defineTask('test-environment-prepa
   kind: 'agent',
   title: `Phase 3: Test Environment Preparation - ${args.projectName}`,
   agent: {
-    name: 'environment-engineer',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Database Engineer',
       task: 'Prepare test environment for migration testing',
@@ -410,7 +410,7 @@ export const testMigrationExecutionTask = defineTask('test-migration-execution',
   kind: 'agent',
   title: `Phase 4: Test Migration Execution - ${args.projectName}`,
   agent: {
-    name: 'migration-tester',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Database Migration Engineer',
       task: 'Execute migration in test environment',
@@ -453,7 +453,7 @@ export const dataValidationPlanningTask = defineTask('data-validation-planning',
   kind: 'agent',
   title: `Phase 5: Data Validation Planning - ${args.projectName}`,
   agent: {
-    name: 'validation-planner',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'Data Quality Analyst',
       task: 'Plan data validation strategy',
@@ -495,7 +495,7 @@ export const performanceTestingTask = defineTask('performance-testing', (args, t
   kind: 'agent',
   title: `Phase 6: Performance Testing - ${args.projectName}`,
   agent: {
-    name: 'performance-tester',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'Database Performance Engineer',
       task: 'Test query performance against new schema',
@@ -537,7 +537,7 @@ export const applicationCompatibilityTestingTask = defineTask('application-compa
   kind: 'agent',
   title: `Phase 7: Application Compatibility Testing - ${args.projectName}`,
   agent: {
-    name: 'compatibility-tester',
+    name: 'data-integrity-validator',
     prompt: {
       role: 'Application Tester',
       task: 'Test application compatibility with new schema',
@@ -579,7 +579,7 @@ export const stagingMigrationTask = defineTask('staging-migration', (args, taskC
   kind: 'agent',
   title: `Phase 8: Staging Migration - ${args.projectName}`,
   agent: {
-    name: 'staging-engineer',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Release Engineer',
       task: 'Run full migration in staging environment',
@@ -621,7 +621,7 @@ export const productionMigrationPlanningTask = defineTask('production-migration-
   kind: 'agent',
   title: `Phase 9: Production Migration Planning - ${args.projectName}`,
   agent: {
-    name: 'production-planner',
+    name: 'cutover-coordinator',
     prompt: {
       role: 'Production Release Manager',
       task: 'Plan production migration execution',
@@ -663,7 +663,7 @@ export const productionMigrationExecutionTask = defineTask('production-migration
   kind: 'agent',
   title: `Phase 10: Production Migration Execution - ${args.projectName}`,
   agent: {
-    name: 'production-executor',
+    name: 'database-migration-orchestrator',
     prompt: {
       role: 'Database Administrator',
       task: 'Execute production database migration',

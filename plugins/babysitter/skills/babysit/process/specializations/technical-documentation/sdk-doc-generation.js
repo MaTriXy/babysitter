@@ -586,8 +586,9 @@ export async function process(inputs, ctx) {
 export const sdkCodeAnalysisTask = defineTask('sdk-code-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze SDK codebase and create API inventory',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'sdk-analyzer',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'senior software engineer and SDK architect',
       task: 'Analyze SDK codebase, identify public API surface, and create comprehensive inventory',
@@ -690,8 +691,9 @@ export const sdkCodeAnalysisTask = defineTask('sdk-code-analysis', (args, taskCt
 export const docToolingSetupTask = defineTask('doc-tooling-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Set up documentation generation tooling',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'doc-tooling-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation tooling specialist',
       task: 'Select and configure appropriate documentation generation tool based on language and requirements',
@@ -750,8 +752,9 @@ export const docToolingSetupTask = defineTask('doc-tooling-setup', (args, taskCt
 export const inlineDocAuditTask = defineTask('inline-doc-audit', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Audit inline documentation coverage and quality',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'doc-auditor',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'technical documentation auditor',
       task: 'Assess inline documentation coverage, completeness, and quality across SDK codebase',
@@ -835,8 +838,9 @@ export const inlineDocAuditTask = defineTask('inline-doc-audit', (args, taskCtx)
 export const docEnhancementTask = defineTask('doc-enhancement', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Enhance missing and incomplete documentation',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'technical-writer',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'technical writer and SDK documentation specialist',
       task: 'Generate and enhance inline documentation for undocumented or poorly documented API elements',
@@ -899,8 +903,9 @@ export const docEnhancementTask = defineTask('doc-enhancement', (args, taskCtx) 
 export const codeExampleGenerationTask = defineTask('code-example-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate code examples for SDK usage',
+  skill: { name: 'code-sample-validator' },
   agent: {
-    name: 'example-developer',
+    name: 'tutorial-developer',
     prompt: {
       role: 'developer evangelist and SDK example creator',
       task: 'Create comprehensive, working code examples demonstrating SDK usage',
@@ -965,8 +970,9 @@ export const codeExampleGenerationTask = defineTask('code-example-generation', (
 export const apiReferenceGenerationTask = defineTask('api-reference-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate API reference documentation',
+  skill: { name: 'jsdoc-tsdoc' },
   agent: {
-    name: 'api-doc-generator',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'API documentation generator',
       task: 'Generate comprehensive API reference documentation from code and comments',
@@ -1028,8 +1034,9 @@ export const apiReferenceGenerationTask = defineTask('api-reference-generation',
 export const integrationGuidesTask = defineTask('integration-guides', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create integration guides and tutorials',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'tutorial-writer',
+    name: 'tutorial-developer',
     prompt: {
       role: 'developer educator and tutorial creator',
       task: 'Create comprehensive integration guides and step-by-step tutorials',
@@ -1095,8 +1102,9 @@ export const integrationGuidesTask = defineTask('integration-guides', (args, tas
 export const quickstartGuideTask = defineTask('quickstart-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create quickstart and getting started guide',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'quickstart-writer',
+    name: 'tutorial-developer',
     prompt: {
       role: 'developer onboarding specialist',
       task: 'Create compelling quickstart guide to get developers up and running quickly',
@@ -1149,8 +1157,9 @@ export const quickstartGuideTask = defineTask('quickstart-guide', (args, taskCtx
 export const changelogGenerationTask = defineTask('changelog-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate changelog and migration guides',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'changelog-maintainer',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'SDK maintainer and release manager',
       task: 'Generate changelog and migration guides from version history',
@@ -1214,8 +1223,9 @@ export const changelogGenerationTask = defineTask('changelog-generation', (args,
 export const crossReferenceValidationTask = defineTask('cross-reference-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Build cross-references and validate links',
+  skill: { name: 'link-validator' },
   agent: {
-    name: 'link-validator',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality engineer',
       task: 'Build cross-reference index and validate all internal and external links',
@@ -1285,8 +1295,9 @@ export const crossReferenceValidationTask = defineTask('cross-reference-validati
 export const searchIndexGenerationTask = defineTask('search-index-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate search index for documentation',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'search-indexer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'search engine specialist',
       task: 'Generate comprehensive search index for documentation site',
@@ -1340,8 +1351,9 @@ export const searchIndexGenerationTask = defineTask('search-index-generation', (
 export const formatGenerationTask = defineTask('format-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate documentation in specific format',
+  skill: { name: 'pdf-generation' },
   agent: {
-    name: 'format-converter',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation format specialist',
       task: 'Convert and generate documentation in specified output format',
@@ -1407,8 +1419,9 @@ export const formatGenerationTask = defineTask('format-generation', (args, taskC
 export const docQualityAssessmentTask = defineTask('doc-quality-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Assess documentation quality and completeness',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'quality-assessor',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality assurance specialist',
       task: 'Comprehensively assess documentation quality, completeness, and usability',
@@ -1490,8 +1503,9 @@ export const docQualityAssessmentTask = defineTask('doc-quality-assessment', (ar
 export const hostingPreparationTask = defineTask('hosting-preparation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Prepare documentation for hosting and deployment',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'deployment-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer and documentation hosting specialist',
       task: 'Prepare documentation site for hosting and create deployment configuration',
@@ -1548,8 +1562,9 @@ export const hostingPreparationTask = defineTask('hosting-preparation', (args, t
 export const finalReviewPackageTask = defineTask('final-review-package', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create final review package',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'documentation-manager',
+    name: 'api-docs-specialist',
     prompt: {
       role: 'documentation project manager',
       task: 'Create comprehensive review package summarizing all documentation deliverables',

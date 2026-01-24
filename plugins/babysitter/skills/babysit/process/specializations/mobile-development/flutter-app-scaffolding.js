@@ -286,8 +286,9 @@ export async function process(inputs, ctx) {
 export const projectCreationTask = defineTask('project-creation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Project Creation - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Senior Flutter Developer',
       task: 'Create new Flutter project with flutter create',
@@ -331,8 +332,9 @@ export const projectCreationTask = defineTask('project-creation', (args, taskCtx
 export const architectureSetupTask = defineTask('architecture-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Architecture Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-architect',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Architect',
       task: 'Set up architecture folder structure following chosen pattern',
@@ -377,8 +379,9 @@ export const architectureSetupTask = defineTask('architecture-setup', (args, tas
 export const dependencyConfigTask = defineTask('dependency-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Dependency Configuration - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Package Specialist',
       task: 'Configure pubspec.yaml with required dependencies',
@@ -423,8 +426,9 @@ export const dependencyConfigTask = defineTask('dependency-config', (args, taskC
 export const diSetupTask = defineTask('di-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Dependency Injection Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter DI Specialist',
       task: 'Set up dependency injection with GetIt or Injectable',
@@ -468,8 +472,9 @@ export const diSetupTask = defineTask('di-setup', (args, taskCtx) => ({
 export const stateConfigTask = defineTask('state-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: State Management Configuration - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter State Management Specialist',
       task: 'Configure state management solution',
@@ -514,8 +519,9 @@ export const stateConfigTask = defineTask('state-config', (args, taskCtx) => ({
 export const routingSetupTask = defineTask('routing-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Routing Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Navigation Specialist',
       task: 'Set up routing and navigation with GoRouter or AutoRoute',
@@ -558,8 +564,9 @@ export const routingSetupTask = defineTask('routing-setup', (args, taskCtx) => (
 export const networkSetupTask = defineTask('network-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Network Layer Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Networking Specialist',
       task: 'Configure network layer with Dio',
@@ -604,8 +611,9 @@ export const networkSetupTask = defineTask('network-setup', (args, taskCtx) => (
 export const storageSetupTask = defineTask('storage-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Local Storage Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Storage Specialist',
       task: 'Configure local storage with Hive or Sqflite',
@@ -649,8 +657,9 @@ export const storageSetupTask = defineTask('storage-setup', (args, taskCtx) => (
 export const codeGenSetupTask = defineTask('code-gen-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Code Generation Setup - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter Code Generation Specialist',
       task: 'Set up code generation with Freezed and JsonSerializable',
@@ -694,8 +703,9 @@ export const codeGenSetupTask = defineTask('code-gen-setup', (args, taskCtx) => 
 export const testingSetupTask = defineTask('testing-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Testing Setup - ${args.appName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'flutter-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Flutter Testing Specialist',
       task: 'Configure comprehensive testing framework',
@@ -739,8 +749,9 @@ export const testingSetupTask = defineTask('testing-setup', (args, taskCtx) => (
 export const designSystemTask = defineTask('design-system', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Design System Foundation - ${args.appName}`,
+  skill: { name: 'flutter-dart' },
   agent: {
-    name: 'flutter-ui-developer',
+    name: 'flutter-expert',
     prompt: {
       role: 'Flutter UI/UX Developer',
       task: 'Create design system foundation',

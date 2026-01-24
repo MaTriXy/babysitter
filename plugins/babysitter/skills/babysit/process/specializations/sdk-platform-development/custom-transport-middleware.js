@@ -112,7 +112,7 @@ export const transportArchitectureDesignTask = defineTask('transport-architectur
   kind: 'agent',
   title: 'Design transport architecture',
   agent: {
-    name: 'transport-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK transport architecture specialist',
       task: `Design transport architecture for ${args.sdkName}`,
@@ -155,7 +155,7 @@ export const middlewareSystemImplementationTask = defineTask('middleware-system-
   kind: 'agent',
   title: 'Implement middleware system',
   agent: {
-    name: 'middleware-system-implementer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK middleware engineer',
       task: `Implement middleware system for ${args.sdkName}`,
@@ -199,7 +199,7 @@ export const builtInMiddlewareCreationTask = defineTask('built-in-middleware-cre
   kind: 'agent',
   title: 'Create built-in middleware',
   agent: {
-    name: 'built-in-middleware-creator',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK middleware developer',
       task: `Create built-in middleware for ${args.sdkName}`,
@@ -243,7 +243,7 @@ export const customTransportImplementationTask = defineTask('custom-transport-im
   kind: 'agent',
   title: 'Implement custom transports',
   agent: {
-    name: 'custom-transport-implementer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'Transport protocol engineer',
       task: `Implement custom transports for ${args.sdkName}`,
@@ -287,7 +287,7 @@ export const transportTestingDocsTask = defineTask('transport-testing-docs', (ar
   kind: 'agent',
   title: 'Create transport testing and documentation',
   agent: {
-    name: 'transport-docs-specialist',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'SDK documentation and testing specialist',
       task: `Create testing and documentation for ${args.sdkName} transport`,

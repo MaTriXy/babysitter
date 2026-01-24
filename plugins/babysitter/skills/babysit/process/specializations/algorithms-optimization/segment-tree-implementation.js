@@ -46,8 +46,9 @@ export async function process(inputs, ctx) {
 export const segmentTreeDesignTask = defineTask('segment-tree-design', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Design Segment Tree',
+  skills: ['segment-tree-builder', 'advanced-ds-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Data Structure Expert',
       task: 'Design segment tree for specified operations',
@@ -69,7 +70,7 @@ export const segmentTreeImplementationTask = defineTask('segment-tree-implementa
   kind: 'agent',
   title: 'Implement Segment Tree',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement segment tree',
@@ -91,7 +92,7 @@ export const segmentTreeTestingTask = defineTask('segment-tree-testing', (args, 
   kind: 'agent',
   title: 'Test Segment Tree',
   agent: {
-    name: 'general-purpose',
+    name: 'data-structures-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Test segment tree implementation',

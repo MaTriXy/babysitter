@@ -196,7 +196,7 @@ export const workflowRequirementsTask = defineTask('workflow-requirements', (arg
   kind: 'agent',
   title: `Analyze Workflow Requirements - ${args.workflowName}`,
   agent: {
-    name: 'workflow-analyst',
+    name: 'langgraph-architect',  // AG-LG-001: Designs LangGraph workflows with cyclic and acyclic patterns
     prompt: {
       role: 'LangGraph Workflow Analyst',
       task: 'Analyze requirements for LangGraph workflow',
@@ -232,10 +232,10 @@ export const workflowRequirementsTask = defineTask('workflow-requirements', (arg
 }));
 
 export const stateSchemaDesignTask = defineTask('state-schema-design', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Design State Schema - ${args.workflowName}`,
-  agent: {
-    name: 'state-designer',
+  skill: {
+    name: 'langgraph-state-schema',  // SK-LG-001: LangGraph state schema definition with TypedDict and reducers
     prompt: {
       role: 'State Schema Designer',
       task: 'Design state schema for LangGraph workflow',
@@ -271,10 +271,10 @@ export const stateSchemaDesignTask = defineTask('state-schema-design', (args, ta
 }));
 
 export const graphDefinitionTask = defineTask('graph-definition', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Define Workflow Graph - ${args.workflowName}`,
-  agent: {
-    name: 'graph-designer',
+  skill: {
+    name: 'langgraph-checkpointer',  // SK-LG-002: LangGraph checkpoint configuration and persistence
     prompt: {
       role: 'LangGraph Designer',
       task: 'Define the workflow graph structure',
@@ -311,10 +311,10 @@ export const graphDefinitionTask = defineTask('graph-definition', (args, taskCtx
 }));
 
 export const nodeImplementationTask = defineTask('node-implementation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Implement Graph Nodes - ${args.workflowName}`,
-  agent: {
-    name: 'node-developer',
+  skill: {
+    name: 'langgraph-routing',  // SK-LG-004: Conditional edge routing and state-based transitions
     prompt: {
       role: 'LangGraph Node Developer',
       task: 'Implement all nodes in the workflow',
@@ -389,10 +389,10 @@ export const checkpointLogicTask = defineTask('checkpoint-logic', (args, taskCtx
 }));
 
 export const humanInLoopIntegrationTask = defineTask('human-in-loop', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Integrate Human-in-the-Loop - ${args.workflowName}`,
-  agent: {
-    name: 'hitl-developer',
+  skill: {
+    name: 'langgraph-human-in-loop',  // SK-LG-005: Human-in-the-loop integration with interrupt handlers
     prompt: {
       role: 'Human-in-the-Loop Developer',
       task: 'Implement human-in-the-loop integration points',

@@ -298,8 +298,9 @@ export async function process(inputs, ctx) {
 export const projectSetupTask = defineTask('project-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Project Setup - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Compose Developer',
       task: 'Set up Compose in Android project',
@@ -342,8 +343,9 @@ export const projectSetupTask = defineTask('project-setup', (args, taskCtx) => (
 export const themeSetupTask = defineTask('theme-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Theme Setup - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-ui-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Material Design Specialist',
       task: 'Create Material 3 theme for Compose',
@@ -387,8 +389,9 @@ export const themeSetupTask = defineTask('theme-setup', (args, taskCtx) => ({
 export const navigationSetupTask = defineTask('navigation-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Navigation Setup - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Navigation Specialist',
       task: 'Set up Compose Navigation',
@@ -433,8 +436,9 @@ export const navigationSetupTask = defineTask('navigation-setup', (args, taskCtx
 export const baseComposablesTask = defineTask('base-composables', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Base Composables - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-ui-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose UI Developer',
       task: 'Create reusable base composables',
@@ -477,8 +481,9 @@ export const baseComposablesTask = defineTask('base-composables', (args, taskCtx
 export const screenComposablesTask = defineTask('screen-composables', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Screen Composables - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-ui-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose Screen Developer',
       task: 'Build screen composables for each feature',
@@ -523,8 +528,9 @@ export const screenComposablesTask = defineTask('screen-composables', (args, tas
 export const stateSetupTask = defineTask('state-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: State Management - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android State Management Specialist',
       task: 'Implement state management with ViewModel',
@@ -568,8 +574,9 @@ export const stateSetupTask = defineTask('state-setup', (args, taskCtx) => ({
 export const stateHoistingTask = defineTask('state-hoisting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: State Hoisting - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose State Specialist',
       task: 'Implement state hoisting patterns',
@@ -613,8 +620,9 @@ export const stateHoistingTask = defineTask('state-hoisting', (args, taskCtx) =>
 export const lazyComponentsTask = defineTask('lazy-components', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 8: Lazy Components - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-ui-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose Performance Developer',
       task: 'Implement LazyColumn and LazyRow',
@@ -656,8 +664,9 @@ export const lazyComponentsTask = defineTask('lazy-components', (args, taskCtx) 
 export const animationsTask = defineTask('animations', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 9: Animations - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-animation-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose Animation Specialist',
       task: 'Add Compose animations',
@@ -700,8 +709,9 @@ export const animationsTask = defineTask('animations', (args, taskCtx) => ({
 export const accessibilityTask = defineTask('accessibility', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Accessibility - ${args.appName}`,
+  skill: { name: 'accessibility-testing' },
   agent: {
-    name: 'android-accessibility-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Accessibility Specialist',
       task: 'Implement accessibility with semantics',
@@ -745,8 +755,9 @@ export const accessibilityTask = defineTask('accessibility', (args, taskCtx) => 
 export const previewsTask = defineTask('previews', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 11: Previews - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-ui-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose Preview Developer',
       task: 'Create @Preview composables',
@@ -791,8 +802,9 @@ export const previewsTask = defineTask('previews', (args, taskCtx) => ({
 export const uiTestsTask = defineTask('ui-tests', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 12: UI Tests - ${args.appName}`,
+  skill: { name: 'mobile-testing' },
   agent: {
-    name: 'android-test-engineer',
+    name: 'mobile-qa-expert',
     prompt: {
       role: 'Compose Testing Specialist',
       task: 'Write Compose UI tests',
@@ -837,8 +849,9 @@ export const uiTestsTask = defineTask('ui-tests', (args, taskCtx) => ({
 export const performanceTask = defineTask('performance', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 13: Performance - ${args.appName}`,
+  skill: { name: 'mobile-perf' },
   agent: {
-    name: 'android-performance-engineer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Compose Performance Engineer',
       task: 'Optimize Compose performance',
@@ -881,8 +894,9 @@ export const performanceTask = defineTask('performance', (args, taskCtx) => ({
 export const interopTask = defineTask('interop', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Interoperability - ${args.appName}`,
+  skill: { name: 'kotlin-compose' },
   agent: {
-    name: 'android-developer',
+    name: 'android-native-expert',
     prompt: {
       role: 'Android Interoperability Developer',
       task: 'Ensure interoperability with View system',

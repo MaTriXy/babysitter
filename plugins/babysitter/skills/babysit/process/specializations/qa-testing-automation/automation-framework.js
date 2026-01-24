@@ -505,7 +505,7 @@ export const toolSelectionTask = defineTask('tool-selection', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Tool Selection - ${args.projectName}`,
   agent: {
-    name: 'test-automation-architect',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Test Automation Architect',
       task: 'Evaluate and recommend testing tools based on project requirements',
@@ -591,7 +591,7 @@ export const projectStructureTask = defineTask('project-structure', (args, taskC
   kind: 'agent',
   title: `Phase 2: Project Structure - ${args.projectName}`,
   agent: {
-    name: 'framework-architect',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Framework Architect',
       task: 'Create modular, scalable project directory structure for test automation',
@@ -658,7 +658,7 @@ export const frameworkArchitectureTask = defineTask('framework-architecture', (a
   kind: 'agent',
   title: `Phase 3: Framework Architecture - ${args.projectName}`,
   agent: {
-    name: 'architecture-designer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Software Architecture Designer specializing in test frameworks',
       task: 'Implement framework architecture with design patterns and best practices',
@@ -735,7 +735,7 @@ export const configurationManagementTask = defineTask('configuration-management'
   kind: 'agent',
   title: `Phase 4: Configuration Management - ${args.projectName}`,
   agent: {
-    name: 'config-engineer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'DevOps Configuration Engineer',
       task: 'Set up comprehensive configuration management for test environments',
@@ -802,7 +802,7 @@ export const designPatternImplementationTask = defineTask('design-pattern-implem
   kind: 'agent',
   title: `Phase 5: Design Pattern Implementation - ${args.projectName}`,
   agent: {
-    name: 'pattern-implementer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior Software Engineer specializing in design patterns',
       task: 'Implement Page Object Model and other design patterns for test framework',
@@ -866,7 +866,7 @@ export const testUtilitiesTask = defineTask('test-utilities', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Test Utilities - ${args.projectName}`,
   agent: {
-    name: 'utility-developer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Automation Developer',
       task: 'Create comprehensive test utilities and helper functions',
@@ -932,7 +932,7 @@ export const reportingSetupTask = defineTask('reporting-setup', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 7: Reporting Setup - ${args.projectName}`,
   agent: {
-    name: 'reporting-engineer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Reporting Engineer',
       task: 'Integrate comprehensive test reporting capabilities',
@@ -995,7 +995,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 8: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'cicd-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps CI/CD Engineer',
       task: 'Configure CI/CD pipeline integration for automated test execution',
@@ -1059,7 +1059,7 @@ export const sampleTestCreationTask = defineTask('sample-test-creation', (args, 
   kind: 'agent',
   title: `Phase 9: Sample ${args.testType.toUpperCase()} Tests - ${args.projectName}`,
   agent: {
-    name: 'test-developer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior QA Automation Engineer',
       task: `Create reference sample tests for ${args.testType} testing`,
@@ -1123,7 +1123,7 @@ export const executeSampleTestsTask = defineTask('execute-sample-tests', (args, 
   kind: 'agent',
   title: `Execute Sample Tests - ${args.projectName}`,
   agent: {
-    name: 'test-runner',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Execution Engineer',
       task: 'Execute all sample tests to verify framework functionality',
@@ -1183,7 +1183,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Technical Writer specializing in test automation',
       task: 'Generate comprehensive framework documentation',
@@ -1255,7 +1255,7 @@ export const codeQualitySetupTask = defineTask('code-quality-setup', (args, task
   kind: 'agent',
   title: `Phase 11: Code Quality - ${args.projectName}`,
   agent: {
-    name: 'quality-engineer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Code Quality Engineer',
       task: 'Configure code quality tools and standards',
@@ -1316,7 +1316,7 @@ export const parallelExecutionConfigTask = defineTask('parallel-execution-config
   kind: 'agent',
   title: `Phase 12: Parallel Execution - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Test Performance Engineer',
       task: 'Configure parallel test execution for faster feedback',
@@ -1375,7 +1375,7 @@ export const frameworkValidationTask = defineTask('framework-validation', (args,
   kind: 'agent',
   title: `Phase 13: Framework Validation - ${args.projectName}`,
   agent: {
-    name: 'qa-auditor',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'Senior QA Auditor and Quality Assurance Lead',
       task: 'Validate framework against quality criteria and best practices',
@@ -1450,7 +1450,7 @@ export const finalReviewTask = defineTask('final-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Final Review - ${args.projectName}`,
   agent: {
-    name: 'project-lead',
+    name: 'e2e-automation-expert', // AG-002: E2E Automation Expert Agent
     prompt: {
       role: 'QA Project Lead and Team Manager',
       task: 'Conduct final framework review and prepare team handoff',

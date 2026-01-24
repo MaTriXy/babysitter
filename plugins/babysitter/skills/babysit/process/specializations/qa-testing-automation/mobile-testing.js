@@ -775,7 +775,7 @@ export const environmentSetupTask = defineTask('environment-setup', (args, taskC
   kind: 'agent',
   title: `Phase 1: Appium Environment Setup - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Automation Engineer specializing in Appium',
       task: 'Set up and validate Appium environment for mobile testing',
@@ -843,7 +843,7 @@ export const scenarioPlanningTask = defineTask('scenario-planning', (args, taskC
   kind: 'agent',
   title: `Phase 2: Mobile Test Scenario Planning - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile QA Strategist',
       task: 'Analyze mobile app and plan comprehensive test scenarios',
@@ -924,7 +924,7 @@ export const screenObjectDevelopmentTask = defineTask('screen-object-development
   kind: 'agent',
   title: `Phase 3: Mobile Screen Objects Development - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Automation Developer',
       task: 'Build mobile screen objects with platform-specific locators',
@@ -1010,7 +1010,7 @@ export const deviceConfigurationTask = defineTask('device-configuration', (args,
   kind: 'agent',
   title: `Phase 4: Device Capability Configuration - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile DevOps Engineer',
       task: 'Configure device capabilities for test execution',
@@ -1088,7 +1088,7 @@ export const authenticationTestsTask = defineTask('authentication-tests', (args,
   kind: 'agent',
   title: `Phase 5: Authentication Tests - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Automation Engineer',
       task: 'Implement authentication test scenarios for mobile app',
@@ -1156,7 +1156,7 @@ export const coreFeatureTestsTask = defineTask('core-feature-tests', (args, task
   kind: 'agent',
   title: `Phase 5: Core Feature Tests - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Automation Engineer',
       task: 'Implement core feature test scenarios',
@@ -1224,7 +1224,7 @@ export const gestureTestsTask = defineTask('gesture-tests', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 5: Gesture Tests - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Interaction Testing Specialist',
       task: 'Implement mobile gesture test scenarios',
@@ -1296,7 +1296,7 @@ export const deviceFeatureTestsTask = defineTask('device-feature-tests', (args, 
   kind: 'agent',
   title: `Phase 5: Device Feature Tests - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Device Testing Specialist',
       task: 'Implement device-specific feature tests',
@@ -1368,7 +1368,7 @@ export const testExecutionTask = defineTask('test-execution', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: Test Execution (${args.executionType}) - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Execution Engineer',
       task: `Execute mobile test suite on ${args.executionType === 'real-device' ? 'real devices' : 'emulators/simulators'}`,
@@ -1472,7 +1472,7 @@ export const debuggingAndFixesTask = defineTask('debugging-fixes', (args, taskCt
   kind: 'agent',
   title: `Phase 7: Test Debugging and Fixes - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Debugging Expert',
       task: 'Debug mobile test failures and implement fixes',
@@ -1558,7 +1558,7 @@ export const crossPlatformParityTask = defineTask('cross-platform-parity', (args
   kind: 'agent',
   title: `Phase 8: Cross-Platform Parity Validation - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Cross-Platform QA Analyst',
       task: 'Validate test and feature parity across iOS and Android',
@@ -1646,7 +1646,7 @@ export const gestureValidationTask = defineTask('gesture-validation', (args, tas
   kind: 'agent',
   title: `Phase 9: Gesture Validation - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Interaction QA Specialist',
       task: 'Validate mobile gesture coverage and accuracy',
@@ -1723,7 +1723,7 @@ export const deviceFeatureValidationTask = defineTask('device-feature-validation
   kind: 'agent',
   title: `Phase 10: Device Feature Validation - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Device Feature QA Specialist',
       task: 'Validate device-specific feature coverage',
@@ -1800,7 +1800,7 @@ export const stabilityImprovementsTask = defineTask('stability-improvements', (a
   kind: 'agent',
   title: `Phase 11: Mobile Test Stability Improvements - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile Test Stability Engineer',
       task: 'Eliminate flakiness and improve mobile test stability',
@@ -1877,7 +1877,7 @@ export const codeReviewTask = defineTask('code-review', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 14: Mobile Test Code Review - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Senior Mobile Test Automation Architect',
       task: 'Conduct code review of mobile test suite',
@@ -1951,7 +1951,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: `Phase 15: CI/CD Integration - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile DevOps Engineer',
       task: 'Configure CI/CD pipeline for mobile test automation',
@@ -2018,7 +2018,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: `Phase 16: Mobile Test Documentation - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Technical Documentation Specialist',
       task: 'Generate comprehensive mobile test documentation',
@@ -2076,7 +2076,7 @@ export const finalAssessmentTask = defineTask('final-assessment', (args, taskCtx
   kind: 'agent',
   title: `Phase 17: Final Mobile Test Assessment - ${args.appName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'mobile-testing-expert', // AG-011: Mobile Testing Expert Agent
     prompt: {
       role: 'Mobile QA Lead and Test Strategy Expert',
       task: 'Conduct final assessment of mobile test suite',

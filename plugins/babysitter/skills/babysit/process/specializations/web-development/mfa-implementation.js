@@ -139,7 +139,7 @@ export const documentationTask = defineTask('mfa-documentation', (args, taskCtx)
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: { role: 'Technical Writer', task: 'Generate MFA documentation', context: args,
       instructions: ['1. Create README', '2. Document setup flow', '3. Create user guides', '4. Document methods', '5. Create recovery guide', '6. Document integration', '7. Create testing guide', '8. Document security', '9. Create troubleshooting', '10. Generate examples'],
       outputFormat: 'JSON with documentation'

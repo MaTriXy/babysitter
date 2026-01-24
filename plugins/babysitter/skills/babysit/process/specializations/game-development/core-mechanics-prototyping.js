@@ -261,7 +261,7 @@ export const prototypePlanningTask = defineTask('prototype-planning', (args, tas
   kind: 'agent',
   title: `Phase 1: Prototype Planning - ${args.prototypeName}`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Lead Game Designer',
       task: 'Plan prototype scope and testing approach',
@@ -305,7 +305,7 @@ export const prototypeImplementationTask = defineTask('prototype-implementation'
   kind: 'agent',
   title: `Phase 2: Prototype Implementation - ${args.prototypeName} (Iteration ${args.iteration})`,
   agent: {
-    name: 'gameplay-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: {
       role: 'Gameplay Programmer',
       task: 'Implement playable prototype with core mechanics',
@@ -349,7 +349,7 @@ export const playtestSessionTask = defineTask('playtest-session', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Playtest Session - ${args.prototypeName} (Iteration ${args.iteration})`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: {
       role: 'Game UX Researcher',
       task: 'Conduct structured playtest session and gather feedback',
@@ -396,7 +396,7 @@ export const mechanicsRefinementTask = defineTask('mechanics-refinement', (args,
   kind: 'agent',
   title: `Phase 3: Mechanics Refinement - ${args.prototypeName} (Iteration ${args.iteration})`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Game Designer',
       task: 'Refine mechanics based on playtest feedback',
@@ -439,7 +439,7 @@ export const funFactorAssessmentTask = defineTask('fun-factor-assessment', (args
   kind: 'agent',
   title: `Phase 4: Fun Factor Assessment - ${args.prototypeName}`,
   agent: {
-    name: 'game-designer',
+    name: 'game-designer-agent',
     prompt: {
       role: 'Senior Game Designer',
       task: 'Assess overall fun factor and engagement potential',
@@ -485,7 +485,7 @@ export const pivotDecisionTask = defineTask('pivot-decision', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 5: Pivot or Proceed Decision - ${args.prototypeName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Executive Producer',
       task: 'Make pivot or proceed decision based on prototype results',
@@ -530,7 +530,7 @@ export const prototypeDocumentationTask = defineTask('prototype-documentation', 
   kind: 'agent',
   title: `Phase 6: Prototype Documentation - ${args.prototypeName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-documentation-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Create comprehensive prototype documentation',

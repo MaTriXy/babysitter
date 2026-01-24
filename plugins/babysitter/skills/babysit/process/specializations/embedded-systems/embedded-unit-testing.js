@@ -204,7 +204,7 @@ export const testEnvironmentSetupTask = defineTask('test-environment-setup', (ar
   kind: 'agent',
   title: `Phase 1: Test Environment - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Set up unit test environment',
@@ -245,7 +245,7 @@ export const hardwareMockCreationTask = defineTask('hardware-mock-creation', (ar
   kind: 'agent',
   title: `Phase 2: Hardware Mocks - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Create hardware abstraction mocks',
@@ -286,7 +286,7 @@ export const testCaseDesignTask = defineTask('test-case-design', (args, taskCtx)
   kind: 'agent',
   title: `Phase 3: Test Case Design - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Design test cases for modules',
@@ -327,7 +327,7 @@ export const testImplementationTask = defineTask('test-implementation', (args, t
   kind: 'agent',
   title: `Phase 4: Test Implementation - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Implement unit tests',
@@ -368,7 +368,7 @@ export const unitTestExecutionTask = defineTask('unit-test-execution', (args, ta
   kind: 'agent',
   title: `Phase 5: Test Execution - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Execute unit tests',
@@ -412,7 +412,7 @@ export const coverageAnalysisTask = defineTask('coverage-analysis', (args, taskC
   kind: 'agent',
   title: `Phase 6: Coverage Analysis - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Analyze code coverage',
@@ -455,7 +455,7 @@ export const testReportGenerationTask = defineTask('test-report-generation', (ar
   kind: 'agent',
   title: `Phase 7: Test Report - ${args.projectName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'embedded-test-engineer',
     prompt: {
       role: 'Embedded Test Engineer',
       task: 'Generate test report',

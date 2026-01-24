@@ -284,7 +284,7 @@ export const layoutDesignTask = defineTask('layout-design', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Layout Design - ${args.projectName}`,
   agent: {
-    name: 'tui-architect',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Dashboard Layout Designer',
       task: 'Design dashboard layout',
@@ -324,7 +324,7 @@ export const dataFetchingTask = defineTask('data-fetching', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 2: Data Fetching - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Data Integration Specialist',
       task: 'Implement data fetching/streaming',
@@ -363,7 +363,7 @@ export const chartComponentsTask = defineTask('chart-components', (args, taskCtx
   kind: 'agent',
   title: `Phase 3: Chart Components - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Chart Component Developer',
       task: 'Create chart components (line, bar, gauge)',
@@ -405,7 +405,7 @@ export const logViewerTask = defineTask('log-viewer', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Log Viewer - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Log Viewer Developer',
       task: 'Add log viewer component',
@@ -446,7 +446,7 @@ export const metricsDisplayTask = defineTask('metrics-display', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 5: Metrics Display - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Metrics Display Developer',
       task: 'Implement metrics display',
@@ -486,7 +486,7 @@ export const alertIndicatorsTask = defineTask('alert-indicators', (args, taskCtx
   kind: 'agent',
   title: `Phase 6: Alert Indicators - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Alert System Developer',
       task: 'Create alert indicators',
@@ -526,7 +526,7 @@ export const refreshControlsTask = defineTask('refresh-controls', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: Refresh Controls - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Refresh Controls Developer',
       task: 'Add refresh controls',
@@ -566,7 +566,7 @@ export const scrollableRegionsTask = defineTask('scrollable-regions', (args, tas
   kind: 'agent',
   title: `Phase 8: Scrollable Regions - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Scrolling Specialist',
       task: 'Implement scrollable regions',
@@ -605,7 +605,7 @@ export const keyboardShortcutsTask = defineTask('keyboard-shortcuts', (args, tas
   kind: 'agent',
   title: `Phase 9: Keyboard Shortcuts - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Keyboard Shortcut Designer',
       task: 'Create keyboard shortcuts',
@@ -646,7 +646,7 @@ export const helpOverlayTask = defineTask('help-overlay', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 10: Help Overlay - ${args.projectName}`,
   agent: {
-    name: 'tui-developer',
+    name: 'tui-component-architect',
     prompt: {
       role: 'TUI Help System Developer',
       task: 'Add help overlay',
@@ -687,7 +687,7 @@ export const performanceTestingTask = defineTask('performance-testing', (args, t
   kind: 'agent',
   title: `Phase 11: Performance Testing - ${args.projectName}`,
   agent: {
-    name: 'tui-qa-engineer',
+    name: 'tui-testing-architect',
     prompt: {
       role: 'TUI Performance Tester',
       task: 'Test performance with large data',
@@ -727,7 +727,7 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
   kind: 'agent',
   title: `Phase 12: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'cli-docs-writer',
     prompt: {
       role: 'TUI Dashboard Documentation Specialist',
       task: 'Generate documentation',

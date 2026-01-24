@@ -127,8 +127,9 @@ export async function process(inputs, ctx) {
 export const librarySelectionTask = defineTask('library-selection', (args, taskCtx) => ({
   kind: 'agent',
   title: `TLS Library Selection - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'security-architect',
+    name: 'network-security-expert',
     prompt: {
       role: 'Security Architect',
       task: 'Select and configure TLS library',
@@ -148,8 +149,9 @@ export const librarySelectionTask = defineTask('library-selection', (args, taskC
 export const certificateSetupTask = defineTask('certificate-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Setup - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'cert-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Engineer',
       task: 'Generate or configure certificates',
@@ -169,8 +171,9 @@ export const certificateSetupTask = defineTask('certificate-setup', (args, taskC
 export const tlsContextTask = defineTask('tls-context', (args, taskCtx) => ({
   kind: 'agent',
   title: `TLS Context - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'tls-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'TLS Implementation Engineer',
       task: 'Initialize TLS context',
@@ -190,8 +193,9 @@ export const tlsContextTask = defineTask('tls-context', (args, taskCtx) => ({
 export const handshakeTask = defineTask('handshake', (args, taskCtx) => ({
   kind: 'agent',
   title: `TLS Handshake - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'handshake-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'TLS Handshake Engineer',
       task: 'Implement TLS handshake handling',
@@ -211,8 +215,9 @@ export const handshakeTask = defineTask('handshake', (args, taskCtx) => ({
 export const socketWrappingTask = defineTask('socket-wrapping', (args, taskCtx) => ({
   kind: 'agent',
   title: `Socket Wrapping - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'socket-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'TLS Socket Engineer',
       task: 'Wrap socket operations with TLS',
@@ -232,8 +237,9 @@ export const socketWrappingTask = defineTask('socket-wrapping', (args, taskCtx) 
 export const cipherConfigTask = defineTask('cipher-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Cipher Configuration - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'cipher-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Cipher Suite Engineer',
       task: 'Configure cipher suites and protocols',
@@ -253,8 +259,9 @@ export const cipherConfigTask = defineTask('cipher-config', (args, taskCtx) => (
 export const certValidationTask = defineTask('cert-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Certificate Validation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'cert-validator',
+    name: 'network-security-expert',
     prompt: {
       role: 'Certificate Validation Engineer',
       task: 'Implement certificate validation',
@@ -274,8 +281,9 @@ export const certValidationTask = defineTask('cert-validation', (args, taskCtx) 
 export const sessionResumptionTask = defineTask('session-resumption', (args, taskCtx) => ({
   kind: 'agent',
   title: `Session Resumption - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'session-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'TLS Session Engineer',
       task: 'Implement session resumption support',
@@ -295,8 +303,9 @@ export const sessionResumptionTask = defineTask('session-resumption', (args, tas
 export const securityTestingTask = defineTask('security-testing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Security Testing - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'security-tester',
+    name: 'network-security-expert',
     prompt: {
       role: 'Security Testing Engineer',
       task: 'Conduct TLS security testing',
@@ -316,8 +325,9 @@ export const securityTestingTask = defineTask('security-testing', (args, taskCtx
 export const documentationTask = defineTask('documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Documentation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'technical-writer',
+    name: 'network-security-expert',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate TLS integration documentation',
@@ -337,8 +347,9 @@ export const documentationTask = defineTask('documentation', (args, taskCtx) => 
 export const validationTask = defineTask('validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Validation - ${args.projectName}`,
+  skill: { name: 'tls-security' },
   agent: {
-    name: 'qa-engineer',
+    name: 'network-security-expert',
     prompt: {
       role: 'QA Engineer',
       task: 'Validate TLS integration',

@@ -50,8 +50,9 @@ export async function process(inputs, ctx) {
 export const stateAnalysisTask = defineTask('state-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP State Analysis',
+  skills: ['dp-state-designer', 'dp-optimizer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Optimization Expert',
       task: 'Analyze current DP state for optimization opportunities',
@@ -72,8 +73,9 @@ export const stateAnalysisTask = defineTask('state-analysis', (args, taskCtx) =>
 export const spaceOptimizationTask = defineTask('space-optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP Space Optimization',
+  skills: ['dp-optimizer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Optimization Expert',
       task: 'Apply space optimization techniques',
@@ -94,8 +96,9 @@ export const spaceOptimizationTask = defineTask('space-optimization', (args, tas
 export const timeOptimizationTask = defineTask('time-optimization', (args, taskCtx) => ({
   kind: 'agent',
   title: 'DP Time Optimization',
+  skills: ['dp-optimizer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Optimization Expert',
       task: 'Apply time optimization techniques',
@@ -116,8 +119,9 @@ export const timeOptimizationTask = defineTask('time-optimization', (args, taskC
 export const finalStateDesignTask = defineTask('final-state-design', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Final DP State Design',
+  skills: ['dp-state-designer'],
   agent: {
-    name: 'general-purpose',
+    name: 'dp-specialist',
     prompt: {
       role: 'DP Optimization Expert',
       task: 'Create final optimized DP state design',

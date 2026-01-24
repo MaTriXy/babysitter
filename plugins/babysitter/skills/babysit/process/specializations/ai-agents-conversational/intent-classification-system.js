@@ -177,7 +177,7 @@ export const intentTaxonomyTask = defineTask('intent-taxonomy', (args, taskCtx) 
   kind: 'agent',
   title: `Design Intent Taxonomy - ${args.projectName}`,
   agent: {
-    name: 'nlu-architect',
+    name: 'nlu-specialist',  // AG-CI-003: Implements NLU pipelines with intent classification and slot filling
     prompt: {
       role: 'NLU Architect',
       task: 'Design intent taxonomy for classification',
@@ -213,10 +213,10 @@ export const intentTaxonomyTask = defineTask('intent-taxonomy', (args, taskCtx) 
 }));
 
 export const trainingDataCreationTask = defineTask('training-data-creation', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Create Training Data - ${args.projectName}`,
-  agent: {
-    name: 'data-engineer',
+  skill: {
+    name: 'intent-classifier-prompts',  // SK-CI-002: Intent classification prompt templates and few-shot examples
     prompt: {
       role: 'NLU Data Engineer',
       task: 'Create training dataset for intent classification',

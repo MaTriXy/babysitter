@@ -306,7 +306,7 @@ export const signingRequirementsTask = defineTask('signing-requirements', (args,
   kind: 'agent',
   title: `Phase 1: Signing Requirements - ${args.projectName}`,
   agent: {
-    name: 'security-architect',
+    name: 'desktop-security-auditor',
     prompt: {
       role: 'Desktop Security Architect',
       task: 'Analyze code signing requirements for desktop application',
@@ -346,8 +346,11 @@ export const signingRequirementsTask = defineTask('signing-requirements', (args,
 export const setupWindowsSigningTask = defineTask('setup-windows-signing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Windows Code Signing - ${args.projectName}`,
+  skill: {
+    name: 'windows-authenticode-signer',
+  },
   agent: {
-    name: 'windows-security-engineer',
+    name: 'windows-platform-expert',
     prompt: {
       role: 'Windows Security Engineer',
       task: 'Configure Windows Authenticode code signing',
@@ -388,8 +391,11 @@ export const setupWindowsSigningTask = defineTask('setup-windows-signing', (args
 export const setupMacosSigningTask = defineTask('setup-macos-signing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3a: macOS Code Signing - ${args.projectName}`,
+  skill: {
+    name: 'macos-codesign-workflow',
+  },
   agent: {
-    name: 'macos-security-engineer',
+    name: 'macos-platform-expert',
     prompt: {
       role: 'macOS Security Engineer',
       task: 'Configure macOS code signing with Developer ID',
@@ -429,8 +435,11 @@ export const setupMacosSigningTask = defineTask('setup-macos-signing', (args, ta
 export const setupMacosNotarizationTask = defineTask('setup-macos-notarization', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3b: macOS Notarization - ${args.projectName}`,
+  skill: {
+    name: 'macos-notarization-workflow',
+  },
   agent: {
-    name: 'macos-notarization-engineer',
+    name: 'code-signing-specialist',
     prompt: {
       role: 'macOS Notarization Engineer',
       task: 'Configure macOS notarization for Gatekeeper',
@@ -470,8 +479,11 @@ export const setupMacosNotarizationTask = defineTask('setup-macos-notarization',
 export const setupLinuxSigningTask = defineTask('setup-linux-signing', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Linux Package Signing - ${args.projectName}`,
+  skill: {
+    name: 'linux-gpg-signing',
+  },
   agent: {
-    name: 'linux-security-engineer',
+    name: 'linux-packaging-expert',
     prompt: {
       role: 'Linux Security Engineer',
       task: 'Configure Linux package signing with GPG',
@@ -632,8 +644,11 @@ export const generateSigningDocumentationTask = defineTask('generate-signing-doc
 export const validateSigningSetupTask = defineTask('validate-signing-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7b: Validate Signing Setup - ${args.projectName}`,
+  skill: {
+    name: 'ev-certificate-validator',
+  },
   agent: {
-    name: 'security-validator',
+    name: 'code-signing-specialist',
     prompt: {
       role: 'Security Setup Validator',
       task: 'Validate code signing configuration',

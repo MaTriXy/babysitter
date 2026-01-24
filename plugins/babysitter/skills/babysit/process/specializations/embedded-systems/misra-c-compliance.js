@@ -212,7 +212,7 @@ export const misraComplianceSetupTask = defineTask('misra-compliance-setup', (ar
   kind: 'agent',
   title: `Phase 1: Compliance Setup - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Set up MISRA compliance environment',
@@ -254,7 +254,7 @@ export const misraStaticAnalysisTask = defineTask('misra-static-analysis', (args
   kind: 'agent',
   title: `Phase 2: Static Analysis - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Run MISRA static analysis',
@@ -296,7 +296,7 @@ export const ruleViolationAnalysisTask = defineTask('rule-violation-analysis', (
   kind: 'agent',
   title: `Phase 3: Violation Analysis - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Analyze rule violations',
@@ -338,7 +338,7 @@ export const deviationHandlingTask = defineTask('deviation-handling', (args, tas
   kind: 'agent',
   title: `Phase 4: Deviation Handling - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Handle MISRA deviations',
@@ -379,7 +379,7 @@ export const misraRemediationTask = defineTask('misra-remediation', (args, taskC
   kind: 'agent',
   title: `Phase 5: Remediation Guidance - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Generate remediation guidance',
@@ -421,7 +421,7 @@ export const complianceMatrixTask = defineTask('compliance-matrix', (args, taskC
   kind: 'agent',
   title: `Phase 6: Compliance Matrix - ${args.projectName}`,
   agent: {
-    name: 'compliance-engineer',
+    name: 'safety-compliance-expert',
     prompt: {
       role: 'Safety Compliance Engineer',
       task: 'Generate compliance matrix',
@@ -464,7 +464,7 @@ export const misraComplianceReportTask = defineTask('misra-compliance-report', (
   kind: 'agent',
   title: `Phase 7: Compliance Report - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate MISRA compliance report',

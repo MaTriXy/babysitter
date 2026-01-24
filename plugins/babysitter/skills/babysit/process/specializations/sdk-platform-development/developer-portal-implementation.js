@@ -205,7 +205,7 @@ export const portalArchitectureTask = defineTask('portal-architecture', (args, t
   kind: 'agent',
   title: `Phase 1: Portal Architecture - ${args.projectName}`,
   agent: {
-    name: 'portal-architect',
+    name: 'platform-architect',
     prompt: {
       role: 'Developer Portal Architect',
       task: 'Design developer portal architecture',
@@ -252,7 +252,7 @@ export const serviceCatalogTask = defineTask('service-catalog', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Service Catalog - ${args.projectName}`,
   agent: {
-    name: 'catalog-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Service Catalog Engineer',
       task: 'Implement service catalog and API discovery',
@@ -297,7 +297,7 @@ export const credentialManagementTask = defineTask('credential-management', (arg
   kind: 'agent',
   title: `Phase 3: Credential Management - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Create self-service credential management',
@@ -342,7 +342,7 @@ export const apiConsoleTask = defineTask('api-console', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: API Console - ${args.projectName}`,
   agent: {
-    name: 'frontend-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Frontend Engineer',
       task: 'Build interactive API console',
@@ -387,7 +387,7 @@ export const analyticsDashboardTask = defineTask('analytics-dashboard', (args, t
   kind: 'agent',
   title: `Phase 5: Analytics Dashboard - ${args.projectName}`,
   agent: {
-    name: 'data-engineer',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Data Engineer',
       task: 'Set up usage analytics dashboard',
@@ -432,7 +432,7 @@ export const supportIntegrationTask = defineTask('support-integration', (args, t
   kind: 'agent',
   title: `Phase 6: Support Integration - ${args.projectName}`,
   agent: {
-    name: 'support-engineer',
+    name: 'dx-content-writer',
     prompt: {
       role: 'Support Engineer',
       task: 'Integrate support and feedback mechanisms',
@@ -477,7 +477,7 @@ export const portalAuthTask = defineTask('portal-auth', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Portal Authentication - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Configure portal authentication and authorization',
@@ -522,7 +522,7 @@ export const portalDocumentationTask = defineTask('portal-documentation', (args,
   kind: 'agent',
   title: `Phase 8: Portal Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate portal documentation',

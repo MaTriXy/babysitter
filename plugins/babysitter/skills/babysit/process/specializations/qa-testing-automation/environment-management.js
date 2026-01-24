@@ -676,7 +676,7 @@ export const environmentRequirementsTask = defineTask('environment-requirements'
   kind: 'agent',
   title: `Define environment requirements - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'QA Infrastructure Engineer with expertise in test environment management',
       task: 'Define comprehensive environment requirements for test automation',
@@ -767,7 +767,7 @@ export const platformAssessmentTask = defineTask('platform-assessment', (args, t
   kind: 'agent',
   title: `Assess infrastructure platform - ${args.infrastructurePlatform}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Cloud Infrastructure Architect',
       task: 'Assess infrastructure platform capabilities and suitability',
@@ -833,7 +833,7 @@ export const architectureDesignTask = defineTask('architecture-design', (args, t
   kind: 'agent',
   title: `Design environment architecture - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Solutions Architect with DevOps expertise',
       task: 'Design comprehensive test environment architecture',
@@ -890,7 +890,7 @@ export const iacTemplateGenerationTask = defineTask('iac-template-generation', (
   kind: 'agent',
   title: `Generate IaC templates - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer specializing in Infrastructure as Code',
       task: 'Generate Infrastructure as Code templates for all environments',
@@ -939,7 +939,7 @@ export const networkConfigurationTask = defineTask('network-configuration', (arg
   kind: 'agent',
   title: `Configure network infrastructure - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Network Engineer with cloud networking expertise',
       task: 'Configure network infrastructure for test environments',
@@ -989,7 +989,7 @@ export const securityConfigurationTask = defineTask('security-configuration', (a
   kind: 'agent',
   title: `Configure security controls - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Security Engineer with cloud security expertise',
       task: 'Configure security controls for test environments',
@@ -1040,7 +1040,7 @@ export const iacValidationTask = defineTask('iac-validation', (args, taskCtx) =>
   kind: 'agent',
   title: `Validate IaC templates - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer with IaC expertise',
       task: 'Validate Infrastructure as Code templates',
@@ -1090,7 +1090,7 @@ export const dockerConfigurationTask = defineTask('docker-configuration', (args,
   kind: 'agent',
   title: `Create Docker configurations - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer with containerization expertise',
       task: 'Create Docker configurations for all application services',
@@ -1136,7 +1136,7 @@ export const dockerComposeSetupTask = defineTask('docker-compose-setup', (args, 
   kind: 'agent',
   title: `Setup Docker Compose - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Create Docker Compose configurations for local and CI environments',
@@ -1183,7 +1183,7 @@ export const containerRegistrySetupTask = defineTask('container-registry-setup',
   kind: 'agent',
   title: `Setup container registry - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Setup and configure container registry',
@@ -1231,7 +1231,7 @@ export const containerImageBuildTask = defineTask('container-image-build', (args
   kind: 'agent',
   title: `Build and push container images - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Build container images and push to registry',
@@ -1278,7 +1278,7 @@ export const environmentProvisioningTask = defineTask('environment-provisioning'
   kind: 'agent',
   title: `Provision environment - ${args.environmentName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer with cloud provisioning expertise',
       task: 'Provision test environment using IaC templates',
@@ -1329,7 +1329,7 @@ export const environmentHealthCheckTask = defineTask('environment-health-check',
   kind: 'agent',
   title: `Health check - ${args.environmentName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'SRE with monitoring expertise',
       task: 'Perform comprehensive health check on provisioned environment',
@@ -1377,7 +1377,7 @@ export const testDataStrategyTask = defineTask('test-data-strategy', (args, task
   kind: 'agent',
   title: `Define test data strategy - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'QA Engineer with test data management expertise',
       task: 'Define comprehensive test data strategy',
@@ -1424,7 +1424,7 @@ export const dataGenerationScriptsTask = defineTask('data-generation-scripts', (
   kind: 'agent',
   title: `Create data generation scripts - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'QA Automation Engineer',
       task: 'Create test data generation scripts',
@@ -1470,7 +1470,7 @@ export const dataSeedingAutomationTask = defineTask('data-seeding-automation', (
   kind: 'agent',
   title: `Automate data seeding - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'QA Automation Engineer',
       task: 'Automate test data seeding for all environments',
@@ -1517,7 +1517,7 @@ export const dependencyAnalysisTask = defineTask('dependency-analysis', (args, t
   kind: 'agent',
   title: `Analyze external dependencies - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Software Architect',
       task: 'Analyze external dependencies that need mocking',
@@ -1563,7 +1563,7 @@ export const mockServiceImplementationTask = defineTask('mock-service-implementa
   kind: 'agent',
   title: `Implement mock services - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement mock services for external dependencies',
@@ -1609,7 +1609,7 @@ export const mockServiceDeploymentTask = defineTask('mock-service-deployment', (
   kind: 'agent',
   title: `Deploy mock services - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Deploy mock services to test environments',
@@ -1656,7 +1656,7 @@ export const monitoringConfigurationTask = defineTask('monitoring-configuration'
   kind: 'agent',
   title: `Configure monitoring - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'SRE with monitoring and observability expertise',
       task: 'Configure comprehensive monitoring for test environments',
@@ -1704,7 +1704,7 @@ export const loggingSetupTask = defineTask('logging-setup', (args, taskCtx) => (
   kind: 'agent',
   title: `Setup centralized logging - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer with logging expertise',
       task: 'Setup centralized logging for test environments',
@@ -1752,7 +1752,7 @@ export const alertingConfigurationTask = defineTask('alerting-configuration', (a
   kind: 'agent',
   title: `Configure alerting - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'SRE',
       task: 'Configure alerting for test environments',
@@ -1799,7 +1799,7 @@ export const monitoringValidationTask = defineTask('monitoring-validation', (arg
   kind: 'agent',
   title: `Validate monitoring setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'SRE',
       task: 'Validate monitoring and observability setup',
@@ -1849,7 +1849,7 @@ export const accessControlSetupTask = defineTask('access-control-setup', (args, 
   kind: 'agent',
   title: `Setup access control - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Security Engineer',
       task: 'Setup access control for test environments',
@@ -1897,7 +1897,7 @@ export const securityHardeningTask = defineTask('security-hardening', (args, tas
   kind: 'agent',
   title: `Security hardening - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Security Engineer',
       task: 'Perform security hardening on test environments',
@@ -1944,7 +1944,7 @@ export const securityAuditTask = defineTask('security-audit', (args, taskCtx) =>
   kind: 'agent',
   title: `Security audit - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Security Auditor',
       task: 'Perform security audit on test environments',
@@ -1995,7 +1995,7 @@ export const environmentParityCheckTask = defineTask('environment-parity-check',
   kind: 'agent',
   title: `Check environment parity - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Validate parity across test environments',
@@ -2042,7 +2042,7 @@ export const configurationDriftDetectionTask = defineTask('configuration-drift-d
   kind: 'agent',
   title: `Detect configuration drift - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Detect configuration drift from IaC templates',
@@ -2090,7 +2090,7 @@ export const provisioningScriptsTask = defineTask('provisioning-scripts', (args,
   kind: 'agent',
   title: `Create provisioning scripts - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Create automated provisioning scripts',
@@ -2136,7 +2136,7 @@ export const environmentManagementScriptsTask = defineTask('environment-manageme
   kind: 'agent',
   title: `Create management scripts - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Create environment lifecycle management scripts',
@@ -2182,7 +2182,7 @@ export const documentationGenerationTask = defineTask('documentation-generation'
   kind: 'agent',
   title: `Generate documentation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Technical Writer and DevOps Engineer',
       task: 'Generate comprehensive environment documentation',
@@ -2232,7 +2232,7 @@ export const runbookCreationTask = defineTask('runbook-creation', (args, taskCtx
   kind: 'agent',
   title: `Create operational runbook - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'SRE and Technical Writer',
       task: 'Create operational runbook for test environments',
@@ -2279,7 +2279,7 @@ export const endToEndEnvironmentTestTask = defineTask('e2e-environment-test', (a
   kind: 'agent',
   title: `E2E environment test - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'QA Engineer',
       task: 'Perform end-to-end testing of environment setup',
@@ -2327,7 +2327,7 @@ export const performanceBaselineTask = defineTask('performance-baseline', (args,
   kind: 'agent',
   title: `Establish performance baseline - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Performance Engineer',
       task: 'Establish performance baseline for environments',
@@ -2374,7 +2374,7 @@ export const costAnalysisTask = defineTask('cost-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Analyze infrastructure costs - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Cloud Financial Analyst and DevOps Engineer',
       task: 'Analyze and optimize infrastructure costs',
@@ -2422,7 +2422,7 @@ export const finalReportGenerationTask = defineTask('final-report-generation', (
   kind: 'agent',
   title: `Generate final report - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'test-environment-expert', // AG-012: Test Environment Expert Agent
     prompt: {
       role: 'Technical Lead and Project Manager',
       task: 'Generate comprehensive final report',

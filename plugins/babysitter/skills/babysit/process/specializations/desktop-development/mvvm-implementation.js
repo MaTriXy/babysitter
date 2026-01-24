@@ -108,8 +108,11 @@ export const mvvmRequirementsTask = defineTask('mvvm-requirements', (args, taskC
 export const setupMvvmBaseTask = defineTask('setup-mvvm-base', (args, taskCtx) => ({
   kind: 'agent',
   title: `MVVM Base Setup - ${args.projectName}`,
+  skill: {
+    name: 'mobx-react-setup',
+  },
   agent: {
-    name: 'mvvm-setup-developer',
+    name: 'desktop-architecture-specialist',
     prompt: { role: 'MVVM Setup Developer', task: 'Set up MVVM base infrastructure', context: args, instructions: ['1. Install state management library', '2. Create project structure', '3. Set up DI container', '4. Configure store/root', '5. Create service locator', '6. Set up type definitions', '7. Configure decorators', '8. Generate base configuration'] },
     outputSchema: { type: 'object', required: ['basePath', 'artifacts'], properties: { basePath: { type: 'string' }, configPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -132,8 +135,11 @@ export const createViewModelBaseTask = defineTask('create-viewmodel-base', (args
 export const implementDataBindingTask = defineTask('implement-data-binding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Data Binding - ${args.projectName}`,
+  skill: {
+    name: 'observable-state-manager',
+  },
   agent: {
-    name: 'binding-developer',
+    name: 'desktop-architecture-specialist',
     prompt: { role: 'Data Binding Developer', task: 'Implement data binding system', context: args, instructions: ['1. Implement one-way binding', '2. Implement two-way binding', '3. Add binding helpers', '4. Create binding decorators', '5. Handle collection binding', '6. Add binding expressions', '7. Handle binding errors', '8. Generate binding configuration'] },
     outputSchema: { type: 'object', required: ['bindingTypes', 'artifacts'], properties: { bindingTypes: { type: 'array' }, helperPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },

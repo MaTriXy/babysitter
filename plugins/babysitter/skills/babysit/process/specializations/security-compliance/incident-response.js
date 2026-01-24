@@ -734,7 +734,7 @@ export const initialTriageTask = defineTask('initial-triage', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 1: Initial Triage - ${args.incidentId}`,
   agent: {
-    name: 'general-purpose',
+    name: 'incident-triage-agent',
     prompt: {
       role: 'Security Incident Response Analyst',
       task: 'Perform initial triage of security incident',
@@ -792,7 +792,7 @@ export const classificationTask = defineTask('classification', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 2: Incident Classification - ${args.incidentId}`,
   agent: {
-    name: 'general-purpose',
+    name: 'incident-triage-agent',
     prompt: {
       role: 'Security Classification Specialist',
       task: 'Classify and categorize security incident',
@@ -1008,7 +1008,7 @@ export const forensicsCollectionTask = defineTask('forensics-collection', (args,
   kind: 'agent',
   title: `Phase 5: Evidence Collection and Digital Forensics - ${args.incidentId}`,
   agent: {
-    name: 'general-purpose',
+    name: 'forensic-analysis-agent',
     prompt: {
       role: 'Digital Forensics Specialist',
       task: 'Collect and preserve digital evidence for investigation and potential legal proceedings',
@@ -1161,7 +1161,7 @@ export const threatIntelligenceTask = defineTask('threat-intelligence', (args, t
   kind: 'agent',
   title: `Phase 7: Threat Intelligence Analysis - ${args.incidentId}`,
   agent: {
-    name: 'general-purpose',
+    name: 'threat-intelligence-agent',
     prompt: {
       role: 'Threat Intelligence Analyst',
       task: 'Analyze threat intelligence and identify indicators of compromise',

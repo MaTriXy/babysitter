@@ -174,7 +174,7 @@ export const scenarioDefinitionTask = defineTask('scenario-definition', (args, t
   kind: 'agent',
   title: `Define Scenarios - ${args.datasetName}`,
   agent: {
-    name: 'scenario-designer',
+    name: 'synthetic-data-generator',  // AG-DOM-004: Creates synthetic conversation training data
     prompt: {
       role: 'Scenario Designer',
       task: 'Define conversation generation scenarios',

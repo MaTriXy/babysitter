@@ -113,7 +113,7 @@ export const sliceScopeTask = defineTask('slice-scope', (args, taskCtx) => ({
   kind: 'agent',
   title: `Slice Scope Definition - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: {
       role: 'Producer',
       task: 'Define vertical slice scope and requirements',
@@ -130,7 +130,7 @@ export const sliceSystemsTask = defineTask('slice-systems', (args, taskCtx) => (
   kind: 'agent',
   title: `Systems Implementation - ${args.projectName}`,
   agent: {
-    name: 'gameplay-programmer',
+    name: 'gameplay-programmer-agent',
     prompt: { role: 'Lead Programmer', task: 'Implement all systems for vertical slice', context: args, instructions: ['1. Implement core gameplay systems', '2. Integrate all required mechanics', '3. Add polish and juice', '4. Verify system interactions'] },
     outputSchema: { type: 'object', required: ['systemsImplemented', 'integrationStatus', 'artifacts'], properties: { systemsImplemented: { type: 'array' }, integrationStatus: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -142,7 +142,7 @@ export const sliceContentTask = defineTask('slice-content', (args, taskCtx) => (
   kind: 'agent',
   title: `Content Creation - ${args.projectName}`,
   agent: {
-    name: 'level-designer',
+    name: 'level-designer-agent',
     prompt: { role: 'Content Lead', task: 'Create content for vertical slice', context: args, instructions: ['1. Build slice level/area', '2. Place gameplay elements', '3. Implement encounters', '4. Add narrative content'] },
     outputSchema: { type: 'object', required: ['contentCreated', 'artifacts'], properties: { contentCreated: { type: 'array' }, levelPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -154,7 +154,7 @@ export const sliceArtPolishTask = defineTask('slice-art-polish', (args, taskCtx)
   kind: 'agent',
   title: `Art Polish - ${args.projectName}`,
   agent: {
-    name: 'art-director',
+    name: 'art-director-agent',
     prompt: { role: 'Art Director', task: 'Polish art to final quality', context: args, instructions: ['1. Replace placeholder art', '2. Add VFX and particles', '3. Polish lighting', '4. Verify quality bar'] },
     outputSchema: { type: 'object', required: ['artAssetsPolished', 'qualityVerified', 'artifacts'], properties: { artAssetsPolished: { type: 'number' }, qualityVerified: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -166,7 +166,7 @@ export const sliceAudioTask = defineTask('slice-audio', (args, taskCtx) => ({
   kind: 'agent',
   title: `Audio Integration - ${args.projectName}`,
   agent: {
-    name: 'audio-designer',
+    name: 'audio-designer-agent',
     prompt: { role: 'Audio Lead', task: 'Integrate final audio', context: args, instructions: ['1. Implement sound effects', '2. Add music and ambience', '3. Mix audio levels', '4. Add voice if applicable'] },
     outputSchema: { type: 'object', required: ['audioAssetsIntegrated', 'mixComplete', 'artifacts'], properties: { audioAssetsIntegrated: { type: 'number' }, mixComplete: { type: 'boolean' }, artifacts: { type: 'array' } } }
   },
@@ -178,7 +178,7 @@ export const slicePlaytestTask = defineTask('slice-playtest', (args, taskCtx) =>
   kind: 'agent',
   title: `Slice Playtesting - ${args.projectName}`,
   agent: {
-    name: 'ux-researcher',
+    name: 'playtest-coordinator-agent',
     prompt: { role: 'UX Researcher', task: 'Conduct vertical slice playtesting', context: args, instructions: ['1. Run playtest sessions', '2. Gather quantitative metrics', '3. Collect qualitative feedback', '4. Assess quality bar'] },
     outputSchema: { type: 'object', required: ['satisfactionScore', 'qualityBarMet', 'feedback', 'artifacts'], properties: { satisfactionScore: { type: 'number' }, qualityBarMet: { type: 'boolean' }, feedback: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -190,7 +190,7 @@ export const slicePolishTask = defineTask('slice-polish', (args, taskCtx) => ({
   kind: 'agent',
   title: `Final Polish - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: { role: 'Producer', task: 'Final polish and iteration', context: args, instructions: ['1. Address playtest feedback', '2. Bug fix and polish', '3. Verify quality bar', '4. Create final build'] },
     outputSchema: { type: 'object', required: ['qualityScore', 'qualityBarMet', 'buildPath', 'artifacts'], properties: { qualityScore: { type: 'number' }, qualityBarMet: { type: 'boolean' }, buildPath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -202,7 +202,7 @@ export const sliceStakeholderReviewTask = defineTask('slice-stakeholder-review',
   kind: 'agent',
   title: `Stakeholder Review - ${args.projectName}`,
   agent: {
-    name: 'producer',
+    name: 'game-producer-agent',
     prompt: { role: 'Executive Producer', task: 'Conduct stakeholder review', context: args, instructions: ['1. Present vertical slice', '2. Gather stakeholder feedback', '3. Document approval status', '4. List recommendations for production'] },
     outputSchema: { type: 'object', required: ['approved', 'recommendations', 'artifacts'], properties: { approved: { type: 'boolean' }, feedback: { type: 'array' }, recommendations: { type: 'array' }, artifacts: { type: 'array' } } }
   },

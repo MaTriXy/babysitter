@@ -719,7 +719,7 @@ export const apiDiscoveryTask = defineTask('api-discovery', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: API Discovery and Documentation Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Senior API Test Architect and Integration Specialist',
       task: 'Discover and analyze API endpoints, methods, and documentation',
@@ -815,7 +815,7 @@ export const schemaExtractionTask = defineTask('schema-extraction', (args, taskC
   kind: 'agent',
   title: `Phase 2: Schema Validation and Contract Definition - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Schema Specialist and Contract Testing Expert',
       task: 'Extract and define API schemas for request/response validation',
@@ -889,7 +889,7 @@ export const apiTestFrameworkSetupTask = defineTask('api-test-framework-setup', 
   kind: 'agent',
   title: `Phase 3: API Test Framework Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Automation Framework Architect',
       task: 'Set up comprehensive API test automation framework',
@@ -966,7 +966,7 @@ export const apiTestDataCreationTask = defineTask('api-test-data-creation', (arg
   kind: 'agent',
   title: `Phase 4: API Test Data Creation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Data Management Specialist',
       task: 'Create comprehensive test data and fixtures for API testing',
@@ -1048,7 +1048,7 @@ export const functionalTestImplementationTask = defineTask('functional-test-impl
   kind: 'agent',
   title: `Phase 5: Functional Tests - ${args.category} - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Test Automation Engineer',
       task: `Implement functional API tests for ${args.category} endpoints`,
@@ -1113,7 +1113,7 @@ export const contractTestImplementationTask = defineTask('contract-test-implemen
   kind: 'agent',
   title: `Phase 6: Contract Testing Implementation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Contract Testing Specialist',
       task: 'Implement consumer-driven contract tests using Pact or similar',
@@ -1177,7 +1177,7 @@ export const apiTestExecutionTask = defineTask('api-test-execution', (args, task
   kind: 'agent',
   title: `API Test Execution - ${args.executionType} - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Test Execution Engineer',
       task: 'Execute API test suite and analyze results',
@@ -1241,7 +1241,7 @@ export const apiTestDebuggingTask = defineTask('api-test-debugging', (args, task
   kind: 'agent',
   title: `Phase 8: API Test Debugging - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Test Debugging Expert',
       task: 'Debug API test failures and implement fixes',
@@ -1313,7 +1313,7 @@ export const schemaValidationTestTask = defineTask('schema-validation-test', (ar
   kind: 'agent',
   title: `Phase 9: Schema Validation Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Schema Validation Specialist',
       task: 'Implement comprehensive schema validation tests',
@@ -1370,7 +1370,7 @@ export const apiPerformanceTestTask = defineTask('api-performance-test', (args, 
   kind: 'agent',
   title: `Phase 10: API Performance Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Performance Testing Engineer',
       task: 'Execute API performance and load tests',
@@ -1445,7 +1445,7 @@ export const apiSecurityTestTask = defineTask('api-security-test', (args, taskCt
   kind: 'agent',
   title: `Phase 11: API Security Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Security Testing Specialist',
       task: 'Execute comprehensive API security tests and vulnerability scans',
@@ -1515,7 +1515,7 @@ export const negativeTestImplementationTask = defineTask('negative-test-implemen
   kind: 'agent',
   title: `Phase 12: Negative Testing - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Test Engineer specializing in negative testing',
       task: 'Implement comprehensive negative tests and error handling validation',
@@ -1576,7 +1576,7 @@ export const apiCoverageAnalysisTask = defineTask('api-coverage-analysis', (args
   kind: 'agent',
   title: `Phase 14: API Coverage Analysis - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'QA Coverage Analyst',
       task: 'Analyze API test coverage across all test types',
@@ -1675,7 +1675,7 @@ export const mockServerSetupTask = defineTask('mock-server-setup', (args, taskCt
   kind: 'agent',
   title: `Phase 15: Mock Server Setup - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'API Mocking Specialist',
       task: 'Set up API mock server for testing and development',
@@ -1727,7 +1727,7 @@ export const apiTestDocumentationTask = defineTask('api-test-documentation', (ar
   kind: 'agent',
   title: `Phase 16: API Test Documentation - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'Technical Documentation Writer',
       task: 'Generate comprehensive API test suite documentation',
@@ -1774,7 +1774,7 @@ export const apiTestCicdIntegrationTask = defineTask('api-test-cicd-integration'
   kind: 'agent',
   title: `Phase 17: CI/CD Integration - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Configure CI/CD pipeline for API test automation',
@@ -1824,7 +1824,7 @@ export const apiFinalAssessmentTask = defineTask('api-final-assessment', (args, 
   kind: 'agent',
   title: `Phase 18: Final Assessment - ${args.projectName}`,
   agent: {
-    name: 'general-purpose',
+    name: 'api-testing-expert', // AG-003: API Testing Expert Agent
     prompt: {
       role: 'QA Lead and API Testing Expert',
       task: 'Conduct final assessment of API test suite',

@@ -441,7 +441,7 @@ export const charterCreationTask = defineTask('charter-creation', (args, taskCtx
   kind: 'agent',
   title: 'Phase 1: Test Charter Creation',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Senior QA Analyst and Exploratory Testing Expert',
       task: 'Create comprehensive test charters for exploratory testing sessions',
@@ -517,7 +517,7 @@ export const sessionPlanningTask = defineTask('session-planning', (args, taskCtx
   kind: 'agent',
   title: 'Phase 2: Session Planning and Scheduling',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Test Coordinator and Session Planning Specialist',
       task: 'Plan and schedule exploratory testing sessions across team members',
@@ -584,7 +584,7 @@ export const testingTechniquesTrainingTask = defineTask('testing-techniques-trai
   kind: 'agent',
   title: 'Phase 3: Testing Techniques Training',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Testing Coach and Training Specialist',
       task: 'Train team on exploratory testing techniques and heuristics',
@@ -655,7 +655,7 @@ export const noteTemplatesCreationTask = defineTask('note-templates-creation', (
   kind: 'agent',
   title: 'Phase 4: Session Note-Taking Templates Creation',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Documentation Specialist and Testing Process Designer',
       task: 'Create comprehensive session note-taking templates for exploratory testing',
@@ -716,7 +716,7 @@ export const sessionExecutionTask = defineTask('session-execution', (args, taskC
   kind: 'agent',
   title: 'Phase 5: Exploratory Testing Session Execution',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'QA Engineer and Exploratory Testing Practitioner',
       task: 'Conduct time-boxed exploratory testing sessions following charters',
@@ -799,7 +799,7 @@ export const findingsDocumentationTask = defineTask('findings-documentation', (a
   kind: 'agent',
   title: 'Phase 6: Findings Documentation and Bug Logging',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'QA Lead and Defect Management Specialist',
       task: 'Document and log all findings from exploratory testing sessions',
@@ -897,7 +897,7 @@ export const debriefSessionsTask = defineTask('debrief-sessions', (args, taskCtx
   kind: 'agent',
   title: 'Phase 7: Debrief Sessions and Knowledge Sharing',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Test Lead and Facilitation Expert',
       task: 'Conduct debrief sessions to review findings and share knowledge',
@@ -983,7 +983,7 @@ export const coverageTrackingTask = defineTask('coverage-tracking', (args, taskC
   kind: 'agent',
   title: 'Phase 8: Exploratory Testing Coverage Tracking',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'Test Coverage Analyst',
       task: 'Track and visualize exploratory testing coverage across application features',
@@ -1063,7 +1063,7 @@ export const finalAssessmentTask = defineTask('final-assessment', (args, taskCtx
   kind: 'agent',
   title: 'Phase 9: Final Framework Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'exploratory-testing-expert', // AG-009: Exploratory Testing Expert Agent
     prompt: {
       role: 'QA Director and Process Assessment Expert',
       task: 'Conduct final assessment of exploratory testing framework effectiveness',

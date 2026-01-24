@@ -229,7 +229,7 @@ export const projectSetupTask = defineTask('t3-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: T3 Stack Setup - ${args.projectName}`,
   agent: {
-    name: 't3-developer',
+    name: 'nextjs-developer-agent',
     prompt: {
       role: 'T3 Stack Developer',
       task: 'Set up T3 Stack project',
@@ -266,10 +266,10 @@ export const projectSetupTask = defineTask('t3-setup', (args, taskCtx) => ({
 }));
 
 export const prismaSetupTask = defineTask('prisma-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: Prisma Setup - ${args.projectName}`,
-  agent: {
-    name: 'prisma-specialist',
+  skill: {
+    name: 'prisma-skill',
     prompt: {
       role: 'Prisma Specialist',
       task: 'Set up Prisma with type-safe database access',
@@ -307,10 +307,10 @@ export const prismaSetupTask = defineTask('prisma-setup', (args, taskCtx) => ({
 }));
 
 export const trpcSetupTask = defineTask('trpc-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: tRPC Setup - ${args.projectName}`,
-  agent: {
-    name: 'trpc-specialist',
+  skill: {
+    name: 'trpc-skill',
     prompt: {
       role: 'tRPC Specialist',
       task: 'Configure tRPC for type-safe APIs',
@@ -348,10 +348,10 @@ export const trpcSetupTask = defineTask('trpc-setup', (args, taskCtx) => ({
 }));
 
 export const authSetupTask = defineTask('nextauth-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 4: NextAuth Setup - ${args.projectName}`,
-  agent: {
-    name: 'auth-specialist',
+  skill: {
+    name: 'nextauth-skill',
     prompt: {
       role: 'NextAuth Specialist',
       task: 'Set up NextAuth.js authentication',
@@ -473,7 +473,7 @@ export const componentsSetupTask = defineTask('t3-components', (args, taskCtx) =
   kind: 'agent',
   title: `Phase 7: Components - ${args.projectName}`,
   agent: {
-    name: 'react-component-developer',
+    name: 'component-developer-agent',
     prompt: {
       role: 'React Component Developer',
       task: 'Build type-safe React components',
@@ -593,7 +593,7 @@ export const documentationTask = defineTask('t3-documentation', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 10: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate T3 Stack documentation',

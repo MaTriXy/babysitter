@@ -223,7 +223,7 @@ export const otaRequirementsTask = defineTask('ota-requirements', (args, taskCtx
   kind: 'agent',
   title: `Phase 1: OTA Requirements - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Analyze OTA update requirements',
@@ -264,7 +264,7 @@ export const partitionLayoutDesignTask = defineTask('partition-layout-design', (
   kind: 'agent',
   title: `Phase 2: Partition Layout - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design partition layout',
@@ -306,7 +306,7 @@ export const updateProtocolDesignTask = defineTask('update-protocol-design', (ar
   kind: 'agent',
   title: `Phase 3: Update Protocol - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design update protocol',
@@ -348,7 +348,7 @@ export const downloadManagerDesignTask = defineTask('download-manager-design', (
   kind: 'agent',
   title: `Phase 4: Download Manager - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design download manager',
@@ -390,7 +390,7 @@ export const updateVerificationDesignTask = defineTask('update-verification-desi
   kind: 'agent',
   title: `Phase 5: Update Verification - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design update verification',
@@ -432,7 +432,7 @@ export const rollbackMechanismDesignTask = defineTask('rollback-mechanism-design
   kind: 'agent',
   title: `Phase 6: Rollback Mechanism - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Design rollback mechanism',
@@ -474,7 +474,7 @@ export const updateFlowImplementationTask = defineTask('update-flow-implementati
   kind: 'agent',
   title: `Phase 7: Update Flow - ${args.projectName}`,
   agent: {
-    name: 'embedded-engineer',
+    name: 'comm-protocol-expert',
     prompt: {
       role: 'Embedded Systems Engineer',
       task: 'Implement update flow',
@@ -516,7 +516,7 @@ export const otaTestingDocumentationTask = defineTask('ota-testing-documentation
   kind: 'agent',
   title: `Phase 8: Testing & Docs - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'embedded-tech-writer',
     prompt: {
       role: 'Technical Writer',
       task: 'Create OTA testing and documentation',

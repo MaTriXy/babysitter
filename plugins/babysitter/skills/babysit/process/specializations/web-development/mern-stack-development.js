@@ -249,7 +249,7 @@ export const projectSetupTask = defineTask('mern-project-setup', (args, taskCtx)
   kind: 'agent',
   title: `Phase 1: MERN Project Setup - ${args.projectName}`,
   agent: {
-    name: 'fullstack-developer',
+    name: 'fullstack-architect-agent',
     prompt: {
       role: 'Full-Stack Developer',
       task: 'Set up MERN monorepo structure',
@@ -286,10 +286,10 @@ export const projectSetupTask = defineTask('mern-project-setup', (args, taskCtx)
 }));
 
 export const backendSetupTask = defineTask('express-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 2: Express Backend Setup - ${args.projectName}`,
-  agent: {
-    name: 'nodejs-developer',
+  skill: {
+    name: 'express-skill',
     prompt: {
       role: 'Node.js Backend Developer',
       task: 'Set up Express.js backend',
@@ -327,10 +327,10 @@ export const backendSetupTask = defineTask('express-setup', (args, taskCtx) => (
 }));
 
 export const databaseSetupTask = defineTask('mongodb-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 3: MongoDB Setup - ${args.projectName}`,
-  agent: {
-    name: 'mongodb-specialist',
+  skill: {
+    name: 'mongodb-skill',
     prompt: {
       role: 'MongoDB Specialist',
       task: 'Set up MongoDB with Mongoose',
@@ -411,7 +411,7 @@ export const authSetupTask = defineTask('jwt-auth', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Authentication Setup - ${args.projectName}`,
   agent: {
-    name: 'auth-specialist',
+    name: 'auth-specialist-agent',
     prompt: {
       role: 'Authentication Specialist',
       task: 'Implement JWT authentication',
@@ -452,7 +452,7 @@ export const frontendSetupTask = defineTask('react-frontend', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 6: React Frontend Setup - ${args.projectName}`,
   agent: {
-    name: 'react-developer',
+    name: 'react-developer-agent',
     prompt: {
       role: 'React Developer',
       task: 'Set up React frontend',
@@ -490,10 +490,10 @@ export const frontendSetupTask = defineTask('react-frontend', (args, taskCtx) =>
 }));
 
 export const stateSetupTask = defineTask('redux-setup', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 7: State Management - ${args.projectName}`,
-  agent: {
-    name: 'state-management-specialist',
+  skill: {
+    name: 'redux-toolkit-skill',
     prompt: {
       role: 'State Management Specialist',
       task: 'Configure Redux Toolkit',
@@ -614,7 +614,7 @@ export const deploymentConfigTask = defineTask('mern-deployment', (args, taskCtx
   kind: 'agent',
   title: `Phase 10: Deployment - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'deployment-agent',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Configure deployment',
@@ -655,7 +655,7 @@ export const documentationTask = defineTask('mern-documentation', (args, taskCtx
   kind: 'agent',
   title: `Phase 11: Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate MERN documentation',

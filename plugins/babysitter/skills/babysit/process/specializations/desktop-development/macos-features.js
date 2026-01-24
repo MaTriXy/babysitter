@@ -100,7 +100,7 @@ export const macosRequirementsTask = defineTask('macos-requirements', (args, tas
   kind: 'agent',
   title: `macOS Requirements - ${args.projectName}`,
   agent: {
-    name: 'macos-analyst',
+    name: 'macos-platform-expert',
     prompt: { role: 'macOS Features Analyst', task: 'Analyze macOS feature requirements', context: args, instructions: ['1. Analyze feature needs', '2. Check macOS version requirements', '3. Document API availability', '4. Assess entitlements needed', '5. Document dependencies', '6. Plan Catalyst support', '7. Document testing needs', '8. Generate requirements document'] },
     outputSchema: { type: 'object', required: ['requirements', 'artifacts'], properties: { requirements: { type: 'object' }, artifacts: { type: 'array' } } }
   },
@@ -111,8 +111,11 @@ export const macosRequirementsTask = defineTask('macos-requirements', (args, tas
 export const implementTouchBarTask = defineTask('implement-touch-bar', (args, taskCtx) => ({
   kind: 'agent',
   title: `Touch Bar - ${args.projectName}`,
+  skill: {
+    name: 'touchbar-nstouchbar-builder',
+  },
   agent: {
-    name: 'touchbar-developer',
+    name: 'macos-appkit-catalyst-specialist',
     prompt: { role: 'Touch Bar Developer', task: 'Implement Touch Bar support', context: args, instructions: ['1. Create TouchBar items', '2. Add buttons and labels', '3. Add sliders and scrubbers', '4. Handle item interactions', '5. Update Touch Bar dynamically', '6. Handle escape key', '7. Configure per-window Touch Bar', '8. Generate Touch Bar module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'artifacts'], properties: { modulePath: { type: 'string' }, items: { type: 'array' }, artifacts: { type: 'array' } } }
   },
@@ -123,8 +126,11 @@ export const implementTouchBarTask = defineTask('implement-touch-bar', (args, ta
 export const implementDockMenuTask = defineTask('implement-dock-menu', (args, taskCtx) => ({
   kind: 'agent',
   title: `Dock Menu - ${args.projectName}`,
+  skill: {
+    name: 'macos-dock-badge-manager',
+  },
   agent: {
-    name: 'dock-developer',
+    name: 'macos-appkit-catalyst-specialist',
     prompt: { role: 'Dock Developer', task: 'Implement Dock integration', context: args, instructions: ['1. Create Dock menu', '2. Add recent documents', '3. Handle dock bounce', '4. Set dock badge', '5. Handle dock icon', '6. Implement hide/show', '7. Configure dock preferences', '8. Generate Dock module'] },
     outputSchema: { type: 'object', required: ['modulePath', 'artifacts'], properties: { modulePath: { type: 'string' }, artifacts: { type: 'array' } } }
   },
@@ -171,8 +177,11 @@ export const implementNativeTabsTask = defineTask('implement-native-tabs', (args
 export const implementAppStoreTask = defineTask('implement-app-store', (args, taskCtx) => ({
   kind: 'agent',
   title: `Mac App Store - ${args.projectName}`,
+  skill: {
+    name: 'mas-entitlements-generator',
+  },
   agent: {
-    name: 'appstore-developer',
+    name: 'macos-appkit-catalyst-specialist',
     prompt: { role: 'App Store Developer', task: 'Prepare for Mac App Store', context: args, instructions: ['1. Configure sandbox entitlements', '2. Handle app receipt validation', '3. Implement in-app purchases', '4. Configure App Store Connect', '5. Handle reviews and ratings', '6. Configure provisioning', '7. Create screenshots', '8. Generate App Store configuration'] },
     outputSchema: { type: 'object', required: ['bundleId', 'artifacts'], properties: { bundleId: { type: 'string' }, entitlements: { type: 'array' }, artifacts: { type: 'array' } } }
   },

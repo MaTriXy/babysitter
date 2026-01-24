@@ -260,7 +260,7 @@ export const kinematicChainDesignTask = defineTask('kinematic-chain-design', (ar
   kind: 'agent',
   title: `Phase 1: Kinematic Chain Design - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Design robot kinematic chain and joint hierarchy',
@@ -304,7 +304,7 @@ export const meshPreparationTask = defineTask('mesh-preparation', (args, taskCtx
   kind: 'agent',
   title: `Phase 2: Mesh Preparation - ${args.robotName}`,
   agent: {
-    name: 'cad-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'CAD Engineer',
       task: 'Prepare visual and collision meshes',
@@ -347,7 +347,7 @@ export const linkPropertiesTask = defineTask('link-properties', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Link Properties - ${args.robotName}`,
   agent: {
-    name: 'mechanical-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'Mechanical Engineer',
       task: 'Define link physical properties',
@@ -389,7 +389,7 @@ export const jointConfigurationTask = defineTask('joint-configuration', (args, t
   kind: 'agent',
   title: `Phase 4: Joint Configuration - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Configure joint types, limits, and dynamics',
@@ -432,7 +432,7 @@ export const sensorModelSetupTask = defineTask('sensor-model-setup', (args, task
   kind: 'agent',
   title: `Phase 5: Sensor Model Setup - ${args.robotName}`,
   agent: {
-    name: 'sensor-engineer',
+    name: 'perception-engineer',  // AG-004: Perception Engineer Agent
     prompt: {
       role: 'Sensor Integration Engineer',
       task: 'Set up sensor models in URDF/SDF',
@@ -474,7 +474,7 @@ export const modelFileGenerationTask = defineTask('model-file-generation', (args
   kind: 'agent',
   title: `Phase 6: Model File Generation - ${args.robotName}`,
   agent: {
-    name: 'robotics-engineer',
+    name: 'urdf-sdf-expert',  // AG-005: URDF/SDF Modeling Expert Agent
     prompt: {
       role: 'Robotics Engineer',
       task: 'Generate URDF/SDF/Xacro model files',
@@ -517,7 +517,7 @@ export const modelValidationTask = defineTask('model-validation', (args, taskCtx
   kind: 'agent',
   title: `Phase 7: Model Validation - ${args.robotName}`,
   agent: {
-    name: 'test-engineer',
+    name: 'simulation-test-engineer',  // AG-012: Simulation Test Engineer Agent
     prompt: {
       role: 'Robotics Test Engineer',
       task: 'Validate robot model in RViz and Gazebo',
@@ -562,7 +562,7 @@ export const collisionOptimizationTask = defineTask('collision-optimization', (a
   kind: 'agent',
   title: `Phase 8: Collision Optimization - ${args.robotName}`,
   agent: {
-    name: 'simulation-engineer',
+    name: 'simulation-optimization-expert',  // AG-009: Simulation Optimization Expert Agent
     prompt: {
       role: 'Simulation Engineer',
       task: 'Optimize collision geometry for performance',
@@ -604,7 +604,7 @@ export const modelDocumentationTask = defineTask('model-documentation', (args, t
   kind: 'agent',
   title: `Phase 9: Model Documentation - ${args.robotName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'robotics-documentation-specialist',  // AG-020: Robotics Documentation Specialist Agent
     prompt: {
       role: 'Technical Writer',
       task: 'Document robot model',

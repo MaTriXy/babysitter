@@ -208,7 +208,7 @@ export const distributionStrategyTask = defineTask('distribution-strategy', (arg
   kind: 'agent',
   title: `Phase 1: Distribution Strategy - ${args.projectName}`,
   agent: {
-    name: 'release-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Release Engineer',
       task: 'Define package distribution strategy',
@@ -255,7 +255,7 @@ export const registryConfigTask = defineTask('registry-config', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 2: Registry Config - ${args.registry}`,
   agent: {
-    name: 'package-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Package Engineer',
       task: `Configure ${args.registry} publishing`,
@@ -301,7 +301,7 @@ export const packageSigningTask = defineTask('package-signing', (args, taskCtx) 
   kind: 'agent',
   title: `Phase 3: Package Signing - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-review-agent',
     prompt: {
       role: 'Security Engineer',
       task: 'Implement package signing and verification',
@@ -346,7 +346,7 @@ export const cdnDistributionTask = defineTask('cdn-distribution', (args, taskCtx
   kind: 'agent',
   title: `Phase 4: CDN Distribution - ${args.projectName}`,
   agent: {
-    name: 'platform-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'Platform Engineer',
       task: 'Set up CDN distribution for browser SDKs',
@@ -391,7 +391,7 @@ export const verificationTestsTask = defineTask('verification-tests', (args, tas
   kind: 'agent',
   title: `Phase 5: Verification Tests - ${args.projectName}`,
   agent: {
-    name: 'qa-engineer',
+    name: 'test-coverage-analyzer',
     prompt: {
       role: 'QA Engineer',
       task: 'Create installation verification tests',
@@ -437,7 +437,7 @@ export const publishingAutomationTask = defineTask('publishing-automation', (arg
   kind: 'agent',
   title: `Phase 6: Publishing Automation - ${args.projectName}`,
   agent: {
-    name: 'devops-engineer',
+    name: 'platform-architect',
     prompt: {
       role: 'DevOps Engineer',
       task: 'Set up publishing automation',
@@ -483,7 +483,7 @@ export const distributionMonitoringTask = defineTask('distribution-monitoring', 
   kind: 'agent',
   title: `Phase 7: Distribution Monitoring - ${args.projectName}`,
   agent: {
-    name: 'monitoring-engineer',
+    name: 'telemetry-privacy-auditor',
     prompt: {
       role: 'Monitoring Engineer',
       task: 'Configure distribution monitoring',
@@ -528,7 +528,7 @@ export const distributionDocumentationTask = defineTask('distribution-documentat
   kind: 'agent',
   title: `Phase 8: Distribution Documentation - ${args.projectName}`,
   agent: {
-    name: 'technical-writer',
+    name: 'technical-writer-agent',
     prompt: {
       role: 'Technical Writer',
       task: 'Generate distribution documentation',

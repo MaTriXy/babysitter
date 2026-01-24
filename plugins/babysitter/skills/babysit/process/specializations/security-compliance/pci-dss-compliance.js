@@ -930,8 +930,11 @@ export const validateNetworkSegmentationTask = defineTask('validate-network-segm
 
 // Requirement 1: Network Security Controls
 export const assessRequirement1Task = defineTask('assess-requirement-1', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Assess Requirement 1: Install and Maintain Network Security Controls - ${args.projectName}`,
+  skill: {
+    name: 'pci-dss-compliance-automator',
+  },
   agent: {
     name: 'general-purpose',
     prompt: {

@@ -777,8 +777,9 @@ export async function process(inputs, ctx) {
 export const auditDocumentationTask = defineTask('audit-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Audit Documentation Structure and Quality',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'documentation-auditor',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'technical documentation specialist and information architect',
       task: 'Audit existing documentation for structure, quality, completeness, and docs-as-code readiness',
@@ -826,8 +827,9 @@ export const auditDocumentationTask = defineTask('audit-documentation', (args, t
 export const setupDocGeneratorTask = defineTask('setup-doc-generator', (args, taskCtx) => ({
   kind: 'agent',
   title: `Setup ${args.generator} Documentation Generator`,
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'generator-setup-specialist',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation engineer specializing in static site generators',
       task: `Setup and configure ${args.generator} documentation generator with best practices`,
@@ -873,8 +875,9 @@ export const setupDocGeneratorTask = defineTask('setup-doc-generator', (args, ta
 export const setupStyleGuideTask = defineTask('setup-style-guide', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Setup Style Guide and Documentation Linting',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'style-guide-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'technical writing coach and style guide expert',
       task: 'Setup documentation style guide and configure automated linting tools',
@@ -920,8 +923,9 @@ export const setupStyleGuideTask = defineTask('setup-style-guide', (args, taskCt
 export const configurePrValidationStageTask = defineTask('configure-pr-validation-stage', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Configure Pull Request Validation Stage',
+  skill: { name: 'git-github-flow' },
   agent: {
-    name: 'ci-pipeline-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer specializing in CI/CD pipelines',
       task: 'Configure automated pull request validation stage for documentation changes',
@@ -966,8 +970,9 @@ export const configurePrValidationStageTask = defineTask('configure-pr-validatio
 export const configureBuildStageTask = defineTask('configure-build-stage', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Configure Documentation Build Stage',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'build-automation-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'build automation engineer specializing in documentation pipelines',
       task: 'Configure automated documentation build stage with optimization',
@@ -1013,8 +1018,9 @@ export const configureBuildStageTask = defineTask('configure-build-stage', (args
 export const configureTestStageTask = defineTask('configure-test-stage', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Configure Documentation Testing Stage',
+  skill: { name: 'link-validator' },
   agent: {
-    name: 'test-automation-engineer',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'QA automation engineer specializing in documentation testing',
       task: 'Configure comprehensive documentation testing stage',
@@ -1060,8 +1066,9 @@ export const configureTestStageTask = defineTask('configure-test-stage', (args, 
 export const configureDeploymentStageTask = defineTask('configure-deployment-stage', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Configure Documentation Deployment Stage',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'deployment-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer specializing in continuous deployment',
       task: `Configure automated deployment to ${args.deploymentTarget}`,
@@ -1107,8 +1114,9 @@ export const configureDeploymentStageTask = defineTask('configure-deployment-sta
 export const integrateLinkCheckerTask = defineTask('integrate-link-checker', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Integrate Link Checking Tool',
+  skill: { name: 'link-validator' },
   agent: {
-    name: 'link-checker-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality engineer',
       task: 'Integrate and configure automated link checking',
@@ -1152,8 +1160,9 @@ export const integrateLinkCheckerTask = defineTask('integrate-link-checker', (ar
 export const integrateSpellCheckerTask = defineTask('integrate-spell-checker', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Integrate Spell Checking Tool',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'spell-checker-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality engineer',
       task: 'Integrate and configure automated spell checking',
@@ -1197,8 +1206,9 @@ export const integrateSpellCheckerTask = defineTask('integrate-spell-checker', (
 export const integrateStyleLinterTask = defineTask('integrate-style-linter', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Integrate Style Linting Tool (Vale)',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'style-linter-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'technical writing coach',
       task: 'Integrate and configure Vale style linter for documentation',
@@ -1242,8 +1252,9 @@ export const integrateStyleLinterTask = defineTask('integrate-style-linter', (ar
 export const integrateAccessibilityTask = defineTask('integrate-accessibility', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Integrate Accessibility Testing',
+  skill: { name: 'link-validator' },
   agent: {
-    name: 'accessibility-specialist',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'accessibility engineer',
       task: 'Integrate automated accessibility testing for documentation site',
@@ -1288,8 +1299,9 @@ export const integrateAccessibilityTask = defineTask('integrate-accessibility', 
 export const setupVersioningTask = defineTask('setup-versioning', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Setup Documentation Versioning',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'versioning-specialist',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation engineer',
       task: 'Setup documentation versioning and version management',
@@ -1333,8 +1345,9 @@ export const setupVersioningTask = defineTask('setup-versioning', (args, taskCtx
 export const integrateSearchTask = defineTask('integrate-search', (args, taskCtx) => ({
   kind: 'agent',
   title: `Integrate ${args.searchProvider} Search`,
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'search-integration-specialist',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'documentation platform engineer',
       task: `Integrate ${args.searchProvider} search functionality`,
@@ -1379,8 +1392,9 @@ export const integrateSearchTask = defineTask('integrate-search', (args, taskCtx
 export const integrateAnalyticsTask = defineTask('integrate-analytics', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Integrate Documentation Analytics',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'analytics-specialist',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'analytics engineer',
       task: 'Integrate analytics tracking for documentation site',
@@ -1425,8 +1439,9 @@ export const integrateAnalyticsTask = defineTask('integrate-analytics', (args, t
 export const implementQualityGatesTask = defineTask('implement-quality-gates', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Implement Quality Gates',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'quality-gates-engineer',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'quality assurance engineer',
       task: 'Implement comprehensive quality gates for documentation pipeline',
@@ -1474,8 +1489,9 @@ export const implementQualityGatesTask = defineTask('implement-quality-gates', (
 export const assemblePipelineTask = defineTask('assemble-pipeline', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Assemble Complete CI/CD Pipeline',
+  skill: { name: 'git-github-flow' },
   agent: {
-    name: 'pipeline-architect',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'CI/CD architect',
       task: 'Assemble complete docs-as-code CI/CD pipeline configuration',
@@ -1522,8 +1538,9 @@ export const assemblePipelineTask = defineTask('assemble-pipeline', (args, taskC
 export const runInitialPipelineTestTask = defineTask('run-initial-pipeline-test', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Run Initial Pipeline Test',
+  skill: { name: 'git-github-flow' },
   agent: {
-    name: 'pipeline-tester',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer',
       task: 'Execute initial test run of the documentation pipeline',
@@ -1572,8 +1589,9 @@ export const runInitialPipelineTestTask = defineTask('run-initial-pipeline-test'
 export const buildDocumentationTask = defineTask('build-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Build Documentation Site',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'documentation-builder',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'build engineer',
       task: 'Build documentation site using configured generator',
@@ -1618,8 +1636,9 @@ export const buildDocumentationTask = defineTask('build-documentation', (args, t
 export const validateDocumentationQualityTask = defineTask('validate-documentation-quality', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Validate Documentation Quality',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'quality-validator',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'documentation quality assurance specialist',
       task: 'Perform comprehensive quality validation of built documentation',
@@ -1672,8 +1691,9 @@ export const validateDocumentationQualityTask = defineTask('validate-documentati
 export const configureDeploymentTask = defineTask('configure-deployment', (args, taskCtx) => ({
   kind: 'agent',
   title: `Configure Deployment to ${args.deploymentTarget}`,
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'deployment-configurator',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'deployment engineer',
       task: `Configure deployment to ${args.deploymentTarget}`,
@@ -1716,8 +1736,9 @@ export const configureDeploymentTask = defineTask('configure-deployment', (args,
 export const runTestDeploymentTask = defineTask('run-test-deployment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Run Test Deployment',
+  skill: { name: 'docusaurus' },
   agent: {
-    name: 'deployment-tester',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'deployment engineer',
       task: 'Execute test deployment to staging/preview environment',
@@ -1765,8 +1786,9 @@ export const runTestDeploymentTask = defineTask('run-test-deployment', (args, ta
 export const generatePipelineDocumentationTask = defineTask('generate-pipeline-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate Pipeline Documentation',
+  skill: { name: 'markdown-mdx' },
   agent: {
-    name: 'documentation-generator',
+    name: 'tech-writer-expert',
     prompt: {
       role: 'technical writer',
       task: 'Generate comprehensive documentation for the docs-as-code pipeline',
@@ -1810,8 +1832,9 @@ export const generatePipelineDocumentationTask = defineTask('generate-pipeline-d
 export const setupNotificationsTask = defineTask('setup-notifications', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Setup Pipeline Notifications',
+  skill: { name: 'git-github-flow' },
   agent: {
-    name: 'notification-engineer',
+    name: 'docs-platform-engineer',
     prompt: {
       role: 'DevOps engineer',
       task: 'Setup notifications for pipeline events',
@@ -1855,8 +1878,9 @@ export const setupNotificationsTask = defineTask('setup-notifications', (args, t
 export const performFinalReviewTask = defineTask('perform-final-review', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Perform Final Pipeline Review',
+  skill: { name: 'tech-writing-lint' },
   agent: {
-    name: 'pipeline-reviewer',
+    name: 'docs-qa-analyst',
     prompt: {
       role: 'senior DevOps engineer and documentation architect',
       task: 'Conduct final comprehensive review of docs-as-code pipeline setup',

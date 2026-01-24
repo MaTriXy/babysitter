@@ -209,7 +209,7 @@ export const appExtractionTask = defineTask('app-extraction', (args, taskCtx) =>
   kind: 'agent',
   title: `Extract App - ${args.projectName}`,
   agent: {
-    name: 'mobile-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile App Analyst',
       task: 'Extract and analyze app package',
@@ -249,7 +249,7 @@ export const mobileStaticAnalysisTask = defineTask('mobile-static-analysis', (ar
   kind: 'agent',
   title: `Static Analysis - ${args.projectName}`,
   agent: {
-    name: 'mobile-static-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile Static Analysis Specialist',
       task: 'Perform static analysis',
@@ -288,7 +288,7 @@ export const mobileDynamicAnalysisTask = defineTask('mobile-dynamic-analysis', (
   kind: 'agent',
   title: `Dynamic Analysis - ${args.projectName}`,
   agent: {
-    name: 'mobile-dynamic-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile Dynamic Analysis Specialist',
       task: 'Perform dynamic analysis with instrumentation',
@@ -327,7 +327,7 @@ export const mobileNetworkAnalysisTask = defineTask('mobile-network-analysis', (
   kind: 'agent',
   title: `Network Analysis - ${args.projectName}`,
   agent: {
-    name: 'mobile-network-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile Network Analyst',
       task: 'Analyze network traffic',
@@ -366,7 +366,7 @@ export const dataStorageAnalysisTask = defineTask('data-storage-analysis', (args
   kind: 'agent',
   title: `Data Storage Analysis - ${args.projectName}`,
   agent: {
-    name: 'data-storage-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile Data Storage Analyst',
       task: 'Analyze data storage security',
@@ -405,7 +405,7 @@ export const mobileAuthTestingTask = defineTask('mobile-auth-testing', (args, ta
   kind: 'agent',
   title: `Auth Testing - ${args.projectName}`,
   agent: {
-    name: 'mobile-auth-tester',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Mobile Authentication Tester',
       task: 'Test authentication and authorization',
@@ -443,7 +443,7 @@ export const platformSecurityTask = defineTask('platform-security', (args, taskC
   kind: 'agent',
   title: `Platform Security - ${args.projectName}`,
   agent: {
-    name: 'platform-security-analyst',
+    name: 'mobile-researcher',
     prompt: {
       role: 'Platform Security Analyst',
       task: 'Test platform-specific security',
@@ -481,7 +481,7 @@ export const mobileSecurityReportTask = defineTask('mobile-security-report', (ar
   kind: 'agent',
   title: `Generate Report - ${args.projectName}`,
   agent: {
-    name: 'report-generator',
+    name: 'security-report-writer',
     prompt: {
       role: 'Mobile Security Report Specialist',
       task: 'Generate mobile security report',

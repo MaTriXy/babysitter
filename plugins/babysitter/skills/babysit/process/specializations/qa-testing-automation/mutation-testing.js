@@ -368,7 +368,7 @@ export const mutationToolSetupTask = defineTask('mutation-tool-setup', (args, ta
   kind: 'agent',
   title: 'Set up mutation testing tool',
   agent: {
-    name: 'mutation-testing-engineer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Senior Test Automation Engineer specializing in mutation testing',
       task: 'Install and configure mutation testing tool with optimal settings for the project',
@@ -445,7 +445,7 @@ export const scopeAnalysisTask = defineTask('scope-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: 'Analyze code scope for mutation testing',
   agent: {
-    name: 'code-analyzer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Senior Software Quality Analyst',
       task: 'Analyze codebase to define optimal scope for mutation testing and identify critical code paths',
@@ -552,7 +552,7 @@ export const baselineMutationExecutionTask = defineTask('baseline-mutation-execu
   kind: 'agent',
   title: 'Execute baseline mutation testing',
   agent: {
-    name: 'mutation-executor',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Run mutation testing tool and collect comprehensive results',
@@ -636,7 +636,7 @@ export const mutationAnalysisTask = defineTask('mutation-analysis', (args, taskC
   kind: 'agent',
   title: 'Analyze survived mutants',
   agent: {
-    name: 'mutation-analyst',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Senior QA Analyst specializing in mutation testing',
       task: 'Analyze survived mutants to categorize them and identify root causes',
@@ -735,7 +735,7 @@ export const testImprovementRecommendationsTask = defineTask('test-improvement-r
   kind: 'agent',
   title: 'Generate test improvement recommendations',
   agent: {
-    name: 'test-improvement-specialist',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Senior Test Engineer and Code Quality Expert',
       task: 'Generate specific, actionable test improvement recommendations to kill survived mutants',
@@ -823,7 +823,7 @@ export const testImprovementExecutionTask = defineTask('test-improvement-executi
   kind: 'agent',
   title: 'Execute test improvements iteratively',
   agent: {
-    name: 'test-developer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'Test Automation Engineer',
       task: 'Implement test improvements iteratively and verify mutation score improvement',
@@ -887,7 +887,7 @@ export const thresholdConfigurationTask = defineTask('threshold-configuration', 
   kind: 'agent',
   title: 'Configure mutation score thresholds',
   agent: {
-    name: 'quality-gate-engineer',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Quality Engineering Lead',
       task: 'Configure mutation score thresholds for quality gates and enforcement',
@@ -947,7 +947,7 @@ export const cicdIntegrationTask = defineTask('cicd-integration', (args, taskCtx
   kind: 'agent',
   title: 'Integrate mutation testing into CI/CD',
   agent: {
-    name: 'devops-engineer',
+    name: 'cicd-test-integration', // AG-010: CI/CD Test Integration Agent
     prompt: {
       role: 'DevOps Engineer',
       task: 'Integrate mutation testing into CI/CD pipeline with quality gates',
@@ -1017,7 +1017,7 @@ export const dashboardCreationTask = defineTask('dashboard-creation', (args, tas
   kind: 'agent',
   title: 'Create mutation score dashboard',
   agent: {
-    name: 'dashboard-developer',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Data Visualization Engineer',
       task: 'Create comprehensive mutation score tracking dashboard',
@@ -1085,7 +1085,7 @@ export const finalValidationTask = defineTask('final-validation', (args, taskCtx
   kind: 'agent',
   title: 'Validate mutation testing implementation',
   agent: {
-    name: 'qa-validator',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'Principal QA Engineer',
       task: 'Validate mutation testing implementation success and generate comprehensive documentation',

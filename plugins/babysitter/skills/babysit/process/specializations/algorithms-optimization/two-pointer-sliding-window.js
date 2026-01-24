@@ -48,7 +48,7 @@ export const techniqueAnalysisTask = defineTask('technique-analysis', (args, tas
   kind: 'agent',
   title: 'Analyze Problem for Technique',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Pattern Expert',
       task: 'Analyze problem for two-pointer/sliding window applicability',
@@ -70,7 +70,7 @@ export const techniqueSolutionTask = defineTask('technique-solution', (args, tas
   kind: 'agent',
   title: 'Implement Solution',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'Algorithm Engineer',
       task: 'Implement two-pointer/sliding window solution',
@@ -92,7 +92,7 @@ export const techniqueTestingTask = defineTask('technique-testing', (args, taskC
   kind: 'agent',
   title: 'Test Solution',
   agent: {
-    name: 'general-purpose',
+    name: 'algorithm-designer',
     prompt: {
       role: 'QA Engineer',
       task: 'Test two-pointer/sliding window solution',

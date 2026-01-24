@@ -92,7 +92,7 @@ export const defineRegressionCriteriaTask = defineTask('define-regression-criter
   kind: 'agent',
   title: `Define Regression Criteria - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Define regression criteria', context: args,
       instructions: ['1. Define latency thresholds', '2. Define throughput thresholds', '3. Define error rate thresholds', '4. Set significance levels', '5. Document criteria'],
       outputFormat: 'JSON with regression criteria' },
@@ -106,7 +106,7 @@ export const implementBaselineComparisonTask = defineTask('implement-baseline-co
   kind: 'agent',
   title: `Implement Baseline Comparison - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement baseline comparison', context: args,
       instructions: ['1. Load baseline data', '2. Compare current metrics', '3. Calculate differences', '4. Apply thresholds', '5. Document method'],
       outputFormat: 'JSON with comparison implementation' },
@@ -120,7 +120,7 @@ export const configureStatisticalAnalysisTask = defineTask('configure-statistica
   kind: 'agent',
   title: `Configure Statistical Analysis - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure statistical analysis', context: args,
       instructions: ['1. Select statistical tests', '2. Configure confidence levels', '3. Handle variance', '4. Set sample requirements', '5. Document configuration'],
       outputFormat: 'JSON with statistical configuration' },
@@ -134,7 +134,7 @@ export const setupAutomatedMonitoringTask = defineTask('setup-automated-monitori
   kind: 'agent',
   title: `Setup Automated Monitoring - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Setup automated regression monitoring', context: args,
       instructions: ['1. Configure metric collection', '2. Set up scheduled comparisons', '3. Configure dashboards', '4. Enable historical tracking', '5. Document setup'],
       outputFormat: 'JSON with monitoring setup' },
@@ -148,7 +148,7 @@ export const configureRegressionAlertingTask = defineTask('configure-regression-
   kind: 'agent',
   title: `Configure Alerting - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Configure regression alerting', context: args,
       instructions: ['1. Create alert rules', '2. Set severity levels', '3. Configure notifications', '4. Add context to alerts', '5. Document alerting'],
       outputFormat: 'JSON with alerting configuration' },
@@ -162,7 +162,7 @@ export const implementTrendAnalysisTask = defineTask('implement-trend-analysis',
   kind: 'agent',
   title: `Implement Trend Analysis - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Implement trend analysis', context: args,
       instructions: ['1. Track metrics over time', '2. Detect gradual degradation', '3. Identify trends', '4. Create visualizations', '5. Document analysis'],
       outputFormat: 'JSON with trend analysis' },
@@ -176,7 +176,7 @@ export const integrateCIRegressionChecksTask = defineTask('integrate-ci-regressi
   kind: 'agent',
   title: `Integrate CI Regression Checks - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Integrate regression checks with CI', context: args,
       instructions: ['1. Add CI stage', '2. Run regression checks', '3. Fail on regression', '4. Report results', '5. Document integration'],
       outputFormat: 'JSON with CI integration' },
@@ -190,7 +190,7 @@ export const documentRegressionDetectionTask = defineTask('document-regression-d
   kind: 'agent',
   title: `Document Regression Detection - ${args.projectName}`,
   agent: {
-    name: 'performance-engineer',
+    name: 'benchmarking-expert',
     prompt: { role: 'Performance Engineer', task: 'Document regression detection strategy', context: args,
       instructions: ['1. Document criteria', '2. Document methodology', '3. Add response procedures', '4. Include examples', '5. Generate report'],
       outputFormat: 'JSON with documentation' },

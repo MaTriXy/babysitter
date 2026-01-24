@@ -171,7 +171,7 @@ export const trafficCaptureTask = defineTask('traffic-capture', (args, taskCtx) 
   kind: 'agent',
   title: `Capture Traffic - ${args.projectName}`,
   agent: {
-    name: 'network-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Network Traffic Analyst',
       task: 'Capture network traffic samples',
@@ -210,7 +210,7 @@ export const messageAnalysisTask = defineTask('message-analysis', (args, taskCtx
   kind: 'agent',
   title: `Analyze Messages - ${args.projectName}`,
   agent: {
-    name: 'protocol-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Protocol Message Analyst',
       task: 'Analyze message formats and fields',
@@ -249,7 +249,7 @@ export const stateMachineTask = defineTask('state-machine', (args, taskCtx) => (
   kind: 'agent',
   title: `Identify State Machine - ${args.projectName}`,
   agent: {
-    name: 'protocol-analyst',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Protocol State Machine Analyst',
       task: 'Identify state machines and sequences',
@@ -288,7 +288,7 @@ export const protocolDocumentationTask = defineTask('protocol-documentation', (a
   kind: 'agent',
   title: `Document Protocol - ${args.projectName}`,
   agent: {
-    name: 'documentation-specialist',
+    name: 'security-report-writer',
     prompt: {
       role: 'Protocol Documentation Specialist',
       task: 'Document protocol specifications',
@@ -326,7 +326,7 @@ export const dissectorCreationTask = defineTask('dissector-creation', (args, tas
   kind: 'agent',
   title: `Create Dissector - ${args.projectName}`,
   agent: {
-    name: 'dissector-developer',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Protocol Dissector Developer',
       task: 'Create protocol dissectors',
@@ -365,7 +365,7 @@ export const protocolVulnTestingTask = defineTask('protocol-vuln-testing', (args
   kind: 'agent',
   title: `Test Protocol Vulnerabilities - ${args.projectName}`,
   agent: {
-    name: 'protocol-tester',
+    name: 'reverse-engineer',
     prompt: {
       role: 'Protocol Security Tester',
       task: 'Test for protocol vulnerabilities',

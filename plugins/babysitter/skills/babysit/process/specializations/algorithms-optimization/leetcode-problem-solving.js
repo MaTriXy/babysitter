@@ -257,8 +257,9 @@ export async function process(inputs, ctx) {
 export const problemAnalysisTask = defineTask('problem-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Problem Analysis - ${args.problemId}`,
+  skills: ['leetcode-problem-fetcher', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programmer and Algorithm Expert',
       task: 'Analyze the LeetCode problem to understand requirements and identify patterns',
@@ -314,8 +315,9 @@ export const problemAnalysisTask = defineTask('problem-analysis', (args, taskCtx
 export const solutionDesignTask = defineTask('solution-design', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Solution Design - ${args.problemId}`,
+  skills: ['complexity-analyzer', 'dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Algorithm Designer',
       task: 'Design solution approach and select optimal algorithm',
@@ -365,8 +367,9 @@ export const solutionDesignTask = defineTask('solution-design', (args, taskCtx) 
 export const bruteForceImplementationTask = defineTask('brute-force-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Brute Force Implementation - ${args.problemId}`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Software Engineer',
       task: 'Implement brute force solution as baseline',
@@ -412,8 +415,9 @@ export const bruteForceImplementationTask = defineTask('brute-force-implementati
 export const optimizedImplementationTask = defineTask('optimized-implementation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Optimized Implementation - ${args.problemId}`,
+  skills: ['complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Algorithm Optimization Expert',
       task: 'Implement optimized solution using best approach',
@@ -462,8 +466,9 @@ export const optimizedImplementationTask = defineTask('optimized-implementation'
 export const testingValidationTask = defineTask('testing-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Testing and Validation - ${args.problemId}`,
+  skills: ['test-case-generator'],
   agent: {
-    name: 'general-purpose',
+    name: 'test-engineer',
     prompt: {
       role: 'QA Engineer',
       task: 'Test solution with comprehensive test cases',
@@ -509,8 +514,9 @@ export const testingValidationTask = defineTask('testing-validation', (args, tas
 export const complexityAnalysisTask = defineTask('complexity-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Complexity Analysis - ${args.problemId}`,
+  skills: ['complexity-analyzer'],
   agent: {
-    name: 'general-purpose',
+    name: 'complexity-analyst',
     prompt: {
       role: 'Algorithm Analyst',
       task: 'Perform detailed complexity analysis',
@@ -555,8 +561,9 @@ export const complexityAnalysisTask = defineTask('complexity-analysis', (args, t
 export const patternNotesTask = defineTask('pattern-notes', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 7: Pattern Recognition Notes - ${args.problemId}`,
+  skills: ['dp-pattern-library'],
   agent: {
-    name: 'general-purpose',
+    name: 'competitive-programmer',
     prompt: {
       role: 'Competitive Programming Coach',
       task: 'Document patterns and key learnings for future reference',

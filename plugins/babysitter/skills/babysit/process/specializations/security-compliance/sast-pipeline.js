@@ -458,8 +458,11 @@ export async function process(inputs, ctx) {
 
 // Phase 1: SAST Tool Selection
 export const sastToolSelectionTask = defineTask('sast-tool-selection', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 1: SAST Tool Selection - ${args.projectName}`,
+  skill: {
+    name: 'sast-analyzer',
+  },
   agent: {
     name: 'security-tooling-specialist',
     prompt: {
@@ -850,8 +853,11 @@ export const qualityGatesConfigTask = defineTask('quality-gates-config', (args, 
 
 // Phase 5: Baseline Security Scan
 export const baselineScanTask = defineTask('baseline-scan', (args, taskCtx) => ({
-  kind: 'agent',
+  kind: 'skill',
   title: `Phase 5: Baseline Security Scan - ${args.projectName}`,
+  skill: {
+    name: 'sast-analyzer',
+  },
   agent: {
     name: 'security-scanner',
     prompt: {
@@ -959,7 +965,7 @@ export const vulnerabilityTriageTask = defineTask('vulnerability-triage', (args,
   kind: 'agent',
   title: `Phase 6: Vulnerability Triage - ${args.projectName}`,
   agent: {
-    name: 'security-triager',
+    name: 'vulnerability-triage-agent',
     prompt: {
       role: 'Security Vulnerability Analyst',
       task: 'Triage and classify security findings',
@@ -1271,7 +1277,7 @@ export const remediationWorkflowTask = defineTask('remediation-workflow', (args,
   kind: 'agent',
   title: `Phase 9: Remediation Workflow - ${args.projectName}`,
   agent: {
-    name: 'remediation-workflow-engineer',
+    name: 'remediation-guidance-agent',
     prompt: {
       role: 'Security Remediation Process Engineer',
       task: 'Configure vulnerability remediation workflow',

@@ -270,7 +270,7 @@ export const requirementsAnalysisTask = defineTask('requirements-analysis', (arg
   kind: 'agent',
   title: 'Analyze requirements for testability',
   agent: {
-    name: 'requirements-analyst',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior QA architect and requirements engineer',
       task: 'Analyze functional and non-functional requirements to assess testability and identify testing scope',
@@ -342,7 +342,7 @@ export const riskAssessmentTask = defineTask('risk-assessment', (args, taskCtx) 
   kind: 'agent',
   title: 'Conduct quality risk assessment',
   agent: {
-    name: 'risk-assessor',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior QA manager and risk management specialist',
       task: 'Identify and prioritize quality risks, assess likelihood and impact, and develop mitigation strategies',
@@ -418,7 +418,7 @@ export const testLevelDefinitionTask = defineTask('test-level-definition', (args
   kind: 'agent',
   title: 'Define test pyramid and test levels',
   agent: {
-    name: 'test-architect',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior test architect',
       task: 'Define optimal test pyramid distribution, test levels, test types, and coverage targets aligned with project architecture and risk profile',
@@ -513,7 +513,7 @@ export const automationStrategyTask = defineTask('automation-strategy', (args, t
   kind: 'agent',
   title: 'Develop test automation strategy',
   agent: {
-    name: 'automation-strategist',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'test automation architect',
       task: 'Define comprehensive test automation strategy including tool selection, frameworks, patterns, CI/CD integration, and ROI justification',
@@ -601,7 +601,7 @@ export const resourcePlanningTask = defineTask('resource-planning', (args, taskC
   kind: 'agent',
   title: 'Plan QA resources and allocations',
   agent: {
-    name: 'resource-planner',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'QA manager and resource planning specialist',
       task: 'Allocate QA resources, define roles and responsibilities, estimate effort, and create resource allocation matrix',
@@ -704,7 +704,7 @@ export const qualityMetricsDefinitionTask = defineTask('quality-metrics-definiti
   kind: 'agent',
   title: 'Define quality KPIs and success metrics',
   agent: {
-    name: 'metrics-specialist',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'QA metrics specialist and data analyst',
       task: 'Define comprehensive quality KPIs, success criteria, and quality dashboard specifications',
@@ -818,7 +818,7 @@ export const strategyDocumentGenerationTask = defineTask('strategy-document-gene
   kind: 'agent',
   title: 'Generate comprehensive test strategy document',
   agent: {
-    name: 'strategy-writer',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'senior technical writer and QA architect',
       task: 'Generate comprehensive, executive-ready test strategy document consolidating all planning artifacts',
@@ -868,7 +868,7 @@ export const strategyQualityScoringTask = defineTask('strategy-quality-scoring',
   kind: 'agent',
   title: 'Score test strategy quality and completeness',
   agent: {
-    name: 'strategy-validator',
+    name: 'quality-metrics-analyst', // AG-007: Quality Metrics Analyst Agent
     prompt: {
       role: 'principal QA architect and quality auditor',
       task: 'Assess overall test strategy quality, completeness, and readiness for implementation',
@@ -936,7 +936,7 @@ export const automationRoadmapGenerationTask = defineTask('automation-roadmap-ge
   kind: 'agent',
   title: 'Generate detailed automation roadmap',
   agent: {
-    name: 'roadmap-planner',
+    name: 'test-strategy-architect', // AG-001: Test Strategy Architect Agent
     prompt: {
       role: 'test automation program manager',
       task: 'Create detailed phased automation roadmap with milestones, dependencies, and success criteria',

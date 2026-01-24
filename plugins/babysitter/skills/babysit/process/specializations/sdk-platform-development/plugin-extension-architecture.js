@@ -110,7 +110,7 @@ export const pluginArchitectureDesignTask = defineTask('plugin-architecture-desi
   kind: 'agent',
   title: 'Design plugin architecture',
   agent: {
-    name: 'plugin-architect',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK plugin architecture specialist',
       task: `Design plugin architecture for ${args.sdkName}`,
@@ -153,7 +153,7 @@ export const extensionPointsDefinitionTask = defineTask('extension-points-defini
   kind: 'agent',
   title: 'Define extension points',
   agent: {
-    name: 'extension-points-specialist',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK extensibility specialist',
       task: `Define extension points for ${args.sdkName}`,
@@ -197,7 +197,7 @@ export const hookSystemImplementationTask = defineTask('hook-system-implementati
   kind: 'agent',
   title: 'Implement hook system',
   agent: {
-    name: 'hook-system-implementer',
+    name: 'extensibility-architect',
     prompt: {
       role: 'SDK hook system engineer',
       task: `Implement hook system for ${args.sdkName}`,
@@ -240,7 +240,7 @@ export const pluginSecurityImplementationTask = defineTask('plugin-security-impl
   kind: 'agent',
   title: 'Implement plugin security',
   agent: {
-    name: 'plugin-security-specialist',
+    name: 'security-review-agent',
     prompt: {
       role: 'Plugin security engineer',
       task: `Implement plugin security for ${args.sdkName}`,
@@ -284,7 +284,7 @@ export const pluginRegistryCreationTask = defineTask('plugin-registry-creation',
   kind: 'agent',
   title: 'Create plugin registry',
   agent: {
-    name: 'plugin-registry-creator',
+    name: 'platform-architect',
     prompt: {
       role: 'Plugin ecosystem engineer',
       task: `Create plugin registry for ${args.sdkName}`,

@@ -222,7 +222,7 @@ export const authAnalysisTask = defineTask('auth-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: `Phase 1: Auth Analysis - ${args.projectName}`,
   agent: {
-    name: 'auth-analyst',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Analyst',
       task: 'Analyze current authentication system',
@@ -265,7 +265,7 @@ export const targetAuthDesignTask = defineTask('target-auth-design', (args, task
   kind: 'agent',
   title: `Phase 2: Target Auth Design - ${args.projectName}`,
   agent: {
-    name: 'auth-architect',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Architect',
       task: 'Design target authentication system',
@@ -308,7 +308,7 @@ export const identityProviderSetupTask = defineTask('identity-provider-setup', (
   kind: 'agent',
   title: `Phase 3: Identity Provider Setup - ${args.projectName}`,
   agent: {
-    name: 'idp-engineer',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Identity Engineer',
       task: 'Set up identity provider',
@@ -350,7 +350,7 @@ export const userMigrationTask = defineTask('user-migration', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 4: User Migration - ${args.projectName}`,
   agent: {
-    name: 'user-migrator',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Identity Migration Specialist',
       task: 'Migrate users to new auth system',
@@ -392,7 +392,7 @@ export const applicationIntegrationTask = defineTask('application-integration', 
   kind: 'agent',
   title: `Phase 5: Application Integration - ${args.projectName}`,
   agent: {
-    name: 'integration-developer',
+    name: 'code-transformation-executor',
     prompt: {
       role: 'Integration Developer',
       task: 'Integrate applications with new auth',
@@ -434,7 +434,7 @@ export const securityHardeningTask = defineTask('security-hardening', (args, tas
   kind: 'agent',
   title: `Phase 6: Security Hardening - ${args.projectName}`,
   agent: {
-    name: 'security-engineer',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Engineer',
       task: 'Harden authentication security',
@@ -475,7 +475,7 @@ export const authenticationTestingTask = defineTask('authentication-testing', (a
   kind: 'agent',
   title: `Phase 7: Authentication Testing - ${args.projectName}`,
   agent: {
-    name: 'auth-tester',
+    name: 'regression-detector',
     prompt: {
       role: 'Security Tester',
       task: 'Test authentication implementation',
@@ -517,7 +517,7 @@ export const securityAuditTask = defineTask('security-audit', (args, taskCtx) =>
   kind: 'agent',
   title: `Phase 8: Security Audit - ${args.projectName}`,
   agent: {
-    name: 'security-auditor',
+    name: 'security-vulnerability-assessor',
     prompt: {
       role: 'Security Auditor',
       task: 'Audit authentication security',

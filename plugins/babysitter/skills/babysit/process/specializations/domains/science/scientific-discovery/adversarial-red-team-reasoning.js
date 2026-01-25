@@ -149,8 +149,10 @@ export async function process(inputs, ctx) {
 export const analyzeTargetTask = defineTask('redteam-target-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 1: Target Analysis',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Red team target analysis specialist',
       task: 'Analyze the target for adversarial assessment',
@@ -187,8 +189,10 @@ export const analyzeTargetTask = defineTask('redteam-target-analysis', (args, ta
 export const mapAttackSurfaceTask = defineTask('redteam-attack-surface', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 2: Attack Surface Mapping',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Attack surface mapping specialist',
       task: 'Map the attack surface of the target',
@@ -225,8 +229,10 @@ export const mapAttackSurfaceTask = defineTask('redteam-attack-surface', (args, 
 export const modelThreatsTask = defineTask('redteam-threat-modeling', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 3: Threat Modeling',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Threat modeling specialist',
       task: 'Model potential threats to the target',
@@ -263,8 +269,10 @@ export const modelThreatsTask = defineTask('redteam-threat-modeling', (args, tas
 export const discoverVulnerabilitiesTask = defineTask('redteam-vulnerability-discovery', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 4: Vulnerability Discovery',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Vulnerability discovery specialist',
       task: 'Discover vulnerabilities in the target',
@@ -300,8 +308,10 @@ export const discoverVulnerabilitiesTask = defineTask('redteam-vulnerability-dis
 export const developAttackVectorsTask = defineTask('redteam-attack-vectors', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 5: Attack Vector Development',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Attack vector development specialist',
       task: 'Develop concrete attack vectors',
@@ -337,8 +347,10 @@ export const developAttackVectorsTask = defineTask('redteam-attack-vectors', (ar
 export const simulateAttacksTask = defineTask('redteam-attack-simulation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 6: Attack Simulation',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Attack simulation specialist',
       task: 'Simulate attacks against the target',
@@ -375,8 +387,10 @@ export const simulateAttacksTask = defineTask('redteam-attack-simulation', (args
 export const analyzeDefenseEvasionTask = defineTask('redteam-defense-evasion', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 7: Defense Evasion Analysis',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Defense evasion analyst',
       task: 'Analyze how attacks could evade existing defenses',
@@ -413,8 +427,10 @@ export const analyzeDefenseEvasionTask = defineTask('redteam-defense-evasion', (
 export const analyzeCascadingFailuresTask = defineTask('redteam-cascade-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 8: Cascading Failure Analysis',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Cascading failure analyst',
       task: 'Analyze potential cascading failures',
@@ -451,8 +467,10 @@ export const analyzeCascadingFailuresTask = defineTask('redteam-cascade-analysis
 export const assessRobustnessTask = defineTask('redteam-robustness-assessment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 9: Robustness Assessment',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Robustness assessment specialist',
       task: 'Assess overall robustness of the target',
@@ -490,8 +508,10 @@ export const assessRobustnessTask = defineTask('redteam-robustness-assessment', 
 export const recommendMitigationsTask = defineTask('redteam-mitigation-recommendations', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 10: Mitigation Recommendations',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'critical-evaluator',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'causal-inference-engine'],
     prompt: {
       role: 'Mitigation recommendation specialist',
       task: 'Recommend mitigations for discovered vulnerabilities',

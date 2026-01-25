@@ -11,8 +11,10 @@ import { defineTask } from '@a5c-ai/babysitter-sdk';
 const analyzeTask = defineTask('likelihood-based-reasoning-analyze', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Likelihood-Based Reasoning Analysis',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'bayesian-analyst',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in likelihood theory and model comparison',
       task: 'Apply likelihood-based reasoning to compare hypotheses by evaluating how well they predict observed data',

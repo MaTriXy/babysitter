@@ -12,7 +12,8 @@ const analyzeTask = defineTask('mathematical-proof-reasoning-analyze', (args, ta
   kind: 'agent',
   title: 'Mathematical Proof Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in mathematical proof theory and formal derivation',
       task: 'Apply mathematical proof reasoning to construct rigorous proofs with emphasis on proof structure and derivability',

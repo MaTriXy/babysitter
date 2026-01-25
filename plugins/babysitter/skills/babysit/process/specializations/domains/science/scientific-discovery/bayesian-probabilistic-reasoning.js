@@ -12,7 +12,8 @@ const analyzeTask = defineTask('bayesian-probabilistic-reasoning-analyze', (args
   kind: 'agent',
   title: 'Bayesian Probabilistic Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'bayesian-analyst',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'scientific-figure-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in Bayesian inference and probabilistic reasoning',
       task: 'Apply Bayesian probabilistic reasoning to represent beliefs as probabilities and update them via Bayes rule',

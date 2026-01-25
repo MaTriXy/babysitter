@@ -254,7 +254,8 @@ export const problemReformulationTask = defineTask('problem-reformulation', (arg
   kind: 'agent',
   title: 'Reformulate problem in TRIZ terms',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'hypothesis-generator'],
     prompt: {
       role: 'TRIZ methodology expert',
       task: 'Reformulate the problem using TRIZ problem formulation techniques',
@@ -308,7 +309,8 @@ export const contradictionIdentificationTask = defineTask('contradiction-identif
   kind: 'agent',
   title: 'Identify contradictions',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'causal-inference-engine'],
     prompt: {
       role: 'TRIZ contradiction analyst',
       task: 'Identify technical and physical contradictions in the problem',
@@ -366,7 +368,8 @@ export const parameterMappingTask = defineTask('parameter-mapping', (args, taskC
   kind: 'agent',
   title: 'Map to TRIZ 39 parameters',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver'],
     prompt: {
       role: 'TRIZ parameter mapping specialist',
       task: 'Map problem parameters to TRIZ 39 engineering parameters',
@@ -411,7 +414,8 @@ export const matrixLookupTask = defineTask('matrix-lookup', (args, taskCtx) => (
   kind: 'agent',
   title: 'Look up contradiction matrix',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver'],
     prompt: {
       role: 'TRIZ matrix specialist',
       task: 'Look up the contradiction matrix to find suggested inventive principles',
@@ -465,7 +469,8 @@ export const principleApplicationTask = defineTask('principle-application', (arg
   kind: 'agent',
   title: 'Apply inventive principles',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'analogy-mapper', 'hypothesis-generator'],
     prompt: {
       role: 'TRIZ principle application specialist',
       task: 'Apply each suggested inventive principle to generate solution directions',
@@ -520,7 +525,8 @@ export const physicalContradictionAnalysisTask = defineTask('physical-contradict
   kind: 'agent',
   title: 'Analyze physical contradictions',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'causal-inference-engine'],
     prompt: {
       role: 'Physical contradiction resolution specialist',
       task: 'Resolve physical contradictions using separation principles',
@@ -576,7 +582,8 @@ export const conceptGenerationTask = defineTask('concept-generation', (args, tas
   kind: 'agent',
   title: 'Generate solution concepts',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'hypothesis-generator', 'analogy-mapper'],
     prompt: {
       role: 'Inventive concept developer',
       task: 'Synthesize principle applications into complete solution concepts',
@@ -634,7 +641,8 @@ export const conceptEvaluationTask = defineTask('concept-evaluation', (args, tas
   kind: 'agent',
   title: 'Evaluate concepts',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'formal-logic-reasoner'],
     prompt: {
       role: 'Concept evaluation specialist',
       task: 'Evaluate and rank generated concepts',
@@ -693,7 +701,8 @@ export const trizQualityScoringTask = defineTask('triz-quality-scoring', (args, 
   kind: 'agent',
   title: 'Score TRIZ analysis quality',
   agent: {
-    name: 'general-purpose',
+    name: 'triz-specialist',
+    skills: ['triz-inventive-solver', 'formal-logic-reasoner'],
     prompt: {
       role: 'TRIZ methodology auditor',
       task: 'Assess the quality and completeness of the TRIZ analysis',

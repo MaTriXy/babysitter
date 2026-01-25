@@ -12,7 +12,8 @@ const analyzeTask = defineTask('case-based-reasoning-analyze', (args, taskCtx) =
   kind: 'agent',
   title: 'Case-Based Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'analogical-reasoner',
+    skills: ['analogy-mapper', 'hypothesis-generator', 'semantic-scholar-search'],
     prompt: {
       role: 'Scientific reasoning specialist in case-based reasoning and experiential learning',
       task: 'Apply case-based reasoning to retrieve similar past cases and adapt their solutions to the current problem',

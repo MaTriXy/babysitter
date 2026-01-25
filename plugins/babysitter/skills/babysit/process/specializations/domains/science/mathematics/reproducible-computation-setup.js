@@ -144,9 +144,9 @@ export async function process(inputs, ctx) {
 export const versionControlConfigTask = defineTask('version-control-config', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Configure Version Control`,
-  skill: { name: 'version-control-for-math' },
   agent: {
     name: 'scientific-computing-specialist',
+    skills: ['version-control-for-math', 'jupyter-notebook-interface', 'reproducible-research-tools'],
     prompt: {
       role: 'Version Control Expert for Scientific Computing',
       task: 'Configure version control for reproducible computations',
@@ -209,9 +209,9 @@ export const versionControlConfigTask = defineTask('version-control-config', (ar
 export const dependencyDocumentationTask = defineTask('dependency-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Document Dependencies`,
-  skill: { name: 'version-control-for-math' },
   agent: {
     name: 'scientific-computing-specialist',
+    skills: ['version-control-for-math', 'jupyter-notebook-interface', 'reproducible-research-tools'],
     prompt: {
       role: 'Dependency Management Expert',
       task: 'Document all dependencies for reproducibility',
@@ -281,9 +281,9 @@ export const dependencyDocumentationTask = defineTask('dependency-documentation'
 export const randomSeedSetupTask = defineTask('random-seed-setup', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Set Random Seeds`,
-  skill: { name: 'jupyter-notebook-interface' },
   agent: {
     name: 'scientific-computing-specialist',
+    skills: ['jupyter-notebook-interface', 'monte-carlo-simulation', 'reproducible-research-tools'],
     prompt: {
       role: 'Computational Reproducibility Expert',
       task: 'Set up random seed management for reproducibility',
@@ -345,9 +345,9 @@ export const randomSeedSetupTask = defineTask('random-seed-setup', (args, taskCt
 export const reproducibleScriptsTask = defineTask('reproducible-scripts', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Create Reproducible Scripts`,
-  skill: { name: 'jupyter-notebook-interface' },
   agent: {
     name: 'scientific-computing-specialist',
+    skills: ['jupyter-notebook-interface', 'version-control-for-math', 'reproducible-research-tools'],
     prompt: {
       role: 'Scientific Computing Script Expert',
       task: 'Create scripts that ensure reproducible execution',
@@ -410,9 +410,9 @@ export const reproducibleScriptsTask = defineTask('reproducible-scripts', (args,
 export const reproducibilityReportTask = defineTask('reproducibility-report', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Generate Reproducibility Reports`,
-  skill: { name: 'version-control-for-math' },
   agent: {
     name: 'scientific-computing-specialist',
+    skills: ['version-control-for-math', 'latex-math-formatter', 'reproducible-research-tools'],
     prompt: {
       role: 'Reproducibility Assessment Expert',
       task: 'Generate comprehensive reproducibility report',

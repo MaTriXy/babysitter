@@ -11,8 +11,10 @@ import { defineTask } from '@a5c-ai/babysitter-sdk';
 const analyzeTask = defineTask('type-theoretic-reasoning-analyze', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Type-Theoretic Reasoning Analysis',
+  skill: { name: 'formal-logic-reasoner' },
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'type-system-validator'],
     prompt: {
       role: 'Scientific reasoning specialist in type theory and dependently typed systems',
       task: 'Apply type-theoretic reasoning using types including dependent types to enforce invariants and prove properties',

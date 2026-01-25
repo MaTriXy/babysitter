@@ -271,7 +271,8 @@ export const observationAnalysisTask = defineTask('observation-analysis', (args,
   kind: 'agent',
   title: 'Analyze observations and identify patterns',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'statistical-test-selector', 'semantic-scholar-search'],
     prompt: {
       role: 'Research scientist specializing in pattern recognition and scientific observation',
       task: 'Analyze observations systematically to identify patterns, anomalies, and potential causal relationships',
@@ -336,7 +337,8 @@ export const hypothesisGenerationTask = defineTask('hypothesis-generation', (arg
   kind: 'agent',
   title: 'Generate candidate hypotheses',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'causal-inference-engine', 'semantic-scholar-search'],
     prompt: {
       role: 'Theoretical scientist skilled in hypothesis generation and scientific reasoning',
       task: 'Generate multiple candidate hypotheses that could explain observed patterns and answer the research question',
@@ -392,7 +394,8 @@ export const hypothesisEvaluationTask = defineTask('hypothesis-evaluation', (arg
   kind: 'agent',
   title: 'Evaluate and select optimal hypothesis',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Philosophy of science expert specializing in hypothesis evaluation',
       task: 'Systematically evaluate candidate hypotheses and select the most promising one for testing',
@@ -445,7 +448,8 @@ export const variableOperationalizationTask = defineTask('variable-operationaliz
   kind: 'agent',
   title: 'Operationalize variables',
   agent: {
-    name: 'general-purpose',
+    name: 'experimental-designer',
+    skills: ['hypothesis-generator', 'statistical-test-selector'],
     prompt: {
       role: 'Research methodologist specializing in measurement and operationalization',
       task: 'Define operational definitions for all variables in the hypothesis to make them measurable',
@@ -519,7 +523,8 @@ export const predictionSpecificationTask = defineTask('prediction-specification'
   kind: 'agent',
   title: 'Specify testable predictions',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'formal-logic-reasoner'],
     prompt: {
       role: 'Theoretical scientist specializing in deductive reasoning and prediction',
       task: 'Derive specific, testable predictions from the hypothesis that can be empirically verified or falsified',
@@ -583,7 +588,8 @@ export const experimentDesignTask = defineTask('experiment-design', (args, taskC
   kind: 'agent',
   title: 'Design experiment to test hypothesis',
   agent: {
-    name: 'general-purpose',
+    name: 'experimental-designer',
+    skills: ['hypothesis-generator', 'statistical-test-selector', 'power-analysis-calculator'],
     prompt: {
       role: 'Experimental scientist specializing in research design',
       task: 'Design a rigorous experiment to test the hypothesis and its predictions',
@@ -652,7 +658,8 @@ export const statisticalTestingPlanTask = defineTask('statistical-testing-plan',
   kind: 'agent',
   title: 'Develop statistical testing plan',
   agent: {
-    name: 'general-purpose',
+    name: 'statistical-consultant',
+    skills: ['statistical-test-selector', 'power-analysis-calculator', 'regression-analyzer'],
     prompt: {
       role: 'Biostatistician specializing in hypothesis testing and statistical analysis',
       task: 'Develop comprehensive statistical analysis plan for testing the hypothesis',
@@ -709,7 +716,8 @@ export const rigorAssessmentTask = defineTask('rigor-assessment', (args, taskCtx
   kind: 'agent',
   title: 'Assess research rigor and validity',
   agent: {
-    name: 'general-purpose',
+    name: 'experimental-designer',
+    skills: ['hypothesis-generator', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Research methodology expert and peer reviewer',
       task: 'Assess the overall rigor and validity of the hypothesis testing plan',

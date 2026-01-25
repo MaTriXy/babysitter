@@ -138,8 +138,10 @@ export async function process(inputs, ctx) {
 export const inventoryClaimsTask = defineTask('calibration-claim-inventory', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 1: Claim Inventory',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Epistemic assessment specialist',
       task: 'Inventory claims and their initial confidence levels',
@@ -175,8 +177,10 @@ export const inventoryClaimsTask = defineTask('calibration-claim-inventory', (ar
 export const assessEvidenceQualityTask = defineTask('calibration-evidence-quality', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 2: Evidence Quality Assessment',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Evidence quality assessment specialist',
       task: 'Assess quality and relevance of evidence for each claim',
@@ -213,8 +217,10 @@ export const assessEvidenceQualityTask = defineTask('calibration-evidence-qualit
 export const analyzePriorCalibrationTask = defineTask('calibration-prior-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 3: Prior Calibration Analysis',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Calibration history analyst',
       task: 'Analyze historical calibration performance',
@@ -251,8 +257,10 @@ export const analyzePriorCalibrationTask = defineTask('calibration-prior-analysi
 export const decomposeConfidenceTask = defineTask('calibration-confidence-decomposition', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 4: Confidence Decomposition',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Confidence analysis specialist',
       task: 'Decompose confidence into component factors',
@@ -289,8 +297,10 @@ export const decomposeConfidenceTask = defineTask('calibration-confidence-decomp
 export const identifyUncertaintySourcesTask = defineTask('calibration-uncertainty-sources', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 5: Uncertainty Source Identification',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Uncertainty analysis specialist',
       task: 'Identify and classify sources of uncertainty',
@@ -327,8 +337,10 @@ export const identifyUncertaintySourcesTask = defineTask('calibration-uncertaint
 export const detectConfidenceBiasesTask = defineTask('calibration-bias-detection', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 6: Bias Detection',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Cognitive bias detection specialist',
       task: 'Detect biases affecting confidence judgments',
@@ -365,8 +377,10 @@ export const detectConfidenceBiasesTask = defineTask('calibration-bias-detection
 export const adjustCalibrationTask = defineTask('calibration-adjustment', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 7: Calibration Adjustment',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Confidence calibration specialist',
       task: 'Adjust confidence levels based on analysis',
@@ -401,8 +415,10 @@ export const adjustCalibrationTask = defineTask('calibration-adjustment', (args,
 export const checkReasonablenessTask = defineTask('calibration-reasonableness-check', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 8: Reasonableness Check',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Calibration reasonableness specialist',
       task: 'Check if calibration adjustments are reasonable',
@@ -438,8 +454,10 @@ export const checkReasonablenessTask = defineTask('calibration-reasonableness-ch
 export const constructUncertaintyModelTask = defineTask('calibration-uncertainty-model', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 9: Uncertainty Model Construction',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Uncertainty modeling specialist',
       task: 'Construct explicit uncertainty model',
@@ -476,8 +494,10 @@ export const constructUncertaintyModelTask = defineTask('calibration-uncertainty
 export const documentEpistemicStatusTask = defineTask('calibration-epistemic-status', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 10: Epistemic Status Documentation',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Epistemic status documentation specialist',
       task: 'Document overall epistemic status of assessments',
@@ -514,8 +534,10 @@ export const documentEpistemicStatusTask = defineTask('calibration-epistemic-sta
 export const recommendImprovementsTask = defineTask('calibration-improvements', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 11: Improvement Recommendations',
+  skill: { name: 'bayesian-inference-engine' },
   agent: {
-    name: 'general-purpose',
+    name: 'calibration-specialist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'hypothesis-generator'],
     prompt: {
       role: 'Calibration improvement specialist',
       task: 'Recommend improvements for future calibration',

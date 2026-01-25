@@ -183,7 +183,8 @@ export const symptomAnalysisTask = defineTask('symptom-analysis', (args, taskCtx
   kind: 'agent',
   title: `Symptom Analysis - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in diagnostic symptom analysis and medical/technical semiotics',
       task: 'Analyze and characterize the observed symptoms',
@@ -262,7 +263,8 @@ export const faultModelConstructionTask = defineTask('fault-model-construction',
   kind: 'agent',
   title: 'Fault Model Construction',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in fault modeling and failure mode analysis',
       task: 'Construct or extend fault model for diagnostic reasoning',
@@ -353,7 +355,8 @@ export const candidateGenerationTask = defineTask('candidate-generation', (args,
   kind: 'agent',
   title: 'Diagnostic Candidate Generation',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in diagnostic hypothesis generation',
       task: 'Generate candidate diagnoses that could explain observed symptoms',
@@ -413,7 +416,8 @@ export const consistencyBasedDiagnosisTask = defineTask('consistency-based-diagn
   kind: 'agent',
   title: 'Consistency-Based Diagnosis',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in consistency-based diagnosis and model-based reasoning',
       task: 'Perform consistency-based diagnostic reasoning (Reiter approach)',
@@ -492,7 +496,8 @@ export const abductiveDiagnosisTask = defineTask('abductive-diagnosis', (args, t
   kind: 'agent',
   title: 'Abductive Diagnosis',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in abductive reasoning and inference to best explanation',
       task: 'Perform abductive diagnostic reasoning (Peng-Reggia approach)',
@@ -562,7 +567,8 @@ export const bayesianDiagnosisTask = defineTask('bayesian-diagnosis', (args, tas
   kind: 'agent',
   title: 'Bayesian Diagnosis',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in Bayesian diagnostic reasoning and probabilistic inference',
       task: 'Perform Bayesian diagnostic reasoning',
@@ -643,7 +649,8 @@ export const diagnosisIntegrationTask = defineTask('diagnosis-integration', (arg
   kind: 'agent',
   title: 'Diagnosis Integration',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in diagnostic reasoning integration and decision making',
       task: 'Integrate results from multiple diagnostic methods',
@@ -718,7 +725,8 @@ export const rootCauseAnalysisTask = defineTask('root-cause-analysis', (args, ta
   kind: 'agent',
   title: 'Root Cause Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in root cause analysis and causal reasoning',
       task: 'Identify the root cause underlying the diagnosed faults',
@@ -799,7 +807,8 @@ export const discriminatingTestsTask = defineTask('discriminating-tests', (args,
   kind: 'agent',
   title: 'Discriminating Test Recommendation',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in diagnostic testing and information theory',
       task: 'Recommend tests to discriminate between competing diagnoses',
@@ -867,7 +876,8 @@ export const recommendationsTask = defineTask('recommendations', (args, taskCtx)
   kind: 'agent',
   title: 'Treatment/Intervention Recommendations',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in treatment planning and intervention design',
       task: 'Generate recommendations based on diagnosis and root cause',
@@ -946,7 +956,8 @@ export const diagnosticValidationTask = defineTask('diagnostic-validation', (arg
   kind: 'agent',
   title: 'Diagnostic Validation',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Expert in diagnostic validation and quality assurance',
       task: 'Validate the diagnostic reasoning and conclusions',

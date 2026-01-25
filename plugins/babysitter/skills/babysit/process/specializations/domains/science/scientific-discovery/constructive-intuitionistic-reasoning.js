@@ -12,7 +12,8 @@ const analyzeTask = defineTask('constructive-intuitionistic-reasoning-analyze', 
   kind: 'agent',
   title: 'Constructive Intuitionistic Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in constructive mathematics and intuitionistic logic',
       task: 'Apply constructive intuitionistic reasoning requiring explicit witnesses and constructions for all existence claims',

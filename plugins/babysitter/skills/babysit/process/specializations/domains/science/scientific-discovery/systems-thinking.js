@@ -193,7 +193,8 @@ export const boundaryDefinitionTask = defineTask('boundary-definition', (args, t
   kind: 'agent',
   title: `System Boundary Definition - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine', 'network-visualizer'],
     prompt: {
       role: 'Expert in systems thinking and system dynamics',
       task: 'Define the system boundary for analysis',
@@ -283,7 +284,8 @@ export const stockFlowAnalysisTask = defineTask('stock-flow-analysis', (args, ta
   kind: 'agent',
   title: 'Stock and Flow Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'network-visualizer'],
     prompt: {
       role: 'Expert in system dynamics and stock-flow modeling',
       task: 'Identify stocks (accumulations) and flows in the system',
@@ -375,7 +377,8 @@ export const feedbackMappingTask = defineTask('feedback-mapping', (args, taskCtx
   kind: 'agent',
   title: 'Feedback Loop Mapping',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['causal-inference-engine', 'systems-dynamics-modeler', 'network-visualizer'],
     prompt: {
       role: 'Expert in feedback systems and causal loop diagrams',
       task: 'Map feedback loops in the system',
@@ -463,7 +466,8 @@ export const delayIdentificationTask = defineTask('delay-identification', (args,
   kind: 'agent',
   title: 'Delay Identification',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine'],
     prompt: {
       role: 'Expert in system dynamics and time delays',
       task: 'Identify time delays in the system',
@@ -540,7 +544,8 @@ export const nonlinearityAnalysisTask = defineTask('nonlinearity-analysis', (arg
   kind: 'agent',
   title: 'Nonlinearity and Threshold Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in nonlinear dynamics and complexity',
       task: 'Identify nonlinearities and thresholds in the system',
@@ -631,7 +636,8 @@ export const emergenceAnalysisTask = defineTask('emergence-analysis', (args, tas
   kind: 'agent',
   title: 'Emergence Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'network-visualizer', 'causal-inference-engine'],
     prompt: {
       role: 'Expert in complex systems and emergence',
       task: 'Analyze emergent properties and behaviors in the system',
@@ -722,7 +728,8 @@ export const archetypeIdentificationTask = defineTask('archetype-identification'
   kind: 'agent',
   title: 'System Archetype Identification',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine'],
     prompt: {
       role: 'Expert in system archetypes and patterns',
       task: 'Identify common system archetypes present in the system',
@@ -790,7 +797,8 @@ export const dynamicBehaviorAnalysisTask = defineTask('dynamic-behavior-analysis
   kind: 'agent',
   title: 'Dynamic Behavior Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in system dynamics behavior modes',
       task: 'Analyze the dynamic behavior patterns of the system',
@@ -865,7 +873,8 @@ export const leveragePointIdentificationTask = defineTask('leverage-point-identi
   kind: 'agent',
   title: 'Leverage Point Identification',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine', 'network-visualizer'],
     prompt: {
       role: 'Expert in systems intervention and leverage points (Meadows framework)',
       task: 'Identify leverage points for system intervention',
@@ -937,7 +946,8 @@ export const mentalModelAnalysisTask = defineTask('mental-model-analysis', (args
   kind: 'agent',
   title: 'Mental Model Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine'],
     prompt: {
       role: 'Expert in mental models and cognitive systems',
       task: 'Analyze mental models underlying the system and question',
@@ -1023,7 +1033,8 @@ export const systemsInsightSynthesisTask = defineTask('systems-insight-synthesis
   kind: 'agent',
   title: 'Systems Insight Synthesis',
   agent: {
-    name: 'general-purpose',
+    name: 'systems-thinker',
+    skills: ['systems-dynamics-modeler', 'causal-inference-engine', 'network-visualizer'],
     prompt: {
       role: 'Expert in systems thinking synthesis and communication',
       task: 'Synthesize insights from systems analysis',

@@ -12,7 +12,8 @@ const analyzeTask = defineTask('statistical-reasoning-analyze', (args, taskCtx) 
   kind: 'agent',
   title: 'Statistical Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'statistical-consultant',
+    skills: ['statistical-test-selector', 'regression-analyzer', 'power-analysis-calculator'],
     prompt: {
       role: 'Scientific reasoning specialist in statistical inference and estimation theory',
       task: 'Apply statistical reasoning to infer population characteristics from sample data using appropriate estimators',

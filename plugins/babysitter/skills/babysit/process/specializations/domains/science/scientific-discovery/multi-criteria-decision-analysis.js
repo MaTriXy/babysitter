@@ -168,7 +168,8 @@ export const mcdaProblemStructuringTask = defineTask('mcda-problem-structuring',
   kind: 'agent',
   title: `MCDA Problem Structuring - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in multi-criteria decision analysis and problem structuring',
       task: 'Structure the multi-criteria decision problem',
@@ -255,7 +256,8 @@ export const criteriaWeightingTask = defineTask('criteria-weighting', (args, tas
   kind: 'agent',
   title: 'Criteria Weighting',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in weight elicitation and preference modeling',
       task: 'Determine weights for decision criteria',
@@ -334,7 +336,8 @@ export const performanceAssessmentTask = defineTask('performance-assessment', (a
   kind: 'agent',
   title: 'Alternative Performance Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in performance measurement and evaluation',
       task: 'Assess performance of alternatives on each criterion',
@@ -425,7 +428,8 @@ export const valueFunctionConstructionTask = defineTask('value-function-construc
   kind: 'agent',
   title: 'Value Function Construction',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in value function elicitation and utility theory',
       task: 'Construct value functions for each criterion',
@@ -497,7 +501,8 @@ export const scoreNormalizationTask = defineTask('score-normalization', (args, t
   kind: 'agent',
   title: 'Score Normalization',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in score normalization and scaling',
       task: 'Normalize performance scores to common scale',
@@ -561,7 +566,8 @@ export const weightedAggregationTask = defineTask('weighted-aggregation', (args,
   kind: 'agent',
   title: 'Weighted Score Aggregation',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in multi-attribute aggregation methods',
       task: 'Aggregate weighted scores to rank alternatives',
@@ -640,7 +646,8 @@ export const paretoAnalysisTask = defineTask('pareto-analysis', (args, taskCtx) 
   kind: 'agent',
   title: 'Pareto Frontier Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in Pareto optimality and multi-objective analysis',
       task: 'Identify Pareto-optimal alternatives',
@@ -725,7 +732,8 @@ export const mcdaSensitivityTask = defineTask('mcda-sensitivity', (args, taskCtx
   kind: 'agent',
   title: 'MCDA Sensitivity Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in MCDA sensitivity and robustness analysis',
       task: 'Analyze sensitivity of ranking to weight changes',
@@ -806,7 +814,8 @@ export const outrankingAnalysisTask = defineTask('outranking-analysis', (args, t
   kind: 'agent',
   title: 'Outranking Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in outranking methods (ELECTRE, PROMETHEE)',
       task: 'Perform outranking analysis for comparison',
@@ -882,7 +891,8 @@ export const stakeholderAnalysisTask = defineTask('stakeholder-analysis', (args,
   kind: 'agent',
   title: 'Stakeholder Perspective Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in stakeholder analysis and conflict resolution',
       task: 'Analyze rankings from different stakeholder perspectives',
@@ -967,7 +977,8 @@ export const mcdaRecommendationTask = defineTask('mcda-recommendation', (args, t
   kind: 'agent',
   title: 'MCDA Recommendation Synthesis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'statistical-test-selector', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in decision synthesis and recommendation',
       task: 'Synthesize MCDA results into recommendation',

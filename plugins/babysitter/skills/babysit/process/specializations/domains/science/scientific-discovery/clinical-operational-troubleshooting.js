@@ -142,8 +142,10 @@ export async function process(inputs, ctx) {
 export const characterizeSymptomsTask = defineTask('troubleshoot-symptom-characterization', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 1: Symptom Characterization',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic symptom analysis specialist',
       task: 'Characterize and classify observed symptoms',
@@ -179,8 +181,10 @@ export const characterizeSymptomsTask = defineTask('troubleshoot-symptom-charact
 export const gatherHistoryTask = defineTask('troubleshoot-history-gathering', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 2: History Gathering',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic history specialist',
       task: 'Gather relevant historical context for diagnosis',
@@ -217,8 +221,10 @@ export const gatherHistoryTask = defineTask('troubleshoot-history-gathering', (a
 export const recognizePatternsTask = defineTask('troubleshoot-pattern-recognition', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 3: Pattern Recognition',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic pattern recognition specialist',
       task: 'Recognize patterns matching known failure modes',
@@ -254,8 +260,10 @@ export const recognizePatternsTask = defineTask('troubleshoot-pattern-recognitio
 export const generateDifferentialTask = defineTask('troubleshoot-differential-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 4: Differential Diagnosis Generation',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Differential diagnosis specialist',
       task: 'Generate comprehensive differential diagnosis list',
@@ -291,8 +299,10 @@ export const generateDifferentialTask = defineTask('troubleshoot-differential-ge
 export const planDiagnosticTestsTask = defineTask('troubleshoot-test-planning', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 5: Diagnostic Test Planning',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic test planning specialist',
       task: 'Plan diagnostic tests to differentiate diagnoses',
@@ -328,8 +338,10 @@ export const planDiagnosticTestsTask = defineTask('troubleshoot-test-planning', 
 export const simulateTestResultsTask = defineTask('troubleshoot-test-simulation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 6: Test Result Analysis',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic test result analyst',
       task: 'Analyze or simulate diagnostic test results',
@@ -365,8 +377,10 @@ export const simulateTestResultsTask = defineTask('troubleshoot-test-simulation'
 export const refineDifferentialTask = defineTask('troubleshoot-differential-refinement', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 7: Differential Refinement',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Diagnostic refinement specialist',
       task: 'Refine differential diagnosis based on test results',
@@ -404,8 +418,10 @@ export const refineDifferentialTask = defineTask('troubleshoot-differential-refi
 export const analyzeRootCauseTask = defineTask('troubleshoot-root-cause', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 8: Root Cause Analysis',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Root cause analysis specialist',
       task: 'Identify root cause using systematic analysis methods',
@@ -442,8 +458,10 @@ export const analyzeRootCauseTask = defineTask('troubleshoot-root-cause', (args,
 export const planTreatmentTask = defineTask('troubleshoot-treatment-planning', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 9: Treatment/Remediation Planning',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Remediation planning specialist',
       task: 'Plan treatment or remediation actions',
@@ -481,8 +499,10 @@ export const planTreatmentTask = defineTask('troubleshoot-treatment-planning', (
 export const planPreventionTask = defineTask('troubleshoot-prevention-planning', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Phase 10: Prevention and Monitoring Planning',
+  skill: { name: 'root-cause-analyzer' },
   agent: {
-    name: 'general-purpose',
+    name: 'diagnostic-specialist',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Prevention and monitoring specialist',
       task: 'Plan prevention measures and enhanced monitoring',

@@ -178,7 +178,8 @@ export const problemStructuringTask = defineTask('problem-structuring', (args, t
   kind: 'agent',
   title: `Decision Problem Structuring - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in decision analysis and problem structuring',
       task: 'Structure the decision problem formally',
@@ -260,7 +261,8 @@ export const stateSpaceDefinitionTask = defineTask('state-space-definition', (ar
   kind: 'agent',
   title: 'State Space Definition',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in probability theory and state space modeling',
       task: 'Define the state space of uncertain outcomes',
@@ -339,7 +341,8 @@ export const probabilityAssessmentTask = defineTask('probability-assessment', (a
   kind: 'agent',
   title: 'Probability Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in probability elicitation and Bayesian analysis',
       task: 'Assess probabilities for uncertain states',
@@ -416,7 +419,8 @@ export const utilityAssessmentTask = defineTask('utility-assessment', (args, tas
   kind: 'agent',
   title: 'Utility Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in utility theory and preference elicitation',
       task: 'Assess utilities for outcomes',
@@ -489,7 +493,8 @@ export const expectedUtilityCalculationTask = defineTask('expected-utility-calcu
   kind: 'agent',
   title: 'Expected Utility Calculation',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in decision theory and expected utility computation',
       task: 'Calculate expected utility for each alternative',
@@ -574,7 +579,8 @@ export const dominanceAnalysisTask = defineTask('dominance-analysis', (args, tas
   kind: 'agent',
   title: 'Dominance Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in decision analysis and dominance principles',
       task: 'Analyze dominance relationships between alternatives',
@@ -643,7 +649,8 @@ export const decisionSensitivityTask = defineTask('decision-sensitivity', (args,
   kind: 'agent',
   title: 'Decision Sensitivity Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in sensitivity analysis for decisions',
       task: 'Analyze sensitivity of optimal decision to parameter changes',
@@ -735,7 +742,8 @@ export const informationValueTask = defineTask('information-value', (args, taskC
   kind: 'agent',
   title: 'Value of Information Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in value of information and decision optimization',
       task: 'Calculate value of additional information',
@@ -819,7 +827,8 @@ export const riskAnalysisTask = defineTask('risk-analysis', (args, taskCtx) => (
   kind: 'agent',
   title: 'Risk Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in risk analysis and decision making under uncertainty',
       task: 'Analyze risk characteristics of alternatives',
@@ -919,7 +928,8 @@ export const decisionRecommendationTask = defineTask('decision-recommendation', 
   kind: 'agent',
   title: 'Decision Recommendation',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['bayesian-inference-engine', 'formal-logic-reasoner', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in decision advisory and synthesis',
       task: 'Synthesize analysis into decision recommendation',

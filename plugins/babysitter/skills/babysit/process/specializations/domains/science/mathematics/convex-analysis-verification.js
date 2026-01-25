@@ -135,7 +135,6 @@ export async function process(inputs, ctx) {
 export const objectiveConvexityTask = defineTask('objective-convexity', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Check Objective Convexity (Hessian Analysis)`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['sympy-computer-algebra', 'cvxpy-optimization-modeling', 'numerical-linear-algebra-toolkit'],
@@ -195,7 +194,6 @@ export const objectiveConvexityTask = defineTask('objective-convexity', (args, t
 export const constraintConvexityTask = defineTask('constraint-convexity', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Verify Constraint Set Convexity`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['sympy-computer-algebra', 'cvxpy-optimization-modeling', 'numerical-linear-algebra-toolkit'],
@@ -264,7 +262,6 @@ export const constraintConvexityTask = defineTask('constraint-convexity', (args,
 export const convexReformulationTask = defineTask('convex-reformulation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Identify Reformulations to Convex Form`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'sympy-computer-algebra', 'numerical-linear-algebra-toolkit'],
@@ -336,7 +333,6 @@ export const convexReformulationTask = defineTask('convex-reformulation', (args,
 export const solverRecommendationTask = defineTask('solver-recommendation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Recommend Appropriate Solvers`,
-  skill: { name: 'nonlinear-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'benchmark-suite-manager', 'numerical-linear-algebra-toolkit'],
@@ -408,7 +404,6 @@ export const solverRecommendationTask = defineTask('solver-recommendation', (arg
 export const convexityDocumentationTask = defineTask('convexity-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Document Convexity Analysis`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'optimization-expert',
     skills: ['latex-math-formatter', 'sympy-computer-algebra', 'cvxpy-optimization-modeling'],

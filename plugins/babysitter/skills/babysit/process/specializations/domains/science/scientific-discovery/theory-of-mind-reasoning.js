@@ -190,7 +190,8 @@ export const agentProfileConstructionTask = defineTask('agent-profile-constructi
   kind: 'agent',
   title: 'Phase 1: Agent Profile Construction',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Cognitive Scientist specializing in mental state attribution',
       task: 'Construct detailed cognitive profiles for target agents',
@@ -250,7 +251,8 @@ export const knowledgeStateInferenceTask = defineTask('knowledge-state-inference
   kind: 'agent',
   title: 'Phase 2: Knowledge State Inference',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Epistemic Reasoning Expert',
       task: 'Infer what each agent knows, does not know, and is uncertain about',
@@ -306,7 +308,8 @@ export const beliefAttributionTask = defineTask('belief-attribution', (args, tas
   kind: 'agent',
   title: 'Phase 3: Belief Attribution',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Belief Attribution Specialist',
       task: 'Infer beliefs held by each agent based on evidence',
@@ -365,7 +368,8 @@ export const intentionGoalInferenceTask = defineTask('intention-goal-inference',
   kind: 'agent',
   title: 'Phase 4: Intention and Goal Inference',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Intention Recognition Expert',
       task: 'Infer intentions, goals, and plans of each agent',
@@ -422,7 +426,8 @@ export const desirePreferenceModelingTask = defineTask('desire-preference-modeli
   kind: 'agent',
   title: 'Phase 5: Desire and Preference Modeling',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Preference Modeling Expert',
       task: 'Model desires, preferences, and utility functions of agents',
@@ -480,7 +485,8 @@ export const nestedBeliefReasoningTask = defineTask('nested-belief-reasoning', (
   kind: 'agent',
   title: 'Phase 6: Nested Belief Reasoning',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Higher-Order Theory of Mind Expert',
       task: 'Reason about nested beliefs - what agents believe about others\' beliefs',
@@ -539,7 +545,8 @@ export const perspectiveSimulationTask = defineTask('perspective-simulation', (a
   kind: 'agent',
   title: 'Phase 7: Perspective Simulation',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Perspective-Taking Simulation Expert',
       task: 'Simulate how each agent perceives and interprets the situation',
@@ -601,7 +608,8 @@ export const behaviorPredictionTask = defineTask('behavior-prediction', (args, t
   kind: 'agent',
   title: 'Phase 8: Behavior Prediction',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Behavioral Prediction Expert using Theory of Mind',
       task: 'Predict future behaviors based on inferred mental states',
@@ -661,7 +669,8 @@ export const communicationStrategyInferenceTask = defineTask('communication-stra
   kind: 'agent',
   title: 'Phase 9: Communication Strategy Inference',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Strategic Communication Expert using Theory of Mind',
       task: 'Infer optimal communication strategies based on mental models',
@@ -719,7 +728,8 @@ export const theoryOfMindSynthesisTask = defineTask('theory-of-mind-synthesis', 
   kind: 'agent',
   title: 'Phase 10: Theory of Mind Synthesis',
   agent: {
-    name: 'general-purpose',
+    name: 'cognitive-analyst',
+    skills: ['hypothesis-generator', 'bayesian-inference-engine', 'causal-inference-engine'],
     prompt: {
       role: 'Theory of Mind Integration Expert',
       task: 'Synthesize all analyses into comprehensive mental models and recommendations',

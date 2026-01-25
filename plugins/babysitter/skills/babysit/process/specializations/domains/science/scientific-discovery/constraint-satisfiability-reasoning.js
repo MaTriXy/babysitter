@@ -12,7 +12,8 @@ const analyzeTask = defineTask('constraint-satisfiability-reasoning-analyze', (a
   kind: 'agent',
   title: 'Constraint Satisfiability Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'constraint-solver', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in constraint satisfaction and satisfiability solving',
       task: 'Apply constraint satisfiability reasoning by encoding requirements as constraints and solving using SAT/SMT/CSP techniques',

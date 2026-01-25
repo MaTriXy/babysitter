@@ -210,7 +210,8 @@ export const gameStructureAnalysisTask = defineTask('game-structure-analysis', (
   kind: 'agent',
   title: 'Phase 1: Game Structure Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Game Theory Expert specializing in multi-agent strategic interactions',
       task: 'Analyze the game structure of the strategic scenario',
@@ -286,7 +287,8 @@ export const strategySpaceEnumerationTask = defineTask('strategy-space-enumerati
   kind: 'agent',
   title: 'Phase 2: Strategy Space Enumeration',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Strategic Analysis Expert in game-theoretic reasoning',
       task: 'Enumerate and categorize all possible strategies for each player',
@@ -358,7 +360,8 @@ export const payoffMatrixConstructionTask = defineTask('payoff-matrix-constructi
   kind: 'agent',
   title: 'Phase 3: Payoff Matrix Construction',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Quantitative Game Theory Analyst',
       task: 'Construct comprehensive payoff matrices for all strategy combinations',
@@ -417,7 +420,8 @@ export const dominantStrategyAnalysisTask = defineTask('dominant-strategy-analys
   kind: 'agent',
   title: 'Phase 4: Dominant Strategy Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Game Theory Strategist specializing in equilibrium analysis',
       task: 'Identify dominant, dominated, and rationalizable strategies',
@@ -479,7 +483,8 @@ export const nashEquilibriumIdentificationTask = defineTask('nash-equilibrium-id
   kind: 'agent',
   title: 'Phase 5: Nash Equilibrium Identification',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Equilibrium Analysis Expert in game-theoretic reasoning',
       task: 'Identify all Nash equilibria and their properties',
@@ -549,7 +554,8 @@ export const mixedStrategyAnalysisTask = defineTask('mixed-strategy-analysis', (
   kind: 'agent',
   title: 'Phase 6: Mixed Strategy Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Probabilistic Strategy Analyst in game theory',
       task: 'Analyze mixed strategy equilibria and optimal randomization',
@@ -607,7 +613,8 @@ export const dynamicGameAnalysisTask = defineTask('dynamic-game-analysis', (args
   kind: 'agent',
   title: 'Phase 7: Dynamic Game Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Dynamic Game Theory Expert specializing in sequential reasoning',
       task: 'Analyze dynamic and repeated game aspects',
@@ -667,7 +674,8 @@ export const coalitionAnalysisTask = defineTask('coalition-analysis', (args, tas
   kind: 'agent',
   title: 'Phase 8: Coalition and Cooperation Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Cooperative Game Theory Expert specializing in coalition formation',
       task: 'Analyze coalition formation possibilities and cooperative outcomes',
@@ -727,7 +735,8 @@ export const behavioralAnalysisTask = defineTask('behavioral-analysis', (args, t
   kind: 'agent',
   title: 'Phase 9: Behavioral and Bounded Rationality Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Behavioral Game Theory Expert',
       task: 'Analyze behavioral factors and bounded rationality effects',
@@ -796,7 +805,8 @@ export const strategicRecommendationsTask = defineTask('strategic-recommendation
   kind: 'agent',
   title: 'Phase 10: Strategic Recommendations Generation',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Strategic Advisory Expert synthesizing game-theoretic insights',
       task: 'Generate actionable strategic recommendations from the analysis',

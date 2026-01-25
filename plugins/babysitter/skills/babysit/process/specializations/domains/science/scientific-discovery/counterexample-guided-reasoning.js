@@ -11,8 +11,10 @@ import { defineTask } from '@a5c-ai/babysitter-sdk';
 const analyzeTask = defineTask('counterexample-guided-reasoning-analyze', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Counterexample-Guided Reasoning Analysis',
+  skill: { name: 'formal-logic-reasoner' },
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in counterexample-guided abstraction refinement (CEGAR)',
       task: 'Apply counterexample-guided reasoning through iterative abstraction, checking, and refinement loops',

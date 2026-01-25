@@ -182,7 +182,8 @@ export const queryFormalizationTask = defineTask('query-formalization', (args, t
   kind: 'agent',
   title: 'Counterfactual Query Formalization',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in counterfactual logic and causal query languages',
       task: 'Formalize the natural language counterfactual query into structural form',
@@ -261,7 +262,8 @@ export const structuralEquationSetupTask = defineTask('structural-equation-setup
   kind: 'agent',
   title: 'Structural Equation Model Setup',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in structural causal models and structural equations',
       task: 'Set up the structural equation model for counterfactual computation',
@@ -339,7 +341,8 @@ export const abductionTask = defineTask('abduction', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Abduction - Exogenous Variable Inference',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in counterfactual reasoning and abductive inference',
       task: 'Infer values of exogenous variables from factual observation (abduction step)',
@@ -410,7 +413,8 @@ export const interventionApplicationTask = defineTask('intervention-application'
   kind: 'agent',
   title: 'Action - Apply Counterfactual Intervention',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in causal interventions and do-calculus',
       task: 'Apply the counterfactual intervention to the structural model (action step)',
@@ -482,7 +486,8 @@ export const counterfactualPredictionTask = defineTask('counterfactual-predictio
   kind: 'agent',
   title: 'Prediction - Compute Counterfactual Outcome',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in counterfactual prediction and causal reasoning',
       task: 'Compute the counterfactual outcome using modified model (prediction step)',
@@ -556,7 +561,8 @@ export const counterfactualBoundsTask = defineTask('counterfactual-bounds', (arg
   kind: 'agent',
   title: 'Counterfactual Bounds Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in partial identification and counterfactual bounds',
       task: 'Compute bounds on counterfactual quantities when point identification fails',
@@ -629,7 +635,8 @@ export const counterfactualExplanationTask = defineTask('counterfactual-explanat
   kind: 'agent',
   title: 'Counterfactual Explanation Generation',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in causal explanation and scientific communication',
       task: 'Generate human-understandable explanation of counterfactual result',
@@ -702,7 +709,8 @@ export const necessitySufficiencyTask = defineTask('necessity-sufficiency', (arg
   kind: 'agent',
   title: 'Probability of Necessity and Sufficiency Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in causal necessity, sufficiency, and attribution',
       task: 'Compute probability of necessity (PN), sufficiency (PS), and both (PNS)',
@@ -780,7 +788,8 @@ export const robustnessAssessmentTask = defineTask('robustness-assessment', (arg
   kind: 'agent',
   title: 'Counterfactual Robustness Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner', 'bayesian-inference-engine'],
     prompt: {
       role: 'Expert in sensitivity analysis and robustness assessment',
       task: 'Assess robustness of counterfactual conclusions',

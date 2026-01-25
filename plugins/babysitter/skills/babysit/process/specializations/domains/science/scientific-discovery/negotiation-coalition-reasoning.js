@@ -193,7 +193,8 @@ export const partyInterestAnalysisTask = defineTask('party-interest-analysis', (
   kind: 'agent',
   title: 'Phase 1: Party and Interest Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Negotiation Analyst specializing in interest-based negotiation',
       task: 'Analyze parties, their interests, positions, and underlying needs',
@@ -253,7 +254,8 @@ export const issueAnalysisTask = defineTask('issue-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: 'Phase 2: Issue Analysis and Structuring',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Negotiation Structuring Expert',
       task: 'Analyze and structure negotiation issues',
@@ -313,7 +315,8 @@ export const batnaAnalysisTask = defineTask('batna-analysis', (args, taskCtx) =>
   kind: 'agent',
   title: 'Phase 3: BATNA and Reservation Value Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'BATNA Analysis Expert',
       task: 'Analyze Best Alternatives To Negotiated Agreement and reservation values',
@@ -375,7 +378,8 @@ export const zopaIdentificationTask = defineTask('zopa-identification', (args, t
   kind: 'agent',
   title: 'Phase 4: Zone of Possible Agreement Identification',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'ZOPA Analysis Expert',
       task: 'Identify Zone of Possible Agreement and agreement space',
@@ -427,7 +431,8 @@ export const coalitionStructureAnalysisTask = defineTask('coalition-structure-an
   kind: 'agent',
   title: 'Phase 5: Coalition Structure Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Coalition Formation Expert',
       task: 'Analyze possible coalition structures and their stability',
@@ -487,7 +492,8 @@ export const valueCreationAnalysisTask = defineTask('value-creation-analysis', (
   kind: 'agent',
   title: 'Phase 6: Value Creation Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Integrative Negotiation Expert',
       task: 'Identify opportunities to create value and expand the pie',
@@ -545,7 +551,8 @@ export const bargainingStrategyTask = defineTask('bargaining-strategy', (args, t
   kind: 'agent',
   title: 'Phase 7: Bargaining Strategy Development',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Bargaining Strategy Expert',
       task: 'Develop comprehensive bargaining strategies for negotiation',
@@ -605,7 +612,8 @@ export const agreementDesignTask = defineTask('agreement-design', (args, taskCtx
   kind: 'agent',
   title: 'Phase 8: Agreement Design',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Agreement Design Specialist',
       task: 'Design optimal agreement structures',
@@ -667,7 +675,8 @@ export const implementationAnalysisTask = defineTask('implementation-analysis', 
   kind: 'agent',
   title: 'Phase 9: Implementation and Enforcement Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Implementation and Enforcement Analyst',
       task: 'Analyze implementation requirements and enforcement mechanisms',
@@ -715,7 +724,8 @@ export const negotiationSynthesisTask = defineTask('negotiation-synthesis', (arg
   kind: 'agent',
   title: 'Phase 10: Negotiation Synthesis and Recommendations',
   agent: {
-    name: 'general-purpose',
+    name: 'decision-theorist',
+    skills: ['formal-logic-reasoner', 'bayesian-inference-engine', 'hypothesis-generator'],
     prompt: {
       role: 'Negotiation Strategy Synthesizer',
       task: 'Synthesize all analyses into actionable recommendations',

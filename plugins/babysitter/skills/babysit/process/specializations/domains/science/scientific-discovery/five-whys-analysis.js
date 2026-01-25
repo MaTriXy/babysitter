@@ -229,7 +229,8 @@ export const problemDefinitionTask = defineTask('problem-definition', (args, tas
   kind: 'agent',
   title: 'Define and clarify the problem',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'causal-inference-engine'],
     prompt: {
       role: 'Problem analysis specialist',
       task: 'Define and clarify the problem statement for Five Whys analysis',
@@ -282,7 +283,8 @@ export const evidenceGatheringTask = defineTask('evidence-gathering', (args, tas
   kind: 'agent',
   title: 'Gather supporting evidence',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'semantic-scholar-search'],
     prompt: {
       role: 'Evidence analyst',
       task: 'Gather and organize evidence to support the why analysis',
@@ -338,7 +340,8 @@ export const iterativeWhyAnalysisTask = defineTask('iterative-why-analysis', (ar
   kind: 'agent',
   title: 'Conduct iterative why analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'formal-logic-reasoner'],
     prompt: {
       role: 'Root cause analyst using Five Whys methodology',
       task: 'Conduct systematic Five Whys analysis to identify root causes',
@@ -414,7 +417,8 @@ export const rootCauseValidationTask = defineTask('root-cause-validation', (args
   kind: 'agent',
   title: 'Validate identified root causes',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'causal-inference-engine', 'formal-logic-reasoner'],
     prompt: {
       role: 'Root cause validation specialist',
       task: 'Validate the identified root causes through multiple methods',
@@ -471,7 +475,8 @@ export const countermeasureDevelopmentTask = defineTask('countermeasure-developm
   kind: 'agent',
   title: 'Develop countermeasures',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'hypothesis-generator'],
     prompt: {
       role: 'Countermeasure development specialist',
       task: 'Develop countermeasures to address validated root causes',
@@ -529,7 +534,8 @@ export const actionPlanTask = defineTask('action-plan', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Create action plan',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer'],
     prompt: {
       role: 'Action planning specialist',
       task: 'Create detailed action plan for implementing countermeasures',
@@ -598,7 +604,8 @@ export const analysisQualityScoringTask = defineTask('analysis-quality-scoring',
   kind: 'agent',
   title: 'Score analysis quality',
   agent: {
-    name: 'general-purpose',
+    name: 'root-cause-analyst',
+    skills: ['root-cause-analyzer', 'formal-logic-reasoner'],
     prompt: {
       role: 'Root cause analysis quality auditor',
       task: 'Score the quality and completeness of the Five Whys analysis',

@@ -147,7 +147,6 @@ export async function process(inputs, ctx) {
 export const systemDocumentationTask = defineTask('system-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Document System Variables and Parameters`,
-  skill: { name: 'sympy-computer-algebra' },
   agent: {
     name: 'applied-mathematician',
     skills: ['sympy-computer-algebra', 'latex-math-formatter', 'scientific-literature-search'],
@@ -232,7 +231,6 @@ export const systemDocumentationTask = defineTask('system-documentation', (args,
 export const assumptionDocumentationTask = defineTask('assumption-documentation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: State and Justify Assumptions`,
-  skill: { name: 'sympy-computer-algebra' },
   agent: {
     name: 'applied-mathematician',
     skills: ['sympy-computer-algebra', 'latex-math-formatter', 'scientific-literature-search'],
@@ -315,7 +313,6 @@ export const assumptionDocumentationTask = defineTask('assumption-documentation'
 export const dimensionalAnalysisTask = defineTask('dimensional-analysis', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Apply Dimensional Analysis`,
-  skill: { name: 'sympy-computer-algebra' },
   agent: {
     name: 'applied-mathematician',
     skills: ['sympy-computer-algebra', 'numerical-linear-algebra-toolkit', 'latex-math-formatter'],
@@ -393,7 +390,6 @@ export const dimensionalAnalysisTask = defineTask('dimensional-analysis', (args,
 export const equationDerivationTask = defineTask('equation-derivation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Derive Governing Equations`,
-  skill: { name: 'ode-solver-library' },
   agent: {
     name: 'applied-mathematician',
     skills: ['sympy-computer-algebra', 'pde-solver-library', 'latex-math-formatter'],
@@ -484,7 +480,6 @@ export const equationDerivationTask = defineTask('equation-derivation', (args, t
 export const limitValidationTask = defineTask('limit-validation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Validate Against Known Limits`,
-  skill: { name: 'sympy-computer-algebra' },
   agent: {
     name: 'applied-mathematician',
     skills: ['sympy-computer-algebra', 'benchmark-suite-manager', 'scientific-literature-search'],

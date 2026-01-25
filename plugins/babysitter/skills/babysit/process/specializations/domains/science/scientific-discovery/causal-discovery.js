@@ -180,7 +180,8 @@ export const dataCharacterizationTask = defineTask('data-characterization', (arg
   kind: 'agent',
   title: `Data Characterization for Causal Discovery - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in statistical data analysis and causal discovery prerequisites',
       task: 'Characterize the dataset for optimal causal discovery algorithm selection',
@@ -258,7 +259,8 @@ export const algorithmSelectionTask = defineTask('algorithm-selection', (args, t
   kind: 'agent',
   title: 'Causal Discovery Algorithm Selection',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in causal discovery algorithms and structure learning',
       task: 'Select optimal algorithms for causal structure discovery',
@@ -344,7 +346,8 @@ export const constraintBasedDiscoveryTask = defineTask('constraint-based-discove
   kind: 'agent',
   title: 'Constraint-Based Causal Discovery',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in constraint-based causal discovery algorithms',
       task: 'Apply constraint-based algorithms to discover causal structure',
@@ -431,7 +434,8 @@ export const scoreBasedDiscoveryTask = defineTask('score-based-discovery', (args
   kind: 'agent',
   title: 'Score-Based Causal Discovery',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in score-based causal discovery and structure learning',
       task: 'Apply score-based algorithms to discover causal structure',
@@ -526,7 +530,8 @@ export const functionalCausalModelTask = defineTask('functional-causal-model', (
   kind: 'agent',
   title: 'Functional Causal Model Discovery',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in functional causal models and identifiability',
       task: 'Apply functional causal model methods for structure identification',
@@ -612,7 +617,8 @@ export const structureIntegrationTask = defineTask('structure-integration', (arg
   kind: 'agent',
   title: 'Causal Structure Integration',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in causal structure learning and ensemble methods',
       task: 'Integrate results from multiple causal discovery approaches',
@@ -687,7 +693,8 @@ export const edgeOrientationTask = defineTask('edge-orientation', (args, taskCtx
   kind: 'agent',
   title: 'Causal Edge Orientation',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in causal orientation rules and Meek rules',
       task: 'Complete edge orientation in the integrated structure',
@@ -765,7 +772,8 @@ export const confidenceAssessmentTask = defineTask('confidence-assessment', (arg
   kind: 'agent',
   title: 'Edge Confidence Assessment',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in causal discovery validation and uncertainty quantification',
       task: 'Assess confidence in discovered causal edges',
@@ -845,7 +853,8 @@ export const latentVariableDetectionTask = defineTask('latent-variable-detection
   kind: 'agent',
   title: 'Latent Variable Detection',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in latent variable models and hidden confounding',
       task: 'Detect potential latent confounders in the causal structure',
@@ -924,7 +933,8 @@ export const structureValidationTask = defineTask('structure-validation', (args,
   kind: 'agent',
   title: 'Causal Structure Validation',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in causal structure validation and scientific reasoning',
       task: 'Validate the discovered causal structure',

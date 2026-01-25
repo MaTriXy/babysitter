@@ -12,7 +12,8 @@ const analyzeTask = defineTask('deductive-reasoning-analyze', (args, taskCtx) =>
   kind: 'agent',
   title: 'Deductive Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'assumption-auditor',
+    skills: ['formal-logic-reasoner', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in formal logic and deductive inference',
       task: 'Apply deductive reasoning to analyze the problem and derive logically valid conclusions from given premises',

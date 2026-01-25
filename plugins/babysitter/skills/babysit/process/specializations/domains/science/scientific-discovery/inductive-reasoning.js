@@ -12,7 +12,8 @@ const analyzeTask = defineTask('inductive-reasoning-analyze', (args, taskCtx) =>
   kind: 'agent',
   title: 'Inductive Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'statistical-test-selector'],
     prompt: {
       role: 'Scientific reasoning specialist in inductive inference and pattern generalization',
       task: 'Apply inductive reasoning to infer general patterns and principles from specific observations',

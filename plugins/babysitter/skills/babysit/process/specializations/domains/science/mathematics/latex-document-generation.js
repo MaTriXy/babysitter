@@ -144,9 +144,9 @@ export async function process(inputs, ctx) {
 export const documentStructureTask = defineTask('document-structure', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Structure Document Layout`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['latex-math-formatter', 'sympy-computer-algebra', 'bibtex-reference-manager'],
     prompt: {
       role: 'LaTeX Document Structuring Expert',
       task: 'Create the structure and layout for the LaTeX document',
@@ -211,9 +211,9 @@ export const documentStructureTask = defineTask('document-structure', (args, tas
 export const mathFormattingTask = defineTask('math-formatting', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Format Mathematical Expressions`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['latex-math-formatter', 'sympy-computer-algebra', 'special-functions-library'],
     prompt: {
       role: 'Mathematical Typesetting Expert',
       task: 'Format all mathematical expressions in proper LaTeX',
@@ -277,9 +277,9 @@ export const mathFormattingTask = defineTask('math-formatting', (args, taskCtx) 
 export const theoremEnvironmentsTask = defineTask('theorem-environments', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Set Up Theorem Environments`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['latex-math-formatter', 'sympy-computer-algebra'],
     prompt: {
       role: 'AMS-LaTeX Theorem Expert',
       task: 'Set up theorem environments and proof structures',
@@ -354,9 +354,9 @@ export const theoremEnvironmentsTask = defineTask('theorem-environments', (args,
 export const bibliographyManagementTask = defineTask('bibliography-management', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Manage Bibliography`,
-  skill: { name: 'bibtex-reference-manager' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['bibtex-reference-manager', 'latex-math-formatter', 'arxiv-search-interface'],
     prompt: {
       role: 'BibTeX and Citation Expert',
       task: 'Set up bibliography and citation management',
@@ -411,9 +411,9 @@ export const bibliographyManagementTask = defineTask('bibliography-management', 
 export const notationConsistencyTask = defineTask('notation-consistency', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Ensure Consistent Notation`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['latex-math-formatter', 'sympy-computer-algebra'],
     prompt: {
       role: 'Mathematical Notation Consistency Expert',
       task: 'Ensure notation is consistent throughout the document',
@@ -478,9 +478,9 @@ export const notationConsistencyTask = defineTask('notation-consistency', (args,
 export const finalDocumentGenerationTask = defineTask('final-document-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 6: Generate Final LaTeX Document`,
-  skill: { name: 'latex-math-formatter' },
   agent: {
     name: 'mathematics-writer',
+    skills: ['latex-math-formatter', 'bibtex-reference-manager', 'sympy-computer-algebra'],
     prompt: {
       role: 'LaTeX Document Assembly Expert',
       task: 'Assemble the final LaTeX document',

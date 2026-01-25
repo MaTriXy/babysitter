@@ -12,7 +12,8 @@ const analyzeTask = defineTask('analogical-reasoning-analyze', (args, taskCtx) =
   kind: 'agent',
   title: 'Analogical Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'analogical-reasoner',
+    skills: ['analogy-mapper', 'semantic-scholar-search', 'hypothesis-generator'],
     prompt: {
       role: 'Scientific reasoning specialist in analogical inference and structural mapping',
       task: 'Apply analogical reasoning to transfer relational structure and insights from familiar source domains to novel target domains',

@@ -11,8 +11,10 @@ import { defineTask } from '@a5c-ai/babysitter-sdk';
 const analyzeTask = defineTask('explanation-based-learning-analyze', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Explanation-Based Learning Analysis',
+  skill: { name: 'hypothesis-generator' },
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'analogy-mapper', 'semantic-scholar-search'],
     prompt: {
       role: 'Scientific reasoning specialist in explanation-based learning and knowledge compilation',
       task: 'Apply explanation-based learning to analyze expert solutions and generalize reusable rules and principles',

@@ -179,7 +179,8 @@ export const causalFrameworkSelectionTask = defineTask('causal-framework-selecti
   kind: 'agent',
   title: `Causal Framework Selection - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'bayesian-inference-engine', 'systems-dynamics-modeler'],
     prompt: {
       role: 'Causal Inference Expert specializing in structural causal models and potential outcomes',
       task: 'Select the most appropriate causal inference framework for the research question',
@@ -249,7 +250,8 @@ export const causalGraphConstructionTask = defineTask('causal-graph-construction
   kind: 'agent',
   title: `Causal Graph Construction - ${args.domain}`,
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'network-visualizer', 'systems-dynamics-modeler'],
     prompt: {
       role: 'Expert in Directed Acyclic Graphs (DAGs) and causal structure learning',
       task: 'Construct a causal graph representing relationships between variables',
@@ -327,7 +329,8 @@ export const identificationAnalysisTask = defineTask('identification-analysis', 
   kind: 'agent',
   title: 'Causal Effect Identification Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'formal-logic-reasoner'],
     prompt: {
       role: 'Expert in causal identification theory and do-calculus',
       task: 'Determine if causal effect is identifiable from observational data',
@@ -407,7 +410,8 @@ export const confounderIdentificationTask = defineTask('confounder-identificatio
   kind: 'agent',
   title: 'Confounder Identification and Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'statistical-test-selector'],
     prompt: {
       role: 'Expert in confounding bias and causal adjustment',
       task: 'Identify and analyze confounding variables in the causal model',
@@ -489,7 +493,8 @@ export const estimationStrategyTask = defineTask('estimation-strategy', (args, t
   kind: 'agent',
   title: 'Causal Effect Estimation Strategy Selection',
   agent: {
-    name: 'general-purpose',
+    name: 'statistical-consultant',
+    skills: ['statistical-test-selector', 'causal-inference-engine', 'regression-analyzer'],
     prompt: {
       role: 'Expert in causal effect estimation methods and econometrics',
       task: 'Select and specify the estimation strategy for causal effects',
@@ -557,7 +562,8 @@ export const causalEffectEstimationTask = defineTask('causal-effect-estimation',
   kind: 'agent',
   title: 'Causal Effect Estimation',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'statistical-test-selector', 'regression-analyzer'],
     prompt: {
       role: 'Expert in causal effect estimation and statistical inference',
       task: 'Estimate the causal effect using the selected methodology',
@@ -649,7 +655,8 @@ export const interventionPredictionTask = defineTask('intervention-prediction', 
   kind: 'agent',
   title: 'Intervention Effect Prediction',
   agent: {
-    name: 'general-purpose',
+    name: 'causal-reasoning-analyst',
+    skills: ['causal-inference-engine', 'systems-dynamics-modeler'],
     prompt: {
       role: 'Expert in causal prediction and policy analysis',
       task: 'Predict effects of hypothetical interventions based on causal model',
@@ -725,7 +732,8 @@ export const sensitivityAnalysisTask = defineTask('sensitivity-analysis', (args,
   kind: 'agent',
   title: 'Causal Sensitivity Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'statistical-consultant',
+    skills: ['statistical-test-selector', 'causal-inference-engine'],
     prompt: {
       role: 'Expert in sensitivity analysis for causal inference',
       task: 'Assess robustness of causal conclusions to assumption violations',
@@ -820,7 +828,8 @@ export const causalValidationTask = defineTask('causal-validation', (args, taskC
   kind: 'agent',
   title: 'Causal Inference Validation',
   agent: {
-    name: 'general-purpose',
+    name: 'rigor-assessor',
+    skills: ['checklist-validator', 'causal-inference-engine', 'peer-review-simulator'],
     prompt: {
       role: 'Expert in causal inference validation and scientific methodology',
       task: 'Validate causal conclusions and assess overall confidence',

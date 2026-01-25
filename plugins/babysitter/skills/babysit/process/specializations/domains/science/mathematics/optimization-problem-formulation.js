@@ -144,7 +144,6 @@ export async function process(inputs, ctx) {
 export const variableExtractionTask = defineTask('variable-extraction', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 1: Extract Decision Variables`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['sympy-computer-algebra', 'latex-math-formatter', 'cvxpy-optimization-modeling'],
@@ -234,7 +233,6 @@ export const variableExtractionTask = defineTask('variable-extraction', (args, t
 export const objectiveFormulationTask = defineTask('objective-formulation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 2: Formulate Objective Function`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'sympy-computer-algebra', 'latex-math-formatter'],
@@ -314,7 +312,6 @@ export const objectiveFormulationTask = defineTask('objective-formulation', (arg
 export const constraintEncodingTask = defineTask('constraint-encoding', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 3: Identify and Encode Constraints`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'sympy-computer-algebra', 'numerical-linear-algebra-toolkit'],
@@ -389,7 +386,6 @@ export const constraintEncodingTask = defineTask('constraint-encoding', (args, t
 export const problemClassificationTask = defineTask('problem-classification', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 4: Classify Problem Structure`,
-  skill: { name: 'mixed-integer-optimization' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'benchmark-suite-manager', 'sympy-computer-algebra'],
@@ -482,7 +478,6 @@ export const problemClassificationTask = defineTask('problem-classification', (a
 export const standardFormGenerationTask = defineTask('standard-form-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: `Phase 5: Generate Model in Standard Form`,
-  skill: { name: 'convex-optimization-solver' },
   agent: {
     name: 'optimization-expert',
     skills: ['cvxpy-optimization-modeling', 'latex-math-formatter', 'sympy-computer-algebra'],

@@ -12,7 +12,8 @@ const analyzeTask = defineTask('abductive-reasoning-analyze', (args, taskCtx) =>
   kind: 'agent',
   title: 'Abductive Reasoning Analysis',
   agent: {
-    name: 'general-purpose',
+    name: 'hypothesis-architect',
+    skills: ['hypothesis-generator', 'causal-inference-engine', 'formal-logic-reasoner'],
     prompt: {
       role: 'Scientific reasoning specialist in abductive inference and explanatory reasoning',
       task: 'Apply abductive reasoning to infer the best explanation for observed phenomena by identifying hidden mechanisms and causes',

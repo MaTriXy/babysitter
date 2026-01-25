@@ -3,6 +3,60 @@
  * @description User Guide and Getting Started Documentation process with content discovery, structure design, progressive tutorial creation, quality validation, and publication workflow using Diataxis framework
  * @inputs { product: string, targetAudience: string, features: array, existingDocs: string, outputDir: string, framework: string, sections: array, includeInteractive: boolean }
  * @outputs { success: boolean, documentationPath: string, sections: array, qualityScore: number, artifacts: array, metadata: object }
+ *
+ * ============================================================================
+ * DOCUMENTATION BEST PRACTICES (Lessons Learned)
+ * ============================================================================
+ *
+ * These guidelines should be followed when generating user documentation:
+ *
+ * 1. COUNTS AND NUMBERS FOR GROWING COLLECTIONS
+ *    - For libraries, templates, or processes that are actively growing, use
+ *      approximate numbers like "2,000+" or "thousands of" instead of exact
+ *      counts like "1,927"
+ *    - Exact numbers become outdated quickly and require constant updates
+ *    - Use "X+" suffix for approximate counts (e.g., "680+ processes")
+ *
+ * 2. INSTALLATION TERMINOLOGY
+ *    - Emphasize the PRIMARY installation method (usually plugin/extension)
+ *    - Avoid saying "Install the SDK and CLI" if the main installation is a plugin
+ *    - Use "Install the [Product] plugin" as the primary action
+ *    - CLI packages are dependencies, not the main installation
+ *    - Order installation steps: Plugin first, CLI packages second, services third
+ *
+ * 3. DOCUMENTING PROCESS/TEMPLATE LIBRARIES
+ *    When a product includes a library of pre-built processes, templates, or
+ *    workflows, document these key usage patterns:
+ *    a) AUTOMATIC SELECTION - The system automatically selects relevant processes
+ *       based on the user's natural language description of their task
+ *    b) EXPLICIT SELECTION - Users can request specific processes by name
+ *       (e.g., "use the tdd-quality-convergence process")
+ *    c) MIX AND MATCH - Multiple processes can be combined for complex tasks
+ *    d) CUSTOMIZATION - Any process can be modified or adapted to specific needs
+ *
+ * 4. CATEGORIZING PROCESSES/FEATURES
+ *    When organizing processes or features by domain, use these primary categories:
+ *    - Development Processes (software engineering, web, mobile, DevOps, etc.)
+ *    - Business Domains (finance, HR, marketing, sales, operations, etc.)
+ *    - Science and Engineering (physics, chemistry, aerospace, etc.)
+ *    - Social Sciences and Humanities
+ *    Don't forget Development Processes as it's often the largest category.
+ *
+ * 5. INTERNAL LINK MANAGEMENT
+ *    - Use correct relative paths based on the file's directory location
+ *    - From getting-started/ to features/: use "../features/"
+ *    - From reference/ to getting-started/: use "../getting-started/"
+ *    - From tutorials/ to features/: use "../features/"
+ *    - Run link validation before finalizing documentation
+ *    - Never reference planned files that don't exist yet
+ *
+ * 6. QUALITY VALIDATION
+ *    - Validate all internal links work before marking documentation complete
+ *    - Check that cross-references point to actual files
+ *    - Verify code examples are accurate and runnable
+ *    - Ensure terminology is consistent throughout
+ *
+ * ============================================================================
  */
 
 import { defineTask } from '@a5c-ai/babysitter-sdk';
@@ -536,6 +590,7 @@ export const informationArchitectureTask = defineTask('information-architecture'
         'Plan breadcrumb navigation',
         'Create sitemap and page hierarchy',
         'Define cross-references and related links strategy',
+        'IMPORTANT: Plan internal links with correct relative paths for each directory',
         'Optimize for findability and discoverability',
         'Save IA design, sitemap, and navigation structure to output directory'
       ],
@@ -597,6 +652,7 @@ export const gettingStartedTask = defineTask('getting-started-guide', (args, tas
         'Write engaging introduction explaining what product does and key benefits',
         'Document prerequisites clearly (required software, accounts, knowledge)',
         'Create step-by-step installation guide with:',
+        '  - IMPORTANT: Emphasize primary installation over dependencies',
         '  - Multiple installation methods (if applicable)',
         '  - Platform-specific instructions',
         '  - Verification steps',
@@ -608,7 +664,7 @@ export const gettingStartedTask = defineTask('getting-started-guide', (args, tas
         'Include "Hello World" or equivalent first example',
         'Add configuration guide for initial setup',
         'Provide clear success criteria (how to verify it works)',
-        'Link to next learning resources',
+        'Link to next learning resources using correct relative paths',
         'Use conversational, encouraging tone for beginners',
         'Add screenshots, code examples, and visual aids',
         'Save getting started guide to output directory'
@@ -655,6 +711,12 @@ export const featureGuidesTask = defineTask('feature-guides', (args, taskCtx) =>
         '  - Configuration options and parameters',
         '  - Code examples and best practices',
         '  - Common pitfalls and troubleshooting',
+        'For process/template libraries, document these usage patterns:',
+        '  - AUTOMATIC SELECTION: System selects relevant processes from natural language',
+        '  - EXPLICIT SELECTION: Users can request specific processes by name',
+        '  - MIX AND MATCH: Multiple processes can be combined for complex tasks',
+        '  - CUSTOMIZATION: Any process can be modified or adapted',
+        'Use approximate counts for growing collections (e.g., "2,000+" not "2,027")',
         'Write task-oriented how-to guides focused on specific goals:',
         '  - Clear problem statement',
         '  - Prerequisites and assumptions',
@@ -664,7 +726,7 @@ export const featureGuidesTask = defineTask('feature-guides', (args, taskCtx) =>
         'Organize by user tasks, not implementation details',
         'Use imperative voice ("Do this", not "You can do this")',
         'Include practical examples from real-world scenarios',
-        'Add cross-references to related features',
+        'Add cross-references to related features using correct relative paths',
         'Optimize for scannability (headings, bullets, code blocks)',
         'Save feature guides to output directory'
       ],
@@ -996,7 +1058,13 @@ export const qualityValidationTask = defineTask('quality-validation', (args, tas
         'Calculate weighted overall score (0-100)',
         'Identify gaps, errors, and improvement areas',
         'Check accessibility (alt text, heading structure, etc.)',
-        'Validate links and references',
+        'CRITICAL: Validate ALL internal links and references:',
+        '  - Check relative paths are correct for each file location',
+        '  - From getting-started/ to features/: should use "../features/"',
+        '  - From reference/ to getting-started/: should use "../getting-started/"',
+        '  - Report all broken links as errors',
+        '  - Never reference planned files that do not exist',
+        'Verify approximate counts are used for growing collections',
         'Assess estimated read times',
         'Provide specific improvement recommendations'
       ],

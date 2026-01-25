@@ -208,7 +208,8 @@ export const algorithmTypeClassificationTask = defineTask('algorithm-type-classi
   kind: 'agent',
   title: 'Classify randomized algorithm type',
   agent: {
-    name: 'randomization-classifier',
+    name: 'randomized-algorithms-expert',
+    skills: ['probabilistic-analysis-toolkit', 'recurrence-solver'],
     prompt: {
       role: 'randomized algorithms specialist',
       task: 'Classify the randomized algorithm type and characterize its randomization',
@@ -260,7 +261,8 @@ export const expectedRunningTimeAnalysisTask = defineTask('expected-running-time
   kind: 'agent',
   title: 'Analyze expected running time',
   agent: {
-    name: 'expected-time-analyst',
+    name: 'randomized-algorithms-expert',
+    skills: ['probabilistic-analysis-toolkit', 'asymptotic-notation-calculator'],
     prompt: {
       role: 'probabilistic analysis specialist',
       task: 'Analyze expected running time of the randomized algorithm',

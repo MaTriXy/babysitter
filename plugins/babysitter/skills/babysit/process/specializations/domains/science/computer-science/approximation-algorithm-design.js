@@ -474,7 +474,8 @@ export const approximationRatioProofTask = defineTask('approximation-ratio-proof
   kind: 'agent',
   title: 'Prove approximation ratio',
   agent: {
-    name: 'ratio-prover',
+    name: 'approximation-specialist',
+    skills: ['approximation-ratio-calculator', 'latex-proof-formatter'],
     prompt: {
       role: 'approximation algorithm analyst',
       task: 'Prove the approximation ratio of the designed algorithm',
@@ -519,7 +520,8 @@ export const ptasFptasAnalysisTask = defineTask('ptas-fptas-analysis', (args, ta
   kind: 'agent',
   title: 'Analyze PTAS/FPTAS feasibility',
   agent: {
-    name: 'ptas-analyst',
+    name: 'approximation-specialist',
+    skills: ['approximation-ratio-calculator', 'asymptotic-notation-calculator'],
     prompt: {
       role: 'approximation scheme specialist',
       task: 'Analyze feasibility of polynomial-time approximation schemes',
@@ -573,7 +575,8 @@ export const implementationGuidelinesTask = defineTask('implementation-guideline
   kind: 'agent',
   title: 'Generate implementation guidelines',
   agent: {
-    name: 'implementation-guide-writer',
+    name: 'approximation-specialist',
+    skills: ['latex-proof-formatter', 'benchmark-suite-manager'],
     prompt: {
       role: 'algorithm implementation specialist',
       task: 'Provide comprehensive implementation guidelines for the approximation algorithm',

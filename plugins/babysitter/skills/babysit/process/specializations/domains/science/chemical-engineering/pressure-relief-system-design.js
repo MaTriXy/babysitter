@@ -470,8 +470,9 @@ export const disposalSystemDesignTask = defineTask('disposal-system-design', (ar
 export const installationVerificationTask = defineTask('installation-verification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Verify installation requirements per API 521',
+  skill: { name: 'relief-system-designer' },
   agent: {
-    name: 'installation-engineer',
+    name: 'pressure-relief-engineer',
     prompt: {
       role: 'relief system installation engineer',
       task: 'Verify installation requirements per API 521',
@@ -518,8 +519,9 @@ export const installationVerificationTask = defineTask('installation-verificatio
 export const reliefSpecificationTask = defineTask('relief-specification', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Generate relief device specification sheets',
+  skill: { name: 'relief-system-designer' },
   agent: {
-    name: 'specification-engineer',
+    name: 'pressure-relief-engineer',
     prompt: {
       role: 'relief device specification engineer',
       task: 'Generate relief device specification sheets',

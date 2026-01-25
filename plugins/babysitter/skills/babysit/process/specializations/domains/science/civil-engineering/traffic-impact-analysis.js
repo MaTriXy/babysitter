@@ -190,6 +190,7 @@ export async function process(inputs, ctx) {
 export const studyScopeTask = defineTask('study-scope', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Define study scope and area',
+  skill: { name: 'traffic-simulation-engine' },
   agent: {
     name: 'traffic-engineer',
     prompt: {
@@ -233,6 +234,7 @@ export const studyScopeTask = defineTask('study-scope', (args, taskCtx) => ({
 export const existingConditionsTask = defineTask('existing-conditions', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Analyze existing traffic conditions',
+  skill: { name: 'traffic-simulation-engine' },
   agent: {
     name: 'traffic-engineer',
     prompt: {
@@ -276,6 +278,7 @@ export const existingConditionsTask = defineTask('existing-conditions', (args, t
 export const tripGenerationTask = defineTask('trip-generation', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Calculate trip generation',
+  skill: { name: 'traffic-simulation-engine' },
   agent: {
     name: 'traffic-engineer',
     prompt: {
@@ -321,6 +324,7 @@ export const tripGenerationTask = defineTask('trip-generation', (args, taskCtx) 
 export const tripDistributionTask = defineTask('trip-distribution', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Distribute and assign project trips',
+  skill: { name: 'traffic-simulation-engine' },
   agent: {
     name: 'traffic-engineer',
     prompt: {

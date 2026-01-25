@@ -57,48 +57,48 @@ This document defines the skills and agents required to support the Education an
 
 ### Curriculum Development Processes
 
-| Process | Recommended Skills | Recommended Agents |
-|---------|-------------------|-------------------|
-| Standards-Based Curriculum Alignment | SK-EDU-008, SK-EDU-015, SK-EDU-002 | AG-EDU-002, AG-EDU-009 |
-| Curriculum Mapping (Jacobs Model) | SK-EDU-008, SK-EDU-015 | AG-EDU-002 |
-| Learning Progression Development | SK-EDU-008, SK-EDU-002, SK-EDU-015 | AG-EDU-002, AG-EDU-003 |
-| Scope and Sequence Planning | SK-EDU-008, SK-EDU-002 | AG-EDU-002 |
+| Process | Recommended Skills | Recommended Agents | Status |
+|---------|-------------------|-------------------|--------|
+| Standards-Based Curriculum Alignment | SK-EDU-008, SK-EDU-015, SK-EDU-002 | AG-EDU-002, AG-EDU-009 | [x] |
+| Curriculum Mapping (Jacobs Model) | SK-EDU-008, SK-EDU-015 | AG-EDU-002 | [x] |
+| Learning Progression Development | SK-EDU-008, SK-EDU-002, SK-EDU-015 | AG-EDU-002, AG-EDU-003 | [x] |
+| Scope and Sequence Planning | SK-EDU-008, SK-EDU-002 | AG-EDU-002 | [x] |
 
 ### Assessment Processes
 
-| Process | Recommended Skills | Recommended Agents |
-|---------|-------------------|-------------------|
-| Formative Assessment Design | SK-EDU-003, SK-EDU-002, SK-EDU-009 | AG-EDU-003, AG-EDU-007 |
-| Summative Assessment Development | SK-EDU-003, SK-EDU-004, SK-EDU-002 | AG-EDU-003 |
-| Rubric Development and Validation | SK-EDU-004, SK-EDU-002 | AG-EDU-003 |
-| Item Writing and Test Development | SK-EDU-003, SK-EDU-002 | AG-EDU-003 |
-| Bloom's Taxonomy Application | SK-EDU-002, SK-EDU-003, SK-EDU-004 | AG-EDU-001, AG-EDU-002, AG-EDU-003 |
+| Process | Recommended Skills | Recommended Agents | Status |
+|---------|-------------------|-------------------|--------|
+| Formative Assessment Design | SK-EDU-003, SK-EDU-002, SK-EDU-009 | AG-EDU-003, AG-EDU-007 | [x] |
+| Summative Assessment Development | SK-EDU-003, SK-EDU-004, SK-EDU-002 | AG-EDU-003 | [x] |
+| Rubric Development and Validation | SK-EDU-004, SK-EDU-002 | AG-EDU-003 | [x] |
+| Item Writing and Test Development | SK-EDU-003, SK-EDU-002 | AG-EDU-003 | [x] |
+| Bloom's Taxonomy Application | SK-EDU-002, SK-EDU-003, SK-EDU-004 | AG-EDU-001, AG-EDU-002, AG-EDU-003 | [x] |
 
 ### Learning Technology Processes
 
-| Process | Recommended Skills | Recommended Agents |
-|---------|-------------------|-------------------|
-| LMS Administration and Configuration | SK-EDU-007, SK-EDU-010 | AG-EDU-005 |
-| E-Learning Course Authoring | SK-EDU-005, SK-EDU-006, SK-EDU-011, SK-EDU-010 | AG-EDU-004, AG-EDU-008 |
-| SCORM/xAPI Package Development | SK-EDU-005, SK-EDU-007 | AG-EDU-004, AG-EDU-005 |
-| Quality Matters Course Review | SK-EDU-013, SK-EDU-010 | AG-EDU-009, AG-EDU-008 |
-| Universal Design for Learning Implementation | SK-EDU-006, SK-EDU-010, SK-EDU-014 | AG-EDU-008, AG-EDU-010 |
+| Process | Recommended Skills | Recommended Agents | Status |
+|---------|-------------------|-------------------|--------|
+| LMS Administration and Configuration | SK-EDU-007, SK-EDU-010 | AG-EDU-005 | [x] |
+| E-Learning Course Authoring | SK-EDU-005, SK-EDU-006, SK-EDU-011, SK-EDU-010 | AG-EDU-004, AG-EDU-008 | [x] |
+| SCORM/xAPI Package Development | SK-EDU-005, SK-EDU-007 | AG-EDU-004, AG-EDU-005 | [x] |
+| Quality Matters Course Review | SK-EDU-013, SK-EDU-010 | AG-EDU-009, AG-EDU-008 | [x] |
+| Universal Design for Learning Implementation | SK-EDU-006, SK-EDU-010, SK-EDU-014 | AG-EDU-008, AG-EDU-010 | [x] |
 
 ### Faculty Development Processes
 
-| Process | Recommended Skills | Recommended Agents |
-|---------|-------------------|-------------------|
-| Teaching Effectiveness Workshop Design | SK-EDU-012, SK-EDU-002, SK-EDU-014 | AG-EDU-006, AG-EDU-001 |
-| Peer Observation and Feedback | SK-EDU-012 | AG-EDU-006 |
-| TPACK Integration Training | SK-EDU-012, SK-EDU-007 | AG-EDU-006, AG-EDU-005 |
+| Process | Recommended Skills | Recommended Agents | Status |
+|---------|-------------------|-------------------|--------|
+| Teaching Effectiveness Workshop Design | SK-EDU-012, SK-EDU-002, SK-EDU-014 | AG-EDU-006, AG-EDU-001 | [x] |
+| Peer Observation and Feedback | SK-EDU-012 | AG-EDU-006 | [x] |
+| TPACK Integration Training | SK-EDU-012, SK-EDU-007 | AG-EDU-006, AG-EDU-005 | [x] |
 
 ### Program Evaluation Processes
 
-| Process | Recommended Skills | Recommended Agents |
-|---------|-------------------|-------------------|
-| Kirkpatrick Four-Level Evaluation | SK-EDU-001, SK-EDU-009, SK-EDU-003 | AG-EDU-007 |
-| Learning Analytics Implementation | SK-EDU-009, SK-EDU-007 | AG-EDU-007, AG-EDU-005 |
-| Program Accreditation Preparation | SK-EDU-013, SK-EDU-015, SK-EDU-009 | AG-EDU-009, AG-EDU-007 |
+| Process | Recommended Skills | Recommended Agents | Status |
+|---------|-------------------|-------------------|--------|
+| Kirkpatrick Four-Level Evaluation | SK-EDU-001, SK-EDU-009, SK-EDU-003 | AG-EDU-007 | [x] |
+| Learning Analytics Implementation | SK-EDU-009, SK-EDU-007 | AG-EDU-007, AG-EDU-005 | [x] |
+| Program Accreditation Preparation | SK-EDU-013, SK-EDU-015, SK-EDU-009 | AG-EDU-009, AG-EDU-007 | [x] |
 
 ---
 

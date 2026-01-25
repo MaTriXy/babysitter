@@ -153,8 +153,9 @@ export async function process(inputs, ctx) {
 export const releaseScenarioDefinitionTask = defineTask('release-scenario-definition', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Define release scenarios',
+  skill: { name: 'consequence-modeler' },
   agent: {
-    name: 'scenario-analyst',
+    name: 'risk-analyst',
     prompt: {
       role: 'consequence analysis engineer',
       task: 'Define and characterize release scenarios',
@@ -204,8 +205,9 @@ export const releaseScenarioDefinitionTask = defineTask('release-scenario-defini
 export const sourceTermModelingTask = defineTask('source-term-modeling', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Model source term (release rate, duration)',
+  skill: { name: 'consequence-modeler' },
   agent: {
-    name: 'source-term-engineer',
+    name: 'risk-analyst',
     prompt: {
       role: 'source term modeling engineer',
       task: 'Calculate release rates and durations',
@@ -256,8 +258,9 @@ export const sourceTermModelingTask = defineTask('source-term-modeling', (args, 
 export const dispersionModelingTask = defineTask('dispersion-modeling', (args, taskCtx) => ({
   kind: 'agent',
   title: 'Perform dispersion modeling',
+  skill: { name: 'consequence-modeler' },
   agent: {
-    name: 'dispersion-engineer',
+    name: 'risk-analyst',
     prompt: {
       role: 'atmospheric dispersion engineer',
       task: 'Model atmospheric dispersion of releases',

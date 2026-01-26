@@ -1,8 +1,21 @@
 # Breakpoints: Human-in-the-Loop Approval
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+**A breakpoint is a pause button.** When the AI reaches a breakpoint, it stops and waits for you to say "OK, continue."
+
+**Why does this matter?**
+- The AI writes a plan → pauses → you review it → approve → then it builds
+- The AI makes changes → pauses → you check the changes → approve → then it deploys
+- You stay in control of important decisions
+
+**How to approve:** When a breakpoint triggers, open `http://localhost:3184` in your browser, review the information, and click "Approve."
 
 ---
 

@@ -1,8 +1,33 @@
 # VSCode Extension
 
 **Version:** 1.0
-**Last Updated:** 2026-01-25
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+> **The VSCode Extension is like a mission control dashboard for your Babysitter runs.**
+>
+> Instead of switching between your code editor and terminal, you can:
+> - **Start new runs** with a keyboard shortcut
+> - **Watch progress** in real-time in your sidebar
+> - **Approve decisions** when Babysitter pauses for your input
+> - **Browse generated files** without hunting through folders
+>
+> **Who needs it?** If you prefer working in VSCode rather than the terminal, this extension makes your workflow smoother. It's completely optional - you can use Babysitter just fine with `/babysit` in Claude Code.
+
+---
+
+## Quick Start (2 Minutes)
+
+1. **Install**: Open VSCode Extensions (`Cmd+Shift+X`), search for "Babysitter", click Install
+2. **Activate**: Press `Cmd+Shift+P` → type "Babysitter: Activate" → Enter
+3. **See your runs**: Look for "Babysitter Runs" in the Explorer sidebar
+4. **Start a run**: Press `Ctrl+Alt+B` then `N`, type your request, Enter
+
+That's it! You'll see your run appear in the sidebar and can track its progress.
 
 ---
 

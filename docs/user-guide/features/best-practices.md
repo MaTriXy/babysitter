@@ -1,7 +1,7 @@
 # Best Practices Guide: Comprehensive Reference for Babysitter
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 2.0
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
 
 ---
@@ -10,12 +10,179 @@
 
 This guide consolidates best practices from across the Babysitter ecosystem into a single reference. Whether you are designing workflows, developing processes, optimizing performance, or collaborating with your team, these patterns will help you get the most out of Babysitter.
 
+### Core Philosophy: The Two-Loops Architecture
+
+Babysitter implements a **hybrid agentic system** where:
+
+- A **symbolic orchestrator** governs progression, journaling, and phase boundaries
+- An **agentic harness** performs adaptive work with tools
+
+The key insight: **quality is evidence-driven, not assertion-driven.**
+
+> If you don't have evidence, you don't have completion.
+
+For deep understanding, see [Two-Loops Architecture](./two-loops-architecture.md).
+
 ### How to Use This Guide
 
-- **New Users**: Start with Workflow Design Patterns and Process Development sections
-- **Intermediate Users**: Focus on Quality Convergence and Team Collaboration sections
-- **Advanced Users**: Dive into Performance Optimization and Common Pitfalls sections
+- **New Users**: Start with Workflow Design Patterns and Quality Gate Varieties sections
+- **Intermediate Users**: Focus on the 90-Score Convergence Strategy and Team Collaboration sections
+- **Advanced Users**: Dive into the Four Guardrail Layers and Process Optimization sections
 - **All Users**: Keep this guide bookmarked for quick reference during development
+
+---
+
+## The Four Guardrail Layers
+
+Guardrails are **not a single feature**. They form a layered approach to safety and control.
+
+### Layer A: Capability Guardrails (What's Possible)
+
+Define what tools and actions exist.
+
+```javascript
+const capabilityGuardrails = {
+  allowedTools: ['read', 'write', 'shell', 'search'],
+  pathRestrictions: ['src/**', 'tests/**'],  // Only these paths
+  networkAccess: 'none',                      // No network calls
+  permissions: 'read-write',                  // vs 'read-only'
+  destructiveActions: 'require-confirmation'  // Interactive approval
+};
+```
+
+### Layer B: Budget Guardrails (How Far)
+
+Prevent runaway execution.
+
+```javascript
+const budgetGuardrails = {
+  maxToolCalls: 100,           // Total tool invocations
+  maxWallClockMinutes: 30,     // Wall-clock timeout
+  maxTokenSpend: 50000,        // LLM token budget
+  maxIterations: 10,           // Convergence loop limit
+  maxFilesModified: 20,        // Scope control
+  rateLimits: {
+    apiCalls: '10/minute',
+    fileWrites: '50/iteration'
+  }
+};
+```
+
+### Layer C: Policy Guardrails (What's Allowed)
+
+Rules that define acceptable behavior.
+
+```javascript
+const policyGuardrails = {
+  rules: [
+    'never exfiltrate secrets',
+    'never modify production directly',
+    'always run tests before merge',
+    'security scans required for dependencies',
+    'no eval() or dynamic code execution',
+    'require explicit confirmation for destructive actions'
+  ],
+  forbiddenPatterns: [
+    /eval\(/,
+    /exec\(/,
+    /process\.env\.(API_KEY|SECRET)/,
+    /rm\s+-rf/
+  ]
+};
+```
+
+### Layer D: Behavioral Guardrails (How Decisions Are Made)
+
+Structural consistency in outputs.
+
+```javascript
+const behavioralGuardrails = {
+  requireStructuredOutputs: true,        // Always JSON schemas
+  requireEvidenceCitations: true,        // Cite tool outputs
+  requireUncertaintyDeclaration: true,   // "I'm not sure" allowed
+  requireExplanations: true,             // Justify decisions
+  outputSchemas: {
+    implementation: {
+      type: 'object',
+      required: ['filesModified', 'summary', 'confidence'],
+      properties: {
+        filesModified: { type: 'array', items: { type: 'string' } },
+        summary: { type: 'string' },
+        confidence: { type: 'number', minimum: 0, maximum: 100 }
+      }
+    }
+  }
+};
+```
+
+### Applying Guardrails in Processes
+
+```javascript
+// From methodologies/spec-driven-development.js
+export async function process(inputs, ctx) {
+  // Apply guardrails to all tasks
+  const guardrails = {
+    capability: { pathRestrictions: ['src/**', 'docs/**'] },
+    budget: { maxIterations: 10, maxTokenSpend: 100000 },
+    policy: { rules: ['follow constitution', 'run all tests'] },
+    behavioral: { requireStructuredOutputs: true }
+  };
+
+  // Implementation task with constraints
+  const impl = await ctx.task(implementTask, {
+    feature: inputs.feature,
+    guardrails  // Passed to harness
+  });
+
+  // Symbolic validation enforces guardrails
+  if (impl.filesModified.length > guardrails.budget.maxFilesModified) {
+    throw new Error('Budget exceeded: too many files modified');
+  }
+}
+```
+
+---
+
+## The Five Quality Gate Categories
+
+Quality gates are **not a single check**. They form a layered validation system. For robust convergence, use **4-5 gate types simultaneously**.
+
+| Gate Type | What It Validates | Tools/Checks |
+|-----------|-------------------|--------------|
+| **1. Functional Tests** | Behavior correctness | Unit, integration, system, acceptance |
+| **2. Code Quality** | Maintainability | Lint, format, complexity, duplication |
+| **3. Static Analysis** | Type safety, bugs | TypeScript, SonarQube, Radon |
+| **4. Security Scanning** | Vulnerabilities | SAST, secrets, dependencies, OWASP |
+| **5. Performance** | Non-functional reqs | FCP, bundle size, API latency |
+
+**Process Library Examples:**
+- `methodologies/v-model.js` - Four test levels (unit → integration → system → acceptance)
+- `methodologies/spec-driven-development.js` - Constitution validation + checklists
+- `gsd/verify-work.js` - UAT with automated diagnosis
+
+### Implementing Multi-Gate Validation
+
+```javascript
+// Run all five gates in parallel for efficiency
+const [tests, codeQuality, staticAnalysis, security, performance] =
+  await ctx.parallel.all([
+    () => ctx.task(testGateTask, { impl }),
+    () => ctx.task(codeQualityGateTask, { impl }),
+    () => ctx.task(staticAnalysisGateTask, { impl }),
+    () => ctx.task(securityGateTask, { impl }),
+    () => ctx.task(performanceGateTask, { impl })
+  ]);
+
+// Evidence-driven completion: all gates must pass
+const allGatesPassed =
+  tests.passed &&
+  codeQuality.passed &&
+  staticAnalysis.passed &&
+  security.passed &&
+  performance.passed;
+```
+
+For detailed gate configurations and the 90-score convergence pattern, see [Quality Convergence](./quality-convergence.md).
 
 ---
 
@@ -406,19 +573,14 @@ Validate processes before using them in production.
 
 **Dry-run testing pattern:**
 
-```bash
-# Create a test run with minimal inputs
-babysitter run:create \
-  --process-id my-process \
-  --entry ./code/main.js#process \
-  --inputs ./test-inputs.json \
-  --run-id test-run-001
+Start a test run with minimal inputs:
+```
+/babysit test my-process with small inputs
+```
 
-# Execute and monitor
-babysitter run:iterate test-run-001 --json
-
-# Inspect results
-babysitter run:events test-run-001 --json | jq '.events[] | {type, seq}'
+Then ask Claude to show you the results:
+```
+Show me what happened in the test run
 ```
 
 **Process validation checklist:**
@@ -620,31 +782,29 @@ Enable multiple team members to interact with runs.
 | Git-based | Audit requirements | Commit runs to repository |
 | API access | External integration | Expose via breakpoints API |
 
-**Descriptive run IDs for team clarity:**
+**Descriptive workflows for team clarity:**
 
-```bash
-# Pattern: <project>-<feature>-<author>-<date>
-babysitter run:create \
-  --run-id auth-oauth2-alice-20260125 \
-  --process-id feature/oauth2 \
-  --entry ./code/main.js#process
+Start a clearly-named workflow:
+```
+/babysit implement oauth2 authentication feature
+```
 
-# Team members can easily find and resume
-babysitter run:status auth-oauth2-alice-20260125
+Team members can easily find and resume:
+```
+Resume the oauth2 authentication babysitter run
 ```
 
 **Run handoff workflow:**
 
-```bash
-# Developer A: Start the run during morning
-babysitter run:create --run-id feature-api-alice-20260125 --process-id dev/api --entry ./main.js#process
+```
+# Developer A: Start the workflow during morning
+/babysit implement the API feature
 # Run reaches breakpoint requiring review
 
 # Developer B: Review and continue in evening
-babysitter run:status feature-api-alice-20260125  # Check status
-babysitter run:events feature-api-alice-20260125 --limit 10  # Review history
-# Approve breakpoint via UI, then:
-babysitter run:iterate feature-api-alice-20260125  # Continue execution
+What's the status of the API feature babysitter run?
+# Approve breakpoint via UI at http://localhost:3184, then:
+/babysit resume the API feature run
 ```
 
 ### Code Review Workflows with Babysitter
@@ -884,6 +1044,86 @@ export const lintTask = defineTask('lint', (args, taskCtx) => ({
 
 ---
 
+## Debugging and Troubleshooting
+
+When a run isn't behaving as expected, use this decision tree:
+
+### Quick Diagnosis Flowchart
+
+```
+Run not progressing?
+    │
+    ├── Status = "waiting" ──────► Check for pending breakpoints
+    │                              Ask: "Are there pending breakpoints?"
+    │
+    ├── Status = "failed" ───────► Check error in journal
+    │                              Ask: "What error caused the run to fail?"
+    │
+    ├── Quality not improving ───► Check feedback is being passed
+    │                              Ask: "What recommendations came from quality scoring?"
+    │
+    └── Stuck in loop ───────────► Check iteration count and maxIterations
+                                   Add plateau detection
+```
+
+### Common Debugging Questions
+
+Ask Claude these questions to debug your workflow:
+
+```
+What's the status of my babysitter run?
+```
+
+```
+Show me the recent events in my workflow
+```
+
+```
+Are there any pending tasks in my babysitter run?
+```
+
+```
+What were the quality scores across iterations?
+```
+
+```
+Show me the result of the last completed task
+```
+
+### When to Investigate
+
+| Symptom | What to Check | Likely Cause |
+|---------|---------------|--------------|
+| Run immediately completes | Quality target too low | Raise `targetQuality` |
+| Run never completes | Quality target unreachable | Lower target or increase `maxIterations` |
+| Same quality every iteration | Feedback not being passed | Check `previousFeedback` is used |
+| Run hangs | Pending breakpoint | Approve via UI or check service |
+| Erratic quality scores | Non-deterministic scoring | Use consistent criteria |
+| "Already running" error | Session conflict | Wait for other session |
+
+### Recovery Procedures
+
+**If run is stuck waiting:**
+Ask Claude what it's waiting for:
+```
+What is my babysitter run waiting for?
+```
+If waiting on breakpoint, approve it via UI at http://localhost:3184
+
+**If run state is corrupted:**
+Ask Claude to help recover:
+```
+My babysitter run state seems corrupted, can you help recover it?
+```
+
+**If process code changed mid-run:**
+Best to start fresh - old state may be incompatible:
+```
+/babysit start a new workflow for the same feature
+```
+
+---
+
 ## Common Pitfalls and How to Avoid Them
 
 ### Process Design Pitfalls
@@ -999,23 +1239,27 @@ if (process.env.BABYSITTER_AUTO_APPROVE !== 'true') {
 |---------|---------|----------|
 | Attempting to resume completed run | No effect | Check status before resuming |
 | Unresolved breakpoint | "Waiting" status persists | Approve breakpoint before resume |
-| State corruption | Unexpected behavior | Delete `state/state.json`, let rebuild |
+| State corruption | Unexpected behavior | Ask Claude to rebuild state |
 | Session conflict | "Already running" error | Wait for other session to complete |
 
 **Pre-resume checklist:**
 
-```bash
-# 1. Check current status
-babysitter run:status "$RUN_ID" --json | jq '.state'
+1. Check current status:
+   ```
+   What's the status of my babysitter run?
+   ```
 
-# 2. If waiting, check for pending breakpoints
-babysitter task:list "$RUN_ID" --pending --json | jq '.tasks[] | select(.kind == "breakpoint")'
+2. If waiting, check for pending breakpoints:
+   ```
+   Are there any pending breakpoints?
+   ```
 
-# 3. Resolve pending breakpoints (via UI or CLI)
+3. Resolve pending breakpoints via UI at http://localhost:3184
 
-# 4. Resume
-babysitter run:iterate "$RUN_ID"
-```
+4. Resume:
+   ```
+   /babysit resume
+   ```
 
 ---
 

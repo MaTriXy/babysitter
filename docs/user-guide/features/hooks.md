@@ -1,8 +1,23 @@
 # Hooks: Extensible Lifecycle Events
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+**Hooks are automatic triggers that run your custom code at specific moments.**
+
+Like setting up an automatic notification: "When the workflow finishes, send me a Slack message." That's a hook.
+
+**Common examples:**
+- 📧 Send an email when a run completes
+- 📊 Log metrics to your dashboard when quality is scored
+- 🔔 Get a desktop notification when approval is needed
+
+**Do you need hooks as a beginner?** No - they're an advanced feature for customizing behavior. You can use Babysitter perfectly well without ever writing a hook.
 
 ---
 

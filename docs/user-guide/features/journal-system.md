@@ -1,8 +1,24 @@
 # Journal System: Event Sourcing and Audit Trail
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+**The journal is a diary of everything that happens during a run.**
+
+Every time the AI does something - writes code, runs tests, asks for approval - it gets recorded in the journal. This means:
+
+- **Nothing is lost**: If your computer crashes, you can pick up where you left off
+- **You can see what happened**: "Why did it do that?" → check the journal
+- **You have proof**: For compliance or debugging, you have a complete record
+
+**Where is it?** Look in `.a5c/runs/<your-run-id>/journal/` - each file is one event.
+
+**Tip for beginners:** You don't need to understand the journal to use Babysitter. It works automatically. But when something goes wrong, the journal helps you figure out why.
 
 ---
 

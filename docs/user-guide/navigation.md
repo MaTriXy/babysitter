@@ -50,6 +50,12 @@ This document defines the navigation structure for the Babysitter User Guide doc
     - title: Process Library
       path: /features/process-library.md
       highlight: true
+    - title: Two-Loops Architecture
+      path: /features/two-loops-architecture.md
+      highlight: true
+    - title: Quality Convergence
+      path: /features/quality-convergence.md
+      highlight: true
     - title: Best Practices Guide
       path: /features/best-practices.md
       highlight: true
@@ -57,8 +63,6 @@ This document defines the navigation structure for the Babysitter User Guide doc
       path: /features/breakpoints.md
     - title: Hooks
       path: /features/hooks.md
-    - title: Quality Convergence
-      path: /features/quality-convergence.md
     - title: Process Definitions
       path: /features/process-definitions.md
     - title: Journal System

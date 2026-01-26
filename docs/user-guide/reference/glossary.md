@@ -1,10 +1,31 @@
 # Babysitter Glossary
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Audience:** All users
 
 This glossary provides definitions for technical terms and concepts used in Babysitter documentation. Terms are organized alphabetically with cross-references to related concepts and links to detailed documentation.
+
+---
+
+## Quick Reference for Beginners
+
+**New to Babysitter?** Here are the 10 most important terms to know:
+
+| Term | Plain English | Example |
+|------|--------------|---------|
+| **Run** | One execution of a workflow | "I started a run to build my feature" |
+| **Process** | A reusable workflow template | "The TDD process writes tests first" |
+| **Iteration** | One try-and-improve cycle | "It took 3 iterations to pass all tests" |
+| **Quality Gate** | A check that must pass | "The tests are a quality gate" |
+| **Breakpoint** | A pause for your approval | "It stopped at a breakpoint for me to review" |
+| **Journal** | A record of everything that happened | "I can see in the journal what the AI did" |
+| **Task** | A single unit of work | "The 'run tests' task checks if tests pass" |
+| **Effect** | Something the AI wants to do | "The effect was to create a file" |
+| **Convergence** | Getting better until target met | "Quality converged from 60% to 95%" |
+| **Artifact** | A file created during the run | "The plan.md artifact shows the AI's plan" |
+
+**Start here:** Read the [Getting Started guide](../getting-started/README.md) to see these concepts in action.
 
 ---
 

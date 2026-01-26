@@ -1,8 +1,24 @@
 # Frequently Asked Questions (FAQ)
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Reference
+
+---
+
+## Top 5 Questions (Start Here)
+
+**New to Babysitter?** These are the most common questions from first-time users:
+
+| Question | Quick Answer |
+|----------|--------------|
+| **What does Babysitter actually do?** | It automates the "try → test → fix → repeat" loop until your code meets quality targets |
+| **How do I start?** | Just type `/babysit build a login page` in Claude Code |
+| **Do I need to write code?** | No - you use natural language. Babysitter handles the rest |
+| **What if something goes wrong?** | Everything is saved automatically. You can always resume or debug |
+| **Is it free?** | Babysitter is included with Claude Code - no additional cost |
+
+Still have questions? Browse the full FAQ below, or check the [Troubleshooting guide](./troubleshooting.md).
 
 ---
 
@@ -279,14 +295,14 @@ Run ID: 01KFFTSF8TK8C9GT3YM9QYQ6WG
 Run Directory: .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/
 ```
 
-**List recent runs:**
-```bash
-ls -lt .a5c/runs/ | head -10
+**Ask Claude to find recent runs:**
+```
+What babysitter runs have I done recently?
 ```
 
 **Check run status:**
-```bash
-babysitter run:status <runId> --json
+```
+What's the status of my babysitter run?
 ```
 
 ---
@@ -317,7 +333,7 @@ babysitter run:events <runId> --filter-type RUN_FAILED --json
 
 **To resume after fixing:**
 ```
-/babysit resume --run-id <runId>
+/babysit resume
 ```
 
 ---
@@ -473,18 +489,18 @@ const { targetQuality = 85, maxIterations = 5 } = inputs;
 **Solutions:**
 
 1. **Review iteration feedback:**
-   ```bash
-   jq '.recommendations' .a5c/runs/<runId>/tasks/*/result.json
+   ```
+   What recommendations came from my quality scoring?
    ```
 
 2. **Lower the target:**
    ```
-   Use babysitter with 75% quality target
+   /babysit continue with 75% quality target
    ```
 
 3. **Increase iterations:**
    ```
-   Use babysitter with max 10 iterations
+   /babysit continue with max 10 iterations
    ```
 
 4. **Review blocking issues:** Check lint errors, test failures, etc.
@@ -558,12 +574,12 @@ See: [Run Resumption](../features/run-resumption.md)
 
 Yes. Runs are stored in the file system and can be continued by anyone with access:
 
-```bash
+```
 # Developer A starts
-claude "/babysit implement feature X"
+/babysit implement feature X
 
 # Developer B continues
-claude "/babysit resume --run-id feature-x-20260125"
+/babysit resume the feature X workflow
 ```
 
 Ensure you share the `.a5c/` directory (e.g., via Git or shared storage).
@@ -691,19 +707,18 @@ Duration depends on iteration count, task complexity, and API latency.
 
 ### How do I monitor a running workflow?
 
-**Real-time journal:**
-```bash
-tail -f .a5c/runs/<runId>/journal/journal.jsonl | jq .
+Ask Claude for updates:
+
+```
+What's the current progress of my babysitter run?
 ```
 
-**Check status:**
-```bash
-babysitter run:status <runId> --json
+```
+Show me the recent events in my workflow
 ```
 
-**View events:**
-```bash
-babysitter run:events <runId> --limit 10 --reverse
+```
+How many iterations have completed?
 ```
 
 ---
@@ -783,20 +798,21 @@ However, you may choose to commit journals for audit purposes if they don't cont
 
 ### Where can I find error logs?
 
+Ask Claude to show you the relevant information:
+
 1. **Journal events:**
-   ```bash
-   cat .a5c/runs/<runId>/journal/journal.jsonl | jq .
+   ```
+   Show me the events in my babysitter run
    ```
 
 2. **Task outputs:**
-   ```bash
-   ls .a5c/runs/<runId>/tasks/
-   cat .a5c/runs/<runId>/tasks/<effectId>/result.json
+   ```
+   What was the result of the last task in my workflow?
    ```
 
 3. **Run state:**
-   ```bash
-   cat .a5c/runs/<runId>/state/state.json | jq .
+   ```
+   What's the current state of my babysitter run?
    ```
 
 See: [Troubleshooting Guide](./troubleshooting.md)
@@ -813,8 +829,8 @@ See: [Troubleshooting Guide](./troubleshooting.md)
 3. Resume if needed
 
 **Verify:**
-```bash
-babysitter run:status <runId> --json | jq '.metadata.pendingEffectsByKind'
+```
+Are there any pending breakpoints in my babysitter run?
 ```
 
 ---

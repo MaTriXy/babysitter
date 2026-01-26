@@ -1,8 +1,25 @@
 # Process Definitions: JavaScript Workflow Orchestration
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+**A process is a recipe that tells Babysitter what to do.**
+
+Just like a cooking recipe says "chop vegetables, then cook them, then serve" - a process says "research the codebase, then write tests, then implement, then verify."
+
+**You don't need to write processes to use Babysitter.** The [Process Library](./process-library.md) has 2,000+ pre-built processes ready to use.
+
+**When would you write a process?**
+- You have a specific workflow your team follows
+- The pre-built processes don't match your needs
+- You want to customize how quality gates work
+
+**Tip for beginners:** Start with pre-built processes. Once you're comfortable, come back here to learn how to create your own.
 
 ---
 
@@ -220,34 +237,28 @@ export async function process(inputs, ctx) {
 }
 ```
 
-### Step 4: Create a Run
+### Step 4: Run Your Process
 
-Use the CLI to create a run with your process.
+Use the babysitter skill to run your process.
 
-```bash
-babysitter run:create \
-  --process-id my-workflow \
-  --entry ./code/main.js#process \
-  --inputs ./inputs.json \
-  --run-id "run-$(date -u +%Y%m%d-%H%M%S)"
+```
+/babysit run my custom workflow
 ```
 
-### Step 5: Execute the Run
-
-Use the babysitter skill or CLI to drive execution.
-
-```bash
-# Via skill
-claude "/babysit run my-workflow"
-
-# Via CLI iteration loop
-while true; do
-  RESULT=$(babysitter run:iterate "$RUN_ID" --json)
-  STATUS=$(echo "$RESULT" | jq -r '.status')
-  [ "$STATUS" = "completed" ] && break
-  [ "$STATUS" = "failed" ] && exit 1
-done
+Or reference your process file directly:
 ```
+/babysit run the workflow defined in ./code/main.js
+```
+
+### Step 5: Monitor and Continue
+
+The workflow runs automatically. If it pauses at a breakpoint:
+
+1. Approve via the breakpoints UI at http://localhost:3184
+2. Resume with:
+   ```
+   /babysit resume
+   ```
 
 ---
 

@@ -4,6 +4,42 @@
 
 ---
 
+## 30-Second Overview
+
+**Babysitter = Claude Code + autopilot + quality control**
+
+Instead of:
+```
+You: "Build me a login page"
+Claude: *builds something*
+You: "Make it better"
+Claude: *tweaks it*
+You: "Run the tests"
+Claude: *tests fail*
+You: "Fix the tests"
+... (repeat for hours)
+```
+
+You just say:
+```
+/babysit build a login page with 90% quality target
+```
+
+Babysitter handles the iteration, testing, and quality checks automatically. Come back later, it's still working (or waiting for your approval).
+
+---
+
+## Choose Your Path
+
+| If you are... | Start here |
+|--------------|------------|
+| **Impatient** (just want to try it) | [Quickstart](./quickstart.md) - 10 minutes to first run |
+| **Thorough** (want to understand first) | Keep reading this page, then [Installation](./installation.md) |
+| **Already installed** | [First Run Deep Dive](./first-run.md) to understand what happened |
+| **Coming back** | Jump to the [Tutorials](../tutorials/) for deeper projects |
+
+---
+
 ## What is Babysitter?
 
 Babysitter is an **orchestration framework** for Claude Code that transforms how you work with AI-assisted development. Instead of manually iterating with Claude until your code is "good enough," Babysitter automates the entire process with:

@@ -310,13 +310,13 @@ Error: Run encountered an error
 
 **Solutions:**
 1. Check journal for details:
-   ```bash
-   babysitter run:events <runId> --filter-type RUN_FAILED --json
+   ```
+   What error caused my babysitter run to fail?
    ```
 2. Fix underlying issue
 3. Resume if possible:
-   ```bash
-   /babysit resume --run-id <runId>
+   ```
+   /babysit resume
    ```
 
 ---
@@ -336,9 +336,9 @@ Error: Run not found: 01KFFTSF8TK8C9GT3YM9QYQ6WG
 - Run never created
 
 **Solutions:**
-1. List available runs:
-   ```bash
-   ls -lt .a5c/runs/ | head -10
+1. Ask Claude to find available runs:
+   ```
+   What babysitter runs have I done recently?
    ```
 2. Check working directory
 3. Use correct run ID

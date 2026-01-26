@@ -1,8 +1,22 @@
 # Parallel Execution: Running Tasks Concurrently
 
-**Version:** 1.0
-**Last Updated:** 2026-01-25
+**Version:** 1.1
+**Last Updated:** 2026-01-26
 **Category:** Feature Guide
+
+---
+
+## In Plain English
+
+**Parallel execution means doing multiple things at the same time instead of one after another.**
+
+Think of it like cooking: instead of waiting for the water to boil, THEN chopping vegetables, THEN preheating the oven - you do all three at once. Much faster!
+
+**Example in Babysitter:**
+- Without parallel: Run tests (30s) → Run linter (20s) → Check security (15s) = **65 seconds total**
+- With parallel: Run all three at once = **30 seconds total** (just the slowest one)
+
+**Do you need this as a beginner?** Not really - Babysitter handles this automatically in most pre-built processes. This doc is for when you're building custom processes and want to optimize speed.
 
 ---
 

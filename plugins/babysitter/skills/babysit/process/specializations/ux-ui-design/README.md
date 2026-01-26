@@ -849,6 +849,86 @@ Phases of the user experience:
 - UX Collective, Nielsen Norman Group for articles
 - Local UX meetups and conferences
 
+## Processes
+
+This specialization includes pre-built processes for common UX/UI workflows.
+
+### pixel-perfect-implementation
+
+A comprehensive iterative convergence process for achieving pixel-perfect UI implementation from design mocks.
+
+**Location**: `specializations/ux-ui-design/pixel-perfect-implementation.js`
+
+**Purpose**: Takes a design mock and target URL, then iteratively refines the implementation until it matches the mock with configurable quality thresholds.
+
+**Key Features**:
+- Multi-dimensional visual scoring (layout, typography, colors, spacing, components, decorative)
+- Configurable scoring weights and tolerances
+- Iterative convergence with stall detection
+- Optional responsive design verification
+- Optional accessibility verification
+- Human-in-the-loop breakpoints for approval
+
+**Inputs**:
+```json
+{
+  "projectName": "string - Project identifier",
+  "mockSource": "string - Path to design mock image",
+  "targetUrl": "string - URL of implementation to verify",
+  "targetQuality": "number - Target score 0-100 (default: 95)",
+  "maxIterations": "number - Maximum refinement iterations (default: 10)",
+  "scoringWeights": {
+    "layout": 25,
+    "typography": 20,
+    "colors": 20,
+    "spacing": 15,
+    "components": 10,
+    "decorative": 10
+  },
+  "tolerances": {
+    "pixelDifference": 0.5,
+    "colorDelta": 3,
+    "spacingPx": 2,
+    "fontSizePx": 1
+  },
+  "viewports": [{ "name": "desktop", "width": 1920, "height": 1080 }],
+  "includeResponsive": "boolean - Run responsive verification (default: false)",
+  "includeAccessibility": "boolean - Run accessibility verification (default: false)"
+}
+```
+
+**Phases**:
+1. **Mock Analysis** - Extract detailed specifications from design mock
+2. **Initial Assessment** - Capture and score current implementation
+3. **Iterative Convergence** - Plan → Implement → Capture → Score → Review loop
+4. **Responsive Verification** (optional) - Test across viewports
+5. **Accessibility Verification** (optional) - WCAG compliance check
+6. **Final Quality Gate** - Human approval or automatic pass
+
+**Supporting Agents**:
+- `design-mock-analyzer` - Extracts specifications from design mocks
+- `visual-qa-scorer` - Multi-dimensional visual quality scoring
+- `refinement-planner` - Prioritizes changes for maximum impact
+- `ui-implementer` - Executes refinement plan in codebase
+- `responsive-verifier` - Tests implementation across viewports
+- `accessibility-verifier` - Checks WCAG compliance
+
+**Usage**:
+```bash
+babysitter run:create \
+  --process-id ux-ui-design/pixel-perfect-implementation \
+  --entry plugins/babysitter/skills/babysit/process/specializations/ux-ui-design/pixel-perfect-implementation.js#process \
+  --inputs inputs.json
+```
+
+### design-qa
+
+Lightweight design QA process for verifying implementation against design specs.
+
+**Location**: `specializations/ux-ui-design/design-qa.js`
+
+---
+
 ## Conclusion
 
 UX/UI Design and User Experience is a human-centered specialization focused on creating products that users love. Through research, iteration, and attention to detail, UX/UI designers bridge the gap between user needs and business goals, crafting experiences that are both delightful and effective.

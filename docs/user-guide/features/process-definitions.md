@@ -534,6 +534,7 @@ export async function process(inputs, ctx) {
 - [Parallel Execution](./parallel-execution.md) - Run tasks concurrently
 - [Breakpoints](./breakpoints.md) - Add human approval gates
 - [Journal System](./journal-system.md) - Understand event sourcing
+- [Best Practices](./best-practices.md) - Patterns for process structure, error handling, idempotency, and testing
 
 ---
 

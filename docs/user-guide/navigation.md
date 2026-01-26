@@ -47,8 +47,16 @@ This document defines the navigation structure for the Babysitter User Guide doc
 - section: Features
   path: /features/
   items:
+    - title: Process Library
+      path: /features/process-library.md
+      highlight: true
+    - title: Best Practices Guide
+      path: /features/best-practices.md
+      highlight: true
     - title: Breakpoints
       path: /features/breakpoints.md
+    - title: Hooks
+      path: /features/hooks.md
     - title: Quality Convergence
       path: /features/quality-convergence.md
     - title: Process Definitions
@@ -61,6 +69,8 @@ This document defines the navigation structure for the Babysitter User Guide doc
       path: /features/parallel-execution.md
     - title: VSCode Extension
       path: /features/vscode-extension.md
+    - title: Telegram Integration
+      path: /features/telegram-integration.md
 ```
 
 ### Tutorials
@@ -132,13 +142,17 @@ For documentation platforms that use JSON configuration (e.g., Docusaurus, ViteP
         "label": "Features",
         "position": "left",
         "items": [
+          { "label": "Process Library", "to": "/features/process-library" },
+          { "label": "Best Practices Guide", "to": "/features/best-practices" },
           { "label": "Breakpoints", "to": "/features/breakpoints" },
+          { "label": "Hooks", "to": "/features/hooks" },
           { "label": "Quality Convergence", "to": "/features/quality-convergence" },
           { "label": "Process Definitions", "to": "/features/process-definitions" },
           { "label": "Journal System", "to": "/features/journal-system" },
           { "label": "Run Resumption", "to": "/features/run-resumption" },
           { "label": "Parallel Execution", "to": "/features/parallel-execution" },
-          { "label": "VSCode Extension", "to": "/features/vscode-extension" }
+          { "label": "VSCode Extension", "to": "/features/vscode-extension" },
+          { "label": "Telegram Integration", "to": "/features/telegram-integration" }
         ]
       },
       {
@@ -193,13 +207,17 @@ For documentation platforms that use JSON configuration (e.g., Docusaurus, ViteP
         "label": "Features",
         "collapsed": false,
         "items": [
+          "features/process-library",
+          "features/best-practices",
           "features/breakpoints",
+          "features/hooks",
           "features/quality-convergence",
           "features/process-definitions",
           "features/journal-system",
           "features/run-resumption",
           "features/parallel-execution",
-          "features/vscode-extension"
+          "features/vscode-extension",
+          "features/telegram-integration"
         ]
       },
       {
@@ -264,9 +282,9 @@ For documentation platforms that use JSON configuration (e.g., Docusaurus, ViteP
 +-------------------------------------------------------------------------+
 | Getting Started   | Features          | Tutorials      | Reference      |
 | - Installation    | - Breakpoints     | - REST API     | - CLI          |
-| - Quickstart      | - Quality Conv.   | - Custom Proc. | - Config       |
-| - First Run       | - Processes       | - Multi-Phase  | - Errors       |
-|                   | - Journal         |                | - Glossary     |
+| - Quickstart      | - Hooks           | - Custom Proc. | - Config       |
+| - First Run       | - Quality Conv.   | - Multi-Phase  | - Errors       |
+|                   | - Processes       |                | - Glossary     |
 +-------------------------------------------------------------------------+
 | Resources                                                                |
 | GitHub | Issues | Discussions | Releases | Support                      |
@@ -281,7 +299,11 @@ For documentation platforms that use JSON configuration (e.g., Docusaurus, ViteP
 |------|-----------------|
 | Home | `Docs` |
 | Installation | `Docs > Getting Started > Installation` |
+| Process Library | `Docs > Features > Process Library` |
+| Best Practices Guide | `Docs > Features > Best Practices Guide` |
 | Breakpoints | `Docs > Features > Breakpoints` |
+| Hooks | `Docs > Features > Hooks` |
+| Telegram Integration | `Docs > Features > Telegram Integration` |
 | REST API Tutorial | `Docs > Tutorials > Build a REST API` |
 | CLI Reference | `Docs > Reference > CLI Reference` |
 | Glossary | `Docs > Reference > Glossary` |

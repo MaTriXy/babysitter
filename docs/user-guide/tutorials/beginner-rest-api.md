@@ -27,7 +27,7 @@ Before starting this tutorial, please ensure you have:
 
 - [ ] **Node.js v20+** installed ([download here](https://nodejs.org/))
 - [ ] **Claude Code** installed and configured ([setup guide](https://code.claude.com/docs))
-- [ ] **Babysitter SDK and plugin** installed (see [Installation Guide](.../getting-started/installation.md))
+- [ ] **Babysitter SDK and plugin** installed (see [Installation Guide](../getting-started/installation.md))
 - [ ] **Breakpoints service running** on `http://localhost:3184`
 - [ ] A **new empty project directory** for this tutorial
 - [ ] Basic familiarity with **JavaScript** and **REST APIs**
@@ -686,12 +686,12 @@ Now that you've completed the beginner tutorial, here are some paths to continue
 - **[Advanced Tutorial: Multi-Phase Feature Development](./advanced-multi-phase.md)** - Master complex team workflows with quality convergence
 
 ### Go Deeper
-- **[Event Sourcing Explained](.../features/journal-system.md)** - Understand the architecture behind Babysitter
-- **[Quality Convergence Explained](.../features/quality-convergence.md)** - Learn how quality scoring works
+- **[Event Sourcing Explained](../features/journal-system.md)** - Understand the architecture behind Babysitter
+- **[Quality Convergence Explained](../features/quality-convergence.md)** - Learn how quality scoring works
 
 ### Apply Your Knowledge
-- **[How to Set Quality Targets](../how-to/quality/set-quality-targets.md)** - Fine-tune quality settings for your projects
-- **[How to Configure Breakpoints](../how-to/breakpoints/configure-breakpoint-service.md)** - Customize approval workflows
+- **[Quality Convergence](../features/quality-convergence.md)** - Fine-tune quality settings for your projects
+- **[Breakpoints](../features/breakpoints.md)** - Customize approval workflows
 
 ---
 
@@ -743,9 +743,9 @@ claude plugin enable --scope user babysitter@a5c.ai
 
 ## See Also
 
-- [Glossary](.../reference/glossary.md) - Definitions of all Babysitter terms
-- [CLI Reference: /babysit](.../reference/cli/babysit.md) - Complete command reference
-- [What is Babysitter?](../explanation/core-concepts/what-is-babysitter.md) - Conceptual overview
+- [Glossary](../reference/glossary.md) - Definitions of all Babysitter terms
+- [CLI Reference](../reference/cli-reference.md) - Complete command reference
+- [Getting Started](../getting-started/first-run.md) - Conceptual overview
 
 ---
 

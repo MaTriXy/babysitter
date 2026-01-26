@@ -384,6 +384,7 @@ Timeout after 300s
 - [Process Definitions](./process-definitions.md) - Learn how to create workflows with breakpoints
 - [Run Resumption](./run-resumption.md) - Resume workflows after breakpoint approval
 - [Journal System](./journal-system.md) - Understand how breakpoint events are recorded
+- [Best Practices](./best-practices.md) - Patterns for strategic breakpoint placement and workflow design
 
 ---
 

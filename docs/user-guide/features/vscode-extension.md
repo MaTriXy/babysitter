@@ -418,7 +418,7 @@ The Run Details webview highlights the current step and displays the latest scor
 - [Quality Convergence](./quality-convergence.md) - Iterative improvement workflows
 - [Run Resumption](./run-resumption.md) - Continue interrupted workflows
 - [Journal System](./journal-system.md) - Event-sourced audit trail
-- [CLI Reference](.../reference/cli-reference.md) - Command-line interface documentation
+- [CLI Reference](../reference/cli-reference.md) - Command-line interface documentation
 
 ---
 

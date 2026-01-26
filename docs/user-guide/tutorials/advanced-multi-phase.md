@@ -1437,9 +1437,9 @@ You have completed the advanced tutorials. Here are paths to continue your exper
 - **Build governance policies** - Define approval requirements
 
 ### Go Deeper
-- **[Process Engine Architecture](.../features/process-definitions.md)** - Understand internals
-- **[Compliance Patterns](.../reference/configuration.md)** - Meet regulatory requirements
-- **[Security Model](.../reference/configuration.md)** - Secure your workflows
+- **[Process Engine Architecture](../features/process-definitions.md)** - Understand internals
+- **[Configuration Reference](../reference/configuration.md)** - Meet regulatory requirements
+- **[FAQ](../reference/faq.md)** - Common questions and answers
 
 ### Contribute
 - **Share your processes** - Contribute to the community
@@ -1494,9 +1494,9 @@ You have completed the advanced tutorials. Here are paths to continue your exper
 
 ## See Also
 
-- [Event Sourcing Explained](.../features/journal-system.md) - Architecture concepts
-- [Quality Convergence Explained](.../features/quality-convergence.md) - Deep dive
-- [Team Adoption Guide](../explanation/best-practices/team-adoption.md) - Rollout strategies
+- [Event Sourcing Explained](../features/journal-system.md) - Architecture concepts
+- [Quality Convergence Explained](../features/quality-convergence.md) - Deep dive
+- [FAQ](../reference/faq.md) - Common questions and rollout strategies
 
 ---
 

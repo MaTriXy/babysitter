@@ -33,7 +33,7 @@ A **task type** representing LLM-powered operations within a process. Agents per
 
 **Related:** [Task](#task), [Skill](#skill), [Effect](#effect)
 
-**See Also:** [Process Definitions](.../features/process-definitions.md)
+**See Also:** [Process Definitions](../features/process-definitions.md)
 
 ---
 
@@ -130,7 +130,7 @@ await ctx.breakpoint({
 
 **Related:** [Breakpoints Service](#breakpoints-service), [Human-in-the-Loop](#human-in-the-loop)
 
-**See Also:** [Breakpoints Feature](.../features/breakpoints.md)
+**See Also:** [Breakpoints Feature](../features/breakpoints.md)
 
 ---
 
@@ -470,7 +470,7 @@ The append-only event log recording all state changes. Located at `.a5c/runs/<ru
 
 **Related:** [Event](#event), [Event Sourcing](#event-sourcing)
 
-**See Also:** [Journal System](.../features/journal-system.md)
+**See Also:** [Journal System](../features/journal-system.md)
 
 ---
 
@@ -599,7 +599,7 @@ const [build, lint, test] = await ctx.parallel.all([
 
 **Related:** [Context API](#context-api)
 
-**See Also:** [Parallel Execution](.../features/parallel-execution.md)
+**See Also:** [Parallel Execution](../features/parallel-execution.md)
 
 ---
 
@@ -643,7 +643,7 @@ export async function process(inputs, ctx) {
 
 **Related:** [Context API](#context-api), [Entry Point](#entry-point)
 
-**See Also:** [Process Definitions](.../features/process-definitions.md)
+**See Also:** [Process Definitions](../features/process-definitions.md)
 
 ---
 
@@ -678,7 +678,7 @@ implement -> measure quality -> below target? -> refine -> repeat
 
 **Related:** [Quality Score](#quality-score), [TDD](#tdd-test-driven-development)
 
-**See Also:** [Quality Convergence](.../features/quality-convergence.md)
+**See Also:** [Quality Convergence](../features/quality-convergence.md)
 
 ---
 
@@ -730,7 +730,7 @@ Continuing a previously interrupted run. The journal enables exact state reconst
 
 **Related:** [Run](#run), [Deterministic Replay](#deterministic-replay)
 
-**See Also:** [Run Resumption](.../features/run-resumption.md)
+**See Also:** [Run Resumption](../features/run-resumption.md)
 
 ---
 

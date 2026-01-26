@@ -502,7 +502,6 @@ docs/user-guide/
 |   +-- tdd-development.md         (Test-driven development)
 |   +-- feature-implementation.md  (End-to-end feature workflow)
 |   +-- code-review.md             (Review and refactoring)
-|   +-- ci-cd-integration.md       (Pipeline integration)
 |
 +-- 05-methodologies/
 |   +-- tdd-quality-convergence.md

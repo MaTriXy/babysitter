@@ -22,7 +22,9 @@ This is the GitBook-style table of contents for the Babysitter User Guide.
 ## Features
 
 * [**Process Library** (2,000+ processes)](./features/process-library.md)
+* [**Best Practices Guide**](./features/best-practices.md)
 * [Breakpoints](./features/breakpoints.md)
+* [Hooks](./features/hooks.md)
 * [Quality Convergence](./features/quality-convergence.md)
 * [Process Definitions](./features/process-definitions.md)
 * [Journal System](./features/journal-system.md)
@@ -77,7 +79,9 @@ docs/user-guide/
 |
 +-- features/                             # Core Features
 |   +-- process-library.md                # 2,000+ pre-built processes
+|   +-- best-practices.md                 # Comprehensive best practices guide
 |   +-- breakpoints.md                    # Human-in-the-loop approval
+|   +-- hooks.md                          # Extensible lifecycle events
 |   +-- quality-convergence.md            # Iterative quality improvement
 |   +-- process-definitions.md            # Workflow templates
 |   +-- journal-system.md                 # Event sourcing and audit
@@ -111,12 +115,12 @@ docs/user-guide/
 | Section | Pages | Status |
 |---------|-------|--------|
 | Getting Started | 4 | Complete |
-| Features | 9 | Complete |
+| Features | 11 | Complete |
 | Tutorials | 3 | Complete |
 | Reference | 6 | Complete |
 | Planning | 3 | Complete |
 | Navigation | 3 | Complete |
-| **Total** | **28** | **Active** |
+| **Total** | **30** | **Active** |
 
 ---
 

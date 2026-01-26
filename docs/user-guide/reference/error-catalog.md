@@ -799,7 +799,7 @@ Error: EMFILE: too many open files
 
 - [Troubleshooting Guide](./troubleshooting.md) - Step-by-step problem resolution
 - [FAQ](./faq.md) - Common questions answered
-- [Installation Guide](.../getting-started/installation.md) - Setup help
+- [Installation Guide](../getting-started/installation.md) - Setup help
 
 ---
 

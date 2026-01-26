@@ -65,7 +65,7 @@ Choose from built-in methodologies (TDD, Spec-Kit, GSD) or create your own. Cons
 | Install Babysitter | [Installation Guide](./installation.md) |
 | Run my first workflow (5 min) | [Quickstart](./quickstart.md) |
 | Understand what happened | [First Run Deep Dive](./first-run.md) |
-| See all commands | [CLI Reference](.../reference/cli-reference.md) |
+| See all commands | [CLI Reference](../reference/cli-reference.md) |
 | Learn about methodologies | [Methodologies Guide](../05-methodologies/) |
 
 ---
@@ -149,7 +149,7 @@ Ready? Head to the [Installation Guide](./installation.md) for step-by-step inst
 5. [ ] Try different quality targets (80%, 90%, 95%)
 6. [ ] Experience session resumption (close and resume a run)
 7. [ ] Use breakpoints for approval workflows
-8. [ ] Explore the [TDD methodology](.../features/quality-convergence.md)
+8. [ ] Explore the [TDD methodology](../features/quality-convergence.md)
 
 ### Week 2+: Level Up
 

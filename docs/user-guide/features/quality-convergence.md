@@ -556,6 +556,7 @@ const [coverage, lint, security] = await ctx.parallel.all([
 - [Process Definitions](./process-definitions.md) - Learn to create quality convergence processes
 - [Parallel Execution](./parallel-execution.md) - Optimize quality checks with parallelism
 - [Breakpoints](./breakpoints.md) - Add approval gates to quality convergence workflows
+- [Best Practices](./best-practices.md) - Patterns for setting targets, custom scoring strategies, and balancing speed vs thoroughness
 
 ---
 

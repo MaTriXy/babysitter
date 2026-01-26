@@ -957,12 +957,12 @@ Now that you've mastered custom process definitions, here are paths to continue:
 - **[Advanced Tutorial: Multi-Phase Feature Development](./advanced-multi-phase.md)** - Team workflows with agent scoring and quality convergence
 
 ### Go Deeper
-- **[Process Engine Architecture](.../features/process-definitions.md)** - Understand how processes execute
-- **[Task Types Reference](..../reference/cli-reference.md)** - Complete reference for all task types
+- **[Process Engine Architecture](../features/process-definitions.md)** - Understand how processes execute
+- **[Task Types Reference](../reference/cli-reference.md)** - Complete reference for all task types
 
 ### Apply Your Knowledge
-- **[How to Create Team Templates](.../features/process-definitions.md)** - Share processes across your team
-- **[How to Extend Quality Scoring](../how-to/customization/extend-quality-scoring.md)** - Custom quality evaluators
+- **[How to Create Team Templates](../features/process-definitions.md)** - Share processes across your team
+- **[Quality Convergence](../features/quality-convergence.md)** - Custom quality evaluators
 
 ---
 
@@ -1019,9 +1019,9 @@ Now that you've mastered custom process definitions, here are paths to continue:
 
 ## See Also
 
-- [CLI Reference: run:create](.../reference/cli/run-create.md) - Running processes via CLI
-- [Effect Types Reference](.../reference/api/effect-types.md) - All effect types available
-- [Breakpoint Architecture](../explanation/architecture/breakpoint-architecture.md) - How breakpoints work
+- [CLI Reference](../reference/cli-reference.md) - Running processes via CLI
+- [Configuration Reference](../reference/configuration.md) - All configuration options
+- [Breakpoints](../features/breakpoints.md) - How breakpoints work
 
 ---
 

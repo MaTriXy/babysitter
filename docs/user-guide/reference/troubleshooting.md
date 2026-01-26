@@ -1009,8 +1009,8 @@ Contact support if you experience:
 
 - [FAQ](./faq.md) - Common questions answered
 - [Error Catalog](./error-catalog.md) - Error messages explained
-- [Installation Guide](.../getting-started/installation.md) - Setup instructions
-- [Run Resumption](.../features/run-resumption.md) - Recovery procedures
+- [Installation Guide](../getting-started/installation.md) - Setup instructions
+- [Run Resumption](../features/run-resumption.md) - Recovery procedures
 
 ---
 

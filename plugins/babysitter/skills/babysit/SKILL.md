@@ -227,7 +227,7 @@ In case you don't follow this step, you will be called by the stop-hook and you 
 
 ### Agent Task Example
 
-Important: Check which subagents and agents are actually available before assigning the name. if none, pass the general-purpose subagent.
+Important: Check which subagents and agents are actually available before assigning the name. if none, pass the general-purpose subagent. check the subagents and agents in the plugin (in nested folders) and to find relevant subagents and agents to use as a reference. specifically check subagents and agents in folders next to the reference process file.
 when executing the agent task, use the Task tool. never use the Babysitter skill or agent to execute the task. if the subagent or agent is not installed for the project before running the process, install it first.
 
 ```javascript
@@ -258,8 +258,9 @@ export const agentTask = defineTask('agent-scorer', (args, taskCtx) => ({
 
 ### Skill Task Example
 
-Important: Check which skills are actually available before assigning the name. 
-Never use the Babysitter skill or agent to execute the task. if the skill or subagent is not installed for the project before running the process, install it first.
+Important: Check which skills are actually available before assigning the skill name. check the skills in the plugin (in nested folders) and to find relevant skills to use as a reference. specifically check skills in folders next to the reference process file.
+
+Never use the Babysitter skill or agent to execute the task. if the skill or subagent is not installed for the project before running the process, install it first. skills are prefered over subagents for executing tasks, especially if you can find the right skill for the task. you can convert a agent call to a skill call even if the reference process mentions an agent call.
 
 ```javascript
 export const skillTask = defineTask('analyzer-skill', (args, taskCtx) => ({

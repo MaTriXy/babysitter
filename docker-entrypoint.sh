@@ -26,6 +26,6 @@ elif [ -n "$PROMPT" ]; then
     # PROMPT env var set - invoke babysitter:babysit skill
     exec claude --plugin-dir "$PLUGIN_DIR" --dangerously-skip-permissions --output-format "$OUTPUT_FORMAT" -p "/babysitter:babysit $PROMPT"
 else
-    # No prompt - start interactive session (no output format for interactive)
+# No prompt - start interactive session (no output format for interactive)
     exec claude --plugin-dir "$PLUGIN_DIR" --dangerously-skip-permissions
 fi

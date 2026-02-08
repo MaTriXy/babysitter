@@ -72,11 +72,11 @@ if [[ -d "$SKILLS_ROOT" ]]; then
 
     if [[ -n "$name" ]]; then
       # Truncate description to 80 chars for compactness
-      short_desc="${desc:0:80}"
+      short_desc="${desc:0:50}"
       LOCAL_SKILLS=$(echo "$LOCAL_SKILLS" | jq --arg n "$name" --arg d "$short_desc" --arg c "$cat_meta" --arg f "$skill_file" \
         '. + [{"name": $n, "description": $d, "category": $c, "source": "local", "file": $f}]')
     fi
-  done < <(find "$SKILLS_ROOT" -name "SKILL.md" -type f 2>/dev/null | head -50)
+  done < <(find "$SKILLS_ROOT" -name "SKILL.md" -type f 2>/dev/null | head -15)
 fi
 
 # Also scan plugin-level skills (the main registered ones)
@@ -91,7 +91,7 @@ if [[ -d "$PLUGIN_SKILLS_DIR" ]]; then
     desc=$(sed -n '/^---$/,/^---$/{ /^---$/d; p; }' "$skill_file" | grep '^description:' | sed 's/description: *//' | head -1)
 
     if [[ -n "$name" ]]; then
-      short_desc="${desc:0:80}"
+      short_desc="${desc:0:50}"
       LOCAL_SKILLS=$(echo "$LOCAL_SKILLS" | jq --arg n "$name" --arg d "$short_desc" --arg f "$skill_file" \
         '. + [{"name": $n, "description": $d, "category": "", "source": "local-plugin", "file": $f}]')
     fi
@@ -142,8 +142,8 @@ fi
 # Deduplicate by name
 ALL_SKILLS=$(echo "$ALL_SKILLS" | jq '[group_by(.name)[] | .[0]]')
 
-# Limit to top 30 for context window efficiency
-ALL_SKILLS=$(echo "$ALL_SKILLS" | jq '.[0:30]')
+# Limit to top 5 for context window efficiency
+ALL_SKILLS=$(echo "$ALL_SKILLS" | jq '.[0:5]')
 
 # ─────────────────────────────────────────────────
 # 5. Output
@@ -154,7 +154,7 @@ echo "$ALL_SKILLS" > "$CACHE_FILE"
 
 # Compact summary for systemMessage injection
 SUMMARY=$(echo "$ALL_SKILLS" | jq -r '
-  map("\(.name) (\(.description // "no description" | .[0:60]))")
+  map("\(.name) (\(.description // "no description" | .[0:40]))")
   | join(", ")
 ')
 

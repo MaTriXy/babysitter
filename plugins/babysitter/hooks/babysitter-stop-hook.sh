@@ -350,6 +350,14 @@ if [[ -x "$SKILL_RESOLVER" ]]; then
   fi
 fi
 
+# ─────────────────────────────────────────────────
+# Cap SYSTEM_MSG length to prevent oversized system prompts
+# ─────────────────────────────────────────────────
+MAX_SYSTEM_MSG_LEN=1200
+if [[ ${#SYSTEM_MSG} -gt $MAX_SYSTEM_MSG_LEN ]]; then
+  SYSTEM_MSG="${SYSTEM_MSG:0:$MAX_SYSTEM_MSG_LEN}..."
+fi
+
 echo "✅ Babysitter run: Outputting JSON to block the stop and feed prompt back" >> /tmp/babysitter-stop-hook.log
 echo "   State file: $BABYSITTER_STATE_FILE" >> /tmp/babysitter-stop-hook.log
 echo "   Session ID: $SESSION_ID" >> /tmp/babysitter-stop-hook.log

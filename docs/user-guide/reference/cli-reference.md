@@ -197,7 +197,7 @@ babysitter run:status <runId> [--json]
 #### Output (Human)
 
 ```
-[run:status] state=waiting last=TASK_REQUESTED#0042 2026-01-25T14:30:12.123Z pending[node]=2 pending[total]=2 stateVersion=42
+[run:status] state=waiting last=EFFECT_REQUESTED#0042 2026-01-25T14:30:12.123Z pending[node]=2 pending[total]=2 stateVersion=42
 ```
 
 #### Output (JSON)
@@ -206,7 +206,7 @@ babysitter run:status <runId> [--json]
 {
   "runId": "run-20260125-143012",
   "state": "waiting",
-  "lastEvent": "TASK_REQUESTED#0042 2026-01-25T14:30:12.123Z",
+  "lastEvent": "EFFECT_REQUESTED#0042 2026-01-25T14:30:12.123Z",
   "pendingByKind": {
     "node": 2
   },
@@ -273,7 +273,7 @@ babysitter run:events <runId> \
 ```
 [run:events] count=42
 #0001 2026-01-25T14:30:12.123Z RUN_CREATED processId=dev/build
-#0002 2026-01-25T14:30:12.234Z TASK_REQUESTED effectId=effect-abc123
+#0002 2026-01-25T14:30:12.234Z EFFECT_REQUESTED effectId=effect-abc123
 #0003 2026-01-25T14:30:15.456Z EFFECT_RESOLVED effectId=effect-abc123
 ...
 ```
@@ -285,12 +285,12 @@ babysitter run:events <runId> \
   "count": 42,
   "events": [
     {
-      "seq": 1,
-      "timestamp": "2026-01-25T14:30:12.123Z",
       "type": "RUN_CREATED",
-      "payload": {
+      "recordedAt": "2026-01-25T14:30:12.123Z",
+      "data": {
         "processId": "dev/build"
-      }
+      },
+      "checksum": "a1b2c3..."
     }
   ]
 }
@@ -831,7 +831,7 @@ Example error:
 Terse, single-line output optimized for CI logs and human readability.
 
 ```
-[run:status] state=waiting last=TASK_REQUESTED#0042 pending[node]=2
+[run:status] state=waiting last=EFFECT_REQUESTED#0042 pending[node]=2
 ```
 
 ### JSON Format (`--json`)

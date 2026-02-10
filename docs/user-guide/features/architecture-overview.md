@@ -40,9 +40,13 @@ Babysitter uses a modular architecture designed for reliability, debuggability, 
 |                           v                                      |
 |  +-----------------------------------------------------------+  |
 |  |  .a5c/runs/<runId>/                                       |  |
-|  |  +-- journal.jsonl  (event log)                           |  |
-|  |  +-- state.json     (current state)                       |  |
-|  |  +-- tasks/         (task artifacts)                      |  |
+|  |  +-- run.json        (run metadata)                       |  |
+|  |  +-- inputs.json     (run inputs)                         |  |
+|  |  +-- code/           (process code)                       |  |
+|  |  +-- artifacts/      (output artifacts)                   |  |
+|  |  +-- journal/        (event log, individual JSON files)   |  |
+|  |  +-- state/state.json (current state)                     |  |
+|  |  +-- tasks/<effectId>/ (task artifacts)                   |  |
 |  +-----------------------------------------------------------+  |
 |                           |                                      |
 |                           v                                      |
@@ -91,23 +95,20 @@ Babysitter uses a modular architecture designed for reliability, debuggability, 
 
 ### 3. Event-Sourced Journal
 
-**Format:** JSONL (JSON Lines) - one event per line
+**Format:** Individual JSON files in `journal/` directory, one per event, named `{SEQ}.{ULID}.json` (e.g. `000001.01ARZ3NDEKTSV4RRFFQ69G5FAV.json`)
 
 **Event Types:**
 
 ```typescript
 type JournalEvent =
-  | { type: 'RUN_STARTED', runId: string, timestamp: string, inputs: any }
-  | { type: 'ITERATION_STARTED', iteration: number, timestamp: string }
-  | { type: 'TASK_STARTED', taskId: string, taskType: string, args: any }
-  | { type: 'TASK_COMPLETED', taskId: string, result: any, duration: number }
-  | { type: 'TASK_FAILED', taskId: string, error: string }
-  | { type: 'BREAKPOINT_REQUESTED', breakpointId: string, question: string }
-  | { type: 'BREAKPOINT_APPROVED', breakpointId: string, timestamp: string }
-  | { type: 'BREAKPOINT_REJECTED', breakpointId: string, reason: string }
-  | { type: 'QUALITY_SCORE', iteration: number, score: number, metrics: any }
-  | { type: 'RUN_COMPLETED', status: 'success' | 'failed', timestamp: string }
-  | { type: 'RUN_FAILED', error: string, timestamp: string }
+  | { type: 'RUN_CREATED', recordedAt: string, data: { runId: string, inputs: any }, checksum: string }
+  | { type: 'EFFECT_REQUESTED', recordedAt: string, data: { effectId: string, kind: string, args: any }, checksum: string }
+  | { type: 'EFFECT_RESOLVED', recordedAt: string, data: { effectId: string, result: any }, checksum: string }
+  | { type: 'RUN_COMPLETED', recordedAt: string, data: { status: string }, checksum: string }
+  | { type: 'RUN_FAILED', recordedAt: string, data: { error: string }, checksum: string }
+
+// Note: seq is derived from the filename, not stored in the event body.
+// Breakpoints use EFFECT_REQUESTED with kind: 'breakpoint' and EFFECT_RESOLVED.
 ```
 
 **Benefits:**
@@ -118,17 +119,21 @@ type JournalEvent =
 
 **Implementation:**
 ```javascript
-// Append-only writes
-function appendEvent(event) {
-  fs.appendFileSync(journalPath, JSON.stringify(event) + '\n');
+// Write individual JSON file per event
+function appendEvent(event, seq) {
+  const filename = `${String(seq).padStart(6, '0')}.${ulid()}.json`;
+  fs.writeFileSync(path.join(journalDir, filename), JSON.stringify(event, null, 2));
 }
 
-// Replay to reconstruct state
+// Replay by reading all JSON files from journal/ directory
 function replayJournal() {
-  const events = fs.readFileSync(journalPath, 'utf-8')
-    .split('\n')
-    .filter(line => line.trim())
-    .map(line => JSON.parse(line));
+  const files = fs.readdirSync(journalDir)
+    .filter(f => f.endsWith('.json'))
+    .sort(); // lexicographic sort preserves sequence order
+
+  const events = files.map(f =>
+    JSON.parse(fs.readFileSync(path.join(journalDir, f), 'utf-8'))
+  );
 
   return events.reduce(applyEvent, initialState);
 }
@@ -212,7 +217,7 @@ For more details on creating processes, see [Process Definitions](./process-defi
                   |
                   v
 +---------------------------------------------------------+
-| Journal Event: TASK_STARTED                             |
+| Journal Event: EFFECT_REQUESTED                         |
 +-----------------+---------------------------------------+
                   |
                   v
@@ -222,12 +227,12 @@ For more details on creating processes, see [Process Definitions](./process-defi
 | - Skill: Invoke Claude Code skill                       |
 | - Node: Run JavaScript function                         |
 | - Shell: Execute command                                |
-| - Breakpoint: Wait for approval                         |
+| - Breakpoint: Wait for approval (kind: breakpoint)      |
 +-----------------+---------------------------------------+
                   |
                   v
 +---------------------------------------------------------+
-| Journal Event: TASK_COMPLETED or TASK_FAILED            |
+| Journal Event: EFFECT_RESOLVED                          |
 +-----------------+---------------------------------------+
                   |
                   v
@@ -334,16 +339,16 @@ For more details on breakpoints, see [Breakpoints](./breakpoints.md).
                        |    |
                        |    +-- ctx.task() -> Execute tasks
                        |    |    |
-                       |    |    +-- Append TASK_STARTED
+                       |    |    +-- Append EFFECT_REQUESTED
                        |    |    +-- Run executor (agent/skill/node/shell)
-                       |    |    +-- Append TASK_COMPLETED
+                       |    |    +-- Append EFFECT_RESOLVED
                        |    |
                        |    +--> ctx.breakpoint() -> Wait for approval
                        |         |
                        |         +-- POST to breakpoints service
-                       |         +-- Append BREAKPOINT_REQUESTED
+                       |         +-- Append EFFECT_REQUESTED (kind: breakpoint)
                        |         +-- Poll for response
-                       |         +-- Append BREAKPOINT_APPROVED
+                       |         +-- Append EFFECT_RESOLVED
                        |
                        +-- Append iteration events to journal
                        +-- Save state cache
@@ -443,7 +448,7 @@ For more details on hooks, see [Hooks](./hooks.md).
 | **Plugin** | JavaScript | Claude Code integration |
 | **SDK** | TypeScript + Node.js | Core orchestration engine |
 | **Process Definitions** | JavaScript/TypeScript | User workflow logic |
-| **Journal** | JSONL (text files) | Event persistence |
+| **Journal** | Individual JSON files | Event persistence |
 | **Breakpoints Service** | Node.js + Express | Human approval UI/API |
 | **CLI** | Commander.js | Command-line interface |
 

@@ -108,15 +108,19 @@ You'll see your run ID (e.g., `01KFFTSF8TK8C9GT3YM9QYQ6WG`). Let's explore its s
 ```
 .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/
 |
++-- run.json              # Run metadata
++-- inputs.json           # Run inputs
+|
 +-- journal/
-|   +-- journal.jsonl     # Event log (source of truth)
+|   +-- 000001.<ulid>.json  # Event log (individual JSON files, source of truth)
+|   +-- 000002.<ulid>.json
+|   +-- ...
 |
 +-- state/
 |   +-- state.json        # Current state cache (derived)
 |
 +-- tasks/
-|   +-- task-001/         # Task artifacts
-|   +-- task-002/
+|   +-- <effectId>/       # Task artifacts per effect
 |   +-- ...
 |
 +-- artifacts/
@@ -129,10 +133,10 @@ You'll see your run ID (e.g., `01KFFTSF8TK8C9GT3YM9QYQ6WG`). Let's explore its s
 
 ### Key Files Explained
 
-#### journal/journal.jsonl
-The **source of truth**. Every event is appended here. This file is:
-- Append-only (never modified, only added to)
-- Human-readable (JSON Lines format)
+#### journal/ (individual JSON files)
+The **source of truth**. Each event is stored as an individual JSON file named `{SEQ}.{ULID}.json` (e.g., `000001.01ARZ3NDEKTSV4RRFFQ69G5FAV.json`). This directory is:
+- Append-only (files are never modified, only new files are added)
+- Human-readable (each file is a standalone JSON document)
 - The basis for session resumption
 
 #### state/state.json
@@ -160,7 +164,11 @@ Contains **artifacts from each task**:
 The journal is the heart of Babysitter's persistence. Let's examine it:
 
 ```bash
-cat .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/journal.jsonl
+# List all journal events (each is an individual JSON file)
+ls .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/
+
+# View a specific event
+cat .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/000001.*.json | jq .
 ```
 
 ### Journal Event Types
@@ -169,63 +177,63 @@ Here's what each event type means:
 
 #### Run Lifecycle Events
 
-```jsonl
-{"type":"RUN_STARTED","runId":"01KFF...","timestamp":"2026-01-25T14:30:12Z","inputs":{...}}
-{"type":"RUN_COMPLETED","status":"success","timestamp":"2026-01-25T14:34:45Z"}
+Each event is stored as an individual JSON file in `journal/` with the naming pattern `{SEQ}.{ULID}.json`. The event schema is:
+
+```json
+// 000001.<ulid>.json
+{"type":"RUN_CREATED","recordedAt":"2026-01-25T14:30:12Z","data":{"runId":"01KFF...","inputs":{}},"checksum":"sha256hex..."}
+
+// (final event, e.g., 000012.<ulid>.json)
+{"type":"RUN_COMPLETED","recordedAt":"2026-01-25T14:34:45Z","data":{"status":"success"},"checksum":"sha256hex..."}
 ```
 
-- `RUN_STARTED`: A new run began with specific inputs
-- `RUN_COMPLETED`: Run finished (success or failed)
+- `RUN_CREATED`: A new run began with specific inputs
+- `RUN_COMPLETED`: Run finished successfully
+- `RUN_FAILED`: Run finished with an error
 
-#### Phase Events
+**Note:** The `seq` number is derived from the filename, not stored in the event body. Each event includes a `checksum` field (sha256 hex) for integrity verification.
 
-```jsonl
-{"type":"PHASE_STARTED","phase":"research","timestamp":"..."}
-{"type":"PHASE_COMPLETED","phase":"research","timestamp":"..."}
+#### Effect Events
+
+Effects represent tasks and interactions that Babysitter delegates (agent calls, skill invocations, scripts, breakpoints). There are exactly two effect event types:
+
+```json
+// EFFECT_REQUESTED: An effect (task) has been requested
+// e.g., 000003.<ulid>.json
+{"type":"EFFECT_REQUESTED","recordedAt":"2026-01-25T14:30:45Z","data":{"effectId":"<effectId>","kind":"agent","args":{}},"checksum":"sha256hex..."}
+
+// EFFECT_RESOLVED: An effect has completed (successfully or with error)
+// e.g., 000004.<ulid>.json
+{"type":"EFFECT_RESOLVED","recordedAt":"2026-01-25T14:31:10Z","data":{"effectId":"<effectId>","status":"ok","result":{}},"checksum":"sha256hex..."}
+
+// EFFECT_RESOLVED with error status
+// e.g., 000005.<ulid>.json
+{"type":"EFFECT_RESOLVED","recordedAt":"2026-01-25T14:31:15Z","data":{"effectId":"<effectId>","status":"error","error":"..."},"checksum":"sha256hex..."}
 ```
 
-Marks the beginning and end of major phases (research, specification, implementation).
+- `EFFECT_REQUESTED`: Records when a task, agent call, or breakpoint is initiated
+- `EFFECT_RESOLVED` (status: ok): Records successful completion of an effect
+- `EFFECT_RESOLVED` (status: error): Records when an effect fails
 
-#### Iteration Events
-
-```jsonl
-{"type":"ITERATION_STARTED","iteration":1,"timestamp":"..."}
-{"type":"ITERATION_COMPLETED","iteration":1,"timestamp":"..."}
-```
-
-Tracks each pass through the quality loop.
-
-#### Task Events
-
-```jsonl
-{"type":"TASK_STARTED","taskId":"agent-001","taskType":"agent","args":{...}}
-{"type":"TASK_COMPLETED","taskId":"agent-001","result":{...},"duration":25000}
-{"type":"TASK_FAILED","taskId":"agent-002","error":"..."}
-```
-
-Records individual task execution (agent calls, skill invocations, scripts).
-
-#### Quality Events
-
-```jsonl
-{"type":"QUALITY_SCORE","iteration":1,"score":72,"metrics":{"coverage":75,"tests":11}}
-{"type":"QUALITY_SCORE","iteration":2,"score":88,"metrics":{"coverage":92,"tests":12}}
-```
-
-Captures quality assessments after each iteration.
+Task artifacts are stored in `tasks/<effectId>/` directories containing `task.json`, `input.json`, `result.json`, `output.json`, `stdout.log`, and `stderr.log`.
 
 #### Breakpoint Events
 
-```jsonl
-{"type":"BREAKPOINT_REQUESTED","breakpointId":"bp-001","question":"Deploy to prod?"}
-{"type":"BREAKPOINT_APPROVED","breakpointId":"bp-001","approver":"user","timestamp":"..."}
-```
+Breakpoints are modeled as effects. When human approval is needed:
 
-Records human approval checkpoints (if any were requested).
+```json
+// Breakpoint requested as an effect
+{"type":"EFFECT_REQUESTED","recordedAt":"...","data":{"effectId":"<effectId>","kind":"breakpoint","question":"Deploy to prod?"},"checksum":"sha256hex..."}
+
+// Breakpoint resolved (approved or rejected)
+{"type":"EFFECT_RESOLVED","recordedAt":"...","data":{"effectId":"<effectId>","status":"ok","approver":"user"},"checksum":"sha256hex..."}
+```
 
 **Note on breakpoint modes:** These events are recorded regardless of whether the breakpoint was handled:
 - **Interactively** (via AskUserQuestion in Claude Code chat), or
 - **Non-interactively** (via the breakpoints web UI at http://localhost:3184)
+
+**Note on quality tracking:** Quality scores and iteration/phase progress are not tracked as separate event types in the journal. Quality metrics can be tracked within effect data or via custom application logic on top of the five core event types: `RUN_CREATED`, `EFFECT_REQUESTED`, `EFFECT_RESOLVED`, `RUN_COMPLETED`, and `RUN_FAILED`.
 
 ### Why Event Sourcing Matters
 
@@ -451,9 +459,9 @@ How do you know your Babysitter run succeeded? Here's a checklist:
 cat .a5c/runs/<runId>/state/state.json | jq '.status'
 # Expected: "completed"
 
-# Check final quality score
-cat .a5c/runs/<runId>/journal/journal.jsonl | grep QUALITY_SCORE | tail -1 | jq '.score'
-# Expected: >= your target
+# View the last journal event (check for RUN_COMPLETED)
+ls .a5c/runs/<runId>/journal/ | sort | tail -1 | xargs -I {} cat .a5c/runs/<runId>/journal/{} | jq '.type'
+# Expected: "RUN_COMPLETED"
 
 # Run tests manually
 npm test
@@ -468,14 +476,14 @@ ls -la calculator.js calculator.test.js
 
 **Run failed:**
 ```bash
-# Check the journal for error events
-cat .a5c/runs/<runId>/journal/journal.jsonl | grep -E "(FAILED|ERROR)" | jq .
+# Check the journal for RUN_FAILED or error events
+for f in .a5c/runs/<runId>/journal/*.json; do cat "$f" | jq 'select(.type == "RUN_FAILED" or (.type == "EFFECT_RESOLVED" and .data.status == "error"))'; done
 ```
 
 **Quality not reached:**
 ```bash
-# See all quality scores
-cat .a5c/runs/<runId>/journal/journal.jsonl | grep QUALITY_SCORE | jq '.score'
+# View all EFFECT_RESOLVED events to check task results
+for f in .a5c/runs/<runId>/journal/*.json; do cat "$f" | jq 'select(.type == "EFFECT_RESOLVED")'; done
 ```
 
 **Incomplete run:**
@@ -495,22 +503,22 @@ Let's practice what you've learned. Complete these exercises:
 How many iterations did your run take?
 
 ```bash
-# Your command here:
-cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep ITERATION_STARTED | wc -l
+# Your command here (count EFFECT_REQUESTED events as a proxy for tasks per iteration):
+for f in .a5c/runs/<your-run-id>/journal/*.json; do cat "$f" | jq -r 'select(.type == "EFFECT_REQUESTED") | .type'; done | wc -l
 ```
 
-**Answer:** Should match the "Iterations: X of 5" in your summary
+**Answer:** The number of effects requested gives you insight into the work performed across iterations.
 
 ### Exercise 2: Find Quality Progression
 
 What was the quality score after each iteration?
 
 ```bash
-# Your command here:
-cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep QUALITY_SCORE | jq '.score'
+# Your command here (view all EFFECT_RESOLVED events to see task results):
+for f in .a5c/runs/<your-run-id>/journal/*.json; do cat "$f" | jq 'select(.type == "EFFECT_RESOLVED") | .data'; done
 ```
 
-**Expected:** Scores increasing until target met (e.g., 72, 88)
+**Expected:** Effect results showing progression toward quality target.
 
 ### Exercise 3: Identify Tasks
 
@@ -518,7 +526,7 @@ How many tasks were executed?
 
 ```bash
 # Your command here:
-cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep TASK_STARTED | wc -l
+for f in .a5c/runs/<your-run-id>/journal/*.json; do cat "$f" | jq -r 'select(.type == "EFFECT_REQUESTED") | .type'; done | wc -l
 ```
 
 ### Exercise 4: Check Run Duration
@@ -526,8 +534,9 @@ cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep TASK_STARTED | wc -l
 How long did the run take?
 
 ```bash
-# Find start and end times
-cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep -E "(RUN_STARTED|RUN_COMPLETED)" | jq '.timestamp'
+# Find start and end times (first and last journal files)
+cat .a5c/runs/<your-run-id>/journal/$(ls .a5c/runs/<your-run-id>/journal/ | sort | head -1) | jq '.recordedAt'
+cat .a5c/runs/<your-run-id>/journal/$(ls .a5c/runs/<your-run-id>/journal/ | sort | tail -1) | jq '.recordedAt'
 ```
 
 ---
@@ -550,7 +559,7 @@ cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep -E "(RUN_STARTED|RUN_CO
 
 | File | Purpose |
 |------|---------|
-| `journal/journal.jsonl` | Event log (never delete!) |
+| `journal/*.json` | Event log as individual JSON files (never delete!) |
 | `state/state.json` | State cache (can be rebuilt) |
 | `tasks/` | Task artifacts |
 | `artifacts/` | Generated documents |
@@ -558,8 +567,8 @@ cat .a5c/runs/<your-run-id>/journal/journal.jsonl | grep -E "(RUN_STARTED|RUN_CO
 ### Important Commands
 
 ```bash
-# View journal
-cat .a5c/runs/<runId>/journal/journal.jsonl | jq .
+# View all journal events
+for f in .a5c/runs/<runId>/journal/*.json; do cat "$f" | jq .; done
 
 # Check run status
 cat .a5c/runs/<runId>/state/state.json | jq '.status'
@@ -626,13 +635,10 @@ RESUME A RUN:
   /babysitter:call resume --run-id <id>
 
 VIEW JOURNAL:
-  cat .a5c/runs/<id>/journal/journal.jsonl | jq .
+  for f in .a5c/runs/<id>/journal/*.json; do cat "$f" | jq .; done
 
 CHECK STATUS:
   cat .a5c/runs/<id>/state/state.json | jq '.status'
-
-QUALITY SCORES:
-  grep QUALITY_SCORE journal.jsonl | jq '.score'
 
 BREAKPOINTS:
   Interactive (Claude Code): Handled in chat - no setup!
@@ -642,11 +648,13 @@ BREAKPOINTS:
 LIST ALL RUNS:
   ls .a5c/runs/
 
-KEY EVENT TYPES:
-  RUN_STARTED, RUN_COMPLETED
-  ITERATION_STARTED, QUALITY_SCORE
-  TASK_STARTED, TASK_COMPLETED
-  BREAKPOINT_REQUESTED, BREAKPOINT_APPROVED
+KEY EVENT TYPES (exactly 5):
+  RUN_CREATED, RUN_COMPLETED, RUN_FAILED
+  EFFECT_REQUESTED, EFFECT_RESOLVED
+
+JOURNAL FORMAT:
+  Individual JSON files: journal/{SEQ}.{ULID}.json
+  Fields: type, recordedAt, data, checksum
 ```
 
 ---

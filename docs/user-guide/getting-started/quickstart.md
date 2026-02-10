@@ -211,7 +211,7 @@ Files created:
 - calculator.test.js
 
 Run ID: 01KFFTSF8TK8C9GT3YM9QYQ6WG
-Journal: .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/
+Journal: .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
 
 ### Explore What Was Created
@@ -289,24 +289,23 @@ Tests:       12 passed, 12 total
 Every action Babysitter took is recorded in the journal. Let's explore:
 
 ```bash
-# View the journal
-cat .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/journal.jsonl | head -20
+# View the journal files
+ls .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
 
-**Sample output:**
-```jsonl
-{"type":"RUN_STARTED","runId":"01KFFTSF8TK8C9GT3YM9QYQ6WG","timestamp":"2026-01-25T14:30:12Z"}
-{"type":"PHASE_STARTED","phase":"research","timestamp":"2026-01-25T14:30:13Z"}
-{"type":"TASK_STARTED","taskId":"research-001","taskType":"agent"}
-{"type":"TASK_COMPLETED","taskId":"research-001","duration":25000}
-{"type":"ITERATION_STARTED","iteration":1,"timestamp":"2026-01-25T14:31:00Z"}
-{"type":"QUALITY_SCORE","iteration":1,"score":72}
-{"type":"ITERATION_STARTED","iteration":2,"timestamp":"2026-01-25T14:33:00Z"}
-{"type":"QUALITY_SCORE","iteration":2,"score":88}
-{"type":"RUN_COMPLETED","status":"success","timestamp":"2026-01-25T14:34:45Z"}
+**Sample events from journal JSON files:**
+```json
+{"type":"RUN_CREATED","recordedAt":"2026-01-25T14:30:12Z","data":{"runId":"01KFFTSF8TK8C9GT3YM9QYQ6WG"},"checksum":"a1b2c3"}
+{"type":"EFFECT_REQUESTED","recordedAt":"2026-01-25T14:30:13Z","data":{"effectId":"research-001","effectType":"agent"},"checksum":"d4e5f6"}
+{"type":"EFFECT_RESOLVED","recordedAt":"2026-01-25T14:30:38Z","data":{"effectId":"research-001","duration":25000},"checksum":"g7h8i9"}
+{"type":"EFFECT_REQUESTED","recordedAt":"2026-01-25T14:31:00Z","data":{"effectId":"tdd-impl-001","effectType":"agent","iteration":1},"checksum":"j0k1l2"}
+{"type":"EFFECT_RESOLVED","recordedAt":"2026-01-25T14:33:00Z","data":{"effectId":"tdd-impl-001","iteration":1},"checksum":"m3n4o5"}
+{"type":"EFFECT_REQUESTED","recordedAt":"2026-01-25T14:33:01Z","data":{"effectId":"tdd-impl-002","effectType":"agent","iteration":2},"checksum":"p6q7r8"}
+{"type":"EFFECT_RESOLVED","recordedAt":"2026-01-25T14:34:30Z","data":{"effectId":"tdd-impl-002","iteration":2},"checksum":"s9t0u1"}
+{"type":"RUN_COMPLETED","recordedAt":"2026-01-25T14:34:45Z","data":{"status":"success"},"checksum":"v2w3x4"}
 ```
 
-This is the audit trail. Every decision, every iteration, every quality score - all recorded.
+This is the audit trail. Every effect request, every resolution - all recorded. The five SDK event types are: `RUN_CREATED`, `EFFECT_REQUESTED`, `EFFECT_RESOLVED`, `RUN_COMPLETED`, and `RUN_FAILED`.
 
 ---
 
@@ -485,8 +484,8 @@ Commands used in this quickstart:
 # Resume an interrupted run
 /babysitter:call resume
 
-# View run journal
-cat .a5c/runs/<runId>/journal/journal.jsonl
+# View run journal files
+ls .a5c/runs/<runId>/journal/*.json
 
 # List all runs
 ls .a5c/runs/

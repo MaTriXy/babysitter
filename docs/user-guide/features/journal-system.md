@@ -59,19 +59,19 @@ babysitter run:events 01KFFTSF8TK8C9GT3YM9QYQ6WG --limit 10 --reverse --json
 Generate an audit report of all human approvals in a workflow.
 
 ```bash
-# Extract all breakpoint events
-jq 'select(.type | contains("BREAKPOINT"))' \
+# Extract all breakpoint-related events (breakpoints use EFFECT_REQUESTED with kind: "breakpoint")
+jq 'select(.type == "EFFECT_REQUESTED" and .data.kind == "breakpoint") // select(.type == "EFFECT_RESOLVED")' \
   .a5c/runs/*/journal/*.json \
   > audit-report.json
 ```
 
-### Scenario 3: Quality Score Tracking
+### Scenario 3: Effect Status Tracking
 
-Track quality scores across iterations for trend analysis.
+Track effect resolution statuses across a run for trend analysis.
 
 ```bash
-# Extract quality scores from all iterations
-jq 'select(.type == "QUALITY_SCORE") | {iteration: .payload.iteration, score: .payload.score}' \
+# Extract effect statuses from all resolved effects
+jq 'select(.type == "EFFECT_RESOLVED") | {effectId: .data.effectId, status: .data.status}' \
   .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
 
@@ -83,7 +83,7 @@ Analyze task execution times to identify bottlenecks.
 # Calculate task durations
 jq -s '
   [.[] | select(.type == "EFFECT_RESOLVED")] |
-  map({effectId: .payload.effectId, duration: (.payload.finishedAt | fromdateiso8601) - (.payload.startedAt | fromdateiso8601)}) |
+  map({effectId: .data.effectId, duration: (.data.finishedAt | fromdateiso8601) - (.data.startedAt | fromdateiso8601)}) |
   sort_by(.duration) |
   reverse
 ' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
@@ -160,13 +160,11 @@ Learn the different event types recorded in the journal.
 - `EFFECT_REQUESTED` - Task requested for execution
 - `EFFECT_RESOLVED` - Task completed (success or error)
 
-**Quality events:**
-- `QUALITY_SCORE` - Quality assessment recorded
+**Breakpoint events (subset of effect events):**
+- Breakpoints use `EFFECT_REQUESTED` with `kind: "breakpoint"` - Human approval requested
+- Breakpoints are resolved via `EFFECT_RESOLVED` - Approval granted or denied
 
-**Breakpoint events:**
-- `BREAKPOINT_REQUESTED` - Human approval requested
-- `BREAKPOINT_APPROVED` - Approval granted
-- `BREAKPOINT_REJECTED` - Approval denied
+> **Note:** Quality scoring is handled at the application level and does not have a dedicated journal event type.
 
 ### Step 4: Query the Journal
 
@@ -178,11 +176,11 @@ jq -s 'group_by(.type) | map({type: .[0].type, count: length})' \
   .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 
 # Find all failed tasks
-jq 'select(.type == "EFFECT_RESOLVED" and .payload.status == "error")' \
+jq 'select(.type == "EFFECT_RESOLVED" and .data.status == "error")' \
   .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 
-# Get timeline of events
-jq '{seq, type, ts}' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
+# Get timeline of events (note: seq is derived from filename, not stored in event body)
+jq '{type, recordedAt}' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
 
 ### Step 5: Rebuild State from Journal
@@ -207,11 +205,13 @@ All events share a common base structure:
 
 ```typescript
 type JournalEventBase = {
-  seq: number;       // Monotonically increasing sequence number
-  id: string;        // ULID (unique identifier)
-  ts: string;        // ISO 8601 timestamp
-  type: string;      // Event type
+  type: string;        // Event type
+  recordedAt: string;  // ISO 8601 timestamp
+  data: object;        // Event-specific data (see below)
+  checksum: string;    // SHA-256 hex digest for integrity verification
 };
+// Note: seq (sequence number) is derived from the filename ({SEQ}.{ULID}.json),
+// not stored in the event body.
 ```
 
 ### RUN_CREATED Event
@@ -219,7 +219,7 @@ type JournalEventBase = {
 ```typescript
 type RunCreated = JournalEventBase & {
   type: "RUN_CREATED";
-  payload: {
+  data: {
     runId: string;
     processId: string;
     processRevision?: string;
@@ -237,7 +237,7 @@ type RunCreated = JournalEventBase & {
 ```typescript
 type EffectRequested = JournalEventBase & {
   type: "EFFECT_REQUESTED";
-  payload: {
+  data: {
     effectId: string;
     invocationKey: string;
     stepId: string;
@@ -255,7 +255,7 @@ type EffectRequested = JournalEventBase & {
 ```typescript
 type EffectResolved = JournalEventBase & {
   type: "EFFECT_RESOLVED";
-  payload: {
+  data: {
     effectId: string;
     status: "ok" | "error";
     resultRef?: string;
@@ -278,14 +278,14 @@ type EffectResolved = JournalEventBase & {
 ```typescript
 type RunCompleted = JournalEventBase & {
   type: "RUN_COMPLETED";
-  payload: {
+  data: {
     outputRef?: string;
   };
 };
 
 type RunFailed = JournalEventBase & {
   type: "RUN_FAILED";
-  payload: {
+  data: {
     error: {
       name: string;
       message: string;
@@ -307,10 +307,11 @@ type RunFailed = JournalEventBase & {
 RUN_ID="01KFFTSF8TK8C9GT3YM9QYQ6WG"
 JOURNAL_DIR=".a5c/runs/$RUN_ID/journal"
 
-# Read and sort events by sequence number
+# Read and sort events by recordedAt timestamp
+# (seq ordering is already guaranteed by the filename sort order)
 for f in "$JOURNAL_DIR"/*.json; do
   cat "$f"
-done | jq -s 'sort_by(.seq)'
+done | jq -s 'sort_by(.recordedAt)'
 ```
 
 ### Example 2: Extract Audit Trail
@@ -319,13 +320,12 @@ Generate a human-readable audit trail:
 
 ```bash
 jq -r '
-  "\(.ts) [\(.type)] " +
-  (if .type == "RUN_CREATED" then "Run started: \(.payload.processId)"
-   elif .type == "EFFECT_REQUESTED" then "Task requested: \(.payload.taskId) (\(.payload.kind))"
-   elif .type == "EFFECT_RESOLVED" then "Task completed: \(.payload.effectId) - \(.payload.status)"
-   elif .type == "BREAKPOINT_APPROVED" then "Approved by human"
+  "\(.recordedAt) [\(.type)] " +
+  (if .type == "RUN_CREATED" then "Run started: \(.data.processId)"
+   elif .type == "EFFECT_REQUESTED" then "Task requested: \(.data.taskId) (\(.data.kind))"
+   elif .type == "EFFECT_RESOLVED" then "Task completed: \(.data.effectId) - \(.data.status)"
    elif .type == "RUN_COMPLETED" then "Run completed successfully"
-   elif .type == "RUN_FAILED" then "Run failed: \(.payload.error.message)"
+   elif .type == "RUN_FAILED" then "Run failed: \(.data.error.message)"
    else .type end)
 ' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
@@ -336,27 +336,30 @@ jq -r '
 2026-01-25T10:15:31.456Z [EFFECT_REQUESTED] Task requested: plan (agent)
 2026-01-25T10:15:45.789Z [EFFECT_RESOLVED] Task completed: effect-001 - ok
 2026-01-25T10:15:46.012Z [EFFECT_REQUESTED] Task requested: breakpoint (breakpoint)
-2026-01-25T10:20:12.345Z [BREAKPOINT_APPROVED] Approved by human
+2026-01-25T10:20:12.345Z [EFFECT_RESOLVED] Task completed: breakpoint-001 - ok
 2026-01-25T10:20:13.678Z [EFFECT_REQUESTED] Task requested: implement (agent)
 2026-01-25T10:25:34.901Z [RUN_COMPLETED] Run completed successfully
 ```
 
-### Example 3: Quality Score Trend Analysis
+### Example 3: Effect Resolution Summary
+
+> **Note:** Quality scoring is handled at the application level, not as a journal event type.
+> This example shows how to summarize effect resolutions instead.
 
 ```bash
 jq -s '
-  [.[] | select(.type == "QUALITY_SCORE")] |
-  map({iteration: .payload.iteration, score: .payload.score, ts: .ts}) |
-  sort_by(.iteration)
+  [.[] | select(.type == "EFFECT_RESOLVED")] |
+  map({effectId: .data.effectId, status: .data.status, recordedAt: .recordedAt}) |
+  sort_by(.recordedAt)
 ' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json
 ```
 
 **Output:**
 ```json
 [
-  {"iteration": 1, "score": 68, "ts": "2026-01-25T10:15:45.123Z"},
-  {"iteration": 2, "score": 82, "ts": "2026-01-25T10:18:23.456Z"},
-  {"iteration": 3, "score": 91, "ts": "2026-01-25T10:21:34.789Z"}
+  {"effectId": "effect-001", "status": "ok", "recordedAt": "2026-01-25T10:15:45.123Z"},
+  {"effectId": "effect-002", "status": "ok", "recordedAt": "2026-01-25T10:18:23.456Z"},
+  {"effectId": "effect-003", "status": "error", "recordedAt": "2026-01-25T10:21:34.789Z"}
 ]
 ```
 
@@ -364,10 +367,10 @@ jq -s '
 
 ```bash
 jq -s '
-  [.[] | select(.type == "EFFECT_RESOLVED" and .payload.startedAt and .payload.finishedAt)] |
+  [.[] | select(.type == "EFFECT_RESOLVED" and .data.startedAt and .data.finishedAt)] |
   map({
-    effectId: .payload.effectId,
-    durationSec: ((.payload.finishedAt | fromdateiso8601) - (.payload.startedAt | fromdateiso8601))
+    effectId: .data.effectId,
+    durationSec: ((.data.finishedAt | fromdateiso8601) - (.data.startedAt | fromdateiso8601))
   }) |
   sort_by(.durationSec) |
   reverse |
@@ -381,9 +384,9 @@ jq -s '
 # Export to single JSON file
 jq -s '.' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json > events.json
 
-# Export to CSV for spreadsheet analysis
+# Export to CSV for spreadsheet analysis (note: seq is derived from filename, not event body)
 jq -r '
-  [.seq, .type, .ts, .payload.effectId // "", .payload.status // ""] |
+  [.type, .recordedAt, .data.effectId // "", .data.status // ""] |
   @csv
 ' .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/journal/*.json > events.csv
 ```
@@ -454,12 +457,12 @@ babysitter run:status "$RUN_ID"
 **Cause:** File system listing order differs from sequence order.
 
 **Solution:**
-- Always use the CLI or sort by `seq` field
-- File names include sequence numbers for proper ordering
+- Always use the CLI or sort by `recordedAt` field
+- File names include sequence numbers for proper ordering (seq is derived from filename, not stored in event body)
 
 ```bash
-# Correct: sorted by sequence
-jq -s 'sort_by(.seq)' .a5c/runs/"$RUN_ID"/journal/*.json
+# Correct: sorted by timestamp
+jq -s 'sort_by(.recordedAt)' .a5c/runs/"$RUN_ID"/journal/*.json
 
 # Or use CLI which handles ordering
 babysitter run:events "$RUN_ID" --json

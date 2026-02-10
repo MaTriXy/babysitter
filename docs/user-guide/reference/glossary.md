@@ -311,13 +311,12 @@ The JavaScript/TypeScript file and export that defines a process. Specified when
 
 ### Event
 
-A single immutable record in the journal representing a state change. Events have a sequence number, timestamp, type, and payload.
+A single immutable record in the journal representing a state change. Events have a type, recordedAt timestamp, data object, and checksum. The sequence number is derived from the filename, not stored in the event body.
 
 **Event Types:**
 - `RUN_CREATED` - Run initialization
-- `TASK_REQUESTED` - Effect requested
-- `EFFECT_RESOLVED` - Task completed
-- `BREAKPOINT_REQUESTED` - Human approval needed
+- `EFFECT_REQUESTED` - Effect requested (includes breakpoints with `kind: "breakpoint"`)
+- `EFFECT_RESOLVED` - Effect completed (with `status: "ok"` or `"error"`)
 - `RUN_COMPLETED` - Successful completion
 - `RUN_FAILED` - Run failure
 
@@ -506,9 +505,9 @@ The append-only event log recording all state changes. Located at `.a5c/runs/<ru
 
 ### JSON Lines (JSONL)
 
-A format where each line is a complete JSON object. Used for streaming event data.
+A format where each line is a complete JSON object. Used for streaming data.
 
-**Related:** [Journal](#journal)
+> **Note:** The Babysitter journal does **not** use JSONL format. It stores individual JSON files, one per event.
 
 ---
 

@@ -299,7 +299,7 @@ Check what happened and what's pending:
 cat .a5c/runs/01KFFTSF8TK8C9GT3YM9QYQ6WG/run.json | jq .
 
 # View recent journal events
-babysitter run:events 01KFFTSF8TK8C9GT3YM9QYQ6WG --limit 20 --reverse --json | jq '.events[] | {seq, type, timestamp}'
+babysitter run:events 01KFFTSF8TK8C9GT3YM9QYQ6WG --limit 20 --reverse --json | jq '.events[] | {type, recordedAt}'
 
 # Check pending tasks
 babysitter task:list 01KFFTSF8TK8C9GT3YM9QYQ6WG --pending --json | jq '.tasks[] | {effectId, kind, status}'
@@ -311,7 +311,7 @@ When a task fails due to a fixable issue:
 
 ```bash
 # 1. Check what failed
-babysitter run:events "$RUN_ID" --filter-type RUN_FAILED --json | jq '.events[].payload.error'
+babysitter run:events "$RUN_ID" --filter-type RUN_FAILED --json | jq '.events[].data.error'
 
 # 2. Fix the underlying issue (e.g., install missing dependency)
 npm install missing-package

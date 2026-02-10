@@ -475,7 +475,7 @@ babysitter run:events <runId> --limit 10 --reverse --json
 
 1. **Identify the cause:**
    ```bash
-   jq '.payload.error' .a5c/runs/<runId>/journal/$(ls -t .a5c/runs/<runId>/journal/ | head -1)
+   jq '.data.error' .a5c/runs/<runId>/journal/$(ls -t .a5c/runs/<runId>/journal/ | head -1)
    ```
 
 2. **If journal conflict:**
@@ -609,8 +609,8 @@ Target not met: 85/100
 
 **Diagnosis:**
 ```bash
-# View quality scores
-babysitter run:events <runId> --filter-type QUALITY_SCORE --json
+# View effect resolutions
+babysitter run:events <runId> --filter-type EFFECT_RESOLVED --json
 
 # Check recommendations
 jq '.recommendations' .a5c/runs/<runId>/tasks/*/result.json
@@ -652,7 +652,7 @@ jq '.recommendations' .a5c/runs/<runId>/tasks/*/result.json
 **Diagnosis:**
 ```bash
 # Check quality trend
-jq -s '[.[] | select(.type == "QUALITY_SCORE")] | map({iteration: .payload.iteration, score: .payload.score})' \
+jq -s '[.[] | select(.type == "EFFECT_RESOLVED")] | map({effectId: .data.effectId, status: .data.status})' \
   .a5c/runs/<runId>/journal/*.json
 ```
 
@@ -682,7 +682,7 @@ jq -s '[.[] | select(.type == "QUALITY_SCORE")] | map({iteration: .payload.itera
 **Diagnosis:**
 ```bash
 # Check variance in scores
-jq -s '[.[] | select(.type == "QUALITY_SCORE") | .payload.score] | (add / length) as $mean | map(. - $mean | . * .) | add / length | sqrt' \
+jq -s '[.[] | select(.type == "EFFECT_RESOLVED")] | length' \
   .a5c/runs/<runId>/journal/*.json
 ```
 
@@ -800,7 +800,7 @@ ls -la .a5c/runs/ | grep <runId>
 **Diagnosis:**
 ```bash
 # Find slow tasks
-jq -s '[.[] | select(.type == "EFFECT_RESOLVED")] | map({effectId: .payload.effectId, duration: ((.payload.finishedAt | fromdateiso8601) - (.payload.startedAt | fromdateiso8601))}) | sort_by(.duration) | reverse | .[0:5]' \
+jq -s '[.[] | select(.type == "EFFECT_RESOLVED")] | map({effectId: .data.effectId, duration: ((.data.finishedAt | fromdateiso8601) - (.data.startedAt | fromdateiso8601))}) | sort_by(.duration) | reverse | .[0:5]' \
   .a5c/runs/<runId>/journal/*.json
 ```
 
@@ -1015,11 +1015,11 @@ jq -s 'group_by(.type) | map({type: .[0].type, count: length})' \
   .a5c/runs/<runId>/journal/*.json
 
 # Find failed tasks
-jq 'select(.type == "EFFECT_RESOLVED" and .payload.status == "error")' \
+jq 'select(.type == "EFFECT_RESOLVED" and .data.status == "error")' \
   .a5c/runs/<runId>/journal/*.json
 
-# Check quality scores
-jq 'select(.type == "QUALITY_SCORE") | {iteration: .payload.iteration, score: .payload.score}' \
+# Check effect resolutions
+jq 'select(.type == "EFFECT_RESOLVED") | {effectId: .data.effectId, status: .data.status}' \
   .a5c/runs/<runId>/journal/*.json
 ```
 

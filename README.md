@@ -22,7 +22,6 @@ https://github.com/user-attachments/assets/8c3b0078-9396-48e8-aa43-5f40da30c20b
 ## Table of Contents
 
 - [What is Babysitter?](#what-is-babysitter)
-- [What is a5c.ai?](#what-is-a5cai)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
@@ -38,10 +37,6 @@ https://github.com/user-attachments/assets/8c3b0078-9396-48e8-aa43-5f40da30c20b
 ## What is Babysitter?
 
 Babysitter is an orchestration framework for Claude Code that enables deterministic, event-sourced workflow management. It allows you to build complex, multi-step development processes with built-in quality gates, human approval checkpoints, and automatic iteration until quality targets are met. Babysitter works seamlessly with your existing subagents, skills, and tools, orchestrating them into sophisticated workflows.
-
-## What is a5c.ai?
-
-**a5c.ai** (agentic ai) is an organization building advanced AI orchestration and automation tools for complex software development tasks.
 
 ---
 

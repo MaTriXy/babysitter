@@ -55,7 +55,12 @@ TASK_COUNT=$(echo "$AUTO_RUNNABLE_TASKS" | jq 'length')
 if [ "$TASK_COUNT" -gt 0 ]; then
   echo "[native-orchestrator] Executing $TASK_COUNT auto-runnable task(s) (node/browser)" >&2
 
-  RUN_DIR=".a5c/runs/$RUN_ID"
+  RUN_DIR_REL=".a5c/runs/$RUN_ID"
+  if [ -d "$RUN_DIR_REL" ]; then
+    RUN_DIR="$(cd "$RUN_DIR_REL" && pwd)"
+  else
+    RUN_DIR="$RUN_DIR_REL"
+  fi
 
   echo "$AUTO_RUNNABLE_TASKS" | jq -c '.[]' | while read -r task; do
     EFFECT_ID=$(echo "$task" | jq -r '.effectId')

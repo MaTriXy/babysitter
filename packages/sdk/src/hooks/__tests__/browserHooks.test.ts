@@ -403,7 +403,7 @@ describe("browser hook runtime + orchestration", () => {
         {
           kind: "node",
           node: {
-            entry: path.join(runDir, "scripts", "node-task.js"),
+            entry: "scripts/node-task.js",
           },
           io: {
             outputJsonPath: "tasks/effect-node/output.json",

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  browserTask,
   breakpointTask,
   nodeTask,
   orchestratorTask,
@@ -7,6 +8,7 @@ import {
 } from "../kinds";
 import { TaskBuildContext } from "../types";
 import {
+  browserKindFixtures,
   breakpointKindFixtures,
   nodeKindFixtures,
   orchestratorKindFixtures,
@@ -118,6 +120,37 @@ describe("task kind helpers", () => {
         iso: sleepKindFixtures.args.iso,
         targetEpochMs: sleepKindFixtures.args.targetEpochMs,
       });
+    });
+  });
+
+  describe("browserTask", () => {
+    it("applies browser defaults, IO defaults, and merged labels", async () => {
+      const helper = browserTask(browserKindFixtures.id, {
+        prompt: (args) => (args as typeof browserKindFixtures.args).prompt,
+        labels: () => browserKindFixtures.helperLabels,
+        metadata: () => browserKindFixtures.metadata,
+        provider: (args) => (args as typeof browserKindFixtures.args).provider,
+        model: (args) => (args as typeof browserKindFixtures.args).model,
+      });
+      const ctx = createTestBuildContext({ label: "ctx-browser" });
+      const def = await helper.build(browserKindFixtures.args, ctx);
+
+      expect(def.kind).toBe("browser");
+      expect(def.labels).toEqual(["ctx-browser", ...browserKindFixtures.helperLabels]);
+      expect(def.io).toEqual({
+        inputJsonPath: `tasks/${ctx.effectId}/inputs.json`,
+        outputJsonPath: `tasks/${ctx.effectId}/result.json`,
+        stdoutPath: `tasks/${ctx.effectId}/stdout.log`,
+        stderrPath: `tasks/${ctx.effectId}/stderr.log`,
+      });
+      expect(def.browser).toEqual({
+        prompt: browserKindFixtures.args.prompt,
+        runtime: "auto",
+        sessionMode: "run",
+        provider: browserKindFixtures.args.provider,
+        model: browserKindFixtures.args.model,
+      });
+      expect(def.metadata).toMatchObject(browserKindFixtures.metadata);
     });
   });
 });

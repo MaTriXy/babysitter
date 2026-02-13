@@ -1,7 +1,7 @@
 import { JsonRecord } from "../storage/types";
 
 // Known task kinds (custom kinds are also allowed as any string)
-export type KnownTaskKind = "node" | "breakpoint" | "orchestrator_task" | "sleep";
+export type KnownTaskKind = "node" | "breakpoint" | "orchestrator_task" | "sleep" | "browser";
 
 // TaskKind accepts any string (including custom task kinds)
 export type TaskKind = string;
@@ -36,6 +36,20 @@ export interface SleepTaskOptions {
   targetEpochMs: number;
 }
 
+export type BrowserTaskRuntime = "auto" | "container" | "host";
+export type BrowserTaskSessionMode = "run" | "task" | "custom";
+
+export interface BrowserTaskOptions {
+  prompt: string;
+  runtime?: BrowserTaskRuntime;
+  sessionMode?: BrowserTaskSessionMode;
+  sessionId?: string;
+  provider?: string;
+  model?: string;
+  output?: string;
+  args?: string[];
+}
+
 export interface TaskDef {
   kind: TaskKind;
   title?: string;
@@ -47,6 +61,7 @@ export interface TaskDef {
   breakpoint?: BreakpointTaskOptions;
   orchestratorTask?: OrchestratorTaskOptions;
   sleep?: SleepTaskOptions;
+  browser?: BrowserTaskOptions;
   [key: string]: unknown;
 }
 
@@ -171,4 +186,20 @@ export interface SleepTaskDefinitionOptions<TArgs extends SleepTaskBuilderArgs =
   description?: TaskValueOrFactory<TArgs, string | undefined>;
   labels?: TaskValueOrFactory<TArgs, string[] | undefined>;
   metadata?: TaskValueOrFactory<TArgs, JsonRecord | undefined>;
+}
+
+export interface BrowserTaskDefinitionOptions<TArgs = unknown> {
+  prompt: TaskValueOrFactory<TArgs, string>;
+  title?: TaskValueOrFactory<TArgs, string | undefined>;
+  description?: TaskValueOrFactory<TArgs, string | undefined>;
+  labels?: TaskValueOrFactory<TArgs, string[] | undefined>;
+  metadata?: TaskValueOrFactory<TArgs, JsonRecord | undefined>;
+  io?: TaskValueOrFactory<TArgs, TaskIOHints | undefined>;
+  runtime?: TaskValueOrFactory<TArgs, BrowserTaskRuntime | undefined>;
+  sessionMode?: TaskValueOrFactory<TArgs, BrowserTaskSessionMode | undefined>;
+  sessionId?: TaskValueOrFactory<TArgs, string | undefined>;
+  provider?: TaskValueOrFactory<TArgs, string | undefined>;
+  model?: TaskValueOrFactory<TArgs, string | undefined>;
+  output?: TaskValueOrFactory<TArgs, string | undefined>;
+  args?: TaskValueOrFactory<TArgs, string[] | undefined>;
 }

@@ -43,3 +43,14 @@ export const sleepKindFixtures = {
   },
   helperLabels: ["sleep-helper"],
 };
+
+export const browserKindFixtures = {
+  id: "fixtures.browser.example",
+  args: {
+    prompt: "Open https://example.com and summarize the headline",
+    provider: "openai",
+    model: "computer-use-preview",
+  },
+  helperLabels: ["browser-helper"],
+  metadata: { subsystem: "qa" },
+};

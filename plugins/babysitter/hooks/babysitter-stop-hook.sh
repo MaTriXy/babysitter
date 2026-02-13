@@ -256,6 +256,7 @@ fi
 COMPLETION_SECRET=""
 RUN_STATE=""
 PENDING_KINDS=""
+SECRETS_WARNING=""
 if [[ -n "${RUN_ID:-}" ]]; then
   CLI="npx -y @a5c-ai/babysitter-sdk@latest"
   RUN_STATUS=$($CLI run:status "$RUN_ID" --json 2>/dev/null || echo '{}')
@@ -273,6 +274,19 @@ if [[ -n "${RUN_ID:-}" ]]; then
   if [[ "$RUN_STATE" == "completed" ]]; then
     COMPLETION_SECRET=$(echo "$RUN_STATUS" | jq -r '.completionSecret // empty')
     echo "✅ Babysitter run: Completion secret: $COMPLETION_SECRET" >> /tmp/babysitter-stop-hook.log
+
+    SECRETS_JSON=".a5c/runs/$RUN_ID/artifacts/security/secrets-detected.json"
+    if [[ -f "$SECRETS_JSON" ]]; then
+      SECRET_FINDINGS=$(jq -r '.findings // 0' "$SECRETS_JSON" 2>/dev/null || echo "0")
+      SECRET_SAMPLE=$(jq -r '.items[0].file // empty' "$SECRETS_JSON" 2>/dev/null || echo "")
+      if [[ "$SECRET_FINDINGS" =~ ^[0-9]+$ ]] && [[ "$SECRET_FINDINGS" -gt 0 ]]; then
+        if [[ -n "$SECRET_SAMPLE" ]]; then
+          SECRETS_WARNING="⚠️ Secret scan found $SECRET_FINDINGS potential secret exposure(s) (example: $SECRET_SAMPLE). Alert the user and explicitly tell them not to commit these files."
+        else
+          SECRETS_WARNING="⚠️ Secret scan found $SECRET_FINDINGS potential secret exposure(s). Alert the user and explicitly tell them not to commit these files."
+        fi
+      fi
+    fi
   fi
   echo "✅ Babysitter run: Pending kinds: $PENDING_KINDS" >> /tmp/babysitter-stop-hook.log
   echo "✅ Babysitter run: Run status: $RUN_STATUS" >> /tmp/babysitter-stop-hook.log
@@ -335,6 +349,10 @@ elif [[ "$RUN_STATE" == "failed" ]]; then
   SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Failed. agent must fix the run, journal or process (inspect the sdk.md if needed) and proceed."
 else
   SYSTEM_MSG="🔄 Babysitter iteration $NEXT_ITERATION | Agent should continue orchestration (run:iterate)"
+fi
+
+if [[ -n "$SECRETS_WARNING" ]]; then
+  SYSTEM_MSG="$SYSTEM_MSG | $SECRETS_WARNING"
 fi
 
 # ─────────────────────────────────────────────────

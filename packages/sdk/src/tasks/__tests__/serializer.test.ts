@@ -67,6 +67,43 @@ describe("task serializer", () => {
     expect(blob).toEqual(bigPayload);
   });
 
+  it("preserves browser payloads in serialized task definitions", async () => {
+    const { taskRef, serialized } = await serializeAndWriteTaskDefinition({
+      runDir,
+      effectId: EFFECT_ID,
+      taskId: "browser-task",
+      invocationKey: "proc:step-003",
+      stepId: "step-003",
+      task: {
+        kind: "browser",
+        title: "Browser prompt",
+        browser: {
+          prompt: "Navigate to status page and summarize incidents",
+          runtime: "auto",
+          sessionMode: "run",
+          provider: "openai",
+          model: "computer-use-preview",
+          output: "json",
+          args: ["--headless"],
+        },
+      },
+    });
+
+    expect(serialized.browser).toEqual({
+      prompt: "Navigate to status page and summarize incidents",
+      runtime: "auto",
+      sessionMode: "run",
+      provider: "openai",
+      model: "computer-use-preview",
+      output: "json",
+      args: ["--headless"],
+    });
+
+    const onDisk = JSON.parse(await fs.readFile(path.join(runDir, taskRef), "utf8"));
+    expect(onDisk.kind).toBe("browser");
+    expect(onDisk.browser).toEqual(serialized.browser);
+  });
+
   it("serializes task results, spilling large payloads and emitting stdout/stderr refs", async () => {
     const hugeResult = { payload: "z".repeat(1024 * 1024 + 256) };
     const { resultRef, stdoutRef, stderrRef, serialized } = await serializeAndWriteTaskResult({

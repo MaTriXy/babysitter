@@ -288,7 +288,7 @@ defineTask<TArgs, TResult>(id: string, impl: TaskImpl<TArgs>): DefinedTask<TArgs
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `kind` | string | Yes | Task type: `node`, `shell`, `agent`, `breakpoint` |
+| `kind` | string | Yes | Task type: `node`, `browser`, `shell`, `agent`, `breakpoint` |
 | `title` | string | No | Human-readable title |
 | `description` | string | No | Detailed description |
 | `node.entry` | string | Yes (for node) | Path to Node.js script |
@@ -296,6 +296,14 @@ defineTask<TArgs, TResult>(id: string, impl: TaskImpl<TArgs>): DefinedTask<TArgs
 | `node.env` | object | No | Environment variables |
 | `node.cwd` | string | No | Working directory |
 | `node.timeout` | number | No | Timeout in milliseconds |
+| `browser.prompt` | string | Yes (for browser) | Prompt sent to `agent-browser` |
+| `browser.runtime` | string | No | Runtime backend: `auto`, `container`, `host` |
+| `browser.sessionMode` | string | No | Session scope: `run`, `task`, `custom` |
+| `browser.sessionId` | string | No | Required when `sessionMode="custom"` |
+| `browser.provider` | string | No | Provider override passed to `agent-browser` |
+| `browser.model` | string | No | Model override passed to `agent-browser` |
+| `browser.output` | string | No | Output mode passed to `agent-browser` (default `json`) |
+| `browser.args` | string[] | No | Extra passthrough CLI args for `agent-browser` |
 | `shell.command` | string | Yes (for shell) | Shell command to execute |
 | `agent.name` | string | Yes (for agent) | Agent name |
 | `agent.prompt` | object | Yes (for agent) | Agent prompt configuration |
@@ -340,6 +348,22 @@ export const buildTask = defineTask('build', (args, taskCtx) => ({
   labels: ['build', 'production']
 }));
 ```
+
+### Example 1b: Browser Task Definition
+
+```javascript
+import { browserTask } from '@a5c-ai/babysitter-sdk';
+
+export const smokeFlowTask = browserTask('smoke-flow', {
+  prompt: (args) => `Open ${args.url}, run a basic smoke check, and return JSON`,
+  runtime: () => 'auto',
+  sessionMode: () => 'run',
+  output: () => 'json',
+  labels: () => ['browser', 'smoke']
+});
+```
+
+`runtime: "auto"` prefers Apple Container on supported macOS arm64 hosts and falls back to host `agent-browser` when container prerequisites are unavailable.
 
 ### Example 2: Shell Task Definition
 

@@ -1,6 +1,10 @@
 import { JsonRecord } from "../../storage/types";
 import { defineTask } from "../defineTask";
 import {
+  BrowserTaskDefinitionOptions,
+  BrowserTaskOptions,
+  BrowserTaskRuntime,
+  BrowserTaskSessionMode,
   BreakpointTaskDefinitionOptions,
   BreakpointTaskOptions,
   DefinedTask,
@@ -20,6 +24,8 @@ const DEFAULT_NODE_TIMEOUT_MS = 15 * 60 * 1000;
 const DEFAULT_BREAKPOINT_LABEL = "breakpoint";
 const DEFAULT_ORCHESTRATOR_LABEL = "orchestrator-task";
 const DEFAULT_SLEEP_TASK_ID = "__sdk.sleep";
+const DEFAULT_BROWSER_RUNTIME: BrowserTaskRuntime = "auto";
+const DEFAULT_BROWSER_SESSION_MODE: BrowserTaskSessionMode = "run";
 const REDACTION_KEYWORDS = ["SECRET", "TOKEN", "PASSWORD", "KEY"];
 
 type EnvInput = Record<string, string | undefined>;
@@ -187,6 +193,73 @@ export function sleepTask<TArgs extends SleepTaskBuilderArgs = SleepTaskBuilderA
   );
 }
 
+export function browserTask<TArgs = unknown, TResult = unknown>(
+  id: string,
+  options: BrowserTaskDefinitionOptions<TArgs>
+): DefinedTask<TArgs, TResult> {
+  if (!options || !options.prompt) {
+    throw new Error("browserTask requires a prompt option");
+  }
+  return defineTask<TArgs, TResult>(
+    id,
+    async (args, ctx) => {
+      const [
+        prompt,
+        title,
+        description,
+        helperLabels,
+        helperMetadata,
+        ioOverrides,
+        runtimeValue,
+        sessionModeValue,
+        sessionId,
+        provider,
+        model,
+        output,
+        browserArgs,
+      ] = await Promise.all([
+        resolveRequiredStringValue(options.prompt, args, ctx, "browserTask requires a non-empty prompt"),
+        resolveOptionalValue(options.title, args, ctx),
+        resolveOptionalValue(options.description, args, ctx),
+        resolveLabelList(options.labels, args, ctx),
+        resolveMetadata(options.metadata, args, ctx),
+        resolveIoHints(options.io, args, ctx),
+        resolveOptionalValue(options.runtime, args, ctx),
+        resolveOptionalValue(options.sessionMode, args, ctx),
+        resolveOptionalValue(options.sessionId, args, ctx),
+        resolveOptionalValue(options.provider, args, ctx),
+        resolveOptionalValue(options.model, args, ctx),
+        resolveOptionalValue(options.output, args, ctx),
+        resolveStringArray(options.args, args, ctx),
+      ]);
+
+      const io = applyIoOverrides(buildDefaultNodeIo(ctx), ioOverrides);
+      const labels = mergeLabels(ctx, helperLabels);
+      const browser = buildBrowserOptions({
+        prompt,
+        runtime: normalizeBrowserRuntime(runtimeValue),
+        sessionMode: normalizeBrowserSessionMode(sessionModeValue),
+        sessionId,
+        provider,
+        model,
+        output,
+        args: browserArgs,
+      });
+
+      return {
+        kind: "browser",
+        title,
+        description,
+        labels,
+        io,
+        metadata: helperMetadata,
+        browser,
+      };
+    },
+    { kind: "browser" }
+  );
+}
+
 async function resolveOptionalValue<TArgs, TValue>(
   source: TaskValueOrFactory<TArgs, TValue | undefined> | undefined,
   args: TArgs,
@@ -203,9 +276,18 @@ async function resolveRequiredValue<TArgs>(
   ctx: TaskBuildContext,
   field: string
 ): Promise<string> {
+  return resolveRequiredStringValue(source, args, ctx, `nodeTask requires a non-empty ${field}`);
+}
+
+async function resolveRequiredStringValue<TArgs>(
+  source: TaskValueOrFactory<TArgs, string>,
+  args: TArgs,
+  ctx: TaskBuildContext,
+  message: string
+): Promise<string> {
   const value = await resolveOptionalValue(source, args, ctx);
   if (typeof value !== "string" || !value.trim()) {
-    throw new Error(`nodeTask requires a non-empty ${field}`);
+    throw new Error(message);
   }
   return value;
 }
@@ -452,6 +534,53 @@ function buildOrchestratorOptions(payload?: JsonRecord, resumeCommand?: string):
     orchestrator.resumeCommand = resumeCommand;
   }
   return orchestrator;
+}
+
+function buildBrowserOptions(options: {
+  prompt: string;
+  runtime: BrowserTaskRuntime;
+  sessionMode: BrowserTaskSessionMode;
+  sessionId?: string;
+  provider?: string;
+  model?: string;
+  output?: string;
+  args?: string[];
+}): BrowserTaskOptions {
+  const browser: BrowserTaskOptions = {
+    prompt: options.prompt,
+    runtime: options.runtime,
+    sessionMode: options.sessionMode,
+  };
+  if (options.sessionId) {
+    browser.sessionId = options.sessionId;
+  }
+  if (options.provider) {
+    browser.provider = options.provider;
+  }
+  if (options.model) {
+    browser.model = options.model;
+  }
+  if (options.output) {
+    browser.output = options.output;
+  }
+  if (options.args !== undefined) {
+    browser.args = options.args;
+  }
+  return browser;
+}
+
+function normalizeBrowserRuntime(value: unknown): BrowserTaskRuntime {
+  if (value === "container" || value === "host" || value === "auto") {
+    return value;
+  }
+  return DEFAULT_BROWSER_RUNTIME;
+}
+
+function normalizeBrowserSessionMode(value: unknown): BrowserTaskSessionMode {
+  if (value === "task" || value === "custom" || value === "run") {
+    return value;
+  }
+  return DEFAULT_BROWSER_SESSION_MODE;
 }
 
 function pickJsonRecord(value: unknown): JsonRecord | undefined {

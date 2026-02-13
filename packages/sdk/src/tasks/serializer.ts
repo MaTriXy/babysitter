@@ -67,6 +67,7 @@ export interface SerializedTaskDefinition extends JsonRecord {
   breakpoint?: JsonRecord;
   orchestratorTask?: JsonRecord;
   sleep?: JsonRecord;
+  browser?: JsonRecord;
   metadata?: JsonRecord;
 }
 
@@ -101,6 +102,7 @@ export async function serializeTaskDefinition(
     breakpoint: normalized.breakpoint,
     orchestratorTask: normalized.orchestratorTask,
     sleep: normalized.sleep,
+    browser: normalized.browser,
     metadata: normalized.metadata,
   };
 
@@ -190,6 +192,7 @@ function normalizeTaskDef(task: TaskDef) {
     breakpoint: normalizeJson(task.breakpoint),
     orchestratorTask: normalizeJson(task.orchestratorTask),
     sleep: normalizeJson(task.sleep),
+    browser: normalizeJson(task.browser),
     metadata: normalizeJson(task.metadata),
   };
 }

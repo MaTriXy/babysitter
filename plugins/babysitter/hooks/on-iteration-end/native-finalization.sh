@@ -30,7 +30,7 @@ NEEDS_MORE_ITERATIONS="false"
 if [ "$CURRENT_STATE" = "waiting" ] && [ "$PENDING_COUNT" -gt 0 ]; then
   # Check if any effects are auto-runnable
   PENDING_TASKS=$("${CLI[@]}" task:list "$RUN_ID" --pending --json 2>/dev/null || echo '{"tasks":[]}')
-  AUTO_RUNNABLE=$(echo "$PENDING_TASKS" | jq '[.tasks[] | select(.kind == "node")] | length')
+  AUTO_RUNNABLE=$(echo "$PENDING_TASKS" | jq '[.tasks[] | select(.kind == "node" or .kind == "browser")] | length')
 
   if [ "$AUTO_RUNNABLE" -gt 0 ]; then
     NEEDS_MORE_ITERATIONS="true"

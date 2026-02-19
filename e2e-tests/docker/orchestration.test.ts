@@ -375,31 +375,43 @@ function findTranscriptFiles(): string[] {
   return results;
 }
 
+interface TranscriptEntry {
+  role?: string;
+  type?: string;
+  message?: {
+    role?: string;
+    content?: Array<{
+      type: string;
+      text?: string;
+      name?: string;
+      input?: Record<string, unknown>;
+      content?: unknown;
+    }>;
+  };
+}
+
 /** Read a JSONL transcript and return all lines as parsed objects. */
-function readTranscript(filePath: string): Array<Record<string, unknown>> {
+function readTranscript(filePath: string): TranscriptEntry[] {
   return fs.readFileSync(filePath, "utf-8")
     .split("\n")
     .filter((l) => l.trim().length > 0)
     .map((l) => { try { return JSON.parse(l); } catch { return null; } })
-    .filter(Boolean) as Array<Record<string, unknown>>;
+    .filter(Boolean) as TranscriptEntry[];
 }
 
 /** Extract all text content from a transcript (assistant + tool results). */
-function extractAllText(transcript: Array<Record<string, unknown>>): string {
+function extractAllText(transcript: TranscriptEntry[]): string {
   const parts: string[] = [];
   for (const entry of transcript) {
-    const msg = entry.message as Record<string, unknown> | undefined;
-    if (!msg?.content) continue;
-    const content = msg.content as Array<Record<string, unknown>>;
+    const content = entry.message?.content;
+    if (!content) continue;
     for (const block of content) {
       if (block.type === "text" && typeof block.text === "string") {
         parts.push(block.text);
       }
-      // tool_use blocks have input that may contain command strings
       if (block.type === "tool_use" && block.input) {
         parts.push(JSON.stringify(block.input));
       }
-      // tool_result blocks may contain command output
       if (block.type === "tool_result" && block.content) {
         parts.push(JSON.stringify(block.content));
       }
@@ -408,8 +420,79 @@ function extractAllText(transcript: Array<Record<string, unknown>>): string {
   return parts.join("\n");
 }
 
+/**
+ * Extract all Bash tool_use commands from the transcript in order.
+ * Returns { command, index } pairs where index is the position in the
+ * transcript for ordering verification.
+ */
+function extractBashCommands(transcript: TranscriptEntry[]): Array<{ command: string; index: number }> {
+  const commands: Array<{ command: string; index: number }> = [];
+  for (let i = 0; i < transcript.length; i++) {
+    const content = transcript[i].message?.content;
+    if (!content) continue;
+    for (const block of content) {
+      if (block.type === "tool_use" && block.input) {
+        const input = block.input as Record<string, unknown>;
+        // Claude Code uses "Bash" tool or tool names containing "bash"
+        const name = (block.name ?? "").toLowerCase();
+        if (name === "bash" || name.includes("bash")) {
+          const cmd = (input.command as string) ?? "";
+          if (cmd) commands.push({ command: cmd, index: i });
+        }
+      }
+    }
+  }
+  return commands;
+}
+
+/**
+ * Extract all assistant text blocks from the transcript in order.
+ */
+function extractAssistantTexts(transcript: TranscriptEntry[]): string[] {
+  const texts: string[] = [];
+  for (const entry of transcript) {
+    if (entry.message?.role !== "assistant") continue;
+    const content = entry.message.content;
+    if (!content) continue;
+    for (const block of content) {
+      if (block.type === "text" && typeof block.text === "string") {
+        texts.push(block.text);
+      }
+    }
+  }
+  return texts;
+}
+
+/**
+ * Parse the stop hook log into structured entries.
+ * Each line: [LEVEL] TIMESTAMP [context] message
+ */
+function parseHookLog(logContent: string): Array<{
+  level: string;
+  timestamp: string;
+  session?: string;
+  run?: string;
+  message: string;
+  line: string;
+}> {
+  return logContent.split("\n").filter((l) => l.trim()).map((line) => {
+    const levelMatch = line.match(/^\[(INFO|WARN|ERROR)\]\s+(\S+)/);
+    const sessionMatch = line.match(/session=([0-9a-f-]+)/);
+    const runMatch = line.match(/run=([A-Z0-9]+)/);
+    return {
+      level: levelMatch?.[1] ?? "UNKNOWN",
+      timestamp: levelMatch?.[2] ?? "",
+      session: sessionMatch?.[1],
+      run: runMatch?.[1],
+      message: line.replace(/^\[(?:INFO|WARN|ERROR)\]\s+\S+\s+(?:\[.*?\]\s+)?/, ""),
+      line,
+    };
+  });
+}
+
 // ---------------------------------------------------------------------------
-// Stop hook verification (from log + transcript)
+// Stop hook verification — proves the hook fired, found the session, queried
+// the run, and made the correct exit decision.
 // ---------------------------------------------------------------------------
 describe.skipIf(!HAS_API_KEY)("Stop hook verification", () => {
   test("stop hook log file was created", () => {
@@ -417,81 +500,217 @@ describe.skipIf(!HAS_API_KEY)("Stop hook verification", () => {
     expect(fs.existsSync(logFile)).toBe(true);
   });
 
-  test("stop hook found session, checked run state, and detected completion", () => {
+  test("stop hook received input and parsed session ID", () => {
+    const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
+    if (!fs.existsSync(logFile)) return;
+
+    const entries = parseHookLog(fs.readFileSync(logFile, "utf-8"));
+    // Hook must have received input
+    expect(entries.some((e) => e.message.includes("Hook input received"))).toBe(true);
+    // At least one entry must have a session ID (proves session:state succeeded)
+    expect(entries.some((e) => e.session)).toBe(true);
+  });
+
+  test("stop hook found the associated run ID", () => {
+    const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
+    if (!fs.existsSync(logFile)) return;
+
+    const entries = parseHookLog(fs.readFileSync(logFile, "utf-8"));
+    // Must have resolved a run ID (proves associate-session-with-run worked)
+    expect(entries.some((e) => e.run)).toBe(true);
+  });
+
+  test("stop hook queried run state from SDK", () => {
     const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
     if (!fs.existsSync(logFile)) return;
 
     const log = fs.readFileSync(logFile, "utf-8");
-    // Full lifecycle evidence: received input → found session → checked state → resolved
-    expect(log).toContain("Hook input received");
+    // The hook logs "Run state: <state>" after calling run:status
     expect(log).toContain("Run state:");
-    expect(log).toMatch(/session=[0-9a-f-]+/);  // session was found
-    expect(log).toMatch(/run=[A-Z0-9]+/);        // run was associated
-    // Either iterated the loop or detected completion — both are valid
-    expect(
-      log.includes("Updated iteration to") ||
-      log.includes("Detected valid promise tag") ||
-      log.includes("Hook execution successful"),
-    ).toBe(true);
+    // It must have found "completed" state
+    expect(log).toContain("Run state: completed");
+  });
+
+  test("stop hook found completion proof and validated promise tag", () => {
+    const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
+    if (!fs.existsSync(logFile)) return;
+
+    const log = fs.readFileSync(logFile, "utf-8");
+    // On the completion path, the hook logs these in sequence:
+    // 1. "Completion proof available" — hook extracted completionProof from run:status
+    // 2. "Detected valid promise tag" — hook matched <promise>PROOF</promise> in transcript
+    expect(log).toContain("Completion proof available");
+    expect(log).toContain("Detected valid promise tag");
+  });
+
+  test("stop hook session matches run from journal", () => {
+    const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
+    if (!fs.existsSync(logFile)) return;
+
+    const entries = parseHookLog(fs.readFileSync(logFile, "utf-8"));
+    const hookRunId = entries.find((e) => e.run)?.run;
+    expect(hookRunId).toBeDefined();
+
+    // The run ID in the hook log should match the actual run directory
+    const runDir = getLatestRunDir();
+    if (!runDir) return;
+    const runJson = JSON.parse(fs.readFileSync(path.join(runDir, "run.json"), "utf-8"));
+    expect(hookRunId).toBe(runJson.runId);
+  });
+
+  test("stop hook log shows decision chain without errors", () => {
+    const logFile = path.join(WORKSPACE_HOST, ".e2e-logs", "babysitter-stop-hook.log");
+    if (!fs.existsSync(logFile)) return;
+
+    const entries = parseHookLog(fs.readFileSync(logFile, "utf-8"));
+    // No ERROR entries should be present in a successful completion
+    const errors = entries.filter((e) => e.level === "ERROR");
+    expect(errors).toEqual([]);
   });
 });
 
 // ---------------------------------------------------------------------------
-// Session transcript verification — proves what Claude actually did
+// Session transcript verification — the JSONL transcript is the definitive
+// record of every tool call Claude made. We parse it structurally and verify
+// the babysitter orchestration commands were invoked in the correct order.
 // ---------------------------------------------------------------------------
 describe.skipIf(!HAS_API_KEY)("Session transcript verification", () => {
   test("Claude session transcript was captured", () => {
     const files = findTranscriptFiles();
     expect(files.length).toBeGreaterThanOrEqual(1);
+    // Save transcript paths as artifact for debugging
+    fs.writeFileSync(
+      path.join(ARTIFACTS_DIR, "transcript-files.txt"),
+      files.join("\n"),
+    );
   });
 
-  test("transcript contains babysitter setup (session:init)", () => {
+  test("transcript is saved as readable artifact", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    // Combine all transcripts and search for setup evidence
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("setup-babysitter-run");
+    // Concatenate all transcripts and save as a single readable file
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const assistantTexts = extractAssistantTexts(allTranscript);
+
+    // Save structured summary for CI artifact inspection
+    const summary = {
+      totalEntries: allTranscript.length,
+      bashCommandCount: bashCmds.length,
+      assistantTextBlocks: assistantTexts.length,
+      bashCommands: bashCmds.map((c) => c.command.substring(0, 200)),
+      assistantTextSamples: assistantTexts.map((t) => t.substring(0, 200)),
+    };
+    fs.writeFileSync(
+      path.join(ARTIFACTS_DIR, "transcript-summary.json"),
+      JSON.stringify(summary, null, 2),
+    );
   });
 
-  test("transcript contains run:create command", () => {
+  test("transcript contains setup-babysitter-run bash command", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("run:create");
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const setupCmd = bashCmds.find((c) => c.command.includes("setup-babysitter-run"));
+    expect(setupCmd).toBeDefined();
   });
 
-  test("transcript contains run:iterate command", () => {
+  test("transcript contains run:create bash command", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("run:iterate");
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const createCmd = bashCmds.find((c) => c.command.includes("run:create"));
+    expect(createCmd).toBeDefined();
   });
 
-  test("transcript contains task:post for effect resolution", () => {
+  test("transcript contains associate-session-with-run bash command", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("task:post");
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const assocCmd = bashCmds.find((c) => c.command.includes("associate-session-with-run"));
+    expect(assocCmd).toBeDefined();
   });
 
-  test("transcript contains session-run association", () => {
+  test("transcript contains run:iterate bash commands (at least 2 for build + verify)", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("associate-session-with-run");
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const iterateCmds = bashCmds.filter((c) => c.command.includes("run:iterate"));
+    // tic-tac-toe has 2 tasks (build-game, verify-game); each needs at least
+    // one iterate call, plus a final iterate that finds completion.
+    expect(iterateCmds.length).toBeGreaterThanOrEqual(2);
   });
 
-  test("transcript contains completion promise output", () => {
+  test("transcript contains task:post bash commands for effect resolution", () => {
     const files = findTranscriptFiles();
     if (files.length === 0) return;
 
-    const allText = files.map((f) => extractAllText(readTranscript(f))).join("\n");
-    expect(allText).toContain("<promise>");
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+    const postCmds = bashCmds.filter((c) => c.command.includes("task:post"));
+    // At least 2 task:post calls (one per task in the tic-tac-toe process)
+    expect(postCmds.length).toBeGreaterThanOrEqual(2);
+  });
+
+  test("babysitter CLI commands appear in correct lifecycle order", () => {
+    const files = findTranscriptFiles();
+    if (files.length === 0) return;
+
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const bashCmds = extractBashCommands(allTranscript);
+
+    // Find the first occurrence of each key command
+    const setupIdx = bashCmds.findIndex((c) => c.command.includes("setup-babysitter-run"));
+    const createIdx = bashCmds.findIndex((c) => c.command.includes("run:create"));
+    const assocIdx = bashCmds.findIndex((c) => c.command.includes("associate-session-with-run"));
+    const firstIterateIdx = bashCmds.findIndex((c) => c.command.includes("run:iterate"));
+    const firstPostIdx = bashCmds.findIndex((c) => c.command.includes("task:post"));
+
+    // All commands must exist
+    expect(setupIdx).toBeGreaterThanOrEqual(0);
+    expect(createIdx).toBeGreaterThanOrEqual(0);
+    expect(assocIdx).toBeGreaterThanOrEqual(0);
+    expect(firstIterateIdx).toBeGreaterThanOrEqual(0);
+    expect(firstPostIdx).toBeGreaterThanOrEqual(0);
+
+    // Order: setup → create → associate → iterate → post
+    expect(createIdx).toBeGreaterThan(setupIdx);
+    expect(firstIterateIdx).toBeGreaterThan(createIdx);
+    expect(firstPostIdx).toBeGreaterThan(firstIterateIdx);
+  });
+
+  test("assistant output contains <promise> tag with valid completion proof", () => {
+    const files = findTranscriptFiles();
+    if (files.length === 0) return;
+
+    const allTranscript = files.flatMap((f) => readTranscript(f));
+    const assistantTexts = extractAssistantTexts(allTranscript);
+    const allAssistantText = assistantTexts.join("\n");
+
+    // Must contain the promise tag
+    expect(allAssistantText).toContain("<promise>");
+    expect(allAssistantText).toContain("</promise>");
+
+    // Extract the proof from the promise tag
+    const promiseMatch = allAssistantText.match(/<promise>([\s\S]*?)<\/promise>/);
+    expect(promiseMatch).not.toBeNull();
+    const transcriptProof = promiseMatch![1].trim();
+    expect(transcriptProof.length).toBeGreaterThan(0);
+
+    // The proof must match what's in run.json
+    const runDir = getLatestRunDir();
+    if (!runDir) return;
+    const runJson = JSON.parse(fs.readFileSync(path.join(runDir, "run.json"), "utf-8"));
+    expect(transcriptProof).toBe(runJson.completionProof);
   });
 
   test("stdout contains the completion promise tag", () => {

@@ -55,7 +55,4 @@ temp/
 .a5c/runs/
 .a5c/inputs/
 
-# VSCode extension build artifacts
-packages/vscode/out/
-packages/vscode-extension/.vscode-test/
 *.vsix

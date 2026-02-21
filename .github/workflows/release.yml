@@ -54,13 +54,6 @@ jobs:
           set -euo pipefail
           npm run test:unit:compiled 2>&1 | tee artifacts/logs/unit-tests.log
 
-      - name: Extension tests
-        env:
-          BABYSITTER_HEADLESS: 1
-        run: |
-          set -euo pipefail
-          dbus-run-session -- xvfb-run -a npm run test:extension:compiled 2>&1 | tee artifacts/logs/extension-tests.log
-
       - name: Upload build logs
         uses: actions/upload-artifact@v4
         with:

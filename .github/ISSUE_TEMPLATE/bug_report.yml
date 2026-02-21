@@ -13,8 +13,8 @@ body:
     id: version
     attributes:
       label: Babysitter version
-      description: Extension version (and VSIX name if installed from VSIX).
-      placeholder: "e.g. 0.0.6 (babysitter-0.0.6.vsix)"
+      description: SDK/CLI version (run `babysitter version`).
+      placeholder: "e.g. 0.0.169"
     validations:
       required: true
       
@@ -79,7 +79,7 @@ body:
       label: Logs / diagnostics
       description: |
         Attach or paste:
-        - VS Code Output → `Babysitter` channel
+        - CLI output or error messages
         - The run's `state.json` and `journal.jsonl` (if applicable)
         - Any screenshots/GIFs if it's UI-related
       render: text
@@ -90,12 +90,11 @@ body:
     id: config
     attributes:
       label: Relevant settings
-      description: Paste relevant `babysitter.*` settings (redact sensitive values).
+      description: Paste relevant babysitter settings or environment variables (redact sensitive values).
       render: jsonc
       placeholder: |
         {
-          "babysitter.runsRoot": ".a5c/runs",
-          "babysitter.o.binaryPath": "./o"
+          "BABYSITTER_RUNS_DIR": ".a5c/runs"
         }
     validations:
       required: false

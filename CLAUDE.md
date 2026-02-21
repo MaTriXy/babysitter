@@ -44,25 +44,6 @@ cd packages/catalog && npm run reindex:force   # Force full reindex
 cd packages/catalog && npm run reindex:reset   # Reset and reindex with stats
 ```
 
-### VS Code Extension (`packages/vscode-extension` / `babysitter-vscode`)
-
-```bash
-cd packages/vscode-extension && npm run build        # clean + tsc (also runs as vscode:prepublish lifecycle)
-cd packages/vscode-extension && npm run clean        # rm -rf dist
-cd packages/vscode-extension && npm run watch        # tsc --watch
-cd packages/vscode-extension && npm run lint         # eslint . --ext .ts
-cd packages/vscode-extension && npm run format       # prettier --write .
-cd packages/vscode-extension && npm run format:check # prettier --check .
-cd packages/vscode-extension && npm run package      # Create .vsix via vsce
-cd packages/vscode-extension && npm test             # Build + unit + extension tests
-cd packages/vscode-extension && npm run test:unit    # Build + mocha unit tests only
-cd packages/vscode-extension && npm run test:unit:compiled   # Mocha unit tests (skip build, requires prior build)
-cd packages/vscode-extension && npm run test:extension  # Build + extension tests only
-cd packages/vscode-extension && npm run test:extension:compiled  # Extension tests (skip build, requires prior build)
-cd packages/vscode-extension && npm run test:ci      # Headless CI (unit + extension)
-cd packages/vscode-extension && npx mocha --ui tdd dist/unit/path/to/file.test.js  # Single unit test (must be compiled)
-```
-
 ### E2E Tests (`e2e-tests/docker/`)
 
 ```bash
@@ -78,7 +59,6 @@ Config: `testTimeout: 30000`, `hookTimeout: 300000`, `fileParallelism: false`, J
 | `packages/sdk` | `@a5c-ai/babysitter-sdk` | Core: runtime, storage, tasks, CLI, hooks, testing, config. CJS. |
 | `packages/babysitter` | `@a5c-ai/babysitter` | Metapackage re-exporting SDK. Provides `babysitter` CLI. |
 | `packages/catalog` | `process-library-catalog` | Next.js 16 app (React 19, SQLite, Radix UI, Tailwind). |
-| `packages/vscode-extension` | `babysitter-vscode` | VS Code extension for dispatching/monitoring runs. Mocha tests. |
 
 ## SDK Architecture (`packages/sdk/src/`)
 
@@ -176,9 +156,7 @@ Project-level reusable processes go in `.a5c/processes/`.
 ## TypeScript Conventions
 
 - **SDK tsconfig**: ES2022 target, CommonJS, strict, node moduleResolution, declaration + declarationMap, rootDir=src, outDir=dist, `__tests__` excluded from build.
-- **VS Code extension tsconfig**: ES2022 target, CommonJS, strict, `noImplicitReturns`, `noFallthroughCasesInSwitch`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, sourceMap, types: `[node, vscode, mocha]`.
 - **SDK ESLint** (`.eslintrc.cjs`): extends `eslint:recommended` + `@typescript-eslint/recommended-type-checked`. Unused vars with `_` prefix allowed. Ignores `dist/` and `__tests__/`.
-- **VS Code extension ESLint** (`.eslintrc.cjs`): same as SDK plus `plugin:prettier/recommended` (Prettier integration, `prettier/prettier: error`). Mocha env enabled. Ignores `dist/`, `node_modules/`, `packages/`.
 - **Catalog ESLint** (`eslint.config.mjs`): Flat config using `eslint-config-next/core-web-vitals` + `eslint-config-next/typescript`. Ignores `.next/`, `out/`, `build/`, `next-env.d.ts`.
 
 ## Cross-Package Rules
@@ -205,7 +183,7 @@ Project-level reusable processes go in `.a5c/processes/`.
 
 ## Claude Code Agents (`.claude/agents/`)
 
-- **`code-reviewer.md`** — Reviews TypeScript changes for type safety, monorepo consistency, SDK patterns, VS Code extension patterns, error handling, and testing. Checklist includes: no `any` escapes, no floating promises, workspace imports only, no circular deps, disposable tracking in VS Code, meaningful tests. Output format: issues with file:line references and severity levels.
+- **`code-reviewer.md`** — Reviews TypeScript changes for type safety, monorepo consistency, SDK patterns, error handling, and testing. Checklist includes: no `any` escapes, no floating promises, workspace imports only, no circular deps, meaningful tests. Output format: issues with file:line references and severity levels.
 - **`sdk-api-documenter.md`** — Generates and validates documentation for SDK CLI commands and exported APIs.
 
 ## Environment Variables

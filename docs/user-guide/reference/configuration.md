@@ -351,7 +351,8 @@ Created by `run:create`. Contains immutable run metadata.
     "entry": ".a5c/processes/build/main.js#buildProcess",
     "revision": "1.0.0"
   },
-  "request": "Build the authentication module"
+  "request": "Build the authentication module",
+  "prompt": "Build the authentication module with JWT tokens and role-based access control"
 }
 ```
 
@@ -363,6 +364,7 @@ Created by `run:create`. Contains immutable run metadata.
 | `process.entry` | string | Entry point `<path>#<export>` |
 | `process.revision` | string | Optional version/revision |
 | `request` | string | Optional human-readable description |
+| `prompt` | string | Optional initial user prompt (persisted for context recovery) |
 
 ---
 

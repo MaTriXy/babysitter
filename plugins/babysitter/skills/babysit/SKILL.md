@@ -67,7 +67,7 @@ bash "${CLAUDE_PLUGIN_ROOT}/skills/babysit/scripts/setup-babysitter-run.sh" --cl
 
 2. Create the run:
 ```bash
-$CLI run:create --process-id <id> --entry <path> --inputs <file> --json
+$CLI run:create --process-id <id> --entry <path> --inputs <file> --prompt "$PROMPT" --json
 ```
 
 3. Associate session with run:
@@ -297,7 +297,7 @@ export const skillTask = defineTask('analyzer-skill', (args, taskCtx) => ({
 
 **Create run:**
 ```bash
-$CLI run:create --process-id <id> --entry <path>#<export> --inputs <path> --run-id <id>
+$CLI run:create --process-id <id> --entry <path>#<export> --inputs <path> --run-id <id> --prompt "<initial prompt>"
 ```
 
 **Check status:**

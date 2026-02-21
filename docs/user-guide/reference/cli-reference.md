@@ -115,6 +115,7 @@ babysitter run:create \
   [--run-id <id>] \
   [--process-revision <rev>] \
   [--request <description>] \
+  [--prompt <text>] \
   [--json]
 ```
 
@@ -128,6 +129,7 @@ babysitter run:create \
 | `--run-id <id>` | No | Custom run ID (auto-generated if omitted) |
 | `--process-revision <rev>` | No | Process revision/version |
 | `--request <description>` | No | Human-readable request description |
+| `--prompt <text>` | No | Initial user prompt to persist in run metadata and journal |
 
 #### Output (Human)
 

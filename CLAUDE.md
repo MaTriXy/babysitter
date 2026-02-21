@@ -135,7 +135,7 @@ Process functions request effects via `ProcessContext` intrinsics:
 
 ```
 .a5c/runs/<runId>/
-├── run.json            # Metadata: runId, processId, entrypoint, layoutVersion, createdAt
+├── run.json            # Metadata: runId, processId, entrypoint, layoutVersion, createdAt, prompt
 ├── inputs.json         # Process inputs
 ├── run.lock            # Exclusive lock: { pid, owner, acquiredAt }
 ├── journal/            # Append-only event log

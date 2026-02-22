@@ -8,7 +8,7 @@
  */
 
 import * as path from "node:path";
-import { existsSync, readFileSync, appendFileSync } from "node:fs";
+import { existsSync, readFileSync, appendFileSync, mkdirSync } from "node:fs";
 import { loadJournal } from "../../storage/journal";
 import { readRunMetadata } from "../../storage/runFiles";
 import { buildEffectIndex } from "../../runtime/replay/effectIndex";
@@ -30,6 +30,55 @@ import {
   parseTranscriptLastAssistantMessage,
   extractPromiseTag,
 } from "./session";
+
+// ---------------------------------------------------------------------------
+// Structured file logger for hook diagnostics
+// ---------------------------------------------------------------------------
+
+interface HookLogger {
+  info(message: string): void;
+  warn(message: string): void;
+  error(message: string): void;
+  setContext(key: string, value: string): void;
+}
+
+function createHookLogger(hookName: string): HookLogger {
+  const logDir = process.env.BABYSITTER_LOG_DIR;
+  const logFile = logDir ? path.join(logDir, `${hookName}.log`) : null;
+  const context: Record<string, string> = {};
+
+  if (logFile) {
+    try {
+      mkdirSync(logDir!, { recursive: true });
+    } catch {
+      // Best-effort
+    }
+  }
+
+  function write(level: string, message: string): void {
+    if (!logFile) return;
+    const ts = new Date().toISOString();
+    const ctxParts = Object.entries(context).map(
+      ([k, v]) => `${k}=${v}`,
+    );
+    const ctxStr = ctxParts.length > 0 ? ` [${ctxParts.join(" ")}]` : "";
+    const line = `[${level}] ${ts}${ctxStr} ${message}\n`;
+    try {
+      appendFileSync(logFile, line);
+    } catch {
+      // Best-effort
+    }
+  }
+
+  return {
+    info: (msg: string) => write("INFO", msg),
+    warn: (msg: string) => write("WARN", msg),
+    error: (msg: string) => write("ERROR", msg),
+    setContext: (key: string, value: string) => {
+      context[key] = value;
+    },
+  };
+}
 
 // ---------------------------------------------------------------------------
 // Public types
@@ -113,6 +162,7 @@ function countPendingByKind(records: EffectRecord[]): Record<string, number> {
 
 async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
   const { verbose } = args;
+  const log = createHookLogger("babysitter-stop-hook");
 
   // 1. Read hook input JSON from stdin
   let rawInput: string;
@@ -120,6 +170,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
     rawInput = await readStdin();
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
+    log.warn(`stdin read error: ${msg}`);
     if (verbose) {
       process.stderr.write(`[hook:run stop] stdin read error: ${msg}\n`);
     }
@@ -129,15 +180,20 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
   }
 
   const hookInput = parseHookInput(rawInput) as StopHookInput;
+  log.info("Hook input received");
+
   const sessionId = safeStr(hookInput as Record<string, unknown>, "session_id");
   if (!sessionId) {
     // No session ID — allow exit
+    log.info("No session ID in hook input — allowing exit");
     if (verbose) {
       process.stderr.write("[hook:run stop] No session ID in hook input\n");
     }
     process.stdout.write('{"decision":"allow"}\n');
     return 0;
   }
+
+  log.setContext("session", sessionId);
 
   // 2. Resolve pluginRoot and stateDir
   const pluginRoot =
@@ -219,6 +275,9 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
   const iteration = state.iteration;
   const maxIterations = state.maxIterations;
   const runId = state.runId ?? "";
+  if (runId) {
+    log.setContext("run", runId);
+  }
 
   // 4. Parse transcript for last assistant message
   const transcriptPath = safeStr(
@@ -313,6 +372,11 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       runState = "";
     }
 
+    log.info(`Run state: ${runState || "unknown"}`);
+    if (completionProof) {
+      log.info("Completion proof available");
+    }
+
     // If state is empty (couldn't determine) → cleanup and allow
     if (!runState) {
       if (verbose) {
@@ -327,7 +391,11 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
   }
 
   // 6. If completionProof matches promiseValue → complete
+  if (hasPromise) {
+    log.info("Detected valid promise tag");
+  }
   if (completionProof && hasPromise && promiseValue === completionProof) {
+    log.info("Promise matches completion proof — allowing exit");
     if (verbose) {
       process.stderr.write(
         `[hook:run stop] Valid promise tag detected - run complete\n`,
@@ -416,6 +484,10 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
   };
 
   process.stdout.write(JSON.stringify(output) + "\n");
+
+  log.info(
+    `Decision: block (iteration=${nextIteration}, maxIterations=${maxIterations})`,
+  );
 
   if (verbose) {
     process.stderr.write(

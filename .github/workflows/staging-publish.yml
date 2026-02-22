@@ -147,15 +147,10 @@ jobs:
             git push origin HEAD:staging
           fi
 
-      - name: Build npm package
+      - name: Build SDK
         run: |
           set -euo pipefail
-          npm run build
-
-      - name: Build SDK package
-        run: |
-          set -euo pipefail
-          npm run --workspace=@a5c-ai/babysitter-sdk build
+          npm run build:sdk
 
       - name: Publish SDK to npm (staging tag)
         env:

@@ -120,18 +120,14 @@ jobs:
               fs.writeFileSync(p, JSON.stringify(data, null, 2) + '\n');
             }
           "
-          # Write sdkVersion into plugin manifests (will be committed)
+          # Write sdkVersion into internal plugin manifest (will be committed)
+          # Note: .claude-plugin/plugin.json is NOT updated with sdkVersion
+          # because Claude Code's plugin validator rejects unrecognized keys
           node -e "
             const fs = require('fs');
-            const plugins = [
-              'plugins/babysitter/plugin.json',
-              'plugins/babysitter/.claude-plugin/plugin.json'
-            ];
-            for (const p of plugins) {
-              const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-              data.sdkVersion = '${STAGING_VERSION}';
-              fs.writeFileSync(p, JSON.stringify(data, null, 2) + '\n');
-            }
+            const data = JSON.parse(fs.readFileSync('plugins/babysitter/plugin.json', 'utf8'));
+            data.sdkVersion = '${STAGING_VERSION}';
+            fs.writeFileSync('plugins/babysitter/plugin.json', JSON.stringify(data, null, 2) + '\n');
           "
 
       - name: Commit sdkVersion to staging branch
@@ -139,7 +135,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add plugins/babysitter/plugin.json plugins/babysitter/.claude-plugin/plugin.json
+          git add plugins/babysitter/plugin.json
           if git diff --cached --quiet; then
             echo "No sdkVersion changes to commit."
           else

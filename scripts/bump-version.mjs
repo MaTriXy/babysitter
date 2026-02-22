@@ -27,7 +27,7 @@ const packageManifests = [
 ];
 
 const pluginManifests = [
-  { path: "plugins/babysitter/.claude-plugin/plugin.json" },
+  { path: "plugins/babysitter/.claude-plugin/plugin.json", skipSdkVersion: true },
   { path: "plugins/babysitter/plugin.json" },
 ];
 
@@ -70,7 +70,11 @@ for (const pluginManifest of pluginManifestData) {
   const currentPluginVersion = pluginManifest.data.version;
   const newPluginVersion = bumpVersion(currentPluginVersion, bumpTarget);
   pluginManifest.data.version = newPluginVersion;
-  pluginManifest.data.sdkVersion = newVersion;
+  // Only write sdkVersion to internal manifests, not to .claude-plugin/plugin.json
+  // (Claude Code's plugin validator rejects unrecognized keys)
+  if (!pluginManifest.skipSdkVersion) {
+    pluginManifest.data.sdkVersion = newVersion;
+  }
   writeFileSync(pluginManifest.path, `${JSON.stringify(pluginManifest.data, null, 2)}\n`);
 }
 

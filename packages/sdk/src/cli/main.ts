@@ -2098,5 +2098,12 @@ export function createBabysitterCli() {
 }
 
 if (require.main === module) {
-  void createBabysitterCli().run();
+  createBabysitterCli()
+    .run()
+    .then((code) => {
+      process.exit(code);
+    })
+    .catch(() => {
+      process.exit(1);
+    });
 }

@@ -6,5 +6,6 @@
   "author": {
     "name": "Tal Muskal",
     "email": "tal@a5c.ai"
-  }
+  },
+  "strict": false
 }

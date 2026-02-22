@@ -176,7 +176,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       process.stderr.write(`[hook:run stop] stdin read error: ${msg}\n`);
     }
     // Allow exit on error
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -190,7 +190,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
     if (verbose) {
       process.stderr.write("[hook:run stop] No session ID in hook input\n");
     }
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -211,7 +211,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
         "[hook:run stop] Cannot determine state directory\n",
       );
     }
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -231,14 +231,14 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
           `[hook:run stop] No active loop found for session ${sessionId}\n`,
         );
       }
-      process.stdout.write('{"decision":"allow"}\n');
+      process.stdout.write('{"decision":"approve"}\n');
       return 0;
     }
     sessionFile = await readSessionFile(filePath);
   } catch {
     // Cannot read session — allow exit
     log.warn("Session file read error — allowing exit");
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -253,7 +253,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       );
     }
     await cleanupSession(filePath);
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -273,7 +273,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       );
     }
     await cleanupSession(filePath);
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -314,7 +314,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
           );
         }
         await cleanupSession(filePath);
-        process.stdout.write('{"decision":"allow"}\n');
+        process.stdout.write('{"decision":"approve"}\n');
         return 0;
       }
     } else {
@@ -324,7 +324,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
         );
       }
       await cleanupSession(filePath);
-      process.stdout.write('{"decision":"allow"}\n');
+      process.stdout.write('{"decision":"approve"}\n');
       return 0;
     }
   }
@@ -336,7 +336,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       );
     }
     await cleanupSession(filePath);
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -391,7 +391,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
         );
       }
       await cleanupSession(filePath);
-      process.stdout.write('{"decision":"allow"}\n');
+      process.stdout.write('{"decision":"approve"}\n');
       return 0;
     }
   }
@@ -408,7 +408,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       );
     }
     await cleanupSession(filePath);
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 
@@ -420,7 +420,7 @@ async function handleHookRunStop(args: HookRunCommandArgs): Promise<number> {
       );
     }
     await cleanupSession(filePath);
-    process.stdout.write('{"decision":"allow"}\n');
+    process.stdout.write('{"decision":"approve"}\n');
     return 0;
   }
 

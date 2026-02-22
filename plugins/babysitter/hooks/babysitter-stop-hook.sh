@@ -6,7 +6,7 @@ PLUGIN_ROOT="${CLAUDE_PLUGIN_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 
 # If babysitter CLI is not installed, allow exit silently.
 # (Session-start hook handles installation; if it failed, don't block exit.)
-command -v babysitter &>/dev/null || { echo '{"decision":"allow"}'; exit 0; }
+command -v babysitter &>/dev/null || { echo '{"decision":"approve"}'; exit 0; }
 LOG_DIR="${BABYSITTER_LOG_DIR:-}"
 LOG_FILE="${LOG_DIR:+$LOG_DIR/babysitter-stop-hook.log}"
 

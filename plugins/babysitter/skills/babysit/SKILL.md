@@ -214,11 +214,9 @@ $CLI task:post <runId> <effectId> --status ok --value tasks/<effectId>/output.js
 
 ---
 
-### 7. repeat the orchestration loop as needed.
+### 7. Repeat the orchestration loop when asked by the hook
 
-Repeat orchestration loop by calling run:iterate or doing the next right thing.
-
-In case you don't follow this step, you will be called by the stop-hook and you will be asked to repeat the orchestration loop or exit the loop by posting the completion proof.
+you will be called by the stop-hook and you will be asked to repeat the orchestration loop or exit the loop by posting the completion proof. Repeat orchestration loop by calling run:iterate or doing the next right thing.
 
 ## Task Kinds
 

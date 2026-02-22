@@ -104,15 +104,8 @@ async function readStdin(): Promise<string> {
     process.stdin.on("data", (chunk: string) => {
       data += chunk;
     });
-    process.stdin.on("end", () => {
-      // Unref stdin so it doesn't keep the event loop alive
-      process.stdin.unref();
-      resolve(data);
-    });
-    process.stdin.on("error", (err) => {
-      process.stdin.unref();
-      reject(err);
-    });
+    process.stdin.on("end", () => resolve(data));
+    process.stdin.on("error", reject);
   });
 }
 

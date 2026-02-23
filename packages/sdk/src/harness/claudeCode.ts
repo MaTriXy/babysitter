@@ -601,7 +601,7 @@ async function handleStopHookImpl(args: HookHandlerArgs): Promise<number> {
     });
   }
 
-  process.stdout.write(JSON.stringify(output) + "\n");
+  process.stdout.write(JSON.stringify(output, null, 2) + "\n");
 
   log.info(
     `Decision: block (iteration=${nextIteration}, maxIterations=${maxIterations})`,

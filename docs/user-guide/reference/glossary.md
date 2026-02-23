@@ -381,8 +381,6 @@ A workflow pattern that includes human approval checkpoints. Implemented through
 A mechanism for continuous iteration within a single Claude Code session. The stop hook intercepts exit attempts and continues the loop until completion or max iterations reached.
 
 **Components:**
-- Setup script: `setup-babysitter-run.sh`
-- Stop hook: `babysitter-stop-hook.sh`
 - State file: `$CLAUDE_PLUGIN_ROOT/state/${SESSION_ID}.md`
 
 **Invocation:**

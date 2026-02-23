@@ -154,6 +154,7 @@ function parseAgentFrontmatter(content: string): { name: string; description: st
  */
 async function findMarkdownFiles(dir: string, targetName: string, maxDepth: number = 5): Promise<string[]> {
   const results: string[] = [];
+  const resolvedDir = path.resolve(dir);
 
   async function scan(currentDir: string, depth: number): Promise<void> {
     if (depth > maxDepth) return;
@@ -175,7 +176,7 @@ async function findMarkdownFiles(dir: string, targetName: string, maxDepth: numb
     }
   }
 
-  await scan(dir, 0);
+  await scan(resolvedDir, 0);
   return results;
 }
 
@@ -198,10 +199,11 @@ async function findAgentFiles(dir: string, maxDepth: number = 5): Promise<string
  */
 async function findProcessFiles(dir: string): Promise<string[]> {
   try {
-    const entries = await fs.readdir(dir, { withFileTypes: true });
+    const resolvedDir = path.resolve(dir);
+    const entries = await fs.readdir(resolvedDir, { withFileTypes: true });
     return entries
       .filter(e => e.isFile() && e.name.endsWith('.js'))
-      .map(e => path.join(dir, e.name));
+      .map(e => path.join(resolvedDir, e.name));
   } catch {
     return [];
   }
@@ -906,7 +908,7 @@ export async function handleSkillDiscover(args: SkillCommandArgs): Promise<numbe
   if (!pluginRoot) {
     const error = { error: 'MISSING_PLUGIN_ROOT', message: '--plugin-root is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('Error: --plugin-root is required');
     }
@@ -935,7 +937,7 @@ export async function handleSkillDiscover(args: SkillCommandArgs): Promise<numbe
       processes: result.processes,
       summary: result.summary,
       cached: result.cached,
-    }));
+    }, null, 2));
   } else {
     if (result.skills.length === 0 && result.agents.length === 0) {
       console.log('(no skills or agents found)');
@@ -1128,7 +1130,7 @@ export async function handleSkillFetchRemote(args: SkillCommandArgs): Promise<nu
   if (!sourceType) {
     const error = { error: 'MISSING_SOURCE_TYPE', message: '--source-type is required (github or well-known)' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('Error: --source-type is required (github or well-known)');
     }
@@ -1138,7 +1140,7 @@ export async function handleSkillFetchRemote(args: SkillCommandArgs): Promise<nu
   if (!url) {
     const error = { error: 'MISSING_URL', message: '--url is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('Error: --url is required');
     }
@@ -1159,7 +1161,7 @@ export async function handleSkillFetchRemote(args: SkillCommandArgs): Promise<nu
       const unknownType = _exhaustive as string;
       const error = { error: 'INVALID_SOURCE_TYPE', message: `Unknown source type: ${unknownType}` };
       if (json) {
-        console.error(JSON.stringify(error));
+        console.error(JSON.stringify(error, null, 2));
       } else {
         console.error(`Error: Unknown source type: ${unknownType}`);
       }
@@ -1168,7 +1170,7 @@ export async function handleSkillFetchRemote(args: SkillCommandArgs): Promise<nu
   }
 
   if (json) {
-    console.log(JSON.stringify({ skills }));
+    console.log(JSON.stringify({ skills }, null, 2));
   } else {
     if (skills.length === 0) {
       console.log('[]');

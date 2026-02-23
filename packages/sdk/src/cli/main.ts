@@ -835,7 +835,7 @@ async function handleRunCreate(parsed: ParsedArgs): Promise<number> {
       inputsPath: parsed.inputsPath ? path.resolve(parsed.inputsPath) : null,
     };
     if (parsed.json) {
-      console.log(JSON.stringify(summary));
+      console.log(JSON.stringify(summary, null, 2));
     } else {
       const parts = [
         "[run:create] dry-run",
@@ -958,7 +958,7 @@ async function handleRunCreate(parsed: ParsedArgs): Promise<number> {
       session: sessionBound ?? undefined,
       discoveredSkills: parsed.verbose ? discoveredSkills : compactSkills,
       discoveredAgents: parsed.verbose ? discoveredAgents : compactAgents,
-    }));
+    }, null, 2));
   } else {
     console.log(`[run:create] runId=${result.runId} runDir=${result.runDir} entry=${entrySpec}`);
     if (sessionBound?.error) {
@@ -1193,7 +1193,7 @@ async function handleRunRebuildState(parsed: ParsedArgs): Promise<number> {
   if (parsed.dryRun) {
     const plan = { dryRun: true, runDir, plan: "rebuild_state_cache", reason: "cli_manual" };
     if (parsed.json) {
-      console.log(JSON.stringify(plan));
+      console.log(JSON.stringify(plan, null, 2));
     } else {
       console.log(`[run:rebuild-state] dry-run runDir=${runDir} plan=${plan.plan} reason=${plan.reason}`);
     }
@@ -1209,7 +1209,7 @@ async function handleRunRebuildState(parsed: ParsedArgs): Promise<number> {
   };
   const formatted = formatIterationMetadata(metadata);
   if (parsed.json) {
-    console.log(JSON.stringify({ runDir, metadata: formatted.jsonMetadata ?? null }));
+    console.log(JSON.stringify({ runDir, metadata: formatted.jsonMetadata ?? null }, null, 2));
     return 0;
   }
   const suffix = formatted.textParts.length ? ` ${formatted.textParts.join(" ")}` : "";
@@ -1291,7 +1291,7 @@ async function handleRunRepairJournal(parsed: ParsedArgs): Promise<number> {
 
   if (parsed.dryRun) {
     if (parsed.json) {
-      console.log(JSON.stringify({ dryRun: true, ...summary }));
+      console.log(JSON.stringify({ dryRun: true, ...summary }, null, 2));
     } else {
       console.log(
         `[run:repair-journal] dry-run originalFiles=${files.length} keptEvents=${kept.length} droppedRequested=${droppedRequested} droppedResolved=${droppedResolved}`
@@ -1324,7 +1324,7 @@ async function handleRunRepairJournal(parsed: ParsedArgs): Promise<number> {
   await fs.rename(repairedDir, journalDir);
 
   if (parsed.json) {
-    console.log(JSON.stringify({ ...summary, backupDir, repaired: true }));
+    console.log(JSON.stringify({ ...summary, backupDir, repaired: true }, null, 2));
   } else {
     console.log(
       `[run:repair-journal] repaired originalFiles=${files.length} keptEvents=${kept.length} droppedRequested=${droppedRequested} droppedResolved=${droppedResolved} backupDir=${backupDir}`
@@ -1443,7 +1443,7 @@ async function handleTaskPost(parsed: ParsedArgs): Promise<number> {
 
   if (parsed.dryRun) {
     if (parsed.json) {
-      console.log(JSON.stringify({ status: "skipped", dryRun: true, plan }));
+      console.log(JSON.stringify({ status: "skipped", dryRun: true, plan }, null, 2));
     } else {
       console.log(`[task:post] status=skipped`);
       console.error(`[task:post] dry-run plan ${JSON.stringify(plan)}`);
@@ -1529,7 +1529,7 @@ async function handleTaskList(parsed: ParsedArgs): Promise<number> {
   const entries = records.map((record) => toTaskListEntry(record, runDir));
 
   if (parsed.json) {
-    console.log(JSON.stringify({ tasks: entries }));
+    console.log(JSON.stringify({ tasks: entries }, null, 2));
     return 0;
   }
 
@@ -1947,7 +1947,7 @@ function handleUnknownCommand(command: string, json: boolean): number {
   });
 
   if (json) {
-    console.error(JSON.stringify(toStructuredError(error)));
+    console.error(JSON.stringify(toStructuredError(error), null, 2));
   } else {
     const colors = supportsColors();
     console.error(formatErrorWithContext(error, { colors }));

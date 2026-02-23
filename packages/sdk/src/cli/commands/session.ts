@@ -51,7 +51,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
   if (!sessionId) {
     const error = { error: 'MISSING_SESSION_ID', message: '--session-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id is required');
     }
@@ -61,7 +61,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
   if (!stateDir) {
     const error = { error: 'MISSING_STATE_DIR', message: '--state-dir is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --state-dir is required');
     }
@@ -81,7 +81,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
           runId: existing.state.runId,
         };
         if (json) {
-          console.error(JSON.stringify(error));
+          console.error(JSON.stringify(error, null, 2));
         } else {
           console.error(`❌ Error: This session is already associated with a run (${existing.state.runId})`);
         }
@@ -92,7 +92,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
         message: 'A babysitter run is already active for this session',
       };
       if (json) {
-        console.error(JSON.stringify(error));
+        console.error(JSON.stringify(error, null, 2));
       } else {
         console.error('❌ Error: A babysitter run is already active for this session, but with no associated run ID.');
       }
@@ -101,7 +101,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
       // If we can't read it, it might be corrupted - report exists
       const error = { error: 'SESSION_EXISTS', message: 'Session state file exists but could not be read' };
       if (json) {
-        console.error(JSON.stringify(error));
+        console.error(JSON.stringify(error, null, 2));
       } else {
         console.error('❌ Error: Session state file exists but could not be read');
       }
@@ -126,7 +126,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'FS_ERROR', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Failed to create state file: ${err.message}`);
     }
@@ -141,7 +141,7 @@ export async function handleSessionInit(args: SessionCommandArgs): Promise<numbe
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`✅ Session initialized`);
     console.log(`   State file: ${filePath}`);
@@ -163,7 +163,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
   if (!sessionId) {
     const error = { error: 'MISSING_SESSION_ID', message: '--session-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id is required');
     }
@@ -173,7 +173,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
   if (!stateDir) {
     const error = { error: 'MISSING_STATE_DIR', message: '--state-dir is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --state-dir is required');
     }
@@ -183,7 +183,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
   if (!runId) {
     const error = { error: 'MISSING_RUN_ID', message: '--run-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --run-id is required');
     }
@@ -200,7 +200,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'SESSION_NOT_FOUND', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: No active babysitter session found`);
       console.error(`   Expected state file: ${filePath}`);
@@ -218,7 +218,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
       existingRunId: existing.state.runId,
     };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: This session is already associated with run: ${existing.state.runId}`);
     }
@@ -237,7 +237,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'FS_ERROR', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Failed to update state file: ${err.message}`);
     }
@@ -250,7 +250,7 @@ export async function handleSessionAssociate(args: SessionCommandArgs): Promise<
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`✅ Associated session with run: ${runId}`);
     console.log(`   State file: ${filePath}`);
@@ -269,7 +269,7 @@ export async function handleSessionResume(args: SessionCommandArgs): Promise<num
   if (!sessionId) {
     const error = { error: 'MISSING_SESSION_ID', message: '--session-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id is required');
     }
@@ -279,7 +279,7 @@ export async function handleSessionResume(args: SessionCommandArgs): Promise<num
   if (!stateDir) {
     const error = { error: 'MISSING_STATE_DIR', message: '--state-dir is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --state-dir is required');
     }
@@ -289,7 +289,7 @@ export async function handleSessionResume(args: SessionCommandArgs): Promise<num
   if (!runId) {
     const error = { error: 'MISSING_RUN_ID', message: '--run-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --run-id is required');
     }
@@ -303,7 +303,7 @@ export async function handleSessionResume(args: SessionCommandArgs): Promise<num
   } catch {
     const error = { error: 'RUN_NOT_FOUND', message: `Run not found: ${runId}`, runDir };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Run not found: ${runId}`);
       console.error(`   Expected directory: ${runDir}`);
@@ -341,7 +341,7 @@ export async function handleSessionResume(args: SessionCommandArgs): Promise<num
   if (runState === 'completed') {
     const error = { error: 'RUN_COMPLETED', message: 'Run is already completed', runId };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: Run is already completed');
       console.error(`   Run ID: ${runId}`);
@@ -377,7 +377,7 @@ Continue orchestration using run:iterate, task:post, etc. or fix the run if it's
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'FS_ERROR', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Failed to create state file: ${err.message}`);
     }
@@ -392,7 +392,7 @@ Continue orchestration using run:iterate, task:post, etc. or fix the run if it's
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`✅ Session resumed for run: ${runId}`);
     console.log(`   State file: ${filePath}`);
@@ -413,7 +413,7 @@ export async function handleSessionState(args: SessionCommandArgs): Promise<numb
   if (!sessionId) {
     const error = { error: 'MISSING_SESSION_ID', message: '--session-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id is required');
     }
@@ -423,7 +423,7 @@ export async function handleSessionState(args: SessionCommandArgs): Promise<numb
   if (!stateDir) {
     const error = { error: 'MISSING_STATE_DIR', message: '--state-dir is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --state-dir is required');
     }
@@ -435,7 +435,7 @@ export async function handleSessionState(args: SessionCommandArgs): Promise<numb
   if (!(await sessionFileExists(filePath))) {
     const result = { found: false, stateFile: filePath };
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(`[session:state] not found: ${filePath}`);
     }
@@ -452,7 +452,7 @@ export async function handleSessionState(args: SessionCommandArgs): Promise<numb
     };
 
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(`[session:state] found: ${filePath}`);
       console.log(`  active: ${file.state.active}`);
@@ -468,7 +468,7 @@ export async function handleSessionState(args: SessionCommandArgs): Promise<numb
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'CORRUPTED_STATE', message: err.message, stateFile: filePath };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Failed to read state file: ${err.message}`);
     }
@@ -487,7 +487,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
   if (!sessionId) {
     const error = { error: 'MISSING_SESSION_ID', message: '--session-id is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id is required');
     }
@@ -497,7 +497,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
   if (!stateDir) {
     const error = { error: 'MISSING_STATE_DIR', message: '--state-dir is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --state-dir is required');
     }
@@ -511,7 +511,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
     const deleted = await deleteSessionFile(filePath);
     const result = { success: true, deleted, stateFile: filePath };
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(`✅ Session state file ${deleted ? 'deleted' : 'not found (already deleted)'}`);
     }
@@ -526,7 +526,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'SESSION_NOT_FOUND', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Session not found: ${err.message}`);
     }
@@ -560,7 +560,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
     const err = e instanceof SessionError ? e : new Error(String(e));
     const error = { error: 'FS_ERROR', message: err.message };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`❌ Error: Failed to update state file: ${err.message}`);
     }
@@ -574,7 +574,7 @@ export async function handleSessionUpdate(args: SessionCommandArgs): Promise<num
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`✅ Session state updated`);
     console.log(`   State file: ${filePath}`);
@@ -596,7 +596,7 @@ export async function handleSessionCheckIteration(args: SessionCommandArgs): Pro
   if (!sessionId || !stateDir) {
     const error = { error: 'MISSING_ARGS', message: '--session-id and --state-dir are required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('❌ Error: --session-id and --state-dir are required');
     }
@@ -620,7 +620,7 @@ export async function handleSessionCheckIteration(args: SessionCommandArgs): Pro
       stopMessage: 'Session not found',
     };
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log('[session:check-iteration] shouldContinue=false reason=session_not_found');
     }
@@ -642,7 +642,7 @@ export async function handleSessionCheckIteration(args: SessionCommandArgs): Pro
       stopMessage: `Max iterations (${state.maxIterations}) reached`,
     };
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(`[session:check-iteration] shouldContinue=false reason=max_iterations_reached iteration=${state.iteration}`);
     }
@@ -670,7 +670,7 @@ export async function handleSessionCheckIteration(args: SessionCommandArgs): Pro
       stopMessage: `Average iteration time too fast (${avg}s <= 15s)`,
     };
     if (json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(`[session:check-iteration] shouldContinue=false reason=iteration_too_fast avg=${avg}s`);
     }
@@ -689,7 +689,7 @@ export async function handleSessionCheckIteration(args: SessionCommandArgs): Pro
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`[session:check-iteration] shouldContinue=true nextIteration=${state.iteration + 1}`);
   }
@@ -798,7 +798,7 @@ export function handleSessionLastMessage(
   if (!existsSync(transcriptPath)) {
     result.error = 'TRANSCRIPT_NOT_FOUND';
     if (args.json) {
-      console.log(JSON.stringify(result));
+      console.log(JSON.stringify(result, null, 2));
     } else {
       console.log(
         `[session:last-message] error=TRANSCRIPT_NOT_FOUND path=${transcriptPath}`
@@ -824,7 +824,7 @@ export function handleSessionLastMessage(
   }
 
   if (args.json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(
       `[session:last-message] found=${result.found} hasPromise=${result.hasPromise}${result.promiseValue ? ` promiseValue=${result.promiseValue}` : ''}`
@@ -879,7 +879,7 @@ export async function handleSessionIterationMessage(
   if (iteration === undefined) {
     const error = { error: 'MISSING_ITERATION', message: '--iteration is required' };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error('Error: --iteration is required for session:iteration-message');
     }
@@ -976,7 +976,7 @@ export async function handleSessionIterationMessage(
   };
 
   if (json) {
-    console.log(JSON.stringify(result));
+    console.log(JSON.stringify(result, null, 2));
   } else {
     console.log(`[session:iteration-message] iteration=${iteration} runState=${runState ?? 'none'}`);
     console.log(`  systemMessage: ${systemMessage}`);

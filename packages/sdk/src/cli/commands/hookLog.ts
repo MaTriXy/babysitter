@@ -206,7 +206,7 @@ export async function handleHookLog(args: HookLogCommandArgs): Promise<number> {
   if (!hookType) {
     const error = { error: "MISSING_HOOK_TYPE", message: "--hook-type is required" };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error("Error: --hook-type is required for hook:log");
     }
@@ -217,7 +217,7 @@ export async function handleHookLog(args: HookLogCommandArgs): Promise<number> {
   if (!logFile) {
     const error = { error: "MISSING_LOG_FILE", message: "--log-file is required" };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error("Error: --log-file is required for hook:log");
     }
@@ -232,7 +232,7 @@ export async function handleHookLog(args: HookLogCommandArgs): Promise<number> {
     const msg = e instanceof Error ? e.message : String(e);
     const error = { error: "STDIN_READ_ERROR", message: msg };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`Error: Failed to read stdin: ${msg}`);
     }
@@ -251,7 +251,7 @@ export async function handleHookLog(args: HookLogCommandArgs): Promise<number> {
     const msg = e instanceof Error ? e.message : String(e);
     const error = { error: "INVALID_PAYLOAD", message: msg };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`Error: Failed to parse JSON payload: ${msg}`);
     }
@@ -280,7 +280,7 @@ export async function handleHookLog(args: HookLogCommandArgs): Promise<number> {
     const msg = e instanceof Error ? e.message : String(e);
     const error = { error: "LOG_WRITE_ERROR", message: msg };
     if (json) {
-      console.error(JSON.stringify(error));
+      console.error(JSON.stringify(error, null, 2));
     } else {
       console.error(`Error: Failed to write to log file: ${msg}`);
     }

@@ -36,7 +36,7 @@ export async function handleHookRun(args: HookRunCommandArgs): Promise<number> {
       message: "--hook-type is required for hook:run",
     };
     if (json) {
-      process.stderr.write(JSON.stringify(error) + "\n");
+      process.stderr.write(JSON.stringify(error, null, 2) + "\n");
     } else {
       process.stderr.write("Error: --hook-type is required for hook:run\n");
     }
@@ -51,7 +51,7 @@ export async function handleHookRun(args: HookRunCommandArgs): Promise<number> {
       message: `Unsupported harness: "${harness}". Supported: ${supported.join(", ")}`,
     };
     if (json) {
-      process.stderr.write(JSON.stringify(error) + "\n");
+      process.stderr.write(JSON.stringify(error, null, 2) + "\n");
     } else {
       process.stderr.write(`Error: ${error.message}\n`);
     }
@@ -69,7 +69,7 @@ export async function handleHookRun(args: HookRunCommandArgs): Promise<number> {
         message: `Unknown hook type: ${hookType}. Supported: stop, session-start`,
       };
       if (json) {
-        process.stderr.write(JSON.stringify(error) + "\n");
+        process.stderr.write(JSON.stringify(error, null, 2) + "\n");
       } else {
         process.stderr.write(
           `Error: Unknown hook type: ${hookType}. Supported: stop, session-start\n`,

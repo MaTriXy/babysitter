@@ -214,7 +214,6 @@ plugins/babysitter/
 │   └── babysit/
 │       ├── SKILL.md      # Skill instructions
 │       ├── scripts/
-│       │   ├── setup-babysitter-run.sh
 │       │   └── setup-babysitter-run-resume.sh
 │       ├── reference/
 │       │   └── *.md

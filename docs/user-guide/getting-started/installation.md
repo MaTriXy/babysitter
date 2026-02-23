@@ -107,7 +107,6 @@ You should see version numbers for all four tools. If not, address the missing r
 Copy and paste this single command to install everything:
 
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest && \
 claude plugin marketplace add a5c-ai/babysitter && \
 claude plugin install --scope user babysitter@a5c.ai && \
 claude plugin enable --scope user babysitter@a5c.ai
@@ -124,16 +123,15 @@ If you prefer to understand each step, follow along below.
 Install the Babysitter CLI packages globally:
 
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **What this installs:**
-- `@a5c-ai/babysitter` - Core babysitter CLI
 - `@a5c-ai/babysitter-sdk` - Orchestration runtime and commands
 
 **Expected output:**
 ```
-added 2 packages in 15s
+added 1 packages in 15s
 ```
 
 **Verify installation:**
@@ -193,7 +191,7 @@ nvm use 22
 
 **Installation:**
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **Permission Issues?**
@@ -207,7 +205,7 @@ echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc
 source ~/.zshrc
 
 # Then retry installation
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 ### Linux
@@ -222,7 +220,7 @@ sudo apt-get install -y nodejs
 node --version  # Should show v22.x.x
 
 # Install Babysitter
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **Fedora/RHEL/CentOS:**
@@ -232,13 +230,13 @@ curl -fsSL https://rpm.nodesource.com/setup_22.x | sudo bash -
 sudo yum install -y nodejs
 
 # Install Babysitter
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **Arch Linux:**
 ```bash
 sudo pacman -S nodejs npm
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 ### Windows
@@ -262,7 +260,7 @@ wsl --install
 3. Open Git Bash and run:
 
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **Note:** Some shell commands in Babysitter may require Git Bash or WSL. PowerShell/CMD support is limited.
@@ -488,7 +486,7 @@ echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.zshrc
 source ~/.zshrc
 
 # Retry installation
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 #### "Cannot find module '@a5c-ai/babysitter-sdk'"

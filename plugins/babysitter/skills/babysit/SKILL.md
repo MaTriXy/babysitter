@@ -16,7 +16,7 @@ Read the SDK version from the plugin manifest to ensure version compatibility:
 
 ```bash
 SDK_VERSION=$(node -e "try{console.log(JSON.parse(require('fs').readFileSync('${CLAUDE_PLUGIN_ROOT}/plugin.json','utf8')).sdkVersion||'latest')}catch{console.log('latest')}")
-npm i -g @a5c-ai/babysitter@$SDK_VERSION @a5c-ai/babysitter-sdk@$SDK_VERSION
+npm i -g @a5c-ai/babysitter-sdk@$SDK_VERSION
 ```
 
 then use the CLI alias: CLI="babysitter"

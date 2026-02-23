@@ -323,26 +323,6 @@ npx -y @a5c-ai/babysitter-sdk@latest
 - Continues from current state
 - Location: `plugins/babysit/SKILL.md`
 
-### 3.6 Breakpoints Package
-
-**Purpose:** Human-in-the-loop approval system
-
-**Components:**
-- API server (port 3185)
-- Web UI (port 3184)
-- Worker for job processing
-- Extensions (Telegram, etc.)
-
-**Location:** `packages/breakpoints/`
-
-**Features:**
-- Create breakpoints with context files
-- Web UI for approval
-- Telegram integration for mobile notifications
-- Extensible via custom extensions
-
----
-
 ## 4. Hook System
 
 ### 4.1 Hook Execution Model (Version 4.0)
@@ -1299,11 +1279,8 @@ export async function myProcess(inputs, ctx) {
 1. Process calls `ctx.breakpoint()`
 2. SDK creates breakpoint effect
 3. `on-iteration-start` hook detects breakpoint (kind="breakpoint")
-4. Hook calls `on-breakpoint-dispatcher.sh`
-5. Dispatcher executes hooks (e.g., `breakpoint-cli.sh`, Telegram notification)
-6. Breakpoint CLI or web UI presents question to user
+6. AskUserQuestion tool invoked with question and context files
 7. User approves or rejects
-8. Feedback recorded in breakpoint system
 9. Next iteration detects released breakpoint
 10. Process resumes from after `ctx.breakpoint()`
 
@@ -1557,35 +1534,6 @@ curl -X POST "$METRICS_ENDPOINT/task-completed" \
 echo '{"ok": true}'
 ```
 
-### 11.3 Telegram Integration
-
-**Setup:**
-```bash
-# In breakpoints package
-cd packages/breakpoints
-
-# Enable Telegram extension
-npm run cli extension enable telegram \
-  --token <bot-token> \
-  --username <your-username>
-
-# Start worker
-npm run start:worker
-```
-
-**Usage:**
-1. Send `/start` to bot
-2. Bot shows waiting breakpoints
-3. Commands:
-   - `list` - Show all waiting
-   - `preview 1` - View details
-   - `file 1` - Download context file
-   - Reply or send text to release
-
-**See:** `packages/breakpoints/README.md` for full Telegram documentation
-
----
-
 ## 12. Security & Best Practices
 
 ### 12.1 Security Considerations
@@ -1719,15 +1667,6 @@ echo '{"test":"payload"}' | ./my-hook.sh | jq .
 ```bash
 # Check pending breakpoints
 babysitter task:list run-20260120-example --pending --json
-
-# Check breakpoint status
-# Visit http://localhost:3184 in browser
-# Or use Telegram bot
-
-# Release breakpoint via CLI (if needed)
-curl -X POST http://localhost:3185/api/breakpoints/<id>/feedback \
-  -H "Content-Type: application/json" \
-  -d '{"author":"admin","comment":"Approved","release":true}'
 ```
 
 **Issue:** State corruption
@@ -1741,64 +1680,6 @@ rm .a5c/runs/<runId>/state/state.json
 babysitter run:status run-20260120-example
 ```
 
-### 13.2 Debug Mode
-
-**Enable verbose logging:**
-```bash
-# For hooks
-export TELEGRAM_DEBUG=1
-
-# For CLI
-babysitter run:status run-20260120-example --verbose
-```
-
-**Check journal events:**
-```bash
-# Show last 20 events
-babysitter run:events run-20260120-example --limit 20 --reverse
-
-# Export all events
-babysitter run:events run-20260120-example --json > events.json
-```
-
-**Inspect run directory:**
-```bash
-# Show structure
-tree .a5c/runs/run-20260120-example
-
-# Check metadata
-cat .a5c/runs/run-20260120-example/run.json | jq .
-
-# Check state
-cat .a5c/runs/run-20260120-example/state/state.json | jq .
-```
-
-### 13.3 Getting Help
-
-**Documentation:**
-- SDK: `packages/sdk/sdk.md`
-- Hooks: `plugins/babysitter/skills/babysit/reference/HOOKS.md`
-- Skills: `plugins/babysitter/skills/babysit/SKILL.md`
-- Breakpoints: `packages/breakpoints/README.md`
-
-**CLI Help:**
-```bash
-babysitter --help
-babysitter run:create --help
-babysitter task:post --help
-```
-
-**Check Version:**
-```bash
-babysitter --version
-```
-
-**Report Issues:**
-- GitHub: https://github.com/a5c-ai/babysitter/issues
-- Include: CLI version, error output, relevant journal events
-
----
-
 ## Appendix A: Version History
 
 **Version 4.0** (2026-01-20)
@@ -1807,7 +1688,6 @@ babysitter --version
 - Removed `run:continue` command
 - Added `run:iterate` command
 - Fixed hook dispatcher (stderr separation)
-- Enhanced Telegram integration
 
 **Version 3.0** (2026-01-19)
 - Generalized hook system
@@ -1897,7 +1777,6 @@ babysitter --version
 - `WORKER_BATCH_SIZE` - Batch size (default: 10)
 
 **Debugging:**
-- `TELEGRAM_DEBUG` - Enable Telegram debug logging
 - `BABYSITTER_ALLOW_SECRET_LOGS` - Allow secret logging (with --verbose)
 
 **Session:**

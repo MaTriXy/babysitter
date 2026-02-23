@@ -250,7 +250,7 @@ check_sdk_cli() {
     else
         log_check "fail" "SDK CLI" "Unable to run SDK CLI. Check npm/network connectivity."
         if [[ "$JSON_OUTPUT" != "true" ]]; then
-            echo "      Try: npm i -g @a5c-ai/babysitter @a5c-ai/babysitter-sdk"
+            echo "      Try: npm i -g @a5c-ai/babysitter-sdk"
         fi
         return 1
     fi

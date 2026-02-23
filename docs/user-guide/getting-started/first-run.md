@@ -610,7 +610,6 @@ Now that you understand what happened in your first run, you're ready to explore
 
 - [ ] Read [TDD Methodology Deep Dive](../features/quality-convergence.md)
 - [ ] Try the [GSD Methodology](../features/process-library.md) for faster prototyping
-- [ ] Set up [Telegram Notifications](../features/breakpoints.md#telegram-setup) for mobile approvals
 
 ### Coming Up
 

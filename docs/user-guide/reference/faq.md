@@ -119,8 +119,6 @@ For simple, one-off tasks, using Claude Code directly may be faster.
 
 **Optional:**
 - Git (for version control)
-- ngrok (for remote breakpoints UI access)
-- Telegram (for mobile notifications)
 - jq (for CLI output parsing)
 
 See: [Installation Guide](../getting-started/installation.md)
@@ -136,33 +134,8 @@ Babysitter has two packages with distinct responsibilities:
 
 Install both:
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
-
----
-
-### How do I access the breakpoints UI?
-
-The breakpoints UI is built into the SDK and starts automatically when you run a workflow that includes breakpoints. When a workflow reaches a breakpoint:
-
-1. The SDK automatically serves the breakpoints UI
-2. Access the UI at http://localhost:3184
-3. Review and approve/reject breakpoints as needed
-
-**Note:** No separate breakpoints service installation is required. The SDK handles everything.
-
-See: [Breakpoints Guide](../features/breakpoints.md)
-
----
-
-### Can I run Babysitter offline?
-
-Partially. The SDK and process execution work offline. However:
-
-- **Breakpoints require local network access** to the SDK's built-in breakpoints UI (localhost)
-- **Agent tasks** require API access to Claude
-
-For fully offline use, avoid agent tasks in your process definitions. Breakpoints work offline since the UI is served locally by the SDK.
 
 ---
 
@@ -357,90 +330,6 @@ babysitter run:events <runId> --filter-type RUN_FAILED --json
    ```
 
 See: [Troubleshooting Guide](./troubleshooting.md)
-
----
-
-## Breakpoints and Approval
-
-### How do breakpoints work?
-
-Breakpoints pause workflow execution for human approval. When a workflow reaches a breakpoint:
-
-1. The workflow pauses
-2. The SDK automatically serves the breakpoints UI
-3. A request appears in the breakpoints UI (http://localhost:3184)
-4. You review the context and approve/reject
-5. The workflow continues after approval
-
-Breakpoints are fully integrated into the SDK - no separate service is required.
-
-See: [Breakpoints Guide](../features/breakpoints.md)
-
----
-
-### How do I approve a breakpoint?
-
-1. **Open the breakpoints UI:** http://localhost:3184
-2. **Review the request:** Question, title, and context files
-3. **Make a decision:** Click **Approve** or **Reject**
-4. **Add comments** (optional)
-5. **Resume the workflow** if needed
-
----
-
-### Can I approve breakpoints from my phone?
-
-Yes, with two options:
-
-**Option 1: ngrok tunnel**
-```bash
-ngrok http 3184
-```
-Access the UI via the ngrok URL from any device.
-
-**Option 2: Telegram integration**
-Configure Telegram in the breakpoints UI at http://localhost:3184. Receive notifications and approve directly in Telegram.
-
----
-
-### What if a breakpoint times out?
-
-**Symptom:**
-```
-Waiting for breakpoint approval...
-Timeout after 300s
-```
-
-**Solution:**
-1. Check for pending breakpoints in the UI (http://localhost:3184)
-2. Approve the breakpoint
-3. Resume the run: `/babysitter:call resume --run-id <runId>`
-
-The run state is preserved and can be resumed after approval.
-
----
-
-### Can I skip breakpoints in CI/CD pipelines?
-
-Yes, use conditional breakpoints:
-
-```javascript
-if (process.env.CI !== 'true') {
-  await ctx.breakpoint({
-    question: 'Approve deployment?',
-    title: 'Deployment Review'
-  });
-}
-```
-
-Or implement auto-approval for CI:
-```javascript
-if (process.env.CI === 'true' && qualityScore >= targetQuality) {
-  ctx.log('Auto-approved in CI environment');
-} else {
-  await ctx.breakpoint({ /* ... */ });
-}
-```
 
 ---
 

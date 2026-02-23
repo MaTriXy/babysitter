@@ -111,10 +111,10 @@ Any file produced during a run, stored in the `artifacts/` directory. Common art
 The orchestration framework for Claude Code that enables deterministic, event-sourced workflow management. Babysitter provides structured multi-step workflows with quality gates, human approval checkpoints, and session persistence.
 
 **Components:**
-- SDK (`@a5c-ai/babysitter-sdk`) - Core runtime, CLI, and breakpoints service
+- SDK (`@a5c-ai/babysitter-sdk`) - Core runtime, CLI
 - Plugin (`babysitter@a5c.ai`) - Claude Code integration
 
-**Related:** [SDK](#sdk), [Plugin](#plugin), [Breakpoints Service](#breakpoints-service)
+**Related:** [SDK](#sdk), [Plugin](#plugin)
 
 ---
 
@@ -155,30 +155,7 @@ await ctx.breakpoint({
 });
 ```
 
-**Related:** [Breakpoints Service](#breakpoints-service), [Human-in-the-Loop](#human-in-the-loop)
-
 **See Also:** [Breakpoints Feature](../features/breakpoints.md)
-
----
-
-### Breakpoints Service
-
-The service providing human approval UI and API. Consists of a web UI (port 3184), REST API (port 3185), and worker for job processing.
-
-**Built into:** `@a5c-ai/babysitter-sdk`
-
-**Start Command:**
-```bash
-npx -y @a5c-ai/babysitter-sdk@latest breakpoints:start
-```
-
-**Ports:**
-- `3184` - Web UI (open in browser: http://localhost:3184)
-- `3185` - REST API (for programmatic access)
-
-**Note:** The REST API on port 3185 is used for programmatic breakpoint operations. See [CLI Reference](./cli-reference.md) for API usage details.
-
-**Related:** [Breakpoint](#breakpoint)
 
 ---
 
@@ -1084,19 +1061,6 @@ See [TDD Quality Convergence](#tdd-quality-convergence).
 
 ---
 
-### Telegram Integration
-
-An optional extension for receiving breakpoint notifications via Telegram.
-
-**Setup:**
-```bash
-breakpoints extension enable telegram --token <bot-token> --username <your-username>
-```
-
-**Related:** [Breakpoints Service](#breakpoints-service)
-
----
-
 ## U
 
 ### ULID (Universally Unique Lexicographically Sortable Identifier)
@@ -1131,18 +1095,6 @@ $CLI task:post <runId> <effectId> --status ok --value output.json
 A run status indicating a blocking effect (breakpoint or sleep) is active. Orchestration pauses until the effect is resolved.
 
 **Related:** [Breakpoint](#breakpoint), [Sleep](#sleep), [Iteration](#iteration)
-
----
-
-### Worker
-
-A background process that handles asynchronous jobs like TTL expiration and notifications in the breakpoints service.
-
-**Configuration:**
-- `WORKER_POLL_MS` - Poll interval (default: 2000)
-- `WORKER_BATCH_SIZE` - Batch size (default: 10)
-
-**Related:** [Breakpoints Service](#breakpoints-service)
 
 ---
 

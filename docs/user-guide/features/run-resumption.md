@@ -59,7 +59,6 @@ A workflow pauses at a breakpoint while you review and approve changes.
 # Workflow reaches breakpoint and pauses
 # "Waiting for approval at breakpoint: Plan Review"
 
-# Later, after reviewing and approving via web UI or Telegram:
 claude "/babysitter:call resume the babysitter run for the auth feature"
 ```
 

@@ -87,7 +87,7 @@ ls -la $(npm config get prefix)/lib/node_modules/
 
 2. **Reinstall packages:**
    ```bash
-   npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+   npm install -g @a5c-ai/babysitter-sdk@latest
    ```
 
 **Prevention:** Never use `sudo npm install -g`. Configure npm for user installs.
@@ -139,14 +139,14 @@ Error: Incompatible version: sdk@0.0.120 requires babysitter@^0.0.120
 
 **Diagnosis:**
 ```bash
-npm list -g @a5c-ai/babysitter @a5c-ai/babysitter-sdk
+npm list -g @a5c-ai/babysitter-sdk
 ```
 
 **Solutions:**
 
 Update all packages to the latest versions:
 ```bash
-npm install -g @a5c-ai/babysitter@latest @a5c-ai/babysitter-sdk@latest
+npm install -g @a5c-ai/babysitter-sdk@latest
 ```
 
 **Prevention:** Update all packages together, not individually.

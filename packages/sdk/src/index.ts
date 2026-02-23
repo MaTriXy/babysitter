@@ -8,3 +8,4 @@ export * from "./testing";
 export * from "./hooks";
 export * from "./harness";
 export * from "./config";
+export * from "./profiles";

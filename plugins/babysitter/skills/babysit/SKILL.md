@@ -62,10 +62,33 @@ When running non-interactively, skip the interview phase entirely. Instead:
 3. Search the process library for the most relevant specialization/methodology.
 4. Proceed directly to the process creation phase using the extracted requirements.
 
+#### User Profile Integration
+
+Before building the process, check for an existing user profile to personalize the orchestration:
+
+1. **Read user profile**: Check for `~/.config/babysitter/user-profile.json`. If found, load it using `readUserProfile()` from `@a5c-ai/babysitter-sdk`.
+
+2. **Pre-fill context**: Use the profile to understand the user's specialties, expertise levels, preferences, and communication style. This informs how you conduct the interview (skip questions the profile already answers) and how you build the process.
+
+3. **Breakpoint density**: Use the `breakpointTolerance` field to calibrate breakpoint placement in the generated process:
+   - `minimal`/`low` (expert users): Fewer breakpoints — only at critical decision points (architecture choices, deployment, destructive operations)
+   - `moderate` (intermediate users): Standard breakpoints at phase boundaries
+   - `high`/`maximum` (novice users): More breakpoints — add review gates after each implementation step, before each integration, and at every quality gate
+   - Always respect `alwaysBreakOn` for operations that must always pause (e.g., destructive-git, deploy)
+   - If `skipBreakpointsForKnownPatterns` is true, reduce breakpoints for operations the user has previously approved
+
+4. **Tool preferences**: Use `toolPreferences` and `installedSkills`/`installedAgents` to prioritize which agents and skills to use in the process. Prefer tools the user is familiar with.
+
+5. **Communication style**: Adapt process descriptions and breakpoint questions to match the user's `communicationStyle` preferences (tone, explanationDepth, preferredResponseFormat).
+
+6. **If no profile exists**: Proceed normally with the interview phase. Consider suggesting the user run `/user-install` first to create a profile for better personalization.
+
 #### Process creation phase
 
 after the interview phase, create the complete custom process files (js and jsons) for the run according to the Process Creation Guidelines and methodologies section. also install the babysitter-sdk inside .a5c if it is not already installed. (install it in .a5c/package.json if it is not already installed, make sure to use the latest version)
 you must abide the syntax and structure of the process files from the process library.
+
+**User profile awareness**: If a user profile was loaded in the User Profile Integration step, use it to inform process design — adjust breakpoint density per the user's tolerance level, select agents/skills the user prefers, and match the process complexity to the user's expertise.
 
 After the process is created and before creating the run:
 - **Interactive mode**: describe the process at high level (not the code or implementation details) to the user and ask for confirmation to use it, also generate it as a [process-name].diagram.md and [process-name].process.md file. If the user is not satisfied with the process, go back to the process creation phase and modify the process according to the feedback of the user until the user is satisfied with the process.

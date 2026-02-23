@@ -32,6 +32,8 @@ import {
 import { handleSkillDiscover, handleSkillFetchRemote, discoverSkillsInternal, discoverFromProcessFile } from "./commands/skill";
 import { handleHookLog } from "./commands/hookLog";
 import { handleHookRun } from "./commands/hookRun";
+import { handleProfileCommand } from "./commands/profile";
+import type { ProfileCommandArgs } from "./commands/profile";
 import { resolveCompletionProof } from "./completionProof";
 import { getAdapter, getAdapterByName } from "../harness";
 import type { SessionBindResult } from "../harness";
@@ -68,6 +70,10 @@ const USAGE = `Usage:
   babysitter hook:log --hook-type <type> --log-file <path> [--json]
   babysitter hook:run --hook-type <stop|session-start> [--harness <claude-code>] [--plugin-root <dir>] [--state-dir <dir>] [--runs-dir <dir>] [--json] [--verbose]
   babysitter skill:fetch-remote --source-type <github|well-known> --url <url> [--json]
+  babysitter profile:read --user|--project [--dir <dir>] [--json]
+  babysitter profile:write --user|--project --input <file> [--dir <dir>] [--json]
+  babysitter profile:merge --user|--project --input <file> [--dir <dir>] [--json]
+  babysitter profile:render --user|--project [--dir <dir>] [--json]
   babysitter health [--json] [--verbose]
   babysitter configure [show|validate|paths] [--json] [--defaults-only]
   babysitter version
@@ -141,6 +147,11 @@ interface ParsedArgs {
   includeRemote?: boolean;
   summaryOnly?: boolean;
   processPath?: string;
+  // Profile command flags
+  profileUser?: boolean;
+  profileProject?: boolean;
+  profileInputPath?: string;
+  profileDir?: string;
 }
 
 interface ActionSummary {
@@ -416,6 +427,23 @@ function parseArgs(argv: string[]): ParsedArgs {
     }
     if (arg === "--process-path") {
       parsed.processPath = expectFlagValue(rest, ++i, "--process-path");
+      continue;
+    }
+    // Profile command flags
+    if (arg === "--user") {
+      parsed.profileUser = true;
+      continue;
+    }
+    if (arg === "--project") {
+      parsed.profileProject = true;
+      continue;
+    }
+    if (arg === "--input") {
+      parsed.profileInputPath = expectFlagValue(rest, ++i, "--input");
+      continue;
+    }
+    if (arg === "--dir") {
+      parsed.profileDir = expectFlagValue(rest, ++i, "--dir");
       continue;
     }
     positionals.push(arg);
@@ -1926,6 +1954,10 @@ const VALID_COMMANDS = [
   "hook:run",
   "skill:discover",
   "skill:fetch-remote",
+  "profile:read",
+  "profile:write",
+  "profile:merge",
+  "profile:render",
   "health",
   "configure",
   "version",
@@ -2174,6 +2206,24 @@ export function createBabysitterCli() {
             url: parsed.url,
             json: parsed.json,
           });
+        }
+        // Profile commands
+        if (
+          parsed.command === "profile:read" ||
+          parsed.command === "profile:write" ||
+          parsed.command === "profile:merge" ||
+          parsed.command === "profile:render"
+        ) {
+          const subcommand = parsed.command.split(":")[1];
+          const profileArgs: ProfileCommandArgs = {
+            subcommand: subcommand as ProfileCommandArgs["subcommand"],
+            user: parsed.profileUser ?? false,
+            project: parsed.profileProject ?? false,
+            inputPath: parsed.profileInputPath,
+            dir: parsed.profileDir,
+            json: parsed.json,
+          };
+          return await handleProfileCommand(subcommand, profileArgs);
         }
         if (parsed.command === "health") {
           return await handleHealthCommand({

@@ -66,7 +66,7 @@ When running non-interactively, skip the interview phase entirely. Instead:
 
 Before building the process, check for an existing user profile to personalize the orchestration:
 
-1. **Read user profile**: Check for `~/.config/babysitter/user-profile.json`. If found, load it using `readUserProfile()` from `@a5c-ai/babysitter-sdk`.
+1. **Read user profile**: Run `babysitter profile:read --user --json` to load the user profile from `~/.a5c/user-profile.json`. Alternatively, use `readUserProfile()` from `@a5c-ai/babysitter-sdk` directly.
 
 2. **Pre-fill context**: Use the profile to understand the user's specialties, expertise levels, preferences, and communication style. This informs how you conduct the interview (skip questions the profile already answers) and how you build the process.
 
@@ -82,6 +82,16 @@ Before building the process, check for an existing user profile to personalize t
 5. **Communication style**: Adapt process descriptions and breakpoint questions to match the user's `communicationStyle` preferences (tone, explanationDepth, preferredResponseFormat).
 
 6. **If no profile exists**: Proceed normally with the interview phase. Consider suggesting the user run `/user-install` first to create a profile for better personalization.
+
+7. **CLI profile commands**: Use the babysitter CLI for profile operations during processes:
+   - `babysitter profile:read --user --json` — Read user profile as JSON
+   - `babysitter profile:read --project --json` — Read project profile as JSON
+   - `babysitter profile:write --user --input <file> --json` — Write user profile from file
+   - `babysitter profile:write --project --input <file> --json` — Write project profile from file
+   - `babysitter profile:merge --user --input <file> --json` — Merge partial updates into user profile
+   - `babysitter profile:merge --project --input <file> --json` — Merge partial updates into project profile
+   - `babysitter profile:render --user` — Render user profile as readable markdown
+   - `babysitter profile:render --project` — Render project profile as readable markdown
 
 #### Process creation phase
 

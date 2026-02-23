@@ -1039,8 +1039,15 @@ async function handleRunCreate(parsed: ParsedArgs): Promise<number> {
   // When --harness is provided, bind the new run to the caller's session.
   // Session ID is resolved from: --session-id flag > CLAUDE_SESSION_ID env >
   // CLAUDE_ENV_FILE contents (written by session-start hook).
+  // Auto-detect: if no --harness but a session ID is resolvable, infer "claude-code".
   let sessionBound: HarnessSessionBindResult | undefined;
-  const harness = parsed.harness;
+  let harness = parsed.harness;
+  if (!harness) {
+    const autoSessionId = resolveSessionId(parsed);
+    if (autoSessionId) {
+      harness = "claude-code";
+    }
+  }
   const sessionId = harness ? resolveSessionId(parsed) : undefined;
 
   if (harness && !sessionId) {

@@ -52,21 +52,17 @@ ENV NODE_ENV=production
 # Install the SDK globally so 'babysitter' CLI is available
 RUN npm install -g ./packages/sdk
 
-# Set up Claude plugin directory structure (matching host cache structure)
-RUN mkdir -p /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139
-
-# Copy the babysitter plugin
-RUN cp -r plugins/babysitter/* /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139/ && \
-    chmod +x /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139/hooks/*.sh && \
-    find /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139/skills -name "*.sh" -exec chmod +x {} + 2>/dev/null || true
-
-# Create .claude-plugin metadata directory
-RUN mkdir -p /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139/.claude-plugin && \
-    echo '{"name": "babysitter", "version": "4.0.139", "description": "Orchestrate complex workflows with babysitter", "author": {"name": "a5c.ai", "email": "info@a5c.ai"}}' > /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139/.claude-plugin/plugin.json
-
-# Create Claude settings with the plugin registered (version 2 format)
-RUN mkdir -p /home/claude/.claude/plugins && \
-    echo '{"version": 2, "plugins": {"babysitter@a5c.ai": [{"scope": "user", "installPath": "/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139", "version": "4.0.139", "installedAt": "2026-02-05T00:00:00.000Z", "lastUpdated": "2026-02-05T00:00:00.000Z"}]}}' > /home/claude/.claude/plugins/installed_plugins.json && \
+# Read plugin version from plugin.json (single source of truth)
+RUN PLUGIN_VERSION=$(node -e "console.log(JSON.parse(require('fs').readFileSync('plugins/babysitter/plugin.json','utf8')).version)") && \
+    PLUGIN_CACHE="/home/claude/.claude/plugins/cache/a5c-ai/babysitter/${PLUGIN_VERSION}" && \
+    mkdir -p "${PLUGIN_CACHE}" && \
+    cp -r plugins/babysitter/* "${PLUGIN_CACHE}/" && \
+    chmod +x "${PLUGIN_CACHE}/hooks/"*.sh && \
+    find "${PLUGIN_CACHE}/skills" -name "*.sh" -exec chmod +x {} + 2>/dev/null || true && \
+    mkdir -p "${PLUGIN_CACHE}/.claude-plugin" && \
+    echo "{\"name\": \"babysitter\", \"version\": \"${PLUGIN_VERSION}\", \"description\": \"Orchestrate complex workflows with babysitter\", \"author\": {\"name\": \"a5c.ai\", \"email\": \"info@a5c.ai\"}}" > "${PLUGIN_CACHE}/.claude-plugin/plugin.json" && \
+    mkdir -p /home/claude/.claude/plugins && \
+    echo "{\"version\": 2, \"plugins\": {\"babysitter@a5c.ai\": [{\"scope\": \"user\", \"installPath\": \"${PLUGIN_CACHE}\", \"version\": \"${PLUGIN_VERSION}\", \"installedAt\": \"2026-02-05T00:00:00.000Z\", \"lastUpdated\": \"2026-02-05T00:00:00.000Z\"}]}}" > /home/claude/.claude/plugins/installed_plugins.json && \
     echo '{"enabledPlugins": {"babysitter@a5c.ai": true}}' > /home/claude/.claude/settings.json
 
 # Set ownership of claude home directory

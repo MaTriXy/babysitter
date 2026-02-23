@@ -1,9 +1,15 @@
 import { execSync, ExecSyncOptions } from "child_process";
+import { readFileSync } from "fs";
+import path from "path";
 
 export const IMAGE = "babysitter-e2e:test";
 export const CONTAINER = "babysitter-e2e-container";
+
+// Read plugin version from plugin.json (single source of truth)
+const pluginJsonPath = path.resolve(__dirname, "../../plugins/babysitter/plugin.json");
+const PLUGIN_VERSION = JSON.parse(readFileSync(pluginJsonPath, "utf-8")).version as string;
 export const PLUGIN_DIR =
-  "/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139";
+  `/home/claude/.claude/plugins/cache/a5c-ai/babysitter/${PLUGIN_VERSION}`;
 
 const DEFAULT_OPTS: ExecSyncOptions = {
   encoding: "utf-8" as BufferEncoding,

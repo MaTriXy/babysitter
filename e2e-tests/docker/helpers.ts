@@ -3,7 +3,7 @@ import { execSync, ExecSyncOptions } from "child_process";
 export const IMAGE = "babysitter-e2e:test";
 export const CONTAINER = "babysitter-e2e-container";
 export const PLUGIN_DIR =
-  "/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.128";
+  "/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139";
 
 const DEFAULT_OPTS: ExecSyncOptions = {
   encoding: "utf-8" as BufferEncoding,

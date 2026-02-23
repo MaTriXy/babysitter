@@ -12,7 +12,7 @@
 # Environment variables:
 #   ANTHROPIC_API_KEY   - Required only for Section 5 (full E2E orchestration)
 #   ARTIFACTS_DIR       - Directory for test artifacts (default: /tmp/e2e-artifacts)
-#   PLUGIN_DIR          - Plugin directory (default: /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.128)
+#   PLUGIN_DIR          - Plugin directory (default: /home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139)
 #   WORKSPACE_DIR       - Workspace for E2E test (default: /tmp/e2e-test-workspace)
 #   FIXTURE_SRC         - Location of tic-tac-toe fixture (default: /app/e2e-tests/fixtures/tic-tac-toe)
 #   SKIP_STRUCTURAL     - Set to "true" to skip sections 1-3 (useful when re-running for E2E only)
@@ -24,7 +24,7 @@ set -euo pipefail
 # Configuration
 # ---------------------------------------------------------------------------
 ARTIFACTS_DIR="${ARTIFACTS_DIR:-/tmp/e2e-artifacts}"
-PLUGIN_DIR="${PLUGIN_DIR:-/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.128}"
+PLUGIN_DIR="${PLUGIN_DIR:-/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139}"
 WORKSPACE_DIR="${WORKSPACE_DIR:-/tmp/e2e-test-workspace}"
 FIXTURE_SRC="${FIXTURE_SRC:-/app/e2e-tests/fixtures/tic-tac-toe}"
 STATE_DIR="$PLUGIN_DIR/skills/babysit/state"

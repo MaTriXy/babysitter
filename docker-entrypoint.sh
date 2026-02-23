@@ -14,7 +14,7 @@ cd /workspace 2>/dev/null || cd /app
 OUTPUT_FORMAT="${OUTPUT_FORMAT:-text}"
 
 # Plugin directory (loads babysitter plugin directly, bypassing marketplace validation)
-PLUGIN_DIR="/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.128"
+PLUGIN_DIR="/home/claude/.claude/plugins/cache/a5c-ai/babysitter/4.0.139"
 
 # If PROMPT is set, run babysitter skill with it
 # If arguments are provided, use those instead

@@ -9,6 +9,7 @@
  *     singleton lifecycle (getAdapter/setAdapter/resetAdapter)
  */
 
+import * as path from "node:path";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { createClaudeCodeAdapter } from "../claudeCode";
 import { createNullAdapter } from "../nullAdapter";
@@ -99,7 +100,7 @@ describe("ClaudeCodeAdapter", () => {
   describe("resolveStateDir", () => {
     it("returns explicit stateDir first", () => {
       const adapter = createClaudeCodeAdapter();
-      expect(adapter.resolveStateDir({ stateDir: "/custom/state" })).toBe("/custom/state");
+      expect(adapter.resolveStateDir({ stateDir: "/custom/state" })).toBe(path.resolve("/custom/state"));
     });
 
     it("derives from pluginRoot arg", () => {
@@ -127,13 +128,13 @@ describe("ClaudeCodeAdapter", () => {
     it("returns explicit pluginRoot first", () => {
       process.env.CLAUDE_PLUGIN_ROOT = "/env/plugin";
       const adapter = createClaudeCodeAdapter();
-      expect(adapter.resolvePluginRoot({ pluginRoot: "/explicit" })).toBe("/explicit");
+      expect(adapter.resolvePluginRoot({ pluginRoot: "/explicit" })).toBe(path.resolve("/explicit"));
     });
 
     it("falls back to CLAUDE_PLUGIN_ROOT env", () => {
       process.env.CLAUDE_PLUGIN_ROOT = "/env/plugin";
       const adapter = createClaudeCodeAdapter();
-      expect(adapter.resolvePluginRoot({})).toBe("/env/plugin");
+      expect(adapter.resolvePluginRoot({})).toBe(path.resolve("/env/plugin"));
     });
 
     it("returns undefined when nothing is set", () => {

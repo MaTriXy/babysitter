@@ -16,17 +16,16 @@ import { loadJournal } from "../../storage/journal";
 import { readStateCache } from "../../runtime/replay/stateCache";
 import { callRuntimeHook } from "../../runtime/hooks/runtime";
 import { orchestrateIteration } from "../../runtime/orchestrateIteration";
-import type { EffectAction } from "../../runtime/types";
+import type { EffectAction, IterationResult } from "../../runtime/types";
+import type { HookResult } from "../../hooks/types";
 import type { JsonRecord } from "../../storage/types";
 import { resolveCompletionProof } from "../completionProof";
-import { discoverSkillsInternal, discoverFromProcessFile } from "./skill";
 
 export interface RunIterateOptions {
   runDir: string;
   iteration?: number;
   verbose?: boolean;
   json?: boolean;
-  pluginRoot?: string;
 }
 
 export interface RunIterateResult {
@@ -43,8 +42,6 @@ export interface RunIterateResult {
     runId: string;
     processId: string;
     hookStatus?: string;
-    discoveredSkills?: Array<{ name: string; file?: string }>;
-    discoveredAgents?: Array<{ name: string; file?: string }>;
   };
 }
 
@@ -135,7 +132,7 @@ export async function runIterate(options: RunIterateOptions): Promise<RunIterate
   // Parse hook output
   const hookDecision = parseHookDecision(hookResult.output);
   const action = hookDecision.action ?? "none";
-  const reason = hookDecision.reason ?? "unknown";
+  const reason = deriveIterationReason(iterationResult, hookDecision, hookResult.executedHooks?.length > 0);
   const count = hookDecision.count;
   const until = hookDecision.until;
 
@@ -190,33 +187,9 @@ export async function runIterate(options: RunIterateOptions): Promise<RunIterate
     metadata: {
       runId,
       processId: metadata.processId,
-      hookStatus: hookResult.executedHooks?.length > 0 ? "executed" : "none",
+      hookStatus: deriveHookStatus(hookResult),
     },
   };
-
-  // Discover available skills and agents
-  // Try process-driven discovery first (reads @skill/@agent markers from process file)
-  const pluginRoot = options.pluginRoot;
-  if (pluginRoot && result.metadata) {
-    try {
-      const processFilePath = metadata.entrypoint?.importPath ?? metadata.processPath;
-      const processDiscovery = processFilePath
-        ? discoverFromProcessFile({ processFilePath, pluginRoot })
-        : null;
-
-      if (processDiscovery) {
-        result.metadata.discoveredSkills = processDiscovery.skills;
-        result.metadata.discoveredAgents = processDiscovery.agents;
-      } else {
-        // Fallback to generic scan
-        const discoverResult = await discoverSkillsInternal({ pluginRoot, runId });
-        result.metadata.discoveredSkills = discoverResult.skills.map(s => ({ name: s.name, file: s.file }));
-        result.metadata.discoveredAgents = discoverResult.agents.map(a => ({ name: a.name, file: a.file }));
-      }
-    } catch {
-      // Non-fatal
-    }
-  }
 
   return result;
 }
@@ -272,6 +245,109 @@ async function detectIterationCount(runDir: string): Promise<number> {
 async function countIterationsFromJournal(runDir: string): Promise<number> {
   const events = await loadJournal(runDir);
   return events.filter((event) => event.type === "RUN_ITERATION").length;
+}
+
+/**
+ * Derive a descriptive reason string from the iteration result and hook decision.
+ *
+ * When the hook provides an explicit reason, that takes priority. Otherwise,
+ * the reason is inferred from the iteration state: the status of the run and
+ * the kinds of any pending effects.
+ */
+function deriveIterationReason(
+  iterationResult: IterationResult,
+  hookDecision: { action?: string; reason?: string },
+  hooksExecuted: boolean
+): string {
+  // If the hook explicitly provided a reason, use it.
+  if (hookDecision.reason) {
+    return hookDecision.reason;
+  }
+
+  // Terminal states
+  if (iterationResult.status === "completed") {
+    return "terminal-state";
+  }
+  if (iterationResult.status === "failed") {
+    return "terminal-state";
+  }
+
+  // Waiting state — inspect pending effect kinds
+  if (iterationResult.status === "waiting") {
+    const pendingActions = iterationResult.nextActions;
+
+    if (!pendingActions || pendingActions.length === 0) {
+      return "no-pending-effects";
+    }
+
+    // Collect the unique kinds of pending effects
+    const kinds = new Set(pendingActions.map((a) => a.kind));
+
+    // Map known effect kinds to descriptive reasons
+    if (kinds.size === 1) {
+      const kind = kinds.values().next().value as string;
+      if (kind === "breakpoint") return "breakpoint-waiting";
+      if (kind === "sleep") return "sleep-waiting";
+      if (kind === "node" || kind === "orchestrator_task") {
+        // Hook ran tasks automatically
+        if (hookDecision.action === "executed-tasks") {
+          return "auto-runnable-tasks";
+        }
+        return `${kind}-pending`;
+      }
+      // Unknown/custom effect kind
+      return `${kind}-pending`;
+    }
+
+    // Multiple different kinds — list them
+    const sortedKinds = [...kinds].sort();
+    return `mixed-pending:${sortedKinds.join(",")}`;
+  }
+
+  // Hook was configured but gave no reason
+  if (hooksExecuted && !hookDecision.reason) {
+    if (hookDecision.action === "executed-tasks") {
+      return "auto-runnable-tasks";
+    }
+    return "no-reason-provided";
+  }
+
+  return "no-pending-effects";
+}
+
+/**
+ * Derive a descriptive hookStatus string from the hook result.
+ *
+ * - "executed" — hooks were found and executed successfully
+ * - "no-hooks-configured" — no hook directories or hooks found (dispatcher missing or no hooks matched)
+ * - "error" — hooks were found but failed during execution
+ * - "skipped" — hook execution was not attempted (e.g., callRuntimeHook caught an exception)
+ */
+function deriveHookStatus(hookResult: HookResult): string {
+  if (hookResult.executedHooks?.length > 0) {
+    // At least one hook was found and executed
+    const hasFailure = hookResult.executedHooks.some(h => h.status === "failed");
+    return hasFailure ? "error" : "executed";
+  }
+
+  // No hooks executed — determine why
+  if (hookResult.error) {
+    // Check if the error indicates the dispatcher was not found,
+    // which means no hook directories are configured at all
+    if (hookResult.error.includes("not found")) {
+      return "no-hooks-configured";
+    }
+    // Some other error occurred (timeout, spawn failure, etc.)
+    return "error";
+  }
+
+  // Dispatcher ran successfully but no hooks matched the hook type
+  if (hookResult.success) {
+    return "no-hooks-configured";
+  }
+
+  // Fallback: hook execution was not attempted or result is ambiguous
+  return "skipped";
 }
 
 function parseHookDecision(output: unknown): {

@@ -799,7 +799,7 @@ async function handleRunCreate(parsed: ParsedArgs): Promise<number> {
     console.error(error instanceof Error ? error.message : String(error));
     return 1;
   }
-  const runsDir = path.resolve(parsed.runsDir);
+  const runsDir = collapseDoubledA5cRuns(path.resolve(parsed.runsDir));
   const absoluteImportPath = path.resolve(entrypoint.importPath);
   const resolvedEntry = formatResolvedEntrypoint(absoluteImportPath, entrypoint.exportName);
   logVerbose("run:create", parsed, {
@@ -944,13 +944,19 @@ async function handleRunCreate(parsed: ParsedArgs): Promise<number> {
   }
 
   if (parsed.json) {
+    const compactSkills = discoveredSkills
+      ? { count: discoveredSkills.length, names: discoveredSkills.map(s => s.name) }
+      : undefined;
+    const compactAgents = discoveredAgents
+      ? { count: discoveredAgents.length, names: discoveredAgents.map(a => a.name) }
+      : undefined;
     console.log(JSON.stringify({
       runId: result.runId,
       runDir: result.runDir,
       entry: entrySpec,
       session: sessionBound ?? undefined,
-      discoveredSkills,
-      discoveredAgents,
+      discoveredSkills: parsed.verbose ? discoveredSkills : compactSkills,
+      discoveredAgents: parsed.verbose ? discoveredAgents : compactAgents,
     }));
   } else {
     console.log(`[run:create] runId=${result.runId} runDir=${result.runDir} entry=${entrySpec}`);
@@ -1047,7 +1053,6 @@ async function handleRunIterate(parsed: ParsedArgs): Promise<number> {
       iteration: parsed.iteration,
       verbose: parsed.verbose,
       json: parsed.json,
-      pluginRoot: getAdapter().resolvePluginRoot(parsed),
     });
 
     if (parsed.json) {

@@ -14,7 +14,7 @@ Babysitter orchestrates `.a5c/runs/<runId>/` directories through iterative execu
 - **Resumable workflows** - Pause and resume at any point
 - **Hook-driven architecture** - Extensible lifecycle hooks at every step
 - **Human-in-the-loop** - Approval gates via breakpoints
-- **Multi-task orchestration** - Node scripts, LLM agents, Claude skills, breakpoints, sleep gates
+- **Multi-task orchestration** - Node scripts, browser flows, LLM agents, Claude skills, breakpoints, sleep gates
 - **Parallel execution** - Run independent tasks concurrently
 
 **Use cases:**
@@ -143,6 +143,15 @@ export BABYSITTER_LOG_LEVEL="debug"
 
 # Allow secret logs (use with caution)
 export BABYSITTER_ALLOW_SECRET_LOGS="false"
+
+# Browser runtime selection: auto|container|host
+export BABYSITTER_BROWSER_RUNTIME="auto"
+
+# Require container runtime in auto mode (disable host fallback)
+export BABYSITTER_BROWSER_CONTAINER_REQUIRED="false"
+
+# Preserve browser runtime state after run completion/failure
+export BABYSITTER_BROWSER_PRESERVE_RUNTIME="false"
 ```
 
 **Hook Configuration**
@@ -283,10 +292,17 @@ export async function process(inputs, ctx) {
 | Kind | Description | Example |
 |------|-------------|---------|
 | `node` | Node.js script | Run tests, build code |
+| `browser` | Browser automation flow | Run `agent-browser` prompt tasks |
 | `agent` | LLM agent | Planning, scoring, review |
 | `skill` | Claude Code skill | Code analysis, refactoring |
 | `breakpoint` | Human approval | Review and approve |
 | `sleep` | Time gate | Wait until specific time |
+
+**Browser runtime behavior (`kind: "browser"`):**
+- Default runtime is `auto` (container-first on supported macOS arm64 + Apple Container CLI, otherwise host `agent-browser`)
+- Runtime can be overridden per task with `browser.runtime` (`auto|container|host`)
+- Browser session defaults to run-scoped persistence via `browser.sessionMode: "run"` with `--session ... --save-session`
+- Set `BABYSITTER_BROWSER_CONTAINER_REQUIRED=true` to disable host fallback in `auto` mode
 
 **Task definition:**
 
@@ -902,7 +918,7 @@ See [PACKAGING_PROCESSES_WITH_SKILLS.md](./PACKAGING_PROCESSES_WITH_SKILLS.md) f
 ✅ **Resumable execution** - Pause and resume at any point
 ✅ **Hook-driven extensibility** - Customize behavior at every lifecycle event
 ✅ **Human-in-the-loop** - Breakpoints for approval and review
-✅ **Multi-task types** - Node scripts, LLM agents, Claude skills, breakpoints, sleep gates
+✅ **Multi-task types** - Node scripts, browser flows, LLM agents, Claude skills, breakpoints, sleep gates
 ✅ **Parallel execution** - Run independent tasks concurrently
 ✅ **Quality convergence** - Iterate until quality targets met
 ✅ **Agent-based scoring** - LLM assessment of quality and progress

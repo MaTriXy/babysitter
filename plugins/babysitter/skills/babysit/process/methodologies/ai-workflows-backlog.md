@@ -16,7 +16,7 @@
 
 [x] https://github.com/automazeio/ccpm
 
-[ ] https://github.com/maxritter/pilot-shell
+[x] https://github.com/maxritter/pilot-shell
 
 [ ] https://github.com/ruvnet/ruflo
 

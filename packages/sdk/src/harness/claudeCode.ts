@@ -420,9 +420,26 @@ async function handleStopHookImpl(args: HookHandlerArgs): Promise<number> {
 
   if (runId) {
     try {
-      const runDir = path.isAbsolute(runId)
+      let runDir = path.isAbsolute(runId)
         ? runId
         : path.join(runsDir, runId);
+      // Fallback: if run.json not found at primary path, search common
+      // alternative locations (e.g. nested .a5c/.a5c/runs/ created when
+      // babysit skill installs SDK in .a5c/ and runs commands from there).
+      if (!existsSync(path.join(runDir, "run.json")) && !path.isAbsolute(runId)) {
+        const alternatives = [
+          path.join(".a5c", ".a5c", "runs", runId),
+          path.join(".a5c", "runs", runId),
+        ];
+        for (const alt of alternatives) {
+          const resolved = path.resolve(alt);
+          if (resolved !== path.resolve(runDir) && existsSync(path.join(resolved, "run.json"))) {
+            log.info(`Run not found at ${runDir}, using fallback: ${resolved}`);
+            runDir = resolved;
+            break;
+          }
+        }
+      }
       const metadata = await readRunMetadata(runDir);
       entrypointImportPath = metadata?.entrypoint?.importPath;
       const journal = await loadJournal(runDir);

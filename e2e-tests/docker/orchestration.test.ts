@@ -81,6 +81,15 @@ describe.skipIf(!HAS_API_KEY)("Full E2E orchestration (tic-tac-toe)", () => {
         // Copy .a5c from various locations under /home/claude
         "for d in \\$(find /home/claude -path '*/.a5c/runs' -type d 2>/dev/null); do cp -rn \\$(dirname \\$d)/* /workspace/.a5c/ 2>/dev/null || true; done",
         "cp -rn /home/claude/.a5c/* /workspace/.a5c/ 2>/dev/null || true",
+        // Handle nested .a5c/.a5c/runs/ — the babysit skill sometimes creates
+        // runs inside a nested .a5c directory. Find all run.json files and copy
+        // their parent run directories into the canonical /workspace/.a5c/runs/.
+        "for rj in \\$(find /workspace -path '*/runs/*/run.json' -not -path '*/node_modules/*' 2>/dev/null); do " +
+          "rd=\\$(dirname \\$rj); rn=\\$(basename \\$rd); " +
+          "if [ ! -f /workspace/.a5c/runs/\\$rn/run.json ]; then " +
+            "mkdir -p /workspace/.a5c/runs/\\$rn && cp -r \\$rd/* /workspace/.a5c/runs/\\$rn/ 2>/dev/null || true; " +
+          "fi; " +
+        "done",
         // Copy the full Claude session transcript (JSONL) — this is the
         // definitive record of every tool call Claude made during the run.
         // chmod after copy because the files are owned by container's claude
@@ -126,19 +135,62 @@ describe.skipIf(!HAS_API_KEY)("Full E2E orchestration (tic-tac-toe)", () => {
 // ---------------------------------------------------------------------------
 // Helper: locate the .a5c/runs directory on the host
 // ---------------------------------------------------------------------------
+
+/**
+ * Recursively find all "runs" directories under the workspace that contain
+ * at least one subdirectory with a run.json file. This handles cases where
+ * the babysit skill creates nested .a5c/.a5c/runs/ paths.
+ */
+function findAllRunsDirs(): string[] {
+  const results: string[] = [];
+  function walk(dir: string, depth: number) {
+    if (depth > 5) return; // prevent infinite recursion
+    let entries;
+    try { entries = fs.readdirSync(dir, { withFileTypes: true }); }
+    catch { return; }
+    for (const entry of entries) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name === "node_modules") continue;
+      const full = path.join(dir, entry.name);
+      if (entry.name === "runs") {
+        // Check if any subdirectory has run.json
+        try {
+          const runCandidates = fs.readdirSync(full).filter((f) => {
+            const runJson = path.join(full, f, "run.json");
+            return !f.startsWith(".") && fs.existsSync(runJson);
+          });
+          if (runCandidates.length > 0) results.push(full);
+        } catch { /* skip */ }
+      }
+      walk(full, depth + 1);
+    }
+  }
+  walk(WORKSPACE_HOST, 0);
+  return results;
+}
+
 function findRunsDir(): string | null {
+  // Prefer the canonical path first
   const workspaceRuns = path.join(WORKSPACE_HOST, ".a5c", "runs");
   if (fs.existsSync(workspaceRuns)) {
-    const entries = fs.readdirSync(workspaceRuns).filter((f) => !f.startsWith("."));
+    const entries = fs.readdirSync(workspaceRuns).filter((f) => {
+      const runJson = path.join(workspaceRuns, f, "run.json");
+      return !f.startsWith(".") && fs.existsSync(runJson);
+    });
     if (entries.length > 0) return workspaceRuns;
   }
-  return null;
+  // Fall back to recursive search (handles nested .a5c/.a5c/runs/)
+  const allDirs = findAllRunsDirs();
+  return allDirs.length > 0 ? allDirs[0] : null;
 }
 
 function getLatestRunDir(): string | null {
   const runsDir = findRunsDir();
   if (!runsDir) return null;
-  const runs = fs.readdirSync(runsDir).filter((f) => !f.startsWith("."));
+  const runs = fs.readdirSync(runsDir).filter((f) => {
+    const runJson = path.join(runsDir, f, "run.json");
+    return !f.startsWith(".") && fs.existsSync(runJson);
+  });
   if (runs.length === 0) return null;
   return path.join(runsDir, runs.sort().pop()!);
 }
@@ -328,9 +380,10 @@ describe.skipIf(!HAS_API_KEY)("Orchestration lifecycle verification", () => {
     const runDir = getLatestRunDir();
     if (!runDir) return;
 
-    const latestRun = path.basename(runDir);
+    // Compute docker-relative path from the host path
+    const relPath = path.relative(WORKSPACE_HOST, runDir).replace(/\\/g, "/");
     const statusOut = exec(
-      `docker run --rm -v ${WORKSPACE_HOST}:/workspace --entrypoint bash ${IMAGE} -c "babysitter run:status /workspace/.a5c/runs/${latestRun} --json"`,
+      `docker run --rm -v ${WORKSPACE_HOST}:/workspace --entrypoint bash ${IMAGE} -c "babysitter run:status /workspace/${relPath} --json"`,
     );
     const status = JSON.parse(statusOut.trim());
     expect(status.state).toBe("completed");
@@ -340,9 +393,9 @@ describe.skipIf(!HAS_API_KEY)("Orchestration lifecycle verification", () => {
     const runDir = getLatestRunDir();
     if (!runDir) return;
 
-    const latestRun = path.basename(runDir);
+    const relPath = path.relative(WORKSPACE_HOST, runDir).replace(/\\/g, "/");
     const listOut = exec(
-      `docker run --rm -v ${WORKSPACE_HOST}:/workspace --entrypoint bash ${IMAGE} -c "babysitter task:list /workspace/.a5c/runs/${latestRun} --pending --json"`,
+      `docker run --rm -v ${WORKSPACE_HOST}:/workspace --entrypoint bash ${IMAGE} -c "babysitter task:list /workspace/${relPath} --pending --json"`,
     );
     const list = JSON.parse(listOut.trim());
     expect(list.tasks.length).toBe(0);

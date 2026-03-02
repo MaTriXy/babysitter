@@ -6,7 +6,7 @@
 
 [x] https://github.com/steveyegge/gastown
 
-[ ] https://github.com/bostonaholic/rpikit 
+[x] https://github.com/bostonaholic/rpikit
 
 [ ] https://github.com/romiluz13/cc10x
 

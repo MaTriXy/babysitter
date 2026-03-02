@@ -14,7 +14,7 @@
 
 [x] https://github.com/SnapdragonPartners/maestro
 
-[ ] https://github.com/automazeio/ccpm
+[x] https://github.com/automazeio/ccpm
 
 [ ] https://github.com/maxritter/pilot-shell
 

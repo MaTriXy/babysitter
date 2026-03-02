@@ -24,7 +24,7 @@
 
 [x] https://github.com/carlrannaberg/claudekit
 
-[ ] https://github.com/OthmanAdi/planning-with-files
+[x] https://github.com/OthmanAdi/planning-with-files
 
 [ ] https://github.com/github/spec-kit
 

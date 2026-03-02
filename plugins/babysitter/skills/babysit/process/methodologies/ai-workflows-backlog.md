@@ -30,6 +30,6 @@
 
 [x] https://github.com/AutoMaker-Org/automaker
 
-[ ] https://github.com/affaan-m/everything-claude-code
+[x] https://github.com/affaan-m/everything-claude-code
 
 include proper attribution and links to original sources in the assimilation process and result docs (readme's, etc.).

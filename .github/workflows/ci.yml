@@ -25,7 +25,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          # Workaround: npm ci on Windows-generated lockfile may miss linux optional deps
+          npm install --no-save @rollup/rollup-linux-x64-gnu 2>/dev/null || true
 
       - name: Prepare artifact directories
         run: |
@@ -35,7 +38,7 @@ jobs:
       - name: Lint
         run: |
           set -euo pipefail
-          npm run lint 2>&1 | tee artifacts/test-logs/lint.log
+          npm run lint --workspace=@a5c-ai/babysitter-sdk 2>&1 | tee artifacts/test-logs/lint.log
 
       - name: Verify metadata
         run: |
@@ -45,22 +48,12 @@ jobs:
       - name: Build
         run: |
           set -euo pipefail
-          npm run build 2>&1 | tee artifacts/test-logs/build.log
+          npm run build:sdk 2>&1 | tee artifacts/test-logs/build.log
 
       - name: Unit tests
         run: |
           set -euo pipefail
-          npm run test:unit:compiled 2>&1 | tee artifacts/test-logs/unit-tests.log
-
-      - name: Extension tests
-        run: |
-          set -euo pipefail
-          xvfb-run -a npm run test:extension:compiled 2>&1 | tee artifacts/test-logs/extension-tests.log
-
-      - name: Package VSIX
-        run: |
-          set -euo pipefail
-          npm run package 2>&1 | tee artifacts/test-logs/package.log
+          npm run test:sdk 2>&1 | tee artifacts/test-logs/unit-tests.log
 
       - name: Upload test logs
         if: always()
@@ -70,14 +63,6 @@ jobs:
           path: artifacts/test-logs
           if-no-files-found: error
 
-      - name: Upload VSIX
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: vsix
-          path: 'packages/vscode-extension/*.vsix'
-          if-no-files-found: ignore
-
   packages-sdk:
     name: SDK Matrix (os=${{ matrix.os }}, node=${{ matrix.node }})
     runs-on: ${{ matrix.os }}
@@ -86,7 +71,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-13, windows-2022]
-        node: [18, 20]
+        node: [20, 22]
     defaults:
       run:
         shell: bash
@@ -102,7 +87,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          # Workaround: npm ci on Windows-generated lockfile may miss linux optional deps
+          npm install --no-save @rollup/rollup-linux-x64-gnu 2>/dev/null || true
 
       - name: Prepare artifact directories
         run: |

@@ -6,7 +6,7 @@
   "license": "MIT",
   "hooks": {
     "SessionStart": "hooks/babysitter-session-start-hook.sh",
-    "SessionEnd": "hooks/babysitter-stop-hook.sh"
+    "Stop": "hooks/babysitter-stop-hook.sh"
   },
   "commands": [],
   "skills": [
@@ -39,5 +39,6 @@
     "quality-convergence",
     "agent",
     "LLM"
-  ]
+  ],
+  "sdkVersion": "0.0.171-staging.46a0801b"
 }

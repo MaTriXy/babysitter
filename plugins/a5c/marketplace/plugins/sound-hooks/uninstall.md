@@ -4,23 +4,44 @@ Time to go silent? No hard feelings. Here's how to cleanly remove Sound Hooks.
 
 ---
 
-## Step 1: Remove All Plugin Files
+## Step 1: Remove Claude Code Hooks
 
-Delete the sound hook scripts, downloaded sounds, configuration, and logs:
+Edit `.claude/settings.json` and remove all sound-hooks entries from the `hooks` object.
 
-```bash
-rm -rf .a5c/sound-hooks/
-```
+Remove any hook entries whose `command` contains `.claude/sound-hooks/` from these event arrays:
+- `SessionStart`
+- `Stop`
+- `PostToolUse`
+- `PostToolUseFailure`
+- `Notification`
+- `UserPromptSubmit`
 
-This removes:
-- `hooks/` -- all the shell scripts
-- `sounds/` -- all the downloaded mp3 files
-- `config.json` -- the plugin configuration
-- `hook-events.log` -- the event log (if it exists)
+If removing the sound-hooks entry leaves an event array empty, remove the entire event key. Preserve all other hook entries.
 
 ---
 
-## Step 2: Remove from Registry
+## Step 2: Remove Babysitter Hooks (if configured)
+
+If babysitter hooks were set up (the advanced option), remove any sound-hooks entries from `.a5c/hooks.json` or the babysitter hooks configuration.
+
+---
+
+## Step 3: Remove All Plugin Files
+
+Delete the sound hook scripts, downloaded sounds, and configuration:
+
+```bash
+rm -rf .claude/sound-hooks/
+```
+
+This removes:
+- `scripts/` -- the play script
+- `sounds/` -- all the downloaded mp3 files
+- `config.json` -- the plugin configuration
+
+---
+
+## Step 4: Remove from Registry
 
 Unregister the plugin from babysitter's plugin registry:
 
@@ -30,4 +51,4 @@ babysitter plugin:remove-from-registry --plugin-name sound-hooks --project --jso
 
 ---
 
-That's it. Two steps and the silence is deafening. If you ever want the sounds back, just reinstall -- your ears will thank you.
+That's it. Four steps and the silence is deafening. If you ever want the sounds back, just reinstall -- your ears will thank you.

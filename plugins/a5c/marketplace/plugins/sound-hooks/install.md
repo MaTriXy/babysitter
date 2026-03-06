@@ -1,6 +1,8 @@
 # Sound Hooks -- Install Instructions
 
-Welcome to **Sound Hooks** -- the plugin that gives your babysitter runs a soundtrack! Every lifecycle event gets its own audio cue, so you'll *hear* your code succeed (or fail) in real time.
+Welcome to **Sound Hooks** -- the plugin that gives your Claude Code sessions a soundtrack! Every lifecycle event gets its own audio cue, so you'll *hear* your code succeed (or fail) in real time.
+
+These are **Claude Code hooks** configured in `.claude/settings.json` -- they fire on Claude Code lifecycle events like tool use, session start, errors, and notifications.
 
 ---
 
@@ -28,6 +30,10 @@ Before we start downloading sounds, let's pick a vibe. Ask which sound theme the
    - The user provides their own `.mp3` files for each event
    - Skip the download step and just copy their files into place
 
+Also ask:
+- Which events should play sounds? (see event table in Step 4 -- recommend enabling session-start, stop, and tool-failure at minimum)
+- Should task-level sounds (PostToolUse) be enabled? (can get noisy -- disabled by default)
+
 ---
 
 ## Step 2: Create Directory Structure
@@ -35,12 +41,12 @@ Before we start downloading sounds, let's pick a vibe. Ask which sound theme the
 Set up the plugin's home:
 
 ```bash
-mkdir -p .a5c/sound-hooks/hooks
-mkdir -p .a5c/sound-hooks/sounds
+mkdir -p .claude/sound-hooks/scripts
+mkdir -p .claude/sound-hooks/sounds
 ```
 
 This gives us:
-- `hooks/` -- shell scripts that fire on each lifecycle event
+- `scripts/` -- the play script that handles cross-platform audio playback
 - `sounds/` -- the mp3 files that bring the noise
 
 ---
@@ -51,14 +57,14 @@ Based on the chosen theme, search the web for **royalty-free** or **Creative Com
 
 ### Sound Mapping by Event
 
-| Hook Event | What It Means | Suggested Search Keywords | Example Sounds |
+| Claude Code Event | What It Means | Suggested Search Keywords | Example Sounds |
 |---|---|---|---|
-| `on-run-start` | A new run is kicking off | "start sound effect", "engine ignition", "launch sound" | Coin insert, ignition rev, "engage!", rocket launch |
-| `on-run-complete` | Run finished successfully | "success fanfare", "victory sound", "celebration jingle" | Level complete, applause, triumphant brass, confetti pop |
-| `on-run-fail` | Run hit an error | "failure sound effect", "error buzzer", "game over" | Game over melody, sad trombone, buzzer, record scratch |
-| `on-task-start` | A task is being dispatched | "notification click", "subtle alert", "task start beep" | Soft click, digital beep, whoosh, keyboard tap |
-| `on-task-complete` | A task finished | "small success chime", "completion ding" | Ding, coin collect, gentle chime, checkbox tick |
-| `on-breakpoint` | Waiting for human input | "attention alert", "doorbell sound", "intercom buzz" | Doorbell ring, intercom beep, "your attention please" |
+| `SessionStart` | A new Claude Code session begins | "start sound effect", "engine ignition", "launch sound" | Coin insert, ignition rev, "engage!", rocket launch |
+| `Stop` | Claude finished responding / session idle | "success fanfare", "victory sound", "completion chime" | Level complete, gentle chime, triumphant brass, task done |
+| `PostToolUse` | A tool call completed successfully | "small success chime", "completion ding", "subtle click" | Ding, coin collect, gentle chime, checkbox tick |
+| `PostToolUseFailure` | A tool call failed | "failure sound effect", "error buzzer", "game over" | Game over melody, sad trombone, buzzer, record scratch |
+| `Notification` | Claude Code notification (rate limit, permission, etc.) | "attention alert", "doorbell sound", "intercom buzz" | Doorbell ring, intercom beep, "your attention please" |
+| `UserPromptSubmit` | User sent a message | "notification click", "subtle alert", "message sent" | Soft click, digital beep, whoosh, keyboard tap |
 
 ### Theme-Specific Search Tips
 
@@ -81,49 +87,31 @@ Search these sites for royalty-free sound effects:
 For each event, download the chosen mp3 to:
 
 ```
-.a5c/sound-hooks/sounds/on-run-start.mp3
-.a5c/sound-hooks/sounds/on-run-complete.mp3
-.a5c/sound-hooks/sounds/on-run-fail.mp3
-.a5c/sound-hooks/sounds/on-task-start.mp3
-.a5c/sound-hooks/sounds/on-task-complete.mp3
-.a5c/sound-hooks/sounds/on-breakpoint.mp3
+.claude/sound-hooks/sounds/session-start.mp3
+.claude/sound-hooks/sounds/stop.mp3
+.claude/sound-hooks/sounds/tool-success.mp3
+.claude/sound-hooks/sounds/tool-failure.mp3
+.claude/sound-hooks/sounds/notification.mp3
+.claude/sound-hooks/sounds/user-prompt.mp3
 ```
 
-If a download fails or a suitable sound can't be found, note the missing sound in `config.json` (set that event's sound path to `null`) and continue with the rest. A missing sound file won't break anything -- the hook script will simply skip playback for that event.
+If a download fails or a suitable sound can't be found, note the missing sound in `config.json` (set that event's `enabled` to `false`) and continue with the rest. A missing sound file won't break anything -- the play script silently skips missing files.
 
 ---
 
-## Step 4: Create Hook Scripts
+## Step 4: Create the Play Script
 
-For each event, create a shell script that plays the corresponding sound. These scripts are designed to work cross-platform.
-
-Create the following scripts in `.a5c/sound-hooks/hooks/`:
-
-### Template for each hook script
-
-For each event (`on-run-start`, `on-run-complete`, `on-run-fail`, `on-task-start`, `on-task-complete`, `on-breakpoint`), create `.a5c/sound-hooks/hooks/<event>.sh`:
+Create `.claude/sound-hooks/scripts/play.sh`:
 
 ```bash
 #!/bin/bash
-# Sound Hooks -- <event> handler
-# Plays a sound effect when this lifecycle event fires.
+# Sound Hooks -- play a sound effect for a Claude Code event
+# Usage: play.sh <sound-file>
+#
+# Plays the sound in the background (non-blocking) using whatever
+# audio player is available on the system.
 
-SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-CONFIG="$SCRIPT_DIR/config.json"
-SOUND="$SCRIPT_DIR/sounds/<event>.mp3"
-LOG="$SCRIPT_DIR/hook-events.log"
-
-# Check if this event is enabled in config
-ENABLED=$(node -e "const c=JSON.parse(require('fs').readFileSync('$CONFIG','utf8'));console.log(c.events['<event>']||false)")
-if [ "$ENABLED" != "true" ]; then
-  exit 0
-fi
-
-# Log the event (if log file is configured)
-LOG_ENABLED=$(node -e "const c=JSON.parse(require('fs').readFileSync('$CONFIG','utf8'));console.log(c.logFile!==null)")
-if [ "$LOG_ENABLED" = "true" ]; then
-  echo "<event> $(date -Iseconds)" >> "$LOG"
-fi
+SOUND="$1"
 
 # Check that the sound file exists
 if [ ! -f "$SOUND" ]; then
@@ -147,69 +135,183 @@ elif command -v powershell.exe &>/dev/null; then
   # Windows (WSL or Git Bash)
   powershell.exe -c "(New-Object Media.SoundPlayer '$SOUND').PlaySync()" &
 fi
+
+exit 0
 ```
 
-Replace `<event>` with the actual event name in each script.
-
-Make all scripts executable:
+Make it executable:
 
 ```bash
-chmod +x .a5c/sound-hooks/hooks/*.sh
+chmod +x .claude/sound-hooks/scripts/play.sh
 ```
 
 ---
 
 ## Step 5: Create Configuration
 
-Write the configuration file at `.a5c/sound-hooks/config.json`:
+Write the configuration file at `.claude/sound-hooks/config.json`:
 
 ```json
 {
   "version": "1.0.0",
   "theme": "<selected-theme>",
-  "volume": 75,
   "events": {
-    "on-run-start": true,
-    "on-run-complete": true,
-    "on-run-fail": true,
-    "on-task-start": false,
-    "on-task-complete": false,
-    "on-breakpoint": true
-  },
-  "logFile": ".a5c/sound-hooks/hook-events.log",
-  "soundFiles": {
-    "on-run-start": "sounds/on-run-start.mp3",
-    "on-run-complete": "sounds/on-run-complete.mp3",
-    "on-run-fail": "sounds/on-run-fail.mp3",
-    "on-task-start": "sounds/on-task-start.mp3",
-    "on-task-complete": "sounds/on-task-complete.mp3",
-    "on-breakpoint": "sounds/on-breakpoint.mp3"
+    "SessionStart": { "enabled": true, "sound": "sounds/session-start.mp3" },
+    "Stop": { "enabled": true, "sound": "sounds/stop.mp3" },
+    "PostToolUse": { "enabled": false, "sound": "sounds/tool-success.mp3" },
+    "PostToolUseFailure": { "enabled": true, "sound": "sounds/tool-failure.mp3" },
+    "Notification": { "enabled": true, "sound": "sounds/notification.mp3" },
+    "UserPromptSubmit": { "enabled": false, "sound": "sounds/user-prompt.mp3" }
   }
 }
 ```
 
 Replace `<selected-theme>` with the theme chosen in Step 1 (e.g., `"tv-shows"`, `"movies"`, `"video-games"`, `"sci-fi"`, or `"custom"`).
 
-**Note on the defaults**: `on-task-start` and `on-task-complete` are disabled by default because they fire frequently and can get noisy fast. Enable them if you enjoy living on the edge of audio chaos.
+**Note on the defaults**: `PostToolUse` and `UserPromptSubmit` are disabled by default because they fire frequently and can get noisy fast. Enable them if you enjoy living on the edge of audio chaos.
 
 ---
 
-## Step 6: Register Plugin
+## Step 6: Configure Claude Code Hooks
+
+Add hooks to the project's `.claude/settings.json`. Read the existing file first, then merge these hook entries into the `hooks` object.
+
+The play script path is relative to the project root. Each hook calls the play script with the appropriate sound file:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/session-start.mp3"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/stop.mp3"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/tool-failure.mp3"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/notification.mp3"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Important**: When merging into existing settings.json:
+- If `hooks` already exists, add these entries to the existing hook arrays (don't overwrite)
+- If any of these hook event arrays already have entries, append to them
+- Preserve all existing hooks and settings
+- Only add hook entries for events the user chose to enable in Step 1
+
+Optionally, if the user enabled `PostToolUse` or `UserPromptSubmit`, add those too:
+
+```json
+"PostToolUse": [
+  {
+    "matcher": ".*",
+    "hooks": [
+      {
+        "type": "command",
+        "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/tool-success.mp3"
+      }
+    ]
+  }
+],
+"UserPromptSubmit": [
+  {
+    "matcher": "",
+    "hooks": [
+      {
+        "type": "command",
+        "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/user-prompt.mp3"
+      }
+    ]
+  }
+]
+```
+
+---
+
+## Step 7: Register Plugin
 
 Register the plugin with babysitter so it knows sound-hooks is installed:
 
 ```bash
-babysitter plugin:update-registry --plugin-name sound-hooks --plugin-version 1.0.0 --marketplace-name marketplace --project --json
+babysitter plugin:update-registry --plugin-name sound-hooks --plugin-version 1.0.0 --marketplace-name babysitter --project --json
 ```
 
 ---
 
-## You're All Set!
+## Step 8: Verify
 
-Your babysitter runs now have a soundtrack. Start a run and listen for the magic:
+Test the setup by playing a sound manually:
 
 ```bash
-babysitter run:create --process my-process
+bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/session-start.mp3
 ```
 
-Hear that? That's the sweet sound of automation.
+If you hear the sound, you're all set. If not, check that an audio player is available on your system (`afplay`, `paplay`, `mpg123`, or `powershell.exe`).
+
+---
+
+## Advanced: Babysitter Hooks Integration
+
+If you also want sounds on babysitter-specific lifecycle events (run start, run complete, run fail, task dispatch, breakpoints), you can additionally configure babysitter hooks. This is separate from the Claude Code hooks above and only applies when running babysitter orchestration.
+
+Create additional sound files:
+
+```
+.claude/sound-hooks/sounds/on-run-start.mp3
+.claude/sound-hooks/sounds/on-run-complete.mp3
+.claude/sound-hooks/sounds/on-run-fail.mp3
+.claude/sound-hooks/sounds/on-task-start.mp3
+.claude/sound-hooks/sounds/on-task-complete.mp3
+.claude/sound-hooks/sounds/on-breakpoint.mp3
+```
+
+Then register babysitter hooks by adding to your project's `.a5c/hooks.json` or via the babysitter hooks configuration. Each hook calls the same play script:
+
+```json
+{
+  "on-run-start": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-run-start.mp3",
+  "on-run-complete": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-run-complete.mp3",
+  "on-run-fail": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-run-fail.mp3",
+  "on-task-start": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-task-start.mp3",
+  "on-task-complete": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-task-complete.mp3",
+  "on-breakpoint": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/on-breakpoint.mp3"
+}
+```
+
+This is entirely optional and only needed if you want audio feedback on babysitter orchestration events specifically.

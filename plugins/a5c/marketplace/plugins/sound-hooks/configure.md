@@ -2,13 +2,13 @@
 
 Sound Hooks is highly configurable. Whether you want to swap themes, fine-tune which events trigger sounds, or drop in your own custom audio, this guide has you covered.
 
-All configuration lives in `.a5c/sound-hooks/config.json`.
+All configuration lives in `.claude/sound-hooks/config.json`. Hook entries live in `.claude/settings.json`.
 
 ---
 
 ## 1. Change Theme
 
-Want to switch from Video Games to Sci-Fi? Or maybe Movies are more your style now? Here's how:
+Want to switch from Video Games to Sci-Fi? Here's how:
 
 1. Ask the user which new theme they'd like:
    - **TV Shows** -- laugh tracks, dramatic stings, applause
@@ -19,14 +19,14 @@ Want to switch from Video Games to Sci-Fi? Or maybe Movies are more your style n
 
 2. Search the web for new royalty-free mp3 sound effects matching the new theme (see the sound mapping table in `install.md` for search keywords per event).
 
-3. Download each new mp3 to `.a5c/sound-hooks/sounds/`, replacing the existing files:
+3. Download each new mp3 to `.claude/sound-hooks/sounds/`, replacing the existing files:
    ```
-   .a5c/sound-hooks/sounds/on-run-start.mp3
-   .a5c/sound-hooks/sounds/on-run-complete.mp3
-   .a5c/sound-hooks/sounds/on-run-fail.mp3
-   .a5c/sound-hooks/sounds/on-task-start.mp3
-   .a5c/sound-hooks/sounds/on-task-complete.mp3
-   .a5c/sound-hooks/sounds/on-breakpoint.mp3
+   .claude/sound-hooks/sounds/session-start.mp3
+   .claude/sound-hooks/sounds/stop.mp3
+   .claude/sound-hooks/sounds/tool-success.mp3
+   .claude/sound-hooks/sounds/tool-failure.mp3
+   .claude/sound-hooks/sounds/notification.mp3
+   .claude/sound-hooks/sounds/user-prompt.mp3
    ```
 
 4. Update the `"theme"` field in `config.json` to reflect the new choice:
@@ -38,47 +38,75 @@ Want to switch from Video Games to Sci-Fi? Or maybe Movies are more your style n
 
 ---
 
-## 2. Adjust Volume
+## 2. Toggle Events
 
-Edit the `"volume"` field in `.a5c/sound-hooks/config.json`:
+Control which Claude Code events trigger sounds by editing `config.json` and `.claude/settings.json`.
 
-```json
-{
-  "volume": 50
-}
-```
+### Enable an event
 
-Valid range: `0` (muted) to `100` (full blast).
+1. Set `enabled` to `true` in `config.json`:
+   ```json
+   {
+     "events": {
+       "PostToolUse": { "enabled": true, "sound": "sounds/tool-success.mp3" }
+     }
+   }
+   ```
 
-**Important caveat**: Actual volume control depends on the playback command available on your system. Not all audio players support volume flags via CLI. The volume value is stored for reference and for players that support it. If your sounds are too loud or too quiet, consider normalizing the mp3 files themselves using a tool like `ffmpeg`:
+2. Add the corresponding hook entry to `.claude/settings.json` (if not already present):
+   ```json
+   "PostToolUse": [
+     {
+       "matcher": ".*",
+       "hooks": [
+         {
+           "type": "command",
+           "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/tool-success.mp3"
+         }
+       ]
+     }
+   ]
+   ```
 
-```bash
-ffmpeg -i input.mp3 -filter:a "volume=0.5" output.mp3
-```
+### Disable an event
+
+1. Set `enabled` to `false` in `config.json`.
+2. Remove or comment out the corresponding hook entry from `.claude/settings.json`.
+
+### Available events
+
+| Event | Default | Notes |
+|-------|---------|-------|
+| `SessionStart` | enabled | Plays when a new Claude Code session begins |
+| `Stop` | enabled | Plays when Claude finishes responding |
+| `PostToolUse` | disabled | Plays after every successful tool call -- can be noisy |
+| `PostToolUseFailure` | enabled | Plays when a tool call fails |
+| `Notification` | enabled | Plays on Claude Code notifications |
+| `UserPromptSubmit` | disabled | Plays when user sends a message |
+
+**Pro tip**: If you're working on a fast-paced session with many tool calls, keep `PostToolUse` disabled unless you enjoy a relentless barrage of dings.
 
 ---
 
-## 3. Toggle Events
+## 3. Filter by Tool (PostToolUse)
 
-Control which lifecycle events trigger sounds by editing the `"events"` object in `config.json`:
+You can play sounds only for specific tools by changing the `matcher` in `.claude/settings.json`:
 
 ```json
-{
-  "events": {
-    "on-run-start": true,
-    "on-run-complete": true,
-    "on-run-fail": true,
-    "on-task-start": false,
-    "on-task-complete": false,
-    "on-breakpoint": true
+"PostToolUse": [
+  {
+    "matcher": "Edit|Write",
+    "hooks": [
+      {
+        "type": "command",
+        "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/tool-success.mp3"
+      }
+    ]
   }
-}
+]
 ```
 
-- Set to `true` to enable a sound for that event.
-- Set to `false` to silence it.
-
-**Pro tip**: If you're running tasks in a tight loop, keep `on-task-start` and `on-task-complete` disabled unless you enjoy a relentless barrage of beeps and dings. They're great for slower, deliberate workflows though.
+This only plays the sound when `Edit` or `Write` tools complete, ignoring `Read`, `Glob`, `Grep`, etc.
 
 ---
 
@@ -86,75 +114,47 @@ Control which lifecycle events trigger sounds by editing the `"events"` object i
 
 Want to use your own audio files? Just drop them in:
 
-1. Place your mp3 file in `.a5c/sound-hooks/sounds/`.
-2. If using a different filename than the default (`<event>.mp3`), update the `"soundFiles"` mapping in `config.json`:
+1. Place your mp3 file in `.claude/sound-hooks/sounds/`.
+2. If using a different filename, update the `"sound"` path in `config.json` and the corresponding command in `.claude/settings.json`:
 
-```json
-{
-  "soundFiles": {
-    "on-run-start": "sounds/my-custom-startup.mp3",
-    "on-run-complete": "sounds/victory-dance.mp3",
-    "on-run-fail": "sounds/sad-violin.mp3",
-    "on-task-start": "sounds/on-task-start.mp3",
-    "on-task-complete": "sounds/on-task-complete.mp3",
-    "on-breakpoint": "sounds/attention-please.mp3"
-  }
-}
-```
+   ```json
+   {
+     "events": {
+       "PostToolUseFailure": { "enabled": true, "sound": "sounds/sad-violin.mp3" }
+     }
+   }
+   ```
 
-All paths are relative to the `.a5c/sound-hooks/` directory.
+   And in `.claude/settings.json`:
+   ```json
+   "command": "bash .claude/sound-hooks/scripts/play.sh .claude/sound-hooks/sounds/sad-violin.mp3"
+   ```
 
-**Tip**: Keep sound files short (under 5 seconds). Long audio clips will overlap with subsequent events and create a wall of noise nobody asked for.
+**Tip**: Keep sound files short (under 5 seconds). Long audio clips will overlap with subsequent events.
 
 ---
 
 ## 5. Replace Individual Sounds
 
-Don't want to change the whole theme, just one sound? No problem:
+Don't want to change the whole theme, just one sound?
 
 1. Search the web for a new royalty-free mp3 for the specific event (see the search keyword suggestions in `install.md`).
-2. Download it and save it to `.a5c/sound-hooks/sounds/<event>.mp3`, replacing the existing file.
-3. That's it -- the hook script will pick up the new file on the next event.
-
-For example, to replace just the failure sound:
-
-```bash
-# Download a new failure sound (example URL)
-curl -L -o .a5c/sound-hooks/sounds/on-run-fail.mp3 "https://example.com/sad-trombone.mp3"
-```
+2. Download it and save it to `.claude/sound-hooks/sounds/<name>.mp3`, replacing the existing file.
+3. That's it -- the play script picks up the new file on the next event.
 
 No config changes needed if you keep the same filename.
 
 ---
 
-## 6. Log File
+## 6. Temporarily Disable All Sounds
 
-Sound Hooks logs every event it handles to a log file. Configure this via the `"logFile"` field:
+To silence everything without uninstalling, remove or comment out all sound-hooks entries from the `hooks` object in `.claude/settings.json`. Re-add them to re-enable (see install.md Step 6 for the hook configuration).
 
-```json
-{
-  "logFile": ".a5c/sound-hooks/hook-events.log"
-}
-```
+---
 
-**Options**:
-- Set a path (relative to project root) to log events with timestamps.
-- Set to `null` to disable logging entirely:
-  ```json
-  {
-    "logFile": null
-  }
-  ```
+## 7. Advanced: Add Babysitter Hooks
 
-The log format is one line per event:
-```
-on-run-start 2026-03-06T14:30:00+00:00
-on-task-start 2026-03-06T14:30:01+00:00
-on-task-complete 2026-03-06T14:30:05+00:00
-on-run-complete 2026-03-06T14:30:06+00:00
-```
-
-Useful for debugging which events are firing and when, or for building your own analytics on top.
+If you want sounds on babysitter-specific orchestration events (run start/complete/fail, task dispatch, breakpoints) in addition to the Claude Code hooks, see the "Advanced: Babysitter Hooks Integration" section at the bottom of `install.md`.
 
 ---
 
@@ -166,23 +166,13 @@ Here's the complete `config.json` with all fields:
 {
   "version": "1.0.0",
   "theme": "video-games",
-  "volume": 75,
   "events": {
-    "on-run-start": true,
-    "on-run-complete": true,
-    "on-run-fail": true,
-    "on-task-start": false,
-    "on-task-complete": false,
-    "on-breakpoint": true
-  },
-  "logFile": ".a5c/sound-hooks/hook-events.log",
-  "soundFiles": {
-    "on-run-start": "sounds/on-run-start.mp3",
-    "on-run-complete": "sounds/on-run-complete.mp3",
-    "on-run-fail": "sounds/on-run-fail.mp3",
-    "on-task-start": "sounds/on-task-start.mp3",
-    "on-task-complete": "sounds/on-task-complete.mp3",
-    "on-breakpoint": "sounds/on-breakpoint.mp3"
+    "SessionStart": { "enabled": true, "sound": "sounds/session-start.mp3" },
+    "Stop": { "enabled": true, "sound": "sounds/stop.mp3" },
+    "PostToolUse": { "enabled": false, "sound": "sounds/tool-success.mp3" },
+    "PostToolUseFailure": { "enabled": true, "sound": "sounds/tool-failure.mp3" },
+    "Notification": { "enabled": true, "sound": "sounds/notification.mp3" },
+    "UserPromptSubmit": { "enabled": false, "sound": "sounds/user-prompt.mp3" }
   }
 }
 ```

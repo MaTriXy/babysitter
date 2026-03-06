@@ -15,11 +15,11 @@
     },
     "sound-hooks": {
       "name": "sound-hooks",
-      "description": "Play sound effects on babysitter hook events — searches and downloads themed mp3 files for run start, complete, fail, and task events",
+      "description": "Play sound effects on Claude Code lifecycle events via hooks in .claude/settings.json — searches and downloads themed mp3 files for session start, tool use, errors, and notifications. Optional babysitter hooks integration.",
       "latestVersion": "1.0.0",
       "versions": ["1.0.0"],
       "packagePath": "plugins/sound-hooks",
-      "tags": ["hooks", "sound", "notifications", "ux"],
+      "tags": ["hooks", "sound", "notifications", "ux", "claude-code"],
       "author": "a5c-ai"
     },
     "github-actions-cicd": {

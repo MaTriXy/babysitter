@@ -40,6 +40,7 @@ import { handleCompressionStatus } from "./commands/compressionStatus";
 import { handleCompressionToggle } from "./commands/compressionToggle";
 import { handleCompressionReset } from "./commands/compressionReset";
 import { handleCompressionSet } from "./commands/compressionSet";
+import { handleCompressOutput } from "./commands/compressOutput";
 import { resolveCompletionProof } from "./completionProof";
 import { getAdapter, getAdapterByName } from "../harness";
 import type { SessionBindResult } from "../harness";
@@ -74,7 +75,8 @@ const USAGE = `Usage:
   babysitter session:iteration-message --iteration <n> [--run-id <id>] [--runs-dir <dir>] [--plugin-root <dir>] [--json]
   babysitter skill:discover --plugin-root <dir> [--run-id <id>] [--cache-ttl <seconds>] [--runs-dir <dir>] [--include-remote] [--summary-only] [--process-path <path>] [--json]
   babysitter hook:log --hook-type <type> --log-file <path> [--json]
-  babysitter hook:run --hook-type <stop|session-start|user-prompt-submit> [--harness <claude-code>] [--plugin-root <dir>] [--state-dir <dir>] [--runs-dir <dir>] [--json] [--verbose]
+  babysitter hook:run --hook-type <stop|session-start|user-prompt-submit|pre-tool-use> [--harness <claude-code>] [--plugin-root <dir>] [--state-dir <dir>] [--runs-dir <dir>] [--json] [--verbose]
+  babysitter compress-output <command and args...>
   babysitter skill:fetch-remote --source-type <github|well-known> --url <url> [--json]
   babysitter profile:read --user|--project [--dir <dir>] [--json]
   babysitter profile:write --user|--project --input <file> [--dir <dir>] [--json]
@@ -106,6 +108,8 @@ interface ParsedArgs {
   verbose: boolean;
   helpRequested: boolean;
   pendingOnly: boolean;
+  // compress-output command args
+  compressOutputArgs?: string[];
   // compression command args
   compressionLayer?: string;
   compressionToggleValue?: boolean;
@@ -508,6 +512,8 @@ function parseArgs(argv: string[]): ParsedArgs {
     const [key, value] = positionals;
     parsed.compressionSetKey = key;
     parsed.compressionSetValue = value;
+  } else if (parsed.command === "compress-output") {
+    parsed.compressOutputArgs = positionals;
   }
   return parsed;
 }
@@ -1996,6 +2002,7 @@ const VALID_COMMANDS = [
   "compression:toggle",
   "compression:set",
   "compression:reset",
+  "compress-output",
   "version",
 ];
 
@@ -2317,6 +2324,9 @@ export function createBabysitterCli() {
         }
         if (parsed.command === "compression:reset") {
           return await handleCompressionReset({ json: parsed.json });
+        }
+        if (parsed.command === "compress-output") {
+          return await handleCompressOutput({ args: parsed.compressOutputArgs ?? [] });
         }
 
         // This should not be reached due to the VALID_COMMANDS check above

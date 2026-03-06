@@ -202,6 +202,8 @@ This project is licensed under the **MIT License**. See [LICENSE.md](https://git
 
 Babysitter includes a 4-layer token compression subsystem (built into `packages/sdk/`) that reduces context window usage by 50–67% on real sessions while maintaining 99% fact retention.
 
+All compression hooks are **automatically registered** by the babysitter plugin — no manual `settings.json` configuration needed. Install the plugin and compression is active.
+
 ### How It Works
 
 | Layer | Hook | Engine | Content | Reduction |

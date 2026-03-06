@@ -84,7 +84,7 @@ function printTable(masterEnabled: boolean, rows: LayerRow[]): void {
   console.log('');
 }
 
-export async function handleCompressionStatus(opts: CompressionStatusOptions): Promise<number> {
+export function handleCompressionStatus(opts: CompressionStatusOptions): number {
   const projectDir = resolveProjectDir(opts.cwd);
 
   let config: CompressionConfig;

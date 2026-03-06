@@ -131,6 +131,8 @@ interface ParsedArgs {
   verbose: boolean;
   helpRequested: boolean;
   pendingOnly: boolean;
+  // compress-output command args
+  compressOutputArgs?: string[];
   // compression command args
   compressionLayer?: string;
   compressionToggleValue?: boolean;
@@ -581,6 +583,8 @@ function parseArgs(argv: string[]): ParsedArgs {
     const [key, value] = positionals;
     parsed.compressionSetKey = key;
     parsed.compressionSetValue = value;
+  } else if (parsed.command === "compress-output") {
+    parsed.compressOutputArgs = positionals;
   }
   return parsed;
 }
@@ -2079,6 +2083,7 @@ const VALID_COMMANDS = [
   "compression:toggle",
   "compression:set",
   "compression:reset",
+  "compress-output",
   "version",
 ];
 
@@ -2413,7 +2418,7 @@ export function createBabysitterCli() {
         }
         // Compression commands
         if (parsed.command === "compression:status") {
-          return await handleCompressionStatus({ json: parsed.json });
+          return handleCompressionStatus({ json: parsed.json });
         }
         if (parsed.command === "compression:toggle") {
           if (!parsed.compressionLayer) {
@@ -2446,6 +2451,9 @@ export function createBabysitterCli() {
         }
         if (parsed.command === "compression:reset") {
           return await handleCompressionReset({ json: parsed.json });
+        }
+        if (parsed.command === "compress-output") {
+          return handleCompressOutput({ args: parsed.compressOutputArgs ?? [] });
         }
 
         // This should not be reached due to the VALID_COMMANDS check above

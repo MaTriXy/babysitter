@@ -63,7 +63,7 @@ function deepMerge<T>(base: T, override: Partial<T>): T {
       typeof baseVal === 'object' &&
       !Array.isArray(baseVal)
     ) {
-      result[key] = deepMerge(baseVal, overrideVal as Partial<typeof baseVal>);
+      result[key] = deepMerge(baseVal, overrideVal);
     } else if (overrideVal !== undefined) {
       result[key] = overrideVal;
     }

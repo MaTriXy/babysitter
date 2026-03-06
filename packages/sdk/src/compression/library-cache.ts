@@ -99,7 +99,7 @@ export function findLibraryFiles(rootDir: string): string[] {
     if (depth > 6) return;
     let names: string[];
     try {
-      names = readdirSync(dir) as string[];
+      names = readdirSync(dir);
     } catch {
       return;
     }

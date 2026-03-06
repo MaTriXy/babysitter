@@ -32,7 +32,7 @@ type CommandFamily = "git" | "ls" | "grep" | "diff" | "read" | "unknown";
 type GitSubcommand =
   | "diff" | "log" | "status" | "show" | "add" | "commit"
   | "push" | "pull" | "branch" | "fetch" | "stash" | "worktree" | "unknown";
-type FilterLevel = "none" | "minimal" | "aggressive";
+type _FilterLevel = "none" | "minimal" | "aggressive";
 type Language =
   | "rust" | "python" | "javascript" | "typescript" | "go"
   | "c" | "cpp" | "java" | "ruby" | "shell" | "unknown";
@@ -372,7 +372,7 @@ function compressCommandOutput(cmdStr: string, rawOutput: string): string {
 // Handler
 // ---------------------------------------------------------------------------
 
-export async function handleCompressOutput(opts: CompressOutputOptions): Promise<number> {
+export function handleCompressOutput(opts: CompressOutputOptions): number {
   const { args, timeout = 30_000 } = opts;
 
   if (args.length === 0) {
@@ -382,7 +382,7 @@ export async function handleCompressOutput(opts: CompressOutputOptions): Promise
 
   const [bin, ...cmdArgs] = args;
 
-  const result = spawnSync(bin!, cmdArgs, {
+  const result = spawnSync(bin, cmdArgs, {
     encoding: "buffer",
     timeout,
     maxBuffer: 10 * 1024 * 1024,

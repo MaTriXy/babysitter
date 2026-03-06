@@ -51,35 +51,29 @@ async function handleUserPromptSubmit(): Promise<number> {
     return 0;
   }
 
-  const config = loadCompressionConfig(process.cwd());
-  const layer = config.layers.userPromptHook;
-
-  if (!config.enabled || !layer.enabled) {
-    process.stdout.write(raw);
-    return 0;
-  }
-
   let payload: Record<string, unknown>;
   try {
     payload = JSON.parse(raw) as Record<string, unknown>;
   } catch {
+    // Not valid JSON — pass through unchanged
     process.stdout.write(raw);
     return 0;
   }
 
-  const prompt = payload.prompt;
-  if (typeof prompt !== "string") {
-    process.stdout.write(JSON.stringify(payload));
-    return 0;
+  // Apply compression only if enabled; if disabled, falls through and outputs original payload
+  const config = loadCompressionConfig(process.cwd());
+  const layer = config.layers.userPromptHook;
+
+  if (config.enabled && layer.enabled) {
+    const prompt = payload.prompt;
+    if (typeof prompt === "string") {
+      const tokenCount = estimateTokens(prompt);
+      if (tokenCount > layer.threshold) {
+        payload.prompt = densityFilterText(prompt, 1 - layer.keepRatio);
+      }
+    }
   }
 
-  const tokenCount = estimateTokens(prompt);
-  if (tokenCount <= layer.threshold) {
-    process.stdout.write(JSON.stringify(payload));
-    return 0;
-  }
-
-  payload.prompt = densityFilterText(prompt, 1 - layer.keepRatio);
   process.stdout.write(JSON.stringify(payload));
   return 0;
 }
@@ -178,9 +172,12 @@ export async function handleHookRun(args: HookRunCommandArgs): Promise<number> {
     return 1;
   }
 
-  // user-prompt-submit is harness-agnostic — handle before adapter lookup
+  // harness-agnostic hook types — handle before adapter lookup
   if (hookType === "user-prompt-submit") {
     return await handleUserPromptSubmit();
+  }
+  if (hookType === "pre-tool-use") {
+    return await handlePreToolUse();
   }
 
   const adapter = getAdapterByName(harness);

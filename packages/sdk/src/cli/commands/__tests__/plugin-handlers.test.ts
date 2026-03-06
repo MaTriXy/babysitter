@@ -219,6 +219,8 @@ describe("handlePluginAddMarketplace success path", () => {
     expect(mockedCloneMarketplace).toHaveBeenCalledWith(
       "https://github.com/org/my-mp.git",
       "global",
+      undefined,
+      undefined,
       undefined
     );
     const output = JSON.parse(logSpy.mock.calls[0][0] as string);

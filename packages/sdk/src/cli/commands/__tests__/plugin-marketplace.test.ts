@@ -109,6 +109,8 @@ describe("marketplace CLI command handlers", () => {
       expect(mockedClone).toHaveBeenCalledWith(
         "https://github.com/example/marketplace",
         "global",
+        undefined,
+        undefined,
         undefined
       );
       expect(logSpy).toHaveBeenCalledWith(
@@ -129,7 +131,9 @@ describe("marketplace CLI command handlers", () => {
       expect(mockedClone).toHaveBeenCalledWith(
         "https://github.com/example/marketplace",
         "project",
-        process.cwd()
+        process.cwd(),
+        undefined,
+        undefined
       );
     });
 

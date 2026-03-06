@@ -1,5 +1,5 @@
 ---
-description: manage babysitter plugins. use this command to see the list of installed babysitter plugins, their status, and manage them (install, update, uninstall, list from marketplace, add marketplace, configure plugin, etc).
+description: manage babysitter plugins. use this command to see the list of installed babysitter plugins, their status, and manage them (install, update, uninstall, list from marketplace, add marketplace, configure plugin, create new plugin, etc).
 argument-hint: Specific instructions for the run.
 ---
 
@@ -131,6 +131,73 @@ babysitter plugin:remove-from-registry --plugin-name <name> --scope global|proje
 ```
 
 Removes a plugin entry from the registry. Returns error if the plugin is not present.
+
+## Plugin Creation
+
+To create a new plugin package from scratch, use the `meta/plugin-creation` babysitter process. This process guides you through requirements analysis, structure design, instruction authoring, optional process file generation, validation, and marketplace integration.
+
+### Using the plugin creation process
+
+Orchestrate a babysitter run with the plugin creation process:
+
+```bash
+# Create inputs file
+cat > /tmp/plugin-inputs.json << 'EOF'
+{
+  "pluginName": "my-plugin",
+  "description": "What the plugin does — be specific about install/configure/uninstall behavior",
+  "scope": "project",
+  "outputDir": "./plugins",
+  "components": {
+    "installProcess": false,
+    "configureProcess": false,
+    "uninstallProcess": false,
+    "migrations": false,
+    "processFiles": false
+  },
+  "marketplace": {
+    "name": "my-marketplace",
+    "author": "my-org",
+    "tags": ["category1", "category2"]
+  }
+}
+EOF
+
+# Create and run
+babysitter run:create \
+  --process-id meta/plugin-creation \
+  --entry plugins/babysitter/skills/babysit/process/specializations/meta/plugin-creation.js#process \
+  --inputs /tmp/plugin-inputs.json \
+  --prompt "Create a new babysitter plugin package" \
+  --json
+```
+
+### What the process generates
+
+The process creates a complete plugin package directory:
+
+| File | Description |
+|------|-------------|
+| `install.md` | Agent-readable installation instructions with numbered steps |
+| `uninstall.md` | Reversal instructions for clean removal |
+| `configure.md` | Configuration options table and adjustment instructions |
+| `install-process.js` | *(optional)* Automated babysitter process for complex install steps |
+| `configure-process.js` | *(optional)* Automated configuration process |
+| `process/main.js` | *(optional)* Main process the plugin contributes |
+| `marketplace-entry.json` | Ready-to-use marketplace.json entry for publishing |
+
+### Process phases
+
+1. **Requirements Analysis** — Analyzes plugin purpose, prerequisites, config options, file structure
+2. **Structure Design** — Plans directory layout and file inventory (with review breakpoint)
+3. **Instruction Authoring** — Writes install.md, uninstall.md, configure.md
+4. **Process Files** — Creates optional babysitter process files (install-process.js, configure-process.js, process/main.js)
+5. **Validation** — Verifies package completeness, instruction quality, path correctness
+6. **Marketplace Integration** — Generates marketplace.json entry for publishing
+
+### Quick creation (without orchestration)
+
+For simple plugins that only need instruction files, you can create the package manually following the structure below and the [Plugin Author Guide](docs/plugins/plugin-author-guide.md).
 
 ## Plugin Package Structure
 

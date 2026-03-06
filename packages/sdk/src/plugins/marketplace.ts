@@ -15,6 +15,7 @@ import {
   MarketplacePluginEntry,
   PluginScope,
   MARKETPLACE_MANIFEST_FILENAME,
+  MANIFEST_PATH_FILENAME,
   isNodeError,
 } from "./types";
 
@@ -51,12 +52,16 @@ export function deriveMarketplaceName(url: string): string {
  * @param url - Git remote URL of the marketplace
  * @param scope - Whether to clone into global or project marketplaces dir
  * @param projectDir - Required when scope is 'project'
+ * @param manifestPath - Optional relative path to marketplace.json within the repo
+ * @param branch - Optional git branch/tag/ref to clone (defaults to the repo's default branch)
  * @returns The directory the marketplace was cloned into
  */
 export async function cloneMarketplace(
   url: string,
   scope: PluginScope,
-  projectDir?: string
+  projectDir?: string,
+  manifestPath?: string,
+  branch?: string
 ): Promise<string> {
   const name = deriveMarketplaceName(url);
   const marketplacesDir = getMarketplacesDir(scope, projectDir);
@@ -79,11 +84,25 @@ export async function cloneMarketplace(
   }
 
   try {
-    await execFile("git", ["clone", "--depth", "1", url, targetDir]);
+    const cloneArgs = ["clone", "--depth", "1"];
+    if (branch) {
+      cloneArgs.push("--branch", branch);
+    }
+    cloneArgs.push(url, targetDir);
+    await execFile("git", cloneArgs);
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : String(error);
     throw new Error(
       `Failed to clone marketplace from ${url}: ${message}`
+    );
+  }
+
+  // Store custom manifest path if provided
+  if (manifestPath) {
+    await fs.writeFile(
+      path.join(targetDir, MANIFEST_PATH_FILENAME),
+      manifestPath.replace(/\\/g, "/"),
+      "utf8"
     );
   }
 
@@ -123,7 +142,167 @@ export async function updateMarketplace(
 }
 
 /**
- * Reads and parses the marketplace manifest (marketplace.json) from a cloned marketplace.
+ * Resolves the marketplace manifest path within a cloned marketplace directory.
+ *
+ * Search order:
+ * 1. Custom path stored in .babysitter-manifest-path
+ * 2. Root marketplace.json
+ * 3. .claude-plugin/marketplace.json
+ */
+async function resolveManifestPath(dir: string): Promise<string> {
+  // 1. Check for stored custom path
+  try {
+    const customPath = (
+      await fs.readFile(path.join(dir, MANIFEST_PATH_FILENAME), "utf8")
+    ).trim();
+    const resolved = path.join(dir, customPath);
+    await fs.access(resolved);
+    return resolved;
+  } catch {
+    // No custom path or file not found at custom path
+  }
+
+  // 2. Check root marketplace.json
+  const rootManifest = path.join(dir, MARKETPLACE_MANIFEST_FILENAME);
+  try {
+    await fs.access(rootManifest);
+    return rootManifest;
+  } catch {
+    // Not at root
+  }
+
+  // 3. Check .claude-plugin/marketplace.json
+  const claudePluginManifest = path.join(
+    dir,
+    ".claude-plugin",
+    MARKETPLACE_MANIFEST_FILENAME
+  );
+  try {
+    await fs.access(claudePluginManifest);
+    return claudePluginManifest;
+  } catch {
+    // Not found anywhere
+  }
+
+  throw new Error(
+    `Marketplace manifest not found in ${dir}. Searched: ${MARKETPLACE_MANIFEST_FILENAME}, .claude-plugin/${MARKETPLACE_MANIFEST_FILENAME}, and ${MANIFEST_PATH_FILENAME}. Is this a valid marketplace?`
+  );
+}
+
+/**
+ * Normalizes a marketplace manifest that may use the legacy array format
+ * (with `source` field) into the standard Record format (with `packagePath`).
+ */
+function normalizeManifest(raw: Record<string, unknown>): MarketplaceManifest {
+  const name =
+    typeof raw.name === "string" ? raw.name : "unknown";
+  const description =
+    typeof raw.description === "string" ? raw.description : "";
+  const url = typeof raw.url === "string" ? raw.url : "";
+
+  // Normalize owner — may be a string or an object with a name field
+  let owner: string;
+  if (typeof raw.owner === "string") {
+    owner = raw.owner;
+  } else if (
+    raw.owner &&
+    typeof raw.owner === "object" &&
+    "name" in raw.owner &&
+    typeof (raw.owner as Record<string, unknown>).name === "string"
+  ) {
+    owner = (raw.owner as Record<string, unknown>).name as string;
+  } else {
+    owner = "";
+  }
+
+  // Check if plugins is already in Record format
+  if (raw.plugins && !Array.isArray(raw.plugins)) {
+    return {
+      name,
+      description,
+      url,
+      owner,
+      plugins: raw.plugins as Record<string, MarketplacePluginEntry>,
+    };
+  }
+
+  // Legacy array format: convert to Record
+  const plugins: Record<string, MarketplacePluginEntry> = {};
+  if (Array.isArray(raw.plugins)) {
+    for (const entry of raw.plugins) {
+      if (!entry || typeof entry !== "object") continue;
+      const e = entry as Record<string, unknown>;
+      const pluginName = typeof e.name === "string" ? e.name : "";
+      if (!pluginName) continue;
+
+      // Legacy uses "source" (e.g. "./plugins/babysitter"), normalize to "packagePath"
+      let packagePath = "";
+      if (typeof e.packagePath === "string") {
+        packagePath = e.packagePath;
+      } else if (typeof e.source === "string") {
+        packagePath = e.source.replace(/^\.\//, "");
+      }
+
+      const version = typeof e.version === "string" ? e.version : "0.0.0";
+      const pluginDesc =
+        typeof e.description === "string" ? e.description : "";
+
+      // Normalize author — may be string or object
+      let author = "";
+      if (typeof e.author === "string") {
+        author = e.author;
+      } else if (
+        e.author &&
+        typeof e.author === "object" &&
+        "name" in e.author &&
+        typeof (e.author as Record<string, unknown>).name === "string"
+      ) {
+        author = (e.author as Record<string, unknown>).name as string;
+      }
+
+      const tags = Array.isArray(e.tags) ? (e.tags as string[]) : [];
+      const versions = Array.isArray(e.versions)
+        ? (e.versions as string[])
+        : [version];
+
+      plugins[pluginName] = {
+        name: pluginName,
+        description: pluginDesc,
+        latestVersion: version,
+        versions,
+        packagePath,
+        tags,
+        author,
+      };
+    }
+  }
+
+  return { name, description, url, owner, plugins };
+}
+
+/**
+ * Internal helper that reads the manifest and returns both the parsed
+ * manifest and the resolved manifest file path.
+ */
+async function readManifestWithPath(
+  marketplaceName: string,
+  scope: PluginScope,
+  projectDir?: string
+): Promise<{ manifest: MarketplaceManifest; manifestPath: string }> {
+  const dir = getMarketplaceDir(marketplaceName, scope, projectDir);
+  const manifestPath = await resolveManifestPath(dir);
+  const raw = await fs.readFile(manifestPath, "utf8");
+  const manifest = normalizeManifest(
+    JSON.parse(raw) as Record<string, unknown>
+  );
+  return { manifest, manifestPath };
+}
+
+/**
+ * Reads and parses the marketplace manifest from a cloned marketplace.
+ *
+ * Searches for the manifest in multiple locations (custom path, root,
+ * .claude-plugin/) and normalizes legacy array formats.
  *
  * @param marketplaceName - Name of the marketplace directory
  * @param scope - Whether to look in global or project marketplaces dir
@@ -134,20 +313,12 @@ export async function readMarketplaceManifest(
   scope: PluginScope,
   projectDir?: string
 ): Promise<MarketplaceManifest> {
-  const dir = getMarketplaceDir(marketplaceName, scope, projectDir);
-  const manifestPath = path.join(dir, MARKETPLACE_MANIFEST_FILENAME);
-
-  try {
-    const raw = await fs.readFile(manifestPath, "utf8");
-    return JSON.parse(raw) as MarketplaceManifest;
-  } catch (error: unknown) {
-    if (isNodeError(error) && error.code === "ENOENT") {
-      throw new Error(
-        `Marketplace manifest not found at ${manifestPath}. Is "${marketplaceName}" a valid marketplace?`
-      );
-    }
-    throw error;
-  }
+  const { manifest } = await readManifestWithPath(
+    marketplaceName,
+    scope,
+    projectDir
+  );
+  return manifest;
 }
 
 /**
@@ -176,6 +347,9 @@ export async function listMarketplacePlugins(
  * Resolves the full filesystem path to a plugin's package directory
  * within a cloned marketplace.
  *
+ * When a custom manifest path is used, plugin packagePaths are resolved
+ * relative to the manifest's parent directory.
+ *
  * @param marketplaceName - Name of the marketplace directory
  * @param pluginName - Plugin identifier to look up
  * @param scope - Whether to look in global or project marketplaces dir
@@ -187,7 +361,7 @@ export async function resolvePluginPackagePath(
   scope: PluginScope,
   projectDir?: string
 ): Promise<string> {
-  const manifest = await readMarketplaceManifest(
+  const { manifest, manifestPath } = await readManifestWithPath(
     marketplaceName,
     scope,
     projectDir
@@ -198,8 +372,9 @@ export async function resolvePluginPackagePath(
       `Plugin "${pluginName}" not found in marketplace "${marketplaceName}"`
     );
   }
-  const dir = getMarketplaceDir(marketplaceName, scope, projectDir);
-  return path.join(dir, entry.packagePath);
+
+  const manifestDir = path.dirname(manifestPath);
+  return path.join(manifestDir, entry.packagePath);
 }
 
 /**

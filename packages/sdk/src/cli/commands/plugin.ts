@@ -52,6 +52,8 @@ export interface PluginCommandArgs {
   pluginName?: string;
   marketplaceName?: string;
   marketplaceUrl?: string;
+  marketplacePath?: string;
+  marketplaceBranch?: string;
   pluginVersion?: string;
   scope?: "global" | "project";
   json: boolean;
@@ -116,7 +118,7 @@ function requireScope(
 export async function handlePluginAddMarketplace(
   args: PluginCommandArgs
 ): Promise<number> {
-  const { marketplaceUrl, scope, json } = args;
+  const { marketplaceUrl, marketplacePath, marketplaceBranch, scope, json } = args;
 
   const url = requireArg(
     marketplaceUrl,
@@ -131,7 +133,7 @@ export async function handlePluginAddMarketplace(
   const projectDir = scope === "project" ? process.cwd() : undefined;
 
   try {
-    const targetDir = await cloneMarketplace(marketplaceUrl!, scope, projectDir);
+    const targetDir = await cloneMarketplace(marketplaceUrl!, scope, projectDir, marketplacePath, marketplaceBranch);
 
     if (json) {
       console.log(

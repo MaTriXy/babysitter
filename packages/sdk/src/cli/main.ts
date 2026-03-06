@@ -94,7 +94,7 @@ const USAGE = `Usage:
   babysitter plugin:configure [<pluginName>] [--plugin-name <name>] [--global|--project] [--json] [--verbose]
   babysitter plugin:list-installed [--global|--project] [--json] [--verbose]
   babysitter plugin:list-plugins --marketplace-name <name> [--global|--project] [--json] [--verbose]
-  babysitter plugin:add-marketplace --marketplace-url <url> [--global|--project] [--json] [--verbose]
+  babysitter plugin:add-marketplace --marketplace-url <url> [--marketplace-path <path>] [--marketplace-branch <ref>] [--global|--project] [--json] [--verbose]
   babysitter plugin:update-marketplace --marketplace-name <name> [--global|--project] [--json] [--verbose]
   babysitter plugin:update-registry [<pluginName>] [--plugin-name <name>] [--plugin-version <ver>] [--global|--project] [--json] [--verbose]
   babysitter plugin:remove-from-registry [<pluginName>] [--plugin-name <name>] [--global|--project] [--json] [--verbose]
@@ -181,6 +181,8 @@ interface ParsedArgs {
   pluginVersion?: string;
   marketplaceName?: string;
   marketplaceUrl?: string;
+  marketplacePath?: string;
+  marketplaceBranch?: string;
   pluginScope?: "global" | "project";
 }
 
@@ -492,6 +494,14 @@ function parseArgs(argv: string[]): ParsedArgs {
     }
     if (arg === "--marketplace-url") {
       parsed.marketplaceUrl = expectFlagValue(rest, ++i, "--marketplace-url");
+      continue;
+    }
+    if (arg === "--marketplace-path") {
+      parsed.marketplacePath = expectFlagValue(rest, ++i, "--marketplace-path");
+      continue;
+    }
+    if (arg === "--marketplace-branch") {
+      parsed.marketplaceBranch = expectFlagValue(rest, ++i, "--marketplace-branch");
       continue;
     }
     if (arg === "--global") {
@@ -2289,6 +2299,8 @@ export function createBabysitterCli() {
             pluginName: parsed.pluginName,
             marketplaceName: parsed.marketplaceName,
             marketplaceUrl: parsed.marketplaceUrl,
+            marketplacePath: parsed.marketplacePath,
+            marketplaceBranch: parsed.marketplaceBranch,
             pluginVersion: parsed.pluginVersion,
             scope: parsed.pluginScope,
             json: parsed.json,

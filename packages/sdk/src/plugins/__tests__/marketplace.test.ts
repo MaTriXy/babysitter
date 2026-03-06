@@ -10,6 +10,7 @@ vi.mock("node:fs", () => {
       readdir: vi.fn(),
       mkdir: vi.fn(),
       access: vi.fn(),
+      writeFile: vi.fn(),
     },
   };
 });
@@ -41,7 +42,28 @@ import {
 import type { MarketplaceManifest } from "../types";
 
 const mockedReadFile = vi.mocked(fs.readFile);
+const mockedAccess = vi.mocked(fs.access);
 const mockedReaddir = vi.mocked(fs.readdir);
+
+const enoent = () => {
+  const err = new Error("ENOENT") as NodeJS.ErrnoException;
+  err.code = "ENOENT";
+  return err;
+};
+
+/**
+ * Sets up mocks so that resolveManifestPath finds the manifest at the root.
+ * Call order: readFile(.babysitter-manifest-path) → ENOENT, access(root marketplace.json) → OK
+ * Then the caller's readFile for the actual manifest content.
+ */
+function mockRootManifest(manifestJson: string): void {
+  // 1. readFile for .babysitter-manifest-path → not found
+  mockedReadFile.mockRejectedValueOnce(enoent());
+  // 2. access for root marketplace.json → success
+  mockedAccess.mockResolvedValueOnce(undefined);
+  // 3. readFile for root marketplace.json content
+  mockedReadFile.mockResolvedValueOnce(manifestJson);
+}
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -103,7 +125,7 @@ describe("readMarketplaceManifest", () => {
   };
 
   it("reads and parses marketplace.json", async () => {
-    mockedReadFile.mockResolvedValueOnce(JSON.stringify(sampleManifest));
+    mockRootManifest(JSON.stringify(sampleManifest));
 
     const manifest = await readMarketplaceManifest(
       "test-marketplace",
@@ -114,9 +136,12 @@ describe("readMarketplaceManifest", () => {
   });
 
   it("throws descriptive error when manifest file is missing", async () => {
-    const err = new Error("ENOENT") as NodeJS.ErrnoException;
-    err.code = "ENOENT";
-    mockedReadFile.mockRejectedValueOnce(err);
+    // .babysitter-manifest-path not found
+    mockedReadFile.mockRejectedValueOnce(enoent());
+    // root marketplace.json not found
+    mockedAccess.mockRejectedValueOnce(enoent());
+    // .claude-plugin/marketplace.json not found
+    mockedAccess.mockRejectedValueOnce(enoent());
 
     await expect(
       readMarketplaceManifest("missing-marketplace", "global")
@@ -126,11 +151,67 @@ describe("readMarketplaceManifest", () => {
   it("rethrows non-ENOENT errors", async () => {
     const err = new Error("permission denied") as NodeJS.ErrnoException;
     err.code = "EACCES";
+    // .babysitter-manifest-path → permission error
     mockedReadFile.mockRejectedValueOnce(err);
+    // Should fall through to root check
+    mockedAccess.mockRejectedValueOnce(enoent());
+    // .claude-plugin check
+    mockedAccess.mockRejectedValueOnce(enoent());
 
     await expect(
       readMarketplaceManifest("broken-marketplace", "global")
-    ).rejects.toThrow("permission denied");
+    ).rejects.toThrow("Marketplace manifest not found");
+  });
+
+  it("finds manifest at .claude-plugin/marketplace.json when root is missing", async () => {
+    // .babysitter-manifest-path not found
+    mockedReadFile.mockRejectedValueOnce(enoent());
+    // root marketplace.json not found
+    mockedAccess.mockRejectedValueOnce(enoent());
+    // .claude-plugin/marketplace.json found
+    mockedAccess.mockResolvedValueOnce(undefined);
+    // read the manifest content
+    mockedReadFile.mockResolvedValueOnce(JSON.stringify(sampleManifest));
+
+    const manifest = await readMarketplaceManifest("test-marketplace", "global");
+    expect(manifest.name).toBe("test-marketplace");
+  });
+
+  it("uses custom manifest path from .babysitter-manifest-path", async () => {
+    // .babysitter-manifest-path found with custom path
+    mockedReadFile.mockResolvedValueOnce("plugins/a5c/marketplace/marketplace.json");
+    // access check for the custom path succeeds
+    mockedAccess.mockResolvedValueOnce(undefined);
+    // read the manifest at the custom path
+    mockedReadFile.mockResolvedValueOnce(JSON.stringify(sampleManifest));
+
+    const manifest = await readMarketplaceManifest("test-marketplace", "global");
+    expect(manifest.name).toBe("test-marketplace");
+  });
+
+  it("normalizes legacy array format manifest", async () => {
+    const legacyManifest = {
+      name: "legacy-mp",
+      owner: { name: "org", email: "org@test.com" },
+      plugins: [
+        {
+          name: "my-plugin",
+          source: "./plugins/my-plugin",
+          description: "A plugin",
+          version: "2.0.0",
+          author: { name: "org" },
+        },
+      ],
+    };
+    mockRootManifest(JSON.stringify(legacyManifest));
+
+    const manifest = await readMarketplaceManifest("legacy-mp", "global");
+    expect(manifest.name).toBe("legacy-mp");
+    expect(manifest.owner).toBe("org");
+    expect(manifest.plugins["my-plugin"]).toBeDefined();
+    expect(manifest.plugins["my-plugin"].packagePath).toBe("plugins/my-plugin");
+    expect(manifest.plugins["my-plugin"].latestVersion).toBe("2.0.0");
+    expect(manifest.plugins["my-plugin"].author).toBe("org");
   });
 });
 
@@ -162,7 +243,7 @@ describe("listMarketplacePlugins", () => {
         },
       },
     };
-    mockedReadFile.mockResolvedValueOnce(JSON.stringify(manifest));
+    mockRootManifest(JSON.stringify(manifest));
 
     const plugins = await listMarketplacePlugins("mp", "global");
     expect(plugins).toHaveLength(2);
@@ -190,7 +271,7 @@ describe("resolvePluginPackagePath", () => {
         },
       },
     };
-    mockedReadFile.mockResolvedValueOnce(JSON.stringify(manifest));
+    mockRootManifest(JSON.stringify(manifest));
 
     const result = await resolvePluginPackagePath(
       "mp",
@@ -209,6 +290,51 @@ describe("resolvePluginPackagePath", () => {
     );
   });
 
+  it("resolves packagePath relative to manifest directory for custom path", async () => {
+    const manifest: MarketplaceManifest = {
+      name: "mp",
+      description: "",
+      url: "",
+      owner: "",
+      plugins: {
+        "my-plugin": {
+          name: "my-plugin",
+          description: "",
+          latestVersion: "1.0.0",
+          versions: ["1.0.0"],
+          packagePath: "plugins/my-plugin",
+          tags: [],
+          author: "",
+        },
+      },
+    };
+    // .babysitter-manifest-path returns custom path
+    mockedReadFile.mockResolvedValueOnce("sub/dir/marketplace.json");
+    // access check for custom path succeeds
+    mockedAccess.mockResolvedValueOnce(undefined);
+    // read manifest content
+    mockedReadFile.mockResolvedValueOnce(JSON.stringify(manifest));
+
+    const result = await resolvePluginPackagePath(
+      "mp",
+      "my-plugin",
+      "global"
+    );
+    // packagePath resolved relative to sub/dir/ (manifest's parent)
+    expect(result).toBe(
+      path.join(
+        "/mock/home",
+        ".a5c",
+        "marketplaces",
+        "mp",
+        "sub",
+        "dir",
+        "plugins",
+        "my-plugin"
+      )
+    );
+  });
+
   it("throws when plugin is not found in marketplace", async () => {
     const manifest: MarketplaceManifest = {
       name: "mp",
@@ -217,7 +343,7 @@ describe("resolvePluginPackagePath", () => {
       owner: "",
       plugins: {},
     };
-    mockedReadFile.mockResolvedValueOnce(JSON.stringify(manifest));
+    mockRootManifest(JSON.stringify(manifest));
 
     await expect(
       resolvePluginPackagePath("mp", "nonexistent", "global")
@@ -238,9 +364,7 @@ describe("listMarketplaces", () => {
   });
 
   it("returns empty array when marketplaces dir does not exist", async () => {
-    const err = new Error("ENOENT") as NodeJS.ErrnoException;
-    err.code = "ENOENT";
-    mockedReaddir.mockRejectedValueOnce(err);
+    mockedReaddir.mockRejectedValueOnce(enoent());
 
     const result = await listMarketplaces("global");
     expect(result).toEqual([]);

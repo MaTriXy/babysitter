@@ -71,14 +71,26 @@ Writes use atomic file operations (temp + rename) for crash safety.
 
 ## Marketplace Format
 
-A marketplace is a git repository containing a `marketplace.json` manifest and plugin packages:
+A marketplace is a git repository containing a `marketplace.json` manifest and plugin packages. The manifest can live at the repo root or at a custom path within the repo:
 
 ```
 marketplace-repo/
-  marketplace.json      # Manifest listing all plugins
+  marketplace.json      # Manifest listing all plugins (at root or custom path)
   plugins/
     plugin-a/           # Plugin package directory
     plugin-b/
+```
+
+Or with a nested marketplace (e.g. in a monorepo):
+
+```
+monorepo/
+  plugins/
+    my-marketplace/
+      marketplace.json  # Manifest at custom path
+      plugins/
+        plugin-a/
+        plugin-b/
 ```
 
 The `marketplace.json` manifest:
@@ -103,6 +115,32 @@ The `marketplace.json` manifest:
 }
 ```
 
+Plugin `packagePath` values are resolved relative to the manifest file's directory.
+
+### Manifest Resolution
+
+When reading a marketplace manifest, the SDK searches in this order:
+
+1. **Custom path** stored in `.babysitter-manifest-path` (set via `--marketplace-path` at clone time)
+2. **Root** `marketplace.json`
+3. **`.claude-plugin/marketplace.json`** (legacy location)
+
+### Legacy Array Format
+
+The SDK also supports a legacy array-style manifest format and normalizes it automatically:
+
+```json
+{
+  "name": "My Marketplace",
+  "owner": { "name": "org", "email": "org@example.com" },
+  "plugins": [
+    { "name": "plugin-a", "source": "./plugins/plugin-a", "version": "1.0.0", "description": "..." }
+  ]
+}
+```
+
+### Storage
+
 Marketplaces are cloned with `--depth 1` and stored under:
 - **Global**: `~/.a5c/marketplaces/<name>/`
 - **Project**: `<projectDir>/.a5c/marketplaces/<name>/`
@@ -117,7 +155,7 @@ All commands accept `--json` for machine-readable output and `--scope global|pro
 
 ```bash
 # Clone a marketplace repository
-babysitter plugin:add-marketplace --marketplace-url <url> --scope global
+babysitter plugin:add-marketplace --marketplace-url <url> [--marketplace-path <relative-path>] [--marketplace-branch <ref>] --scope global
 
 # Pull latest changes for a marketplace
 babysitter plugin:update-marketplace --marketplace-name <name> --scope global

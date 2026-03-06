@@ -6,7 +6,10 @@ argument-hint: Specific instructions.
 This command installs and manages plugins for babysitter. A plugin is a version-managed package of contextual instructions (for install, uninstall, configure, and update/migrate between versions), not a conventional software plugin.
 
 if the command is run without arguments, it lists all installed plugins with their name, version, marketplace, installation date, and last update date. as well as marketplaces added to the system. and instructions on how to install new plugins from marketplaces.
-if there are not marketplaces added, add the marketplace from the repo a5c-a5c/babyistter  path: /plugins/a5c/marketplace/marketplace.json
+if there are no marketplaces added, add the default marketplace:
+```bash
+babysitter plugin:add-marketplace --marketplace-url https://github.com/a5c-ai/babysitter --marketplace-path plugins/a5c/marketplace/marketplace.json --global --json
+```
 
 Plugins can be installed at two scopes:
 - **global** (`--scope global`): stored under `~/.a5c/`, available for all projects
@@ -25,10 +28,10 @@ The marketplace name is derived from the git URL's last path segment (stripping 
 ### Adding a marketplace
 
 ```bash
-babysitter plugin:add-marketplace --marketplace-url <url> --scope global|project [--json]
+babysitter plugin:add-marketplace --marketplace-url <url> [--marketplace-path <relative-path>] [--marketplace-branch <ref>] --scope global|project [--json]
 ```
 
-Clones the marketplace repository to the local marketplaces directory.
+Clones the marketplace repository to the local marketplaces directory. Use `--marketplace-path` to specify the relative path to `marketplace.json` within the repo (for monorepos or repos where the manifest is not at the root). Use `--marketplace-branch` to clone a specific branch, tag, or ref (defaults to the repo's default branch).
 
 ### Updating a marketplace
 
@@ -226,7 +229,7 @@ All commands accept `--json` for machine-readable output and `--scope global|pro
 
 | Command | Required Flags | Description |
 |---------|---------------|-------------|
-| `plugin:add-marketplace` | `--marketplace-url`, `--scope` | Clone a marketplace repository |
+| `plugin:add-marketplace` | `--marketplace-url`, `--scope` [`--marketplace-path`, `--marketplace-branch`] | Clone a marketplace repository |
 | `plugin:update-marketplace` | `--marketplace-name`, `--scope` | Pull latest marketplace changes |
 | `plugin:list-plugins` | `--marketplace-name`, `--scope` | List available plugins in a marketplace |
 | `plugin:install` | `--plugin-name`, `--marketplace-name`, `--scope` | Get install instructions for a plugin |

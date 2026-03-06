@@ -23,6 +23,12 @@ export const PLUGIN_REGISTRY_FILENAME = "plugin-registry.json";
 export const MARKETPLACE_MANIFEST_FILENAME = "marketplace.json";
 
 /**
+ * Filename that stores the relative path to the marketplace manifest
+ * within a cloned marketplace directory (when a custom path is specified).
+ */
+export const MANIFEST_PATH_FILENAME = ".babysitter-manifest-path";
+
+/**
  * Scope determines where plugin configuration is stored.
  *
  * - `global` — User-wide configuration in the home directory

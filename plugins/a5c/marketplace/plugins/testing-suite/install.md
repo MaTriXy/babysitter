@@ -1,6 +1,6 @@
 # Testing Suite — Install Instructions
 
-Set up a comprehensive testing infrastructure for your project — unit tests, integration tests, Storybook component tests with in-browser verification, E2E tests, and coverage enforcement in CI/CD. Installs the right frameworks, processes, skills, and agents from the babysitter QA testing library based on your stack.
+Set up a comprehensive testing infrastructure for your project — unit tests, integration tests, Storybook component tests with in-browser verification, E2E tests, coverage enforcement in CI/CD, linting with test-aware rules, and git hooks to enforce quality on every commit. Installs the right frameworks, processes, skills, and agents from the babysitter QA testing library based on your stack.
 
 ## Step 1: Interview the User
 
@@ -12,7 +12,9 @@ Before asking questions, analyze the project:
 3. Check for existing test files: `**/*.test.*`, `**/*.spec.*`, `**/__tests__/`, `tests/`, `test/`
 4. Check for existing CI/CD: `.github/workflows/`, `.gitlab-ci.yml`, `Jenkinsfile`
 5. Check for existing coverage config: `.nycrc`, `.istanbul.yml`, `coverage/`, `.coveragerc`
-6. Summarize findings to the user
+6. Check for existing linting: `.eslintrc.*`, `eslint.config.*`, `.prettierrc.*`, `biome.json`, `pylintrc`, `.flake8`, `.golangci.yml`
+7. Check for existing git hooks: `.husky/`, `.git/hooks/`, `lefthook.yml`, `.pre-commit-config.yaml`
+8. Summarize findings to the user
 
 ### Stage 2: Testing Scope
 
@@ -82,7 +84,34 @@ Ask the user:
 - Should tests run in parallel? (default: yes for E2E)
 - Should test artifacts (screenshots, videos, coverage reports) be preserved? (default: yes)
 
-### Stage 6: Test Strategy
+### Stage 6: Linting & Formatting
+
+Ask the user:
+- Set up or enhance linting? (default: yes)
+- Which linter? Auto-detect or recommend:
+  - TypeScript/JavaScript: **ESLint** (flat config recommended) + **Prettier** (or **Biome** as all-in-one alternative)
+  - Python: **ruff** (recommended) or flake8 + black
+  - Go: **golangci-lint**
+  - Rust: **clippy** (built-in)
+  - Java: **Checkstyle** or **SpotBugs**
+- Enable strict type checking? (default: yes for TypeScript — `strict: true`, `noUncheckedIndexedAccess`)
+- Add test-specific lint rules? (default: yes)
+
+### Stage 7: Git Hooks
+
+Ask the user:
+- Install git hooks to enforce quality on commits? (default: yes)
+- Which hooks to enable?
+  - **pre-commit**: Lint and type-check staged files (default: yes)
+  - **pre-push**: Run full test suite before pushing (default: yes)
+  - **commit-msg**: Enforce conventional commit messages (default: no)
+- Git hooks tool:
+  - TypeScript/JavaScript: **husky** + **lint-staged** (recommended) or **lefthook**
+  - Python: **pre-commit** framework
+  - Go: **lefthook** or custom shell scripts
+  - Other: custom shell scripts in `.git/hooks/`
+
+### Stage 8: Test Strategy
 
 Ask the user:
 - Follow the test pyramid (many unit, fewer integration, fewest E2E)? (default: yes)
@@ -189,7 +218,265 @@ Add to `package.json` scripts:
 }
 ```
 
-## Step 3: Create Test Directory Structure
+## Step 3: Set Up Linting & Formatting
+
+### TypeScript/JavaScript
+
+#### Install ESLint + Prettier (if not already present):
+
+```bash
+npm install -D eslint @eslint/js typescript-eslint prettier eslint-config-prettier
+```
+
+#### Create or update `eslint.config.mjs` (flat config):
+
+```javascript
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import prettierConfig from 'eslint-config-prettier';
+
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  prettierConfig,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      // Type safety
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/strict-boolean-expressions': 'warn',
+
+      // Code quality
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-debugger': 'error',
+      'no-duplicate-imports': 'error',
+      'prefer-const': 'error',
+      'no-var': 'error',
+      eqeqeq: ['error', 'always'],
+    },
+  },
+  // Test file overrides — relaxed rules for test files
+  {
+    files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}', '**/__tests__/**', 'e2e/**'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-floating-promises': 'off',
+      'no-console': 'off',
+    },
+  },
+  {
+    ignores: ['dist/', 'build/', 'node_modules/', 'coverage/', 'playwright-report/', '.storybook/'],
+  }
+);
+```
+
+#### Create `.prettierrc` (if not present):
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "tabWidth": 2
+}
+```
+
+#### Update `tsconfig.json` for strict type checking (if agreed):
+
+Ensure these are set:
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": false
+  }
+}
+```
+
+#### Add lint scripts to `package.json`:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
+  }
+}
+```
+
+### Python
+
+```bash
+pip install ruff
+```
+
+Create `ruff.toml`:
+```toml
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "TCH", "PTH", "RUF"]
+
+[lint.per-file-ignores]
+"tests/**" = ["S101"]  # Allow assert in tests
+```
+
+### Go
+
+```bash
+go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+```
+
+Create `.golangci.yml`:
+```yaml
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gocritic
+    - gofmt
+    - goimports
+```
+
+## Step 4: Set Up Git Hooks
+
+### TypeScript/JavaScript (husky + lint-staged)
+
+#### Install husky and lint-staged:
+
+```bash
+npm install -D husky lint-staged
+npx husky init
+```
+
+#### Configure lint-staged in `package.json`:
+
+```json
+{
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix --max-warnings=0",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}
+```
+
+#### Create pre-commit hook (`.husky/pre-commit`):
+
+```bash
+npx lint-staged
+```
+
+#### Create pre-push hook (`.husky/pre-push`):
+
+```bash
+npm run typecheck
+npm run test -- --run
+```
+
+This ensures:
+- **On every commit**: staged files are linted, formatted, and type-errors are caught
+- **On every push**: full type-check and test suite runs — broken code never reaches the remote
+
+#### Optional: commit-msg hook for conventional commits (`.husky/commit-msg`):
+
+If the user opted in, install commitlint:
+
+```bash
+npm install -D @commitlint/cli @commitlint/config-conventional
+echo '{ "extends": ["@commitlint/config-conventional"] }' > .commitlintrc.json
+```
+
+Create `.husky/commit-msg`:
+```bash
+npx --no -- commitlint --edit ${1}
+```
+
+### Python (pre-commit framework)
+
+```bash
+pip install pre-commit
+```
+
+Create `.pre-commit-config.yaml`:
+```yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        additional_dependencies: []
+  - repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest
+        entry: pytest --tb=short -q
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+```
+
+Install the hooks:
+```bash
+pre-commit install
+pre-commit install --hook-type pre-push
+```
+
+### Go (lefthook or shell scripts)
+
+```bash
+go install github.com/evilmartians/lefthook@latest
+lefthook install
+```
+
+Create `lefthook.yml`:
+```yaml
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.go"
+      run: golangci-lint run --fix
+    format:
+      glob: "*.go"
+      run: gofmt -w {staged_files}
+pre-push:
+  commands:
+    test:
+      run: go test ./...
+```
+
+## Step 5: Create Test Directory Structure
 
 ```bash
 # Unit & integration tests (co-located pattern)
@@ -209,7 +496,7 @@ mkdir -p test/helpers
 mkdir -p test/visual-baselines
 ```
 
-## Step 4: Copy Processes from Library
+## Step 6: Copy Processes from Library
 
 ```bash
 mkdir -p .a5c/processes/testing
@@ -277,7 +564,7 @@ cp plugins/babysitter/skills/babysit/process/specializations/qa-testing-automati
 cp plugins/babysitter/skills/babysit/process/specializations/qa-testing-automation/metrics-dashboard.js .a5c/processes/testing/
 ```
 
-## Step 5: Copy Skills and Agents
+## Step 7: Copy Skills and Agents
 
 ```bash
 mkdir -p .a5c/skills/testing
@@ -299,7 +586,7 @@ ls plugins/babysitter/skills/babysit/process/specializations/qa-testing-automati
 cp -r plugins/babysitter/skills/babysit/process/methodologies/gsd/agents/gsd-verifier .a5c/agents/testing/ 2>/dev/null || true
 ```
 
-## Step 6: Set Up CI/CD Test Pipeline
+## Step 8: Set Up CI/CD Test Pipeline
 
 If CI/CD exists, add or update the test workflow. Based on the platform:
 
@@ -315,13 +602,27 @@ on:
     branches: [main]
 
 jobs:
-  unit-tests:
+  lint-typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+      - run: npm run typecheck
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: lint-typecheck
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npm run test -- --coverage
@@ -336,11 +637,12 @@ jobs:
 
   e2e-tests:
     runs-on: ubuntu-latest
+    needs: lint-typecheck
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npx playwright install --with-deps
@@ -353,11 +655,12 @@ jobs:
 
   storybook-tests:
     runs-on: ubuntu-latest
+    needs: lint-typecheck
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npm run test:storybook:ci
@@ -386,9 +689,9 @@ jobs:
           fi
 ```
 
-Adjust job names, test commands, and thresholds based on the user's answers. Remove jobs for layers not selected (e.g., remove `storybook-tests` if Storybook was not chosen).
+Adjust job names, test commands, and thresholds based on the user's answers. Remove jobs for layers not selected (e.g., remove `storybook-tests` if Storybook was not chosen). The `lint-typecheck` job runs first and gates all other jobs.
 
-## Step 7: Create Example Tests
+## Step 9: Create Example Tests
 
 Generate a few example test files so the user has working templates:
 
@@ -441,11 +744,17 @@ export const Primary: Story = {
 };
 ```
 
-## Step 8: Run Initial Test Coverage Check
+## Step 10: Run Initial Test Coverage Check
 
 After installation, run all configured test layers and report coverage:
 
 ```bash
+# Lint check
+npm run lint
+
+# Type check
+npm run typecheck
+
 # Unit tests with coverage
 npm run test -- --coverage
 
@@ -470,21 +779,26 @@ babysitter run:create \
   --json
 ```
 
-## Step 9: Register Plugin
+## Step 11: Register Plugin
 
 ```bash
 babysitter plugin:update-registry --plugin-name testing-suite --plugin-version 1.0.0 --marketplace-name marketplace --project --json
 ```
 
-## Step 10: Verify Setup
+## Step 12: Verify Setup
 
 1. All selected test frameworks are installed and configured
-2. Test directory structure exists
-3. Example tests run successfully
-4. Coverage reports generate correctly
-5. CI/CD pipeline includes test stages (if applicable)
-6. Coverage thresholds are enforced
-7. Babysitter testing processes are copied and accessible
+2. Linter runs without errors: `npm run lint`
+3. Type checker passes: `npm run typecheck`
+4. Formatter is consistent: `npm run format:check`
+5. Git hooks are installed: `ls .husky/` (or equivalent)
+6. Pre-commit hook works: make a small change, `git add`, `git commit` — lint-staged should run
+7. Test directory structure exists
+8. Example tests run successfully
+9. Coverage reports generate correctly
+10. CI/CD pipeline includes lint + test stages (if applicable)
+11. Coverage thresholds are enforced
+12. Babysitter testing processes are copied and accessible
 
 ## Reference
 

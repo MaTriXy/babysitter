@@ -1,14 +1,14 @@
 # Basic Security — Install Instructions
 
-This plugin copies selected security processes, skills, agents, and commands from the babysitter security-compliance library into your project's `.a5c` directory. After installation, it runs an initial security scan to provide immediate value.
+This plugin copies selected security processes, skills, agents, and commands from the babysitter security-compliance library into your project's `.a5c` directory. It also sets up security-focused lint rules and git hooks for secrets detection and secure coding enforcement. After installation, it runs an initial security scan to provide immediate value.
 
 ---
 
 ## Step 1: Interview the User
 
-Ask the user which security categories they want to install. They may select one or more categories, or choose "All" to install everything. Present the following menu:
+Ask the user which security categories they want to install. They may select one or more categories, or choose "8" for all. Present the following menu:
 
-> **Which security categories would you like to install?** (enter numbers separated by commas, or "7" for all)
+> **Which security categories would you like to install?** (enter numbers separated by commas, or "8" for all)
 >
 > 1. **Core DevSecOps** (recommended for all projects)
 > 2. **Incident Response**
@@ -16,7 +16,8 @@ Ask the user which security categories they want to install. They may select one
 > 4. **Infrastructure Security**
 > 5. **Advanced Testing**
 > 6. **Governance**
-> 7. **All** — install everything
+> 7. **Security Lint Rules & Git Hooks** (recommended for all projects)
+> 8. **All** — install everything
 
 ### Category Contents
 
@@ -48,9 +49,16 @@ Ask the user which security categories they want to install. They may select one
 - Skills: `vendor-risk-monitor`, `vendor-security-questionnaire`, `secure-coding-training-skill`
 - Agents: `security-requirements-agent`, `risk-scoring-agent`, `patch-management-agent`, `threat-intelligence-agent`
 
-**7. All** — installs every process, skill, and agent from all categories above.
+**7. Security Lint Rules & Git Hooks** (recommended for all projects):
+- Security-focused ESLint rules (no-eval, no-implied-eval, no-new-func, etc.)
+- ESLint security plugins (`eslint-plugin-security`, `eslint-plugin-no-secrets`)
+- Pre-commit hook for secrets detection (gitleaks or trufflehog)
+- Pre-commit hook for security lint checks
+- `.gitignore` additions for sensitive files
 
-Record the user's selections. If they select "7" or "All", treat it as selecting categories 1 through 6.
+**8. All** — installs every process, skill, agent, lint rule, and hook from all categories above.
+
+Record the user's selections. If they select "8" or "All", treat it as selecting categories 1 through 7.
 
 ---
 
@@ -172,7 +180,330 @@ cp plugins/babysitter/skills/babysit/process/specializations/security-compliance
 
 ---
 
-## Step 5: Create Security Commands
+## Step 5: Set Up Security Lint Rules (Category 7)
+
+If the user selected category 7 (Security Lint Rules & Git Hooks) or "All":
+
+### Detect the project language and existing linter
+
+Check for `package.json` (JS/TS), `requirements.txt`/`pyproject.toml` (Python), `go.mod` (Go), etc.
+
+### TypeScript/JavaScript — ESLint Security Rules
+
+#### Install security ESLint plugins:
+
+```bash
+npm install -D eslint-plugin-security eslint-plugin-no-secrets
+```
+
+#### Add security rules to the ESLint config:
+
+If the project uses flat config (`eslint.config.mjs`), add a security block:
+
+```javascript
+import security from 'eslint-plugin-security';
+import noSecrets from 'eslint-plugin-no-secrets';
+
+// Add to the config array:
+{
+  plugins: { security, 'no-secrets': noSecrets },
+  rules: {
+    // Prevent dangerous code patterns
+    'no-eval': 'error',
+    'no-implied-eval': 'error',
+    'no-new-func': 'error',
+    'no-script-url': 'error',
+
+    // Security plugin rules
+    'security/detect-buffer-noassert': 'error',
+    'security/detect-child-process': 'warn',
+    'security/detect-eval-with-expression': 'error',
+    'security/detect-new-buffer': 'error',
+    'security/detect-no-csrf-before-method-override': 'error',
+    'security/detect-non-literal-fs-filename': 'warn',
+    'security/detect-non-literal-regexp': 'warn',
+    'security/detect-non-literal-require': 'warn',
+    'security/detect-object-injection': 'warn',
+    'security/detect-possible-timing-attacks': 'warn',
+    'security/detect-pseudoRandomBytes': 'error',
+    'security/detect-unsafe-regex': 'error',
+
+    // Secrets detection in code
+    'no-secrets/no-secrets': ['error', { tolerance: 4.5 }],
+  },
+}
+```
+
+If the project uses legacy config (`.eslintrc.*`), add to the `plugins` array and `rules` object accordingly.
+
+#### For React/Next.js projects, also add:
+
+```javascript
+rules: {
+  // Prevent XSS
+  'react/no-danger': 'error',
+  'react/no-danger-with-children': 'error',
+}
+```
+
+#### For Express/Node.js API projects, also add:
+
+```bash
+npm install -D eslint-plugin-no-unsanitized
+```
+
+```javascript
+import noUnsanitized from 'eslint-plugin-no-unsanitized';
+
+// Rules:
+'no-unsanitized/method': 'error',
+'no-unsanitized/property': 'error',
+```
+
+### Python — Security Lint Rules
+
+#### With ruff (recommended):
+
+Add security-related rule sets to `ruff.toml` or `pyproject.toml`:
+
+```toml
+[lint]
+select = [
+  "E", "F", "W",   # Standard
+  "S",              # flake8-bandit (security)
+  "B",              # flake8-bugbear
+  "A",              # flake8-builtins
+  "INP",            # flake8-no-pep420 (implicit namespace packages)
+  "T20",            # flake8-print (no print in production)
+  "PIE",            # flake8-pie
+  "PT",             # flake8-pytest-style
+  "SIM",            # flake8-simplify
+  "PTH",            # flake8-use-pathlib
+]
+
+[lint.per-file-ignores]
+"tests/**" = ["S101", "S106"]  # Allow assert and hardcoded passwords in tests
+```
+
+Key `S` (bandit) rules this enables:
+- `S101` — assert used (not in tests)
+- `S104` — binding to all interfaces
+- `S105`/`S106`/`S107` — hardcoded passwords/secrets
+- `S108` — insecure temp file usage
+- `S110` — try/except/pass (silenced errors)
+- `S301`/`S302` — pickle usage (deserialization attacks)
+- `S303`/`S304`/`S305` — insecure hash/cipher/mode
+- `S501` — requests with `verify=False`
+- `S602`/`S603`/`S604`/`S605`/`S606`/`S607` — subprocess and shell injection
+
+#### With bandit standalone:
+
+```bash
+pip install bandit
+bandit -r src/ -ll  # Low severity and above
+```
+
+### Go — Security Lint Rules
+
+Add security linters to `.golangci.yml`:
+
+```yaml
+linters:
+  enable:
+    - gosec         # Security scanner
+    - bodyclose     # HTTP response body close checker
+    - sqlclosecheck # SQL rows/stmt close checker
+    - exportloopref # Loop variable capture
+    - noctx         # HTTP requests without context
+```
+
+---
+
+## Step 6: Set Up Security Git Hooks (Category 7)
+
+If the user selected category 7 or "All":
+
+### Install a Secrets Scanner
+
+Recommend **gitleaks** (fast, supports all languages) as the pre-commit secrets scanner:
+
+```bash
+# macOS
+brew install gitleaks
+
+# Windows (via scoop or winget)
+scoop install gitleaks
+# or: winget install zricethezav.gitleaks
+
+# Linux
+# Download from https://github.com/gitleaks/gitleaks/releases
+# or via package manager
+sudo apt install gitleaks  # if available
+```
+
+Verify installation:
+```bash
+gitleaks version
+```
+
+Create a gitleaks config at `.gitleaks.toml` (optional, for customizing rules):
+
+```toml
+[allowlist]
+description = "Allow test fixtures and examples"
+paths = [
+  '''test/fixtures/.*''',
+  '''__tests__/.*''',
+  '''.*\.test\..*''',
+  '''.*\.spec\..*''',
+]
+```
+
+### TypeScript/JavaScript (husky)
+
+If husky is not already installed (e.g., testing-suite plugin wasn't installed):
+
+```bash
+npm install -D husky lint-staged
+npx husky init
+```
+
+#### Create pre-commit hook (`.husky/pre-commit`):
+
+```bash
+# Security: scan staged files for secrets
+gitleaks protect --staged --verbose
+
+# Security: run security lint rules on staged files
+npx lint-staged
+```
+
+#### Configure lint-staged for security linting in `package.json`:
+
+```json
+{
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix --max-warnings=0"
+    ]
+  }
+}
+```
+
+If the testing-suite plugin is also installed and already has lint-staged config, merge the entries — don't overwrite.
+
+#### Create pre-push hook (`.husky/pre-push`):
+
+```bash
+# Security: full secrets scan of the repo
+gitleaks detect --verbose
+
+# Security: run dependency audit
+npm audit --audit-level=high
+```
+
+### Python (pre-commit framework)
+
+If pre-commit is not already installed:
+
+```bash
+pip install pre-commit
+```
+
+Add security hooks to `.pre-commit-config.yaml` (create if not present, or merge into existing):
+
+```yaml
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: [--select, S, --fix]  # Security rules only
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.0
+    hooks:
+      - id: bandit
+        args: [-ll, -r, src/]
+  - repo: local
+    hooks:
+      - id: pip-audit
+        name: pip-audit
+        entry: pip-audit
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+```
+
+Install the hooks:
+```bash
+pre-commit install
+pre-commit install --hook-type pre-push
+```
+
+### Go
+
+Add to `lefthook.yml` (create if not present, or merge):
+
+```yaml
+pre-commit:
+  commands:
+    gitleaks:
+      run: gitleaks protect --staged --verbose
+    gosec:
+      glob: "*.go"
+      run: golangci-lint run --enable gosec
+pre-push:
+  commands:
+    gitleaks-full:
+      run: gitleaks detect --verbose
+    govulncheck:
+      run: govulncheck ./...
+```
+
+Install go vulnerability checker:
+```bash
+go install golang.org/x/vuln/cmd/govulncheck@latest
+```
+
+### Update .gitignore
+
+Add sensitive file patterns to `.gitignore` (append, don't overwrite):
+
+```gitignore
+# Security — sensitive files that should never be committed
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+service-account*.json
+**/secrets/**
+!**/secrets/.gitkeep
+```
+
+Check if any of these files are already tracked and warn the user:
+
+```bash
+git ls-files --cached | grep -E '\.(pem|key|p12|pfx)$|\.env$|credentials\.json|service-account' || echo "No sensitive files tracked"
+```
+
+If any are found, advise the user to remove them from tracking:
+```bash
+git rm --cached <file>
+```
+
+---
+
+## Step 7: Create Security Commands
 
 Create the file `.a5c/commands/security-commands.md` with slash commands corresponding to the installed processes. Only include commands for the categories the user selected.
 
@@ -341,7 +672,7 @@ Only include the sections that correspond to the categories the user selected in
 
 ---
 
-## Step 6: Register Plugin
+## Step 8: Register Plugin
 
 Register the basic-security plugin in the project-level plugin registry:
 
@@ -353,11 +684,11 @@ Verify registration succeeded by checking the output. The JSON response should i
 
 ---
 
-## Step 7: Run Initial Security Scan
+## Step 9: Run Initial Security Scan
 
 After installation is complete, run an initial security scan to demonstrate the installed tools and provide immediate value to the user.
 
-**If Core DevSecOps was installed (category 1 or 7):**
+**If Core DevSecOps was installed (category 1 or 8):**
 
 Run the codebase security audit process:
 
@@ -376,11 +707,19 @@ Present the scan results to the user as a summary, highlighting:
 - Top 3 most important findings with brief descriptions
 - Recommended next steps for remediation
 
-**If Core DevSecOps was NOT installed**, skip the initial scan and instead print a summary of what was installed:
-- Number of processes copied
-- Number of skills installed
-- Number of agents installed
-- List of available slash commands
+**If Security Lint Rules & Git Hooks was installed (category 7 or 8):**
+
+Run the lint security check and gitleaks scan:
+
+```bash
+# Run security lint rules
+npm run lint 2>&1 | grep -i "security\|no-eval\|no-secrets" || echo "No security lint issues found"
+
+# Run gitleaks on the repo
+gitleaks detect --verbose 2>&1 | tail -5
+```
+
+**If neither Core DevSecOps nor Security Lint Rules was installed**, skip the initial scan and instead print a summary of what was installed.
 
 ---
 
@@ -396,6 +735,9 @@ Processes:  [count] copied to .a5c/processes/security/
 Skills:     [count] copied to .a5c/skills/security/
 Agents:     [count] copied to .a5c/agents/security/
 Commands:   See .a5c/commands/security-commands.md
+Lint rules: [yes/no] security ESLint rules configured
+Git hooks:  [yes/no] pre-commit secrets scan + security lint
+.gitignore: [yes/no] sensitive file patterns added
 
 Run /security-audit to scan your codebase at any time.
 ```

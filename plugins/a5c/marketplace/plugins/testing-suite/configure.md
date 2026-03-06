@@ -88,7 +88,103 @@ projects: [
 ]
 ```
 
-## 5. Enable TDD Workflow
+## 5. Configure Lint Rules
+
+### Add stricter rules:
+
+Edit `eslint.config.mjs` to enable additional rules:
+
+```javascript
+rules: {
+  // Stricter type safety
+  '@typescript-eslint/strict-boolean-expressions': 'error',  // was 'warn'
+  '@typescript-eslint/no-unsafe-assignment': 'error',
+  '@typescript-eslint/no-unsafe-member-access': 'error',
+  '@typescript-eslint/no-unsafe-call': 'error',
+  '@typescript-eslint/no-unsafe-return': 'error',
+
+  // Complexity limits
+  'complexity': ['warn', 15],
+  'max-depth': ['warn', 4],
+  'max-lines-per-function': ['warn', { max: 100, skipBlankLines: true, skipComments: true }],
+}
+```
+
+### Relax rules for specific patterns:
+
+Add overrides for specific file patterns:
+
+```javascript
+{
+  files: ['scripts/**', '*.config.{ts,js,mjs}'],
+  rules: {
+    'no-console': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
+  },
+}
+```
+
+### Switch to Biome (all-in-one alternative):
+
+```bash
+npm uninstall eslint prettier @eslint/js typescript-eslint eslint-config-prettier
+npm install -D @biomejs/biome
+npx biome init
+```
+
+Biome handles linting and formatting in one tool with faster execution.
+
+## 6. Configure Git Hooks
+
+### Add or modify hooks:
+
+#### Add a pre-push hook (if not installed):
+
+```bash
+# TypeScript/JavaScript
+echo 'npm run typecheck && npm run test -- --run' > .husky/pre-push
+chmod +x .husky/pre-push
+```
+
+#### Add conventional commit enforcement:
+
+```bash
+npm install -D @commitlint/cli @commitlint/config-conventional
+echo '{ "extends": ["@commitlint/config-conventional"] }' > .commitlintrc.json
+echo 'npx --no -- commitlint --edit ${1}' > .husky/commit-msg
+chmod +x .husky/commit-msg
+```
+
+#### Customize lint-staged:
+
+Edit the `lint-staged` config in `package.json`:
+
+```json
+{
+  "lint-staged": {
+    "*.{ts,tsx}": ["eslint --fix --max-warnings=0", "prettier --write", "vitest related --run"],
+    "*.{js,jsx}": ["eslint --fix --max-warnings=0", "prettier --write"],
+    "*.css": ["prettier --write"],
+    "*.{json,md,yml,yaml}": ["prettier --write"]
+  }
+}
+```
+
+The `vitest related --run` command runs only tests related to the staged files — fast feedback without running the full suite.
+
+#### Disable a hook temporarily:
+
+```bash
+git commit --no-verify -m "WIP: bypass hooks for draft"
+```
+
+#### Remove a hook:
+
+```bash
+rm .husky/pre-push  # or whichever hook
+```
+
+## 7. Enable TDD Workflow
 
 If TDD was not selected during install:
 
@@ -97,7 +193,7 @@ cp plugins/babysitter/skills/babysit/process/methodologies/atdd-tdd/atdd-tdd.js 
 cp -r plugins/babysitter/skills/babysit/process/methodologies/superpowers/skills/test-driven-development .a5c/skills/testing/
 ```
 
-## 6. Fix Flaky Tests
+## 8. Fix Flaky Tests
 
 Run the flakiness elimination process:
 
@@ -109,7 +205,7 @@ babysitter run:create \
   --json
 ```
 
-## 7. Improve Coverage
+## 9. Improve Coverage
 
 Run the babysitter testing process to bring coverage up:
 
@@ -121,13 +217,13 @@ babysitter run:create \
   --json
 ```
 
-## 8. Add Exploratory Testing Sessions
+## 10. Add Exploratory Testing Sessions
 
 ```bash
 cp plugins/babysitter/skills/babysit/process/specializations/qa-testing-automation/exploratory-testing.js .a5c/processes/testing/
 ```
 
-## 9. Set Up Test Metrics Dashboard
+## 11. Set Up Test Metrics Dashboard
 
 ```bash
 cp plugins/babysitter/skills/babysit/process/specializations/qa-testing-automation/metrics-dashboard.js .a5c/processes/testing/

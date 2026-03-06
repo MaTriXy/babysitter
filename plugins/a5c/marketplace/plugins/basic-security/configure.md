@@ -1,6 +1,6 @@
 # Basic Security — Configuration
 
-This document covers how to customize the basic-security plugin after installation, including adding or removing individual components, running specific scans, and scheduling periodic security assessments.
+This document covers how to customize the basic-security plugin after installation, including adding or removing individual components, configuring lint rules and git hooks, running specific scans, and scheduling periodic security assessments.
 
 ---
 
@@ -123,7 +123,167 @@ rm -rf .a5c/agents/security/<agent-name>/
 
 ---
 
-## 3. Running Specific Processes via Babysitter CLI
+## 3. Configuring Security Lint Rules
+
+### Adjusting rule severity
+
+Edit the ESLint config to change rules from `error` to `warn` or vice versa:
+
+```javascript
+// Less strict — warn instead of error for object injection detection
+'security/detect-object-injection': 'off',  // too many false positives
+'security/detect-non-literal-fs-filename': 'off',  // if you use safe wrappers
+
+// Stricter — escalate warnings to errors
+'security/detect-child-process': 'error',  // was 'warn'
+'security/detect-non-literal-regexp': 'error',
+```
+
+### Adding security rules for specific frameworks
+
+#### For SQL/database projects:
+
+```bash
+npm install -D eslint-plugin-sql
+```
+
+```javascript
+rules: {
+  'sql/no-unsafe-query': 'error',
+}
+```
+
+#### For GraphQL projects:
+
+```bash
+npm install -D @graphql-eslint/eslint-plugin
+```
+
+#### For Terraform/IaC:
+
+Install **tfsec** for Terraform security scanning:
+
+```bash
+brew install tfsec  # macOS
+# or scoop install tfsec  # Windows
+```
+
+### Customizing secrets detection sensitivity
+
+Adjust the `no-secrets` tolerance (lower = more sensitive, higher = fewer false positives):
+
+```javascript
+'no-secrets/no-secrets': ['error', {
+  tolerance: 3.5,  // was 4.5 — more sensitive
+  additionalRegexes: {
+    'AWS Key': 'AKIA[0-9A-Z]{16}',
+    'Slack Token': 'xox[baprs]-[0-9a-zA-Z-]+',
+    'GitHub Token': 'gh[ps]_[A-Za-z0-9_]{36,}',
+  }
+}],
+```
+
+### Customizing gitleaks rules
+
+Edit `.gitleaks.toml` to add custom patterns or allowlists:
+
+```toml
+# Allow specific files
+[allowlist]
+paths = [
+  '''\.env\.example''',
+  '''test/fixtures/.*''',
+  '''docs/examples/.*''',
+]
+
+# Allow specific patterns (e.g., placeholder values)
+regexes = [
+  '''EXAMPLE_.*''',
+  '''placeholder.*''',
+  '''your-.*-here''',
+]
+
+# Add custom rules
+[[rules]]
+id = "custom-internal-token"
+description = "Internal service token"
+regex = '''INTERNAL_SVC_[A-Z0-9]{32}'''
+tags = ["internal", "token"]
+```
+
+### Disabling security lint for specific files
+
+Add file-level overrides to the ESLint config:
+
+```javascript
+{
+  files: ['scripts/seed-db.js', 'tools/generate-keys.js'],
+  rules: {
+    'security/detect-non-literal-fs-filename': 'off',
+    'security/detect-child-process': 'off',
+  },
+}
+```
+
+Or use inline comments for one-off suppressions:
+```javascript
+// eslint-disable-next-line security/detect-object-injection
+const value = obj[userInput];
+```
+
+---
+
+## 4. Configuring Security Git Hooks
+
+### Adding more hooks
+
+#### Add a commit-msg hook for security ticket references:
+
+Create `.husky/commit-msg` (or add to existing):
+
+```bash
+# Require security ticket references for security-related changes
+if git diff --cached --name-only | grep -qE '(auth|security|crypto|encrypt|password|secret|token)'; then
+  if ! grep -qE '(SEC-[0-9]+|SECURITY|security)' "$1"; then
+    echo "WARNING: Security-related changes detected. Consider adding a SEC-XXX ticket reference."
+  fi
+fi
+```
+
+#### Add pre-push dependency audit:
+
+Append to `.husky/pre-push`:
+
+```bash
+# Check for critical/high severity vulnerabilities
+npm audit --audit-level=critical
+```
+
+### Temporarily bypassing hooks
+
+For one-off commits where you need to skip hooks (e.g., WIP commits):
+
+```bash
+git commit --no-verify -m "WIP: work in progress"
+git push --no-verify
+```
+
+**Important**: Only bypass hooks for legitimate reasons. Never bypass to avoid fixing actual security issues.
+
+### Adjusting gitleaks sensitivity
+
+If gitleaks produces false positives, add allowlists to `.gitleaks.toml` (see section 3).
+
+If gitleaks is too slow on large repos, limit to staged files only (already the default for pre-commit):
+
+```bash
+# In .husky/pre-commit — already scanning staged only
+gitleaks protect --staged --verbose
+```
+
+---
+
+## 5. Running Specific Processes via Babysitter CLI
 
 Each installed security process can be executed directly using the babysitter CLI. The general pattern is:
 
@@ -182,7 +342,7 @@ babysitter run:events --run-id <runId> --json
 
 ---
 
-## 4. Available Slash Commands
+## 6. Available Slash Commands
 
 After installation, the following slash commands are available depending on which categories were installed. All commands are defined in `.a5c/commands/security-commands.md`.
 
@@ -225,7 +385,7 @@ Description of what the command does.
 
 ---
 
-## 5. Scheduling Periodic Security Scans
+## 7. Scheduling Periodic Security Scans
 
 The basic-security plugin does not include a built-in scheduler, but you can set up periodic scans using several approaches.
 
@@ -251,6 +411,16 @@ security-scan:
   runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v4
+    - name: Install gitleaks
+      run: |
+        curl -sSfL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_$(uname -s)_$(uname -m).tar.gz | tar xz
+        sudo mv gitleaks /usr/local/bin/
+    - name: Secrets scan
+      run: gitleaks detect --verbose
+    - name: Security lint
+      run: npm run lint 2>&1 | grep -c "security/" || true
+    - name: Dependency audit
+      run: npm audit --audit-level=high
     - name: Run security audit
       run: |
         npx babysitter run:create \
@@ -269,18 +439,17 @@ For local periodic scans, create a shell script and schedule it:
 # security-scan.sh — Run weekly security scans
 cd /path/to/your/project
 
+echo "=== Gitleaks secrets scan ==="
+gitleaks detect --verbose
+
+echo "=== Dependency audit ==="
+npm audit --audit-level=high
+
 echo "=== Running codebase security audit ==="
 npx babysitter run:create \
   --process-id security/codebase-security-audit \
   --entry .a5c/processes/security/codebase-security-audit.js#process \
   --prompt "Weekly automated security audit" \
-  --json
-
-echo "=== Running dependency scan ==="
-npx babysitter run:create \
-  --process-id security/sca-dependency-management \
-  --entry .a5c/processes/security/sca-dependency-management.js#process \
-  --prompt "Weekly dependency vulnerability scan" \
   --json
 ```
 
@@ -295,8 +464,9 @@ Schedule with cron (Linux/macOS) or Task Scheduler (Windows):
 
 | Scan Type | Recommended Frequency | Rationale |
 |-----------|----------------------|-----------|
-| Secrets scan | Every commit or session | Prevents secrets from entering version control |
-| Dependency scan | Daily or weekly | New CVEs are published continuously |
+| Secrets scan (gitleaks) | Every commit (pre-commit hook) | Prevents secrets from entering version control |
+| Security lint rules | Every commit (pre-commit hook) | Catches insecure patterns as they're written |
+| Dependency audit | Every push (pre-push hook) + weekly | New CVEs are published continuously |
 | SAST scan | Every PR or weekly | Catches code-level vulnerabilities early |
 | Full security audit | Weekly or bi-weekly | Comprehensive review of security posture |
 | Compliance checks | Monthly or quarterly | Regulatory compliance typically assessed periodically |
@@ -305,7 +475,7 @@ Schedule with cron (Linux/macOS) or Task Scheduler (Windows):
 
 ---
 
-## 6. Updating the Plugin
+## 8. Updating the Plugin
 
 When a new version of the basic-security plugin is available in the marketplace, update it:
 

@@ -78,7 +78,7 @@ function setupFixtureMarketplace(
   }
 ): string {
   const pluginName = options?.pluginName ?? "test-plugin";
-  const mktDir = `${baseDir}/.babysitter/marketplaces/${marketplaceName}`;
+  const mktDir = `${baseDir}/.a5c/marketplaces/${marketplaceName}`;
   const pluginDir = `${mktDir}/plugins/${pluginName}`;
 
   const manifest = JSON.stringify({

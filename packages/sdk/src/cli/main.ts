@@ -35,6 +35,11 @@ import { handleHookLog } from "./commands/hookLog";
 import { handleHookRun } from "./commands/hookRun";
 import { handleProfileCommand } from "./commands/profile";
 import type { ProfileCommandArgs } from "./commands/profile";
+import { handleTokensStats } from "./commands/tokensStats";
+import { handleCompressionStatus } from "./commands/compressionStatus";
+import { handleCompressionToggle } from "./commands/compressionToggle";
+import { handleCompressionReset } from "./commands/compressionReset";
+import { handleCompressionSet } from "./commands/compressionSet";
 import { resolveCompletionProof } from "./completionProof";
 import { getAdapter, getAdapterByName } from "../harness";
 import type { SessionBindResult } from "../harness";
@@ -69,12 +74,17 @@ const USAGE = `Usage:
   babysitter session:iteration-message --iteration <n> [--run-id <id>] [--runs-dir <dir>] [--plugin-root <dir>] [--json]
   babysitter skill:discover --plugin-root <dir> [--run-id <id>] [--cache-ttl <seconds>] [--runs-dir <dir>] [--include-remote] [--summary-only] [--process-path <path>] [--json]
   babysitter hook:log --hook-type <type> --log-file <path> [--json]
-  babysitter hook:run --hook-type <stop|session-start> [--harness <claude-code>] [--plugin-root <dir>] [--state-dir <dir>] [--runs-dir <dir>] [--json] [--verbose]
+  babysitter hook:run --hook-type <stop|session-start|user-prompt-submit> [--harness <claude-code>] [--plugin-root <dir>] [--state-dir <dir>] [--runs-dir <dir>] [--json] [--verbose]
   babysitter skill:fetch-remote --source-type <github|well-known> --url <url> [--json]
   babysitter profile:read --user|--project [--dir <dir>] [--json]
   babysitter profile:write --user|--project --input <file> [--dir <dir>] [--json]
   babysitter profile:merge --user|--project --input <file> [--dir <dir>] [--json]
   babysitter profile:render --user|--project [--dir <dir>] [--json]
+  babysitter tokens:stats [runId] [--all] [--runs-dir <dir>] [--json]
+  babysitter compression:status [--json]
+  babysitter compression:toggle <layer> <on|off> [--json]
+  babysitter compression:set <layer.key> <value> [--json]
+  babysitter compression:reset [--json]
   babysitter health [--json] [--verbose]
   babysitter configure [show|validate|paths] [--json] [--defaults-only]
   babysitter version
@@ -96,6 +106,11 @@ interface ParsedArgs {
   verbose: boolean;
   helpRequested: boolean;
   pendingOnly: boolean;
+  // compression command args
+  compressionLayer?: string;
+  compressionToggleValue?: boolean;
+  compressionSetKey?: string;
+  compressionSetValue?: string;
   kindFilter?: string;
   limit?: number;
   reverseOrder: boolean;
@@ -153,6 +168,9 @@ interface ParsedArgs {
   profileProject?: boolean;
   profileInputPath?: string;
   profileDir?: string;
+  // tokens:stats flags
+  tokensAll?: boolean;
+  tokensRunId?: string;
 }
 
 interface ActionSummary {
@@ -447,6 +465,11 @@ function parseArgs(argv: string[]): ParsedArgs {
       parsed.profileDir = expectFlagValue(rest, ++i, "--dir");
       continue;
     }
+    // tokens:stats flags
+    if (arg === "--all") {
+      parsed.tokensAll = true;
+      continue;
+    }
     positionals.push(arg);
   }
   if (parsed.command === "task:post") {
@@ -469,6 +492,22 @@ function parseArgs(argv: string[]): ParsedArgs {
     [parsed.runDirArg] = positionals;
   } else if (parsed.command === "configure") {
     [parsed.configureSubcommand] = positionals;
+  } else if (parsed.command === "tokens:stats") {
+    [parsed.tokensRunId] = positionals;
+  } else if (parsed.command === "compression:toggle") {
+    const [layer, onOff] = positionals;
+    parsed.compressionLayer = layer;
+    if (onOff !== undefined) {
+      const normalized = onOff.toLowerCase();
+      if (normalized !== "on" && normalized !== "off") {
+        throw new Error(`compression:toggle value must be "on" or "off" (received: ${onOff})`);
+      }
+      parsed.compressionToggleValue = normalized === "on";
+    }
+  } else if (parsed.command === "compression:set") {
+    const [key, value] = positionals;
+    parsed.compressionSetKey = key;
+    parsed.compressionSetValue = value;
   }
   return parsed;
 }
@@ -1952,6 +1991,11 @@ const VALID_COMMANDS = [
   "profile:render",
   "health",
   "configure",
+  "tokens:stats",
+  "compression:status",
+  "compression:toggle",
+  "compression:set",
+  "compression:reset",
   "version",
 ];
 
@@ -2229,6 +2273,50 @@ export function createBabysitterCli() {
             json: parsed.json,
             defaultsOnly: parsed.defaultsOnly,
           });
+        }
+        if (parsed.command === "tokens:stats") {
+          return await handleTokensStats({
+            runId: parsed.tokensRunId,
+            all: parsed.tokensAll,
+            json: parsed.json,
+            runsDir: parsed.runsDir,
+          });
+        }
+        // Compression commands
+        if (parsed.command === "compression:status") {
+          return await handleCompressionStatus({ json: parsed.json });
+        }
+        if (parsed.command === "compression:toggle") {
+          if (!parsed.compressionLayer) {
+            console.error("compression:toggle requires <layer> and <on|off> arguments");
+            console.error(USAGE);
+            return 1;
+          }
+          if (parsed.compressionToggleValue === undefined) {
+            console.error("compression:toggle requires <on|off> as the second argument");
+            console.error(USAGE);
+            return 1;
+          }
+          return await handleCompressionToggle({
+            layer: parsed.compressionLayer,
+            value: parsed.compressionToggleValue,
+            json: parsed.json,
+          });
+        }
+        if (parsed.command === "compression:set") {
+          if (!parsed.compressionSetKey || parsed.compressionSetValue === undefined) {
+            console.error("compression:set requires <layer.key> and <value> arguments");
+            console.error(USAGE);
+            return 1;
+          }
+          return await handleCompressionSet({
+            key: parsed.compressionSetKey,
+            value: parsed.compressionSetValue,
+            json: parsed.json,
+          });
+        }
+        if (parsed.command === "compression:reset") {
+          return await handleCompressionReset({ json: parsed.json });
         }
 
         // This should not be reached due to the VALID_COMMANDS check above

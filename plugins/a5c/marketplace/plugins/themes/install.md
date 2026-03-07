@@ -99,6 +99,8 @@ Ask how deep the design system should go:
 - **Standard** -- colors, typography, component library, layout patterns, spacing system
 - **Full** -- complete design system with tokens, component specs, animation guidelines, responsive patterns, accessibility notes
 
+At **standard** or **full** depth, the installer will search for existing UI frameworks, component libraries, and themed resources that match the theme (e.g., Arwes for sci-fi, NES.css for retro gaming). Discovered frameworks are integrated into the design system and CLAUDE.md instructions so Claude builds immersive, themed UI rather than just applying colors to generic components.
+
 ### Scope Confirmation
 
 Confirm: **Themes always configures at the project level.** Even if installed globally, all assets, CLAUDE.md modifications, and hooks target the current project. Ask the user which project directory to configure (default: current working directory).
@@ -219,6 +221,12 @@ conversation:
 # Design system reference
 designSystem:
   depth: "<light|standard|full>"
+  # Discovered frameworks, libraries, and resources (populated during research)
+  frameworks:
+    - name: "<framework name>"
+      url: "<homepage or repo URL>"
+      install: "<npm install command or CDN link>"
+      provides: "<what it contributes: components, animations, sounds, fonts, icons>"
   palette:
     primary: "<hex>"
     secondary: "<hex>"
@@ -394,10 +402,82 @@ Create `.a5c/themes/<name>/design-system/system.md` based on the theme and the d
 
 This document is referenced from `theme.yaml` and optionally included in CLAUDE.md. It should be written as **instructions for Claude** to follow when generating UI, reports, or styled outputs.
 
-### Example structure (standard depth):
+### Research-first: discover existing frameworks, libraries, and resources
+
+**Before writing a design system from scratch, search for existing UI frameworks, component libraries, CSS themes, icon packs, font collections, and animation libraries that already embody the theme.** Using a real framework gives you production-quality components, transitions, sounds, and typography that would take ages to replicate manually.
+
+#### How to research
+
+1. **Web search** for the theme + "UI framework", "CSS theme", "component library", "design system", "icon pack", "font", "animation library"
+2. **Explore** npm, GitHub, CodePen, Dribbble, and Behance for themed UI kits
+3. **Check** if the theme has an established visual language (official style guides, fan-made design systems, brand guidelines)
+4. **Look for** themed sound libraries, ambient audio packs, or game/movie OST samples that could supplement or replace individual sound downloads
+5. **Evaluate** what the framework provides vs what needs to be custom-built
+
+#### Discovery examples
+
+**Sci-Fi theme** -- discover [Arwes](https://arwes.dev/), a futuristic sci-fi UI framework:
+- Rich animated components (frames, text, buttons, cards) with built-in sci-fi transitions
+- Integrated sound library (typing, deploying, alerts, notifications) -- can replace or augment the sound hooks
+- Custom sci-fi fonts (Titillium Web, Source Code Pro) and glow effects
+- Neon color system with configurable palettes
+- The design system document would instruct Claude: "Use Arwes components for all reports, dashboards, and product pages. Import `@arwes/react` for frames, `@arwes/animated` for transitions. Use the Arwes Bleeps system for UI sounds. All content should feel like a starship terminal interface."
+
+**Retro/8-bit gaming theme** -- discover [NES.css](https://nostalgic-css.github.io/NES.css/), a NES-style CSS framework:
+- Pixel-art styled components (containers, buttons, inputs, icons, progress bars)
+- Built-in 8-bit icons (heart, star, coin, trophy)
+- Press Start 2P font for pixel-perfect text
+- The design system would say: "Use NES.css classes for all UI elements. Reports should look like NES game screens. Use `nes-container` for panels, `nes-btn` for actions, `nes-progress` for status bars, pixel art icons from the built-in set."
+
+**Cyberpunk theme** -- discover [Augmented UI](https://augmented-ui.com/) for clip-path cyberpunk borders:
+- CSS-only augmented/clipped panel shapes (angled corners, notches, insets)
+- Combine with a neon color palette and glitch animation libraries like [CSS Glitch Effect](https://github.com/bulma-css-vars)
+- Monospace fonts like JetBrains Mono or Fira Code with ligatures
+- The design system would say: "Use `augmented-ui` attributes on containers for cyberpunk panel shapes. Apply neon glow via box-shadow with cyan/magenta. Use CSS `@keyframes` glitch animations on error states."
+
+**Japanese ink/Ukiyo-e theme** -- discover [Wabi](https://github.com) or build from traditional assets:
+- Search for royalty-free Ukiyo-e wave patterns, cloud motifs, and brush stroke SVGs
+- Use Google Fonts like Noto Serif JP, Zen Antique, or Shippori Mincho
+- Muted indigo/vermilion/cream palette extracted from classic woodblock prints
+- The design system would say: "Use vertical rhythm inspired by Japanese typography. Cards should have subtle ink wash backgrounds. Dividers use wave or cloud brush stroke SVGs. Animations should be gentle and flowing, like ink spreading on paper."
+
+**Tolkien/Middle-earth theme** -- discover [Tengwar fonts](https://github.com) + medieval CSS:
+- Tengwar Annatar or similar Elvish fonts for decorative headers
+- Cinzel, MedievalSharp, or IM Fell English for readable text
+- Illuminated manuscript-style drop caps (CSS `::first-letter` with gold/ornate styling)
+- Parchment textures, vine border SVGs, wax seal icons
+- The design system would say: "Use illuminated drop caps on report sections. Headers in Cinzel with subtle gold text-shadow. Panels should have parchment background textures. Decorative borders use vine/knotwork SVG patterns."
+
+**Lo-fi / cozy theme** -- discover aesthetic resources:
+- Pastel/muted color palettes from [coolors.co](https://coolors.co) or [Happy Hues](https://www.happyhues.co)
+- Rounded, friendly fonts like Nunito, Quicksand, or Comic Neue
+- Subtle CSS grain/noise overlays for analog warmth
+- Hand-drawn SVG icons from [Rough Notation](https://roughnotation.com/) or [Rough.js](https://roughjs.com/) for sketchy UI elements
+- The design system would say: "All UI should feel warm and hand-crafted. Use rounded corners (12px+), soft shadows, pastel colors. Apply subtle CSS noise overlays on backgrounds. Use Rough.js for decorative annotations and highlights."
+
+#### What to record from discovery
+
+For each framework/library/resource found:
+- **Name and URL** -- so the design system doc can reference it
+- **Install command** -- `npm install`, CDN link, or font import
+- **Key components/features** -- what it provides that maps to theme needs
+- **Integration notes** -- how Claude should use it when generating code
+- **Sound/audio features** -- if the library has built-in sounds (like Arwes Bleeps), note these for potential sound hooks integration
+- **Limitations** -- what the library doesn't cover that needs custom work
+
+### Write the design system document
+
+Create `.a5c/themes/<name>/design-system/system.md` incorporating everything discovered. The document should tell Claude exactly how to build immersive, themed UI.
+
+### Document structure (standard depth):
 
 ```markdown
 # <Theme Name> Design System
+
+## Framework & Dependencies
+
+<List discovered frameworks, libraries, CDN links, npm packages, font imports.
+Include install/import instructions so Claude can set them up in any project.>
 
 ## Color Palette
 
@@ -421,22 +501,56 @@ This document is referenced from `theme.yaml` and optionally included in CLAUDE.
 - **Monospace**: <font family>
 - **Base size**: <size>
 - **Scale**: <ratio> (e.g., 1.25 major third)
+- **Import**: <Google Fonts / CDN / npm import instructions>
 
 ## Component Guidelines
 
-<Theme-specific component styling rules: buttons, cards, inputs, tables, etc.>
+<Theme-specific component styling rules using discovered framework(s).
+Show how to build: buttons, cards, inputs, tables, alerts, progress bars, modals.
+Reference framework class names, attributes, or components directly.>
+
+## Transitions & Animations
+
+<Theme-appropriate animation patterns. Reference animation libraries if discovered.
+Define: entry/exit transitions, loading states, hover effects, error shakes, success pulses.
+Specify timing, easing, and when NOT to animate.>
 
 ## Layout & Spacing
 
-<Grid, spacing scale, breakpoints>
+<Grid system, spacing scale, breakpoints.
+Reference framework layout primitives if available.>
 
 ## Decorative Elements
 
-<How to use the theme's icons, dividers, backgrounds. When to apply decorations vs keeping things clean.>
+<How to use the theme's icons, dividers, backgrounds, patterns.
+Reference icon packs, SVG libraries, or CSS patterns discovered.
+When to apply decorations vs keeping things clean.>
+
+## Immersive UI Guidelines
+
+<Instructions for making reports, product pages, dashboards, and documentation
+feel fully immersive in the theme. Not just colors-and-fonts, but experiential:
+- How should page transitions feel?
+- What ambient effects are appropriate? (particles, grain, glow, scan lines)
+- How should data visualizations be styled?
+- What loading/empty/error states look like in-theme?
+- How do interactive elements respond to hover/focus/active?>
 
 ## Accessibility
 
-<Contrast ratios, focus indicators, motion preferences>
+<Contrast ratios, focus indicators, motion preferences, reduced-motion fallbacks.>
+```
+
+### CLAUDE.md design system instructions
+
+The CLAUDE.md section should not just list tokens -- it should instruct Claude to build **immersive, themed experiences**. Example for a sci-fi theme using Arwes:
+
+```
+When building UI for this project, create immersive sci-fi interfaces using the Arwes framework.
+Reports should feel like starship terminal readouts. Dashboards should pulse with animated frames.
+Use Arwes Bleeps for interaction sounds. All text should render with the Arwes text animation.
+Product pages should immerse the user in the theme -- not just use sci-fi colors, but feel like
+an actual futuristic interface. Refer to .a5c/theme/design-system/system.md for full specs.
 ```
 
 ---

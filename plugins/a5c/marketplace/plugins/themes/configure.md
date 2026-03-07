@@ -290,6 +290,7 @@ ln -s themes/<name> .a5c/theme
 | `conversation.style` | Brief style label |
 | `conversation.instructions` | Full conversational instructions for CLAUDE.md |
 | `designSystem.depth` | light / standard / full |
+| `designSystem.frameworks` | Discovered UI frameworks, libraries, and resources |
 | `designSystem.palette` | Color tokens |
 | `designSystem.typography` | Font families and scale |
 | `designSystem.borders` | Border aesthetic |

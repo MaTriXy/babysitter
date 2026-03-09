@@ -151,58 +151,65 @@ Claude will create an orchestration run, execute tasks step-by-step, handle qual
 
 ```
 +=============================================================================+
-|                         PROCESS ENFORCEMENT                                  |
+|                         /babysitter:call                                    |
 +=============================================================================+
-|                                                                              |
-|  YOUR REQUEST                         YOUR PROCESS DEFINITION (JavaScript)   |
-|  +-----------------------+            +----------------------------------+   |
-|  | "Build REST API       |            | defineProcess('tdd-api', {       |   |
-|  |  with TDD, 80% quality"|           |   phases: [                      |   |
-|  +-----------+-----------+            |     { id: 'research',            |   |
-|              |                        |       tasks: [analyzeCodebase,   |   |
-|              v                        |                createSpecs] },   |   |
-|  +-----------------------+            |     { id: 'implement',           |   |
-|  | Babysitter selects or |            |       tasks: [writeTests,        |   |
-|  | generates process     |----------->|                writeCode] },     |   |
-|  +-----------------------+            |     { id: 'verify',              |   |
-|                                       |       gates: [testsPass,         |   |
-|                                       |                coverage80] }     |   |
-|  DETERMINISTIC EXECUTION              |   ],                             |   |
-|  (Process drives every step)          |   onGateFail: 'refine'           |   |
-|                                       | })                               |   |
-|  Phase: research                      +----------------------------------+   |
-|  +---------------------------+                     |                         |
-|  | [x] analyzeCodebase       |<--------------------+                         |
-|  | [x] createSpecs           |     Process defines WHAT runs                 |
-|  +-------------+-------------+                                               |
-|                |                                                             |
-|  Phase: implement                                                            |
-|  +-------------v-------------+                                               |
-|  | [x] writeTests            |     Babysitter enforces WHEN and HOW          |
-|  | [x] writeCode             |                                               |
-|  +-------------+-------------+                                               |
-|                |                                                             |
-|  Phase: verify                                                               |
-|  +-------------v-------------+                                               |
-|  | Gate: testsPass?     [x]  |     Quality gates defined IN the process      |
-|  | Gate: coverage >= 80% [x] |---> COMPLETE                                  |
-|  +---------------------------+                                               |
-|         | (gate fails)                                                       |
-|         v                                                                    |
-|  Process-defined refinement          JOURNAL (Event-Sourced)                 |
-|  (not a retry - a defined phase)     +-------------------------------+       |
-|                                      | Every task recorded immutably |       |
-|                                      | Deterministic replay anytime  |       |
-|                                      | Resume exactly where stopped  |       |
-|                                      +-------------------------------+       |
+|                                                                             |
+|   YOUR PROCESS DEFINITION (JavaScript)        This is the AUTHORITY         |
+|   +----------------------------------------+                                |
+|   | defineProcess('tdd-api', {             |  Not a template.              |
+|   |   phases: [                            |  Not a guide.                 |
+|   |     'research',                        |  This IS the contract.        |
+|   |     'implement',                       |                                |
+|   |     'verify'                           |  The orchestrator can ONLY    |
+|   |   ],                                   |  do what this code permits.   |
+|   |   gates: {                             |                                |
+|   |     implement: { specsApproved: true },|                                |
+|   |     verify: { coverage: 80 }           |                                |
+|   |   },                                   |                                |
+|   |   onGateFail: 'refine'                 |                                |
+|   | })                                     |                                |
+|   +-------------------+--------------------+                                |
+|                       |                                                     |
+|                       | governs                                             |
+|                       v                                                     |
+|   +---------------------------------------------------------------------+   |
+|   |                      ENFORCEMENT MECHANISM                          |   |
+|   |                                                                     |   |
+|   |   Session executes task                                             |   |
+|   |          |                                                          |   |
+|   |          v                                                          |   |
+|   |   +-------------+     +------------------+     +-----------------+  |   |
+|   |   | MANDATORY   |---->| PROCESS CHECK    |---->| DECISION        |  |   |
+|   |   | STOP        |     | What does the    |     |                 |  |   |
+|   |   | (enforced   |     | process permit   |     | Permitted: next |  |   |
+|   |   |  by hook)   |     | next?            |     | task assigned   |  |   |
+|   |   +-------------+     +------------------+     |                 |  |   |
+|   |                              |                 | Blocked: halt   |  |   |
+|   |                              |                 | or refine per   |  |   |
+|   |                              v                 | process rules   |  |   |
+|   |                       +--------------+        +-----------------+  |   |
+|   |                       | Gate check   |                              |   |
+|   |                       | (from code)  |                              |   |
+|   |                       +--------------+                              |   |
+|   +---------------------------------------------------------------------+   |
+|                       |                                                     |
+|                       | records every decision                              |
+|                       v                                                     |
+|   +---------------------------------------------------------------------+   |
+|   |   JOURNAL (Event-Sourced)                                           |   |
+|   |                                                                     |   |
+|   |   Every task, every gate, every decision - immutable record         |   |
+|   |   Deterministic replay: same process = same execution               |   |
+|   +---------------------------------------------------------------------+   |
+|                                                                             |
 +=============================================================================+
 ```
 
-**Key Concepts:**
-- **Process Enforcement:** Your workflow is defined in code - Babysitter enforces every step
-- **Deterministic Execution:** Same process definition = same execution sequence
-- **Quality Gates:** Standards defined in the process, not as an afterthought
-- **Event-Sourced Journal:** All state in `.a5c/runs/` - deterministic replay and resume
+**The difference from simple iteration:**
+- **Process as Code:** Your workflow is JavaScript - the orchestrator can ONLY do what this code permits
+- **Mandatory Stop:** Claude cannot "keep running" - every step ends with a forced stop, then the process decides what's next
+- **Enforcement, not Assistance:** Gates block progression until satisfied - they're not suggestions
+- **Event-Sourced Journal:** All state in `.a5c/runs/` - deterministic replay and resume from any point
 
 ---
 

@@ -116,7 +116,7 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/vscode-extension
-          npx @vscode/vsce package --out ../../artifacts/release/
+          npx @vscode/vsce package --no-dependencies --out ../../artifacts/release/
           ls -lh ../../artifacts/release/*.vsix
 
       - name: Get extension version
@@ -132,7 +132,7 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/vscode-extension
-          npx @vscode/vsce publish -p $VSCE_PAT
+          npx @vscode/vsce publish --no-dependencies -p $VSCE_PAT
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4

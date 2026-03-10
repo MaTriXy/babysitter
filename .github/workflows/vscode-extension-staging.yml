@@ -139,7 +139,7 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/vscode-extension
-          npx @vscode/vsce package --pre-release --out ../../artifacts/release/
+          npx @vscode/vsce package --pre-release --no-dependencies --out ../../artifacts/release/
           ls -lh ../../artifacts/release/*.vsix
 
       - name: Publish to VSCode Marketplace (pre-release)
@@ -148,7 +148,7 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/vscode-extension
-          npx @vscode/vsce publish --pre-release -p $VSCE_PAT
+          npx @vscode/vsce publish --pre-release --no-dependencies -p $VSCE_PAT
 
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4

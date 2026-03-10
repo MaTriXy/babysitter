@@ -4,6 +4,9 @@ import path from 'path';
 export default defineConfig({
   test: {
     environment: 'node',
+    env: {
+      TZ: 'UTC',
+    },
     include: ['src/**/*.test.ts'],
     exclude: ['src/test/e2e/**'],
     globals: false,

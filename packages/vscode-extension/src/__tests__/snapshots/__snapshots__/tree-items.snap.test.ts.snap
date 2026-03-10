@@ -27,7 +27,7 @@ exports[`RunTreeItem - snapshots > snapshots completed run 1`] = `
 
 **Tasks:** 10/10 completed
 
-**Created:** Mar 10, 12:00 PM
+**Created:** Mar 10, 10:00 AM
 
 **Duration:** 5m
 
@@ -62,7 +62,7 @@ exports[`RunTreeItem - snapshots > snapshots failed run 1`] = `
 
 **Tasks:** 3/5 completed, 2 failed
 
-**Created:** Mar 10, 1:00 PM
+**Created:** Mar 10, 11:00 AM
 
 **Duration:** 2m
 
@@ -99,7 +99,7 @@ exports[`RunTreeItem - snapshots > snapshots pending run 1`] = `
 
 **Tasks:** 4/8 completed
 
-**Created:** Mar 10, 1:30 PM
+**Created:** Mar 10, 11:30 AM
 
 ",
 }
@@ -132,7 +132,7 @@ exports[`RunTreeItem - snapshots > snapshots run with no tasks 1`] = `
 
 **Tasks:** 0/0 completed
 
-**Created:** Mar 10, 6:00 PM
+**Created:** Mar 10, 4:00 PM
 
 ",
 }
@@ -165,7 +165,7 @@ exports[`RunTreeItem - snapshots > snapshots run with unknown processId 1`] = `
 
 **Tasks:** 0/0 completed
 
-**Created:** Mar 10, 5:00 PM
+**Created:** Mar 10, 3:00 PM
 
 ",
 }
@@ -198,7 +198,7 @@ exports[`RunTreeItem - snapshots > snapshots stale pending run 1`] = `
 
 **Tasks:** 1/3 completed
 
-**Created:** Mar 9, 12:00 PM
+**Created:** Mar 9, 10:00 AM
 
 ",
 }
@@ -231,7 +231,7 @@ exports[`RunTreeItem - snapshots > snapshots waiting run with breakpoint 1`] = `
 
 **Tasks:** 3/5 completed
 
-**Created:** Mar 10, 3:00 PM
+**Created:** Mar 10, 1:00 PM
 
 **Breakpoint:** Deploy to production?
 
@@ -266,7 +266,7 @@ exports[`RunTreeItem - snapshots > snapshots waiting run with task 1`] = `
 
 **Tasks:** 5/7 completed
 
-**Created:** Mar 10, 4:00 PM
+**Created:** Mar 10, 2:00 PM
 
 ",
 }
@@ -427,9 +427,9 @@ exports[`TaskTreeItem - snapshots > snapshots agent task - resolved 1`] = `
 
 **Effect ID:** \`task-agent-002\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 2m
 
@@ -458,9 +458,9 @@ exports[`TaskTreeItem - snapshots > snapshots breakpoint task - requested 1`] = 
 
 **Effect ID:** \`task-bp-004\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 1m
 
@@ -489,9 +489,9 @@ exports[`TaskTreeItem - snapshots > snapshots breakpoint task - resolved 1`] = `
 
 **Effect ID:** \`task-bp-005\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:05 PM
+**Resolved:** Mar 10, 10:05 AM
 
 **Duration:** 5m
 
@@ -524,9 +524,9 @@ exports[`TaskTreeItem - snapshots > snapshots node task - resolved 1`] = `
 
 **Label:** production
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 1m
 
@@ -553,9 +553,9 @@ exports[`TaskTreeItem - snapshots > snapshots shell task - error 1`] = `
 
 **Effect ID:** \`task-shell-006\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:00 PM
+**Resolved:** Mar 10, 10:00 AM
 
 **Duration:** 5s
 
@@ -584,9 +584,9 @@ exports[`TaskTreeItem - snapshots > snapshots skill task - requested 1`] = `
 
 **Effect ID:** \`task-skill-003\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 1m
 
@@ -613,9 +613,9 @@ exports[`TaskTreeItem - snapshots > snapshots sleep task - resolved 1`] = `
 
 **Effect ID:** \`task-sleep-007\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 30s
 
@@ -646,9 +646,9 @@ exports[`TaskTreeItem - snapshots > snapshots task with all metadata fields 1`] 
 
 **Label:** priority-high
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:10 PM
+**Resolved:** Mar 10, 10:10 AM
 
 **Duration:** 10m
 
@@ -677,9 +677,9 @@ exports[`TaskTreeItem - snapshots > snapshots task with no duration 1`] = `
 
 **Effect ID:** \`task-no-dur-012\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 ",
 }
@@ -706,9 +706,9 @@ exports[`TaskTreeItem - snapshots > snapshots task with no title (uses taskId) 1
 
 **Task ID:** fallback-task-id
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 1m
 
@@ -735,9 +735,9 @@ exports[`TaskTreeItem - snapshots > snapshots task with no title or taskId (uses
 
 **Effect ID:** \`eff-fallback-009\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** 1m
 
@@ -764,9 +764,9 @@ exports[`TaskTreeItem - snapshots > snapshots task with very short duration 1`] 
 
 **Effect ID:** \`task-fast-011\`
 
-**Requested:** Mar 10, 12:00 PM
+**Requested:** Mar 10, 10:00 AM
 
-**Resolved:** Mar 10, 12:01 PM
+**Resolved:** Mar 10, 10:01 AM
 
 **Duration:** < 1s
 

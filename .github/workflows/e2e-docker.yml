@@ -8,6 +8,7 @@ on:
       - 'docker-compose.yml'
       - 'packages/sdk/**'
       - 'plugins/babysitter/**'
+      - 'plugins/pi/**'
       - 'e2e-tests/**'
       - '.github/workflows/e2e-docker.yml'
   push:
@@ -20,6 +21,7 @@ on:
       - 'docker-compose.yml'
       - 'packages/sdk/**'
       - 'plugins/babysitter/**'
+      - 'plugins/pi/**'
       - 'e2e-tests/**'
       - '.github/workflows/e2e-docker.yml'
   workflow_dispatch:
@@ -67,6 +69,8 @@ jobs:
             e2e-tests/docker/structural.test.ts \
             e2e-tests/docker/sdk-cli.test.ts \
             e2e-tests/docker/stop-hook.test.ts \
+            e2e-tests/docker/pi-harness.test.ts \
+            e2e-tests/docker/pi-workflow.test.ts \
             2>&1 | tee e2e-artifacts/structural-tests.log
 
       - name: Run fixture & E2E orchestration tests
@@ -78,6 +82,7 @@ jobs:
             --reporter=default --reporter=json \
             --outputFile.json=e2e-artifacts/test-results-e2e.json \
             e2e-tests/docker/orchestration.test.ts \
+            e2e-tests/docker/pi-workflow.test.ts \
             2>&1 | tee e2e-artifacts/e2e-tests.log
         env:
           CLAUDE_CODE_USE_FOUNDRY: ${{ secrets.CLAUDE_CODE_USE_FOUNDRY }}
@@ -86,6 +91,11 @@ jobs:
           ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_SONNET_MODEL }}
           ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_HAIKU_MODEL }}
           ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_OPUS_MODEL }}
+          AZURE_OPENAI_PROJECT_NAME: ${{ vars.AZURE_OPENAI_PROJECT_NAME }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          A5C_PROVIDER_NAME: ${{ vars.A5C_PROVIDER_NAME }}
+          A5C_SELECTED_CLI_COMMAND: ${{ vars.A5C_SELECTED_CLI_COMMAND }}
+          A5C_SELECTED_MODEL: ${{ vars.A5C_SELECTED_MODEL }}
         timeout-minutes: 35
 
       - name: Upload test artifacts

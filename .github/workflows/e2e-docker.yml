@@ -73,24 +73,22 @@ jobs:
             e2e-tests/docker/pi-workflow.test.ts \
             2>&1 | tee e2e-artifacts/structural-tests.log
 
-      - name: Run fixture & E2E orchestration tests
+      # NOTE: orchestration.test.ts is disabled — Anthropic Foundry model
+      # is no longer provisioned.  Re-enable when Foundry access is restored.
+      # - name: Run Anthropic Foundry E2E orchestration tests
+      #   ...
+
+      - name: Run Pi harness E2E tests (Azure OpenAI)
         if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
-        # E2E orchestration requires valid credentials (Foundry or Anthropic API key).
         run: |
           set -euo pipefail
           npx vitest run --config e2e-tests/docker/vitest.config.ts \
             --reporter=default --reporter=json \
             --outputFile.json=e2e-artifacts/test-results-e2e.json \
-            e2e-tests/docker/orchestration.test.ts \
             e2e-tests/docker/pi-workflow.test.ts \
             2>&1 | tee e2e-artifacts/e2e-tests.log
         env:
-          CLAUDE_CODE_USE_FOUNDRY: ${{ secrets.CLAUDE_CODE_USE_FOUNDRY }}
-          ANTHROPIC_FOUNDRY_RESOURCE: ${{ secrets.ANTHROPIC_FOUNDRY_RESOURCE }}
-          ANTHROPIC_FOUNDRY_API_KEY: ${{ secrets.ANTHROPIC_FOUNDRY_API_KEY }}
-          ANTHROPIC_DEFAULT_SONNET_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_SONNET_MODEL }}
-          ANTHROPIC_DEFAULT_HAIKU_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_HAIKU_MODEL }}
-          ANTHROPIC_DEFAULT_OPUS_MODEL: ${{ secrets.ANTHROPIC_DEFAULT_OPUS_MODEL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           AZURE_OPENAI_PROJECT_NAME: ${{ vars.AZURE_OPENAI_PROJECT_NAME }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           A5C_PROVIDER_NAME: ${{ vars.A5C_PROVIDER_NAME }}

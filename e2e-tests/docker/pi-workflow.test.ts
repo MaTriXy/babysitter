@@ -19,10 +19,7 @@ const FIXTURE_SRC = path.resolve(ROOT, "e2e-tests/fixtures/tic-tac-toe");
 const ARTIFACTS_DIR = path.resolve(ROOT, "e2e-artifacts");
 const WORKSPACE_HOST = path.resolve(ARTIFACTS_DIR, "pi-workspace");
 
-const HAS_API_KEY =
-  !!process.env.ANTHROPIC_API_KEY ||
-  !!process.env.ANTHROPIC_FOUNDRY_API_KEY ||
-  !!process.env.AZURE_OPENAI_API_KEY;
+const HAS_API_KEY = !!process.env.AZURE_OPENAI_API_KEY;
 
 const PI_SESSION_ID = "e2e-pi-" + Date.now();
 
@@ -79,14 +76,10 @@ describe.skipIf(!HAS_API_KEY)("Full E2E orchestration (Pi harness)", () => {
         `-e PI_SESSION_ID=${PI_SESSION_ID}`,
         `-e PI_PLUGIN_ROOT=${PLUGIN_DIR}`,
       ];
+      // Azure OpenAI for babysitter agent tasks; ANTHROPIC_API_KEY for
+      // Claude Code itself (the orchestrator LLM).
       const passthroughVars = [
         "ANTHROPIC_API_KEY",
-        "CLAUDE_CODE_USE_FOUNDRY",
-        "ANTHROPIC_FOUNDRY_RESOURCE",
-        "ANTHROPIC_FOUNDRY_API_KEY",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL",
-        "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL",
         "AZURE_OPENAI_PROJECT_NAME",
         "AZURE_OPENAI_API_KEY",
         "A5C_PROVIDER_NAME",

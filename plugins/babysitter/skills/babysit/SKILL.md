@@ -97,7 +97,7 @@ Before building the process, check for an existing user profile to personalize t
 
 #### Process creation phase
 
-after the interview phase, create the complete custom process files (js and jsons) for the run according to the Process Creation Guidelines and methodologies section. also install the babysitter-sdk inside .a5c if it is not already installed. (install it in .a5c/package.json if it is not already installed, make sure to use the latest version)
+after the interview phase, create the complete custom process files (js and jsons) for the run according to the Process Creation Guidelines and methodologies section. also install the babysitter-sdk inside .a5c if it is not already installed. (install it in .a5c/package.json if it is not already installed, make sure to use the latest version). **IMPORTANT**: When installing into `.a5c/`, use `npm i --prefix .a5c @a5c-ai/babysitter-sdk@latest` or a subshell `(cd .a5c && npm i @a5c-ai/babysitter-sdk@latest)` to avoid leaving CWD inside `.a5c/`, which causes doubled path resolution bugs.
 you must abide the syntax and structure of the process files from the process library.
 
 **IMPORTANT — Path resolution**: Always use **absolute paths** for `--entry` when calling `run:create`, and always run the CLI from the **project root** directory (not from `.a5c/`). Using relative paths while CWD is inside `.a5c/` causes doubled paths like `.a5c/.a5c/runs/` or `.a5c/.a5c/processes/`.

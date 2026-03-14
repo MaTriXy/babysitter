@@ -34,7 +34,13 @@ import * as fs from 'fs';
  * @param pi - The oh-my-pi {@link ExtensionAPI} handle.
  */
 export default function activate(pi: ExtensionAPI): void {
-  pi.appendEntry({
+  // Guard appendEntry calls during activation — some harnesses (e.g. oh-my-pi)
+  // don't allow action methods until extension loading completes.
+  const safeAppend = (entry: { type: string; content: string }) => {
+    try { pi.appendEntry(entry); } catch { /* deferred — not yet initialized */ }
+  };
+
+  safeAppend({
     type: 'info',
     content: `[${EXTENSION_NAME}] v${EXTENSION_VERSION} activating...`,
   });
@@ -536,7 +542,7 @@ export default function activate(pi: ExtensionAPI): void {
     pi.appendEntry({ type: 'info', content: checks.join('\n') });
   });
 
-  pi.appendEntry({
+  safeAppend({
     type: 'info',
     content: `[${EXTENSION_NAME}] v${EXTENSION_VERSION} activated.`,
   });

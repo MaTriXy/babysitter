@@ -752,7 +752,7 @@ function resolveArtifactAbsolutePath(runDir: string, ref?: string | null): strin
     return candidates[0].absolute;
   }
 
-  return path.join(absoluteRunDir, normalized);
+  return collapseDoubledA5cRuns(path.join(absoluteRunDir, normalized));
 }
 
 type ArtifactCandidate = { absolute: string; relative: string; outsideRun: boolean };
@@ -766,7 +766,7 @@ function collectArtifactCandidates(runDir: string, ref: string): ArtifactCandida
     seen.set(normalizedAbs, { absolute: normalizedAbs, relative, outsideRun });
   };
 
-  pushCandidate(path.join(runDir, ref));
+  pushCandidate(collapseDoubledA5cRuns(path.join(runDir, ref)));
   pushCandidate(path.resolve(ref));
 
   return Array.from(seen.values());

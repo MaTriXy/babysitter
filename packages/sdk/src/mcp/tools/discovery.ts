@@ -81,7 +81,7 @@ export function registerDiscoveryTools(server: McpServer): void {
     "configure_show",
     "Show current babysitter configuration and environment",
     {},
-    async () => {
+    () => {
       try {
         const result = configureShow({});
 

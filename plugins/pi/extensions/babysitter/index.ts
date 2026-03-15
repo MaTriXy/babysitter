@@ -130,7 +130,7 @@ export default function activate(pi: ExtensionAPI): void {
   pi.registerMessageRenderer('babysitter:tool-result', createToolRenderer());
 
   // -- Register slash command for manual todo sync ----------------------------
-  pi.registerCommand('babysitter:sync', (...args: unknown[]) => {
+  pi.registerCommand('babysitter:sync', { handler: (...args: unknown[]) => {
     const sessionId = (args[0] as string) ?? 'default';
     const runState = getActiveRun(sessionId);
 
@@ -139,10 +139,10 @@ export default function activate(pi: ExtensionAPI): void {
       renderRunWidget(runState, pi);
       updateStatusLine(runState, pi);
     }
-  });
+  }});
 
-  // -- Register slash command: babysitter:call --------------------------------
-  pi.registerCommand('babysitter:call', async (...args: unknown[]) => {
+  // -- babysitter:call handler (shared by aliases) ----------------------------
+  const handleBabysitterCall = async (...args: unknown[]) => {
     const prompt = (args[0] as string) ?? '';
     if (!prompt) {
       pi.appendEntry({
@@ -215,10 +215,15 @@ export default function activate(pi: ExtensionAPI): void {
         content: `[${EXTENSION_NAME}] Failed to start run: ${errMsg}`,
       });
     }
-  });
+  };
+
+  // -- Register slash command: babysitter:call + aliases ----------------------
+  pi.registerCommand('babysitter:call', { description: 'Start a babysitter orchestration run', handler: handleBabysitterCall });
+  pi.registerCommand('call', { description: 'Start a babysitter orchestration run (alias)', handler: handleBabysitterCall });
+  pi.registerCommand('babysitter', { description: 'Start a babysitter orchestration run (alias)', handler: handleBabysitterCall });
 
   // -- Register slash command: babysitter:status ------------------------------
-  pi.registerCommand('babysitter:status', async (...args: unknown[]) => {
+  pi.registerCommand('babysitter:status', { description: 'Show babysitter run status', handler: async (...args: unknown[]) => {
     const runIdArg = args[0] as string | undefined;
     const sessionId = (args[1] as string) ?? 'default';
 
@@ -284,10 +289,10 @@ export default function activate(pi: ExtensionAPI): void {
         content: `[${EXTENSION_NAME}] Failed to read run status: ${errMsg}`,
       });
     }
-  });
+  }});
 
   // -- Register slash command: babysitter:resume ------------------------------
-  pi.registerCommand('babysitter:resume', async (...args: unknown[]) => {
+  pi.registerCommand('babysitter:resume', { description: 'Resume an existing babysitter run', handler: async (...args: unknown[]) => {
     const runIdArg = args[0] as string | undefined;
     const sessionId = (args[1] as string) ?? 'default';
 
@@ -396,10 +401,10 @@ export default function activate(pi: ExtensionAPI): void {
         content: `[${EXTENSION_NAME}] Failed to resume run ${runIdArg}: ${errMsg}`,
       });
     }
-  });
+  }});
 
   // -- Register slash command: babysitter:doctor ------------------------------
-  pi.registerCommand('babysitter:doctor', async (...args: unknown[]) => {
+  pi.registerCommand('babysitter:doctor', { description: 'Diagnose babysitter run health', handler: async (...args: unknown[]) => {
     const runIdArg = args[0] as string | undefined;
     const sessionId = (args[1] as string) ?? 'default';
 
@@ -540,7 +545,7 @@ export default function activate(pi: ExtensionAPI): void {
     }
 
     pi.appendEntry({ type: 'info', content: checks.join('\n') });
-  });
+  }});
 
   safeAppend({
     type: 'info',

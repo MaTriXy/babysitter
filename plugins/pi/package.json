@@ -20,8 +20,8 @@
     "test:integration": "node --test test/integration.test.js",
     "test:harness": "npx tsx --test test/harness.test.js",
     "test:tui": "npx tsx --test test/tui.test.js",
-    "postinstall": "node scripts/postinstall.js",
-    "preuninstall": "node scripts/preuninstall.js"
+    "postinstall": "node scripts/postinstall.cjs",
+    "preuninstall": "node scripts/preuninstall.cjs"
   },
   "files": [
     "extensions/",

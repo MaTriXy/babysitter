@@ -67,7 +67,7 @@ export interface ExtensionAPI {
   registerTool(toolDef: ToolDefinition): void;
 
   /** Register a slash command. */
-  registerCommand(name: string, handler: (...args: unknown[]) => unknown): void;
+  registerCommand(name: string, options: { description?: string; handler: (...args: unknown[]) => unknown }): void;
 
   /** Register a custom message renderer for a given type. */
   registerMessageRenderer(type: string, renderer: MessageRenderer): void;

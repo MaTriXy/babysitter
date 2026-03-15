@@ -360,14 +360,16 @@ After you ran run:create, progress through the phases above by Stopping the sess
 
 ## Task Kinds
 
-| Kind | Description | Executor |
-|------|-------------|----------|
-| `node` | Node.js script | Local node process |
-| `shell` | Shell script | Local shell process |
-| `agent` | LLM agent | Agent runtime |
-| `skill` | Claude Code skill | Skill system |
-| `breakpoint` | Human approval | UI/CLI |
-| `sleep` | Time gate | Scheduler |
+**CRITICAL RULE: NEVER use `node` kind effects in generated processes.** The `node` kind executes inline Node.js scripts which bypasses the agent orchestration model entirely — it produces deterministic scripts instead of leveraging LLM reasoning. Every task that would be a `node` effect MUST be converted to an `agent` or `skill` effect instead. If you encounter `node` kind tasks in reference process files, convert them to `agent` kind when using them as templates. The only acceptable non-agent kinds are `shell` (for running existing test suites, git commands, or build tools), `breakpoint` (human approval), and `sleep` (time gates).
+
+| Kind | Description | Executor | When to use |
+|------|-------------|----------|-------------|
+| ~~`node`~~ | ~~Node.js script~~ | ~~Local node process~~ | **NEVER — forbidden. Convert to `agent` or `skill`.** |
+| `shell` | Shell command | Local shell process | Only for running existing CLI tools, test suites, git, linters, builds |
+| `agent` | LLM agent | Agent runtime | **Default for all tasks** — planning, implementation, analysis, verification, scoring, debugging, code writing, research |
+| `skill` | Claude Code skill | Skill system | When a matching installed skill exists (preferred over agent when available) |
+| `breakpoint` | Human approval | UI/CLI | Decision gates requiring user input |
+| `sleep` | Time gate | Scheduler | Time-based pauses |
 
 ### Agent Task Example
 
@@ -562,6 +564,8 @@ CRITICAL RULE: Never build a wrapper, python or helper scripts to orchestrate th
 CRITICAL RULE: Never fallback to simpler execution if the user activated this skill. persist in executing the orchestration itself rather than simplifying the execution by bypassing the process above - you must create a valid process js file, create a run (with --harness claude-code to bind the session), then iterate the run until it is completed.
 
 CRITICAL RULE: After run:create or run-session association and after each effect is posted, you MUST stop the session and return control. Do NOT proceed to the next run:iterate in the same session turn. The stop-hook will call you back to continue. Running multiple iterations in a single session turn bypasses the hook loop and breaks the orchestration model.
+
+CRITICAL RULE: NEVER use `kind: 'node'` in generated process files. All tasks MUST use `kind: 'agent'` (with an agent prompt schema) or `kind: 'skill'` (when a matching skill is available). If a reference process template uses `node` kind tasks, you MUST convert them to `agent` kind when adapting the template. The `node` kind produces inline scripts that bypass LLM reasoning — this defeats the purpose of agent orchestration. The only non-agent kinds allowed are `shell` (for existing CLI tools/tests/git), `breakpoint`, and `sleep`.
 
 CRITICAL RULE: NEVER bypass, avoid or skip the babysitter orchestration model when the user explicitly requested this skill. Do not execute the tasks yourself, do not loop programmatically, do not create helper scripts to orchestrate the runs. Use the CLI to drive the orchestration loop and do not bypass it. not for simple tasks, and even if things get complicated or don't go smoothly. persist in executing the orchestration itself rather than simplifying the execution by bypassing the process above.
 
